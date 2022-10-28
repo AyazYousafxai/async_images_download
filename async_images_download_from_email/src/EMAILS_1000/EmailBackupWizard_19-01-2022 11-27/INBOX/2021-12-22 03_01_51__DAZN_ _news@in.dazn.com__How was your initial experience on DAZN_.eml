@@ -1,0 +1,523 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp4276762wrd;        Tue, 21 Dec
+ 2021 19:01:51 -0800 (PST)
+Received: from mta.in.dazn.com (mta.in.dazn.com. [13.111.87.214])        by
+ mx.google.com with ESMTPS id l21si706576otu.112.2021.12.21.19.01.51       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 21 Dec 2021
+ 19:01:51 -0800 (PST)
+Received: by mta.in.dazn.com id hoaahu2fmd4k for <john.doe.youniq@gmail.com>; Wed, 22
+ Dec 2021 03:01:51 +0000 (envelope-from
+ <bounce-275_HTML-288203213-1718770-100009155-7830@bounce.in.dazn.com>)
+X-Google-Smtp-Source: ABdhPJxoJqktrQ7WDlE/QDaEGMutAFfD0n+dN5rQNttko0rmHqixSx/aE8kXdTnWw9m7o+k7owaO
+X-Received: by 2002:a54:4809:: with SMTP id j9mr750594oij.59.1640142111808;        Tue,
+ 21 Dec 2021 19:01:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640142111; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=SmqDrvdP56FxcjKheLhfBoH64pkcKamgOcm1A1G3CZ93XkytTcvkjQNN76GhB+Kzpa        
+ Cs7VvRCpUsCZ5Fpooy5iDDE1k+OiQV8T1DRxb9l6wQ6+VDjkiuOT5uF5QGCCI4uU9kQp        
+ fH0SrhFso71AyMuUXOEs2vAax8GoCmMV+r/Q+MjMwkdg6ts8Jn6hdiJ5qCX2Apzx045f        
+ j4erWGJC2Lrnk1JVX19m9L1pO3/+90NxbBdW6im90X4+Qz2deqUDrBm5Zkdn9kI7CSTU        
+ UBkxauDfQF2ehJIDVecBtGlTNz3pt4HRDirXigrobB5K6dlxAmc5GPkKTJDmPWA9dRR8        
+ KbnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:message-id:list-id:reply-to:mime-version        
+ :list-unsubscribe-post:list-unsubscribe:date:subject:to:from        
+ :dkim-signature;        bh=vSa2OkUghGaAzWdyY+6Ef/NB3E+nGS1sSZD9mDGa+QI=;    
+    b=pJ+VwjEtNHhYzKIVONB7Y6sztgAH4aGV4oZBy5xCEFpeSY3fQDVTwZ/++Wgcu+sHZi     
+    cN20rSGw1C2BFYt49hKxcIhW4bnVT4nwgahIZ4dvng4183HqwmQ6+nstUspvv75X6jyO     
+    aKvFqgsk7S58Hw/eP9x9N0lbPOYfAk14Xw55uaKPdOn3PgPuM3NtbdhKDaITDdXCkj5S     
+    h1oc8x+cBnixn6WniRx5exQ1KspXD47Mh6YQEibF/FQp1A0ddL8mracpOJGQrzekmxOj     
+    iXfprFydkQzaA4GBtZVmAQGhYAR4T9ew3HyfsS2ems63JcrigAqHiZSqgigcCqEjQOSV     
+    ayxg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@in.dazn.com header.s=10dkim1
+ header.b=GWmj0tRZ;       spf=pass (google.com: domain of
+ bounce-275_html-288203213-1718770-100009155-7830@bounce.in.dazn.com
+ designates 13.111.87.214 as permitted sender)
+ smtp.mailfrom=bounce-275_HTML-288203213-1718770-100009155-7830@bounce.in.dazn.com;       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=dazn.com
+Return-Path: <bounce-275_HTML-288203213-1718770-100009155-7830@bounce.in.dazn.com>
+Received-SPF: pass (google.com: domain of
+ bounce-275_html-288203213-1718770-100009155-7830@bounce.in.dazn.com
+ designates 13.111.87.214 as permitted sender) client-ip=13.111.87.214;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@in.dazn.com header.s=10dkim1
+ header.b=GWmj0tRZ;       spf=pass (google.com: domain of
+ bounce-275_html-288203213-1718770-100009155-7830@bounce.in.dazn.com
+ designates 13.111.87.214 as permitted sender)
+ smtp.mailfrom=bounce-275_HTML-288203213-1718770-100009155-7830@bounce.in.dazn.com;       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=dazn.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=10dkim1; d=in.dazn.com;
+ h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:
+ Reply-To:List-ID:X-CSA-Complaints:Message-ID:Content-Type;
+ i=news@in.dazn.com; bh=vSa2OkUghGaAzWdyY+6Ef/NB3E+nGS1sSZD9mDGa+QI=;
+ b=GWmj0tRZjaQnqwPnFQknUzSZW9trZchbhfFtGf7rV9OOyWmULAXublJBDxxttotfjNBHlsx6V8nJ  
+ MbchG1Aung+AuHmtiILLI07F59YvAbtC5qu0OdlVfU08jZssnM1j5JG5be2zgBcZBM/3cORvo5Lb
+  
+ cV2yibHdT1/5BfdoYuWmZ6puB9ATSDQxAm1w5tS7wEVZ/rtaWSZ/LveVhs/67o/6xiH8e+VdqQoc
+  
+ ba7hNfH+fVEzb2xKo7mW6YE00GqVaIfsnzr9Wo/N23RBo1lfhrMXtfVH34dtBWljTAwie41u6eSp
+   klqp2pbJq6mHR2Usv2x6c4riD847IiT4B4xHPg==
+From: "DAZN" <news@in.dazn.com>
+To: john.doe.youniq@gmail.com
+Subject: How was your initial experience on DAZN?
+Date: Tue, 21 Dec 2021 21:01:51 -0600
+List-Unsubscribe: <https://click.in.dazn.com/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiIxMDAwMDkxNTUiLCJzIjoiMjg4MjAzMjEzIiwibGlkIjoiMjc1IiwiaiI6IjE3MTg3NzAiLCJqYiI6Ijc4MzAiLCJkIjoiMTAwMTYwIn0.dbNhBVwYYhFj_p-1FkWZIbwZuJZrGUj_4ibJ4e1oOn4>,
+ <mailto:leave-fd4d1677700b5c392848-fe3216787d66047e771573-fe901577746c037a75-fe3a157075640474741175-ff2d13787664@leave.in.dazn.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-CSA-Compliance-Source: SFMC
+MIME-Version: 1.0
+Reply-To: "DAZN" <reply-fe901577746c037a75-275_HTML-288203213-100009155-7830@dazn.com>
+List-ID: <100009155.xt.local>
+X-CSA-Complaints: csa-complaints@eco.de
+X-SFMC-Stack: 10
+x-job: 100009155_1718770
+Message-ID: <deacaf6d-3be6-4f31-a6fa-0bb5e194fbbd@dfw1s10mta248.xt.local>
+Feedback-ID: 100009155:1718770:13.111.87.214:sfmktgcld
+Content-Type: multipart/alternative; boundary="ljfUzidLAc8s=_?:"
+
+--ljfUzidLAc8s=_?:
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+  
+  
+Hi John,
+
+  
+ Thank you for visiting DAZN!
+ 
+
+  
+We are constantly trying to improve our offering and would like to hear about your initial experience on DAZN. 
+ 
+
+  
+If you'd like to share your thoughts with us, please do so by filling out the following survey. Your feedback will help us greatly to further improve our service - so the more honest you are, the better! 
+
+
+  
+
+https://perform.eu.qualtrics.com/jfe/form/SV_8q47svZZan4I9s9?Q_DL=EMD_ex0l03lDzWYlMjJ_8q47svZZan4I9s9_MLRP_7VOqDFYBuMALE2O&Q_CHL=gl 
+START SURVEY 
+
+We look forward to getting your feedback, and hope to see you on DAZN soon! 
+
+  
+Best wishes,
+
+
+ DAZN 
+
+  
+ Please note that by completing this survey you authorise DAZN to use your responses for platform enhancements and customised marketing communications.
+ 
+
+  
+
+
+
+
+ 
+
+ Stay up to date with the latest news, fights and more on:
+
+https://click.in.dazn.com/?qs=e34887b9eec14828663f5f5abf96f232e6753464cb6f2295f482bcbb1107042f02ec7d90ac4c59221e7a86c0d413165c7629f2a7afc6fb4e 
+
+https://click.in.dazn.com/?qs=055d84bccf605431e5707dc17f4d6739d8e5bfbb4b25e04ccac862fed6ae87f4345f9e03caa75c3637bb8eae50a16b9feec775f2c94b7e09 
+
+https://click.in.dazn.com/?qs=e6ca4ceca67a240e29fa09c9a536d6b6ee2c909752d71e087d64368f99ad2b114880d2b069ee6ebe8046a4840f87d5d5c152bea138cb366c 
+
+https://click.in.dazn.com/?qs=048d77358005bd45f432f7f9b80cc00d8809e3e59020bf7d49afe335aa85b0f81d218e4d209870666f35b10680163ff29aa569d5f1f700dc 
+
+
+
+ 
+
+  
+
+https://view.in.dazn.com/?qs=73e1ce8a3ca19e5e56b36078f6d78105f38658b2b9122d662d0d780882797bd4f15a3e8b6d030ea08b6164a5700b1ea379a51d2375b9ccaf4df8cfafd5d6210250a607ddbd9c6d23344eff945a4e071a 
+View in browser 
+
+
+ This email was sent to you as a registered member of DAZN.com. Please do not reply to this email, as we are unable to respond from this email address.
+
+If you would like to stop receiving these emails, please click here to 
+https://click.in.dazn.com/?qs=7cfb14b5751188bb47241e67a13e5853a1f4d3dc76bcf19c4076a3f0ce0715a901ee3a4d8da631476a34603adb004bd42f18b2b86bfe0aaaf7a4de72611e1eef 
+Unsubscribe .
+
+
+ Use of the DAZN service and website is subject to our 
+https://click.in.dazn.com/?qs=491bbaf97ff25d83de7e1386ccc1b738d98c356429d52f027f400940efa5b78688b7ee9a8dbd50af48f6ede96520d51e12ea93fe82925ac4 
+ Terms of Use  and 
+https://click.in.dazn.com/?qs=e3fc46950d3a4d0622d61a1933b8e6a6444eeea8f955132f443fc88d113eb4c22a4cc6b90f7a697e547a326fd248ed9ab4be7be83cbf4dbe 
+Privacy Statement .
+
+
+ DAZN Limited, company number 09676399, Hanover House, Plane Tree Crescent, Feltham, United Kingdom, TW13 7BZ.
+
+
+ DAZN Limited, Registernummer 09676399, Hanover House, Plane Tree Crescent, Feltham, TW13 7BZ Großbritannien
+
+
+
+
+
+https://click.in.dazn.com/profile_center.aspx?qs=a6596d2022e7974f93d627d8d7a92c0abf608ff9b389ca6745505c0333bde569e19e66f22b5a7fa562466c6e66a95da24e7185cf799a561ace0590a8b679d067902cc678593f2e3b 
+Update Profile 
+
+ DAZN Limited, Registernummer 09676399, Hanover House, Plane Tree Crescent, Feltham, TW13 7BZ Großbritannien
+
+
+  
+ 
+ 
+
+
+
+--ljfUzidLAc8s=_?:
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"></td></tr></table>
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"></td></tr></table>
+</td></tr></table>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+  <head>
+    <title></title>
+    <!--[if !mso]><!-- -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      #outlook a {
+        padding: 0;
+      }
+      .ReadMsgBody {
+        width: 100%;
+      }
+      .ExternalClass {
+        width: 100%;
+      }
+      .ExternalClass * {
+        line-height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      table,
+      td {
+        border-collapse: collapse;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+      p {
+        display: block;
+        margin: 13px 0;
+      }
+      @media only screen and (max-width:480px) {
+        .mj-column-per-100 {
+          width: 100%!important;
+        }
+        .mj-column-per-50 {
+          width: 100%!important;
+        }
+        .mj-column-per-55 {
+          width: 100%!important;
+        }
+        .mj-column-per-45 {
+          width: 100%!important;
+        }
+        .mj-column-per-15 {
+          width: 100%!important;
+        }
+        .mj-column-per-33 {
+          width: 100%!important;
+        }
+        .mj-column-per-30 {
+          width: 100%!important;
+        }
+        .mj-column-per-70 {
+          width: 100%!important;
+        }
+        .mobile-center,
+        .mobile-center *,
+        *[class=mobile-center],
+        *[class=mobile-center] * {
+          text-align: center !important;
+        }
+        .mobile-padding {
+          padding: 0 24px !important;
+        }
+        .mobile-full-width {
+          width: 100% !important;
+        }
+        p {
+          font-size: 16px !important;
+        }  
+      }
+      /*@-ms-viewport {
+        width: device-width;
+      }*/
+      @media screen and (max-width: 480px) {
+        .hide-mobile {
+          display: none !important;
+          font-size: 20px !important; 
+          max-height: 0 !important; 
+          line-height: 0 !important;
+          mso-hide:all;
+        }
+        .show-mobile {
+          display: block !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: visible !important;
+          width: auto !important;
+          max-height: inherit !important;
+          font-size: inherit !important;
+        }
+      }
+      @media screen and (min-width: 481px) {
+        .show-mobile {
+          display: none !important;
+          font-size: 0 !important; 
+          max-height: 0 !important; 
+          line-height: 0 !important;
+          mso-hide:all;
+        }
+        .hide-mobile {
+          display: block !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: visible !important;
+          width: auto !important;
+          max-height: inherit !important;
+          font-size: inherit !important;
+        }
+      }
+    </style>
+    <style type="text/css" id="css-outlook-com">
+      [owa] .show-mobile {display: none !important;}
+      [owa] .hide-mobile {display: block !important;}
+    </style>
+  </head>
+  <body bgcolor="#ffffff" style="background-color: #ffffff;"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Let us know!</div>
+    <div style="background-color: #ffffff;">
+      <table bgcolor="#ffffff" width="100%">
+        <tr>
+          <td align="center">
+            <div class="mj-container">
+              <!-- ##### CONTENT GOES HERE ##### -->
+              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- ##### HEADER ##### --><!--[if mso | IE]>               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><div style="margin:0px auto;max-width:600px;">
+ <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:0px;">
+     <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+       
+        <tr>
+         <td align="center" style="word-wrap:break-word;font-size:0px;padding:0px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+           
+            <tr>
+             <td style="width:600px;">
+              <a alias="Header" conversion="true" data-linkto="https://" href="#" title="Header"><img alt="" height="auto" src="https://image.in.dazn.com/lib/fe3a157075640474741175/m/3/137c1a5f-8d40-49a9-8213-93c5867ee7b3.jpg" style="border:none;border-radius:0px;display:block;font-size:13px;outline:none;text-decoration:none;width:100%;height:auto;" title="" width="600"></a></td></tr></table></td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /HEADER ##### --></td></tr></table></td></tr></table>
+              <table role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper" width="100%" cellspacing="0" cellpadding="0"><tr><td class="stylingblock-content-wrapper camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- ##### ARTICLE ##### --><!--[if mso | IE]>               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><div style="margin:0px auto;max-width:600px;background:#f9fafa;">
+ <table align="left" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:#f9fafa;">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;">
+      <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:12px;text-align:left;width:100%;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+       
+        <tr>
+         <td height="15">
+          &nbsp;</td></tr><tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <div style="cursor:auto;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">
+           <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">Hi John,</font></div></td></tr><tr>
+         <td height="15">
+          &nbsp;</td></tr><tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;"> Thank you for visiting DAZN!
+  </font></td></tr><tr>
+         <td height="15">
+          &nbsp;</td></tr><tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">We are constantly trying to improve our offering and would like to hear about your initial experience on DAZN. 
+ </font></td></tr><tr>
+         <td height="15">
+          &nbsp;</td></tr><tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">If you'd like to share your thoughts with us, please do so by filling out the following survey. Your feedback will help us greatly to further improve our service - so the more honest you are, the better!  </font></td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /ARTICLE ##### --><!-- ##### BIG CTA ##### --><!--[if mso | IE]>               
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><div style="margin:0px auto;max-width:600px;background:#f9fafa;">
+ <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:#f9fafa;">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;">
+     <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+       
+        <tr>
+         <td height="30">
+          &nbsp;</td></tr><tr>
+         <td align="center" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate; width: 100%;">
+           
+            <tr>
+             <td align="center" bgcolor="#f7ff1a" style="border:none;color:#ffffff;cursor:auto;padding:20px 0 18px 0;" valign="middle">
+              <font style="text-decoration:none;background:#f7ff1a;color:#0c161c;font-family:Helvetica;font-size:20px;font-weight:normal;line-height:120%;text-transform:none;margin:0px;"><a  href="https://click.in.dazn.com/?qs=ea5413d49fa7c87fbb242e72bc0a730aa2d7461a4dc035d94d2493fd76a13418d83ff37015952c0939af4bdc4f83fd01f21602dce95a1400" style="text-decoration: none; color: #0c161c; text-transform: uppercase; font-weight: 700; letter-spacing: -1px;">START SURVEY</a></font></td></tr></table></td></tr><tr>
+         <td height="30">
+         </td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /BIG CTA ##### --><!-- ##### ARTICLE ##### --><!--[if mso | IE]>               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><div style="margin:0px auto;max-width:600px;background:#f9fafa;">
+ <table align="left" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:#f9fafa;">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;">
+     <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:12px;text-align:left;width:100%;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+       
+        <tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <div style="cursor:auto;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">
+           <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">We look forward to getting your feedback, and hope to see you on DAZN soon!  </font></div></td></tr><tr>
+         <td height="15">
+          &nbsp;</td></tr><tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:16px;line-height:21px;">Best wishes,<br>
+          <br>
+          DAZN </font></td></tr><tr>
+         <td height="15">
+          &nbsp;</td></tr><tr>
+         <td align="left" style="word-wrap:break-word;font-size:0px;padding:0 24px;">
+          <font style="margin: 16px 0;color:#0c161c;font-family:Helvetica;font-size:12px;line-height:21px;"> Please note that by completing this survey you authorise DAZN to use your responses for platform enhancements and customised marketing communications.
+  </font></td></tr><tr>
+         <td height="15">
+          &nbsp;</td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /ARTICLE ##### --></td></tr></table>
+</td></tr></table>
+              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- ##### SOCIAL ##### --><!--[if mso | IE]>               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><div style="margin:0px auto;max-width:600px;background:#555c60;">
+ <table role="presentation" style="font-size:0px;width:100%;background:#555c60;" cellspacing="0" cellpadding="0" border="0" align="center">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;">
+     <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:12px;text-align:left;width:100%;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+       
+        <tr>
+         <td height="24">
+         </td></tr><tr>
+         <td style="word-wrap:break-word;font-size:0px;padding:0 24px;" align="left">
+          <div style="cursor:auto;color:#ffffff;font-family:Helvetica, sans-serif;font-size:16px;line-height:22px;text-align:center;">
+           Stay up to date with the latest news, fights and more on:</div></td></tr><tr>
+         <td height="16">
+         </td></tr><tr>
+         <td style="word-wrap:break-word;font-size:0px;" align="center">
+   <table role="presentation" style="font-size:0px;" width="280" cellspacing="0" cellpadding="0" border="0" align="center">
+           
+            <tr>
+             <td width="80" valign="center" height="60" align="center">
+              <a  data-linkto="https://" href="https://click.in.dazn.com/?qs=aa93b6a0c7d545e824cde5c9bcea0ab8c51c083950e4fd1dd9b94a5db7e4f9d310c165176d83eba17dc7a617fd066baa74a3a29539e92c08" target="_blank"><img alt="Instagram" src="https://image.in.dazn.com/lib/fe3a157075640474741175/m/1/e3830617-81c9-45e4-9c48-ff2b16c4ee1e.png" width="58" height="58"></a></td><td width="80" valign="center" height="60" align="center">
+              <a  href="https://click.in.dazn.com/?qs=88e282355c78f8b53f9ad4d2f407b6852b972d4c648d3cf24401d7ec40307cbb026f09e09132d9f3db64063f9f77efcbd0315c995cfe77fb"><img alt="Twitter" src="https://image.in.dazn.com/lib/fe3a157075640474741175/m/1/0ba2188c-d1f1-4598-97c6-57e27ee5b097.png" width="58" height="58"></a></td><td width="80" valign="center" height="60" align="center">
+              <a  href="https://click.in.dazn.com/?qs=eeeb62c5a5a071b9abc646926613b3d99756b911799601140636381d43049a91cf4d2941f6410835ac893b062d5697916a90da2b3c90d886"><img alt="Facebook" src="https://image.in.dazn.com/lib/fe3a157075640474741175/m/1/2ff4286d-1b12-4deb-ab1f-3a29e714d782.png" width="58" height="58"></a></td><td width="80" valign="center" height="60" align="center">
+              <a  data-linkto="https://" href="https://click.in.dazn.com/?qs=f5e33dc9181e6b32372bd8cf83bf59694cfbf49d24672dfc851f02187d399187585c6b1da174c051b0e53099f0f9b4bdc5c1e0ae671b45de"><img alt="Youtube" src="https://image.in.dazn.com/lib/fe3a157075640474741175/m/1/496630cb-ddc4-4de1-9d26-ee08482d5f91.png" width="58" height="58"></a></td></tr></table></td></tr><tr>
+         <td height="24">
+         </td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /SOCIAL ##### --><!-- ##### WEBVIEW ##### --><!--[if mso | IE]>               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" bgcolor="#242d33" style="width:600px;">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><!--End Divider-->
+<div data-class="" style="margin:0px auto;background:#242d33;max-width:600px;">
+ <table role="presentation" style="font-size:0px;width:100%;" cellspacing="0" cellpadding="0" border="0" bgcolor="#242d33" align="center">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;"></td></tr></table></div></td></tr></table></td></tr></table>
+              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- ##### WEBVIEW ##### --><!--[if mso | IE]>               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;background:#242d33;" background="#242d33">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><!--End Divider--><div data-class="" style="margin:0px auto;background:#242d33;max-width:600px;">
+ <table role="presentation" style="font-size:0px;width:100%;" cellspacing="0" cellpadding="0" border="0" align="center">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;">
+     <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+       
+        <tr>
+         <td height="8">
+          &nbsp;</td></tr><tr>
+         <td style="word-wrap:break-word;font-size:0px;padding:0 24px;" align="center">
+          <div style="cursor:auto;color:#ced0d2;font-family:Helvetica, sans-serif;font-size:13px;line-height:22px;text-align:center;">
+           <p style="font-size: 14px; line-height: 21px;color:#ced0d2; margin: 0; font-weight: 300;">
+            <a href="https://view.in.dazn.com/?qs=73e1ce8a3ca19e5e56b36078f6d78105f38658b2b9122d662d0d780882797bd4f15a3e8b6d030ea08b6164a5700b1ea379a51d2375b9ccaf4df8cfafd5d6210250a607ddbd9c6d23344eff945a4e071a" style="cursor:auto;color:#ced0d2;font-family:Helvetica, sans-serif;font-size:12px;line-height:30px;text-align:center;">View in browser</a></p></div></td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /WEBVIEW ##### --><!-- ##### FOOTER ##### --><!--[if mso | IE]>               
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;background:#242d33;" background="#242d33">                 <tr>                   <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">                     <![endif]--><!--End Divider--><div data-class="" style="margin:0px auto;background:#242d33;max-width:600px;">
+ <table role="presentation" style="font-size:0px;width:100%;" cellspacing="0" cellpadding="0" border="0" align="center">
+  
+   <tr>
+    <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;">
+     <!--[if mso | IE]>                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">                               <tr>                                 <td style="vertical-align:top;width:600px;">                                   <![endif]--><div class="mj-column-per-100" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+       
+        <tr>
+         <td height="30">
+         </td></tr><tr>
+         <td style="word-wrap:break-word;font-size:0px;padding:0 24px;" align="left">
+          <div style="cursor:auto;color:#ced0d2;font-family:Helvetica, sans-serif;font-size:13px;line-height:22px;text-align:left;">
+           <p style="font-size: 14px; line-height: 21px;color:#ced0d2; margin: 0 0 16px 0; font-weight: 300;">
+            This email was sent to you as a registered member of DAZN.com. Please do not reply to this email, as we are unable to respond from this email address.</p><p style="font-size: 14px; line-height: 21px;color:#ced0d2; margin: 0 0 16px 0; font-weight: 300;">
+            <!---->If you would like to stop receiving these emails, please click here to <a  href="https://click.in.dazn.com/?qs=3005c7dcd58f4f063640a70caf1edcd7dcd5ab9da895ae6db558f2711b816e2b49848012d36e5ef0f3cd82c9dc05985afda1ca7605b42e9623ac8fccd04e172a" style="color:#ced0d2;">Unsubscribe</a>.</p><p style="font-size: 14px; line-height: 21px;color:#ced0d2; margin: 0 0 16px 0; font-weight: 300;">
+            Use of the DAZN service and website is subject to our <a href="https://click.in.dazn.com/?qs=491bbaf97ff25d83de7e1386ccc1b738d98c356429d52f027f400940efa5b78688b7ee9a8dbd50af48f6ede96520d51e12ea93fe82925ac4" style="color:#ced0d2;"> Terms of Use</a> and <a href="https://click.in.dazn.com/?qs=e3fc46950d3a4d0622d61a1933b8e6a6444eeea8f955132f443fc88d113eb4c22a4cc6b90f7a697e547a326fd248ed9ab4be7be83cbf4dbe" style="color:#ced0d2;">Privacy Statement</a>.</p><p style="font-size: 14px; line-height: 21px;color:#ced0d2; margin: 0 0 16px 0; font-weight: 300;">
+            DAZN Limited, company number 09676399, Hanover House, Plane Tree Crescent, Feltham, United Kingdom, TW13 7BZ.</p><p style="display: none; font-size: 0px; line-height: 0px;color:#242d33; margin: 0 0 0 0; font-weight: 0;">
+            DAZN Limited, Registernummer 09676399, Hanover House, Plane Tree Crescent, Feltham, TW13 7BZ Großbritannien</p></div></td></tr><tr>
+         <td height="20">
+         </td></tr></table></div><!--[if mso | IE]>                                 </td>                               </tr>                             </table>                             <![endif]--></td></tr></table></div><!--[if mso | IE]>                   </td>                 </tr>               </table>               <![endif]--><!-- ##### /FOOTER ##### --></td></tr></table>
+
+
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+
+<tr style="display:none">
+         <td style="display:none">
+          <a  href="https://click.in.dazn.com/profile_center.aspx?qs=a6596d2022e7974f93d627d8d7a92c0abf608ff9b389ca6745505c0333bde569e19e66f22b5a7fa562466c6e66a95da24e7185cf799a561a530e78045e3fdad6a0e94b561abf70d5" style="display:none; font-size:0px; line-height:0px">Update Profile</a>
+  <p style="display: none; font-size: 0px; line-height: 0px;color:#242d33; margin: 0 0 0 0; font-weight: 0;">
+    DAZN Limited, Registernummer 09676399, Hanover House, Plane Tree Crescent, Feltham, TW13 7BZ Großbritannien</p></td></tr></table></td></tr></table>
+              <!-- ##### /CONTENT GOES HERE ##### -->
+              <!-- ### DO NOT TOUCH ### -->
+              <!-- BEGIN : Force Desktop version on clients that don't support media queries -->
+              <table cellpadding="0" cellspacing="0" border="0" class="hide-mobile">
+                <tr>
+                  <td height="1" class="hide-mobile" style="min-width:640px; font-size:0px;line-height:0px;">&nbsp;
+                    
+                  </td>
+                </tr>
+              </table>
+              <!-- END : Force Desktop version on clients that don't support media queries -->
+              <img src="https://click.in.dazn.com/open.aspx?ffcb10-fe901577746c037a75-fe3616707c60057d7d1471-fe3a157075640474741175-ff61167770-fe3216787d66047e771573-ff2d13787664&d=100160&bmt=0" width="1" height="1" alt="">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
+
+--ljfUzidLAc8s=_?:--
+

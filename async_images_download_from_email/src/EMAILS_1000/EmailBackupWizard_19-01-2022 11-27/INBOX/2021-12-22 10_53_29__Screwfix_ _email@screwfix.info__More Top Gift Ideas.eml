@@ -1,0 +1,1331 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp4467745wrd;        Wed, 22 Dec
+ 2021 02:54:07 -0800 (PST)
+Received: from mta121.fwdto.net (mta121.fwdto.net. [195.68.228.121])        by
+ mx.google.com with ESMTPS id f4si1621193pfj.85.2021.12.22.02.54.06       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Wed, 22 Dec 2021
+ 02:54:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzVKyz3/nWCm29KOsLGwPRHlIhdLBkvg80B1gSb7c/4qDuOutqGdynHLi3/a2lH2u4vTH30
+X-Received: by 2002:a17:90b:350b:: with SMTP id ls11mr656361pjb.97.1640170447435;       
+ Wed, 22 Dec 2021 02:54:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640170447; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=nznwfNIWrIRC8g9FF9xhTU2RsLW7gWmZFtyW4xXNb2DUXz0Z0B1c3Geo9BkOFdZenp        
+ PFNJk15bwxYio+jzwFLy4Zw//Wuqi6wvvp99+ip6xKC1iwVVOtMoXyBxeD0F81keJ59B        
+ 6ARddai7Bt9nHkLGZKzZYVKPihk5N8FrCbqXoUcl3OOOUEQD4uWg+AgqBdaZGAlOf4Ay        
+ MUTl8MZsqfjgXzzKAtlKSkrtX2DmUaCOlvKIpSPbSSXvzQjn+6XBIXjtDV+YqzXFCJO+        
+ gK5IfoTyCpDmw9QVbiNLySJisanGJ64qHRgmLtDqWoSNV7ySml1UjSbSdX5VVWOY4oze        
+ 9Rag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=message-id:mime-version:reply-to:to:date:subject:from        
+ :domainkey-signature:dkim-signature;       
+ bh=wlEQ5ke2eD6YU+Kve1ACh6SDeXWmpO1q8n78367ijE8=;       
+ b=wRqjIpIUEiKmIX3oICSEyKqloD40cJac1vzVhVx0ro1WKGdxfgbMjpNuKQhjZxeZRK        
+ hxyhGb7BN7uGCrBCTrEwSRUpwuX9S86iz5u08tHYC+3HBC/eh42ZLWC9Vu1mZjTozi/O        
+ PdrbB8udngS0JzBJSmtpqJ5MR1jUXtsYDJ9Bw7nHKrkSZ1VESFx25i9aBR7EO9nHuxts        
+ zICkRzNRrxV/UyRXln6TXiOOcuTtYmCt8hinsh3N4kMu+lJWAjYYZOuALcv4iuVDqJT5        
+ oPpYdLA7c/bcTZZpTo5zuEzwdiJvSOg+Yiwa3wCETmLyRuvHCMVF1UNV4t4kwIkGaAlt        
+ k76Q==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@screwfix.info
+ header.s=prfsn2020 header.b=YUHJrW4A;       spf=pass (google.com: domain of
+ screwfix_info@replies.screwfix.info designates 195.68.228.121 as permitted
+ sender) smtp.mailfrom=screwfix_info@replies.screwfix.info;       dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=screwfix.info
+Return-Path: <screwfix_info@replies.screwfix.info>
+Received-SPF: pass (google.com: domain of screwfix_info@replies.screwfix.info designates
+ 195.68.228.121 as permitted sender) client-ip=195.68.228.121;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@screwfix.info header.s=prfsn2020
+ header.b=YUHJrW4A;       spf=pass (google.com: domain of
+ screwfix_info@replies.screwfix.info designates 195.68.228.121 as permitted
+ sender) smtp.mailfrom=screwfix_info@replies.screwfix.info;       dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=screwfix.info
+DKIM-Signature: v=1; a=rsa-sha256;
+ c=relaxed/relaxed;	s=prfsn2020;	d=screwfix.info;	h=domainkey-signature:from:subject:date:to:reply-to:mime-version:x-mailer:message-id:content-type;	bh=wlEQ5ke2eD6YU+Kve1ACh6SDeXWmpO1q8n78367ijE8=;	b=YUHJrW4ANQCL5JV5axeMIKAMc+KEztOFo4vTP+dvWkKBHjXC2DZ0OlnSjwfP96VRnNqU/IVHLxUsbT99Zq1BNFVZ5ZOvGwbEOzjpcfJLsz1VD2qaEt91Bnno9nWLZwHsflJoBphi6l1H/cQNLfFMSJ7gvkkFGn9ysC/Qne0c7JRPhYpQwZwEmpbr3oMQfhSbV58kQY2z+OBR7VCUnkaEIqtMAkNYRLOv69HvjLHLysc4JLfy8i4ORL8L3aJ6erzMkAyYVd2n/IvCy0sfh7QKLV7QE6fk9FBybCLD2inpp1OJJadx14UqwoAz1+kh2Hm68c9FccNtlRbeMsTySkIZnw==
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+ q=dns;	s=prfsn2020;	d=screwfix.info;	h=From:Subject:Date:To:Reply-To:MIME-Version:X-mailer:Message-ID:Content-Type;	b=RR3Q4zRHTKTPm9VPJu5jVQ/dFYmV6YLoTUR61C/2+iqtOP6tcReIYGuEmLLEarMQkp8CAji4dvqAPK0v/PFLdXTJOpAGQGCOMRFBIXWQ643KZeRPNdHBqtCN4I9kwD8ygDv3GMLCOOD90l1HJF40mS6z+zoSa3r/lLlK96CRfiRjRLdOWAL8UdRHZmOm0/ot0H+Vus/U4PNyK75GlIFC93GoAzhGoVav+mh/1tqWwK9xywRw0kP55q+ZbHQ/ZBMiz9c+RVz3gpjAmyqAx9TN8IPdplZ5qklBys9ITWms8IRsaoN1ITHjaHDr/9VKBL5YzDHampcD9mMj/J4x1JQ+OQ==
+From: "Screwfix" <email@screwfix.info>
+Subject: More Top Gift Ideas
+Date: Wed, 22 Dec 2021 10:53:29 GMT
+To: john.doe.youniq@gmail.com
+Reply-To: "Screwfix" <email@screwfix.info>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM67A2DAEA20D77DF9Fscrewfix@replies.screwfix.info>
+Content-Type: multipart/alternative; boundary="----=_NextPart_961_717E8C01.717E8C01"
+
+------=_NextPart_961_717E8C01.717E8C01
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: 8bit
+
+********************************************************************
+
+If you are reading this message either your email client can't view images or you have set it to view text only.
+
+In order to view the email, please click on the link below: -
+http://www.screwfix.info/r/?id=t7a2daea2%2Cd77df9f%2Cc4fab83&p1=%40smIZUno%2FC252VnnO36b5TovsCMOhLkG6X%2BSN5tr5O3g%3D&s=tL9SkftlN1A7soxn6FIwUQ5haJwww-YUsefpvCe_z7E
+
+
+********************************************************************
+
+Terms & Conditions
+
+All products are subject to availability. Screwfix reserves the right to change prices. Check website for latest availability and prices. Star ratings correct at time of sending.
+
+Delivery charges and restrictions may apply - see www.screwfix.com/delivery for further details. Our standard T&Cs apply to every purchase - see www.screwfix.com/termsandconditions.
+
+Prices include VAT (unless otherwise stated).
+
+Unsubscribe
+
+You have registered to receive these offers with the following email address: john.doe.youniq@gmail.com 
+If you are receiving more than one copy of this email from Screwfix Direct, or wish to take a break from our emails or even unsubscribe altogether, please click here. However, by unsubscribing you will miss out on all the latest products, offers and promotions.
+
+Contact Us
+
+If you have an enquiry regarding this email or any other customer service related enquiry please click here.
+Alternatively you can email us at online@screwfix.com.
+
+Screwfix Direct Limited, Trade House, Mead Avenue, Yeovil, BA22 8RT (Registered in England, No: 3006378)
+
+
+
+********************************************************************
+
+------=_NextPart_961_717E8C01.717E8C01
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN" "http://ww=
+w=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml">
+
+<head>
+  <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf-8" =
+/>
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1=
+=2E0" />
+  <style type=3D"text/css">
+
+  @media screen and (max-width: 600px) {
+    =2Eemailnomob {
+      display:none !important;
+    }
+    =2EmobWidth {
+      width:320px !important;
+    }
+    td=2EfloatLeft {
+      float:left !important; /*BREAKS TD ONTO SEPARATE LINES*/
+    }
+    td=2EfloatRight {
+      float:right !important; /*BREAKS TD ONTO SEPARATE LINES*/
+    } =20
+    =2Eemailwrapto100pc {
+      width:100% !important;
+      min-width:100% !important;
+    }
+    =2Eemailmobonly {
+      max-height: none !important;
+      min-height: none !important;
+      font-size: 12px !important;
+      display: block !important;
+      max-width: none !important;
+      overflow: visible !important;
+    }
+    =2Ehr10mob {
+      width:auto !important;
+      height:10px !important;
+    }
+    =2Eemailmob img {
+      display:none !important;
+    }
+
+    /*HEADER STYLES*/
+    =2Efullbluebg {
+      background-color:#0053A0!important;
+    }
+    /*END HEADER STYLES*/
+  }
+  /* END MEDIA QUERY */
+
+
+  body {
+    font:0=2E7em/1=2E4 "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color:#FFFFFF;
+    margin: 0;
+    padding:0;
+  }
+  a {
+    color: #FFFFFF;
+  }
+  table {
+    padding:0;
+    border-spacing:0;
+    border-collapse: collapse;
+    margin: 0 auto;
+    mso-table-lspace:0pt;
+      mso-table-rspace:0pt;   =20
+  }
+  table td {
+    border-collapse: collapse;
+    padding:0;
+    border-spacing:0;
+  }
+  /*a:visited {
+     color:#FFFFFF;
+  }*/
+  a=2Ebodytext {
+      color: #383838 !important;
+      text-decoration: none;
+  }
+  =2Eemailmobonly {
+    max-height: 0px;
+    min-height: 0px; /*Gmail seems to add min-height by itself*/
+    font-size: 0;
+    display: none;
+    max-width: 0px;
+    overflow: hidden;
+  }
+  @font-face{
+    font-family:'Screwfix Regular';
+    src:local('Screwfix Regular'), local('ScrewfixRegular'), url('https://c=
+ontent=2Escrewfix=2Ecom/responsive/Screwfix_Regular=2Ewoff') format('woff')=
+;
+  }
+  =2Epreheadertext {
+    color: #ffffff !important;
+  }
+  =2Epreheadertext a {
+    color: #ffffff !important;
+    text-decoration:underline;
+  }
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: inherit !important;
+  }
+
+  </style>
+</head>
+
+<body style=3D"margin: 0; padding: 0; -webkit-text-size-adjust: none; -ms-t=
+ext-size-adjust: none; background-color: #f6f6f6; font-family: Arial, Helve=
+tica, sans-serif; font-weight: 400; color: #383838;"> =20
+
+
+
+<!-- PREHEADER -->
+<div class=3D"hidden-preheader" style=3D"display: none; font-size: 0; line-=
+height: 0; max-height: 0; overflow: hidden; color: #383838; mso-hide: all;"=
+>Next Day Delivery or Click and Collect in as little as 1 minute&#33;</div>=
+
+<div class=3D"hidden-preheader" style=3D"display: none; font-size: 0; line-=
+height: 0; max-height: 0; overflow: hidden; color: #383838; mso-hide: all;"=
+>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+<!-- END PREHEADER -->
+
+<!-- BLUE HEADER -->
+<div style=3D"width: 100%">
+<table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"#0053A=
+0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+  <tr>
+    <td> =20
+      <!-- LOGO -->
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"640" style=3D"padding:0px; margin:0px=
+;">
+              <tr>
+                <td align=3D"center">
+                  <table class=3D"mobWidth" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"320" style=3D"padding:0px; marg=
+in:0px;">
+                    <tr>
+                      <td align=3D"center">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"320">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab5a&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DWbSSP_rEdtEfzTr6l1GtQeuuElPeuj2hOGcQcOEKsBE" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/c9bda7bb99612289=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Screwfix" width=3D"320" border=3D"0" />
+                              </a>                             =20
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END LOGO -->
+
+      <!-- HEADER ICONS -->
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"640" style=3D"padding:0px; margin:0px=
+;">
+              <tr>
+                <td align=3D"center">
+                  <table class=3D"mobWidth" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"320" style=3D"padding:0px; marg=
+in:0px;">
+                    <tr>
+                      <td align=3D"center">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"320">
+                          <tr>
+                            <td width=3D"64">
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab5b&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DWkF_ul3HavdqPlHRqvoyhhOebvtf0Kd-Ei8p45u9ppI" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/1ce0b8640bf8aeb9=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Store Locator" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab5c&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DNViQEQnHAq19aC_gWoqSHPNWpCQ0mlgh_ILI1FC3TGY" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/506ef2838099dcea=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Your Account" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab5d&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DaClLbULf_u3Rc1cy0hWHIaBo0obW2gXZZI1XlD1UuEo" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/3831a10318feec14=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Contact Us" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td width=3D"64">
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END HEADER ICONS --> =20
+
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <!-- PRE HEADER TABLE -->
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+              <tr>
+                <td align=3D"center" style=3D"color: #ffffff !important; fo=
+nt-size: 11px; font-family: Arial, Helvetica, sans-serif;">
+                  <p class=3D"preheadertext" style=3D"padding:0px;margin:0p=
+x;">
+                    <a target=3D"_blank" style=3D"color:#ffffff !important;=
+ text-decoration:underline;" href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh=
+7a2daea2%2Cd77df9f%2Cc4fab59&p1=3D%40smIZUno%2FC252VnnO36b5TovsCMOhLkG6X%2B=
+SN5tr5O3g%3D&s=3DXYa6ZNmHf5kIw4rSYjlKOdIyGeWcw_31mzkeTtuQDPQ">View email on=
+line</a><br><br></p>
+                </td>
+              </tr>
+            </table>
+            <!-- END PRE HEADER TABLE -->
+          </td>
+        </tr>
+      </table>
+     =20
+      <!-- SUPPLIED & SAFE -->
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"640" style=3D"padding:0px; margin:0px=
+;">
+              <tr>
+                <td align=3D"center">
+                  <table class=3D"mobWidth" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"320" style=3D"padding:0px; marg=
+in:0px;">
+                    <tr>
+                      <td align=3D"center">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"320">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab5e&p1=3D9116433520&p2=3DE21W47BX5&s=3D459yW20=
+ix2C8OhRLUMYmt7yb3ZUWkJti2bOjn9Yj6TI" target=3D"_blank"><img src=3D"https:/=
+/mi=2Escrewfix=2Ecom/p/rp/3ff0b24f653619db=2Epng?mi_u=3DCOM_9116433520" sty=
+le=3D"display:block; border:0;" alt=3D"Screwfix" width=3D"320" border=3D"0"=
+ />
+                              </a>                             =20
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END SUPPLIED & SAFE -->         =20
+    </td>
+  </tr>
+</table>
+</div>
+
+<div style=3D"width: 100%">
+<table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"#f6f6f=
+6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+  <tr>
+    <td>
+      <!-- EMERGENCY FUD -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td>
+                  <!-- FUD DESKTOP -->
+                  <div class=3D"emailnomob">
+                  <table class=3D"emailnomob" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                    <tr>
+                      <td class=3D"floatLeft">
+                        <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a=
+2daea2%2Cd77df9f%2Cc4fab5f&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3DXOC634uLzlTN6UYL7kbIJMsJsUoBSf3EM5W5oHaIi8c" style=3D"display: block;" t=
+arget=3D"_blank"><img style=3D"display:block" class=3D"emailwrapto100pc" sr=
+c=3D"https://mi=2Escrewfix=2Ecom/p/rp/6a2ac2d6f4c27da6=2Epng?mi_u=3DCOM_911=
+6433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" alt=3D"Display images=
+ to show real-time content" border=3D"0" width=3D"640" />
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                  </div>
+                  <!-- END FUD DESKTOP -->
+
+                  <!--[if !mso]><!-->
+                  <!-- FUD MOBILE -->
+                  <div class=3D"emailmobonly" style=3D"max-height: 0px;min-=
+height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;">
+                  <table class=3D"emailmobonly" style=3D"max-height: 0px;mi=
+n-height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;" =
+align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                    <tr>
+                      <td class=3D"floatLeft">
+                        <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a=
+2daea2%2Cd77df9f%2Cc4fab60&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3Df7ba1WL9KVQccIW9MK3OxNi3P2T6GlerkdInAzv3Zss" style=3D"display: block;" t=
+arget=3D"_blank"><img style=3D"display:block" src=3D"https://mi=2Escrewfix=
+=2Ecom/p/rp/d49101120654f225=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFI=
+X&utm_campaign=3DE21W47BX5" alt=3D"Display images to show real-time content=
+" border=3D"0" width=3D"320" />
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                  </div>
+                  <!-- END FUD MOBILE -->
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END EMERGENCY FUD -->
+
+      <!-- EXCLUSIVE DEALS BANNER 1 -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:0px 0px 0px 0px;">
+                  <!-- BANNER 1 DESKTOP -->
+                  <div class=3D"emailnomob">
+                    <table class=3D"emailnomob" align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                      <tr>
+                        <td class=3D"floatLeft">
+                          <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh=
+7a2daea2%2Cd77df9f%2Cc4fab61&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3DlnDHpqvdQqEgNpu7py1_OWBxQsWAAcyOEgqG--OlPGo" style=3D"display: block;" t=
+arget=3D"_blank"><img style=3D"display:block" class=3D"emailwrapto100pc" sr=
+c=3D"https://mi=2Escrewfix=2Ecom/p/rp/1d626c89099ee115=2Epng?mi_u=3DCOM_911=
+6433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" alt=3D"Exclusive deal=
+s for our Trade Plus Customers" border=3D"0" width=3D"640" />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!-- END BANNER 1 DESKTOP -->
+
+                  <!--[if !mso]><!-->
+                  <!-- BANNER 1 MOBILE -->
+                  <div class=3D"emailmobonly" style=3D"max-height: 0px;min-=
+height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;">
+                    <table class=3D"emailmobonly" style=3D"max-height: 0px;=
+min-height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;=
+" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                      <tr>
+                        <td class=3D"floatLeft">
+                          <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh=
+7a2daea2%2Cd77df9f%2Cc4fab62&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3DgidDcKn4nqQ2sVlXH1Iu1q1RejL93W0VmUhbd3_00U4" style=3D"display: block;" t=
+arget=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/f6bbeb54cde7e=
+db0=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX=
+5" alt=3D"Exclusive deals for our Trade Plus Customers" border=3D"0" width=
+=3D"320" />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!-- END BANNER 1 MOBILE -->
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END EXCLUSIVE DEALS BANNER 1 -->
+
+      <!-- VOUCHERS START -->
+     =20
+      <!-- END VOUCHERS -->
+
+      <!-- EMAIL CONTENT STARTS HERE -->
+      <!-- HEADER -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td>
+                  <!-- HEADER DESKTOP -->
+                  <div class=3D"emailnomob">
+                  <table class=3D"emailnomob" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                    <tr>
+                      <td class=3D"floatLeft">
+                        <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a=
+2daea2%2Cd77df9f%2Cc4fab63&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3DtCxtAwE_El6XrWkm7Sg-Mmb13_OVWNvARvQTP3Pnp_M" style=3D"display: block;" t=
+arget=3D"_blank"><img style=3D"display:block" class=3D"emailwrapto100pc" sr=
+c=3D"https://mi=2Escrewfix=2Ecom/p/rp/1db318efb2f80473=2Epng?mi_u=3DCOM_911=
+6433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" alt=3D"More gift idea=
+s" border=3D"0" width=3D"640" />
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                  </div>
+                  <!-- END HEADER DESKTOP -->
+
+                  <!--[if !mso]><!-->
+                  <!-- HEADER MOBILE -->
+                  <div class=3D"emailmobonly" style=3D"max-height: 0px;min-=
+height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;">
+                  <table class=3D"emailmobonly" style=3D"max-height: 0px;mi=
+n-height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;" =
+align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                    <tr>
+                      <td class=3D"floatLeft">
+                        <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a=
+2daea2%2Cd77df9f%2Cc4fab64&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3Dv-uS-fUtThXUvgCS3n9CgvMO7JBToRHxGH3g9IIboSo" style=3D"display: block;" t=
+arget=3D"_blank"><img style=3D"display:block" src=3D"https://mi=2Escrewfix=
+=2Ecom/p/rp/45884f0fdfed7aab=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFI=
+X&utm_campaign=3DE21W47BX5" alt=3D"More gift ideas" border=3D"0" width=3D"3=
+20" />
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                  </div>
+                  <!-- END HEADER MOBILE -->
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END HEADER -->     =20
+
+      <!-- HERO + 2x LISTER (LEFT) -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:0px 0px 0px 0px;">           =20
+                  <table class=3D"emailwrapto100pc" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                    <tr>
+                      <td>
+                        <table class=3D"emailwrapto100pc" align=3D"left" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab65&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DGYDz3Fsxxa7-q11HeR8DPUOfwHnalY3qGFAQjU1dei8" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/0715ca29f=
+1cd1e5a=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Makita 110 Watt 230 volt or 12 or 18 volt D A B F M Site radio" width=3D"31=
+5" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+
+                        <table class=3D"emailwrapto100pc"  align=3D"right" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab66&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3D7l24M6Wum8iD1pGhOTuo08k26ZoBv_Su5Vg73Qr24uI" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/b90e9636d=
+113236b=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Site 340 Thermal Winter Work Gloves Black" width=3D"315" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab67&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3D8uwyItT7IfUiNQmv9_5_vE__scQbf1LM6MrRN2GchTI" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/6d8d08008=
+36c811f=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Christmas Gift Idea" width=3D"315" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END HERO + 2x LISTER (LEFT) -->
+
+      <!-- 2 X LISTER -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:0px 0px 0px 0px;">
+                  <table class=3D"emailwrapto100pc" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                    <tr>
+                      <td>
+                        <table class=3D"emailwrapto100pc" align=3D"left" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab68&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3Dj2iDjiem4WWtUNPEzDH1-eVH4MH0GDoPeOLxtSUkerA" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/87c8922aa=
+e13e4dc=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Makita 18 volt lithium ion cordless coffee machine bare" width=3D"315" bord=
+er=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                        <table class=3D"emailwrapto100pc" align=3D"right" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab69&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DjS0hDQXubKdAzSn-ll5zNS4e9J2lQe5ye9ZJ7LWpEh4" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/6524c8ad6=
+65020aa=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Makita 18 volt lithium ion l x t cordless impact driver bare" width=3D"315"=
+ border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END 2 X LISTER -->
+
+      <!-- 2 X LISTER -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:0px 0px 0px 0px;">
+                  <table class=3D"emailwrapto100pc" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                    <tr>
+                      <td>
+                        <table class=3D"emailwrapto100pc" align=3D"left" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab6a&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DIpk2di7gFLyQcOTOCf3HDCL62ZX14lOA_X8zljbNLcI" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/0e0716ec4=
+f5b7344=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Dewalt straight shank combination drill bit set 100 pieces" width=3D"315" b=
+order=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                        <table class=3D"emailwrapto100pc" align=3D"right" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab6b&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DRSUVl5UHzKJY3NFY8EsyY6YB-wKvT3xpsmuK2nUEBW8" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/6ef97e565=
+b826049=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Milwaukee Straight shank multi purpose drill bit set 7 pieces" width=3D"315=
+" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END 2 X LISTER -->
+
+      <!-- 2 X PERSONALISED LISTERS -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:0px 0px 0px 0px;">
+                  <table class=3D"emailwrapto100pc" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                    <tr>
+                      <td>
+                        <table class=3D"emailwrapto100pc" align=3D"left" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab6c&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DiECbfQOdTBkg88wc81qAaQHLSA9m2MmpeLtIWMBg1U0" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/801f8c390=
+327a0c2=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Display images to show real-time content" width=3D"315" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                        <table class=3D"emailwrapto100pc" align=3D"right" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"315">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab6d&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DfQt-SV1owThR8YFLbS6D5AFQ8Vfch7QXDXVfFYTOGR8" style=3D"display: block=
+;" target=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/4666e3884=
+c920388=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W=
+47BX5" style=3D"border:0; display:block;" class=3D"emailwrapto100pc" alt=3D"=
+Display images to show real-time content" width=3D"315" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END 2 X PERSONALISED LISTERS -->   =20
+
+      <!-- BANNER 2 -->
+      <table style=3D"padding:0px;margin:0px;" align=3D"center" bgcolor=3D"=
+#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#f6f6f6" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:0px 0px 0px 0px;">
+                  <!-- BANNER 2 DESKTOP -->
+                  <div class=3D"emailnomob">
+                    <table class=3D"emailnomob" align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"640">
+                      <tr>
+                        <td class=3D"floatLeft">
+                          <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh=
+7a2daea2%2Cd77df9f%2Cc4fab6e&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3DwuRTcZ2siM029JriVkj5U7cGtWZqcAARpv06GrZtOB8" style=3D"display: block;" t=
+arget=3D"_blank"><img style=3D"display:block" class=3D"emailwrapto100pc" sr=
+c=3D"https://mi=2Escrewfix=2Ecom/p/rp/d4d1a92c84af8891=2Epng?mi_u=3DCOM_911=
+6433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" alt=3D"Display images=
+ to show real-time content" border=3D"0" width=3D"640" />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!-- END BANNER 2 DESKTOP -->
+
+                  <!--[if !mso]><!-->
+                  <!-- BANNER 2 MOBILE -->
+                  <div class=3D"emailmobonly" style=3D"max-height: 0px;min-=
+height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;">
+                    <table class=3D"emailmobonly" style=3D"max-height: 0px;=
+min-height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;=
+" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                      <tr>
+                        <td class=3D"floatLeft">
+                          <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh=
+7a2daea2%2Cd77df9f%2Cc4fab6f&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47BX5&s=
+=3DAkxI6BHvSQlFNljdY1iP4XUMsjptAFN0IXN9Gg_qwZw" style=3D"display: block;" t=
+arget=3D"_blank"><img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/e421983968125=
+531=2Epng?mi_u=3DCOM_9116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX=
+5" alt=3D"Display images to show real-time content" border=3D"0" width=3D"3=
+20" />
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <!-- END BANNER 2 MOBILE -->
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END BANNER 2 -->                   =20
+      <!-- EMAIL CONTENT ENDS HERE -->
+
+      <!-- ROW SPACER -->
+      <table class=3D"emailwrapto100pc" align=3D"center" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"620">
+        <tr>
+          <td>
+            <img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/e5dff9ca543f0634=
+=2Epng" style=3D"display:block" alt=3D"Display images to show real-time con=
+tent" height=3D"40" border=3D"0" />
+          </td>
+        </tr>
+      </table>
+      <!-- END ROW SPACER -->
+    </td>
+  </tr>
+</table>
+
+ =20
+<!-- FOOTER -->
+<div class=3D"fullbluebg" style=3D"width: 100%">
+<table class=3D"fullbluebg" style=3D"padding:0px;margin:0px;" align=3D"cent=
+er" bgcolor=3D"#0053A0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%">
+  <tr>
+    <td>
+
+      <!-- ROW SPACER -->
+      <table class=3D"fullbluebg" style=3D"padding:0px;margin:0px; backgrou=
+nd-color:#0053A0;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <table class=3D"emailwrapto100pc" align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"620">
+              <tr>
+                <td>
+                  <img style=3D"display:block" src=3D"https://mi=2Escrewfix=
+=2Ecom/p/rp/e5dff9ca543f0634=2Epng" alt=3D"Display images to show real-time=
+ content" height=3D"20" border=3D"0" />
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- END ROW SPACER -->
+
+      <!-- ICONS NEW 3 ACROSS MULTI EXECUTION -->
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"640" style=3D"padding:0px; margin:0px=
+;">
+              <tr>
+                <td align=3D"center">
+                  <table class=3D"mobWidth" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"320" style=3D"padding:0px; marg=
+in:0px;">
+                    <tr>
+                      <td align=3D"center">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"320">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab70&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DrMm9c9AjebnLOGMIP0ve_O6iSdEn4LyvCDsX2wJJsmE" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/a9822fd719de0236=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Delivery" width=3D"107" border=3D"0" />
+                              </a>                             =20
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab71&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3D_wdxvfJ5yuzWzRqOaHzEmo0B3SHFYI2AsMvI0kcwzYA" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/808a28709f234962=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Click and Collect" width=3D"106" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab72&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3D03wlEzBfYzwcLLjsxgvnxvC6jWfyyXFxxsevhT6eQ2Y" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/01b47afa8e112872=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Returns" width=3D"107" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END ICONS NEW 3 ACROSS MULTI EXECUTION  -->
+
+      <!-- CONNECT WITH US -->
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"640" style=3D"padding:0px; margin:0px=
+;">
+              <tr>
+                <td align=3D"center">
+                  <table class=3D"mobWidth" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"320" style=3D"padding:0px; marg=
+in:0px;">
+                    <tr>
+                      <td align=3D"center">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"320">
+                          <tr>
+                            <td>
+                              <img src=3D"https://mi=2Escrewfix=2Ecom/p/rp/=
+f7524e2acf3a4699=2Epng" style=3D"display:block; border:0;" alt=3D"Connect W=
+ith Us" width=3D"320" border=3D"0" />
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END CONNECT WITH US -->
+
+      <!-- SOCIAL MEDIA -->
+      <table class=3D"fullbluebg" style=3D"padding:0px; margin:0px; backgro=
+und-color:#0053A0;" align=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"640" style=3D"padding:0px; margin:0px=
+;">
+              <tr>
+                <td align=3D"center">
+                  <table class=3D"mobWidth" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"320" style=3D"padding:0px; marg=
+in:0px;">
+                    <tr>
+                      <td align=3D"center">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"320">
+                          <tr>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab73&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3Db8bj_F4IERczMGlocJUhzMxFTa6K_rbWIhlbly6FbfU" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/8018e27f2bd54539=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Twitter" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab74&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DYiXrVBi6WYbtV9bYmMcXtfafM3ERrmUAwuuYb62rATk" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/e20748881de7801b=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Facebook" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab75&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DDnlcnn0oHLKM_nQ0XBEVHl4xnu2f_ycatDcQmIfuA6I" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/4d00052ce52b4f8e=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"YouTube" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab76&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DxKCKTVhZu_o8iV_0_5IQnr2kSI7elJnh9BHCX4Rh1rA" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/5902be14046d1d96=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Screwfix Forum" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                            <td>
+                              <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=
+=3Dh7a2daea2%2Cd77df9f%2Cc4fab77&p1=3D9116433520&p2=3DSCREWFIX&p3=3DE21W47B=
+X5&s=3DyJUf2y-rZxBoo_kCuDCWrB1yJ5jbrGu4dKJLlGg_zSA" target=3D"_blank"><img =
+src=3D"https://mi=2Escrewfix=2Ecom/p/rp/091798bd5aca72fb=2Epng?mi_u=3DCOM_9=
+116433520&mi_brand=3DSCREWFIX&utm_campaign=3DE21W47BX5" style=3D"display:bl=
+ock; border:0;" alt=3D"Instagram" width=3D"64" border=3D"0" />
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END SOCIAL MEDIA -->
+
+      <!-- FOOTER TEXT -->
+      <table class=3D"fullbluebg" style=3D"padding:0px;margin:0px;" align=
+=3D"center" bgcolor=3D"#0053A0" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%">
+        <tr>
+          <td>
+            <div align=3D"center">
+            <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"cente=
+r" bgcolor=3D"#0053A0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"640">
+              <tr>
+                <td style=3D"padding:10px 10px 10px 10px;">
+                  <table class=3D"mobWidth" style=3D"font-size:0;" align=3D"=
+center" bgcolor=3D"#0053A0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"620">
+                    <tr>
+                      <td style=3D"padding:10px 10px 10px 10px;">
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600">
+                          <tr>
+                            <td align=3D"left" style=3D"color: #ffffff; fon=
+t-size: 12px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;"=
+>
+                              <p style=3D"padding:0px;margin:0px;margin-top=
+:10px;">Terms &amp; Conditions</p>
+                            </td>
+                          </tr>
+                        </table>
+ =20
+                        <!-- GENERIC TEXT -->
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600">
+                          <tr>
+                            <td align=3D"left" style=3D"color: #ffffff; fon=
+t-size: 11px; font-family: Arial, Helvetica, sans-serif;">
+                             =20
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">Prices valid until at least 4pm on 03/01/2022=2E All products ar=
+e subject to availability=2E =93Was=94 prices have been charged for at leas=
+t the period between 05/10/2021 to 29/11/21, and were available to purchase=
+ at the higher price through all our stores, <a href=3D"http://www=2Escrewf=
+ix=2Einfo/r/?id=3Dh7a2daea2%2Cd77df9f%2Cc4fab78&s=3DLAVeIIUN5q6DkAuT8_9mQBR=
+YRqs5pK_xGlCRvuOjyvc" style=3D"color:#ffffff !important; text-decoration:un=
+derline;" target=3D"_blank">www=2Escrewfix=2Ecom</a> and via our Contact Ce=
+ntre, or by telephone unless otherwise stated=2E Whilst stocks last=2E</p>
+
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">Prices include VAT (unless otherwise stated)=2E</p>
+                             =20
+                             =20
+
+                              <!-- VOUCHER TERMS & CONDITIONS -->
+                             =20
+                              <!-- END VOUCHER TERMS & CONDITIONS -->
+
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;"><b>Price Checked:</b><br>&#34;Price Checked&#34; applies to sele=
+cted products, search Price Check at Screwfix=2Ecom for details=2E Products=
+ marked as Price Checked are checked daily against various retailers=2E Pri=
+ces are subject to change, at the discretion of Screwfix=2E</p>
+                           =20
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">Screwfix reserves the right to change prices=2E Check website fo=
+r latest availability and prices=2E Star ratings correct at time of send=2E =
+See our <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a2daea2%2Cd77df9f=
+%2Cc4fab7d&s=3DjmOd_0A_Ys64dfnhCQBhgmTnBYrPp5vfvG7vouTvEFM" style=3D"color:=
+#ffffff !important; text-decoration:underline;" target=3D"_blank">Rate and =
+Review</a> page for further details=2E</p>
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">Delivery charges and restrictions may apply - see our <a href=3D"=
+http://www=2Escrewfix=2Einfo/r/?id=3Dh7a2daea2%2Cd77df9f%2Cc4fab7e&s=3DgqMo=
+49kV0RdFQ3tVFMT0Re_PKapPnsohpqK2XH0pX8w" style=3D"color:#ffffff !important;=
+ text-decoration:underline;" target=3D"_blank">Delivery</a> page for furthe=
+r details=2E Our standard <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh=
+7a2daea2%2Cd77df9f%2Cc4fab7f&s=3Dpuge403VPHfsYUjSXxO_JsY4i-SGzrFZPuAdId7P3n=
+4" style=3D"color:#ffffff !important; text-decoration:underline;" target=3D"=
+_blank">Terms and Conditions</a> apply to every purchase=2E</p>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- END GENERIC TEXT -->
+
+                        <!-- UNSUBSCRIBE -->
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600">
+                          <tr>
+                            <td align=3D"left" style=3D"color: #ffffff; fon=
+t-size: 12px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;"=
+>
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">Unsubscribe</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align=3D"left" style=3D"color:#ffffff; font=
+-size:11px; font-family: Arial, Helvetica, sans-serif;">
+                              <p style=3D"padding:0px; margin:0px; margin-b=
+ottom:10px;">You have registered to receive these offers with the following=
+ email address: <a style=3D"color:#ffffff !important; text-decoration:none;=
+" href=3D"">john=2Edoe=2Eyouniq@gmail=2Ecom</a>=2E</p>
+                              <p style=3D"padding:0px; margin:0px; margin-b=
+ottom:10px;">If you are receiving more than one copy of this email from Scr=
+ewfix Direct, or wish to take a break from our emails or even unsubscribe a=
+ltogether, please <a href=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a2daea2=
+%2Cd77df9f%2Cc4fab80&p1=3D%40nCbKnWCbb6BI%2FJpQFMQ91g%3D%3D&s=3D8RhtG5BUTCD=
+BmfO2BO1ETYzmAtpUYM6UlkDZepZpFX0" style=3D"color:#ffffff !important; text-d=
+ecoration:underline;">click here</a>=2E However, by unsubscribing you will =
+miss out on all the latest products, offers and promotions=2E</p>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- END UNSUBSCRIBE -->
+
+                        <!-- CONTACT US TEXT -->
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600">
+                          <tr>
+                            <td align=3D"left" style=3D"color: #ffffff; fon=
+t-size: 12px; font-family: Arial, Helvetica, sans-serif; font-weight:bold;"=
+>
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">Contact Us</p>
+                            </td>
+                          </tr>
+                        </table>
+                        <table class=3D"emailwrapto100pc" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600">
+                          <tr>
+                            <td align=3D"left" style=3D"color: #ffffff; fon=
+t-size: 11px; font-family: Arial, Helvetica, sans-serif;">
+                              <p style=3D"padding:0px;margin:0px;margin-bot=
+tom:10px;">If you have an enquiry regarding this email or any other custome=
+r service related enquiry please <a style=3D"color:#ffffff !important;" hre=
+f=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a2daea2%2Cd77df9f%2Cc4fab81&s=
+=3DV6cn6BUlWv7jfFNBuRZSUxNPEJU1A1Ja3dpuA3GVhPM">click here</a>=2E</p>
+                              <p style=3D"padding:0px; margin:0px; margin-b=
+ottom:10px; color:#ffffff !important; text-decoration:none; border:none;">A=
+lternatively you can email us at <a style=3D"color:#ffffff !important;" hre=
+f=3D"http://www=2Escrewfix=2Einfo/r/?id=3Dh7a2daea2%2Cd77df9f%2Cc4fab82&p1=
+=3D9116433520&s=3DDx8l3phCDcf7d5MLZYPKpEqrvDb1tisRNGtFunDJCT4">online@screw=
+fix=2Ecom=2E</a></p>
+                              <p style=3D"padding:0px; margin:0px; margin-b=
+ottom:10px; color:#ffffff !important; text-decoration:none;">Screwfix Direc=
+t Limited, Trade House, Mead Avenue, Yeovil, BA22 8RT (Registered in Englan=
+d, No: <font color=3D"#ffffff">3006378</font>)=2E</p>
+                            </td>
+                          </tr>
+                        </table>
+                        <!-- END CONTACT US TEXT -->
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- END UNSUBSCRIBE TEXT -->
+      <!--END FOOTER-->
+
+    </td>
+  </tr>
+</table>
+</div>
+<!--END FOOTER-->
+
+<table width=3D"1" height=3D"1" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0">
+  <tr><td style=3D"font-size:0px; line-height:0px;">
+    <img src=3D"https://mi=2Escrewfix=2Ecom/p/cp/e8adf4ba47b34a3b/o=2Egif?m=
+i_u=3DCOM_9116433520" width=3D"1" height=3D"1" alt=3D"" aria-hidden=3D"true=
+" />
+  </td></tr>
+</table>
+
+
+<img height=3D'0' width=3D'0' alt=3D'' src=3D'http://www=2Escrewfix=2Einfo/=
+r/?id=3Dh7a2daea2,d77df9f,1'/></body>
+</html>
+
+------=_NextPart_961_717E8C01.717E8C01--
+

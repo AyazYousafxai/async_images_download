@@ -1,0 +1,1558 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:a5d:5086:0:0:0:0:0 with SMTP id a6csp946620wrt;        Sun, 26 Dec
+ 2021 07:04:13 -0800 (PST)
+Received: from mx64.207.e.magnews.net (mx64.207.e.magnews.net. [46.29.207.64])       
+ by mx.google.com with ESMTPS id gm1si6718030ejc.29.2021.12.26.07.04.13      
+  for <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_128_GCM_SHA256 bits=128/128);        Sun, 26 Dec 2021
+ 07:04:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxPs+Yk99/cEaF9iYL7LLiBH5Zu8WVDj+Oe6d1Hhixdpm2+iUQtQ+cF1aAjPXr6RgH8U1hd
+X-Received: by 2002:a17:906:3a55:: with SMTP id a21mr10923954ejf.274.1640531053379;      
+  Sun, 26 Dec 2021 07:04:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640531053; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=USl2eumLI0gIunXsDSDACqb8lkoLSYenwOJXMqOcY/nvXtcgGmBo53pKItgLdbOA78        
+ OialeT6NJY9au2YBAsyx39scJa55ow+aYGr+Hvyo8F454O4lIMM6usH5klRUVA+Nqkqn        
+ bEyOolvADtWrzu9uNOa0mhvcOUpSyHgiwUiOZ05hbVhVKIPNBSwKEpV8ZJMMZvxzNj8w        
+ V0wvJFxsTdT321lANwfrLm6WlAR2MVZpYWSsRH35slEThQm7M4dxC3qdY31p1i68BSur        
+ js+/QxqbxvJCWnihzlMAAIQibsVL1UzmM58Cr/bWb822nZaQKUkuZlSa3xfipHVQDLUn        
+ rMJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:list-unsubscribe:subject:message-id:to:reply-to:from        
+ :date:dkim-signature:mime-version:dkim-signature;       
+ bh=MwQorn0wnYkaVxeBHn54VSYzYcs7w5paDGO6fUnvwzI=;       
+ b=xDwHytkAkNQSHesoJsVTw3cDnHbBFueFyaBIzAu6Va6i1MKZBQOmfXF8NhqD7GGyWI        
+ hobOoy+6r/oeG/oIZySaKHxqCq6/wTFxzuvJQEXgnEDD3ohWLk19F2kEnBFJxywce8Ep        
+ GIulbO6LsNTnrUWvIqVymN7v0B9u5rGOrnqfWnB9igIW28NKVkULUq1CBOV7nxPJ/uBn        
+ jC7GSzTKqXpN583TzrJ7/uMCZ0VhfiLsIMD6hIBddgGs8IsMDo6L+Jw3O+cVqjeN+MtV        
+ 34CMsb7hsnlPY2NdmJwUVapC+Pua78SGjKwzEFh6Xzigven4NfCAaAkRvp+8I/MZDFMe        
+ bvew==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@eataly.com
+ header.s=mn3579201512161517 header.b=ZUxrTbz7;       dkim=pass
+ header.i=@magnews.net header.s=20200228mpl header.b=d5E+Cjsf;       spf=pass
+ (google.com: domain of
+ bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+ designates 46.29.207.64 as permitted sender)
+ smtp.mailfrom=bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+Return-Path: <bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net>
+Received-SPF: pass (google.com: domain of
+ bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+ designates 46.29.207.64 as permitted sender) client-ip=46.29.207.64;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@eataly.com
+ header.s=mn3579201512161517 header.b=ZUxrTbz7;       dkim=pass
+ header.i=@magnews.net header.s=20200228mpl header.b=d5E+Cjsf;       spf=pass
+ (google.com: domain of
+ bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+ designates 46.29.207.64 as permitted sender)
+ smtp.mailfrom=bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+DKIM-Signature: q=dns/txt; a=rsa-sha256;
+ b=ZUxrTbz7edtolhXFCd/UEbW2xfNY69IgCZ/y+yxnCv91DQbj6enofUNTnm2g/JyM0gkjBoXdh58sX6Ri9OZvF45OU8EnRayovrVM/UZLOSSkcEaGj/cI5JkNwtBFqd9sx2c9yY7KKkgQ3lihW5YiVq0T8nAp3uVW13b1ppy1mCGdUPaDieof5fKJ+q0+zwH0KFjdKWELG45EhW7QdIgKBhI/quLUMOyLhy9SqwnCZVJ96Q1KLGczDvJXeLnFFwiOTnxW0HUhq5gZam9gmHIKwSF3o1EAo6Y6fcZeiIaFRRS6/I2MP2FbbiVTVBWkk6AOWFWWZ+VkxWFTJoldO8Gd5A==; c=relaxed/relaxed; s=mn3579201512161517;
+ d=eataly.com; t=1640530906; v=1;
+ bh=MwQorn0wnYkaVxeBHn54VSYzYcs7w5paDGO6fUnvwzI=;
+ h=from:from:to:to:subject:subject:date:reply-to:message-id:mime-version:content-type:list-unsubscribe; i=@eataly.com;
+DKIM-Signature: q=dns/txt; a=rsa-sha256;
+ b=d5E+CjsftSM0foashO0hLo0pNyMhwU0t8g/cdEJ+YS2ixncbLJ9TpyarKM9apc+UJLQ9qal+7iFWAt3exYtPYhwPsYCappTqdmaikWA9V5G4vvmhjzKygjRCyFrZ+BVkCV+DynJCcN/Q+p70dirt7TzW4MihGUrNi0RDJbsyE6FuepHtjTcI0dU66MGo2Ui2Cb1nCkwnLMwb5MpTm875aI1p7l6bM4/gn3wWOAqx5ZtgEHEBOcKDvikKPD4XUkBIpwdLGpdnNV+YJ/Ws01ySfN4reEIO1D/Z+HHEu/We2BKxXR+T5taq8AkNCatmN817DZ0CkyA+Qau95R+5xZAy4g==; c=relaxed/relaxed; s=20200228mpl;
+ d=magnews.net; t=1640530906; v=1;
+ bh=MwQorn0wnYkaVxeBHn54VSYzYcs7w5paDGO6fUnvwzI=;
+ h=from:from:to:to:subject:subject:date:reply-to:message-id:mime-version:content-type:list-unsubscribe; i=@magnews.net;
+MIME-Version: 1.0
+Date: Sun, 26 Dec 2021 16:01:46 +0100 (CET)
+From: "Eataly" <ciao@eataly.com>
+Reply-To: ciao@eataly.com
+To: john.doe.youniq@gmail.com
+Message-ID: <mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net>
+Subject: =?UTF-8?Q?The_ingredients_you_need_for_New_Year=E2=80=99s!?=
+X-Return-Path: bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+X-Sender: bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net
+X-MNSubjectCharset: UTF-8
+X-MNBodyCharset: UTF-8
+List-Unsubscribe: <mailto:bounce-back.mnid2lu.813.1423813.3502.0.102.c68245420._@mn1.e.magnews.net>
+Feedback-ID: 813.mn1:B:mn1.e.magnews.net
+X-Complaints-To: abuse@magnews.net
+X-GatewayId: bounce-back.mnid2m.813.1423813.3502.0.102.c68245420._=3.ukey66ktd6a2zjekapzj3df234x6peme5qca@mn1.e.magnews.net
+Content-Type: multipart/alternative; boundary="----=_Part_4312998_648393848.1640530906848"
+
+------=_Part_4312998_648393848.1640530906848
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+[Ring in the new year with these ingredients](https://us-eataly=2Emagnewsem=
+ail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D1otjji62sn7elurcdp8c5thmkd&i=3Dpd&i=
+w=3D1&p=3DT587337695&s=3Dlp&sn=3D28f&z=3D1a2r)
+[Having trouble viewing this email? Click here!](https://us-eataly=2Emagnew=
+semail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D3d4rp2c87qtfblg08c2t9chtih&i=3Dp=
+d&iw=3D1&n=3D28f&p=3DT1790811214&s=3Dwv&sn=3D28f)   =20
+[Eataly=2Ecom](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=
+=3D3de&h=3D764htn3n3630knualhuvqemer&i=3Dpd&iw=3D1&p=3DT197671585&s=3Dlp&sn=
+=3D28f&z=3D1a1r)
+[HOLIDAY MARKET](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=
+=3D3de&h=3D1ftahna3bhar3oi4ptr6tupilo&i=3Dpd&iw=3D1&p=3DT653219740&s=3Dlp&s=
+n=3D28f&z=3D1a1s) | [SALUMI & FORMAGGI](https://us-eataly=2Emagnewsemail=2Ec=
+om/nl/link?c=3D1bee5&d=3D3de&h=3D1ofo8jb25sfc7teiv6ja5n12vu&i=3Dpd&iw=3D1&p=
+=3DT653219741&s=3Dlp&sn=3D28f&z=3D1a1t) | [PANETTONE & PANDORO](https://us-=
+eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D2de7o0jmfu07gviql=
+bea2p7ciu&i=3Dpd&iw=3D1&p=3DT653219742&s=3Dlp&sn=3D28f&z=3D1a1u)
+[Shop Holiday Fresh](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D1a82niqd5l1veelndd4r96sn4u&i=3Dpd&iw=3D1&p=3DT2101027915&s=
+=3Dlp&sn=3D28f&z=3D1a2r)
+Get ready to ring in 2022 with a spread of festive ingredients, from Salumi=
+ & Formaggi to the last batch of fresh white truffles, and more! Order now =
+to get your picks in time for Capodanno (New Year=E2=80=99s)!
+[Shop Holiday Fresh](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D2lpv9i948kpqq45p0uomcakkin&i=3Dpd&iw=3D1&p=3DT658693050&s=3Dl=
+p&sn=3D28f&z=3D1a2r)
+[Shop Salumi & Formaggi](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=
+=3D1bee5&d=3D3de&h=3D1jjvgnidrpc5f9hmbp8kk5iq4e&i=3Dpd&iw=3D1&p=3DT15485257=
+86&s=3Dlp&sn=3D28f&z=3D1a2r)
+Treat your holiday guests to an "antipasto", or appetizer, they won't forge=
+t with premium Italian Salumi & Formaggi
+[Shop Salumi & Formaggi](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=
+=3D1bee5&d=3D3de&h=3D3ttoh4t9te860csph9miau6thc&i=3Dpd&iw=3D1&p=3DT15963148=
+59&s=3Dlp&sn=3D28f&z=3D1a2r)
+[Shop White Truffle](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D3n8h8upnd53h4642pjtcnd235&i=3Dpd&iw=3D1&p=3DT801976161&s=3Dl=
+p&sn=3D28f&z=3D1a2r)
+Indulge in this prized tuber for an unforgettable dining experience
+[Shop White Truffle](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D1ppffnopojqabdklmc1sks0cv8&i=3Dpd&iw=3D1&p=3DT164103183&s=3Dl=
+p&sn=3D28f&z=3D1a2r)
+[Shop Wagyu](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3=
+de&h=3D33gqs340vtavjmqlt0v67anla7&i=3Dpd&iw=3D1&p=3DT1611710044&s=3Dlp&sn=
+=3D28f&z=3D1a2r)
+Elevate your holiday meal with A5 Japanese Wagyu, boasting intense, marblin=
+g and rich umami flavor=20
+[Shop Wagyu](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3=
+de&h=3D2a2vvbj7buaeoe4i6klb4fc5fi&i=3Dpd&iw=3D1&p=3DT503950220&s=3Dlp&sn=3D2=
+8f&z=3D1a2r)
+[ONLINE SUPPORT](https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=
+=3D3de&h=3D1ucgf41b1cptfuhk8dgpvnhmi7&i=3Dpd&iw=3D1&p=3DT961440436&s=3Dlp&s=
+n=3D28f&z=3D1a22)   #ThatsFoodLove    =20
+NYC FLATIRON NYC DOWNTOWN CHICAGO BOSTON   =20
+https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D3v6j0q=
+b7ir5bqdc6o7ke7reqtu&i=3Dpd&iw=3D1&p=3DT1779088886&s=3Dlp&sn=3D28f&z=3D1a23=
+  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D3162=
+gctu8893t76q3mg4ts5c5v&i=3Dpd&iw=3D1&p=3DT1779088885&s=3Dlp&sn=3D28f&z=3D1a=
+24  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D1o=
+3qjcornofkfvkhgfjf7v50lv&i=3Dpd&iw=3D1&p=3DT1779088884&s=3Dlp&sn=3D28f&z=3D1=
+a25  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D3=
+aefc9on8o2rh403cih3c1v5vg&i=3Dpd&iw=3D1&p=3DT1779088883&s=3Dlp&sn=3D28f&z=
+=3D1a26  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=
+=3D10385heb5m15j7ttj6b3ipkoqi&i=3Dpd&iw=3D1&p=3DT1779088882&s=3Dlp&sn=3D28f=
+&z=3D1a27  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de=
+&h=3D3s6hpaai2gaetjdbe7clfaks58&i=3Dpd&iw=3D1&p=3DT1779088881&s=3Dlp&sn=3D2=
+8f&z=3D1a28  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3=
+de&h=3D2me8k6tppmobhe9sti4d92bp10&i=3Dpd&iw=3D1&p=3DT1779088880&s=3Dlp&sn=
+=3D28f&z=3D1a29  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=
+=3D3de&h=3D9rorn9qfm0k3lluv60pcgvi13&i=3Dpd&iw=3D1&p=3DT1779088879&s=3Dlp&s=
+n=3D28f&z=3D1a26  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&=
+d=3D3de&h=3D8r1c8afjsms3mlk2rnad6anvc&i=3Dpd&iw=3D1&p=3DT1779088878&s=3Dlp&=
+sn=3D28f&z=3D1a2a  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5=
+&d=3D3de&h=3D1dtm04l2r98hqgt5hvgso86vej&i=3Dpd&iw=3D1&p=3DT682819430&s=3Dlp=
+&sn=3D28f&z=3D1a2b  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee=
+5&d=3D3de&h=3Ddnkcp0l8l7crtrn4k1jthth6u&i=3Dpd&iw=3D1&p=3DT682819431&s=3Dlp=
+&sn=3D28f&z=3D1a2c  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee=
+5&d=3D3de&h=3Dfic5nj572jddb7eikj1d76bkb&i=3Dpd&iw=3D1&p=3DT682819432&s=3Dlp=
+&sn=3D28f&z=3D1a26  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee=
+5&d=3D3de&h=3D3oel0bihhipar9frqbqiu8j2an&i=3Dpd&iw=3D1&p=3DT682819433&s=3Dl=
+p&sn=3D28f&z=3D1a2d  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D3a5kkefffavav39pk9uh2vt2sp&i=3Dpd&iw=3D1&p=3DT682819434&s=3Dl=
+p&sn=3D28f&z=3D1a2e  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D2ck6n5elircet3k77pm8857j2f&i=3Dpd&iw=3D1&p=3DT682819435&s=3Dl=
+p&sn=3D28f&z=3D1a2f  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1be=
+e5&d=3D3de&h=3D37dfuu8141mld991m4nii79f65&i=3Dpd&iw=3D1&p=3DT682819436&s=3Dl=
+p&sn=3D28f&z=3D1a26    =20
+LOS ANGELES LAS VEGAS TORONTO DALLAS   =20
+https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D29fo84=
+meqa6d19gl3k002331vo&i=3Dpd&iw=3D1&p=3DT682819437&s=3Dlp&sn=3D28f&z=3D1a2g =
+ https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D300jm=
+u037rq36iha9r6avdmpfr&i=3Dpd&iw=3D1&p=3DT682819438&s=3Dlp&sn=3D28f&z=3D1a2h=
+  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D3a9s=
+vtslakrl9fpkam4677u26&i=3Dpd&iw=3D1&p=3DT682819439&s=3Dlp&sn=3D28f&z=3D1a2i=
+  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D2got=
+b0tn0s5s7namfdcto5pdk9&i=3Dpd&iw=3D1&p=3DT682819461&s=3Dlp&sn=3D28f&z=3D1a2=
+6  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D3gv=
+84m1oftvohee1veji4turfp&i=3Dpd&iw=3D1&p=3DT682819462&s=3Dlp&sn=3D28f&z=3D1a=
+2j  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D39=
+cgshnd552k37uvhdc00dgeui&i=3Dpd&iw=3D1&p=3DT682819463&s=3Dlp&sn=3D28f&z=3D1=
+a2k  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D1=
+msb1q3ikrsrdojgtpta7qa6m6&i=3Dpd&iw=3D1&p=3DT682819464&s=3Dlp&sn=3D28f&z=3D1=
+a2l  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3Da=
+54nhmr6co6du13fupff0v6la&i=3Dpd&iw=3D1&p=3DT682819465&s=3Dlp&sn=3D28f&z=3D1=
+a26  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3Dg=
+5cktscfas4062c7m6evpr8iv&i=3Dpd&iw=3D1&p=3DT682819466&s=3Dlp&sn=3D28f&z=3D1=
+a2m  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D2=
+0p529jhhrl9m96rem5din85ak&i=3Dpd&iw=3D1&p=3DT682819467&s=3Dlp&sn=3D28f&z=3D1=
+a2n  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D1=
+r126mukeciq6e6caq38lobip8&i=3Dpd&iw=3D1&p=3DT682819468&s=3Dlp&sn=3D28f&z=3D1=
+a2o  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D1=
+gj8cca1ckkkh3jm9opjolqto2&i=3Dpd&iw=3D1&p=3DT682819469&s=3Dlp&sn=3D28f&z=3D1=
+a26  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D2=
+vjnsqoand6uf90p66tm5esakr&i=3Dpd&iw=3D1&p=3DT682819470&s=3Dlp&sn=3D28f&z=3D1=
+a2p  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D1=
+v763c7jbe372enruavaprgj64&i=3Dpd&iw=3D1&p=3DT682819492&s=3Dlp&sn=3D28f&z=3D1=
+a2q  https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&d=3D3de&h=3D2=
+i5p1hb6i0rj7vsbuo57ts4sm2&i=3Dpd&iw=3D1&p=3DT682819493&s=3Dlp&sn=3D28f&z=3D1=
+a26    =20
+You are receiving this email at john=2Edoe=2Eyouniq@gmail=2Ecom because you=
+ gave your consent to receive our communications=2E  =20
+You can unsubscribe at any time by clicking the link below=2E=20
+[Click here to unsubscribe=2E](https://us-eataly=2Emagnewsemail=2Ecom/nl/li=
+nk?c=3D1bee5&d=3D3de&h=3D1k1097p6rca79ch4u65q2bqkoc&i=3Dpd&iw=3D1&p=3DT2077=
+564902&s=3Dunsub&sn=3D28f)
+
+------=_Part_4312998_648393848.1640530906848
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN" "http://ww=
+w=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd"><html prefix=3D"og: h=
+ttp://ogp=2Eme/ns#" ><head>
+    	<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Typ=
+e"  />
+        <meta content=3D"width=3Ddevice-width, initial-scale=3D1=2E0" name=
+=3D"viewport"  />
+        <meta content=3D"noindex,nofollow" name=3D"robots"  />
+        <meta content=3D"telephone=3Dno" name=3D"format-detection"  />
+        <meta content=3D"The ingredients you need for New Year=E2=80=99s!" =
+property=3D"og:title"  />
+	<title>The ingredients you need for New Year=E2=80=99s!</title>
+<style type=3D"text/css" >/* Email clients fixes*/
+	#outlook a{padding:0px;}
+	=2EReadMsgBody{width:100%;}
+	=2EExternalClass{width:100%;}
+	=2Eyshortcuts,a =2Eyshortcuts,a =2Eyshortcuts:hover,a =2Eyshortcuts:active=
+,a =2Eyshortcuts:focus{background-color:transparent !important;border:none =
+!important;color:inherit !important;} =09
+	body{margin:0px;padding:0px;-ms-text-size-adjust:none;min-width:220px;}
+	=2Ebackgroundm813h3502Table,=2Ebackgroundm813h3502Td{width:100% !important=
+;height:100% !important;margin:0px;}
+	img {border:0;outline:none;text-decoration:none;line-height:100%;}
+	table,td,tr{border-collapse:collapse !important;}=20
+	td=2Espacer,=2Espacer td,=2Econtentm813h3502Table td=2Espacer{font-size:0%=
+;line-height:0%;}
+	=2Ereadmore {margin-top:15px;}
+
+	/* Template */
+	body,=2Ebackgroundm813h3502Table{background-color:#FAFAFA;}
+	=2Ebackgroundm813h3502Td{padding-left:12px;padding-right:12px;padding-top:=
+0px;padding-bottom:0px;}
+    p{margin:2px 0px;}
+	a{color:#917E77;text-decoration:none;font-family:Georgia,Times,'Times New =
+Roman',serif;}
+	a:hover {text-decoration: none !important;}
+=09
+	=2Ecolm813h3502Td{padding-left:18px;padding-right:18px;}
+	=2Ecolm813h3502TdLeft{padding-left:18px;padding-right:9px;}
+	=2Ecolm813h3502TdMid{padding-left:9px;padding-right:9px;}
+	=2Ecolm813h3502TdRight{padding-left:9px;padding-right:18px;}
+
+	=2Eheaderm813h3502Table{text-align:center;background-color:#FAFAFA;}
+	=2Eheaderm813h3502Td{padding-top:6px;padding-bottom:6px;color:#917E77;font=
+-family:Georgia,Times,'Times New Roman',serif;font-size:11px;line-height:14=
+px;text-align:center;}
+	=2Eheaderm813h3502Td a{color:#917E77;text-decoration:none;font-weight:norm=
+al;font-family:Georgia,Times,'Times New Roman',serif;font-size:11px;line-he=
+ight:14px;}
+	=2Epreheaderm813h3502Td{padding-bottom:0px;}
+
+	=2Efooterm813h3502Table{background-color:#FAFAFA;}
+	=2Efooterm813h3502Td{padding-top:12px;padding-bottom:12px;color:#917E77;fo=
+nt-family:Georgia,Times,'Times New Roman',serif;font-size:11px;line-height:=
+14px;text-align:center;}
+	=2Efooterm813h3502Td a{color:#917E77;text-decoration:none;font-weight:norm=
+al;font-family:Georgia,Times,'Times New Roman',serif;font-size:11px;line-he=
+ight:14px;}
+	=2Efooterm813h3502DisclaimerTd{padding-bottom:0px;}
+	=2Esocialm813h3502Td{text-align:right;padding-left:6px;padding-top:0px;pad=
+ding-bottom:0px;color:#917E77;font-family:Georgia,Times,'Times New Roman',s=
+erif;font-size:11px;line-height:16px;}
+
+	=2Emainheaderm813h3502Table{background-color:#ffffff;text-align:center;}
+	=2Emainheaderm813h3502Td{padding-top:9px;padding-bottom:9px;text-align:cen=
+ter;}
+	=2Emainheaderm813h3502Td,=2Emainheaderm813h3502Td td{color:#663330;font-fa=
+mily:Georgia,Times,'Times New Roman',serif;text-align:center;}
+	=2Emainheaderm813h3502Title{font-size:36px;font-weight:bold;line-height:36=
+px;color:#663330;word-break:break-all;}
+	=2Emainheaderm813h3502Subtitle{font-size:12px;font-weight:bold;color:#6633=
+30;line-height:18px;}
+
+	=2Epromom813h3502Table{background-color:#FFFFFF;}
+	=2Epromom813h3502Td{padding-top:9px;padding-bottom:15px;;}
+	=2Epromom813h3502Td,=2Epromom813h3502Td td{font-family:Georgia,Times,'Time=
+s New Roman',serif;text-align:center;}
+	=2Epromom813h3502Description{font-size:13px;color:#FCFCFC;line-height:18px=
+;}=09
+	=2Epromom813h3502Description a{color:#FCFCFC;text-decoration:none;font-wei=
+ght:normal;font-family:Georgia,Times,'Times New Roman',serif;font-size:13px=
+;}
+	=2Epromom813h3502Title{font-size:24px;font-weight:bold;line-height:28px;pa=
+dding-bottom:4px;color:#FFFFFF;}
+	=2Epromom813h3502Title a{color:#FFFFFF;text-decoration:none;}=09
+	=2Epromom813h3502buttonContainer{padding-top:24px;}
+	=2Epromobuttonm813h3502Table{background-color:#FCFCFC;border-radius:2px 2p=
+x 2px 2px;}
+	td=2Epromobuttonm813h3502Td{padding-top:8px;padding-bottom:9px;padding-lef=
+t:12px;padding-right:12px;text-align:center;line-height:16px;font-size:16px=
+;mso-line-height-rule:exactly;}
+	td=2Epromobuttonm813h3502Td a{color:#777777;line-height:16px;font-size:16p=
+x;font-weight:bold;text-decoration:none;font-family:Georgia,Times,'Times Ne=
+w Roman',serif;word-wrap:break-word !important;}
+	td=2Epromobuttonm813h3502Td a:hover{text-decoration:none !important;}
+
+	=2Econtentm813h3502Table{background-color:#ffffff;}
+	=2Econtentm813h3502Td,=2Econtentm813h3502Td td{font-family:Georgia,Times,'=
+Times New Roman',serif;font-size:13px;line-height:19px;color:#663330;text-a=
+lign:center;}
+	=2Econtentm813h3502Td a{color:#917E77;text-decoration:none;font-family:Geo=
+rgia,Times,'Times New Roman',serif;font-size:13px;}
+	=2Econtentm813h3502Td a:hover {text-decoration:none !important;}=09
+
+	=2Econtentm813h3502Table h1,=2Econtentm813h3502Table h1 a,=2Econtentm813h3=
+502Table h2,=2Econtentm813h3502Table h2 a,=2Econtentm813h3502Table h3,=2Eco=
+ntentm813h3502Table h3 a,=2Econtentm813h3502Table h4,=2Econtentm813h3502Tab=
+le h4 a{color:#663330;display:block;margin:0;text-align:center;}
+	=2Econtentm813h3502Table h1{font-size:26px;line-height:28px;font-style:nor=
+mal;font-weight:bold;}
+	=2Econtentm813h3502Table h2{font-size:20px;line-height:22px;font-style:nor=
+mal;font-weight:bold;}
+	=2Econtentm813h3502Table h3{font-size:16px;line-height:18px;font-style:ita=
+lic;font-weight:normal;}
+	=2Econtentm813h3502Table h4{font-size:14px;line-height:16px;font-style:ita=
+lic;font-weight:normal;}
+
+	=2Esectionm813h3502Table{background-color:#444444;}
+	=2Esectionm813h3502Td{padding-top:9px;padding-bottom:9px;color:#f2f2f2;tex=
+t-transform:uppercase;font-family:Georgia,Times,'Times New Roman',serif;fon=
+t-size:14px;line-height:14px;font-weight:bold;text-align:center;}
+
+	=2Earticlem813h3502Td{padding-top:9px;padding-bottom:9px;}
+	td=2Earticlem813h3502ImageTd{padding-bottom:8px;}
+	td=2Earticlem813h3502ImageTd img{display:block;}
+	td=2Earticlem813h3502ContentTd{text-align:center;}
+	=2Earticlem813h3502Title,=2Earticlem813h3502Title a{color:#663330;font-siz=
+e:16px;line-height:19px;font-weight:bold;text-decoration:none;padding-botto=
+m:3px;}
+	=2Earticlem813h3502Description{text-align:center;}
+
+	=2Ebuttonm813h3502Table{background-color:#663330; border: none;}
+	td=2Ebuttonm813h3502Td{padding-top:12px;padding-bottom:12px;padding-left:2=
+4px;padding-right:24px;text-align:center;line-height:24px;font-size:20px;ms=
+o-line-height-rule:exactly;}
+	td=2Ebuttonm813h3502Td a{color:#FCFCFC;line-height:24px;font-size:20px;fon=
+t-weight:normal;text-decoration:none;font-family:Georgia,Times,'Times New R=
+oman',serif;word-wrap:break-word !important;}
+	td=2Ebuttonm813h3502Td a:hover{text-decoration:none !important;}
+=09
+	=2Eprice {text-decoration:line-through;font-size:14px;margin:5px;padding-b=
+ottom:15px;}
+	=2Especialprice {text-decoration:none;font-size:16px;font-weight:bold;marg=
+in:5px;padding-bottom:15px;}
+	=2Efiletto-descrizione {text-align: center; border-top: 1px dotted #693935=
+; background-color: #fcfaf7;}
+	=2Estyle-testo {text-decoration:none; font-weight: lighter; font-size: 14p=
+x; color: #693935;}
+=09
+	@media only screen and (max-width: 640px){
+		=2EcenterMobile{float: none !important;text-align:center !important; marg=
+in: 0 auto !important; width:600px !important;}
+		td=2Ebuttonm813h3502Td{padding-top:20px !important; padding-bottom:20px !=
+important; padding-left:14px !important; padding-right:14px !important;}
+		td=2Ebuttonm813h3502Td a{font-size:18px!important;}
+		body,table,td,p,a,li,div{-webkit-text-size-adjust:none !important;}
+		body{width:auto !important;}
+		[class~=3Dfixm813h3502Table]{width:100% !important;max-width:600px !impor=
+tant;}
+		[class~=3Dfixm813h3502Image]{height:auto !important;width:100% !important=
+;}
+		[class~=3Dfixm813h3502Td50]{width:50% !important;}
+		[class~=3Dfixm813h3502Table48],[class~=3Dfooterm813h3502Table48]{width:70=
+% !important;}
+		[class~=3Dfixm813h3502Table33],[class~=3Dheaderm813h3502Table33]{width:70=
+% !important; text-align:center !important;}
+		[class~=3Dfixm813h3502Table64],[class~=3Dheaderm813h3502Table64]{width:64=
+% !important;}
+		[class~=3Dfixm813h3502Table66]{width:66% !important;}
+		[class~=3Dcolm813h3502Td]{padding-left:3% !important;padding-right:3% !im=
+portant;}
+		[class~=3Dcolm813h3502TdLeft]{padding-left:3% !important;padding-right:1=
+=2E5% !important;}
+		[class~=3Dcolm813h3502TdMid]{padding-left:1=2E5% !important;padding-right=
+:1=2E5% !important;}
+		[class~=3Dcolm813h3502TdRight]{padding-left:1=2E5% !important;padding-rig=
+ht:3% !important;}
+	}
+	@media only screen and (max-width: 420px){
+		=2EcenterMobile{float: none !important;text-align:center !important; marg=
+in: 0 auto !important; width:600px !important;}
+		=2Ebuttonm813h3502Table{border: 1px !important; border-color: #f49626 !im=
+portant; border-style: solid !important;}
+		td=2Ebuttonm813h3502Td{padding-top:12px !important; padding-bottom:12px !=
+important; padding-left:14px !important; padding-right:14px !important;}
+		td=2Ebuttonm813h3502Td a{font-size:16px !important;}
+		[class~=3Dbackgroundm813h3502Td]{padding:0 !important;}
+		[class~=3Dfixm813h3502Table48],[class~=3Dfixm813h3502Table33],[class~=3Df=
+ixm813h3502Table64],[class~=3Dfixm813h3502Table66]{width:100% !important; t=
+ext-align:center !important;}
+		[class~=3Dfixm813h3502Td50]{display:block !important;width:auto !importan=
+t;}
+		[class~=3Dmainheaderm813h3502Title],[class~=3Dmainheaderm813h3502Subtitle=
+]{text-align:center !important;}
+		[class~=3Dcolm813h3502TdLeft],[class~=3Dcolm813h3502TdMid],[class~=3Dcolm=
+813h3502TdRight]{display:block !important;padding-left:3% !important;paddin=
+g-right:3% !important;width:94% !important;}
+	}
+=09
+=09
+	@media only screen and (max-width: 640px){
+		=2EcenterMobile{float: none !important;text-align:center !important; marg=
+in: 0 auto !important; width:600px !important;}
+		td=2Ebuttonm813h3502Td{padding-top:20px !important; padding-bottom:20px !=
+important; padding-left:14px !important; padding-right:14px !important;}
+		td=2Ebuttonm813h3502Td a{font-size:18px !important;}
+		body,table,td,p,a,li,div{-webkit-text-size-adjust:none !important;}
+		body{width:auto !important;}
+		[class~=3DfixTable]{width:100% !important;max-width:600px !important;}
+		[class~=3DfixImage]{height:auto !important;width:100% !important;max-widt=
+h:auto !important;}
+		[class~=3DfixTable50]{width:48% !important;}
+		[class~=3DfixTable35]{width:32% !important;}=09
+		[class~=3DfixTable33]{width:30% !important; text-align:center !important;=
+}	=09
+		[class~=3DfixTable65]{width:65% !important;}
+		[class~=3DfooterBarTable]{float:none !important;margin:0 auto !important;=
+}	=09
+		[class~=3DarticleImage] img{width:100% !important;}
+		[class~=3DcolTd]{padding-left:3% !important;padding-right:3% !important;}=
+
+		[class~=3DcolTdLeft]{padding-left:3% !important;padding-right:1% !importa=
+nt;}
+		[class~=3DcolTdMid]{padding-left:2% !important;padding-right:2% !importan=
+t;}
+		[class~=3DcolTdRight]{padding-left:1% !important;padding-right:3% !import=
+ant;}	=09
+		[class~=3DbuttonTable]{margin:0px auto;float:none;}
+		[class~=3DbuttonTable2]{margin:20px auto 0;float:none;}
+	}
+	@media only screen and (max-width: 420px){
+		=2EcenterMobile{float: none !important;text-align:center !important; marg=
+in: 0 auto !important; width:600px !important;}
+		=2Ebuttonm813h3502Table{border: 1px !important; border-color: #f49626 !im=
+portant; border-style: solid !important;}
+		td=2Ebuttonm813h3502Td{padding-top:12px !important; padding-bottom:12px !=
+important; padding-left:14px !important; padding-right:14px !important;}
+		td=2Ebuttonm813h3502Td a{font-size:18px !important;}
+		[class~=3DbackgroundTd]{padding:0 !important;}
+		[class~=3DarticleReadmore] {text-align:center;}
+		[class~=3Dleft] {text-align:center !important;}
+		[class~=3DfixTable50]{width:100% !important;}
+		[class~=3DfixTable33]{width:100% !important; text-align:center !important=
+;}=09
+		[class~=3DfixTable35]{width:100% !important;}	=09
+		[class~=3DfixTable65]{width:100% !important;}=09
+		[class~=3DarticleImage] img{width:auto !important;float:left;}
+		[class~=3DarticleImage] [class~=3DfixImage]{width:100% !important;}
+		[class~=3DimageBorder1]{float:left;}
+		[class~=3DimageBorder2]{float:left;}
+		[class~=3DtableShare]{float:left;margin:10px auto;}
+		[class~=3DcolTdLeft],[class~=3DcolTdMid],[class~=3DcolTdRight]{display:bl=
+ock !important;padding-left:3% !important;padding-right:3% !important;}
+	} </style>
+
+</head>
+<body marginwidth=3D"0" offset=3D"0" leftmargin=3D"0" topmargin=3D"0" margi=
+nheight=3D"0" style=3D"background-color: #fafafa;padding: 0px;margin: 0px;-=
+ms-text-size-adjust: none;min-width: 220px;" >
+
+
+
+
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"102%" clas=
+s=3D"backgroundm813h3502Table" style=3D"background-color: #fafafa;margin: 0=
+px;width: 100% !important;border-collapse: collapse !important;height: 100%=
+ !important;" ><tbody><tr style=3D"border-collapse: collapse !important;" >=
+<td valign=3D"top" align=3D"center" class=3D"backgroundm813h3502Td" style=
+=3D"padding-top: 0px;margin: 0px;padding-left: 12px;width: 100% !important;=
+padding-bottom: 0px;border-collapse: collapse !important;padding-right: 12p=
+x;height: 100% !important;" >
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"spacer fixm813h3502Table" style=3D"border-collapse: collapse !importan=
+t;" ><tbody><tr style=3D"border-collapse: collapse !important;" ><td class=
+=3D"spacer" height=3D"6" style=3D"font-size: 0%;line-height: 0%;border-coll=
+apse: collapse !important;" >
+	</td></tr></tbody></table>
+
+=09
+=09
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" style=
+=3D"background-color: #fafafa;border-collapse: collapse !important;text-ali=
+gn:center;" align=3D"center" class=3D"headerm813h3502Table fixm813h3502Tabl=
+e" ><tbody><tr style=3D"border-collapse: collapse !important;" ><td valign=
+=3D"top" align=3D"center" class=3D"headerm813h3502Td colm813h3502Td" style=
+=3D"padding-top: 6px;color: #917e77;padding-left: 18px;padding-bottom: 6px;=
+font-size: 11px;font-family: Georgia, Times, 'Times New Roman', serif;line-=
+height: 14px;border-collapse: collapse !important;padding-right: 18px;text-=
+align: center;" >
+
+
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" style=
+=3D"border-collapse: collapse !important;text-align:center;" align=3D"cente=
+r" class=3D"headerm813h3502Table64 fixm813h3502Table50 fixTable50 centerMob=
+ile" >
+<tbody><tr style=3D"border-collapse: collapse !important;text-align:center;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center !imp=
+ortant;" align=3D"center" >
+<a href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3D610b27oeauajbdhdg9htso4df&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH587=
+337695&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2r" title=3D"Ring in the new year =
+with these ingredients" target=3D"_blank" style=3D"color: #917e77;font-weig=
+ht: normal;text-decoration: none;font-size: 11px;font-family: Georgia, Time=
+s, 'Times New Roman', serif;line-height: 14px;" >Ring in the new year with =
+these ingredients</a>
+</td></tr></tbody></table>
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse: collapse !important;text-align:center; display:block; margin:0px; he=
+ight:1px;" height=3D"1" >
+	<tbody><tr style=3D"border-collapse: collapse !important;" ><td style=3D"b=
+order-collapse: collapse !important;text-align:center; display:none; height=
+:1px;" valign=3D"top" >
+		<p style=3D"margin: 2px 0px;display:none; height:1px;" >
+			<span style=3D"display:none; font-size:0px; height:1px; line-height:1px;=
+ margin:0px; height:1px;" ></span>
+		</p>
+	</td></tr></tbody></table>
+
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" style=
+=3D"border-collapse: collapse !important;text-align:center;" align=3D"cente=
+r" class=3D"headerm813h3502Table33 fixm813h3502Table50 fixTable50 centerMob=
+ile" >
+<tbody><tr style=3D"border-collapse: collapse !important;text-align:center;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+
+
+
+<div><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"borde=
+r-collapse: collapse !important;text-align: center;" align=3D"center" ><tbo=
+dy><tr style=3D"border-collapse: collapse !important;" ><td width=3D"600" s=
+tyle=3D"border-collapse: collapse !important;text-align: center;" ><a rel=
+=3D"noopener noreferrer" style=3D"font-weight: normal;font-size: 11px;font-=
+family: Georgia, Times, 'Times New Roman', serif;line-height: 14px;color: #=
+917e77; text-decoration: none; text-align: center; max-height: 0px; overflo=
+w: hidden;" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee=
+5&amp;d=3D3de&amp;h=3Dqbpe0j2tisj0dp0315m5loktj&amp;i=3Dpd&amp;iw=3D1&amp;n=
+=3D28f&amp;p=3DH1790811214&amp;s=3Dwv&amp;sn=3D28f" mn:editable=3D"" target=
+=3D"_blank" >Having trouble viewing this email? Click here!</a></td></tr></=
+tbody></table></div>
+
+</td></tr></tbody></table>
+
+</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<table border=3D"0" bgcolor=3D"#FFFFFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"600" class=3D"fixm813h3502Table" style=3D"border-collapse: colla=
+pse !important;" ><tbody><tr style=3D"border-collapse: collapse !important;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+		<a href=3D'https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3D26gbk14mvaq1iv7qgkj9149flo&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH19=
+7671585&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a1r' class=3D'gtimglink' target=3D'=
+_blank' style=3D"color: #917e77;text-decoration: none;font-family: Georgia,=
+ Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnews=
+email=2Ecom/nl/res/813/newsletters/2319/img/eataly_logo_ecomm=2Ejpg" alt=3D"=
+Eataly=2Ecom" width=3D"600" style=3D"border: 0;outline: none;text-decoratio=
+n: none;line-height: 100%;display:block;text-align:center;margin-left:auto;=
+margin-right:auto; background-color:#FFFFFF;;max-width:600px" align=3D"midd=
+le" title=3D"Eataly=2Ecom" class=3D"fixm813h3502Image" height=3D"95" /></a>=
+
+	</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   =20
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><span style=3D"letter-spacing: 1px; font-size: 10px; line-height: 14=
+px; color: #693935;"> <span style=3D"letter-spacing: =E2=88=921px;"> <a rel=
+=3D"noopener" style=3D"text-decoration: none;font-size: 13px;font-family: G=
+eorgia, Times, 'Times New Roman', serif;color: #693935;" href=3D"https://us=
+-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D8cm49k4t=
+u3ue35s1qrr2code6&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH653219740&amp;s=3Dlp&amp;s=
+n=3D28f&amp;z=3D1a1s" title=3D"shop gifts" target=3D"_blank" ><span style=
+=3D"letter-spacing: 1px; font-size: 10px; line-height: 14px; color: #693935=
+;" mn-tiny-utils=3D""><span style=3D"letter-spacing: =E2=88=921px;" mn-tiny=
+-utils=3D"">HOLIDAY MARKET</span></span></a> |&nbsp; <a rel=3D"noopener" st=
+yle=3D"text-decoration: none;font-size: 13px;font-family: Georgia, Times, '=
+Times New Roman', serif;color: #693935;" href=3D"https://us-eataly=2Emagnew=
+semail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D1u58tu07p9ansqg2pgise9f6=
+a5&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH653219741&amp;s=3Dlp&amp;sn=3D28f&amp;z=
+=3D1a1t" title=3D"Shop Best Sellers" target=3D"_blank" ><span style=3D"lett=
+er-spacing: 1px; font-size: 10px; line-height: 14px; color: #693935;" mn-ti=
+ny-utils=3D""><span style=3D"letter-spacing: =E2=88=921px;" mn-tiny-utils=
+=3D"">SALUMI &amp; FORMAGGI</span></span></a> |&nbsp; <a rel=3D"noopener" s=
+tyle=3D"text-decoration: none;font-size: 13px;font-family: Georgia, Times, =
+'Times New Roman', serif;color: #693935;" href=3D"https://us-eataly=2Emagne=
+wsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2cufube6cd1ippm8ij5sbgp=
+cpe&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH653219742&amp;s=3Dlp&amp;sn=3D28f&amp;z=
+=3D1a1u" title=3D"Shop Pasta &amp; Pantry" target=3D"_blank" ><span style=
+=3D"letter-spacing: 1px; font-size: 10px; line-height: 14px; color: #693935=
+;" mn-tiny-utils=3D""><span style=3D"letter-spacing: =E2=88=921px;" mn-tiny=
+-utils=3D"">PANETTONE &amp; PANDORO</span></span></a></span></span><hr></di=
+v>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" bgcolor=3D"#FFFFFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"600" class=3D"fixm813h3502Table" style=3D"border-collapse: colla=
+pse !important;" ><tbody><tr style=3D"border-collapse: collapse !important;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+		<a href=3D'https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3D1171hm3fqanamn4kee7s82r5mh&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH21=
+01027915&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2r' class=3D'gtimglink' target=
+=3D'_blank' style=3D"color: #917e77;text-decoration: none;font-family: Geor=
+gia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emag=
+newsemail=2Ecom/nl/res/813/newsletters/2319/img/nye_header=2Ejpg" alt=3D"Sh=
+op Holiday Fresh" width=3D"600" style=3D"border: 0;outline: none;text-decor=
+ation: none;line-height: 100%;display:block;text-align:center;margin-left:a=
+uto;margin-right:auto; background-color:#FFFFFF;;max-width:600px" title=3D"=
+Shop Holiday Fresh" class=3D"fixm813h3502Image" height=3D"600" /></a>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><span>Get ready to ring in 2022 with a spread of festive ingredients=
+, from Salumi &amp; Formaggi</span><span>&nbsp;to the last batch of </span>=
+<b>fresh white truffles</b><span>, and more! Order now to get your picks in=
+ time for </span><i><span>Capodanno</span></i><span> (New Year&rsquo;s)!</s=
+pan></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" align=3D"center" class=3D"=
+contentm813h3502Td colm813h3502Td articlem813h3502Td" style=3D"padding-top:=
+ 9px;color: #663330;padding-left: 18px;font-size: 13px;padding-bottom: 9px;=
+font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;bor=
+der-collapse: collapse !important;padding-right: 18px;text-align: center;" =
+>
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"backgrou=
+nd-color: #663330;border: none;border-collapse: collapse !important;display=
+:inline-block !important;" align=3D"center" class=3D"buttonm813h3502Table" =
+><tbody><tr style=3D"border-collapse: collapse !important;" ><td valign=3D"=
+middle" align=3D"center" class=3D"buttonm813h3502Td" style=3D"padding-top: =
+12px;color: #663330;padding-left: 24px;font-size: 20px;padding-bottom: 12px=
+;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 24px;ms=
+o-line-height-rule: exactly;border-collapse: collapse !important;text-align=
+: center;padding-right: 24px;" >
+			<a style=3D"word-wrap: break-word !important;text-decoration: none;font-=
+size: 20px;font-family: Georgia, Times, 'Times New Roman', serif;line-heigh=
+t: 24px;color:#fefefe; font-weight:lighter;" href=3D"https://us-eataly=2Ema=
+gnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2583nfschkhonknd53lm=
+n09365&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH658693050&amp;s=3Dlp&amp;sn=3D28f&amp=
+;z=3D1a2r" title=3D"Shop Holiday Fresh" target=3D"_blank" >Shop Holiday Fre=
+sh</a>
+		</td></tr></tbody></table>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" bgcolor=3D"#FFFFFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"600" class=3D"fixm813h3502Table" style=3D"border-collapse: colla=
+pse !important;" ><tbody><tr style=3D"border-collapse: collapse !important;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+		<a href=3D'https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3D1nin40hh2btima3d3t3f7agb67&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH15=
+48525786&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2r' class=3D'gtimglink' target=
+=3D'_blank' style=3D"color: #917e77;text-decoration: none;font-family: Geor=
+gia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emag=
+newsemail=2Ecom/nl/res/813/newsletters/2319/img/antipasto_2=2Ejpg" alt=3D"S=
+hop Salumi &amp; Formaggi" width=3D"600" style=3D"border: 0;outline: none;t=
+ext-decoration: none;line-height: 100%;display:block;text-align:center;marg=
+in-left:auto;margin-right:auto; background-color:#FFFFFF;;max-width:600px" =
+title=3D"Shop Salumi &amp; Formaggi" class=3D"fixm813h3502Image" height=3D"=
+273" /></a>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><span>Treat your holiday guests to an "antipasto", or appetizer, the=
+y won't forget with premium Italian Salumi &amp; Formaggi</span></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" align=3D"center" class=3D"=
+contentm813h3502Td colm813h3502Td articlem813h3502Td" style=3D"padding-top:=
+ 9px;color: #663330;padding-left: 18px;font-size: 13px;padding-bottom: 9px;=
+font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;bor=
+der-collapse: collapse !important;padding-right: 18px;text-align: center;" =
+>
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"backgrou=
+nd-color: #663330;border: none;border-collapse: collapse !important;display=
+:inline-block !important;" align=3D"center" class=3D"buttonm813h3502Table" =
+><tbody><tr style=3D"border-collapse: collapse !important;" ><td valign=3D"=
+middle" align=3D"center" class=3D"buttonm813h3502Td" style=3D"padding-top: =
+12px;color: #663330;padding-left: 24px;font-size: 20px;padding-bottom: 12px=
+;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 24px;ms=
+o-line-height-rule: exactly;border-collapse: collapse !important;text-align=
+: center;padding-right: 24px;" >
+			<a style=3D"word-wrap: break-word !important;text-decoration: none;font-=
+size: 20px;font-family: Georgia, Times, 'Times New Roman', serif;line-heigh=
+t: 24px;color:#fefefe; font-weight:lighter;" href=3D"https://us-eataly=2Ema=
+gnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D1s10rn7a5lgsm1vg2i5c=
+vtd31e&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH1596314859&amp;s=3Dlp&amp;sn=3D28f&am=
+p;z=3D1a2r" title=3D"Shop Salumi &amp; Formaggi" target=3D"_blank" >Shop Sa=
+lumi &amp; Formaggi</a>
+		</td></tr></tbody></table>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><hr></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" bgcolor=3D"#FFFFFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"600" class=3D"fixm813h3502Table" style=3D"border-collapse: colla=
+pse !important;" ><tbody><tr style=3D"border-collapse: collapse !important;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+		<a href=3D'https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3D2f72ihq1lv4vngk26drl37mrgj&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH80=
+1976161&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2r' class=3D'gtimglink' target=3D'=
+_blank' style=3D"color: #917e77;text-decoration: none;font-family: Georgia,=
+ Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnews=
+email=2Ecom/nl/res/813/newsletters/2319/img/truffles_2=2Ejpg" alt=3D"Shop W=
+hite Truffle" width=3D"600" style=3D"border: 0;outline: none;text-decoratio=
+n: none;line-height: 100%;display:block;text-align:center;margin-left:auto;=
+margin-right:auto; background-color:#FFFFFF;;max-width:600px" title=3D"Shop=
+ White Truffle" class=3D"fixm813h3502Image" height=3D"273" /></a>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><span>Indulge in this prized tuber for an unforgettable dining exper=
+ience</span></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" align=3D"center" class=3D"=
+contentm813h3502Td colm813h3502Td articlem813h3502Td" style=3D"padding-top:=
+ 9px;color: #663330;padding-left: 18px;font-size: 13px;padding-bottom: 9px;=
+font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;bor=
+der-collapse: collapse !important;padding-right: 18px;text-align: center;" =
+>
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"backgrou=
+nd-color: #663330;border: none;border-collapse: collapse !important;display=
+:inline-block !important;" align=3D"center" class=3D"buttonm813h3502Table" =
+><tbody><tr style=3D"border-collapse: collapse !important;" ><td valign=3D"=
+middle" align=3D"center" class=3D"buttonm813h3502Td" style=3D"padding-top: =
+12px;color: #663330;padding-left: 24px;font-size: 20px;padding-bottom: 12px=
+;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 24px;ms=
+o-line-height-rule: exactly;border-collapse: collapse !important;text-align=
+: center;padding-right: 24px;" >
+			<a style=3D"word-wrap: break-word !important;text-decoration: none;font-=
+size: 20px;font-family: Georgia, Times, 'Times New Roman', serif;line-heigh=
+t: 24px;color:#fefefe; font-weight:lighter;" href=3D"https://us-eataly=2Ema=
+gnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D166jrqabm7csvcv0sss6=
+03iv5l&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH164103183&amp;s=3Dlp&amp;sn=3D28f&amp=
+;z=3D1a2r" title=3D"Shop White Truffle" target=3D"_blank" >Shop White Truff=
+le</a>
+		</td></tr></tbody></table>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><hr></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" bgcolor=3D"#FFFFFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"600" class=3D"fixm813h3502Table" style=3D"border-collapse: colla=
+pse !important;" ><tbody><tr style=3D"border-collapse: collapse !important;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+		<a href=3D'https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3De1pibvt8tfnkvrqeuekua7mfs&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH161=
+1710044&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2r' class=3D'gtimglink' target=3D'=
+_blank' style=3D"color: #917e77;text-decoration: none;font-family: Georgia,=
+ Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnews=
+email=2Ecom/nl/res/813/newsletters/2319/img/wagyu_2=2Ejpg" alt=3D"Shop Wagy=
+u" width=3D"600" style=3D"border: 0;outline: none;text-decoration: none;lin=
+e-height: 100%;display:block;text-align:center;margin-left:auto;margin-righ=
+t:auto; background-color:#FFFFFF;;max-width:600px" title=3D"Shop Wagyu" cla=
+ss=3D"fixm813h3502Image" height=3D"273" /></a>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><span>Elevate your holiday meal with A5 Japanese Wagyu, boasting int=
+ense, marbling and rich&nbsp;umami flavor&nbsp;</span></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" align=3D"center" class=3D"=
+contentm813h3502Td colm813h3502Td articlem813h3502Td" style=3D"padding-top:=
+ 9px;color: #663330;padding-left: 18px;font-size: 13px;padding-bottom: 9px;=
+font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;bor=
+der-collapse: collapse !important;padding-right: 18px;text-align: center;" =
+>
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"backgrou=
+nd-color: #663330;border: none;border-collapse: collapse !important;display=
+:inline-block !important;" align=3D"center" class=3D"buttonm813h3502Table" =
+><tbody><tr style=3D"border-collapse: collapse !important;" ><td valign=3D"=
+middle" align=3D"center" class=3D"buttonm813h3502Td" style=3D"padding-top: =
+12px;color: #663330;padding-left: 24px;font-size: 20px;padding-bottom: 12px=
+;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 24px;ms=
+o-line-height-rule: exactly;border-collapse: collapse !important;text-align=
+: center;padding-right: 24px;" >
+			<a style=3D"word-wrap: break-word !important;text-decoration: none;font-=
+size: 20px;font-family: Georgia, Times, 'Times New Roman', serif;line-heigh=
+t: 24px;color:#fefefe; font-weight:lighter;" href=3D"https://us-eataly=2Ema=
+gnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2htim6u72em95h65ssf6=
+ve27hb&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH503950220&amp;s=3Dlp&amp;sn=3D28f&amp=
+;z=3D1a2r" title=3D"Shop Wagyu" target=3D"_blank" >Shop Wagyu</a>
+		</td></tr></tbody></table>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" bgcolor=3D"#FFFFFF" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"600" class=3D"fixm813h3502Table" style=3D"border-collapse: colla=
+pse !important;" ><tbody><tr style=3D"border-collapse: collapse !important;=
+" ><td style=3D"border-collapse: collapse !important;text-align:center;" va=
+lign=3D"top" >
+		<img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters=
+/2319/img/ecom_newsletter_shipping_deadlines_new_years_1_=2Ejpg" alt=3D"Del=
+ivery in time for New Year's Eve" width=3D"516" style=3D"border: 0;outline:=
+ none;text-decoration: none;line-height: 100%;display:block;text-align:cent=
+er;margin-left:auto;margin-right:auto; background-color:#FFFFFF;;max-width:=
+516px" title=3D"Delivery in time for New Year's Eve" class=3D"fixm813h3502I=
+mage" height=3D"250" />
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><hr> <div style=3D"text-align: left;">  <table border=3D"0" style=3D"=
+border-collapse: collapse; width: 100%;">   <tbody>    <tr style=3D"border-=
+collapse: collapse !important;" >     <td style=3D"color: #663330;font-size=
+: 13px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 1=
+9px;border-collapse: collapse !important;width: 50%; text-align: left;" ><s=
+pan style=3D"font-size: 10px; line-height: 14px;"><a rel=3D"noopener" href=
+=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&am=
+p;h=3Ds8qo5ff05oscfnaoc5tcbn3b&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH961440436&amp=
+;s=3Dlp&amp;sn=3D28f&amp;z=3D1a22" title=3D"Online Support" target=3D"_blan=
+k" style=3D"color: #917e77;text-decoration: none;font-size: 13px;font-famil=
+y: Georgia, Times, 'Times New Roman', serif;" ><span style=3D"font-size: 10=
+px; line-height: 14px;" mn-tiny-utils=3D"">ONLINE SUPPORT</span></a> </span=
+></td>     <td style=3D"color: #663330;font-size: 13px;font-family: Georgia=
+, Times, 'Times New Roman', serif;line-height: 19px;border-collapse: collap=
+se !important;width: 50%; text-align: right;" ><span style=3D"font-style: i=
+talic; font-size: 11px; line-height: 12px;">#ThatsFoodLove</span></td>    <=
+/tr>   </tbody>  </table> </div></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"contentm813h3502=
+Td colm813h3502Td" style=3D"color: #663330;padding-left: 18px;font-size: 13=
+px;font-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;=
+border-collapse: collapse !important;padding-right: 18px;text-align: center=
+;" >
+		<div><table style=3D"border-collapse: collapse; width: 100%; height: 26px=
+; float: left;"><tbody><tr style=3D"border-collapse: collapse !important;he=
+ight: 13px;" ><td style=3D"color: #663330;font-size: 13px;font-family: Geor=
+gia, Times, 'Times New Roman', serif;line-height: 19px;border-collapse: col=
+lapse !important;width: 25%; height: 13px; text-align: left;" ><span style=
+=3D"font-size: 9px; line-height: 12px;">NYC FLATIRON</span></td><td style=
+=3D"color: #663330;font-size: 13px;font-family: Georgia, Times, 'Times New =
+Roman', serif;line-height: 19px;border-collapse: collapse !important;width:=
+ 25%; height: 13px; text-align: left;" ><span style=3D"font-size: 9px; line=
+-height: 12px;">NYC DOWNTOWN</span></td><td style=3D"color: #663330;font-si=
+ze: 13px;font-family: Georgia, Times, 'Times New Roman', serif;line-height:=
+ 19px;border-collapse: collapse !important;width: 25%; height: 13px; text-a=
+lign: left;" ><span style=3D"font-size: 9px; line-height: 12px;">CHICAGO</s=
+pan></td><td style=3D"color: #663330;font-size: 13px;font-family: Georgia, =
+Times, 'Times New Roman', serif;line-height: 19px;border-collapse: collapse=
+ !important;width: 25%; height: 13px; text-align: left;" ><span style=3D"fo=
+nt-size: 9px; line-height: 12px;">BOSTON</span></td></tr><tr style=3D"borde=
+r-collapse: collapse !important;height: 13px;" ><td style=3D"color: #663330=
+;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;line=
+-height: 19px;border-collapse: collapse !important;width: 25%; height: 13px=
+; text-align: left;" ><a rel=3D"noopener" href=3D"https://us-eataly=2Emagne=
+wsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2gs26huhueropip4me7e3d7=
+b6b&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH1779088886&amp;s=3Dlp&amp;sn=3D28f&amp;z=
+=3D1a23" title=3D"Eataly Flatiron Instagram" target=3D"_blank" style=3D"col=
+or: #917e77;text-decoration: none;font-size: 13px;font-family: Georgia, Tim=
+es, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemai=
+l=2Ecom/nl/res/813/newsletters/2319/img/instagram_2=2Ejpg" alt=3D"" style=
+=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;" /></a=
+>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/n=
+l/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2s7ec8h3bir713f5g0hrh4hr06&amp;i=3Dpd&=
+amp;iw=3D1&amp;p=3DH1779088885&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a24" title=
+=3D"Eataly Flatiron Facebook" target=3D"_blank" style=3D"color: #917e77;tex=
+t-decoration: none;font-size: 13px;font-family: Georgia, Times, 'Times New =
+Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/=
+813/newsletters/2319/img/s_facebook_1=2Ejpg" alt=3D"" style=3D"border: 0;ou=
+tline: none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"=
+noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&=
+amp;d=3D3de&amp;h=3Dlgdnseoeaq5bv5ajg68l42f52&amp;i=3Dpd&amp;iw=3D1&amp;p=
+=3DH1779088884&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a25" title=3D"Eataly Flatir=
+on Twitter" target=3D"_blank" style=3D"color: #917e77;text-decoration: none=
+;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" ><=
+img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/23=
+19/img/s_twitter=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-deco=
+ration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"ht=
+tps://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3Di=
+t8leauj4p7egs1jt2cqlpgs7&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH1779088883&amp;s=3Dl=
+p&amp;sn=3D28f&amp;z=3D1a26" title=3D"LinkedIn" target=3D"_blank" style=3D"=
+color: #917e77;text-decoration: none;font-size: 13px;font-family: Georgia, =
+Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewse=
+mail=2Ecom/nl/res/813/newsletters/2319/img/s_linkedin_1=2Ejpg" alt=3D"" sty=
+le=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;" /><=
+/a></td><td style=3D"color: #663330;font-size: 13px;font-family: Georgia, T=
+imes, 'Times New Roman', serif;line-height: 19px;border-collapse: collapse =
+!important;width: 25%; height: 13px; text-align: left;" ><a rel=3D"noopener=
+" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3=
+de&amp;h=3D20bjgnm20ljptog4r6o1h2soko&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH177908=
+8882&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a27" title=3D"Eataly Downtown Instagr=
+am" target=3D"_blank" style=3D"color: #917e77;text-decoration: none;font-si=
+ze: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" ><img src=
+=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img/=
+instagram_2=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decoratio=
+n: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"https:/=
+/us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D1nufo=
+f6bbrjakdohi11lqgf23l&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH1779088881&amp;s=3Dlp&=
+amp;sn=3D28f&amp;z=3D1a28" title=3D"Eataly Downtown Facebook" target=3D"_bl=
+ank" style=3D"color: #917e77;text-decoration: none;font-size: 13px;font-fam=
+ily: Georgia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-eat=
+aly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_facebook_1=2Ejpg=
+" alt=3D"" style=3D"border: 0;outline: none;text-decoration: none;line-heig=
+ht: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagn=
+ewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2jdb351kc4ol6govdn1b9r=
+ap6d&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH1779088880&amp;s=3Dlp&amp;sn=3D28f&amp;=
+z=3D1a29" title=3D"Eataly Downtown Twitter" target=3D"_blank" style=3D"colo=
+r: #917e77;text-decoration: none;font-size: 13px;font-family: Georgia, Time=
+s, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=
+=2Ecom/nl/res/813/newsletters/2319/img/s_twitter=2Ejpg" alt=3D"" style=3D"b=
+order: 0;outline: none;text-decoration: none;line-height: 100%;" /></a>&nbs=
+p;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/lin=
+k?c=3D1bee5&amp;d=3D3de&amp;h=3D2sphfeno30ujoenv1fm1bfo7mc&amp;i=3Dpd&amp;i=
+w=3D1&amp;p=3DH1779088879&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a26" title=3D"Li=
+nkedIn" target=3D"_blank" style=3D"color: #917e77;text-decoration: none;fon=
+t-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" ><img =
+src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/i=
+mg/s_linkedin_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decor=
+ation: none;line-height: 100%;" /></a></td><td style=3D"color: #663330;font=
+-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;line-heig=
+ht: 19px;border-collapse: collapse !important;width: 25%; height: 13px; tex=
+t-align: left;" ><a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsema=
+il=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2aadnstousq0qi1847bm2qnd2k&a=
+mp;i=3Dpd&amp;iw=3D1&amp;p=3DH1779088878&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a=
+2a" title=3D"Instagram" target=3D"_blank" style=3D"color: #917e77;text-deco=
+ration: none;font-size: 13px;font-family: Georgia, Times, 'Times New Roman'=
+, serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/ne=
+wsletters/2319/img/instagram_2=2Ejpg" alt=3D"" style=3D"border: 0;outline: =
+none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopen=
+er" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=
+=3D3de&amp;h=3D22ie93s8gbi6s9jhria66hfo6v&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH68=
+2819430&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2b" title=3D"Facebook" target=3D"=
+_blank" style=3D"color: #917e77;text-decoration: none;font-size: 13px;font-=
+family: Georgia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-=
+eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_facebook_1=2Ej=
+pg" alt=3D"" style=3D"border: 0;outline: none;text-decoration: none;line-he=
+ight: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Ema=
+gnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D15j4gtkegan3tirfvnra=
+fvgbn2&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819431&amp;s=3Dlp&amp;sn=3D28f&amp=
+;z=3D1a2c" title=3D"Twitter" target=3D"_blank" style=3D"color: #917e77;text=
+-decoration: none;font-size: 13px;font-family: Georgia, Times, 'Times New R=
+oman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/8=
+13/newsletters/2319/img/s_twitter=2Ejpg" alt=3D"" style=3D"border: 0;outlin=
+e: none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noo=
+pener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp=
+;d=3D3de&amp;h=3D151hpm5m7ssqbdt36si6ma68j7&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH=
+682819432&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a26" title=3D"LinkedIn" target=
+=3D"_blank" style=3D"color: #917e77;text-decoration: none;font-size: 13px;f=
+ont-family: Georgia, Times, 'Times New Roman', serif;" ><img src=3D"https:/=
+/us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_linkedin_=
+1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decoration: none;li=
+ne-height: 100%;" /></a></td><td style=3D"color: #663330;font-size: 13px;fo=
+nt-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;borde=
+r-collapse: collapse !important;width: 25%; height: 13px; text-align: left;=
+" ><a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/li=
+nk?c=3D1bee5&amp;d=3D3de&amp;h=3D1gjn9lr92lu1n15kn2rd2qovqu&amp;i=3Dpd&amp;=
+iw=3D1&amp;p=3DH682819433&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2d" title=3D"In=
+stagram" target=3D"_blank" style=3D"color: #917e77;text-decoration: none;fo=
+nt-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" ><img=
+ src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/=
+img/instagram_2=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decor=
+ation: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"htt=
+ps://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3Dq=
+7ql9qdo00o07ahtav9435qti&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819434&amp;s=3Dl=
+p&amp;sn=3D28f&amp;z=3D1a2e" title=3D"Facebook" target=3D"_blank" style=3D"=
+color: #917e77;text-decoration: none;font-size: 13px;font-family: Georgia, =
+Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewse=
+mail=2Ecom/nl/res/813/newsletters/2319/img/s_facebook_1=2Ejpg" alt=3D"" sty=
+le=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;" /><=
+/a>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom=
+/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D5klkejbgniocbfj4tdtqu3l3t&amp;i=3Dpd=
+&amp;iw=3D1&amp;p=3DH682819435&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2f" title=
+=3D"Twitter" target=3D"_blank" style=3D"color: #917e77;text-decoration: non=
+e;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" >=
+<img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2=
+319/img/s_twitter=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-dec=
+oration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"h=
+ttps://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=
+=3D1hcc09u2parlveb9risqd389gc&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819436&amp;=
+s=3Dlp&amp;sn=3D28f&amp;z=3D1a26" title=3D"LinkedIn" target=3D"_blank" styl=
+e=3D"color: #917e77;text-decoration: none;font-size: 13px;font-family: Geor=
+gia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emag=
+newsemail=2Ecom/nl/res/813/newsletters/2319/img/s_linkedin_1=2Ejpg" alt=3D"=
+" style=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;=
+" /></a></td></tr></tbody></table><br><table style=3D"border-collapse: coll=
+apse; width: 100%; height: 32px; float: left;"><tbody><tr style=3D"border-c=
+ollapse: collapse !important;height: 13px;" ></tr><tr style=3D"border-colla=
+pse: collapse !important;height: 14px;" ><td style=3D"color: #663330;font-s=
+ize: 13px;font-family: Georgia, Times, 'Times New Roman', serif;line-height=
+: 19px;border-collapse: collapse !important;width: 25%; height: 14px; text-=
+align: left;" ><span style=3D"font-size: 9px; line-height: 12px;">LOS ANGEL=
+ES</span></td><td style=3D"color: #663330;font-size: 13px;font-family: Geor=
+gia, Times, 'Times New Roman', serif;line-height: 19px;border-collapse: col=
+lapse !important;width: 25%; height: 14px; text-align: left;" ><span style=
+=3D"font-size: 9px; line-height: 12px;">LAS VEGAS</span></td><td style=3D"c=
+olor: #663330;font-size: 13px;font-family: Georgia, Times, 'Times New Roman=
+', serif;line-height: 19px;border-collapse: collapse !important;width: 25%;=
+ height: 14px; text-align: left;" ><span style=3D"font-size: 9px; line-heig=
+ht: 12px;">TORONTO</span></td><td style=3D"color: #663330;font-size: 13px;f=
+ont-family: Georgia, Times, 'Times New Roman', serif;line-height: 19px;bord=
+er-collapse: collapse !important;width: 25%; height: 14px; text-align: left=
+;" ><span style=3D"font-size: 9px; line-height: 12px;">DALLAS</span></td></=
+tr><tr style=3D"border-collapse: collapse !important;height: 18px;" ><td st=
+yle=3D"color: #663330;font-size: 13px;font-family: Georgia, Times, 'Times N=
+ew Roman', serif;line-height: 19px;border-collapse: collapse !important;wid=
+th: 25%; height: 18px; text-align: left;" ><a rel=3D"noopener" href=3D"http=
+s://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D3m=
+ne8ujumkeaqnhdderpifu506&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819437&amp;s=3Dl=
+p&amp;sn=3D28f&amp;z=3D1a2g" title=3D"Instagram" target=3D"_blank" style=3D"=
+color: #917e77;text-decoration: none;font-size: 13px;font-family: Georgia, =
+Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewse=
+mail=2Ecom/nl/res/813/newsletters/2319/img/instagram_2=2Ejpg" alt=3D"" styl=
+e=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;" /></=
+a>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/=
+nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D11l2ks4sovm4v8ppa6utgoi00e&amp;i=3Dpd=
+&amp;iw=3D1&amp;p=3DH682819438&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2h" title=
+=3D"Facebook" target=3D"_blank" style=3D"color: #917e77;text-decoration: no=
+ne;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" =
+><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/=
+2319/img/s_facebook_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text=
+-decoration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=
+=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&am=
+p;h=3D156lcgirlrqua54d8p90k3sbog&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819439&a=
+mp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2i" title=3D"Twitter" target=3D"_blank" st=
+yle=3D"color: #917e77;text-decoration: none;font-size: 13px;font-family: Ge=
+orgia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Em=
+agnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_twitter=2Ejpg" alt=3D""=
+ style=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;"=
+ /></a>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=
+=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D2p7up7kntrtn5rde6qov6cphki&amp=
+;i=3Dpd&amp;iw=3D1&amp;p=3DH682819461&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a26"=
+ title=3D"LinkedIn" target=3D"_blank" style=3D"color: #917e77;text-decorati=
+on: none;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', se=
+rif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsle=
+tters/2319/img/s_linkedin_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: non=
+e;text-decoration: none;line-height: 100%;" /></a></td><td style=3D"color: =
+#663330;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', ser=
+if;line-height: 19px;border-collapse: collapse !important;width: 25%; heigh=
+t: 18px; text-align: left;" ><a rel=3D"noopener" href=3D"https://us-eataly=
+=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D3ri98jrha76f9g0=
+n4r2u0hp3ha&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819462&amp;s=3Dlp&amp;sn=3D28=
+f&amp;z=3D1a2j" title=3D"Instagram" target=3D"_blank" style=3D"color: #917e=
+77;text-decoration: none;font-size: 13px;font-family: Georgia, Times, 'Time=
+s New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/n=
+l/res/813/newsletters/2319/img/instagram_2=2Ejpg" alt=3D"" style=3D"border:=
+ 0;outline: none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a r=
+el=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1=
+bee5&amp;d=3D3de&amp;h=3Duu4o9nnt7d2t05umpldq8g2po&amp;i=3Dpd&amp;iw=3D1&am=
+p;p=3DH682819463&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2k" title=3D"Facebook" t=
+arget=3D"_blank" style=3D"color: #917e77;text-decoration: none;font-size: 1=
+3px;font-family: Georgia, Times, 'Times New Roman', serif;" ><img src=3D"ht=
+tps://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_face=
+book_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decoration: no=
+ne;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"https://us-e=
+ataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D3o5fcvfppt=
+hn1krd6ta9r084n8&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819464&amp;s=3Dlp&amp;sn=
+=3D28f&amp;z=3D1a2l" title=3D"Twitter" target=3D"_blank" style=3D"color: #9=
+17e77;text-decoration: none;font-size: 13px;font-family: Georgia, Times, 'T=
+imes New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Eco=
+m/nl/res/813/newsletters/2319/img/s_twitter=2Ejpg" alt=3D"" style=3D"border=
+: 0;outline: none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a =
+rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=
+=3D1bee5&amp;d=3D3de&amp;h=3D2vhjdego1tcqf8stglf5kcu508&amp;i=3Dpd&amp;iw=
+=3D1&amp;p=3DH682819465&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a26" title=3D"Link=
+edIn" target=3D"_blank" style=3D"color: #917e77;text-decoration: none;font-=
+size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" ><img sr=
+c=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img=
+/s_linkedin_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decorat=
+ion: none;line-height: 100%;" /></a></td><td style=3D"color: #663330;font-s=
+ize: 13px;font-family: Georgia, Times, 'Times New Roman', serif;line-height=
+: 19px;border-collapse: collapse !important;width: 25%; height: 18px; text-=
+align: left;" ><a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=
+=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D9i34vs3noac89400pgc87sei4&amp;=
+i=3Dpd&amp;iw=3D1&amp;p=3DH682819466&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2m" =
+title=3D"Toronto Instagram" target=3D"_blank" style=3D"color: #917e77;text-=
+decoration: none;font-size: 13px;font-family: Georgia, Times, 'Times New Ro=
+man', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/81=
+3/newsletters/2319/img/instagram_2=2Ejpg" alt=3D"" style=3D"border: 0;outli=
+ne: none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"no=
+opener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&am=
+p;d=3D3de&amp;h=3D1g429dlptjam6nbtnv58ksnvr0&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH=
+682819467&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2n" title=3D"Toronto Facebook" =
+target=3D"_blank" style=3D"color: #917e77;text-decoration: none;font-size: =
+13px;font-family: Georgia, Times, 'Times New Roman', serif;" ><img src=3D"h=
+ttps://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_fac=
+ebook_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-decoration: n=
+one;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=3D"https://us-=
+eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D3l57c0l7t=
+a4cop3g73vul36jkm&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819468&amp;s=3Dlp&amp;s=
+n=3D28f&amp;z=3D1a2o" title=3D"Toronto Twitter" target=3D"_blank" style=3D"=
+color: #917e77;text-decoration: none;font-size: 13px;font-family: Georgia, =
+Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewse=
+mail=2Ecom/nl/res/813/newsletters/2319/img/s_twitter=2Ejpg" alt=3D"" style=
+=3D"border: 0;outline: none;text-decoration: none;line-height: 100%;" /></a=
+>&nbsp;<a rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/n=
+l/link?c=3D1bee5&amp;d=3D3de&amp;h=3D1brfii58vkjc92qp2p4b46bhrh&amp;i=3Dpd&=
+amp;iw=3D1&amp;p=3DH682819469&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a26" title=
+=3D"LinkedIn" target=3D"_blank" style=3D"color: #917e77;text-decoration: no=
+ne;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" =
+><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/=
+2319/img/s_linkedin_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text=
+-decoration: none;line-height: 100%;" /></a></td><td style=3D"color: #66333=
+0;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;lin=
+e-height: 19px;border-collapse: collapse !important;width: 25%; height: 18p=
+x; text-align: left;" ><a rel=3D"noopener" href=3D"https://us-eataly=2Emagn=
+ewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&amp;h=3D1ek0e0u12j7t1g02o8jat7=
+ov4n&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819470&amp;s=3Dlp&amp;sn=3D28f&amp;z=
+=3D1a2p" title=3D"Toronto Instagram" target=3D"_blank" style=3D"color: #917=
+e77;text-decoration: none;font-size: 13px;font-family: Georgia, Times, 'Tim=
+es New Roman', serif;" ><img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/=
+nl/res/813/newsletters/2319/img/instagram_2=2Ejpg" alt=3D"" style=3D"border=
+: 0;outline: none;text-decoration: none;line-height: 100%;" /></a>&nbsp;<a =
+rel=3D"noopener" href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=
+=3D1bee5&amp;d=3D3de&amp;h=3D22b6agi98flfbqulofnck949na&amp;i=3Dpd&amp;iw=
+=3D1&amp;p=3DH682819492&amp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a2q" title=3D"Dall=
+as Facebook" target=3D"_blank" style=3D"color: #917e77;text-decoration: non=
+e;font-size: 13px;font-family: Georgia, Times, 'Times New Roman', serif;" >=
+<img src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/res/813/newsletters/2=
+319/img/s_facebook_1=2Ejpg" alt=3D"" style=3D"border: 0;outline: none;text-=
+decoration: none;line-height: 100%;" /></a>&nbsp;<a rel=3D"noopener" href=
+=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;d=3D3de&am=
+p;h=3D16v7ppi5q5c8d8odpvq5pe7fpf&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH682819493&a=
+mp;s=3Dlp&amp;sn=3D28f&amp;z=3D1a26" title=3D"LinkedIn" target=3D"_blank" s=
+tyle=3D"color: #917e77;text-decoration: none;font-size: 13px;font-family: G=
+eorgia, Times, 'Times New Roman', serif;" ><img src=3D"https://us-eataly=2Em=
+agnewsemail=2Ecom/nl/res/813/newsletters/2319/img/s_linkedin_1=2Ejpg" alt=
+=3D"" style=3D"border: 0;outline: none;text-decoration: none;line-height: 1=
+00%;" /></a></td></tr></tbody></table></div>
+	</td></tr></tbody></table>
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"contentm813h3502Table fixm813h3502Table" style=3D"background-color: #f=
+fffff;border-collapse: collapse !important;" ><tbody><tr style=3D"border-co=
+llapse: collapse !important;" ><td valign=3D"top" class=3D"spacer" height=
+=3D"18" style=3D"font-size: 0%;line-height: 0%;border-collapse: collapse !i=
+mportant;" >
+	</td></tr></tbody></table>
+
+
+
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"footerm813h3502Table fixm813h3502Table" style=3D"background-color: #fa=
+fafa;border-collapse: collapse !important;" ><tbody><tr style=3D"border-col=
+lapse: collapse !important;" ><td valign=3D"top" class=3D"footerm813h3502Td=
+ footerm813h3502DisclaimerTd colm813h3502Td" style=3D"padding-top: 12px;col=
+or: #917e77;padding-left: 18px;padding-bottom: 0px;font-size: 11px;font-fam=
+ily: Georgia, Times, 'Times New Roman', serif;line-height: 14px;border-coll=
+apse: collapse !important;padding-right: 18px;text-align: center;" >
+		<span style=3D"color: #917e77;">You are receiving this email at&nbsp;<spa=
+n style=3D"text-decoration: none !important;"><a rel=3D"nofollow" style=3D"=
+font-weight: normal;text-decoration: none;font-size: 11px;font-family: Geor=
+gia, Times, 'Times New Roman', serif;line-height: 14px;color: #917e77;" ><s=
+pan style=3D"color: #917e77;" mn-tiny-utils=3D""><span style=3D"text-decora=
+tion: none !important;" mn-tiny-utils=3D"">john=2Edoe=2Eyouniq@gmail=2Ecom<=
+/span></span></a></span> because you gave your consent to receive our commu=
+nications=2E<br>You can unsubscribe at any time by clicking the link below=
+=2E</span>
+	</td></tr></tbody></table>
+
+
+
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"footerm813h3502Table fixm813h3502Table" style=3D"background-color: #fa=
+fafa;border-collapse: collapse !important;" ><tbody><tr style=3D"border-col=
+lapse: collapse !important;" ><td valign=3D"top" class=3D"footerm813h3502Td=
+ colm813h3502Td" style=3D"padding-top: 12px;color: #917e77;padding-left: 18=
+px;padding-bottom: 12px;font-size: 11px;font-family: Georgia, Times, 'Times=
+ New Roman', serif;line-height: 14px;border-collapse: collapse !important;p=
+adding-right: 18px;text-align: center;" >
+				 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" =
+style=3D"border-collapse: collapse !important;margin-top:10px; text-align:c=
+enter;" align=3D"center" class=3D"footerm813h3502Table48" ><tbody><tr style=
+=3D"border-collapse: collapse !important;" ><td style=3D"border-collapse: c=
+ollapse !important;text-align:center;" valign=3D"top" align=3D"center" >
+			<a href=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/link?c=3D1bee5&amp;=
+d=3D3de&amp;h=3D353qd1htifdn547oh20tn037vq&amp;i=3Dpd&amp;iw=3D1&amp;p=3DH2=
+077564902&amp;s=3Dunsub&amp;sn=3D28f" target=3D"_blank" style=3D"color: #91=
+7e77;font-weight: normal;text-decoration: none;font-size: 11px;font-family:=
+ Georgia, Times, 'Times New Roman', serif;line-height: 14px;" >Click here t=
+o unsubscribe=2E</a></td></tr></tbody></table>
+=09
+   =20
+    </td></tr></tbody></table>
+
+
+
+	<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"600" clas=
+s=3D"spacer fixm813h3502Table" style=3D"border-collapse: collapse !importan=
+t;" ><tbody><tr style=3D"border-collapse: collapse !important;" ><td class=
+=3D"spacer" height=3D"6" style=3D"font-size: 0%;line-height: 0%;border-coll=
+apse: collapse !important;" >
+	</td></tr></tbody></table></td></tr></tbody></table>
+
+<img border=3D"0" src=3D"https://us-eataly=2Emagnewsemail=2Ecom/nl/wb=2Egif=
+?c=3D1bee5&amp;d=3D3de&amp;h=3D30k6j6clik2c7ios0qe0difn7n&amp;i=3Dpd&amp;iw=
+=3D1&amp;p=3DH689105118&amp;sn=3D28f" width=3D"1" alt=3D"" style=3D"border:=
+ 0;outline: none;text-decoration: none;line-height: 100%;height:0 !importan=
+t;" height=3D"1" /></body></html>
+------=_Part_4312998_648393848.1640530906848--
+

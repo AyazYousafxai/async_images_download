@@ -1,0 +1,862 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp3704377wrd;        Tue, 21 Dec
+ 2021 01:02:48 -0800 (PST)
+Received: from quattuor.eta.ecm-cluster.com (quattuor.eta.ecm-cluster.com.
+ [91.192.41.4])        by mx.google.com with ESMTPS id
+ r5si13456435wrr.943.2021.12.21.01.02.47        for
+ <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_256_GCM_SHA384 bits=256/256);        Tue, 21 Dec 2021
+ 01:02:47 -0800 (PST)
+Received: from app69.muc.ec-messenger.com (app69.muc.ec-messenger.com
+ [172.16.9.49])	(envelope-from
+ <g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com>)	by
+ gp13mtaq123 (mtaq-receiver/2.20211004.2) with ESMTP id n16xCGEeH3iz	for
+ <john.doe.youniq@gmail.com>; Tue, 21 Dec 2021 10:02:32 +0100
+X-Google-Smtp-Source: ABdhPJzSKcbe5X3AeVqMOlghS3/hvq4qVREW1A5s4HpXNJ/Bfc5HT1e/gpewu4ULPR/JiAZANzTy
+X-Received: by 2002:adf:dc84:: with SMTP id r4mr1816486wrj.307.1640077367901;        Tue,
+ 21 Dec 2021 01:02:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640077367; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=VkKoYcY/RbV6jq4PD9AK6IBk0jYu3DKG+rEt8983qNtPzYZW/6+A6AjHednZZVEnVp        
+ J5pgBhSWJFLVGaoizHcEme+nJGBWYRBzTNv8u34P4UkXitWVqpQcM1mvHsfokC0xwyjG        
+ crPuku4ltP01kqHA/9r+MqgDjhFbFYkRwZkF75s/wZwhGYqELgqtHDi89SiePRw6xYYn        
+ 7kk+HrkEKBxjso42ZcvSscNWbDAxSs5AadL/OiPIWOJ8A+tc4OCYNNT2SI7v7Ta5mRdK        
+ PVg4WqCUoKpQnL3qBVhBwwrA6YegdhDybOAynvL4zIngLbQs4PbqSofCUWr5NtbIBtsV        
+ Aclg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=list-help:list-unsubscribe-post:list-unsubscribe:list-id        
+ :feedback-id:content-transfer-encoding:mime-version:subject        
+ :message-id:to:reply-to:from:date:dkim-signature;       
+ bh=02+tYPRnlcADxkVs31l2wGJEnKluXz+MdzmSy2BulPM=;       
+ b=0K/9GjhtovcmZ9B1j6dKOMPD2k1z7dYjEHSKJDSD3mgGUxXe/++LBp0fAduVvewvWo        
+ P781+aI8JZmEPJylz6N7kxrTl1f3MNiYeWY290dc5/UGYQjiU02knDmQ2+HzaVjjCGfp        
+ 05gX6FrtnZ2bgU7uwTY14n5Is7kz5ZsQjIVl4tKyH/v5ZUp1ZMW+Beg/uzghk5QgkqMx        
+ TNwdAtNacj7sQCAh8FNGwqrRmcWH47dnssrQsyNOCfNYTytPc514SQJG+YzxTBNeKIlm        
+ klHJvGoAvuopmki3YpASZU/XY5V67eXGLcnq0nqwgrAW84y7onnDL5lWSrA1/3LR+W1I        
+ k8tA==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@ewm-mail.com header.s=ecm1
+ header.b=EmFGvfT8;       spf=pass (google.com: domain of
+ g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com designates
+ 91.192.41.4 as permitted sender)
+ smtp.mailfrom=g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com
+Return-Path: <g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com>
+Received-SPF: pass (google.com: domain of
+ g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com designates
+ 91.192.41.4 as permitted sender) client-ip=91.192.41.4;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@ewm-mail.com header.s=ecm1
+ header.b=EmFGvfT8;       spf=pass (google.com: domain of
+ g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com designates
+ 91.192.41.4 as permitted sender)
+ smtp.mailfrom=g-22569924178-22328-2202317735-1640077367152@bounce.ewm-mail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ewm-mail.com;	q=dns/txt; s=ecm1;
+ bh=02+tYPRnlcADxkVs31l2wGJEnKluXz+MdzmSy2BulPM=;	h=date:from:reply-to:to:subject:message-id:mime-version:content-type:content-transfer-encoding:list-id:list-help:list-unsubscribe:list-unsubscribe-post:x-csa-complaints;	b=EmFGvfT8Q5Hme7jclWtQoM1g2At/FbpiUcL2kElQmRugs1z2kB9R4NLUJxaoOzoWvoYNUD3bb	o8ACdYCNJhcdUuMgFBAJ7UsWYHj0XrRELQEXA4ojQ6pP+CYRZwjY0TYoyopc1xJfIcIztdUdHBw	6mdVViQ+qkHf2M2Hlz85mjw=
+Date: Tue, 21 Dec 2021 10:02:47 +0100 (CET)
+From: "The Edinburgh Woollen Mill" <Newsletter@ewm-mail.com>
+Reply-To: master-ignore@ewm-mail.com
+To: john.doe.youniq@gmail.com
+Message-ID: <say2tx.kxfvpvn4v4b6rzqe@ewm-mail.com>
+Subject: =?UTF-8?Q?John=C2=A0Just_in_Time_for_Christmas_99p?=
+ =?UTF-8?Q?_Express_Delivery_for_One_Day_Only!?=
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Feedback-ID: 2202317735:2200052267:ewm-mail.com:22328
+X-eC-messenger-mid: 2202317735
+List-Id: <2200052267.ewm-mail.com>
+X-eC-messenger-cid: 22328
+X-eC-messenger-token: 10f7b8nIad9jsya
+List-Unsubscribe: <http://ewm-mail.com/public/list_unsubscribe.jsp?action=listUnsubscribe&gid=2200052267&uid=22569924178&mid=2202317735&siglistunsub=HNHHGHCEDODHAFDG&errorPage=/public/list_unsubscribe.jsp>,
+ <mailto:listunsubscribe-2200052267-2202317735-22569924178@ewm-mail.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-eC-messenger-sender-domain: bounce.ewm-mail.com
+X-eC-messenger-sendouttypeid: 0
+X-eC-messenger-addresseeroleid: 1
+X-eC-messenger-recipienttypeid: 2
+List-Help: <mailto:abuse@mapp.com>
+X-CSA-Complaints: csa-complaints@eco.de
+X-Mailer: eC-Messenger Build 6.90.5194.4
+X-eC-messenger-email: john.doe.youniq@gmail.com
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+  <html>
+    <head>
+      <!--[if !mso]><!-- -->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Playfair+Display" rel="stylesheet">
+      <!--<![endif]-->
+      <link rel="icon" type="image/x-icon" href="https://www.ewm.co.uk/favicon-32x32.png" size="16x16" />
+      <link rel="Shortcut Icon" type="image/x-icon" href="https://www.ewm.co.uk/favicon-32x32.png" size="16x16" />
+      <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>The Edinburgh Woollen Mill</title>
+      <style type="text/css">
+        #outlook a {padding: 0; }
+        .ReadMsgBody, .ExternalClass {width: 100%; }
+        .ExternalClass {width: 100% !important; line-height: 100%; background-color: #ffffff; }
+        .ExternalClass img[class^=Emoji] { width: 10px !important; height: 10px !important; display: inline !important; }
+        img {outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: 0;}
+        body, p {margin: 0; padding: 0; margin-bottom: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        body {background-color:#ffffff; font-family: Montserrat, 'Arial Narrow', Arial, sans-serif; font-size:14px; }
+        [owa] .foo {background: none !important; }
+        table, td {border-collapse: collapse; }
+        .tablefixed {table-layout: fixed; }
+        a[x-apple-data-detectors=true] {color: inherit !important; text-decoration: inherit !important;}
+        .NoDesk {display: none;}
+
+        @media screen yahoo{
+          .y-padLR0 {padding-left: 91px !important; padding-right: 91px !important; }
+        }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+          body {min-width: 100% !important; }
+        }
+        @media only screen and (max-width:640px), (max-device-width:640px) {
+          *[id]#wrapper + table,
+          *[class].container,
+          *[class].menu
+          {
+            min-width: 295px !important;
+            -moz-text-size-adjust: none !important;
+            -ms-text-size-adjust: none !important;
+            -webkit-text-size-adjust: none !important;
+            width: 100% !important; }
+
+          *[class].padL13 {padding-left: 13px !important; }
+          *[class].y-padLR0 {padding-left: 0px !important; padding-right: 0px !important; }
+          *[class].padLR0 {padding-left: 0px !important; padding-right: 0px !important; }
+
+          *[class].logo {height: auto !important;  padding:0% 0% 4% 0% !important; }
+
+          *[class].mobile-label {
+            background-color: #000000 !important;
+            cursor: pointer!important;
+            display: block !important;
+            float: left !important;
+            padding:38px 0 0 20px!important;
+            -webkit-tap-highlight-color: transparent;
+            width: 25px !important; }
+
+          *[class].mobile-label2 {
+            background-color: #000000 !important;
+            cursor: pointer!important;
+            display: block !important;
+            float: right !important;
+            padding:0px 20px 20px 0px!important;
+            -webkit-tap-highlight-color: transparent;
+            width: 25px !important
+          }
+
+          *[class].mobile-label > b
+          {
+            background-color: #ffffff !important;
+            -moz-border-radius: 2px !important;
+            -webkit-border-radius: 2px !important;
+            border-radius: 2px !important;
+            display: block !important; height: 3px !important;
+          }
+          *[class].mobile-label > b + b	{margin-top: 5px !important; }
+          *[class].menu td	{padding: 0 !important !important; }
+
+          *[id]#menu-wrapper {
+            background-color: #000000 !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            -moz-transition: max-height .25s linear !important;
+            -o-transition: max-height .25s linear !important;
+            -webkit-transition: max-height .25s linear !important;
+            transition: max-height .25s linear !important; }
+
+          *[id]#mobile-checkbox:checked + table #menu-wrapper {max-height: 234px !important; }
+
+          *[class].menu + .menu	{border-top: 1px solid #f5f5f5 !important; }
+          *[class].menu-item {color: #ffffff !important !important; display: block; padding: 5px !important; text-align: center !important; }
+          *[class].menu-item2	{color: #e10e2e !important; display: block !important; padding: 5px; text-align: center !important; }
+
+          *[class].mw0px 		{min-width: 0px !important; }
+          *[class].dw100pc	{width: 100% !important; max-width: none !important; }
+          *[class].dw88pc		{width: 88% !important; height: auto !important; }
+          *[class].img100pc	{width: 100% !important; max-width: none !important; }
+          *[class].img95pc	{width: 95% !important; max-width: none !important; }
+          *[class].recimg		{width: 80% !important; max-width: none !important; }
+          *[class].fl   		{float: left !important; }
+          *[class].fl-100  	{float: left !important; width: 100% !important; }
+          *[class].puttop		{display:table-header-group!important; }
+          *[class].putbottom	{display:table-footer-group!important; }
+
+          *[class].NoMob		{display:none !important; }
+
+          *[class].padA0	{padding:0 !important; }
+          *[class].padA10	{padding:10px !important; }
+          *[class].padR0	{padding-right:0 !important; }
+          *[class].padR5	{padding-right:5px !important; }
+          *[class].padL0	{padding-left:0 !important; }
+          *[class].padL5	{padding-left:5px !important; }
+          *[class].padLR10	{padding-left: 10px !important; padding-right: 10px !important; }
+          *[class].padLR15	{padding-left: 15px !important; padding-right: 15px !important; }
+          *[class].padLR80	{padding-left: 80px !important; padding-right: 80px !important; }
+          *[class].padT10	{padding-top: 10px !important; }
+          *[class].padT20	{padding-top: 20px !important; }
+          *[class].h1 {height: 1px !important; }
+
+          *[class].mobimg	{width:95% !important; height:auto !important;}
+          *[class].NoDesk {display: block !important;}
+        }
+
+        @media only screen and (max-width:480px), (max-device-width:480px) {
+          *[class~=wrapto100pc] {width: 100% !important; clear: both !important; float: left !important; }
+          *[class~=stack] {margin-bottom: 20px !important; }
+          *[class].logo 	{width: 218px!important; height: auto!important; padding:0% 0% 4% 0% !important; }
+          *[class].mobile-label 	{padding:28px 0 0 18px!important; }
+          *[class].recimg		{width: 100% !important; max-width: none !important; }
+
+          *[class].noPadMo	{padding:0 !important; }
+
+          *[class].w10		{width: 10px !important; }
+          *[class].w15		{width: 15px !important; }
+          *[class].w280		{width: 280px !important; }
+          *[class].w300 	{width: 300px !important; }
+          *[class].w320 	{width: 320px !important; }
+          *[class].w380 	{width: 380px !important; }
+
+          *[class].wr 		{display: block !important; }
+
+          *[class].h1 		{height: 1px !important; }
+          *[class].h5		{height: 5px !important; }
+          *[class].h10		{height: 10px !important; }
+          *[class].h15		{height: 15px !important; }
+          *[class].h20		{height: 20px !important; }
+          *[class].h25		{height: 25px !important; }
+          *[class].h30		{height: 30px !important; }
+
+          *[class].font10 	{font-size: 10px !important; line-height: 14px !important; }
+          *[class].font12 	{font-size: 12px !important; line-height: 16px !important; }
+          *[class].font14 	{font-size: 14px !important; line-height: 18px !important; }
+          *[class].font15 	{font-size:	15px !important; line-height: 19px !important; }
+          *[class].font16 	{font-size: 16px !important; line-height: 20px !important; }
+          *[class].font18 	{font-size: 18px !important; line-height: 22px !important; }
+          *[class].font20 	{font-size: 20px !important; line-height: 24px !important; }
+          *[class].font22 	{font-size: 22px !important; line-height: 26px !important; }
+          *[class].font24 	{font-size: 24px !important; line-height: 28px !important; }
+
+          *[class].H1Mob	{font-size:1.714em !important; text-align:center !important;}
+          *[class].H2Mob	{font-size:1.14em !important; line-height:1em !important; text-align:center !important;}
+
+          /*button*/
+          *[class].duobutton	{padding: .5em 3em !important; font-size: 70% !important; }
+          *[class].widebutton	{width: 80% !important; }
+
+          *[class].mBanner	{font-size:12px!important; }
+
+          *[class].NoMob	{display:none !important; }
+          *[class].NoMob2	{display:none !important; }
+          *[class].head 	{display: table-header-group !important; width: 100% !important; }
+          *[class].foot 	{display: table-footer-group !important; width: 100% !important; }
+          table[class="innerTable"]		{width: 85% !important; min-width: 0px !important; background-color:#ffffff !important; }
+          *[class] .deliveryTable			{width: 100% !important; margin: 0 auto 15px !important; clear: both !important; }
+          td[class="deliveryColumn"]	{display: block !important; }
+          *[class].deliveryColumn			{width: 95% !important; }
+          *[class].mobile-label2	{padding:2px 20px 20px 0px!important; }
+        }
+        @media only screen and (max-width:360px) {
+          *[class].w260 {width:260px !important;}
+          *[class].w160		{width: 160px !important;}
+          *[class].w80		{width: 80px !important; float:left !important;}
+        }
+      </style>
+      <!--[if gte mso 9]><xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml><![endif]-->
+    </head>
+    <body>
+      <!--[if (gte mso 9)|(IE)]>
+<table width="786" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<![endif]-->
+      <table width="100%" style="min-width:786px; outline: none;" class="mw0px tablefixed" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td width="100%" style="min-width:786px; background-color: #ffffff;" align="center" class="mw0px" bgcolor="#ffffff">
+
+              
+<table class="dw100pc NoMob" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle" style="padding:0 2%; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#000001; font-size:12px; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+      <span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">
+        Order Before 2pm
+</span>
+    </td>
+  </tr>
+  <tr>
+    <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td>
+  </tr>
+</table>
+<style type="text/css">
+  @-webkit-keyframes fadeInOut {
+    100% {opacity: 1;}
+    55% {opacity: 0;}
+    100% {opacity: 0%;}
+  }
+  @-moz-keyframes fadeInOut {
+    100% {opacity: 1;}
+    55% {opacity: 0;}
+    100% {opacity: 0%;}
+  }
+  @-o-keyframes fadeInOut {
+    100% {opacity: 1;}
+    55% {opacity: 0;}
+    100% {opacity: 0%;}
+  }
+  @keyframes fadeInOut {
+    100% {opacity: 1;}
+    55% {opacity: 0;}
+    100% {opacity: 0%;}
+  }
+  .textfade {
+    text-align: center; opacity: 1; animation-name: fadeInOut; animation-delay: 0.4s; animation-duration: 4s; animation-iteration-count: infinite; }
+</style><table class="dw100pc" bgcolor="#201d1d" border="0" cellpadding="0" cellspacing="0" width="786" height="30" align="center" style="width:786px;max-width:786px;background-color: #201d1d;overflow: hidden;position: relative;margin: 0 auto;">
+  <tr>
+    <td width="100%" align="center" style="text-align:center;" class="alignCenter">
+      <table class="dw100pc" align="center" bgcolor="#201d1d" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #201d1d;">
+        <tr>
+          <td align="center" style="font-family:Arial, sans-serif;">
+            <!--[if (gte mso 12)|(IE)]><table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#201d1d" style="background-color:#201d1d;font-size:1px;line-height:1px; -webkit-text-size-adjust:none;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="40" /></td><td valign="middle" bgcolor="#201d1d" style="background-color: #201d1d;"><![endif]-->
+            <span class="textfade font12" style="font-family:'Montserrat', sans-serif; font-weight:400; color:#ffffff; font-size:1em; line-height:1.2em; display:inline-block; letter-spacing:1px; padding: 15px 4px 15px 4px; background-color:#201d1d; text-transform:uppercase;">
+              <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI0ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank" style="color:#ffffff; text-decoration:none;">FREE UK DELIVERY ON ORDERS OVER &#163;50</a>
+            </span>
+            <!--[if (gte mso 12)|(IE)]></td><td bgcolor="#201d1d" style="background-color:#201d1d;font-size:1px;line-height:1px; -webkit-text-size-adjust:none;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="40" /></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td align="center" height="10" valign="middle">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="NoMob" width="100"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="100" height="1" border="0" alt="" style="display: block;"></td>
+    <td class="padLR15" width="100%" valign="top" align="center" style="text-align: center; vertical-align: top; font-size: 0;">
+      <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI1ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank"><img src="https://ewm-mail.com/imgproxy/img/2022982724/EWM_logo.png" width="586" height="auto" style="border:none; margin:0px; text-align: center; display:block; outline:none; text-decoration:none;" class="img100pc" alt="The Edinburgh Woollen Mill" /></a>
+    </td>
+    <td class="NoMob" width="100"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="100" height="1" border="0" alt="" style="display: block;"></td>
+  </tr>
+  <tr>
+    <td align="center" height="10" valign="middle">&nbsp;</td>
+  </tr>
+</table>
+
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td width="100%" valign="top" align="center" style="text-align: center; vertical-align: top; font-size: 0;">
+      <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI2ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank"><img src="https://ewm-mail.com/imgproxy/img/2037939182/EWM_AW21_InTimeForChristmas_WK43_01.gif" width="786" height="auto" style="border:none; margin:0px; text-align: center; display:block; outline:none; text-decoration:none;" class="img100pc" alt="99p Express Delivery On All Orders" /></a>
+    </td>
+  </tr>
+</table>
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<style type="text/css">
+  @media only screen and (max-width:420px) {
+    *[class].mobTag {font-size:1.28em !important; }
+  }
+</style><table width="786" class="dw100pc" cellpadding="0" cellspacing="0" align="center" border="0" style="width:786px;max-width:786px;background-color: #ffffff;" bgcolor="#ffffff">
+  <tr>
+    <td valign="top" align="center">
+      <table width="786" class="dw100pc" border="0" cellspacing="0" cellpadding="0" style="width:786px;">
+        <tr>
+          <td width="17" class="w10" style="width:17px;"></td>
+          <td width="752" class="w300" style="width:752px;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="mobTag" style="vertical-align:middle; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; font-size: 1.57em; color: #9f1723; line-height: 1.6em; text-align:center; font-weight:normal; letter-spacing:1px;"><span style="font-family:'Montserrat', sans-serif; font-weight:400;">WOMENSWEAR&nbsp;
+</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="17" class="w10" style="width:17px;"></td>
+        </tr>
+        <tr>
+          <td colspan="3" height="3" style="font-size:1px; line-height:1px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block;" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td class="dw100pc" width="100%" align="center" style="width: 100% !important;">
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="0"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI3ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=0&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="1"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI4ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=1&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="2"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI5ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=2&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="3"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI6ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=3&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td class="dw100pc" width="100%" align="center" style="width: 100% !important;">
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="0"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI7ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=4&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="1"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI8ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=5&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="2"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaI9ITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=6&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="3"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIaITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=7&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<style type="text/css">
+  @media only screen and (max-width: 640px) {
+    *[class].alignCenter {text-align: center !important; padding-left: 8% !important; padding-right: 8% !important; }
+  }
+  @media only screen and (max-width: 480px) {
+    *[class].alignCenter {text-align: center !important; padding-left: 8% !important; padding-right: 8% !important; }
+  }
+</style><table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td style="height:20px; font-size:2px; line-height:1.25em;" height="20">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="320" align="center" style="text-align:center;" class="alignCenter">
+      <table class="dw100pc" align="center" bgcolor="#9f1723" width="320" border="0" cellspacing="0" cellpadding="0" style="background-color: #9f1723; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;">
+        <tr>
+          <td align="center" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; border: 0px solid #9f1723;">
+            <!--[if (gte mso 12)|(IE)]><table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#9f1723" style="background-color:#9f1723;font-size:1px;line-height:1px; -webkit-text-size-adjust:none; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="42" /></td><td valign="middle" bgcolor="#9f1723" style="background-color: #9f1723;"><![endif]-->
+            <span style="font-family:'Montserrat', sans-serif !important; font-weight:400; color:#ffffff; font-size:1em; line-height:1.2em; display:inline-block; letter-spacing:1px; padding: 15px 30px 15px 30px; background-color:#9f1723;">
+              <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIbITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank" style="color:#ffffff; text-decoration:none;">SHOP NOW</a>
+            </span>
+            <!--[if (gte mso 12)|(IE)]></td><td bgcolor="#9f1723" style="background-color:#9f1723;font-size:1px;line-height:1px; -webkit-text-size-adjust:none; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="42" /></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="height:20px; font-size:2px; line-height:1.25em;" height="20">&nbsp;</td>
+  </tr>
+</table>
+
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<style type="text/css">
+  @media only screen and (max-width:420px) {
+    *[class].mobTag {font-size:1.28em !important; }
+  }
+</style><table width="786" class="dw100pc" cellpadding="0" cellspacing="0" align="center" border="0" style="width:786px;max-width:786px;background-color: #ffffff;" bgcolor="#ffffff">
+  <tr>
+    <td valign="top" align="center">
+      <table width="786" class="dw100pc" border="0" cellspacing="0" cellpadding="0" style="width:786px;">
+        <tr>
+          <td width="17" class="w10" style="width:17px;"></td>
+          <td width="752" class="w300" style="width:752px;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="mobTag" style="vertical-align:middle; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; font-size: 1.57em; color: #9f1723; line-height: 1.6em; text-align:center; font-weight:normal; letter-spacing:1px;"><span style="font-family:'Montserrat', sans-serif; font-weight:400;">MENSWEAR
+</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="17" class="w10" style="width:17px;"></td>
+        </tr>
+        <tr>
+          <td colspan="3" height="3" style="font-size:1px; line-height:1px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block;" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td class="dw100pc" width="100%" align="center" style="width: 100% !important;">
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="0"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIcITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=0&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="1"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIdITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=1&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="2"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIeITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=2&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="3"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIfITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=3&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td class="dw100pc" width="100%" align="center" style="width: 100% !important;">
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="0"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIgITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=4&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="imagecontainer" data-imageindex="1"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIhITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=5&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]></td><td><![endif]-->
+      <table align="left" border="0" cellspacing="0" cellpadding="0" width="393" class="dw100pc">
+        <tr>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="2"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIiITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=6&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+          <th width="50%" id="social-proof-winter-specials-men-imagecontainer" align="center" height="auto" valign="top" border="0" style="border-collapse: collapse;" class="padT5 imagecontainer" data-imageindex="3"><a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIjITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE&req=e%3Djohn.doe.youniq%40gmail.com" target="_blank"><img src="https://c6.dycdn.net/o1kw74j0/s/social-proof-winter-specials-men/?k=54uzzk9&e=john.doe.youniq@gmail.com&ibin=7&format=dynamicimage" width="192" height="auto" style="border:none; display:block; max-width:192px; outline:none; text-decoration:none; text-align:center;" class="recimg" alt="Shop Now" /></a></th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<style type="text/css">
+  @media only screen and (max-width: 640px) {
+    *[class].alignCenter {text-align: center !important; padding-left: 8% !important; padding-right: 8% !important; }
+  }
+  @media only screen and (max-width: 480px) {
+    *[class].alignCenter {text-align: center !important; padding-left: 8% !important; padding-right: 8% !important; }
+  }
+</style><table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td style="height:20px; font-size:2px; line-height:1.25em;" height="20">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="320" align="center" style="text-align:center;" class="alignCenter">
+      <table class="dw100pc" align="center" bgcolor="#9f1723" width="320" border="0" cellspacing="0" cellpadding="0" style="background-color: #9f1723; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;">
+        <tr>
+          <td align="center" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; border: 0px solid #000001;">
+            <!--[if (gte mso 12)|(IE)]><table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#9f1723" style="background-color:#9f1723;font-size:1px;line-height:1px; -webkit-text-size-adjust:none; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="42" /></td><td valign="middle" bgcolor="#9f1723" style="background-color: #9f1723;"><![endif]-->
+            <span style="font-family:'Montserrat', sans-serif !important; font-weight:400; color:#ffffff; font-size:1em; line-height:1.2em; display:inline-block; letter-spacing:1px; padding: 15px 30px 15px 30px; background-color:#9f1723;">
+              <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIkITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank" style="color:#ffffff; text-decoration:none;">SHOP NOW</a>
+            </span>
+            <!--[if (gte mso 12)|(IE)]></td><td bgcolor="#9f1723" style="background-color:#9f1723;font-size:1px;line-height:1px; -webkit-text-size-adjust:none; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="42" /></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="height:20px; font-size:2px; line-height:1.25em;" height="20">&nbsp;</td>
+  </tr>
+</table>
+
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td width="100%" valign="top" align="center" style="text-align: center; vertical-align: top; font-size: 0;">
+      <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIlITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank"><img src="https://ewm-mail.com/imgproxy/img/2037865938/EWM_AW21_12DealsOfChristmas_Day01_WK41_05.jpg" width="786" height="auto" style="border:none; margin:0px; text-align: center; display:block; outline:none; text-decoration:none;" class="img100pc" alt="E-gift Cards" /></a>
+    </td>
+  </tr>
+</table>
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<style type="text/css">
+  @media only screen and (max-width:420px) {
+    *[class].mobFontS {font-size:1em !important; }
+  }
+</style><table width="786" class="dw100pc" cellpadding="0" cellspacing="0" align="center" border="0" style="width:786px;max-width:786px;background-color: #ffffff;" bgcolor="#ffffff">
+  <tr>
+    <td valign="top" align="center">
+      <table width="786" class="dw100pc" border="0" cellspacing="0" cellpadding="0" style="width:786px;">
+        <tr>
+          <td colspan="3" height="3" style="font-size:1px; line-height:1px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block;" /></td>
+        </tr>
+        <tr>
+          <td width="17" class="w10" style="width:17px;"></td>
+          <td width="752" class="w300" style="width:752px;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="mobFontS" valign="top" align="center" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; font-size: 1.1em; text-align:center; line-height:1.57em; color: #000001; font-weight:normal; letter-spacing:1px;"><span style="font-family:'Montserrat', sans-serif; font-weight:400;">Running out of time to buy someone the perfect gift? Give&nbsp;<br />them an E-giftcard and allow that lucky someone to&nbsp;<br />choose anything they like...&nbsp;
+</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="17" class="w10" style="width:17px;"></td>
+        </tr>
+        <tr>
+          <td colspan="3" height="3" style="font-size:1px; line-height:1px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block;" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="15" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<style type="text/css">
+  @media only screen and (max-width: 640px) {
+    *[class].alignCenter {text-align: center !important; padding-left: 8% !important; padding-right: 8% !important; }
+  }
+  @media only screen and (max-width: 480px) {
+    *[class].alignCenter {text-align: center !important; padding-left: 8% !important; padding-right: 8% !important; }
+  }
+</style><table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td style="height:20px; font-size:2px; line-height:1.25em;" height="20">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="320" align="center" style="text-align:center;" class="alignCenter">
+      <table class="dw100pc" align="center" bgcolor="#9f1723" width="320" border="0" cellspacing="0" cellpadding="0" style="background-color: #9f1723; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;">
+        <tr>
+          <td align="center" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; border: 0px solid #9f1723;">
+            <!--[if (gte mso 12)|(IE)]><table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#9f1723" style="background-color:#9f1723;font-size:1px;line-height:1px; -webkit-text-size-adjust:none; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="42" /></td><td valign="middle" bgcolor="#9f1723" style="background-color: #9f1723;"><![endif]-->
+            <span style="font-family:'Montserrat', sans-serif !important; font-weight:400; color:#ffffff; font-size:1em; line-height:1.2em; display:inline-block; letter-spacing:1px; padding: 15px 30px 15px 30px; background-color:#9f1723;">
+              <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaImITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank" style="color:#ffffff; text-decoration:none;">SHOP NOW</a>
+            </span>
+            <!--[if (gte mso 12)|(IE)]></td><td bgcolor="#9f1723" style="background-color:#9f1723;font-size:1px;line-height:1px; -webkit-text-size-adjust:none; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px;"><img src="https://ewm-mail.com/imgproxy/img/2022553574/sq_space.png" width="35" height="42" /></td></tr></table><![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="height:20px; font-size:2px; line-height:1.25em;" height="20">&nbsp;</td>
+  </tr>
+</table>
+
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="30" class="h15" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td width="100%" valign="top" align="center" style="text-align: center; vertical-align: top; font-size: 0;">
+      <a href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaInITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank"><img src="https://ewm-mail.com/imgproxy/img/2037909582/EWM_AW21_ChristmasDelivery.jpg" width="786" height="auto" style="border:none; margin:0px; text-align: center; display:block; outline:none; text-decoration:none;" class="img100pc" alt="Last Deliveries For Christmas" /></a>
+    </td>
+  </tr>
+</table>
+<table role="presentation" class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="10" class="h10" align="center" style="font-size:0px; line-height:0px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block; text-align:center;" alt="" /></td>
+  </tr>
+</table>
+<table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="786" align="center" style="width:786px;max-width:786px;background-color: #ffffff;">
+  <tr>
+    <td height="20" class="h15" style="font-size:1px; line-height:1px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle" style="padding:0 2%; font-family:Arial, sans-serif; color:#000001; font-size:12px; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+      <span style="font-family:'Montserrat', sans-serif; font-weight:normal;">
+        *Selected Lines.  All stock subject to availability. See our full terms and conditions&nbsp;<a style="color: #000001; text-decoration:underline;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIoITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE" target="_blank">here</a>.</span>
+    </td>
+  </tr>
+  <tr>
+    <td height="10" class="h5" style="font-size:1px; line-height:1px;">&nbsp;</td>
+  </tr>
+</table>
+
+
+
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="background-color: #ffffff;">
+                <tr>
+                  <td height="20" class="h10" style="font-size:1px; line-height:1px;"><img src="https://ewm-mail.com/imgproxy/img/2015166313/block-spacer.gif" width="1" height="1" border="0" style="display:block;" alt=""/></td>
+                </tr>
+              </table>
+              <!--[if (gte mso 9)|(IE)]>
+<table width="786" align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><![endif]-->
+              <table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="width:100%;max-width:100%;background-color: #ffffff;">
+                <tr>
+                  <td width="100%" align="center" style="width: 100% !important; padding:10px 0;">
+
+                    <table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="340" align="center" style="width:340px;max-width:340px;background-color: #ffffff;">
+                      <tr>
+                        <td class="dw100pc" width="340" align="center" style="width: 340px !important;">
+                          <table class="w160" border="0" align="center" cellspacing="0" cellpadding="0" width="340" style="width: 340px;">
+                            <tr>
+                              <td width="50%" align="center" class="fl-100" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; font-size: 1.428em; color: #000001; line-height: 1em; text-align:center; font-weight:normal; letter-spacing:1px;">
+                                <span style="font-family:'Montserrat', sans-serif !important; font-weight:400;"><a style="color:#000001; text-align:center; line-height:1.6em; text-decoration:none; letter-spacing:normal; text-transform:uppercase;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIpITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE">New In</a></span>
+                                <br />
+                                <br />
+                                <span style="font-family:'Montserrat', sans-serif !important; font-weight:400;"><a style="color:#000001; text-align:center; line-height:1.6em; text-decoration:none; letter-spacing:normal; text-transform:uppercase;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIqITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE">Womens</a></span>
+                                <br />
+                                <br />
+                                <span style="font-family:'Montserrat', sans-serif !important; font-weight:400;"><a style="color:#000001; text-align:center; line-height:1.6em; text-decoration:none; letter-spacing:normal; text-transform:uppercase;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIrITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE">Mens</a></span>
+                              </td>
+                              <td class="NoMob2" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; font-size: 1.428em; color: #000001; line-height: 1em; text-align:center; font-weight:normal; letter-spacing:1px;" height="46" width="10"><span style="font-family:'Montserrat', sans-serif !important; font-weight:400;">&nbsp;</span>
+                              </td>
+                              <td width="50%" align="center" class="fl-100 padT20" style="font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; font-size: 1.428em; color: #000001; line-height: 1em; text-align:center; font-weight:normal; letter-spacing:1px;">
+                                <span style="font-family:'Montserrat', sans-serif !important; font-weight:400;"><a style="color:#000001; text-align:center; line-height:1.6em; text-decoration:none; letter-spacing:normal; text-transform:uppercase;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIsITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE">Stores</a></span>
+                                <br />
+                                <br />
+                                <span style="font-family:'Montserrat', sans-serif !important; font-weight:400;"><a style="color:#000001; text-align:center; line-height:1.6em; text-decoration:none; letter-spacing:normal; text-transform:uppercase;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaItITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE">Account</a></span>
+                                <br />
+                                <br />
+                                <span style="font-family:'Montserrat', sans-serif !important; font-weight:400;"><a style="color:#000001; text-align:center; line-height:1.6em; text-decoration:none; letter-spacing:normal; text-transform:uppercase;" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIuITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE">Blog</a></span>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table><!--[if mso]>
+</td><tr><![endif]-->
+
+              <!--[if (gte mso 9)|(IE)]>
+<table width="786" align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><![endif]-->
+              <table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="width:100%;max-width:100%;background-color: #ffffff;">
+                <tr>
+                  <td width="100%" align="center" style="width: 100% !important; padding:10px 0;">
+
+                    <table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="340" align="center" style="width:340px;max-width:340px;background-color: #ffffff;">
+                      <tr>
+                        <td class="dw100pc" width="340" align="center" style="width: 340px !important;">
+                          <table class="w160" border="0" align="center" cellspacing="0" cellpadding="0" width="340" style="width: 340px;">
+                            <tr>
+                              <td class="w80" width="70" align="" style="">
+                                <a target="_blank" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIvITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE"><img alt="Facebook" src="https://ewm-mail.com/imgproxy/img/2029370182/ewm-facebook.png" border="0" width="70" height="70" vspace="5" hspace="5"></a>
+                              </td>
+                              <td class="w80" width="70" align="" style="">
+                                <a target="_blank" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIwITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE"><img alt="Twitter" src="https://ewm-mail.com/imgproxy/img/2029370208/ewm-twitter.png" border="0" width="70" height="70" vspace="5" hspace="5"></a>
+                              </td>
+                              <td class="w80" width="70" align="" style="">
+                                <a target="_blank" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIxITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE"><img alt="Instagram" src="https://ewm-mail.com/imgproxy/img/2029370206/ewm-instagram.png" border="0" width="70" height="70" vspace="5" hspace="5"></a>
+                              </td>
+                              <td class="w80" width="70" align="" style="">
+                                <a target="_blank" href="http://ewm-mail.com/re?l=D0I10f7b8nIad9jsyaIyITkxfvoqklI10du2bg&s=MAMBBJFAAIOGGFOE"><img alt="Click & Collect" src="https://ewm-mail.com/imgproxy/img/2029370209/ewm-click-collect.png" border="0" width="70" height="70" vspace="5" hspace="5"></a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+              <!--[if mso]>
+</td><tr><![endif]-->
+
+              <table class="dw100pc" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="width:100%;max-width:100%;background-color: #ffffff;">
+                <tr>
+                  <td align="center" height="5" valign="middle">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="center" valign="middle" style="padding-top:10px; padding-right:5px; padding-bottom:0; padding-left:5px; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#000001; font-size:0.857em; line-height:1.4em; font-weight:normal; letter-spacing:normal;"><span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">To make sure you receive our emails, please&nbsp;<br class="NoMob2"/>add <a style="color:#000001; text-decoration: underline; font-weight:500;" href="mailto:newsletter@ewm-mail.com" target="_blank">newsletter@ewm-mail.com</a> to&nbsp;your&nbsp;address&nbsp;book.</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" height="5" valign="middle">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="font15" align="center" valign="middle" style="padding-top:10px; padding-right:20px; padding-bottom:0; padding-left:20px; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#000001; font-size:1.14em; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+                    <span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">
+                      <a style="text-decoration:none; color:#000001; padding-right:2%;" href="http://ewm-mail.com/re?l=BD0I10f7b8nIad9jsyaIkxfvoqklI0I10du2bg&u=http%3A%2F%2Fewm-mail.com%2Fpublic%2Fm%2Fewm-preference-centre%3Fmid%3D2202317735%26uid%3D22569924178%26sig%3DLNOIAMJKFGAMENJJ&s=DFKLFPBODNAEGHFN">PREFERENCES</a>&nbsp;&nbsp;&#124;&nbsp;
+                      <a style="text-decoration:none; color:#000001; padding-left:2%;" href="http://ewm-mail.com/re?l=BD0I10f7b8nIad9jsyaIkxfvoqklI0I10du2bg&u=http%3A%2F%2Fewm-mail.com%2Fpublic%2Fm%2Fewm-unsubscribe%3Fmid%3D2202317735%26uid%3D22569924178%26sig%3DLNOIAMJKFGAMENJJ&s=CPGMNIEDOLGCPEDM">UNSUBSCRIBE</a></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" height="5" valign="middle">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="center" valign="middle" style="padding-top:10px; padding-right:20px; padding-bottom:0; padding-left:20px; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#212121; font-size:1em; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+                    <span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">
+                      <a style="text-decoration:underline; color:#000001;" href="http://ewm-mail.com/public/read_message.jsp?tsp=1640077313988&custid=22328&uid=22569924178&sig=IDFHHPALGNJKEFJK&mid=2202317735&l=D0I10f7b8nIad9jsyaI&slt=0">View&nbsp;Online</a></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" height="5" valign="middle">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td align="center" valign="middle" style="padding-top:10px; padding-right:20px; padding-bottom:0; padding-left:20px; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#000001; font-size:0.857em; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+                    <span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">
+                      Purepay Retail Limited &#124; EWM Online &#124; Global House &#124; 5 Castle Street &#124; Carlisle, CA3&nbsp;8SY&nbsp;&#124;&nbsp;United Kingdom</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="middle" style="padding-top:10px; padding-right:20px; padding-bottom:0; padding-left:20px; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#000001; font-size:0.857em; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+                    <span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">
+                      Registered Office:  Purepay Retail Limited, 1 Fleet Place, Farringdon, London, United Kingdom, EC4M 7WS</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="middle" style="padding-top:10px; padding-right:20px; padding-bottom:0; padding-left:20px; font-family:Arial, 'Arial Narrow', Helvetica, sans-serif; color:#000001; font-size:0.857em; line-height:1.4em; font-weight:normal; letter-spacing:normal;">
+                    <span style="font-family:'Montserrat', sans-serif !important; font-weight:normal;">
+                      &#169; <span>2021</span> &#45; Purepay Retail Limited.</span>
+                      </td>
+                </tr>
+                <tr>
+                  <td height="15" style="font-size:1px; line-height:1px;">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" valign="middle" style="font-family:Arial, sans-serif; color:#ffffff; font-size:8px; line-height:10px; font-weight:normal; letter-spacing:normal;">
+              <a style="text-decoration:underline; color:#ffffff;" href="http://ewm-mail.com/public/read_message.jsp?tsp=1640077313988&custid=22328&uid=22569924178&sig=IDFHHPALGNJKEFJK&mid=2202317735&l=D0I10f7b8nIad9jsyaI&slt=0">View&nbsp;Online</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+      <!--android gmail zoom fix-->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr class="NoMob">
+          <td height="1" style="font-size:1px; line-height:1px; min-width:576px">
+          </td>
+        </tr>
+      </table>
+      <!--/android gmail zoom fix-->
+    <img src="http://ewm-mail.com/ev/co/ewm-mail?eventid=2200020028&mid=2202317735&uid=22569924178" width="1" height="1" alt="" /><img src="http://ewm-mail.com/tr/p.gif?uid=22569924178&mid=2202317735&msd=1640077240236&s=JJJJCCILKABEPAFL&st=0" width="1" height="1" alt="" /></body>
+  </html>

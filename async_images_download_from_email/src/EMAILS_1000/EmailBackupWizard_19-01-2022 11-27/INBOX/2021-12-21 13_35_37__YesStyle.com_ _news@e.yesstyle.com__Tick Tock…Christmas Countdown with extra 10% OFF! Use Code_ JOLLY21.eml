@@ -1,0 +1,592 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp3852000wrd;        Tue, 21 Dec
+ 2021 05:35:37 -0800 (PST)
+Received: from a38-85.smtp-out.amazonses.com (a38-85.smtp-out.amazonses.com.
+ [54.240.38.85])        by mx.google.com with ESMTPS id
+ gh12si8264885qvb.242.2021.12.21.05.35.37        for
+ <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 21 Dec 2021
+ 05:35:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw5AC/pnXYoPPzIrqUDiLB3HfrjpA+CNm37zU+fXbIoABnhRSRlfSI6Doyl5GsQUYtb75Lf
+X-Received: by 2002:a05:620a:288c:: with SMTP id j12mr1946494qkp.66.1640093737788;       
+ Tue, 21 Dec 2021 05:35:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640093737; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=0bBPy/B4H2NRQ6EMcMk5vg3LY5hiGq9GQIha3UMssIIn32b2Tu84N/OBP/AA9CsRBb        
+ UGt5C04d7RlbcyEkr0rMTMk7BHaVRHk0zMa865ifDy5gjSjJU1Hn2ti1urORTxETtOYy        
+ ek5nP3Z0w2DkFoTLzYkkj+m3aglqL3Nc1Cj6QvoJm5C2FzbYnvqzxo6HsV67kKLqzBIq        
+ V7kmg1lGAPciyNyQTte53YAddiqo70eZEYhdDwXxvZIrKSrBlSsgMG6fCsUixS7Vwc0I        
+ p2+wiW4SV8k7IcdK7sME8ByDT8vz6QsfGqJBVGmfOpTzL2xQOhCumdDEOAbk2+5Oz2k5        
+ zvPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:date:content-transfer-encoding:mime-version:subject        
+ :message-id:to:reply-to:from:dkim-signature:dkim-signature;       
+ bh=rICxYPQq1Kx14ZssvVoRadSuU69L31VoogBMmfl3I58=;       
+ b=JYg/sCMFjFBWYxY1QBuzrMRkWRXW9MPgYtY+njGVHKcAqNLhzx894DXiHO9tl1laHd        
+ 6wqwNAQOsav9Oas3vGN+Bynlxq6kHPjFQp8WjlxpcRYrwITXBUeHitQgYSh4LKhwppk3        
+ oeJXQ7ZL4rlyGz3Z+LSmRd9DpKJ4j8megZNXZN2D1IrZs+cM7Yc0msixMQyPfnyh1ze2        
+ 2b+LnvYBaGjP7PU8ezQAAFOpAdtqV7PReofSDvz6kXjGnOKLI6o64O9ZcRv60mMltzgK        
+ bOOMcgo1SLp90uBrBWSMi/mCXotdxmfAa5BMgSZKKZoWxaNLxYUozCag232TJOfa+JR9        
+ IVVQ==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@e.yesstyle.com
+ header.s=dgg63y4u4zmh5guegzfy26lwj3o5lmed header.b=r94HgQ4f;       dkim=pass
+ header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug
+ header.b="OgbC68/T";       spf=pass (google.com: domain of
+ 0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@bounce.e.yesstyle.com designates 54.240.38.85 as permitted sender)
+ smtp.mailfrom=0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@bounce.e.yesstyle.com;       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=e.yesstyle.com
+Return-Path: <0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@bounce.e.yesstyle.com>
+Received-SPF: pass (google.com: domain of
+ 0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@bounce.e.yesstyle.com designates 54.240.38.85 as permitted sender) client-ip=54.240.38.85;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@e.yesstyle.com
+ header.s=dgg63y4u4zmh5guegzfy26lwj3o5lmed header.b=r94HgQ4f;       dkim=pass
+ header.i=@amazonses.com header.s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug
+ header.b="OgbC68/T";       spf=pass (google.com: domain of
+ 0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@bounce.e.yesstyle.com designates 54.240.38.85 as permitted sender)
+ smtp.mailfrom=0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@bounce.e.yesstyle.com;       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=e.yesstyle.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/simple;	s=dgg63y4u4zmh5guegzfy26lwj3o5lmed; d=e.yesstyle.com;
+ t=1640093737;	h=From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Date;	bh=rICxYPQq1Kx14ZssvVoRadSuU69L31VoogBMmfl3I58=;	b=r94HgQ4f43C5X8LZsiogVsqgHmEdRyvW+udS7pJGTBJ+A5OALfqqx5kmp/IMQme7	crZtlGFlCMgMXTEQOG80Eejbc158RnHZw6S56myOOzgPOQzbeyi+cNzf2HRrVLLYIlX	bXFiaGq3WTSE6eXaUVspGZaP9l4ot83rP2RttIZ0=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/simple;	s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com;
+ t=1640093737;	h=From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Date:Feedback-ID;	bh=rICxYPQq1Kx14ZssvVoRadSuU69L31VoogBMmfl3I58=;	b=OgbC68/T7hfjtdmLSGaHEVb488ID+y8S9fvOppeTMl5NK5E/zKQEFbiTz1VgEcbJ	ZQiAlJircRxfAEXioANhvIOfeJwzcymOxuU1HWYKRMeRrbwzmYLFmMLcLynmjHolceU	Ac4cmekqAnhZ9C+XAac9dZjXQVrSeoDdvhFsmnVU=
+From: "YesStyle.com" <news@e.yesstyle.com>
+Reply-To: news@e.yesstyle.com
+To: john.doe.youniq@gmail.com
+Message-ID: <0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000@email.amazonses.com>
+Subject: =?UTF-8?Q?Tick_Tock=E2=80=A6Christmas_Countdown_wit?=
+ =?UTF-8?Q?h_extra_10%_OFF!_Use_Code:_JOLLY21?=
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-SES-MESSAGE_ID: Y6XZJIRE
+Date: Tue, 21 Dec 2021 13:35:37 +0000
+Feedback-ID: 1.us-east-1.3JBUSUQLEpSKVPCWfOSx4pP4AJBu/103Z2NWwCr/ze4=:AmazonSES
+X-SES-Outgoing: 2021.12.21-54.240.38.85
+
+<!doctype html>
+<html>
+ <head>
+ <meta name=3D"viewport" content=3D"width=3Ddevice-width" />
+ <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+ <title>
+ Tick Tock=E2=80=A6Christmas Countdown with extra 10% OFF! Use Code: JOLLY2=
+1 </title>
+ <style type=3D"text/css">
+ // NO_INLINE_STYLE_REPLACEMENT
+ body{background-color:#FFF}
+ body, td{font-size:12px; font-family:arial, helvetica, Microsoft YaHei; -w=
+ebkit-font-smoothing: antialiased; -webkit-text-size-adjust:100%}
+ a{color:#363}=20
+ img{vertical-align:middle}
+ @media (max-width: 625px) {
+ =2Esm-invisible{display:none!important}
+ =2EdeviceWidth, =2EcontentWidth, =2Exs-responsive{width:100%!important; pa=
+dding:0; margin:0 auto}
+ =2Eprdblock{width:48%!important}
+ }=20
+ @media (max-width: 540px) {
+ =2Exs-responsive, =2Ecollogo, =2Ecolissue{width:100%!important}
+ =2Exs-invisible, =2Egmblock{display:none!important}
+ =2Etext-left, =2Etext-right{text-align:center!important}
+ =2Ecolissue{padding:6px 0 7px!important}
+ }=20
+ @media handheld, only screen and (max-width: 350px) {
+ =2Exxs-responsive{width:290px}=20
+ =2Ehlblock{width:100% !important}
+
+ }=20
+ @media handheld, only screen and (min-width: 351px) {=20
+ =2Exxs-responsive{width:48%}
+ =2Ehlblock{width:50%}
+ }=20
+ =2Etext-left{text-align:left}
+ =2Etext-right{text-align:right}
+ =2EdeviceWidth{width:600px}
+ =2Exs-invisible{display:block}
+ =2Ecollogo{width:35%}
+ =2Ecolissue{width:65%}
+ =2Eprdblock{width:33%\9 !important; margin:1px\9}
+ </style>=20
+ </head>
+ <body text=3D"#666666" vlink=3D"#444444" alink=3D"#444444" link=3D"#666666=
+">
+ <center>
+ <span style=3D"opacity:0; display:none; font-size:1px;">Up to 50% OFF Holi=
+day Essentials!</span>
+ <div style=3D"width:600px; margin:0 auto; padding-bottom:5px; text-align:c=
+enter" class=3D"deviceWidth">=20
+ <span class=3D"text-left collogo" style=3D"float:left; display:inline-bloc=
+k; vertical-align:bottom; padding:7px 0; text-align:left">
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fhome=2Ehtml%3Fmcg=3Demail%26utm_medium=3Demail%26u=
+tm_source=3Dedm_global/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807=
+730-000000/65hLw0e-uvN7C8Y6KDTQda9tFwU=3D249"><img src=3D"https://ddvql06zg=
+3s2o=2Ecloudfront=2Enet/Assets/res/imgs/newsletter/common/newsletter_logo_y=
+s_2x=2Epng" alt=3D"YesStyle=2Ecom" border=3D"0" width=3D"153" height=3D"21"=
+/></a>
+ </span><span style=3D"float:right; display:inline-block; vertical-align:bo=
+ttom; padding:15px 0 4px; text-align:right; font-family:arial, helvetica, M=
+icrosoft YaHei" class=3D"text-right colissue">
+ <b><font size=3D"2" color=3D"#999999" style=3D"white-space:nowrap">Shop Fa=
+shion, Beauty & Lifestyle Online</font></b></span>
+ <br clear=3D"all" />
+ </div>
+
+
+	<div class=3D"deviceWidth" style=3D"margin:0 auto; width:600px; clear:both=
+; background-color:#c40d1a;">
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fhelp%2Fsection=2Ehtml%2Fhsi=2E2235/1/0100017ddd346=
+178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/BbnZMead3c8HTTqMfN4_EseYBA0=
+=3D249" style=3D"display:block; padding:10px; background-color:#444444; tex=
+t-align:center; text-decoration:none;">
+ <font color=3D"#FFFFFF">Extra 10% OFF with code : <b><font color=3D"#f8f13=
+4">JOLLY21</font></b> &nbsp;<font style=3D"color:rgba(255,255,255,0=2E5)">|=
+</font>&nbsp; <nobr><b><font color=3D"#f8f134">Offer ends Dec=2E24, 2021</f=
+ont></b></nobr></font>
+=20
+ </a>
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fhome=2Ehtml%3F%26mcg=3Demail%26utm_medium=3Demail%=
+26utm_source=3Dedm_global%26utm_campaign=3D21w51%26utm_content=3Dmainbanner=
+/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/6C4tHWb2zSp=
+ohsMkqCkLcHcvECM=3D249"><img src=3D"https://ddvql06zg3s2o=2Ecloudfront=2Ene=
+t/Assets/res/imgs/newsletter/2112/christmas_countdown_edm_en=2Ejpg" border=
+=3D"0" title=3D"Tick Tock=E2=80=A6Christmas Countdown with extra 10% OFF! U=
+se Code: JOLLY21" width=3D"100%" class=3D"xs-responsive" /></a>
+	</div>
+=20
+	<div class=3D"deviceWidth" style=3D"margin:0 auto; width:600px;">
+ <br/>
+=20
+	</div>=09
+
+
+
+=20
+ <div class=3D"deviceWidth" style=3D"margin:0 auto; width:600px" >
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fbeauty-beauty%2Flist=2Ehtml%2Fbcc=2E15478_bpt=2E46=
+%3Fsb=3D136%26oc=3D47%26oc=3D2/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d=
+5f479807730-000000/CTlxZeusNPg3I-PMfBjVPcM9FFs=3D249"><img src=3D"https://d=
+dvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/newsletter/common/flashsale=
+/wpd_edm_1_en=2Ejpg" border=3D"0" width=3D"100%" class=3D"xs-responsive" />=
+</a>
+ </div>
+=20
+
+
+<br>
+
+=20
+ <div class=3D"deviceWidth" style=3D"margin:0 auto; width:600px" >
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fwomen-pants%2Flist=2Ehtml%2Fbcc=2E14091_bpt=2E46%3=
+Fsb=3D136%26pr=3D0~13%26oc=3D2/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d=
+5f479807730-000000/M1My1qniXlZ_U_vLKTZso42SXik=3D249"><img src=3D"https://d=
+dvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/newsletter/2112/below_fashi=
+on_wk48_en=2Ejpg" border=3D"0" width=3D"100%" class=3D"xs-responsive" /></a=
+>
+ </div></br></br>
+=09
+
+</br>
+
+<div style=3D"margin:0 auto; text-align:justify; font-size:10px; width:600p=
+x; font-family:arial, helvetica, Microsoft YaHei" class=3D"deviceWidth">
+
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1100335012%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/akVLQQZccmjm7qzL0thGoVQwfYk=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/58/164/M_p0146=
+716458=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">51% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">Gelinb</B><BR/>V-Neck Knit Panel L=
+ong Sleeve Dress<BR/><s>US$ 36=2E70</s> <font color=3D"#FF6600">US$ 17=2E98=
+</font></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1100330999%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/ouy0_DPCCwUVnnxPfXEs8jt0mtU=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/99/781/M_p0146=
+678199=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">51% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">FARCE</B><BR/>Plaid Pleated Skirt<=
+BR/><s>US$ 23=2E60</s> <font color=3D"#FF6600">US$ 11=2E56</font></a></p><b=
+r/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1100330352%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/EsySR5zUJi-ZamRXrC1k_m2CH1U=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/36/782/M_p0146=
+678236=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">51% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">JOWI</B><BR/>Long-Sleeve Floral Bl=
+ouse<BR/><s>US$ 16=2E10</s> <font color=3D"#FF6600">US$ 7=2E89</font></a></=
+p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1095349030%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/_qyccRub_TZOMvVnt7bj6bwJGos=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/64/518/M_p0135=
+051864=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">Calypso</B><BR/>Asymmetric Alloy H=
+eart Pendant Freshwater Pearl Necklace<BR/><s>US$ 6=2E20</s> <font color=3D"=
+#FF6600">US$ 4=2E96</font></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1078849403%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/P-imE22E4YJ4gp2lrTyVynevLSw=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/38/589/M_p0116=
+958938=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">Lots2luv</B><BR/>Embroidered Lette=
+ring Beret Hat<BR/><s>US$ 11=2E60</s> <font color=3D"#FF6600">US$ 9=2E28</f=
+ont></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1077186668%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/QWNsLcZ8g4J5ydd7TlohYHhei_c=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/03/527/M_p0114=
+052703=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">Show Mind</B><BR/>Alloy Earring (V=
+arious Designs)<BR/><s>US$ 6=2E40</s> <font color=3D"#FF6600">US$ 5=2E12</f=
+ont></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1058584743%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/KjDT9YprMH9ce9dWZWHVZRJu3Tw=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/17/949/M_p0067=
+394917=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">Elizavecca</B><BR/>Milky Piggy EGF=
+ Elastic Retinol Cream 100ml<BR/><s>US$ 18=2E60</s> <font color=3D"#FF6600"=
+>US$ 14=2E88</font></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1105533832%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/B5tFTcy6HQOf69M4IGpOvjgbbQQ=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/26/901/M_p0158=
+790126=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">I'm from</B><BR/>Bestseller Miniat=
+ure Set<BR/><s>US$ 23=2E20</s> <font color=3D"#FF6600">US$ 18=2E56</font></=
+a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1077326895%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/WQozDF-cLOBCdHZlEby8gE6bDww=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/25/806/M_p0114=
+380625=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">NEOGEN</B><BR/>Dermalogy Real Ferm=
+ent Micro Serum<BR/><s>US$ 33=2E20</s> <font color=3D"#FF6600">US$ 26=2E56<=
+/font></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1066466856%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/ieNPC2GT9gOL0_s_fxme7REpWXA=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/22/890/M_p0087=
+489022=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">CLIO</B><BR/>Kill Cover Liquid Con=
+cealer (4 Colors)<BR/><s>US$ 12=2E90</s> <font color=3D"#FF6600">US$ 10=2E3=
+2</font></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1105673420%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/sRYjzKXZeMjrWir7ax4OpP65s8E=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/61/117/M_p0159=
+111761=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">peripera</B><BR/>Ink Mood Matte St=
+ick - 8 Colors<BR/><s>US$ 11=2E60</s> <font color=3D"#FF6600">US$ 9=2E28</f=
+ont></a></p><br/></span>
+<span class=3D"prdblock" style=3D"width:32%; display:inline-block; vertical=
+-align:top"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/h=
+ttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhtt=
+p:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Finfo=2Ehtml%2Fpid=2E1100580255%3Fmcg=3De=
+mail%26utm_medium=3Demail%26utm_source=3Dedm_global%26utm_campaign=3D21w51%=
+26utm_content=3Dproduct/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/ddXv2OCXVQG3dNQ7AgvEjUKfd9Q=3D249" style=3D"color:#666; font-fa=
+mily:arial, verdana, Microsoft YaHei; font-size:8pt; text-decoration:none">=
+<IMG src=3D"https://d1flfk77wl2xk4=2Ecloudfront=2Enet/Assets/55/716/M_p0147=
+271655=2Ejpg" border=3D"0" width=3D"100%" /><BR/><span style=3D"font-weight=
+:bold; padding:2px 5px; background-color:#F00; color:#FFF; float:right; bor=
+der-radius: 0 0 0 8px">20% OFF</span><p style=3D"text-align:left; margin-to=
+p:3px"><B style=3D"display:inline-block">UNLEASHIA</B><BR/>Glitterpedia Eye=
+ Palette - 3 Types<BR/><s>US$ 29=2E70</s> <font color=3D"#FF6600">US$ 23=2E7=
+6</font></a></p><br/></span>
+<span style=3D"display:inline-block; width:100%; height:1px"></span>
+
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+	<tr><td colspan=3D"2"><img width=3D"100%" src=3D"https://ddvql06zg3s2o=2Ec=
+loudfront=2Enet/Assets/res/imgs/newsletter/2111/stock_clearance_edm_banner_=
+2111_top_en=2Ejpg" style=3D"display:block;"></td></tr>
+	<tr>
+ <td width=3D"50%">
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fwomen-women%2Flist=2Ehtml%2Fbcc=2E14068_bpt=2E46%3=
+Fsb=3D165%26oc=3D30/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730=
+-000000/CqZxKCsddJovF4xtYBBY2z4QMTo=3D249"><img width=3D"100%" src=3D"https=
+://ddvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/newsletter/2108/stock_c=
+learance_edm_banner_left_en=2Ejpg" style=3D"display:block;"></a>
+ </td>
+ <td width=3D"50%"><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Em=
+e/L0/http:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE=
+%2Bhttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Fwomen-women%2Flist=2Ehtml%2Fbcc=
+=2E15478_bpt=2E46%3Fsb=3D165%26oc=3D30/1/0100017ddd346178-be80f42e-5d33-49d=
+c-9f46-d5f479807730-000000/HjGWyku5hB28ZmBprmCUd-6Qghw=3D249"><img width=3D"=
+100%" src=3D"https://ddvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/newsl=
+etter/2108/stock_clearance_edm_banner_right_en=2Ejpg" style=3D"display:bloc=
+k;"></a></td>
+	</tr>
+</table>
+=20
+
+<br>
+
+
+=20
+ <div class=3D"deviceWidth" style=3D"margin:0 auto; width:600px" >
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fys-by-yesstyle%2Flist=2Ehtml%2Fbpt=2E299_bid=2E327=
+688%3F/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/_6MFq=
+ssHqGXvxSuzy3re-IoFnhQ=3D249"><img src=3D"https://ddvql06zg3s2o=2Ecloudfron=
+t=2Enet/Assets/res/imgs/newsletter/2112/ys_by_yesstyle2_edm_en=2Ejpg" borde=
+r=3D"0" width=3D"100%" class=3D"xs-responsive" /></a>
+ </div></br>
+=20
+
+<br/><br/><br/>
+<div style=3D"width:600px; text-align:center" class=3D"deviceWidth">
+	<div style=3D"display:table; width:100%;">
+ <div style=3D"display:table-cell; vertical-align:middle;"><span style=3D"d=
+isplay:block; border-bottom:1px solid #666;"></span></div>
+ <div style=3D"display:table-cell; width:1%; white-space:nowrap!important;"=
+><b style=3D"font-family:arial, helvetica, Microsoft YaHei; font-size:20px;=
+ text-transform:uppercase; padding:0 20px;">See More at YesStyle</b></div>
+ <div style=3D"display:table-cell; vertical-align:middle;"><span style=3D"d=
+isplay:block; border-bottom:1px solid #666;"></span></div>
+	</div>
+	<div style=3D"font-family:arial, helvetica, Microsoft YaHei; font-size:16p=
+x; text-transform:uppercase; margin-top:16px;">
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fhome=2Ehtml%3Fmcg=3Demail%26utm_medium=3Demail%26u=
+tm_source=3Dedm_global/2/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807=
+730-000000/GPI73zIBMG9e_WM2_YHRvouMLw0=3D249" style=3D"display:block; color=
+:#666; text-decoration:none; padding:16px 0; background-color:#ececec; marg=
+in-bottom:4px;">Women</a><a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstr=
+ack=2Eme/L0/http:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY=
+6XZJIRE%2Bhttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Fbeauty=2Ehtml%3Fmcg=3Demai=
+l%26utm_medium=3Demail%26utm_source=3Dedm_global/1/0100017ddd346178-be80f42=
+e-5d33-49dc-9f46-d5f479807730-000000/PPOcEjV2FFfkAQOutg4Y3Y3cq_A=3D249" sty=
+le=3D"display:block; color:#666; text-decoration:none; padding:16px 0; back=
+ground-color:#ececec; margin-bottom:4px;">Beauty</a><a href=3D"http://x7n4b=
+qly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fwww=2Eyesstyle=2Ecom%2Fas=
+sociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2=
+Fmen=2Ehtml%3Fmcg=3Demail%26utm_medium=3Demail%26utm_source=3Dedm_global/1/=
+0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/_8sh-k7PbDKkZ3=
+58EFYb6QIfTHQ=3D249" style=3D"display:block; color:#666; text-decoration:no=
+ne; padding:16px 0; background-color:#ececec; margin-bottom:4px;">Men</a><a=
+ href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Flifestyle=2Ehtml%3Fmcg=3Demail%26utm_medium=3Demai=
+l%26utm_source=3Dedm_global/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f4=
+79807730-000000/PKu4oEiKPnSTabYgKwZDLS3dHok=3D249" style=3D"display:block; =
+color:#666; text-decoration:none; padding:16px 0; background-color:#ececec;=
+ margin-bottom:4px;">Lifestyle</a><a href=3D"http://x7n4bqly=2Er=2Eus-east-=
+1=2Eawstrack=2Eme/L0/http:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate-referral=
+=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Fspecial-offers=
+=2Ehtml%3Fmcg=3Demail%26utm_medium=3Demail%26utm_source=3Dedm_global/1/0100=
+017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/uQb8H74ZnHJ5YSRrFL=
+rXsBzUHOs=3D249" style=3D"display:block; color:#666; text-decoration:none; =
+padding:16px 0; background-color:#ececec; margin-bottom:4px;">Sale</a><a hr=
+ef=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fwww=2Ey=
+esstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=2Eyes=
+style=2Ecom%2Fblog%3Fmcg=3Demail%26utm_medium=3Demail%26utm_source=3Dedm_gl=
+obal/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/r5zbl5l=
+c0lvKs5VD_EGJKr0E_QU=3D249" style=3D"display:block; color:#666; text-decora=
+tion:none; padding:16px 0; background-color:#ececec;">Blog</a>	</div>
+	<div style=3D"padding:24px 0;">
+ <a href=3D"https://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/https:%2F%2=
+Fwww=2Efacebook=2Ecom%2Fyesstyle/1/0100017ddd346178-be80f42e-5d33-49dc-9f46=
+-d5f479807730-000000/6kbRSUQSwyG8aSAoz-t81an_3Yk=3D249"><img src=3D"https:/=
+/ddvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/demo/newsletter/facebook_=
+edm_footer_2021=2Epng" border=3D"0" hspace=3D"2" vspace=3D"2" alt=3D"Facebo=
+ok" width=3D"40px"/></a>
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Etwitter=2Ecom%2Fyesstyle/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f4=
+79807730-000000/nK4DHSaV4JSupvQi7j39NOmBm44=3D249"><img src=3D"https://ddvq=
+l06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/demo/newsletter/twitter_edm_fo=
+oter_2021=2Epng" border=3D"0" hspace=3D"2" vspace=3D"2" alt=3D"Twitter" wid=
+th=3D"40px"/></a>
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fpin=
+terest=2Ecom%2Fyesstyle/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/8gKBZZvXmPZpC5Uiy_L22N_iCpU=3D249"><img src=3D"https://ddvql06z=
+g3s2o=2Ecloudfront=2Enet/Assets/res/imgs/demo/newsletter/pinterest_edm_foot=
+er_2021=2Epng" border=3D"0" hspace=3D"2" vspace=3D"2" alt=3D"Pinterest" wid=
+th=3D"40px"/></a>
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fins=
+tagram=2Ecom%2Fyesstyle/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980=
+7730-000000/nUQc_rO44WO5pB2KNtZQVAVngAQ=3D249"><img src=3D"https://ddvql06z=
+g3s2o=2Ecloudfront=2Enet/Assets/res/imgs/demo/newsletter/instagram_edm_foot=
+er_2021=2Epng" border=3D"0" hspace=3D"2" vspace=3D"2" alt=3D"Instagram" wid=
+th=3D"40px"/></a>
+ <a href=3D"https://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/https:%2F%2=
+Fwww=2Eyoutube=2Ecom%2Fyesstyle/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-=
+d5f479807730-000000/u56t8ABGHvjBRJeIiOiIwj7iXF4=3D249"><img src=3D"https://=
+ddvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/demo/newsletter/youtube_ed=
+m_footer_2021=2Epng" border=3D"0" hspace=3D"2" vspace=3D"2" alt=3D"Youtube"=
+ width=3D"40px"/></a>
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fyes=
+style=2Etumblr=2Ecom/1/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f47980773=
+0-000000/QY_aOrwMpKCCk_NePC6Xo3DKvng=3D249"><img src=3D"https://ddvql06zg3s=
+2o=2Ecloudfront=2Enet/Assets/res/imgs/demo/newsletter/tumblr_edm_footer_202=
+1=2Epng" border=3D"0" hspace=3D"2" vspace=3D"2" alt=3D"Tumblr" width=3D"40p=
+x"/></a>
+	</div>
+	<div>
+ <b style=3D"font-size:20px; line-height:25px; text-align:center; text-tran=
+sform:uppercase;">Download our app</b>
+ <div style=3D"margin-top:12px;">
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fapp=
+s=2Eapple=2Ecom%2Fus%2Fapp%2Fyesstyle%2Fid868675907/1/0100017ddd346178-be80=
+f42e-5d33-49dc-9f46-d5f479807730-000000/P7PART9uaO0IKIB6QyFdiLVaOrA=3D249">=
+<img src=3D"https://ddvql06zg3s2o=2Ecloudfront=2Enet/Assets/res/imgs/newsle=
+tter/download/app_store_en=2Epng" border=3D"0" hspace=3D"8" alt=3D"App Stor=
+e"></a>
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fpla=
+y=2Egoogle=2Ecom%2Fstore%2Fapps%2Fdetails%3Fid=3Dcom=2Eyesstyle=2Eandroid/1=
+/0100017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/ZRCRfc8UZHZvy=
+OWxnkc99Af5OTg=3D249"><img src=3D"https://ddvql06zg3s2o=2Ecloudfront=2Enet/=
+Assets/res/imgs/newsletter/download/google_play_en=2Epng" border=3D"0" hspa=
+ce=3D"8" alt=3D"Play Store"></a>
+ </div>
+	</div>
+</div>
+
+ <div style=3D"width:600px; margin:32px auto 0; text-align:center" class=3D"=
+deviceWidth">
+ <br><font size=3D"1" face=3D"arial, verdana, Microsoft YaHei" color=3D"#66=
+6666" style=3D"font-size:8pt">
+ Prices and availability of the above products are subject to change, and m=
+ay not always reflect the information provided=2E Please refer to YesStyle =
+website for actual prices and availability=2E<br/><br/>To ensure receipt of=
+ our emails, please add @YesStyle=2Ecom to your Address Book or Contacts=2E<=
+br/><br/>This email is addressed to john=2Edoe=2Eyouniq@gmail=2Ecom<br/>To =
+unsubscribe from the YesStyle=2Ecom newsletter, please click <a href=3D"htt=
+ps://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/https:%2F%2Fwww=2Eyesstyle=
+=2Ecom%2Fen%2Fnewsletter-unsubscribe=2Ehtml%2Fentne=2EgbaS%25252BDift1lMNvG=
+Hk40QvAMP0hhA9p8En41IUg0eArw%25253D/1/0100017ddd346178-be80f42e-5d33-49dc-9=
+f46-d5f479807730-000000/dhKOD0I0BqrpRmfLTN64ieZLuW4=3D249">here</a>,<br/>or=
+ <a href=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fassociate-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=
+=2Eyesstyle=2Ecom%2Fen%2Fsecure%2Fmyaccount%2Femail-preference=2Ehtml/1/010=
+0017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/Lrwv7BzGujw7UnAOU=
+s448iGc5J8=3D249">log into your YesStyle account</a> and update your email =
+preferences=2E<br/><br/>=E6=AD=A4=E9=9B=BB=E9=83=B5=E8=87=B4 john=2Edoe=2Ey=
+ouniq@gmail=2Ecom<br/>=E8=8B=A5=E4=BD=A0=E4=B8=8D=E6=83=B3=E6=94=B6=E5=88=
+=B0 YesStyle=2Ecom - =E9=9B=BB=E9=83=B5=E9=80=9A=E8=A8=8A=EF=BC=8C=E8=AB=8B<=
+a href=3D"https://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/L0/https:%2F%2Fw=
+ww=2Eyesstyle=2Ecom%2Fen%2Fnewsletter-unsubscribe=2Ehtml%2Fentne=2EgbaS%252=
+52BDift1lMNvGHk40QvAMP0hhA9p8En41IUg0eArw%25253D/2/0100017ddd346178-be80f42=
+e-5d33-49dc-9f46-d5f479807730-000000/JVshgGckHw33sd5tf0HIVJcVlts=3D249">=E6=
+=8C=89=E6=AD=A4</a>=E9=80=A3=E7=B5=90=E6=88=96<a href=3D"http://x7n4bqly=2Er=
+=2Eus-east-1=2Eawstrack=2Eme/L0/http:%2F%2Fwww=2Eyesstyle=2Ecom%2Fassociate=
+-referral=2Ehtml%3FY6XZJIRE%2Bhttp:%2F%2Fwww=2Eyesstyle=2Ecom%2Fen%2Fsecure=
+%2Fmyaccount%2Femail-preference=2Ehtml/2/0100017ddd346178-be80f42e-5d33-49d=
+c-9f46-d5f479807730-000000/gyK3TUv5ZqTste_j9GoqEsNHmPo=3D249">=E7=99=BB=E5=
+=85=A5</a>=E4=BD=A0=E7=9A=84 YesStyle =E6=88=B6=E5=8F=A3=E4=B8=A6=E6=9B=B4=
+=E6=96=B0=E4=BD=A0=E7=9A=84=E9=9B=BB=E9=83=B5=E9=80=9A=E8=A8=8A=E8=A8=AD=E5=
+=AE=9A=E3=80=82<br/><br/>Copyright &copy; 2006-2021 YESSTYLE=2ECOM LTD=2E A=
+ll rights reserved=2E<br/><br/>5/F, KC100, 100 Kwai Cheong Road, Kwai Chung=
+, New Territories, Hong Kong=2E<br/>=E9=A6=99=E6=B8=AF=E6=96=B0=E7=95=8C=E8=
+=91=B5=E6=B6=8C=E8=91=B5=E6=98=8C=E8=B7=AF 100 =E8=99=9F KC100 5 =E6=A8=93<=
+br/><br/>Tel/=E9=9B=BB=E8=A9=B1: (852)2786-0817&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;Email/=E9=9B=BB=E9=83=B5: news@e=2Eyesstyle=2Ecom=20
+ </font>
+ </div>=20
+ </center>
+ <img alt=3D"" src=3D"http://x7n4bqly=2Er=2Eus-east-1=2Eawstrack=2Eme/I0/01=
+00017ddd346178-be80f42e-5d33-49dc-9f46-d5f479807730-000000/kyDHUqwk61eekGxo=
+iyqBMMAOo74=3D249" style=3D"display: none; width: 1px; height: 1px;">
+</body>
+ <img src=3D"http://www=2Eyesstyle=2Ecom/newsletter-job-open-rate-tracking-=
+filter?enjine=3DgbaS%252BDift1lMNvGHk40QvAMP0hhA9p8E2Qpc3R%252B0sz3PQqsSIOW=
+B%252BA%253D%253D" height=3D"1" width=3D"1" />=20
+</html>

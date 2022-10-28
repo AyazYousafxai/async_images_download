@@ -1,0 +1,2009 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:a5d:5086:0:0:0:0:0 with SMTP id a6csp1010620wrt;        Sun, 26 Dec
+ 2021 09:33:21 -0800 (PST)
+Received: from rn2-msbadger03105.apple.com (rn2-msbadger03105.apple.com.
+ [17.179.250.67])        by mx.google.com with ESMTPS id
+ y12si5726901edd.119.2021.12.26.09.33.20        for
+ <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Sun, 26 Dec 2021
+ 09:33:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6CuuBMAZLD10vSRyPtTRi7Oya5BwVxFJXgfQv7SIEYCW0GRAtCGuuJgdW/dTuew7sRny/
+X-Received: by 2002:a17:906:314f:: with SMTP id e15mr11555781eje.658.1640540000774;      
+  Sun, 26 Dec 2021 09:33:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640540000; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=kQTZ//7BX5wLSZoJGFOCVgzIoSp8YQ96e7/WnSFehmvx5vJD0A9fJGkPQmRN43/aiz        
+ PlyzP4shvg08HLKWd1HRwgMOeGv771uQxZNgj/6XK8cQZcPzZ33npzI88g8OIV6Cfe9h        
+ z5gVaoyFnfYwiSpJblMEnqDuQLawcUSuJOl2mVH5XwHfeTFhzjhaZOgoV/rMZQxvjUJq        
+ g79amAWJudWgm5UTJ5eBqLXhdFrZkiYckqJqfTeNvmGOvLFsevD/0rSTBRzXlu6pJj6w        
+ IJ8IEd+/PO9t3DjCBbQ0cvZJ+sQe1Lm5A1JcULfDNNud+ywzuw9RrMncJ4I71KLFOrax        
+ 17IA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=list-unsubscribe:mime-version:subject:message-id:to:from:date        
+ :dkim-signature;        bh=UIAxuqqqA3V0ydQq+ROfXMgqdfN5am5tBwVIkl3JH7Y=;    
+    b=tfMRTMTa3ILYHrLbKZTlai15MnC3ejbTfc9xdM/ya5iq699oNYDO8QKjfI1ryPGwUv     
+    6cw3WDYYWJHPH/G/t0GDcCO2ySJqVQcuSHIc+DHVClDzi62j7cPY78xhRJ9qu7h0zziJ     
+    OfZ12sVvl6f6o+4sVRxrSbsfKAbS5/wc5HfqNDhUUozo96VWFWK9cCf35fa5aWas39My     
+    V0v3YfDKYDstVJ4sn1agiVK1IrULDHLF5/NHAdcHxuJXHYODlJfGFIgStG7BoXNq9uXZ     
+    b9u6uICgxiHwxeP4Fs49WSYIRRzm8X3Wh4BshQmJXBzJGQ1uF/OYu5pHT14t6IurRHGW     
+    YeFQ==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@insideapple.apple.com
+ header.s=insideapple0517 header.b=oWCFm40o;       spf=pass (google.com:
+ domain of n_e_i_bounces@insideapple.apple.com designates 17.179.250.67 as
+ permitted sender) smtp.mailfrom=n_e_i_bounces@insideapple.apple.com;      
+ dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=insideapple.apple.com
+Return-Path: <n_e_i_bounces@insideapple.apple.com>
+Received-SPF: pass (google.com: domain of n_e_i_bounces@insideapple.apple.com designates
+ 17.179.250.67 as permitted sender) client-ip=17.179.250.67;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@insideapple.apple.com
+ header.s=insideapple0517 header.b=oWCFm40o;       spf=pass (google.com:
+ domain of n_e_i_bounces@insideapple.apple.com designates 17.179.250.67 as
+ permitted sender) smtp.mailfrom=n_e_i_bounces@insideapple.apple.com;      
+ dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=insideapple.apple.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;	d=insideapple.apple.com;
+ s=insideapple0517;
+ t=1640539996;	bh=UIAxuqqqA3V0ydQq+ROfXMgqdfN5am5tBwVIkl3JH7Y=;	h=Date:From:To:Message-ID:Subject:Content-Type;	b=oWCFm40oiWeozfA3FGTixBGhJ7/qAG1RECQoqoOJUeJQt9L0cEWhhOa+rKI9lSIZS	
+ 1b3jAtFA4z5rHzmXzlv8inzVigQJmjycGicqLKbfsuHkPtLuA10jd/ipc4lODAWANZ	
+ 6ehNc+HLc7ktwhwm7gTgKKocBFmFIfEvX4fLxpXz3fsqx5u/8RpVK44BX8hzfaFQnd	
+ 6cZQK3raYdgaiO1Bu+GLFJPeC1RemNYS96Ic5pZVBLWSu8u3bnOvL+qp9APEM004bh	
+ Rl4Y/j3HGxw3QSeQ0XrxuVOKyDqWOi1podkXa97Ap07jPb4z5fIz01RDkUtXUiGwQD	
+ 0NDDHzlN9f14g==
+Date: Sun, 26 Dec 2021 17:33:16 +0000 (GMT)
+From: "Apple" <News_Europe@InsideApple.Apple.com>
+To: john.doe.youniq@gmail.com
+Message-ID: <1154055831.196216534.1640539996779@Insideapple.apple.com>
+Subject: Give yourself something special.
+MIME-Version: 1.0
+X-Attach-Flag: N
+X-Sent-To: john.doe.youniq@gmail.com,2,6zicLg45BzHBPjZjBLagMqGZTz997wJBULv3OFgWiSON6UhwewDMljAAhFZSPYr%2FP5i8MYZM6Bir8IU%2F6AeOAP5uwdhu8mObc52Z0NSZOw6PT13s3o0%2BY2aTurrF7Rl7tsQPVi3OKAqAdBIVvFINyHSuun7O6cBShQ7hcjIh707f1aKveG5Ni6cjFIhYGceSFbnXlNtTHgpq3KpXX%2BuaXQ%3D%3D
+X-TXN_ID: a70f6ee6-3d93-4ac0-ab5e-76191da5e853
+X-DKIM_SIGN_REQUIRED: YES
+x-evs: BYPASS
+X-EmailType-Id: 2316151
+X-Business-Group: cbx_wlm
+X-Broadcast-Id: 2316151
+List-Unsubscribe: <https://mynews.apple.com/subscriptions?v=2&la=en_uk&a=6zicLg45BzHBPjZjBLagMqGZTz997wJBULv3OFgWiSON6UhwewDMljAAhFZSPYr%2FP5i8MYZM6Bir8IU%2F6AeOAP5uwdhu8mObc52Z0NSZOw6PT13s3o0%2BY2aTurrF7Rl7tsQPVi3OKAqAdBIVvFINyHSuun7O6cBShQ7hcjIh707f1aKveG5Ni6cjFIhYGceSFbnXlNtTHgpq3KpXX%2BuaXQ%3D%3D>
+X-mp: d
+Content-Type: multipart/alternative; boundary="----=_Part_196216531_701825394.1640539996779"
+
+------=_Part_196216531_701825394.1640539996779
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Disposition: inline
+
+Turn the device you have into savings on the one you want with Apple Trade =
+In=2E*
+
+Learn more
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J6l9p1v
+
+--------------------
+
+Joy to you=2E
+
+Explore the latest gifts from Apple and get the one you really=C2=A0wanted=
+=2E
+
+Shop
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J2u6C8Y
+
+--------------------
+
+iPhone 13 Pro
+
+From =C2=A3949
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9m3I0g9p
+
+--------------------
+
+iPhone 13
+
+From =C2=A3779
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J9i9I9p
+
+--------------------
+
+Low monthly payments at 0% APR
+
+Pay for your new iPhone in low monthly payments over 24 months, interest-fr=
+ee=2E
+
+Learn more
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J2V3X8T
+
+--------------------
+
+Apple Watch Series 7
+
+From =C2=A3369
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J7c2E8v
+
+--------------------
+
+Free Engraving
+
+iPad Pro
+
+From =C2=A3749
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J6c7i6k
+
+--------------------
+
+MacBook Pro
+
+From =C2=A31,899
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J2l4k3k
+
+--------------------
+
+Essentials for all your favourite devices=2E
+
+--------------------
+
+Free Engraving
+
+AirPods (3rd=C2=A0generation)
+
+=C2=A3169
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J4d9w2T
+
+--------------------
+
+AirTag Leather Key=C2=A0Ring
+
+=C2=A335
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J1w9U7Y
+
+--------------------
+
+MagSafe accessories
+
+From =C2=A334=2E95
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J1d2Q6k
+
+--------------------
+
+Shop all accessories
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J8V9C1p
+
+--------------------
+
+Shopping at Apple has never been easier=2E
+
+--------------------
+
+Shop with a Specialist=2E
+
+Whether you shop in a store or online, our Specialists can help you buy the=
+ products you love=2E
+
+Get help
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J8u1Y3M
+
+--------------------
+
+Free personal engraving=2E
+
+Make them yours=2E Engrave a mix of emoji, names, initials and numbers=2E
+
+Learn more
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J3l4D9k
+
+--------------------
+
+Get to know your=C2=A0device=2E
+
+Buy a new device from Apple and we=E2=80=99ll help you get the most of it w=
+ith a free Online Personal Session=2E
+
+Learn more
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J8b8a4k
+
+--------------------
+
+Financing options=2E
+
+Great ways to pay over time=2E Choose=C2=A0the one for you=2E
+
+Learn more
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J5V2r4p
+
+--------------------
+
+Shop Online
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9m1V3M1N
+
+Find a Store
+https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYN=
+xEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3=
+CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnj=
+g8LWeDAD3xGdUaBH%2BN28mN7HJam%2BHi8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9=
+FltE%3D&ct=3Dak9J0L3C2P
+
+0800=C2=A0048=C2=A00408
+
+Get the Apple Store App
+https://itunes=2Eapple=2Ecom/gb/app/apple-store/id375380948?mt=3D8&ls=3D1
+
+--------------------
+
+* Trade=E2=80=91in values will vary based on the condition, year and config=
+uration of your trade=E2=80=91in device=2E You must be at least 18 years ol=
+d to be eligible to trade in for credit or for an Apple Store Gift Card=2E =
+Not all devices are eligible for credit=2E More details are available from =
+Apple=E2=80=99s trade=E2=80=91in partner (https://c=2Eapple=2Ecom/r?v=3D2&l=
+a=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wT=
+ZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwT=
+r4DDZ7629qcvuGH0qAJVEELtPqEC38WEiYYPSqngnjg8LWeDAD3xGdUaBH%2BN28mN7HJam%2BH=
+i8AQe0EE0b%2Bu1bJiUzOJiBnwYiwugDMLubPjmxD9FltE%3D&ct=3Dak9m8B8i8k) for trad=
+e=E2=80=91in and recycling of eligible devices=2E Restrictions and limitati=
+ons may apply=2E Payments are based on the received device matching the des=
+cription you provided when your estimate was made=2E Apple reserves the rig=
+ht to refuse or limit the quantity of any device for any reason=2E Value of=
+ your current device may be applied towards purchase of a new Apple device=
+=2E Offer may not be available in all stores=2E Some stores may have additi=
+onal requirements=2E
+
+Apple Distribution International Ltd=2E, Hollyhill Industrial Estate, Cork,=
+ Ireland=2E
+Company Registration number: 470672=2E VAT number: IE9700053D=2E
+		=09
+All Rights Reserved
+http://www=2Eapple=2Ecom/uk/legal/
+
+Privacy Policy
+https://www=2Eapple=2Ecom/uk/privacy/privacy-policy/
+
+My Apple ID
+https://appleid=2Eapple=2Ecom/en_GB
+
+TM and =C2=A9 2021 Apple Inc=2E
+
+If you would prefer not to receive commercial email from Apple, or if you h=
+ave changed your email address, please click here
+https://mynews=2Eapple=2Ecom/subscriptions?v=3D2&la=3Den_uk&a=3D6zicLg45BzH=
+BPjZjBLagMugBQ09AHRFsc%2FnzQcw0yx7QVzp4FG5zrjI4Xv3M0FYPbqj%2F%2F5ayzVzbZpRD=
+O2Pb607FLagWi5E0WDp615VO9aS1%2Fu5QW%2BTulQioVM6LClGc5%2FOJYUYZ2KQ137FE7%2BW=
+KwbjuENCVuwlXfaU5DVhY%2FYkf9AoNePk6DceMobOQXhGRNjt7Jjy%2FsQttxpH2GkK6%2BQ%3=
+D%3D
+------=_Part_196216531_701825394.1640539996779
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Disposition: inline
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4=2E01 Transitional//EN">
+<html>
+<head>
+	<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+	<meta http-equiv=3D"content-type" content=3D"text/html;charset=3Dutf-8">
+	<title>P0021627-494458</title>
+=09
+<style type=3D"text/css">
+        body { width:100% !important; padding:0; margin:0; background-color=
+:#ffffff; }
+        body, td { font-family:system-ui, -apple-system, BlinkMacSystemFont=
+, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight:n=
+ormal; text-rendering:optimizelegibility; -webkit-font-smoothing:antialiase=
+d; }
+        h1, h2, h3, h4, h5, h6 { padding:0; margin:0; }
+        p { padding:0; margin:0; }
+        sup { font-size:0=2E65em; line-height:0; }
+        a, a:link { text-decoration:none; }
+        a:hover { text-decoration:underline; }
+        a[x-apple-data-detectors], a[x-apple-data-detectors]:link, a[x-appl=
+e-data-detectors]:hover { color:inherit !important; text-decoration:none !i=
+mportant; }
+        =2Enw { white-space:nowrap; }
+        =2Eimg-blk { display:block; }
+        =2Eimg-rad { border-radius:10px; }
+        =2Ebox-rad { border-radius:10px; overflow:hidden; }
+        =2Elink-blk { display:inline-block; vertical-align:top; }
+        @media only screen and (max-device-width:768px) {
+                td { line-height:1=2E3em !important; }
+                #aapl-eyebrow { -webkit-text-size-adjust:120%; }
+                #aapl-footer { -webkit-text-size-adjust: 100%; line-height:=
+ 1=2E2em !important; }
+                #aapl-eyebrow a, #aapl-footer a, a  { color:inherit; }
+                =2Eaapl-desktop { -webkit-text-size-adjust: 106%; line-heig=
+ht: 1=2E2em !important; padding-left:28px !important; padding-right:28px !i=
+mportant; }
+                =2Eaapl-copy { -webkit-text-size-adjust:110%; line-height:1=
+=2E36em !important; }
+                =2Eaapl-tile { -webkit-text-size-adjust:110%; }
+                sup { -webkit-text-size-adjust:100%; }
+               =20
+        }
+       =20
+@media only screen and (max-device-width:568px) {
+/* --- GENERIC --- */
+	* { box-sizing:border-box; }
+	html, body, div, p { padding:0; margin:0; }
+	section, section div { width:auto; margin:0 auto; text-align:center; }
+	section=2Eleft, section=2Eleft *, div=2Eleft, div=2Eleft * { text-align:le=
+ft; }
+	img { display:block; margin:0 auto; }
+	=2Eblock { max-width:280px; }
+	img=2Eleft { margin:0; }
+	=2Egutter { margin:0 6=2E25%; }
+	=2Eborder { padding:0 6=2E25%; }
+	=2Etitle, =2Ebold { font-weight:600; }
+	div=2Edivider { height:1px; background-color:#d2d2d7; margin:0 6=2E25%; }
+	#aapl-desktop { display:none !important; }
+	#aapl-mobile { background-color:#ffffff; width:100% !important; margin:0 a=
+uto; display:block !important; overflow:visible; max-height:inherit !import=
+ant; }
+	#aapl-mobile-main { font-size:17px; line-height:25px; color:#1d1d1f; max-w=
+idth:414px; margin:0 auto; }
+	#aapl-mobile-footer-box { background-color:#f5f5f7; }
+	#aapl-mobile-footer { font-size:12px; line-height:16px; color:#6e6e73; max=
+-width:414px; margin:0 auto; }
+	#aapl-mobile-footer a { color:#424245; }
+	#aapl-mobile-navbar { color:#424245; padding:7px 0 0; margin:0; }
+	#aapl-mobile-navbar li { border-bottom:1px solid #d2d2d7; padding:12px 0; =
+text-align:center; list-style-type:none; }
+	#aapl-mobile-navbar li=2Efirst { border-top:1px solid #d2d2d7; }
+	#aapl-mobile-navbar li a { white-space:nowrap; }
+	#aapl-mobile-navbar li a:hover { text-decoration:underline; }
+	#aapl-mobile-legal { text-align:left; padding:17px 0 40px; }
+	#aapl-mobile-legal p { margin-bottom:9px; }
+	#aapl-mobile-legal =2Em-vert { padding:0 3px 0 6px; color:#d2d2d7; }
+/* --- SPECIFIC --- */
+        section=2Eribbon { background-color:#e34140; font-size:14px; line-h=
+eight:20px; color:#fff; padding:15px 0; }
+        section=2Ehero { max-width:290px; padding:42px 0 55px; }
+        section=2Ehero div=2Etitle { font-size:40px; line-height:44px; padd=
+ing-top:28px; }
+        section=2Ehero div=2Ecopy { font-size:19px; line-height:27px; paddi=
+ng:25px 0 24px; }
+        section=2Et1 { max-width:332px; }
+        section=2Et1 div=2Eimg-1 { background-size:332px 342px !important; =
+height:342px !important; }
+        section=2Et1 div=2Ebox-rad { margin:16px auto 42px; }
+        section=2Et1 div=2Eimg-2 { background-size:332px 235px !important; =
+height:235px !important; }
+        section=2Et1 div=2Esticker { font-size:11px; line-height:20px; colo=
+r:#bf4800; padding:13px 20px 0; }
+        section=2Et1 div=2Eproduct { font-size:21px; line-height:25px; padd=
+ing:15px 20px 0; }
+        section=2Et1 div=2Eprice { padding:12px 20px 32px; }
+        section=2Et1 a { color:#1d1d1f; }
+        section=2Et1=2Ei11 div=2Eimg-1 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-11_1=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 342px; }
+        section=2Et1=2Ei12 div=2Eimg-1 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-12_1=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 342px; }
+        section=2Et1=2Ei14 div=2Eimg-1 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-14_1=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 342px; }
+        section=2Et1=2Ei15 div=2Eimg-1 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-15_1=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 342px; }
+        section=2Et1=2Ei16 div=2Eimg-1 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-16_1=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 342px; }
+        section=2Et1=2Ei11 div=2Ebox-rad { background-color:#f5fbfa; }
+        section=2Et1=2Ei12 div=2Ebox-rad { background-color:#f6f9fe; }
+        section=2Et1=2Ei14 div=2Ebox-rad { background-color:#fdf7fc; }
+        section=2Et1=2Ei15 div=2Ebox-rad { background-color:#f5fbfa; }
+        section=2Et1=2Ei16 div=2Ebox-rad { background-color:#f7f8ff; }
+        section=2Et1=2Ei11 div=2Eimg-2 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-11_2=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 235px; }
+        section=2Et1=2Ei12 div=2Eimg-2 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-12_2=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 235px; }
+        section=2Et1=2Ei14 div=2Eimg-2 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-14_2=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 235px; }
+        section=2Et1=2Ei15 div=2Eimg-2 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-15_2=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 235px; }
+        section=2Et1=2Ei16 div=2Eimg-2 { background:url('https://images=2Ea=
+pple=2Ecom/euro/dm/21/5607/v1/uk/i/m-16_2=2Ejpg') no-repeat top center; -we=
+bkit-background-size:332px 235px; }
+        section=2Et1=2Ei15 div=2Eproduct { padding-top:6px !important; }
+        section=2Et2 { max-width:375px; font-size:32px; line-height:36px; c=
+olor:#1d1d1f; }
+        section=2Et2=2Ei20 div=2Etitle { padding:16px 6=2E25% 37px; }
+        section=2Et2=2Ei30 div=2Etitle { padding:45px 6=2E25% 40px; }
+        div=2Erow { display:table; margin:0 auto; }
+        div=2Eitem { display:table-cell; width:155px; vertical-align:top; b=
+ackground-color:#f5f5f7; }
+        div=2Egap { display:table-cell; width:10px; }
+        section=2Et3 { background-color:#f5f5f7; font-size:14px; line-heigh=
+t:20px; }
+        section=2Et3 div=2Esticker { font-size:11px; color:#bf4800; padding=
+:13px 12px 0; }
+        section=2Et3 div=2Eprice { padding:4px 12px 28px; }
+        section=2Et3 a { color:#1d1d1f; }
+        section=2Et3=2Ei21 div=2Eproduct { padding:5px 12px 0; }
+        section=2Et3=2Ei22 div=2Eproduct { padding:38px 12px 0; }
+        section=2Et3=2Ei23 { max-width:320px; margin-top:10px; border-radiu=
+s:10px; overflow:hidden; }
+        section=2Et3=2Ei23 div=2Eproduct { padding:8px 12px 0; }
+        section=2Et3=2Ei23 div=2Eprice { padding-bottom:45px !important; }
+        section=2Et4 { padding:28px 0 52px; }
+        section=2Et5 { font-size:17px; line-height:25px; color:#1d1d1f; pad=
+ding-bottom:53px; }
+        section=2Et5 div=2Etitle { font-size:28px; line-height:32px; paddin=
+g-top:19px; }
+        section=2Et5 div=2Ecopy { padding:11px 0 15px; }
+        section=2Et6 { max-width:332px; margin-bottom:42px; background-colo=
+r:#f5f5f7; padding:24px 0 30px; }
+        section=2Et6 div=2Etitle { font-size:28px; line-height:32px; paddin=
+g-top:15px; }
+        section=2Et6 div=2Ecopy { padding:13px 0; }
+}
+@media screen and (max-width:320px) {
+        =2Eimg-rad { border-radius:0; }
+        =2Ebox-rad { border-radius:0; }
+        section=2Ei23 { border-radius:0; }
+}
+</style>
+<!--[if gte mso 9]>
+<style type=3D"text/css">
+        table, tr, td, p, span, a, sup, b, img { line-height:normal !import=
+ant; mso-line-height-rule:exactly; }
+        h1, h2, h3, h4, h5, h6 { font-family:'Segoe UI Semibold', 'Segoe UI=
+', Arial, sans-serif !important; line-height:inherit !important; font-weigh=
+t:400 !important; mso-line-height-rule:exactly; mso-text-raise:2px;=C2=A0}
+        sup { font-size:100% !important; }
+        =2Emso-spacer { display:inline-block; }
+        =2Emso-bold { font-family:'Segoe UI Semibold', 'Segoe UI', Arial, s=
+ans-serif !important; line-height:inherit !important; font-weight:400 !impo=
+rtant; mso-line-height-rule:exactly; }
+</style>
+<![endif]-->=20
+</head>
+<body bgcolor=3D"#ffffff" style=3D"margin:0; padding:0;">
+<a name=3D"top"> </a> <div id=3D"fixed_gestbar" ><!-- start gestbar content=
+ --><!-- end gestbar content --></div>
+<div style=3D"display:none; max-height:0; overflow:hidden;">You=E2=80=99ll =
+thank yourself later=2E</div>
+<div style=3D"display:none; max-height:0; overflow:hidden;"> =C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=
+=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C </div>
+<!-- START MOBILE VERSION -->
+<!--[if !mso]><!-->
+<div id=3D"aapl-mobile" style=3D"display:none; width:0; max-height:0; paddi=
+ng:0; margin:0; overflow:hidden;">
+        <section class=3D"ribbon">
+        <div class=3D"block">Turn the device you have into savings on the o=
+ne you want with Apple Trade <span style=3D"white-space:nowrap">In=2E*</spa=
+n> <span class=3D"nw">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J9L2q5p" style=3D"color:#fff;">Learn <span style=
+=3D"white-space:nowrap">more<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a1=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"8"></span></a></span>=
+</div>
+</section>
+        <div id=3D"aapl-mobile-main">
+                <section class=3D"hero">
+        <img src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/m-=
+logo=2Epng" alt=3D"" border=3D"0" width=3D"49" height=3D"60">
+        <div class=3D"title">Joy to you=2E</div>
+        <div class=3D"copy">Explore the latest gifts from Apple and get the=
+ one you really=C2=A0wanted=2E</div>
+        <div class=3D"cta">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J9G4C6P" class=3D"link-blk"><img src=3D"https://=
+images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/cta=2Epng" alt=3D"Shop" border=
+=3D"0" class=3D"img-blk" width=3D"92" height=3D"36"></a></div>
+</section>
+                <section class=3D"t1 i11">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3u5e1T"><div class=3D"img-1 img-rad"></=
+div></a>
+        <div class=3D"box-rad">
+                <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr=
+&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VW=
+tvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH=
+0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSR=
+BSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3u5e1T"><div class=3D"img-2"></=
+div></a>
+                <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ec=
+om/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7=
+%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaT=
+boRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2=
+BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3u5e=
+1T"><span class=3D"nw">iPhone 13 Pro</span></a></div>
+                <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3u5e1T">Fr=
+om =C2=A3949</a></div>
+        </div>
+</section>
+                <section class=3D"t1 i12">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m1G9D2Y"><div class=3D"img-1 img-rad"></=
+div></a>
+        <div class=3D"box-rad">
+                <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr=
+&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VW=
+tvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH=
+0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSR=
+BSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m1G9D2Y"><div class=3D"img-2"></=
+div></a>
+                <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ec=
+om/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7=
+%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaT=
+boRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2=
+BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m1G9D=
+2Y"><span class=3D"nw">iPhone 13</span></a></div>
+                <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m1G9D2Y">Fr=
+om =C2=A3779</a></div>
+        </div>
+</section>
+                <section class=3D"t6 box-rad">
+        <img src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/x-=
+13=2Epng" alt=3D"" border=3D"0" width=3D"37" height=3D"40">
+        <div class=3D"block">
+                <div class=3D"title"><span class=3D"nw">Low monthly</span> =
+payments at 0% APR</div>
+                <div class=3D"copy">Pay for your new iPhone in <span class=
+=3D"nw">low monthly</span> payments over <span class=3D"nw">24 months, inte=
+rest-free</span>=2E</div>
+                <div class=3D"link">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J5b3u9P" style=3D"color:#06c;">Learn <span style=
+=3D"white-space:nowrap">more<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a2=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"10"></span></a></div>=
+
+        </div>
+</section>
+                <section class=3D"t1 i14">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J6E2m3T"><div class=3D"img-1 img-rad"></=
+div></a>
+        <div class=3D"box-rad">
+                <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr=
+&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VW=
+tvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH=
+0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSR=
+BSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J6E2m3T"><div class=3D"img-2"></=
+div></a>
+                <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ec=
+om/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7=
+%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaT=
+boRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2=
+BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J6E2m=
+3T"><span class=3D"nw">Apple Watch</span> <span class=3D"nw">Series 7</span=
+></a></div>
+                <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J6E2m3T">Fr=
+om =C2=A3369</a></div>
+        </div>
+</section>
+                <section class=3D"t1 i15">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9u9m0T"><div class=3D"img-1 img-rad"></=
+div></a>
+        <div class=3D"box-rad">
+                <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr=
+&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VW=
+tvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH=
+0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSR=
+BSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9u9m0T"><div class=3D"img-2"></=
+div></a>
+                <div class=3D"sticker">Free Engraving</div>
+                <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ec=
+om/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7=
+%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaT=
+boRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2=
+BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9u9m=
+0T"><span class=3D"nw">iPad Pro</span></a></div>
+                <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9u9m0T">Fr=
+om =C2=A3749</a></div>
+        </div>
+</section>
+                <section class=3D"t1 i16">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3w9g1C"><div class=3D"img-1 img-rad"></=
+div></a>
+        <div class=3D"box-rad">
+                <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr=
+&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VW=
+tvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH=
+0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSR=
+BSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3w9g1C"><div class=3D"img-2"></=
+div></a>
+                <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ec=
+om/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7=
+%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaT=
+boRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2=
+BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3w9g=
+1C"><span class=3D"nw">MacBook Pro</span></a></div>
+                <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3w9g1C">Fr=
+om =C2=A31,899</a></div>
+        </div>
+</section>
+                <section class=3D"t2 i20">
+        <div class=3D"title">Essentials for all your favourite devices=2E</=
+div>
+</section>
+                <div class=3D"row">
+                        <div class=3D"item box-rad"><section class=3D"t3 i2=
+1">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3B2V4C"><img src=3D"https://images=2Eap=
+ple=2Ecom/euro/dm/21/5607/v1/uk/i/m-21=2Ejpg" alt=3D"" border=3D"0" width=
+=3D"155" height=3D"170"></a>
+        <div class=3D"sticker">Free Engraving</div>
+        <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3B2V4C">Ai=
+rPods (3rd=C2=A0generation)</a></div>
+        <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=
+=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZ=
+nSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr=
+4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4=
+qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J3B2V4C">=C2=A3169=
+</a></div>
+</section>
+</div>
+                        <div class=3D"gap"></div>
+                        <div class=3D"item box-rad"><section class=3D"t3 i2=
+2">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J1d0I2p"><img src=3D"https://images=2Eap=
+ple=2Ecom/euro/dm/21/5607/v1/uk/i/m-22=2Ejpg" alt=3D"" border=3D"0" width=
+=3D"155" height=3D"170"></a>
+        <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J1d0I2p">Ai=
+rTag Leather Key=C2=A0Ring</a></div>
+        <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=
+=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZ=
+nSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr=
+4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4=
+qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J1d0I2p">=C2=A335<=
+/a></div>
+</section>
+</div>
+                </div>
+                <section class=3D"t3 i23">
+        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%=
+2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q=
+%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEEL=
+tPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%=
+2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9B2B8Y"><img src=3D"https://images=2Eap=
+ple=2Ecom/euro/dm/21/5607/v1/uk/i/m-23=2Ejpg" alt=3D"" border=3D"0" width=
+=3D"320" height=3D"195"></a>
+        <div class=3D"product bold"><a href=3D"https://c=2Eapple=2Ecom/r?v=
+=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%=
+2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqx=
+KL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf=
+2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9B2B8Y">Ma=
+gSafe accessories</a></div>
+        <div class=3D"price"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=
+=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZ=
+nSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr=
+4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4=
+qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9B2B8Y">From =C2=
+=A334=2E95</a></div>
+</section>
+                <section class=3D"t4 block">
+       =20
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J3B0Q7T" style=3D"color:#06c;">Shop all <span st=
+yle=3D"white-space:nowrap">accessories<img src=3D"https://images=2Eapple=2Ec=
+om/euro/dm/21/5607/v1/uk/i/a2=2Epng" border=3D"0" alt=3D"" style=3D"display=
+:inline; margin:0; vertical-align:0px;" width=3D"12" height=3D"10"></span><=
+/a>
+</section>
+        </div>
+        <div id=3D"aapl-mobile-footer-box">
+                <div id=3D"aapl-mobile-footer">
+                        <section class=3D"t2 i30">
+        <div class=3D"title">Shopping at Apple <span class=3D"nw">has never=
+</span> <span class=3D"nw">been easier</span>=2E</div>
+</section>
+                        <section class=3D"t5 block">
+        <img src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/m-=
+31=2Epng" alt=3D"" border=3D"0" width=3D"46" height=3D"40">
+        <div class=3D"title">Shop with a Specialist=2E</div>
+        <div class=3D"copy">Whether you shop in a store or  online, our Spe=
+cialists can help  you buy the products you love=2E</div>
+        <div class=3D"link">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J1E7v2T" style=3D"color:#06c;">Get <span style=
+=3D"white-space:nowrap">help<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a2=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"10"></span></a></div>=
+
+</section>
+                        <section class=3D"t5 block">
+        <img src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/m-=
+32=2Epng" alt=3D"" border=3D"0" width=3D"46" height=3D"40">
+        <div class=3D"title">Free personal  engraving=2E</div>
+        <div class=3D"copy">Make them yours=2E Engrave a mix of emoji, name=
+s, initials and numbers=2E</div>
+        <div class=3D"link">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J1G2A8h" style=3D"color:#06c;">Learn <span style=
+=3D"white-space:nowrap">more<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a2=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"10"></span></a></div>=
+
+</section>
+                        <section class=3D"t5 block">
+        <img src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/m-=
+33=2Epng" alt=3D"" border=3D"0" width=3D"46" height=3D"40">
+        <div class=3D"title">Get to know your=C2=A0device=2E</div>
+        <div class=3D"copy">Buy a new device from Apple and we=E2=80=99ll h=
+elp you get the most of it with a free Online Personal Session=2E</div>
+        <div class=3D"link">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J0n0e8Y" style=3D"color:#06c;">Learn <span style=
+=3D"white-space:nowrap">more<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a2=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"10"></span></a></div>=
+
+</section>
+                        <section class=3D"t5 block">
+        <img src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/m-=
+34=2Epng" alt=3D"" border=3D"0" width=3D"46" height=3D"40">
+        <div class=3D"title">Financing options=2E</div>
+        <div class=3D"copy">Great ways to pay over time=2E Choose&nbsp;the =
+one for you=2E</div>
+        <div class=3D"link">
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J0u4b3p" style=3D"color:#06c;">Learn <span style=
+=3D"white-space:nowrap">more<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a2=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"10"></span></a></div>=
+
+</section>
+                        <div class=3D"gutter">
+                                <ul id=3D"aapl-mobile-navbar" class=3D"m-bn=
+av">
+	<li class=3D"first"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=
+=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFc=
+Bmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629=
+qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225=
+dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m1i1i9h">Shop Online</a></=
+li>
+	<li><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bn=
+b8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2B=
+B3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPq=
+EC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B0=
+5CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9q7j6v">Find a Store</a></li>
+	<li>0800&nbsp;048&nbsp;0408</li>
+	<li><a href=3D"https://itunes=2Eapple=2Ecom/gb/app/apple-store/id375380948=
+?mt=3D8&ls=3D1">Get the Apple Store App</a></li>
+</ul>
+                                <div id=3D"aapl-mobile-legal">
+                                        <p style=3D"margin-bottom:9px;">* T=
+rade=E2=80=91in values will vary based on the condition, year and configura=
+tion of your trade=E2=80=91in device=2E You must be at least 18 years old t=
+o be eligible to trade in for credit or for an Apple Store Gift Card=2E Not=
+ all devices are eligible for credit=2E More details are available from App=
+le=E2=80=99s <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=
+=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtv=
+bcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0q=
+AJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBS=
+i0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J5c0Y5C" style=3D"color:#424245;">=
+trade=E2=80=91in partner</a> for trade=E2=80=91in and recycling of eligible=
+ devices=2E Restrictions and limitations may apply=2E Payments are based on=
+ the received device matching the description you provided when your estima=
+te was made=2E Apple reserves the right to refuse or limit the quantity of =
+any device for any reason=2E Value of your current device may be applied to=
+wards purchase of a new Apple device=2E Offer may not be available in all s=
+tores=2E Some stores may have additional requirements=2E </p>
+                                        <!-- START FOOTER SECTION -->
+        <p class=3D"footer-legal">Apple Distribution International Ltd=2E, =
+Hollyhill Industrial Estate, Cork, Ireland=2E Company Registration number: =
+470672=2E<span class=3D"nw"> VAT number: IE9700053D=2E</span></p>
+        <p class=3D"footer-legal">
+                <span style=3D"white-space:nowrap;"><a href=3D"http://www=
+=2Eapple=2Ecom/uk/legal/" style=3D"color:#424245;">All Rights Reserved</a><=
+/span><span class=3D"m-vert">|</span>
+                <span style=3D"white-space:nowrap;"><a href=3D"https://www=
+=2Eapple=2Ecom/uk/privacy/privacy-policy/" style=3D"color:#424245;">Privacy=
+ Policy</a></span><span class=3D"m-vert">|</span>
+                <span style=3D"white-space:nowrap;"><a href=3D"https://appl=
+eid=2Eapple=2Ecom/en_GB" style=3D"color:#424245;">My Apple ID</a></span>
+        </p>
+        <p class=3D"footer-legal">TM and =C2=A9 2021 Apple Inc=2E</p>
+        <p class=3D"footer-legal">If you would prefer not to receive commer=
+cial email from Apple, or if you have changed your email address, please <s=
+pan style=3D"white-space:nowrap;"><a href=3D"https://mynews=2Eapple=2Ecom/s=
+ubscriptions?v=3D2&la=3Den_uk&a=3D6zicLg45BzHBPjZjBLagMqGZTz997wJBULv3OFgWi=
+SON6UhwewDMljAAhFZSPYr%2FP5i8MYZM6Bir8IU%2F6AeOAP5uwdhu8mObc52Z0NSZOw6PT13s=
+3o0%2BY2aTurrF7Rl7tsQPVi3OKAqAdBIVvFINyHSuun7O6cBShQ7hcjIh707f1aKveG5Ni6cjF=
+IhYGceSFbnXlNtTHgpq3KpXX%2BuaXQ%3D%3D" style=3D"color:#424245;"><span class=
+=3D"nw">click here</span></a></span>=2E</p>
+<!-- END FOOTER SECTION -->
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>
+<!-- <![endif]-->
+<!-- END MOBILE VERSION --><!-- START DESKTOP VERSION -->
+<div id=3D"aapl-desktop" style=3D"display:table; width:100%; border-spacing=
+:0; border-collapse:collapse; margin:auto 0;">
+        <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" border=3D"0" role=3D"presentation">
+                <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"backgr=
+ound-color:#e34140;">
+                                <table width=3D"712" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:20px 2=
+0px;">
+                        <p style=3D"font-size:14px; line-height:20px; color=
+:#fff;">Turn the device you have into savings on the one you want with Appl=
+e Trade <span style=3D"white-space:nowrap">In=2E*</span>=20
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9m1B6p3T" style=3D"color:#fff;">Learn <span style=
+=3D"white-space:nowrap">more<img src=3D"https://images=2Eapple=2Ecom/euro/d=
+m/21/5607/v1/uk/i/a1=2Epng" border=3D"0" alt=3D"" style=3D"display:inline; =
+margin:0; vertical-align:0px;" width=3D"12" height=3D"8"></span></a></p>   =
+ =20
+                </td>
+        </tr>
+</table>
+                        </td>
+                </tr>
+                <tr>
+                        <td align=3D"center" valign=3D"top">
+                                <table width=3D"712" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:56px 0=
+ 27px;">
+                        <picture>
+                                <source media=3D"(max-device-width:568px)" =
+srcset=3D"data:">
+                                <img src=3D"https://images=2Eapple=2Ecom/eu=
+ro/dm/21/5607/v1/uk/i/d-logo=2Epng" alt=3D"" border=3D"0" class=3D"img-blk"=
+ width=3D"40" height=3D"48">
+                        </picture>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 100p=
+x;">
+                        <h1 style=3D"font-size:48px; line-height:52px; font=
+-weight:600; color:#1d1d1f;">Joy to you=2E</h1>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:29px 1=
+70px 23px;">
+                        <p style=3D"font-size:21px; line-height:29px; color=
+:#1d1d1f;">Explore the latest gifts from Apple and get the one you really=
+=C2=A0wanted=2E</p>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:58px;">
+                       =20
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J5B0b4P" class=3D"link-blk"><img src=3D"https://=
+images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/cta=2Epng" alt=3D"Shop" border=
+=3D"0" class=3D"img-blk" width=3D"92" height=3D"36"></a>
+                </td>
+        </tr>
+</table>
+                                <table width=3D"688" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td width=3D"390" align=3D"center" valign=3D"top">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J5x4i4C" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-11_1=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk img-rad" width=3D"390" height=3D"421">
+                                </picture>
+                        </a>
+                </td>
+                <td style=3D"padding-left:11px;"></td>
+                <td width=3D"287" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f5fbfa;" class=3D"box-rad">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:25px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J5x4i4C" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-11_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"287" height=3D"268">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <h5 style=3D"font-size:21px; line-height:25px; font=
+-weight:600; color:#1d1d1f; margin:5px 0 9px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J=
+5x4i4C" style=3D"color:#1d1d1f;"><span class=3D"nw">iPhone 13 Pro</span></a=
+></h5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J5x4i4C" style=3D"color:#1d1d1f;">From=
+ =C2=A3949</a></p>
+                </td>
+        </tr>
+</table>
+                </td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td style=3D"padding-top:11px;"></td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td width=3D"287" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f6f9fe;" class=3D"box-rad">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:25px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0u1u5C" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-12_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"287" height=3D"268">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <h5 style=3D"font-size:21px; line-height:25px; font=
+-weight:600; color:#1d1d1f; margin:5px 0 9px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J=
+0u1u5C" style=3D"color:#1d1d1f;"><span class=3D"nw">iPhone 13</span></a></h=
+5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0u1u5C" style=3D"color:#1d1d1f;">From=
+ =C2=A3779</a></p>
+                </td>
+        </tr>
+</table>
+                </td>
+                <td style=3D"padding-left:11px;"></td>
+                <td width=3D"390" align=3D"center" valign=3D"top">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0u1u5C" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-12_1=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk img-rad" width=3D"390" height=3D"421">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td style=3D"padding-top:11px;"></td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td style=3D"padding-top:48px;"></td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation" style=3D"background-color:#f5f5f7;" class=
+=3D"box-rad">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-top:26=
+px;">
+                        <picture>
+                                <source media=3D"(max-device-width:568px)" =
+srcset=3D"data:">
+                                <img src=3D"https://images=2Eapple=2Ecom/eu=
+ro/dm/21/5607/v1/uk/i/x-13=2Epng" alt=3D"" border=3D"0" class=3D"img-blk" w=
+idth=3D"37" height=3D"40">
+                        </picture>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:15px 3=
+0px 30px;">
+                        <h4 style=3D"font-size:28px; line-height:32px; font=
+-weight:600; color:#1d1d1f;">Low monthly payments at 0% APR</h4>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f; margin:8px 0;">Pay for your new iPhone in low monthly payments <b=
+r>over 24 months, interest-free=2E</p>
+                        <p>
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J5c1L2Y" style=3D"font-size:17px; line-height:25=
+px; color:#06c;">Learn <span style=3D"white-space:nowrap">more<img src=3D"h=
+ttps://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/a2=2Epng" border=3D"0" =
+alt=3D"" style=3D"display:inline; margin:0; vertical-align:0px;" width=3D"1=
+2" height=3D"10"></span></a></p>
+                </td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td style=3D"padding-top:59px;"></td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td width=3D"390" align=3D"center" valign=3D"top">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9B7b8Y" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-14_1=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk img-rad" width=3D"390" height=3D"421">
+                                </picture>
+                        </a>
+                </td>
+                <td style=3D"padding-left:11px;"></td>
+                <td width=3D"287" align=3D"center" valign=3D"top" style=3D"=
+background-color:#fdf7fc;" class=3D"box-rad">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:25px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9B7b8Y" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-14_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"287" height=3D"268">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <h5 style=3D"font-size:21px; line-height:25px; font=
+-weight:600; color:#1d1d1f; margin:5px 0 9px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m=
+9B7b8Y" style=3D"color:#1d1d1f;"><span class=3D"nw">Apple Watch</span> <spa=
+n class=3D"nw">Series 7</span></a></h5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9B7b8Y" style=3D"color:#1d1d1f;">From=
+ =C2=A3369</a></p>
+                </td>
+        </tr>
+</table>
+                </td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td style=3D"padding-top:11px;"></td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td width=3D"287" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f5fbfa;" class=3D"box-rad">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:5px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9c7J3p" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-15_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"287" height=3D"268">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <p style=3D"font-size:11px; line-height:20px; color=
+:#bf4800;">Free Engraving</p>
+                        <h5 style=3D"font-size:21px; line-height:25px; font=
+-weight:600; color:#1d1d1f; margin:5px 0 9px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m=
+9c7J3p" style=3D"color:#1d1d1f;"><span class=3D"nw">iPad Pro</span></a></h5=
+>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9c7J3p" style=3D"color:#1d1d1f;">From=
+ =C2=A3749</a></p>
+                </td>
+        </tr>
+</table>
+                </td>
+                <td style=3D"padding-left:11px;"></td>
+                <td width=3D"390" align=3D"center" valign=3D"top">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9c7J3p" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-15_1=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk img-rad" width=3D"390" height=3D"421">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td style=3D"padding-top:11px;"></td>
+        </tr>
+</table>
+<table width=3D"688" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" b=
+order=3D"0" role=3D"presentation">
+        <tr>
+                <td width=3D"390" align=3D"center" valign=3D"top">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9G1C7C" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-16_1=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk img-rad" width=3D"390" height=3D"421">
+                                </picture>
+                        </a>
+                </td>
+                <td style=3D"padding-left:11px;"></td>
+                <td width=3D"287" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f7f8ff;" class=3D"box-rad">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:25px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9G1C7C" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-16_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"287" height=3D"268">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <h5 style=3D"font-size:21px; line-height:25px; font=
+-weight:600; color:#1d1d1f; margin:5px 0 9px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m=
+9G1C7C" style=3D"color:#1d1d1f;"><span class=3D"nw">MacBook Pro</span></a><=
+/h5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m9G1C7C" style=3D"color:#1d1d1f;">From=
+ =C2=A31,899</a></p>
+                </td>
+        </tr>
+</table>
+                </td>
+        </tr>
+</table>
+                                <table width=3D"712" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:55px 1=
+00px 34px;">
+                        <h2 style=3D"font-size:40px; line-height:44px; font=
+-weight:600; color:#1d1d1f;">Essentials for all your favourite devices=2E</=
+h2>
+                </td>
+        </tr>
+</table>
+                                <table width=3D"687" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td width=3D"223" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f5f5f7;" class=3D"box-rad"><table width=3D"100%" cellpadd=
+ing=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"presentat=
+ion">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:5px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9g0u5n5N" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-21_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"223" height=3D"197">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <p style=3D"font-size:11px; line-height:20px; color=
+:#bf4800; margin:2px 0 -2px;">Free Engraving</p>
+                        <h5 style=3D"font-size:18px; line-height:24px; font=
+-weight:600; color:#1d1d1f; margin:8px 0 6px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9g=
+0u5n5N" style=3D"color:#1d1d1f;">AirPods (3rd=C2=A0generation)</a></h5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9g0u5n5N" style=3D"color:#1d1d1f;">=C2=
+=A3169</a></p>
+                </td>
+        </tr>
+</table>
+</td>
+                <td style=3D"padding-left:9px;"></td>
+                <td width=3D"223" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f5f5f7;" class=3D"box-rad"><table width=3D"100%" cellpadd=
+ing=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"presentat=
+ion">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:25px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0i9W0Y" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-22_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"223" height=3D"197">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <h5 style=3D"font-size:18px; line-height:24px; font=
+-weight:600; color:#1d1d1f; margin:8px 0 6px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J=
+0i9W0Y" style=3D"color:#1d1d1f;">AirTag Leather Key=C2=A0Ring</a></h5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0i9W0Y" style=3D"color:#1d1d1f;">=C2=
+=A335</a></p>
+                </td>
+        </tr>
+</table>
+</td>
+                <td style=3D"padding-left:9px;"></td>
+                <td width=3D"223" align=3D"center" valign=3D"top" style=3D"=
+background-color:#f5f5f7;" class=3D"box-rad"><table width=3D"100%" cellpadd=
+ing=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"presentat=
+ion">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding-bottom=
+:25px;">
+                        <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&=
+lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6o=
+FcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ76=
+29qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS2=
+25dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0L9m5N" class=3D"link-b=
+lk">
+                                <picture>
+                                        <source media=3D"(max-device-width:=
+568px)" srcset=3D"data:">
+                                        <img src=3D"https://images=2Eapple=
+=2Ecom/euro/dm/21/5607/v1/uk/i/d-23_2=2Ejpg" alt=3D"" border=3D"0" class=3D"=
+img-blk" width=3D"223" height=3D"197">
+                                </picture>
+                        </a>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:0 25px=
+ 21px;">
+                        <h5 style=3D"font-size:18px; line-height:24px; font=
+-weight:600; color:#1d1d1f; margin:8px 0 6px;"><a href=3D"https://c=2Eapple=
+=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofY=
+jHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NV=
+dJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxD=
+Rr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J=
+0L9m5N" style=3D"color:#1d1d1f;">MagSafe accessories</a></h5>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f;"><a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz=
+2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF=
+9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVE=
+ELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz=
+8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J0L9m5N" style=3D"color:#1d1d1f;">From=
+ =C2=A334=2E95</a></p>
+                </td>
+        </tr>
+</table>
+</td>
+        </tr>
+</table>
+                                <table width=3D"712" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:27px 5=
+0px 54px;">
+                       =20
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J9x6h0P" style=3D"font-size:17px; line-height:25=
+px; color:#06c;">Shop all <span style=3D"white-space:nowrap">accessories<im=
+g src=3D"https://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/a2=2Epng" bor=
+der=3D"0" alt=3D"" style=3D"display:inline; margin:0; vertical-align:0px;" =
+width=3D"12" height=3D"10"></span></a>
+                </td>
+        </tr>
+</table>
+                                <table width=3D"712" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation" style=3D"=
+background-color:#f5f5f7;">
+                                        <tr>
+                                                <td align=3D"center" valign=
+=3D"top" style=3D"padding-bottom:7px;">
+                                                        <table width=3D"712=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"=
+presentation">
+        <tr>
+                <td align=3D"center" valign=3D"top" style=3D"padding:44px 1=
+00px 80px;">
+                        <h2 style=3D"font-size:40px; line-height:44px; font=
+-weight:600; color:#1d1d1f;">Shopping at Apple has never been easier=2E</h2=
+>
+                </td>
+        </tr>
+</table>
+                                                        <table width=3D"641=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"=
+presentation">
+        <tr>
+                <td style=3D"padding-left:34px;" rowspan=3D"3"></td>
+                <td style=3D"padding-left:265px;"></td>
+                <td style=3D"padding-left:72px;" rowspan=3D"3"></td>
+                <td style=3D"padding-left:265px;"></td>
+                <td style=3D"padding-left:5px;" rowspan=3D"3"></td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top"><table width=3D"100%" c=
+ellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"pr=
+esentation">
+        <tr>
+                <td align=3D"left" valign=3D"top">
+                        <picture>
+                                <source media=3D"(max-device-width:568px)" =
+srcset=3D"data:">
+                                <img src=3D"https://images=2Eapple=2Ecom/eu=
+ro/dm/21/5607/v1/uk/i/d-31=2Epng" alt=3D"" border=3D"0" class=3D"img-blk" w=
+idth=3D"46" height=3D"40">
+                        </picture>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"left" valign=3D"top" style=3D"padding:24px 20p=
+x 46px 0;">
+                        <h4 style=3D"font-size:28px; line-height:32px; font=
+-weight:600; color:#1d1d1f;">Shop with a Specialist=2E</h4>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f; margin:13px 0 14px;">Whether you shop in a store or  online, our =
+Specialists can help  you buy the products you love=2E</p>
+                        <p>
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J2I3W5k" style=3D"font-size:17px; line-height:25=
+px; color:#06c;">Get <span style=3D"white-space:nowrap">help<img src=3D"htt=
+ps://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/a2=2Epng" border=3D"0" al=
+t=3D"" style=3D"display:inline; margin:0; vertical-align:0px;" width=3D"12"=
+ height=3D"10"></span></a></p>
+                </td>
+        </tr>
+</table>
+</td>
+                <td align=3D"center" valign=3D"top"><table width=3D"100%" c=
+ellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"pr=
+esentation">
+        <tr>
+                <td align=3D"left" valign=3D"top">
+                        <picture>
+                                <source media=3D"(max-device-width:568px)" =
+srcset=3D"data:">
+                                <img src=3D"https://images=2Eapple=2Ecom/eu=
+ro/dm/21/5607/v1/uk/i/d-32=2Epng" alt=3D"" border=3D"0" class=3D"img-blk" w=
+idth=3D"46" height=3D"40">
+                        </picture>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"left" valign=3D"top" style=3D"padding:24px 30p=
+x 46px 0;">
+                        <h4 style=3D"font-size:28px; line-height:32px; font=
+-weight:600; color:#1d1d1f;">Free personal  engraving=2E</h4>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f; margin:13px 0 14px;">Make them yours=2E Engrave a mix of emoji, n=
+ames, initials and numbers=2E</p>
+                        <p>
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J8l4c5C" style=3D"font-size:17px; line-height:25=
+px; color:#06c;">Learn <span style=3D"white-space:nowrap">more<img src=3D"h=
+ttps://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/a2=2Epng" border=3D"0" =
+alt=3D"" style=3D"display:inline; margin:0; vertical-align:0px;" width=3D"1=
+2" height=3D"10"></span></a></p>
+                </td>
+        </tr>
+</table>
+</td>
+        </tr>
+        <tr>
+                <td align=3D"center" valign=3D"top"><table width=3D"100%" c=
+ellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"pr=
+esentation">
+        <tr>
+                <td align=3D"left" valign=3D"top">
+                        <picture>
+                                <source media=3D"(max-device-width:568px)" =
+srcset=3D"data:">
+                                <img src=3D"https://images=2Eapple=2Ecom/eu=
+ro/dm/21/5607/v1/uk/i/d-33=2Epng" alt=3D"" border=3D"0" class=3D"img-blk" w=
+idth=3D"46" height=3D"40">
+                        </picture>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"left" valign=3D"top" style=3D"padding:24px 20p=
+x 46px 0;">
+                        <h4 style=3D"font-size:28px; line-height:32px; font=
+-weight:600; color:#1d1d1f;">Get to know your=C2=A0device=2E</h4>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f; margin:13px 0 14px;">Buy a new device from Apple and we=E2=80=99l=
+l help you get the most of it with a free Online Personal Session=2E</p>
+                        <p>
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9m1V3c5C" style=3D"font-size:17px; line-height:25=
+px; color:#06c;">Learn <span style=3D"white-space:nowrap">more<img src=3D"h=
+ttps://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/a2=2Epng" border=3D"0" =
+alt=3D"" style=3D"display:inline; margin:0; vertical-align:0px;" width=3D"1=
+2" height=3D"10"></span></a></p>
+                </td>
+        </tr>
+</table>
+</td>
+                <td align=3D"center" valign=3D"top"><table width=3D"100%" c=
+ellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"pr=
+esentation">
+        <tr>
+                <td align=3D"left" valign=3D"top">
+                        <picture>
+                                <source media=3D"(max-device-width:568px)" =
+srcset=3D"data:">
+                                <img src=3D"https://images=2Eapple=2Ecom/eu=
+ro/dm/21/5607/v1/uk/i/d-34=2Epng" alt=3D"" border=3D"0" class=3D"img-blk" w=
+idth=3D"46" height=3D"40">
+                        </picture>
+                </td>
+        </tr>
+        <tr>
+                <td align=3D"left" valign=3D"top" style=3D"padding:24px 20p=
+x 46px 0;">
+                        <h4 style=3D"font-size:28px; line-height:32px; font=
+-weight:600; color:#1d1d1f;">Financing options=2E</h4>
+                        <p style=3D"font-size:17px; line-height:25px; color=
+:#1d1d1f; margin:13px 0 14px;">Great ways to pay over time=2E Choose&nbsp;t=
+he one for you=2E</p>
+                        <p>
+<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWC=
+oHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3kWl=
+pfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC35f=
+E0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05CvCB=
+ocpzGTHJU668lsY%3D&ct=3Dak9J1c2M2M" style=3D"font-size:17px; line-height:25=
+px; color:#06c;">Learn <span style=3D"white-space:nowrap">more<img src=3D"h=
+ttps://images=2Eapple=2Ecom/euro/dm/21/5607/v1/uk/i/a2=2Epng" border=3D"0" =
+alt=3D"" style=3D"display:inline; margin:0; vertical-align:0px;" width=3D"1=
+2" height=3D"10"></span></a></p>
+                </td>
+        </tr>
+</table>
+</td>
+        </tr>
+</table>
+                                                </td>
+                                        </tr>
+                                </table>
+                                <table width=3D"712" cellpadding=3D"0" cell=
+spacing=3D"0" align=3D"center" border=3D"0" role=3D"presentation" id=3D"aap=
+l-footer" style=3D"background-color:#f5f5f7;">
+                                        <tr>
+                                                <td align=3D"center" valign=
+=3D"top">
+                                                        <table width=3D"660=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"=
+presentation">
+                                                                <tr>
+                                                                        <td=
+ valign=3D"top" style=3D"font-size:0; line-height:0; border-top:1px solid #=
+d2d2d7;"></td>
+                                                                </tr>
+                                                        </table>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td align=3D"center" valign=
+=3D"top" style=3D"padding:14px 0 16px;">
+                                                        <table width=3D"100=
+%" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=
+=3D"presentation">
+	<tr>
+		<td width=3D"100%" align=3D"center" valign=3D"top">
+			<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=3Dgbr&a=3Dz2%2Bnb8=
+HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFcBmc7VWtvbcrF9Q%2BB3=
+kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629qcvuGH0qAJVEELtPqEC=
+35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225dLjBSRBSi0jz8%2B05C=
+vCBocpzGTHJU668lsY%3D&ct=3Dak9J9i2w3M" style=3D"font-size:14px; line-height=
+:18px; color:#424245;">Shop Online</a>=C2=A0=C2=A0 =C2=A0<span style=3D"fon=
+t-size:14px; line-height:18px; color:#d2d2d7; display:inline-block;">|</spa=
+n>=C2=A0=C2=A0 =C2=A0<a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=3Den&lc=
+=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZnSxt6oFc=
+Bmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr4DDZ7629=
+qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4qFjqS225=
+dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9m1q7N6k" style=3D"font-siz=
+e:14px; line-height:18px; color:#424245;">Find a Store</a>=C2=A0=C2=A0 =C2=
+=A0<span style=3D"font-size:14px; line-height:18px; color:#d2d2d7; display:=
+inline-block;">|</span>=C2=A0=C2=A0 =C2=A0<span style=3D"font-size:14px; li=
+ne-height:18px; color:#424245;">0800&nbsp;048&nbsp;0408</span>=C2=A0=C2=A0 =
+=C2=A0<span style=3D"font-size:14px; line-height:18px; color:#d2d2d7; displ=
+ay:inline-block;">|</span>=C2=A0=C2=A0 =C2=A0<a href=3D"https://itunes=2Eap=
+ple=2Ecom/gb/app/apple-store/id375380948?mt=3D8&ls=3D1" style=3D"font-size:=
+14px; line-height:18px; color:#424245;">Get the Apple Store App</a>
+		</td>
+	</tr>
+</table>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td align=3D"center" valign=
+=3D"top">
+                                                        <table width=3D"660=
+" cellpadding=3D"0" cellspacing=3D"0" align=3D"center" border=3D"0" role=3D"=
+presentation">
+                                                                <tr>
+                                                                        <td=
+ valign=3D"top" style=3D"font-size:0; line-height:0; border-top:1px solid #=
+d2d2d7;"></td>
+                                                                </tr>
+                                                        </table>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td align=3D"left" valign=
+=3D"top" style=3D"font-size:12px; line-height:16px; color:#6e6e73; padding:=
+17px 26px 25px;">
+                                                        <p style=3D"margin-=
+bottom:9px;">* Trade=E2=80=91in values will vary based on the condition, ye=
+ar and configuration of your trade=E2=80=91in device=2E You must be at leas=
+t 18 years old to be eligible to trade in for credit or for an Apple Store =
+Gift Card=2E Not all devices are eligible for credit=2E More details are av=
+ailable from Apple=E2=80=99s <a href=3D"https://c=2Eapple=2Ecom/r?v=3D2&la=
+=3Den&lc=3Dgbr&a=3Dz2%2Bnb8HWCoHziyJtbRYNxEJqOcwA12xbGoofYjHA7%2FoD%2B53wTZ=
+nSxt6oFcBmc7VWtvbcrF9Q%2BB3kWlpfy5%2FKhY3CjybGahTB6EktH2NVdJaTboRrqxKL2gwTr=
+4DDZ7629qcvuGH0qAJVEELtPqEC35fE0zO%2Be1Du4eAOHBOWlI4EB8GxDRr%2BTOsBf2eswqe4=
+qFjqS225dLjBSRBSi0jz8%2B05CvCBocpzGTHJU668lsY%3D&ct=3Dak9J5c0Y5C" style=3D"=
+color:#424245;">trade=E2=80=91in partner</a> for trade=E2=80=91in and recyc=
+ling of eligible devices=2E Restrictions and limitations may apply=2E Payme=
+nts are based on the received device matching the description you provided =
+when your estimate was made=2E Apple reserves the right to refuse or limit =
+the quantity of any device for any reason=2E Value of your current device m=
+ay be applied towards purchase of a new Apple device=2E Offer may not be av=
+ailable in all stores=2E Some stores may have additional requirements=2E </=
+p>
+                                                        <!-- START FOOTER S=
+ECTION -->
+        <p style=3D"margin-bottom:9px;">Apple Distribution International Lt=
+d=2E, Hollyhill Industrial Estate, Cork, Ireland=2E Company Registration nu=
+mber: 470672=2E<span class=3D"nw"> VAT number: IE9700053D=2E</span></p>
+        <p style=3D"margin-bottom:9px;"><a href=3D"http://www=2Eapple=2Ecom=
+/uk/legal/" style=3D"color:#424245;">All Rights Reserved</a>&nbsp;&nbsp;&nb=
+sp;|&nbsp;&nbsp;&nbsp;<a href=3D"https://www=2Eapple=2Ecom/uk/privacy/priva=
+cy-policy/" style=3D"color:#424245;">Privacy Policy</a>&nbsp;&nbsp;&nbsp;|&=
+nbsp;&nbsp;&nbsp;<a href=3D"https://appleid=2Eapple=2Ecom/en_GB" style=3D"c=
+olor:#424245;">My Apple ID</a></p>
+        <p style=3D"margin-bottom:9px;">TM and =C2=A9 2021 Apple Inc=2E</p>=
+
+        <p>If you would prefer not to receive commercial email from Apple, =
+or if you have changed your email address, please <a href=3D"https://mynews=
+=2Eapple=2Ecom/subscriptions?v=3D2&la=3Den_uk&a=3D6zicLg45BzHBPjZjBLagMqGZT=
+z997wJBULv3OFgWiSON6UhwewDMljAAhFZSPYr%2FP5i8MYZM6Bir8IU%2F6AeOAP5uwdhu8mOb=
+c52Z0NSZOw6PT13s3o0%2BY2aTurrF7Rl7tsQPVi3OKAqAdBIVvFINyHSuun7O6cBShQ7hcjIh7=
+07f1aKveG5Ni6cjFIhYGceSFbnXlNtTHgpq3KpXX%2BuaXQ%3D%3D" style=3D"color:#4242=
+45;"><span class=3D"nw">click here</span></a>=2E</p>
+<!-- END FOOTER SECTION -->
+                                                </td>
+                                        </tr>
+                                </table>
+                        </td>
+                </tr>
+        </table>
+</div>
+<!-- END DESKTOP VERSION --></body>
+</html>
+------=_Part_196216531_701825394.1640539996779--
+

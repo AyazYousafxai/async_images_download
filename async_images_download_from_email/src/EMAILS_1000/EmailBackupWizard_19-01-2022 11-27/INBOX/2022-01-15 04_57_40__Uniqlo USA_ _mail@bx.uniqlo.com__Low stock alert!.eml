@@ -1,0 +1,938 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:ff8a:0:0:0:0:0 with SMTP id j10csp698081wrr;        Fri, 14 Jan
+ 2022 20:57:41 -0800 (PST)
+Received: from o4.email.bounceexchange.com (o4.email.bounceexchange.com.
+ [167.89.28.99])        by mx.google.com with ESMTPS id
+ o8si4121688qvh.279.2022.01.14.20.57.40        for
+ <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_128_GCM_SHA256 bits=128/128);        Fri, 14 Jan 2022
+ 20:57:41 -0800 (PST)
+Received: by filterdrecv-69c466f987-nxt5z with SMTP id
+ filterdrecv-69c466f987-nxt5z-1-61E25443-43        2022-01-15
+ 04:57:39.968676071 +0000 UTC m=+11687840.288008816
+Received: from ODk1OTg0 (unknown)	by geopod-ismtpd-2-1 (SG) with HTTP	id
+ vOxluouQRDSBRhX1HK359w	Sat, 15 Jan 2022 04:57:39.941 +0000 (UTC)
+X-Google-Smtp-Source: ABdhPJz5/zt4Ziy1eKKP/HZpQgmfzJABicR+o/8UUK9dEKXJu6QXj3ghLODrrb5FOnhSLhp8/lrc
+X-Received: by 2002:a37:a7c1:: with SMTP id q184mr8796395qke.382.1642222661186;       
+ Fri, 14 Jan 2022 20:57:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642222661; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=hYMzKOWiTRy7E2uXFgUO3E1jf9eGkhoFU8CkX6AB1OfLkNdq6g9sVA+aKNJcNITOg2        
+ 3NA+x48vvOyCqcySB1Zh+WAtD6/7FnwljRyuNChQ1GPg7bsOh+HEXUgkAt2a5u9AOnmR        
+ kbRvN5oIfts9jVGVCE7YZTIGbd//XmXvJNcU5/03vYGVv60k0ZygIFH7kMZ5gfSCjCZN        
+ ukJCzkibBv7Rb8GixC0sE9qYsX0Mr4jwRBaPyU1PS8XRz5eR91XcArwCDSGH6qkshepG        
+ LRtwtOqRUOzXrcmsYHtavsI41BvhEZF7zTkx41nuouz6YLUTmJW4AwHZHLmFX3SOzHtv        
+ MGkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=to:reply-to:subject:message-id:mime-version:from:date        
+ :content-transfer-encoding:dkim-signature:dkim-signature;       
+ bh=JtpurbcyRtME3Bk/LUQP9JbpK3EGxp+/Tcw9I1pgjDM=;       
+ b=SqLoQ3Q7Gp6qrVGCrf+0566JXR7wvlHyutUW4iZCGj2VecGjwnL2roXwki0jqx9IUv        
+ /9tpX42bWeMhH0DR/WNuJTszy4oDIlsp7nepUS/ywXRm8lTq+brmxy5JWd0GEPGiRBw7        
+ ObuyL6MzJHsq/iQnMeLaD7aiKCeqwPKrSOMldbu8buhzCgYvj4G2uD2oBkA9B7tgvNiX        
+ Wfjrf9UAmkfyzK1QOmdGnuVIML8GRML6Z+oWrryF0PHV3iwhcM/mzNyCZ/hKlsndXMEA        
+ W+F1klMAFmolUkmew31XDXHmdHoxZbct4gzld2IBqvvyt9IcMDnN3ckgAmvlfnHHGk4y        
+ olcw==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@bx.uniqlo.com header.s=bcx
+ header.b=WyiKMD8u;       dkim=pass header.i=@sendgrid.info header.s=smtpapi
+ header.b=apqHDwhG;       spf=pass (google.com: domain of
+ bounces+895984-b122-john.doe.youniq=gmail.com@bx.bx.uniqlo.com designates
+ 167.89.28.99 as permitted sender)
+ smtp.mailfrom="bounces+895984-b122-john.doe.youniq=gmail.com@bx.bx.uniqlo.com";       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=uniqlo.com
+Return-Path: <bounces+895984-b122-john.doe.youniq=gmail.com@bx.bx.uniqlo.com>
+Received-SPF: pass (google.com: domain of
+ bounces+895984-b122-john.doe.youniq=gmail.com@bx.bx.uniqlo.com designates
+ 167.89.28.99 as permitted sender) client-ip=167.89.28.99;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@bx.uniqlo.com header.s=bcx
+ header.b=WyiKMD8u;       dkim=pass header.i=@sendgrid.info header.s=smtpapi
+ header.b=apqHDwhG;       spf=pass (google.com: domain of
+ bounces+895984-b122-john.doe.youniq=gmail.com@bx.bx.uniqlo.com designates
+ 167.89.28.99 as permitted sender)
+ smtp.mailfrom="bounces+895984-b122-john.doe.youniq=gmail.com@bx.bx.uniqlo.com";       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=uniqlo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bx.uniqlo.com;	h=content-transfer-encoding:content-type:from:mime-version:subject:	reply-to:x-feedback-id:to;	s=bcx;
+ bh=JtpurbcyRtME3Bk/LUQP9JbpK3EGxp+/Tcw9I1pgjDM=;	b=WyiKMD8uPF3N5XxkEMxoX5gGumF8tghnCCzmvuNf4mrsLTBjXz8hJt/QW8dplQ8GV9WY	Dy9n05sg0/71EwtSmGvHz/++/U2k3wKWmc2bnwlHjobDCtTFpvOo7LWVvTvi0ozLI+Rjvh	aMoPJfXmcwivKHdxMrm2JbSbJWqyidwDa+ouhfLryEbCO+ivo2hqUb/O3Y4Vbb4jMNEK1J	Nk2o+XSJ9NQxSCUSPr1Uw0KyQIs11kZWy/RWKi2pHoKM6D1BM4ykdS1WHCS0vn9rRsJIIs	yH5Nh1vDAOC/kHu7rTghhbsl9jodZrySbpyvbUHxxFFcNHukM44FMC3/QHrYVkjw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sendgrid.info;	h=content-transfer-encoding:content-type:from:mime-version:subject:	reply-to:x-feedback-id:to;	s=smtpapi;
+ bh=JtpurbcyRtME3Bk/LUQP9JbpK3EGxp+/Tcw9I1pgjDM=;	b=apqHDwhGiNYbHukpmSTcTLWvkA3dDqX0aaTu74Ff+wito3dJ8olSfQh8wVjxG8jIL7qA	yZVQ+QXSa8B99h7vcimk98fTcVle/JB6r6eL46DfELO6/6I843ng4J+lfp4Wwp5tgqtCbI	7raOEbCZ6P5AjhJVIFk5Td/sdrGG4GhS4=
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+Date: Sat, 15 Jan 2022 04:57:40 +0000 (UTC)
+From: "Uniqlo USA" <mail@bx.uniqlo.com>
+Mime-Version: 1.0
+Message-ID: <vOxluouQRDSBRhX1HK359w@geopod-ismtpd-2-1>
+Subject: Low stock alert!
+Reply-To: mail@bx.uniqlo.com
+X-Feedback-ID: 895984:SG
+X-SG-EID: =?us-ascii?Q?NY02skgR0mtWalwKePR4gTt+62REm3bxW7dziCzUB0Nb=2FoU5jziO4WxEJCmI9t?= =?us-ascii?Q?AmrpIHZRtWRdUOPXocpygcmR4g+uCymTHaEzpa5?=
+ =?us-ascii?Q?Msjj5vZVGcSz15QQa39FSzr653T+ZJa4z6pTlEC?=
+ =?us-ascii?Q?gvsvQy91CSKV4Rrjbzl2Lplk7vvEkwCRuKr2llN?=
+ =?us-ascii?Q?L8phWiX+rQlhguC1WIvUGkyziomu4G+uX5O2ZJl?=
+ =?us-ascii?Q?NbdYAnzSoc+2KXJw4ESMEhBiBmpHrigvlsav4W?=
+X-SG-ID: =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FIBNz1iFG7fYuoVJU3W5=2F?= =?us-ascii?Q?IXfuuy9KP=2FsJAu4p6zQ=2FtiQFWE35dRxM=2F2T=2FN8W?=
+ =?us-ascii?Q?aKRJQ0RZ=2Fdfgos3+zY5wZAXtQs6TIJ4qKa78ACn?=
+ =?us-ascii?Q?J4dN7NabjATHdAdeRhGQH6qYxcWXRCQ=3D?=
+To: john.doe.youniq@gmail.com
+X-Entity-ID: 7yD8Gw5cAS5L+HGfqWSHOw==
+
+
+=20
+=20
+
+
+
+
+
+=20
+=20
+
+=20
+=20
+=20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=20
+
+
+
+
+
+
+
+
+
+
+
+  =09
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" xmlns:v=3D"urn:schemas-mic=
+rosoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+  <head>
+   =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+     =20
+ =20
+   =20
+ =20
+ =20
+ =20
+ =20
+ =20
+ =20
+   =20
+    <meta http-equiv=3D"Content-Type" content=3D"text/html;" charset=3D"utf=
+-8" />
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1">
+    <![if !mso]>
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge,chrome=3D1" /=
+>
+    <![endif]>
+    <meta name=3D"x-apple-disable-message-reformatting" />
+    <title>Better get moving</title>
+    <style>
+      @import 'https://fonts=2Egoogleapis=2Ecom/css?family=3DRoboto+Condens=
+ed:400,700';
+      [style*=3D"Roboto Condensed"] { font-family: 'Roboto Condensed', Taho=
+ma, Verdana, Geneva, sans-serif !important; }
+        u + #font-fix { display: block !important; } =20
+        body { margin:0 !important; } =20
+        div[style*=3D"margin: 16px 0"] { margin:0 !important; } =20
+        a {text-decoration: none;}
+    @media screen yahoo { }
+        @media screen and (min-device-width: 768px) and (max-device-width: =
+1024px) { =20
+            =2Emini { width:100% !important; }
+            =2Eipad { width:300px !important; }
+            =2Eval { width:200px !important; }
+            =2Ehalf { width:49% !important; }
+            =2EipadImg { width: 98% !important; }
+            =2EipadFirstItem { width:200px!important; }
+            =2EipadWidth { width:600px!important; }
+        }
+        @media screen and (min-device-width: 10px) and (max-width:640px) {
+            =2Efull { width:100% !important; height:auto !important; }
+            =2Ehide { width:0 !important; height:0 !important; font-size:0 =
+!important; line-height:0 !important; overflow:hidden !important; float:lef=
+t !important; display:none !important; }
+            =2Eshow { display:block!important; width:100%!important; height=
+:auto!important; overflow:visible!important; float:none!important;clear:bot=
+h!important;font-size:18px!important;line-height:23px!important;}
+            table=2Eshow { display:table!important;}
+            =2Eshrink { width:100px !important; }
+            =2Equarter { width:140px !important; }
+            =2Econtainer { min-width:100% !important; }
+            =2Eblock { display:block !important; line-height:18px !importan=
+t; }
+            =2Eblockpad { display:block !important; line-height:18px !impor=
+tant; padding:0 0 15px; }
+            =2Ecenter {  margin:0 auto !important; text-align:center !impor=
+tant;float:none!important;clear:both!important; }
+            =2Ebox { width:90% !important; }
+            =2Ehalf { width:49% !important; }
+            =2EyahooHero { padding:40px 0!important;}
+            =2Enobdr { border:none!important; }
+            =2Eappfoot { width:auto!important; height:35px!important; }
+            =2Ebgimg { background:#ffffff!important; }
+            =2Emobilebg { background-color:#dedee0!immportant; }
+            =2EprodCopy { padding:18px 0!important;}
+            =2EpricePad { padding:12px 0 0!important;}
+            h2 { font-size:14px!important;}
+        }
+    </style>
+   =20
+    <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:Pixel=
+sPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+  </head>
+  <body style=3D"padding:0;" class=3D"body">
+     =20
+    <img src=3D"https://ibx2=2Enet/ibx/em/opn/5ioo1Mm5hnk?x2=3D6_XYj64tezzU=
+_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0F=
+X1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw=
+34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg,," width=3D"1" height=
+=3D"1" style=3D"display:none;" />=20
+    <img src=3D"http://pixel=2Ebounceexchange=2Ecom/open=2Egif?client_id=3D1=
+828&email=3Djohn=2Edoe=2Eyouniq%40gmail=2Ecom" width=3D"1" height=3D"1" sty=
+le=3D"display:none;" />=20
+   =20
+    <img src=3D"http://mi=2Euniqlo=2Ecom/p/up/beec240a18bcee79b782765808d62=
+cf0/o=2Egif" width=3D"1" height=3D"1" style=3D"display:none;" />=20
+ =20
+ =20
+    <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" role=3D"presentation" style=3D"width:100%;margin:0 auto;">
+        <![if !mso]>
+        <tr>
+            <td style=3D"font-size:0;line-height:0;color:#fffffe;">Better g=
+et moving</td>
+        </tr>
+        <![endif]>
+        <tr>
+	        <td align=3D"center" style=3D"padding:50px 0;" class=3D"yahooHero"=
+><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64te=
+zzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwz=
+o0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBg=
+gUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxn=
+bz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWE2MzVjOGQ0M2ZlNGRlNDgxOWJjMTBjMTdkZmVhNDM=
+2ZGE1YTlmYWJiNjY3NDlkMjYyYzZmOGI5MzJjYmViYmY=3D&b=3Dhttps%3A%2F%2Fwww=2Euni=
+qlo=2Ecom%2Fus%2Fen%2Fhome%2F&q[utm_medium]=3Demail&q[utm_source]=3Dwunderk=
+ind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_m=
+edium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decorati=
+on:none;" target=3D"_blank"><img src=3D"https://assets=2Ebounceexchange=2Ec=
+om/assets/uploads/users/2518/uniqlo/1018/logo-153=2Epng" width=3D"153" styl=
+e=3D"display:block;margin:0 auto;border:0;white-space:pre;text-align:center=
+;" alt=3D"" /></a></td>
+        </tr>
+    </table>
+   =20
+   =20
+   =20
+ =20
+   =20
+   =20
+
+   =20
+    <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" role=3D"presentation" style=3D"width:640px;margin:0 auto;" id=3D"Hero" cl=
+ass=3D"hero full">
+    	<tr>
+    		<td align=3D"center" valign=3D"top"  bgcolor=3D"#ffffff" style=3D"bac=
+kground: #ffffff ;background-size:100%;background-size:cover;" class=3D"bgi=
+mg">
+    		=09
+    			<![if !mso]>
+    			<a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_X=
+Yj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBH=
+W6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytN=
+uqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=
+=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWE2MzVjOGQ0M2ZlNGRlNDgxOWJjMTBjMTdk=
+ZmVhNDM2ZGE1YTlmYWJiNjY3NDlkMjYyYzZmOGI5MzJjYmViYmY=3D&b=3Dhttps%3A%2F%2Fww=
+w=2Euniqlo=2Ecom%2Fus%2Fen%2Fhome%2F&q[utm_medium]=3Demail&q[utm_source]=3Dw=
+underkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q=
+[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-de=
+coration:none;color:#000000;" target=3D"_blank">
+    				<div>
+    					<![endif]>
+    					<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" role=3D"presentation" style=3D"width:100%;margin:0 auto;" class=3D"b=
+ghue">
+    						<tr>
+    							<td align=3D"center" valign=3D"middle" style=3D"padding:50px 0;"=
+ class=3D"yahooHero full">
+   =20
+    								<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" role=3D"presentation" style=3D"width:90%;margin:0 auto;" class=3D"=
+box">
+    								=09
+              				<tr>
+              					<td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/r=
+d2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6=
+eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1=
+GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0=
+YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWE2=
+MzVjOGQ0M2ZlNGRlNDgxOWJjMTBjMTdkZmVhNDM2ZGE1YTlmYWJiNjY3NDlkMjYyYzZmOGI5MzJ=
+jYmViYmY=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fhome%2F&q[utm_=
+medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_ca=
+mpaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58=
+gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"><img src=
+=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/4754/innovo/=
+LIS-P-2-HeadlineCopyImg=2Epng" width=3D"377" style=3D"border:0;margin:0 aut=
+o;text-align:center;display:block;" alt=3D"Your Chance to Get it Before it=
+=E2=80=99s Gone!" class=3D"full"/></a></td>
+              				</tr>
+    								=09
+    									<tr>
+    										<td align=3D"center" style=3D"padding:25px 0 0;"><h2 style=3D"=
+margin:0;text-align:center;line-height:1=2E4;font-family:Helvetica, Arial, =
+sans-serif;font-size:22px;font-weight:normal;-webkit-text-size-adjust:none;=
+letter-spacing: 1=2E47px;"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0=
+hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6C=
+KHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNM=
+RW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin8=
+7RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWE2MzVjOGQ0M2ZlN=
+GRlNDgxOWJjMTBjMTdkZmVhNDM2ZGE1YTlmYWJiNjY3NDlkMjYyYzZmOGI5MzJjYmViYmY=3D&b=
+=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fhome%2F&q[utm_medium]=3Dema=
+il&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Dema=
+il_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23=
+v0" style=3D"text-decoration:none;color:#000000;" target=3D"_blank">These l=
+ooks are almost sold&nbsp;out!</a></h2></td>
+    									</tr>
+    								=09
+    								=09
+    								=09
+    									<tr>
+    										<td align=3D"center" style=3D"padding:30px 0 0;text-align:cen=
+ter;"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XY=
+j64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW=
+6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNu=
+qOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=
+=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWNkN2NmZTU2MTFjN2M1YTY5Y2M2ZjJkNDFh=
+ZDFlOGI1YmNlYTY5MjBmMjZjMmE4MGU0MDc2ZDA2MjQwZWU1NWE=3D&b=3Dhttps%3A%2F%2Fww=
+w=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen-ultra-light-down-jacket-442732=2Ehtml&q[=
+utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[ut=
+m_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc=
+7h58gp1o0hpik2v23v0&q[dwvar_442732_color]=3Dundefined&id=3D442732&destinati=
+on=3D442732&item_type=3Dinteraction&recommendation_source=3Dplatform2&displ=
+ay_order=3D0" style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"=
+https://image=2Euniqlo=2Ecom/UQ/ST3/WesternCommon/imagesgoods/442732/item/g=
+oods_74_442732=2Ejpg?width=3D734" width=3D"524" style=3D"display:block;marg=
+in:0 auto;text-align:center;border:0;" alt=3D"" ID=3D"FirstItem" class=3D"f=
+ull"/></a></td>
+    									</tr>
+    									<tr>
+    									  <td align=3D"center" style=3D"padding:28px 0 0;">
+    									    <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" role=3D"presentation" style=3D"width:90%;margin:0 auto;" cla=
+ss=3D"full">
+          									<tr>
+          										<td align=3D"center" style=3D"text-align:center;line-he=
+ight:28px;font-family:Helvetica, Arial, sans-serif;font-size:22px;font-weig=
+ht:700;-webkit-text-size-adjust:none;" ID=3D"FirstItem" ><a href=3D"https:/=
+/ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxK=
+zli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC=
+7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mb=
+Ov6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1=
+zPXgyLGImc2lnPWNkN2NmZTU2MTFjN2M1YTY5Y2M2ZjJkNDFhZDFlOGI1YmNlYTY5MjBmMjZjMm=
+E4MGU0MDc2ZDA2MjQwZWU1NWE=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen=
+%2Fwomen-ultra-light-down-jacket-442732=2Ehtml&q[utm_medium]=3Demail&q[utm_=
+source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowsto=
+ck_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0&q[dwva=
+r_442732_color]=3Dundefined&id=3D442732&destination=3D442732&item_type=3Din=
+teraction&recommendation_source=3Dplatform2&display_order=3D0" style=3D"tex=
+t-decoration:none;color:#131313;" target=3D"_blank">WOMEN ULTRA LIGHT DOWN =
+JACKET</a></td>
+          									</tr>
+            	             =20
+                            <tr>
+                              <td align=3D"center" style=3D"text-align:cent=
+er;font-size:22px;-moz-text-size-adjust:none;-webkit-text-size-adjust:none;=
+-ms-text-size-adjust:none;font-family:Helvetica, Arial, sans-serif;font-wei=
+ght:400;line-height:28px;padding:16px 0 0;">
+            	                  <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58g=
+p1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb=
+_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4ig=
+LVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tg=
+Cin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWNkN2NmZTU2M=
+TFjN2M1YTY5Y2M2ZjJkNDFhZDFlOGI1YmNlYTY5MjBmMjZjMmE4MGU0MDc2ZDA2MjQwZWU1NWE=
+=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen-ultra-light-down=
+-jacket-442732=2Ehtml&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[ut=
+m_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=
+=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0&q[dwvar_442732_color]=3Dundef=
+ined&id=3D442732&destination=3D442732&item_type=3Dinteraction&recommendatio=
+n_source=3Dplatform2&display_order=3D0" style=3D"text-decoration:none;color=
+:#131313;" target=3D"_blank">$69=2E90</a>
+            	                </td>
+            	              </tr>
+            	            =20
+            	             =20
+                            <tr>
+                              <td align=3D"center" style=3D"text-align:cent=
+er;font-size:18px;-moz-text-size-adjust:none;-webkit-text-size-adjust:none;=
+-ms-text-size-adjust:none;font-family:Helvetica, Arial, sans-serif;font-wei=
+ght:400;line-height:28px;padding:16px 0 0;">
+            	                  <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58g=
+p1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb=
+_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4ig=
+LVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tg=
+Cin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWNkN2NmZTU2M=
+TFjN2M1YTY5Y2M2ZjJkNDFhZDFlOGI1YmNlYTY5MjBmMjZjMmE4MGU0MDc2ZDA2MjQwZWU1NWE=
+=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen-ultra-light-down=
+-jacket-442732=2Ehtml&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[ut=
+m_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=
+=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0&q[dwvar_442732_color]=3Dundef=
+ined&id=3D442732&destination=3D442732&item_type=3Dinteraction&recommendatio=
+n_source=3Dplatform2&display_order=3D0" style=3D"text-decoration:none;color=
+:#131313;" target=3D"_blank">Thin, light, and warm=2E Handy as an outer or =
+inner layer=2E</a>
+            	                </td>
+            	              </tr>
+            	            =20
+    									    </table>
+    									  </td>
+    									</tr>
+    								=09
+    								=09
+    									<tr>
+    										<td align=3D"center" style=3D"padding:25px 0 0;">
+    											<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" bgcolor=3D"#000000" role=3D"presentation" style=3D"width:200px=
+;margin:0 auto;" class=3D"cta">
+    												<tr>
+    													<td align=3D"center" valign=3D"middle" height=3D"52" style=
+=3D"font-size:15px;text-align: center;-webkit-text-size-adjust:none;font-fa=
+mily:Helvetica, Arial, sans-serif;text-transform:uppercase;font-weight:700;=
+letter-spacing: 0=2E41px;"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0=
+hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6C=
+KHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNM=
+RW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin8=
+7RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWNkN2NmZTU2MTFjN=
+2M1YTY5Y2M2ZjJkNDFhZDFlOGI1YmNlYTY5MjBmMjZjMmE4MGU0MDc2ZDA2MjQwZWU1NWE=3D&b=
+=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen-ultra-light-down-jack=
+et-442732=2Ehtml&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_ter=
+m]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demai=
+l&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0&q[dwvar_442732_color]=3Dundefined&id=
+=3D442732&destination=3D442732&item_type=3Dinteraction&recommendation_sourc=
+e=3Dplatform2&display_order=3D0" style=3D"color:#ffffff;text-decoration: no=
+ne;" target=3D"_blank">Shop Now</a></td>
+    												</tr>
+    											</table>
+    										</td>
+    									</tr>
+    								=09
+    								</table>
+    							</td>
+    						</tr>
+    					</table>
+    					<![if !mso]>
+    				</div>
+    			</a>
+    			<![endif]>
+    		=09
+    		</td>
+    	</tr>
+    </table>
+
+   =20
+   =20
+   =20
+   =20
+   =20
+  =09
+   =20
+=09
+   =20
+   =20
+=09
+  =09
+  =09
+=09
+  =09
+  =09
+  =09
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+
+   =20
+   =20
+   =20
+    <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" role=3D"presentation" style=3D"width:640px;margin:0 auto;" class=3D"full"=
+>
+      <tr>
+        <td align=3D"center" style=3D"padding:20px 0 0;"><a href=3D"https:/=
+/ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxK=
+zli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC=
+7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mb=
+Ov6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1=
+zPXgyLGImc2lnPTA0YTg1OTczZDZiODE2ZTQyMWUzMzI5N2NjMWRmOGMwZTIxOTA4MTgwMjZmMT=
+VmNDM0YzBiZWIwNjgyMTJjYzE=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen=
+%2Fhome&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtrig=
+gered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_s=
+ource]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_b=
+lank"><img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/user=
+s/4754/3910fbd1e1f207227dac6a0efdc4103a=2Epng" style=3D"display:block;margi=
+n:0 auto;border:0;white-space:pre;text-align:center;" alt=3D"" class=3D"ful=
+l" /></a></td>
+      </tr>
+    </table>
+   =20
+   =20
+    <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" role=3D"presentation" style=3D"width:640px;margin:0 auto;" class=3D"full"=
+>
+      <tr>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTRjMmJkZDRjYmI=
+2YTRiYWUxOTg5NjcwZWRmOGFhNGM2N2UzODI3ZWYzN2YwMjhiNzljNTVmZWVhYWUzNGE0YmE=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen&q[utm_medium]=3Demai=
+l&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demai=
+l_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v=
+0" style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"https://as=
+sets=2Ebounceexchange=2Ecom/assets/uploads/users/2518/uniqlo/091119/nav_wom=
+en=2Egif" style=3D"display:block;margin:0 auto;border:0;white-space:pre;tex=
+t-align:center;" alt=3D"WOMEN" class=3D"full" /></a></td>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTMwY2E3ZDQ2MWN=
+lMmZmY2U4MDM5MDhmMDdiYmY5M2UzMmFjNjk1N2YzZmVmY2UxNGU3YTJjNTBlMmZmZmMxODg=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fmen&q[utm_medium]=3Demail&=
+q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_=
+lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0"=
+ style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"https://asse=
+ts=2Ebounceexchange=2Ecom/assets/uploads/users/2518/uniqlo/091119/nav_men=
+=2Egif" style=3D"display:block;margin:0 auto;border:0;white-space:pre;text-=
+align:center;" alt=3D"MEN" class=3D"full" /></a></td>
+      </tr>
+      <tr>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTg1MmQzODMxNGJ=
+jZDUzZDY1YzhkYmRlZTUxYmVkOTZjOWIwN2EwNzkzYmYyMjQ1NGIxOWFiN2E0NThjNGRjZjA=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen%2Fnew-arrivals&q[utm=
+_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_c=
+ampaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h5=
+8gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"><img sr=
+c=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/4754/515238=
+244588b46c9e1464f83fa1203e=2Epng" style=3D"display:block;margin:0 auto;bord=
+er:0;white-space:pre;text-align:center;" alt=3D"New Arrival" class=3D"full"=
+ /></a></td>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTU1YjU4MDY0NDd=
+iMDU4YzE3ODdjYzk4YjQ5NmJlNzYzNTE4NzE3NjdkYmIyYWUxYjU0ZThmOTc0MWMxZTMzMDA=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fkids&q[utm_medium]=3Demail=
+&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail=
+_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0=
+" style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"https://ass=
+ets=2Ebounceexchange=2Ecom/assets/uploads/users/4754/f4003868d3575a9776e7b0=
+76a5b626d6=2Epng" style=3D"display:block;margin:0 auto;border:0;white-space=
+:pre;text-align:center;" alt=3D"KIDS" class=3D"full" /></a></td>
+      </tr>
+      <tr>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTQ0MGQ5MjI1ZGI=
+5NDlhNTZmZjlmM2RlOTI3Yjc3NmFiZTQ2MDc0ZTI3MTNmNjE5NGU0NWE1NGM3MzQzNDUwOGE=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fwomen%2Flimited-time-offer=
+s&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&=
+q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=
+=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank">=
+<img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/4035=
+/051220/Uniqlo/nav_sale=2Epng" style=3D"display:block;margin:0 auto;border:=
+0;white-space:pre;text-align:center;" alt=3D"SALE" class=3D"full" /></a></t=
+d>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTIwODc5MjE5NmM=
+zN2MwZTJmMWQxZjk1NWZhYmQ5YWRjMWU0NWExMzU1MWZhYWM1YzdhMWEyY2EzYWJiY2Q3YTM=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fut-graphic-tees&q[utm_medi=
+um]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campai=
+gn]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o=
+0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"=
+https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/4754/169e757a328=
+95d2ef6d543fb9571ee19=2Epng" style=3D"display:block;margin:0 auto;border:0;=
+white-space:pre;text-align:center;" alt=3D"BABY" class=3D"full" /></a></td>=
+
+      </tr>
+    </table>
+    <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" role=3D"presentation" style=3D"width:640px;margin:0 auto;" class=3D"full"=
+>
+    	<tr>
+    		<td style=3D"height:5px;line-height:5px;font-size:5px;">&nbsp;</td>
+    	</tr> =20
+      <tr>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWE2NzU0M2VjYmJ=
+mZDk1ZDc5ZmNiMmZjZmRlMzUwODdkNTMwN2ExYzAwZGEzNDEwNjRjMGI1ZDIyYjQxMzY1ZWU=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Ffeatured%2Fbulk-orders&q[u=
+tm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm=
+_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7=
+h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"><img =
+src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/4035/0512=
+20/Uniqlo/nav_bulk_order=2Epng" style=3D"display:block;margin:0 auto;border=
+:0;white-space:pre;text-align:center;" alt=3D"BULK ORDERS" class=3D"full" /=
+></a></td>
+        <td align=3D"center"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1=
+o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e=
+6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLV=
+NMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCi=
+n87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWY5MDkzMmJhNmF=
+mMzVjZDg0ODcxYzdjNTMzYzYzNDdhMjczNWJlMGJlMTQ3Y2Q4NmNhNDYzY2NmNmRkNWVkNTQ=3D&=
+b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fmen%2Fcollections%2Fextend=
+ed-sizes&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtri=
+ggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_=
+source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_=
+blank"><img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/use=
+rs/4035/051220/Uniqlo/nav_ext_sizes=2Epng" style=3D"display:block;margin:0 =
+auto;border:0;white-space:pre;text-align:center;" alt=3D"EXTENDED SIZES" cl=
+ass=3D"full" /></a></td>
+      </tr>
+      </table>
+      <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0" role=3D"presentation" style=3D"width:640px;margin:0 auto;" class=3D"full=
+">
+      <tr>
+        <td align=3D"center" style=3D"padding:5px 0 0;"><a href=3D"https://=
+ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKz=
+li9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7=
+DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbO=
+v6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1z=
+PXgyLGImc2lnPTMxNzFlNmYwMWUzZjZmZGRlZTVkMzg2MmI0NWY0MmNmZjQ2NTcyNzhhZjU1YjU=
+yODY2ZDVhNjdhN2I0MjliNDU=3D&b=3Dhttps%3A%2F%2Fwww=2Estylehint=2Ecom%2Fus%2F=
+en&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered=
+&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source=
+]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"=
+><img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/403=
+5/051220/Uniqlo/nav_style_hint=2Epng" style=3D"display:block;margin:0 auto;=
+border:0;white-space:pre;text-align:center;" alt=3D"STYLE-HINT" class=3D"fu=
+ll" /></a></td>
+      </tr>
+      <tr>
+        <td align=3D"center" style=3D"padding:5px 0 0;"><a href=3D"https://=
+ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKz=
+li9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7=
+DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbO=
+v6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1z=
+PXgyLGImc2lnPTQzYjNhN2Y0ODUzMjcyMzdjNjA0YTYzYTM4YjVlZjI5ZjY1M2Q0MjgwZmNkZjN=
+mNmQxZWI3NTgyNDE0NmRiZDA=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%=
+2Fapp=2Ehtml&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=
+=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&=
+q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" targe=
+t=3D"_blank"><img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploa=
+ds/users/4754/a3849005f0382e3bd1a761d74cbb94f0=2Epng" style=3D"display:bloc=
+k;margin:0 auto;border:0;white-space:pre;text-align:center;" alt=3D"UNIQLO-=
+APP" class=3D"full" /></a></td>
+      </tr>
+    	<tr>
+    		<td style=3D"height:5px;line-height:5px;font-size:5px;">&nbsp;</td>
+    	</tr>=20
+    </table>
+   =20
+=09
+  =09
+  	<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ role=3D"presentation" style=3D"width:640px;margin:0 auto;" class=3D"ipadWi=
+dth full">
+  	  <tr>
+  			<td align=3D"center" style=3D"border-top:5px solid #000001;">
+          <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" borde=
+r=3D"0" role=3D"presentation" style=3D"width:90%;margin:0 auto;">
+            <tr>
+              <td align=3D"center" style=3D"padding:30px 0;font-size:20px;"=
+>
+                <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/=
+?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XF=
+PXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYv=
+GQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2=
+C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWEzZmE3OTBkMDhlYTI0ZWE1ZDlm=
+YjFiYzdiOWQ4YzI4NDk3MjIyOTEyZTRjZTMzMDlhM2IwNzFkNzc2MjkzMGE=3D&b=3Dhttps%3A=
+%2F%2Fwww=2Einstagram=2Ecom%2Funiqlousa%2F&q[utm_medium]=3Demail&q[utm_sour=
+ce]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2=
+_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"=
+text-decoration:none;" target=3D"_blank"><img src=3D"https://assets=2Ebounc=
+eexchange=2Ecom/assets/uploads/users/2518/uniqlo/1018/instagram-40v2=2Epng"=
+ width=3D"40" style=3D"display:inline-block;margin:0 auto;border:0;white-sp=
+ace:pre;text-align:center;" alt=3D"instagram" /></a>&nbsp;&nbsp;&nbsp;&nbsp=
+;
+                <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/=
+?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XF=
+PXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYv=
+GQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2=
+C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTAxZTk0MjM0NTA4ZTdlMTBiNjVj=
+ZjAwOTM2ZWVjMDAzYzdmZWE5ZmQyMWExNjE3YmI2NDlhMjU4MzhjMmI0YzM=3D&b=3Dhttps%3A=
+%2F%2Fwww=2Efacebook=2Ecom%2Funiqlo=2Eus&q[utm_medium]=3Demail&q[utm_source=
+]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_o=
+f_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"te=
+xt-decoration:none;" target=3D"_blank"><img src=3D"https://assets=2Ebouncee=
+xchange=2Ecom/assets/uploads/users/2518/uniqlo/1018/facebook-40v2=2Epng" wi=
+dth=3D"40" style=3D"display:inline-block;margin:0 auto;border:0;white-space=
+:pre;text-align:center;" alt=3D"facebook" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/=
+?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XF=
+PXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYv=
+GQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2=
+C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWNhODY0MDA3ZjM3MzIzYTgyNDhh=
+MWNkZWQ2Mjg2MTNmMTZiMjk0ZWMwNTAxZTc2YWUyNDdhNzExM2NiZmM2NGI=3D&b=3Dhttps%3A=
+%2F%2Fwww=2Epinterest=2Ecom%2Funiqlo%2F&q[utm_medium]=3Demail&q[utm_source]=
+=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of=
+_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"tex=
+t-decoration:none;" target=3D"_blank"><img src=3D"https://assets=2Ebounceex=
+change=2Ecom/assets/uploads/users/2518/uniqlo/1018/pinterest-40=2Epng" widt=
+h=3D"40" style=3D"display:inline-block;margin:0 auto;border:0;white-space:p=
+re;text-align:center;" alt=3D"pinterest" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/=
+?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XF=
+PXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYv=
+GQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2=
+C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWQ4ZGZiM2QwZDRmY2E3ODVjMmQz=
+NmZhYjE0YWRmMDE4ZTA4NThiNjEzNWY5ZTY0M2ZjYzQ0YzllNjQ2YTFhMmI=3D&b=3Dhttps%3A=
+%2F%2Ftwitter=2Ecom%2FUniqloUSA&q[utm_medium]=3Demail&q[utm_source]=3Dwunde=
+rkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm=
+_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decora=
+tion:none;" target=3D"_blank"><img src=3D"https://assets=2Ebounceexchange=
+=2Ecom/assets/uploads/users/2518/uniqlo/1018/twitter-40v2=2Epng" width=3D"4=
+0" style=3D"display:inline-block;margin:0 auto;border:0;white-space:pre;tex=
+t-align:center;" alt=3D"twitter" /></a>
+              </td>
+            </tr>
+            <tr>
+              <td align=3D"center" style=3D"padding:0 0 30px;font-size:20px=
+;font-family:Tahoma, Verdana, Geneva, sans-serif, Roboto Condensed;">
+                <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/=
+?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XF=
+PXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYv=
+GQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2=
+C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWM4MjUzYzMyY2E5ODUzODk1ZTA2=
+Y2VmZjYzMDE5OTc0OTg4YmFjZDRkMzQxODc0MjE0MzYzNjFmNmEyZjc5MmM=3D&b=3Dhttps%3A=
+%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fpage%2Frefer-a-friend=2Ehtml&q[utm_med=
+ium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campa=
+ign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1=
+o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"=
+https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/4754/d17f57b3f65=
+433927e7d838b01a3d73b=2Ejpg" width=3D"165" style=3D"display:inline-block;ve=
+rtical-align:middle;margin:0 auto;border:0;white-space:pre;text-align:cente=
+r;" alt=3D"FIND A STORE" /></a>
+              </td>
+            </tr>
+            <tr>
+              <td align=3D"center" style=3D"padding:0 0 30px;font-size:20px=
+;font-family:Tahoma, Verdana, Geneva, sans-serif, Roboto Condensed;">
+                <span class=3D"blockpad"><a href=3D"https://ibx2=2Enet/ibx/=
+rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI=
+6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-=
+1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h=
+0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTJ=
+lNTdhNWMyZTVmZDY4ZGZhYmNkYmNmNDEzOTg0YjVlMDczMDFjNWM5ZThhM2YzZmNlMTU1ZDBmOT=
+gwM2NkMmU=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Ffind-stores%2=
+F&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&=
+q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=
+=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank">=
+<img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/2518=
+/uniqlo/1018/find-a-store-127=2Epng" width=3D"127" style=3D"display:inline-=
+block;vertical-align:middle;margin:0 auto;border:0;white-space:pre;text-ali=
+gn:center;" alt=3D"FIND A STORE" /></a></span>
+                <span class=3D"hide">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&=
+nbsp;&nbsp;</span>
+                <span class=3D"blockpad"><a href=3D"https://ibx2=2Enet/ibx/=
+rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI=
+6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-=
+1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h=
+0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTc=
+zMzg3YmQxNzEwYjhlNjUzNzM5NDM0NTMzMDg3NjFkY2ZmMTMwMTc2MDU3NGVjZTllMGExYzQzMm=
+ZkMmRkN2Y=3D&b=3Dhttps%3A%2F%2Fwww=2Efastretailing=2Ecom%2Femployment%2Fen%=
+2Funiqlo%2Fus%2F&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_ter=
+m]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demai=
+l&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:none;" tar=
+get=3D"_blank"><img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/upl=
+oads/users/2518/uniqlo/1018/view-careers-233=2Epng" width=3D"233" style=3D"=
+display:inline-block;vertical-align:middle;margin:0 auto;border:0;white-spa=
+ce:pre;text-align:center;" alt=3D"VIEW CAREERS @ UNIQLO" /></a></span>
+              </td>
+            </tr>
+            <tr>
+              <td align=3D"center" style=3D"font-size:20px;font-family:Taho=
+ma, Verdana, Geneva, sans-serif, Roboto Condensed;">
+                <a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/=
+?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XF=
+PXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYv=
+GQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2=
+C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTZhY2YyMzkzNmViODI3MDAwMTNl=
+MDQ0OWRkYTExM2I5ZGY4Y2Y2MTNjZGFjM2Y2OTlmMDNmNGM0ZTgzNTI5YWY=3D&b=3Dhttps%3A=
+%2F%2Fitunes=2Eapple=2Ecom%2Fus%2Fapp%2Funiqlo-us%2Fid1284609872&q[utm_medi=
+um]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campai=
+gn]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o=
+0hpik2v23v0" style=3D"text-decoration:none;" target=3D"_blank"><img src=3D"=
+https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/2518/uniqlo/1018=
+/apple-app-162=2Epng" width=3D"162" style=3D"display:inline-block;vertical-=
+align:middle;margin:0 auto;border:0;white-space:pre;text-align:center;" alt=
+=3D"Available on the App Store" class=3D"appfoot" /></a>&nbsp;&nbsp;&nbsp;&=
+nbsp;<a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj=
+64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6=
+uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuq=
+OVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DY=
+Wxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPTMxNGI4ODQxZGViZGVjNGZkNGU3ZWRlZTk2NDVk=
+OTAwMjhjNmQyNjdkN2M2NTg4OTM1NmNkNjFiNjNiM2IwMTM=3D&b=3Dhttps%3A%2F%2Fplay=
+=2Egoogle=2Ecom%2Fstore%2Fapps%2Fdetails&q[utm_medium]=3Demail&q[utm_source=
+]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_o=
+f_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0&q[id]=3Dcom=
+=2Euniqlo=2Eusa=2Ecatalogue" style=3D"text-decoration:none;" target=3D"_bla=
+nk"><img src=3D"https://assets=2Ebounceexchange=2Ecom/assets/uploads/users/=
+2518/uniqlo/1018/android-app-172=2Epng" width=3D"172" style=3D"display:inli=
+ne-block;vertical-align:middle;margin:0 auto;border:0;white-space:pre;text-=
+align:center;" alt=3D"Android App On Google Play" class=3D"appfoot" /></a>
+              </td>
+            </tr>
+            <tr>
+              <td align=3D"center" style=3D"padding:30px 0;font-family:Aria=
+l, Helvetica, sans-serif;-moz-text-size-adjust:none;-webkit-text-size-adjus=
+t:none;-ms-text-size-adjust:none;font-size:11px;line-height:16px;color:#666=
+666;"><a href=3D"https://ibx2=2Enet/ibx/em/unsub/?x2=3D6_XYj64tezzU_wiPFRjg=
+IK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZ=
+fCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu0=
+7pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg,,&esp=3D1" style=3D"text-decor=
+ation:none;color:#666666;text-transform:uppercase;" target=3D"_blank">Unsub=
+scribe</a><span class=3D"hide">&nbsp;&nbsp;|&nbsp;&nbsp;</span><br class=3D"=
+show" style=3D"display:none;"><a href=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp=
+1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_=
+e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmyPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igL=
+VNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgC=
+in87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEyNTYmcGFyYW1zPXgyLGImc2lnPWI5NWYwNjQ1MD=
+NlZTdjY2FkYjljZjVhYTZjOTZhYTcxYTM5MzZhYzNkZGY0NDNmNzM4ZDliMzE0NTY2MWQyZjY=
+=3D&b=3Dhttp%3A%2F%2Fwww=2Euniqlo=2Ecom%2Fus%2Fen%2Fcontact=2Ehtml&q[utm_me=
+dium]=3Demail&q[utm_source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_camp=
+aign]=3Demail_lowstock_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp=
+1o0hpik2v23v0" style=3D"text-decoration:none;color:#666666;text-transform:u=
+ppercase;" target=3D"_blank">Customer Support</a><span class=3D"hide">&nbsp=
+;&nbsp;|&nbsp;&nbsp;</span><br class=3D"show" style=3D"display:none;"><a hr=
+ef=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wi=
+PFRjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1f=
+myPnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34i=
+ECcu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaG=
+EyNTYmcGFyYW1zPXgyLGImc2lnPWFhYzQxOGEzOThiYmExYzQwZDg1Y2UyZTZkMmVmNGI3ZGMxM=
+TU1Y2RhNDc3ODU3OWI3MDE0ZDk2OGI3ODM3ZWM=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Ec=
+om%2Feu%2Fen%2Fcompany%2Fprivacy_policy=2Ehtml&q[utm_medium]=3Demail&q[utm_=
+source]=3Dwunderkind&q[utm_term]=3Dtriggered&q[utm_campaign]=3Demail_lowsto=
+ck_2_of_2&q[utm_medium]=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=
+=3D"text-decoration:none;color:#666666;text-transform:uppercase;" target=3D"=
+_blank">Privacy Policy</a><br class=3D"show" style=3D"display:none;"><br>
+                This email was sent to john=2Edoe=2Eyouniq@gmail=2Ecom by&n=
+bsp;Uniqlo<br>
+                Don=E2=80=99t miss out, add <a href=3D"mailto:email@usa=2Eu=
+niqlo=2Ecom" style=3D"text-decoration:none;color:#666666;" target=3D"_blank=
+">email@usa=2Euniqlo=2Ecom</a> to your address book to make sure you get ou=
+r&nbsp;emails=2E<br>
+                <span class=3D"block">UNIQLO&nbsp;USA&nbsp;LLC</span><span =
+class=3D"block"> 546-548 Broadway, </span><span class=3D"block">New York, N=
+Y 10014</span><span class=3D"hide"> | </span><span class=3D"block"><a href=
+=3D"https://ibx2=2Enet/ibx/rd2/c7h58gp1o0hpik2v23v0/?x2=3D6_XYj64tezzU_wiPF=
+RjgIK8kEGxKzli9-K0fqEOCVLJI6eXPZfgpNb_e6CKHRlr4va4XFPXPx6KsBHW6uqwzo0FX1fmy=
+PnZfCDClhCC7DAxvf5OTXtPznw-1GIObdK4igLVNMRW21k-zMiYvGQfeVbytNuqOVBggUw34iEC=
+cu07pKQL5mbOv6AuhTyk08lll7h0YQyvpB7tgCin87RjcOg%2C%2C&bxhmac=3DYWxnbz1zaGEy=
+NTYmcGFyYW1zPXgyLGImc2lnPWE2MzVjOGQ0M2ZlNGRlNDgxOWJjMTBjMTdkZmVhNDM2ZGE1YTl=
+mYWJiNjY3NDlkMjYyYzZmOGI5MzJjYmViYmY=3D&b=3Dhttps%3A%2F%2Fwww=2Euniqlo=2Eco=
+m%2Fus%2Fen%2Fhome%2F&q[utm_medium]=3Demail&q[utm_source]=3Dwunderkind&q[ut=
+m_term]=3Dtriggered&q[utm_campaign]=3Demail_lowstock_2_of_2&q[utm_medium]=
+=3Demail&q[ibx_source]=3Dc7h58gp1o0hpik2v23v0" style=3D"text-decoration:non=
+e;color:#666666;" target=3D"_blank">UNIQLO=2ECOM</a></span><br><br>*Colors,=
+ styles, and prices shown may differ online and in&nbsp;store=2E</td>
+            </tr>
+  					<tr>
+  						<td align=3D"center" style=3D"padding:20px 0;">
+  							<div style=3D"display:none; white-space:nowrap; font:15px courier;=
+ color:#ffffff;">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - =
+- - - -</div>
+  						</td>
+  					</tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+ =20
+    <section>
+      <div id=3D"font-fix" style=3D"white-space: nowrap; font: 15px courier=
+; line-height: 0; display: none;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;</div>
+    </section>
+ =20
+  </body>
+</html>

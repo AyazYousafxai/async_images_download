@@ -1,0 +1,778 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp2896839wrd;        Mon, 20 Dec
+ 2021 00:27:11 -0800 (PST)
+Received: from mta057247.email.kenzo.com (mta057247.email.kenzo.com. [62.27.57.247])   
+     by mx.google.com with ESMTPS id p16si12524776wrs.570.2021.12.20.00.27.11
+        for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Mon, 20 Dec 2021
+ 00:27:11 -0800 (PST)
+Received: by mta057247.email.kenzo.com id ho0v5u2bs1kd for <john.doe.youniq@gmail.com>;
+ Mon, 20 Dec 2021 08:07:57 +0000 (envelope-from <news@email.kenzo.com>)
+X-Google-Smtp-Source: ABdhPJx0wWWR2Jfp/qZfkaOc6qx5qZiCfCONuRh9hUuBzhnkZF6IxK7Ga6+rD2k6e7F+b5DIhBKR
+X-Received: by 2002:a05:6000:18ae:: with SMTP id b14mr11726470wri.242.1639988831529;     
+   Mon, 20 Dec 2021 00:27:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639988831; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=NF2S6BpbjzIw2FhQUsQllupptLZ+E51BLJoeh7PpfD2lXciJuv6onBokfZkH2Qphdy        
+ ZMBNWNhSzZudlOSfVeivI69tKJnDLHTrs/wee886T7jyw/5B838hhcBxkhcSkRsxWm7M        
+ RFipMCviONwGSf9LKTz5ru1txoAbqfOJRZLp2JK1R81W2aGOczO276LG+alULXr39xiX        
+ yhlRqYwCVhiRZtaJJ6LVVzQMEkKOAUuAe2xbQ6NOQT2PgQhWIAuvwEenljitcARMYGEm        
+ 385xtJ98KyGkXbmo/KdtztbV/7XPQsCcA5S/snDVYFFi6nYa81betm1zc2bd7rqr987n        
+ e+1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=subject:date:to:from:mime-version:list-unsubscribe        
+ :list-unsubscribe-post:message-id:errors-to:dkim-signature;       
+ bh=tH5t5rQeAWK2TirFI0WNBxtxmOD3JiNjVxvgHF5IxOs=;       
+ b=OWYG2KNYreAL7EbqhGKDbckSjgOnzUA5O6xkivMUsp7xuO0/A4Nn0qD5mWz2BAjN0V        
+ 0NQB2VW90Xr7lQLeNukMOMk3Tl/Ruq28gy1NJ331DwcSx8Es58ueRxyD9gy0MI0uUmsm        
+ LEldGGU2jZf5g/c++1V5IoFVi+hGw29ACjgh5/E+08MsKuyLhvyIAeLJMFkL5nUzbzAd        
+ vU4SFDN5I/Wl/QeXE0w6wUrR5JlVsiWROKMMHqBStf2jX7YBmk5cF2O3faNZgbdjQBeo        
+ 73+oRJdQE01lFEqggph4CqkfnJ+wmr5P8lztwAJ7nNNivNUNfeH/fOJ9KKpNDrLI/edy        
+ DvMQ==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@email.kenzo.com header.s=0
+ header.b=JwGBT8CK;       spf=pass (google.com: domain of
+ news@email.kenzo.com designates 62.27.57.247 as permitted sender)
+ smtp.mailfrom=news@email.kenzo.com;       dmarc=pass (p=REJECT sp=REJECT
+ dis=NONE) header.from=email.kenzo.com
+Return-Path: <news@email.kenzo.com>
+Return-Path: news@email.kenzo.com<rp-cf6c569cb47c893219b2d9a879445f3a@email.kenzo.com>
+Received-SPF: pass (google.com: domain of news@email.kenzo.com designates 62.27.57.247 as
+ permitted sender) client-ip=62.27.57.247;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@email.kenzo.com header.s=0
+ header.b=JwGBT8CK;       spf=pass (google.com: domain of
+ news@email.kenzo.com designates 62.27.57.247 as permitted sender)
+ smtp.mailfrom=news@email.kenzo.com;       dmarc=pass (p=REJECT sp=REJECT
+ dis=NONE) header.from=email.kenzo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=0; d=email.kenzo.com;
+ h=X-CSA-Complaints:Message-ID:List-Unsubscribe-Post:List-Unsubscribe:
+ MIME-Version:From:To:Date:Subject:Content-Type; i=news@email.kenzo.com;
+ bh=tH5t5rQeAWK2TirFI0WNBxtxmOD3JiNjVxvgHF5IxOs=;
+ b=JwGBT8CKLegb87wamgNzuTI4gpO1A/LjFdrJxkdTUr+NA36hbNk4+QH2Ox7J9KU/XavHcRhi9Y4P  
+ QmIQJr+wCv9+irAcpEP8O8FM7/C5dfWgu+Zr7pRFtE7bO6/MVrnff4dn+oIf0SDveTBNrRnbAFWM
+   GOUgq1nDVWGJZ0pxmN8=
+X-CSA-Complaints: csa-complaints@eco.de
+Errors-to: news@email.kenzo.com
+Message-ID: <963.149911329.202112200807569956448.0112782715@email.kenzo.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <mailto:unsubscribe-cf6c569cb47c893219b2d9a879445f3a@email.kenzo.com?subject=Unsubscribe>,<https://ats.ccmp.eu/ats/show.aspx?cr=963&fm=31&esid=emailaddress_sp1_status_id&tp=i-16CV-FX-3qN-A90mf-M9fK-l6vZHvJw5g-MwZnG>
+X-Mailer: XyzMailer
+X-Xyz-cr: 963
+X-Xyz-cn: 14779
+X-Xyz-bcn: 14691
+X-Xyz-md: 100
+X-Xyz-mg: 149911329
+X-Xyz-et: 121
+X-Xyz-pk: 5280374
+X-Xyz-ct: 30894
+X-Xyz-bct: 30721
+X-PVIQ: 000273-000603-000963-014779-000000
+X-CM-MessageId: 963-14779
+MIME-Version: 1.0
+From: "KENZO" <news@email.kenzo.com>
+To: "john.doe.youniq@gmail.com" <john.doe.youniq@gmail.com>
+Date: 20 Dec 2021 08:07:57 +0000
+Subject: Vous avez encore le temps...
+Content-Type: multipart/alternative;
+ boundary="--boundary_112756833_d261c476-5c07-4a1f-9d05-ffd4f9e56499"
+
+----boundary_112756833_d261c476-5c07-4a1f-9d05-ffd4f9e56499
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+KENZO=0A=
+=0A=
+=2E=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204350&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204351&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204352&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204353&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204354&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+Commandez avant midi le 22 d=C3=A9cembre pour recevoir vos achats =C3=A0 te=
+mps pour les f=C3=AAtes=2E=0A=
+N=E2=80=99oubliez pas : la livraison express est offerte pour toute command=
+e et les retours sont gratuits et prolong=C3=A9s jusquau 06/01=2E=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204357&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204358&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank=0A=
+=0A=
+RETOURS OFFERTS=0A=
+=0A=
+SERVICE CLIENT=0A=
+=0A=
+EXCLUSIF E-SHOP=0A=
+=0A=
+VENTE =C3=80 DISTANCE=0A=
+=0A=
+(http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?t=3D204369&tp=3Di-1NGB-FX-3q=
+N-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3)" target=3D"_blank" style=3D"col=
+or:#000000;text-decoration: underline;Mentions l=C3=A9gales=0A=
+Pour vous d=C3=A9sabonner, ()" target=3D"_blank" style=3D"color:#000000;tex=
+t-decoration:underline;cliquez ici
+----boundary_112756833_d261c476-5c07-4a1f-9d05-ffd4f9e56499
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN"=0A=
+"http://www=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">=0A=
+   <html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml">=0A=
+       <head>=0A=
+           <title>KENZO</title>=0A=
+           <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8" />=0A=
+           <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial=
+-scale=3D1=2E0" />=0A=
+           <meta name=3D"format-detection" content=3D"telephone=3Dno" />=0A=
+           <meta name=3D"format-detection" content=3D"date=3Dno" />=0A=
+           <meta name=3D"format-detection" content=3D"address=3Dno" />=0A=
+           <meta name=3D"format-detection" content=3D"email=3Dno" />=0A=
+           <meta name=3D"x-apple-disable-message-reformatting" />=0A=
+           <style type=3D"text/css">               =0A=
+           =2Epreheader { display:none !important; visibility:hidden; opaci=
+ty:0; color:transparent; height:0px; width:0px;font-size:0px; }  =2EExterna=
+lClass {width:100%;} =0A=
+            =2EExternalClass *{line-height: 100%;} =0A=
+            body{margin:0px;padding:0px;}=0A=
+            table {border-collapse: collapse;}=0A=
+   @font-face {=0A=
+font-family:"gitan-latin";=0A=
+src:url("https://use=2Etypekit=2Enet/af/9bef42/00000000000000003b9aeb9c/27/=
+l?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191=
+&fvd=3Dn4&v=3D3") format("woff2"),url("https://use=2Etypekit=2Enet/af/9bef4=
+2/00000000000000003b9aeb9c/27/d?primer=3D7cdcb44be4a7db8877ffa5c0007b8dd865=
+b3bbc383831fe2ea177f62257a9191&fvd=3Dn4&v=3D3") format("woff"),url("https:/=
+/use=2Etypekit=2Enet/af/9bef42/00000000000000003b9aeb9c/27/a?primer=3D7cdcb=
+44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=3Dn4&v=3D3"=
+) format("opentype");=0A=
+font-display:auto;font-style:normal;font-weight:400;=0A=
+}  =0A=
+   =0A=
+   =0A=
+            @media only screen and (max-width: 600px) {=0A=
+                body {-webkit-text-size-adjust: none; -ms-text-size-adjust:=
+ none;margin:0px;padding:0px;}=0A=
+                =2Ew100p{width:100%!important;table-layout:auto!important;}=
+=0A=
+                =2Ew100v{width:100vw !important;border:0px !important;heigh=
+t: auto!important}=0A=
+                =2Ehide{display:none !important;max-height:0px !important;v=
+isibility:hidden !important;}=0A=
+                =2Etac{text-align:center !important;}=0A=
+                =2Edb{display:block !important;}=0A=
+/*Width*/=0A=
+=2Ew10{width:1=2E66666667vw!important}=0A=
+=2Eh100{height:16=2E66666vw!important;}=0A=
+=2Eh120{height:20vw!important;}=0A=
+=2Ew50{width:8=2E33333333vw!important}=0A=
+=2Ew50b{width:8=2E3333333vw!important}=0A=
+                =2Ew42 {height: auto!important;width: 6=2E56125vw!important=
+}=0A=
+                =2Ew34 {width: 4=2E625vw!important}=0A=
+=2Ew10b {width: 1=2E6666vw!important}=0A=
+=2Ew500{width:83=2E3333333vw!important}=0A=
+=2Ew580{width:96=2E6666667vw!important}=0A=
+=0A=
+=2Eh20{height:3=2E33333333vw!important;}=0A=
+=2Eh30{height:5vw!important;}=0A=
+=2Eh15{height:2=2E5vw!important;}=0A=
+=2Eh10{height:1=2E666666vw!important;}=0A=
+                =2Ehauto{height: auto!important}=0A=
+=0A=
+=2Efs12{font-size:2vw!important;line-height:3vw!important;}=0A=
+=2Efs16{font-size:2=2E66666667vw!important;line-height: 4vw!important;}=0A=
+=2Efs20{font-size:3=2E33333333vw!important;line-height:5vw!important;}=0A=
+=2Efs22{font-size:3vw!important; line-height: 4vw !important;}=0A=
+=2Efs34{font-size:5vw!important;line-height:6=2E66666667vw!important;}=0A=
+=2Epad_cta{padding-left:3=2E83333333vw!important;padding-right:3=2E83333333=
+vw!important;border:1px solid #000000!important;}=0A=
+=2Ecta{height:8=2E33333333vw!important;font-size:2=2E66666vw!important;}=0A=
+                =2Epadt10{padding-top: 10vw!important}=0A=
+=2Epadt30 {padding-top: 6=2E6666vw!important;}=0A=
+=2Epadb30 {padding-bottom: 6=2E6666vw!important;}=0A=
+=2Epadb6v25 {padding-bottom: 11=2E6666vw!important;}=0A=
+=2Epadt6v25 {padding-top: 11=2E6666vw!important;}=0A=
+=2Ew25v {width: 25vw!important}=0A=
+=2Epadt35 {padding-top: 5=2E833333333vw!important;}=0A=
+=2Epadb40 {padding-bottom: 6=2E6666vw!important;}=0A=
+=2Ekenzo-mobile{display:block!important;width:auto!important;max-height:inh=
+erit!important;overflow:visible!important;float:none!important;line-height:=
+auto!important;height:auto!important;}=0A=
+                *[x-apple-data-detectors] {color: inherit !important;text-d=
+ecoration: none !important;}=0A=
+=2Elogo{width:58=2E3333333vw!important;height:12=2E5vw!important}=2Ew49{wid=
+th:49=2E8333333vw!important;height: auto!important}=2Ew500{width:83=2E33333=
+33vw!important}=2Epadtd65{padding: 11=2E6666vw 0!important}=2Epadt65{paddin=
+g-top: 11=2E6666vw!important}=2Epadb65{padding-bottom: 11=2E6666vw!importan=
+t}=2Efs34{font-size:5vw!important;line-height:6=2E66666667vw!important;}=2Eh=
+10{height:1=2E666666vw!important;}=2Efs20{font-size:3=2E33333333vw!importan=
+t;line-height:5vw!important;}=2Eh20{height:3=2E33333333vw!important;}=2Epad=
+_cta{padding-left:3=2E83333333vw!important;padding-right:3=2E83333333vw!imp=
+ortant;border:1px solid #000000!important;}=2Ecta{height:8=2E33333333vw!imp=
+ortant;font-size:2=2E66666vw!important;}=2Ew32v5{width: 31=2E5vw!important}=
+=0A=
+                 =2Epad1 {font-size:7=2E5vw!important;line-height: 10vw!imp=
+ortant;padding-top:11=2E6666vw!important;padding-bottom:2=2E5vw!important;p=
+adding-right:8=2E3333vw!important;padding-left:8=2E3333vw!important}=0A=
+=2Epad2 {padding-bottom:11=2E6666vw!important;padding-right:8=2E3333vw!impo=
+rtant;padding-left:8=2E3333vw!important;line-height:7vw!important;font-size=
+:6=2E875wv!important}=0A=
+                =2Ew50{width:50vw!important;height: auto!important}=2Epadb6=
+v25 {padding-bottom: 3=2E125vw!important}=2Epadb12v5 {padding-bottom: 6=2E2=
+5vw!important}=0A=
+            }=0A=
+   =0A=
+    @media (prefers-color-scheme: dark) {=0A=
+/* Mode sombre */=0A=
+=0A=
+=2Epad_cta {=0A=
+border: 1px solid #FFFFFF;=0A=
+}=0A=
+}=0A=
+       =0A=
+ =0A=
+           </style>  =0A=
+       </head>=0A=
+       <body bgcolor=3D"#ffffff" ><img src=3D"http://l=2Eemail=2Ekenzo=2Eco=
+m/rts/open=2Easpx?tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTG=
+l3" height=3D"1" width=3D"1" style=3D"display:none">=0A=
+   <!--[if mso]>=0A=
+      <style type=3D"text/css">=2Efallback-font {font-family: 'futura', Ari=
+al, sans-serif !important;}</style>=0A=
+   <![endif]-->=0A=
+           <style type=3D"text/css">=0A=
+               @media yahoo and (max-width:640px) {/* Laisser vide pour aff=
+icher la desktop sur yahoo */}=0A=
+           </style> =0A=
+   =0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"100%" bgcolor=3D"#ffffff">=0A=
+               <tr>=0A=
+                 <td>=0A=
+ <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"w100v" width=3D"600">=0A=
+  =0A=
+  <tr>=0A=
+   <td width=3D"600" height=3D"20" class=3D"h20" ></td>=0A=
+   </tr> <tr>=0A=
+   <td class=3D"fallback-font w580 fs16"  style=3D"font-family:Gitan Latin,=
+ 'gitan-latin',futura-pt, 'futura', Arial;font-size:11px;color:#b2b2b2;text=
+-align: center;vertical-align: middle;line-height:24px;mso-line-height-rule=
+:exactly;">Pour une livraison avant les f=C3=AAtes</td>=0A=
+   </tr>=0A=
+   <tr>=0A=
+   <td>=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" class=3D"w100v" >=0A=
+   <tr>=0A=
+   <td width=3D"10" height=3D"21" class=3D"w10" ></td>=0A=
+   <td width=3D"580" height=3D"21" class=3D"fallback-font w580 fs16"  style=
+=3D"font-family:Gitan Latin, 'gitan-latin',futura-pt, 'futura', Arial;font-=
+size:11px;color:#b2b2b2;text-align: center;vertical-align: middle;line-heig=
+ht:24px;mso-line-height-rule:exactly;">Si vous n'arrivez pas =C3=A0 visuali=
+ser ce message,  <a href=3D"http://x=2Eemail=2Ekenzo=2Ecom/ats/msg=2Easpx?s=
+g1=3Dcf6c569cb47c893219b2d9a879445f3a" target=3D"_blank" style=3D"color:#b2=
+b2b2;text-decoration:underline;">cliquez ici</a>=2E</td>=0A=
+   <td width=3D"10" height=3D"21" class=3D"w10" ></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   </tr>=0A=
+   <tr>=0A=
+  <td width=3D"600" height=3D"20" class=3D"h20" ></td><!-- class et hauteur=
+ modifi=C3=A9 -->=0A=
+   </tr>=0A=
+ <tr>=0A=
+   <td bgcolor=3D"#f5f5f5" width=3D"600" height=3D"1" style=3D"font-size:1p=
+x;line-height: 1px" ><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Ones=
+hot/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"600" hei=
+ght=3D"1" alt=3D"" class=3D"hide" style=3D"display:block;" border=3D"0" /><=
+/td>=0A=
+   </tr>=0A=
+   </table>=0A=
+ <!-- LOGO -->=0A=
+ <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"w100v" width=3D"600">=0A=
+    <tr>=0A=
+   <td align=3D"center" bgcolor=3D"#8C9BAE" style=3D"padding: 35px 0px"><a =
+href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204349&tp=3Di-1NG=
+B-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank"><img s=
+rc=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_LA=
+ST_CALL_DIGIT_EN/LOGO_KENZO_WINTER=2Epng" alt=3D"" width=3D"350" height=3D"=
+72" class=3D"logo" style=3D"display:block;" border=3D"0" /></a></td>=0A=
+   </tr> =0A=
+ =0A=
+   </table>=0A=
+ =0A=
+ <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"w100v" width=3D"600">=0A=
+   <tr>=0A=
+   <td valign=3D"top" style=3D"padding-bottom: 20px;" bgcolor=3D"#8C9BAE" c=
+lass=3D"padb6v25">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" class=3D"w100v">=0A=
+   <tr>=0A=
+   <td><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204350&=
+tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bla=
+nk"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decem=
+bre/212_LAST_CALL_DIGIT_EN/CADEAUX_HOMME=2Epng" alt=3D"" width=3D"300" heig=
+ht=3D"20" class=3D"w50" style=3D"display:block;" border=3D"0" /></a></td>=
+=0A=
+   =0A=
+   <td><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204351&=
+tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bla=
+nk"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decem=
+bre/212_LAST_CALL_DIGIT_EN/CADEAUX_FEMME=2Epng" alt=3D"" width=3D"300" heig=
+ht=3D"20" class=3D"w50" style=3D"display:block;" border=3D"0" /></a></td>=
+=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   </tr>=0A=
+                            <tr>=0A=
+                                <td valign=3D"top" style=3D"padding-bottom:=
+ 40px;" bgcolor=3D"#8C9BAE" class=3D"padb12v5">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" class=3D"w100v">=0A=
+   <tr>=0A=
+   <td><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204352&=
+tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bla=
+nk"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decem=
+bre/212_LAST_CALL_DIGIT_EN/CADEAUX_ACCESSOIRES=2Epng" alt=3D"" width=3D"300=
+" height=3D"20" class=3D"w50" style=3D"display:block;" border=3D"0" /></a><=
+/td>=0A=
+     =0A=
+   <td><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204353&=
+tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bla=
+nk"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decem=
+bre/212_LAST_CALL_DIGIT_EN/CADEAUX_ENFANTS=2Epng" alt=3D"" width=3D"300" he=
+ight=3D"20" class=3D"w50" style=3D"display:block;" border=3D"0" /></a></td>=
+=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   </tr>=0A=
+ =0A=
+=0A=
+   </table>=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ class=3D"w100v" width=3D"600">=0A=
+   <tr>=0A=
+   <td><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204354&=
+tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bla=
+nk"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decem=
+bre/212_LAST_CALL_DIGIT_EN/NL_LAST_CALL_1=2Ejpg" alt=3D"" width=3D"600" cla=
+ss=3D"w100v" style=3D"display:block;" border=3D"0" /></a></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+                     <table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"w100v" width=3D"600">=0A=
+   <tr>=0A=
+   <td style=3D"padding: 63px 0 70px 0" class=3D"padtd65">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" class=3D"w500">=0A=
+   <tr>=0A=
+   <td width=3D"50" class=3D"hide"  ></td>=0A=
+   <td>=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"500" class=3D"w500">=0A=
+=0A=
+ <tr>=0A=
+   <td width=3D"500" align=3D"left" class=3D"fallback-font  fs34" style=3D"=
+font-family:Gitan Latin, 'gitan-latin',futura-pt, 'futura', Arial;font-size=
+:30px;color:#000000;line-height:40px;mso-line-height-rule:exactly;"><a href=
+=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204355&tp=3Di-1NGB-FX=
+-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"t=
+ext-decoration: none;color:#000000;">=0A=
+=C3=80 temps pour les f=C3=AAtes</a></td>=0A=
+     </tr>=0A=
+   <tr>=0A=
+   <td width=3D"500" height=3D"20" class=3D"h20" style=3D"font-size:1px;lin=
+e-height:1px;" ><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2=
+021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"=
+1" alt=3D"" style=3D"display:block;" border=3D"0" class=3D"hide" /></td><!-=
+- height modifi=C3=A9 class modifi=C3=A9e -->=0A=
+   </tr>=0A=
+   <tr>=0A=
+   <td width=3D"500" align=3D"left"  class=3D"fallback-font fs20"  style=3D"=
+font-family:Gitan Latin, 'gitan-latin',futura-pt, 'futura', Arial;font-size=
+:20px;color:#000000;line-height:30px;mso-line-height-rule:exactly;"><a href=
+=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204355&tp=3Di-1NGB-FX=
+-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"t=
+ext-decoration: none;color:#000000;">Il est encore temps de trouver votre p=
+arfait cadeau parmi la s=C3=A9lection d=E2=80=99id=C3=A9es KENZO=2E<br/>=0A=
+<b>Commandez avant midi le 22 d=C3=A9cembre</b> pour recevoir vos achats =
+=C3=A0 temps pour les f=C3=AAtes=2E<br/>=0A=
+N=E2=80=99oubliez pas : la livraison express est offerte pour toute command=
+e et les retours sont gratuits et prolong=C3=A9s jusqu'au 06/01=2E</a></td>=
+=0A=
+   </tr>=0A=
+   <tr>=0A=
+   <td width=3D"500" height=3D"30" class=3D"h30" ></td><!-- height modifi=
+=C3=A9 class modifi=C3=A9e -->=0A=
+   </tr>=0A=
+   <tr>=0A=
+   <td align=3D"left">=0A=
+   <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" >=
+=0A=
+   <tr>=0A=
+   <td>=0A=
+   <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" >=
+=0A=
+<tr>=0A=
+  <td><table border=3D"0" align=3D"left" cellpadding=3D"0" cellspacing=3D"0=
+" >=0A=
+  <tr>=0A=
+  <td>=0A=
+  <div>=0A=
+  <!--[if mso]><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns=
+:w=3D"urn:schemas-microsoft-com:office:word" href=3D"http://l=2Eemail=2Eken=
+zo=2Ecom/rts/go2=2Easpx?h=3D204356&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs=
+0-l6vZHvJw5g-1zTGl3" style=3D"height:50px;v-text-anchor:middle;width:250px;=
+" arcsize=3D"20%" strokecolor=3D"#NaNNaNNaN" fillcolor=3D"#ffffff"><w:ancho=
+rlock/><center style=3D"font-family:Arial;font-size:16px;color:#000000;line=
+-height: 18px;mso-line-height-rule:exactly">SHOP NOW</center></v:roundrect>=
+<![endif]-->=0A=
+  <table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"pad_cta"=
+ style=3D"border:1px solid #000000;border-radius:4px;padding-left:23px;padd=
+ing-right:23px;border-collapse: separate;mso-hide:all;"><tr><td height=3D"5=
+0" align=3D"center" valign=3D"middle" style=3D"font-family:Gitan Latin, 'gi=
+tan-latin',futura-pt, 'futura', Arial;font-size:16px;color:#000000;mso-hide=
+:all;line-height: 18px;mso-line-height-rule:exactly" class=3D"fallback-font=
+  cta"><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204356&=
+tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bla=
+nk" style=3D"text-decoration:none;color:#000000;mso-hide:all;">SHOP NOW</a>=
+</td></tr></table></div>=0A=
+  </td>=0A=
+  </tr>=0A=
+  </table></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   <td width=3D"50" class=3D"hide"  ></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+   </tr>=0A=
+   </table>=0A=
+                     =0A=
+                      <table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"w100v" width=3D"600">=0A=
+   <tr>=0A=
+   <td ><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204357=
+&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_bl=
+ank"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Dece=
+mbre/212_LAST_CALL_DIGIT_EN/PLV_GWP_FR=2Egif" alt=3D"" width=3D"600" height=
+=3D"425"  class=3D"w100v hauto" style=3D"display:block;" border=3D"0" /></a=
+></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+                     =0A=
+ <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"600" class=3D"w100v">=0A=
+   <tr>=0A=
+=0A=
+                                         <td><a href=3D"http://l=2Eemail=2Ek=
+enzo=2Ecom/rts/go2=2Easpx?h=3D204358&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8=
+Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank"><img src=3D"https://wpm=2Eccmp=2Ee=
+u/wpm/963/Email_Oneshot/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/KLARNA_FR_1=
+=2Ejpg" alt=3D"" width=3D"600" height=3D"87" class=3D"w100v" style=3D"displ=
+ay:block;" border=3D"0" /></a></td>=0A=
+ =0A=
+=0A=
+   </tr>=0A=
+   </table>=0A=
+ =0A=
+ <!-- FOOTER FR -->=0A=
+ <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"w100v" width=3D"600">=0A=
+   <tr>=0A=
+     <td style=3D"padding-bottom: 40px;padding-top: 40px;" class=3D"padb30 =
+padt30" ><!-- class modifi=C3=A9e -->  <table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" class=3D"w100v" width=3D"600">=0A=
+  =0A=
+   <tr>=0A=
+   <td align=3D"center"  valign=3D"middle" class=3D"fallback-font  fs22 w25=
+v" style=3D"font-family:Gitan Latin, 'gitan-latin',futura-pt, 'futura', Ari=
+al;font-size:18px;color:#000000;"><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom=
+/rts/go2=2Easpx?h=3D204359&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHv=
+Jw5g-1zTGl3" target=3D"_blank" style=3D"text-decoration:none;color:#000000;=
+">FEMME</a></td>=0A=
+   <td width=3D"150" align=3D"center"  valign=3D"middle" class=3D"fallback-=
+font fs22 w25v" style=3D"font-family:Gitan Latin, 'gitan-latin',futura-pt, =
+'futura', Arial;font-size:18px;color:#000000;"><a href=3D"http://l=2Eemail=
+=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204360&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1=
+c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"text-decoration:none;=
+color:#000000;">HOMME</a></td> =0A=
+   <td width=3D"150" align=3D"center"  valign=3D"middle" class=3D"fallback-=
+font fs22 w32v5" style=3D"font-family:Gitan Latin, 'gitan-latin','futura-pt=
+','futura', Arial;font-size:18px;color:#000000;"><a href=3D"http://l=2Eemai=
+l=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204361&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-=
+1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"text-decoration:none=
+;color:#000000;">ACCESSOIRES</a></td>=0A=
+         <td width=3D"150" align=3D"center"  valign=3D"middle" class=3D"fal=
+lback-font  fs22 w25v" style=3D"font-family:Gitan Latin, 'gitan-latin',futu=
+ra-pt, 'futura', Arial;font-size:18px;color:#000000;"><a href=3D"http://l=
+=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204362&tp=3Di-1NGB-FX-3qN-A90mf-1=
+x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"text-decorati=
+on:none;color:#000000;">ENFANT </a></td>=0A=
+     </tr>=0A=
+   </table></td>=0A=
+     </tr>=0A=
+=0A=
+     </table>=0A=
+                     <table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"w100v" width=3D"600">=0A=
+     <tr>=0A=
+     <td  height=3D"1" bgcolor=3D"#ededed" style=3D"font-size:1px;line-heig=
+ht:1px;" ><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12=
+_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"1" alt=
+=3D"" style=3D"display:block;" border=3D"0" class=3D"hide" /></td>=0A=
+     <td bgcolor=3D"#ededed" style=3D"font-size:1px;line-height:1px;" ><img=
+ src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_=
+LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"1" alt=3D"" style=3D"=
+display:block;" border=3D"0" class=3D"hide" /></td>=0A=
+     <td  bgcolor=3D"#ededed" style=3D"font-size:1px;line-height:1px;" ><im=
+g src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212=
+_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"1" alt=3D"" style=
+=3D"display:block;" border=3D"0" class=3D"hide" /></td>=0A=
+   </tr>=0A=
+   <tr>=0A=
+   <td bgcolor=3D"#f5f5f5">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"299" class=3D"w49">=0A=
+   <tr>=0A=
+   <td width=3D"50" height=3D"100" class=3D"w50b h100" ></td>=0A=
+                                           <td width=3D"42" style=3D"width:=
+ 42px" class=3D"w42"> <a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Ea=
+spx?h=3D204363&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3"=
+ target=3D"_blank" style=3D"color:#000000;text-decoration: none;"><img src=
+=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_LAST=
+_CALL_DIGIT_EN/rea1=2Epng" width=3D"42" alt=3D"" class=3D"w42" style=3D"dis=
+play:block;" border=3D"0" /></a></td>=0A=
+  <td width=3D"34" valign=3D"top"  class=3D"w34" ></td> <td valign=3D"middl=
+e"  class=3D"fallback-font  fs22 " style=3D"font-family:'gitan-latin',futur=
+a-pt, 'futura', Arial;font-size:16px;color:#000000;text-align: left;text-tr=
+ansform: uppercase;"><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Eas=
+px?h=3D204363&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" =
+target=3D"_blank" style=3D"color:#000000;text-decoration: none;">LIVRAISON =
+D=C3=88S LE LENDEMAIN <br />RETOURS OFFERTS</a></td>=0A=
+       </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+      <td bgcolor=3D"#ededed" style=3D"font-size:1px;line-height:1px;width:=
+ 1px" widh=3D"1" ><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot=
+/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=
+=3D"1" alt=3D"" style=3D"display:block;" border=3D"0" class=3D"hide" /></td=
+>=0A=
+   <td bgcolor=3D"#f5f5f5"><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"299" class=3D"w49">=0A=
+   <tr>=0A=
+   <td width=3D"50" height=3D"100" class=3D"w34 h100" ></td>=0A=
+                                              <td width=3D"42" style=3D"wid=
+th: 42px" class=3D"w42"> <a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=
+=2Easpx?h=3D204364&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zT=
+Gl3" target=3D"_blank" style=3D"color:#000000;text-decoration: none;"><img =
+src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_L=
+AST_CALL_DIGIT_EN/rea2=2Epng" width=3D"42" alt=3D"" class=3D"w42" style=3D"=
+display:block;" border=3D"0" /></a></td>=0A=
+                                         <td width=3D"34" valign=3D"top"  c=
+lass=3D"w34" ></td>=0A=
+   <td valign=3D"middle"  class=3D"fallback-font  fs22 " style=3D"font-fami=
+ly:'gitan-latin',futura-pt, 'futura', Arial;font-size:16px;color:#000000;te=
+xt-align: left;text-transform: uppercase;"><a href=3D"http://l=2Eemail=2Eke=
+nzo=2Ecom/rts/go2=2Easpx?h=3D204364&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8G=
+s0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"color:#000000;text-decorat=
+ion: none;">CONTACT <br />SERVICE CLIENT</a></td>=0A=
+       </tr>=0A=
+   </table></td>=0A=
+     </tr>=0A=
+   <tr>=0A=
+     <td  height=3D"1" bgcolor=3D"#ededed" style=3D"font-size:1px;line-heig=
+ht:1px;" ><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12=
+_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"1" alt=
+=3D"" style=3D"display:block;" border=3D"0" class=3D"hide" /></td>=0A=
+     <td bgcolor=3D"#ededed" style=3D"font-size:1px;line-height:1px;" ><img=
+ src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_=
+LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"1" alt=3D"" style=3D"=
+display:block;" border=3D"0" class=3D"hide" /></td>=0A=
+     <td  bgcolor=3D"#ededed" style=3D"font-size:1px;line-height:1px;" ><im=
+g src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212=
+_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=3D"1" alt=3D"" style=
+=3D"display:block;" border=3D"0" class=3D"hide" /></td>=0A=
+   </tr>=0A=
+  <tr>=0A=
+   <td bgcolor=3D"#f5f5f5">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"299" class=3D"w49">=0A=
+   <tr>=0A=
+   <td width=3D"50" height=3D"100" class=3D"w50b h100" ></td>=0A=
+                                              <td width=3D"42" style=3D"wid=
+th: 42px" class=3D"w42"> <a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=
+=2Easpx?h=3D204365&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zT=
+Gl3" target=3D"_blank" style=3D"color:#000000;text-decoration: none;"><img =
+src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_L=
+AST_CALL_DIGIT_EN/rea3=2Epng" width=3D"42" alt=3D"" class=3D"w42" style=3D"=
+display:block;" border=3D"0" /></a></td>=0A=
+                                         <td width=3D"34" valign=3D"top"  c=
+lass=3D"w34" ></td>=0A=
+   <td valign=3D"middle"  class=3D"fallback-font  fs22 " style=3D"font-fami=
+ly:'gitan-latin',futura-pt, 'futura', Arial;font-size:16px;color:#000000;te=
+xt-align: left;text-transform: uppercase;"><a href=3D"http://l=2Eemail=2Eke=
+nzo=2Ecom/rts/go2=2Easpx?h=3D204365&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8G=
+s0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"color:#000000;text-decorat=
+ion: none;">PACKAGING<br /> EXCLUSIF E-SHOP</a></td>=0A=
+       </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+      <td bgcolor=3D"#ededed" style=3D"font-size:1px;line-height:1px;width:=
+ 1px" widh=3D"1" ><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot=
+/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif" width=3D"1" height=
+=3D"1" alt=3D"" style=3D"display:block;" border=3D"0" /></td>=0A=
+   <td bgcolor=3D"#f5f5f5"><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"299" class=3D"w49">=0A=
+   <tr>=0A=
+   <td width=3D"50" height=3D"100" class=3D"w34 h100" ></td>=0A=
+                                              <td width=3D"42" style=3D"wid=
+th: 42px" class=3D"w42"> <a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=
+=2Easpx?h=3D204366&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zT=
+Gl3" target=3D"_blank" style=3D"color:#000000;text-decoration: none;"><img =
+src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Decembre/212_L=
+AST_CALL_DIGIT_EN/rea4=2Epng" width=3D"42" alt=3D"" class=3D"w42" style=3D"=
+display:block;" border=3D"0" /></a></td>=0A=
+                                         <td width=3D"34" valign=3D"top"  c=
+lass=3D"w34" ></td>=0A=
+   <td valign=3D"middle"  class=3D"fallback-font  fs22 " style=3D"font-fami=
+ly:'gitan-latin',futura-pt, 'futura', Arial;font-size:16px;color:#000000;te=
+xt-align: left;text-transform: uppercase;"><a href=3D"http://l=2Eemail=2Eke=
+nzo=2Ecom/rts/go2=2Easpx?h=3D204366&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8G=
+s0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"color:#000000;text-decorat=
+ion: none;">SERVICE DE <br />VENTE =C3=80 DISTANCE</a></td>=0A=
+       </tr>=0A=
+   </table></td>=0A=
+     </tr>=0A=
+   =0A=
+   </table>=0A=
+ <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"w100v" width=3D"600">=0A=
+   <tr>=0A=
+     <td width=3D"600" class=3D"w100v" height=3D"1" bgcolor=3D"#ededed" sty=
+le=3D"font-size:1px;line-height:1px;" ><img src=3D"https://wpm=2Eccmp=2Eeu/=
+wpm/963/Email_Oneshot/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif"=
+ width=3D"1" height=3D"1" alt=3D"" style=3D"display:block;" border=3D"0" cl=
+ass=3D"hide" /></td>=0A=
+   </tr>=0A=
+   <tr>=0A=
+   <td bgcolor=3D"#f5f5f5">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" class=3D"w100v">=0A=
+   <tr>=0A=
+   <td width=3D"50" height=3D"100" class=3D"w50b h100" ></td>=0A=
+   <td  class=3D"fallback-font  fs22 " style=3D"font-family:Gitan Latin, 'g=
+itan-latin',futura-pt, 'futura', Arial;font-size:18px;color:#000000;text-al=
+ign: left;"><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D20=
+4367&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"=
+_blank" style=3D"color:#000000;text-decoration: none;">TROUVER UNE BOUTIQUE=
+</a></td>=0A=
+    <td width=3D"10"  class=3D"w10b"><a href=3D"http://l=2Eemail=2Ekenzo=2Ec=
+om/rts/go2=2Easpx?h=3D204367&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZ=
+HvJw5g-1zTGl3" target=3D"_blank" style=3D"color:#000000;text-decoration: no=
+ne;"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Dece=
+mbre/212_LAST_CALL_DIGIT_EN/fleche=2Epng" width=3D"10" alt=3D"" class=3D"w1=
+0b" style=3D"display:block;" border=3D"0" /></a></td>=0A=
+   <td width=3D"50"  class=3D"w50b " ></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+ </tr>=0A=
+   <tr>=0A=
+     <td width=3D"600" class=3D"w100v" height=3D"1" bgcolor=3D"#ededed" sty=
+le=3D"font-size:1px;line-height:1px;" ><img src=3D"https://wpm=2Eccmp=2Eeu/=
+wpm/963/Email_Oneshot/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif"=
+ width=3D"1" height=3D"1" alt=3D"" style=3D"display:block;" border=3D"0" cl=
+ass=3D"hide" /></td>=0A=
+   </tr>=0A=
+  <tr>=0A=
+   <td bgcolor=3D"#f5f5f5">=0A=
+     <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" width=3D"600" class=3D"w100v">=0A=
+   <tr>=0A=
+   <td width=3D"50" height=3D"100" class=3D"w50b h100" ></td>=0A=
+   <td  class=3D"fallback-font  fs22 " style=3D"font-family:Gitan Latin, 'g=
+itan-latin',futura-pt, 'futura', Arial;font-size:18px;color:#000000;text-al=
+ign: left;"><a href=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D20=
+4368&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"=
+_blank" style=3D"color:#000000;text-decoration: none;">SUIVEZ-NOUS SUR INST=
+AGRAM</a></td>=0A=
+    <td width=3D"10"  class=3D"w10b"><a href=3D"http://l=2Eemail=2Ekenzo=2Ec=
+om/rts/go2=2Easpx?h=3D204368&tp=3Di-1NGB-FX-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZ=
+HvJw5g-1zTGl3" target=3D"_blank" style=3D"color:#000000;text-decoration: no=
+ne;"><img src=3D"https://wpm=2Eccmp=2Eeu/wpm/963/Email_Oneshot/2021/12_Dece=
+mbre/212_LAST_CALL_DIGIT_EN/fleche=2Epng" width=3D"10" alt=3D"" class=3D"w1=
+0b" style=3D"display:block;" border=3D"0" /></a></td>=0A=
+   <td width=3D"50"  class=3D"w50b " ></td>=0A=
+   </tr>=0A=
+     </table>=0A=
+   </td>=0A=
+     </tr>=0A=
+   <tr>=0A=
+     <td width=3D"600" class=3D"w100v" height=3D"1" bgcolor=3D"#ededed" sty=
+le=3D"font-size:1px;line-height:1px;" ><img src=3D"https://wpm=2Eccmp=2Eeu/=
+wpm/963/Email_Oneshot/2021/12_Decembre/212_LAST_CALL_DIGIT_EN/spacer=2Egif"=
+ width=3D"1" height=3D"1" alt=3D"" style=3D"display:block;" border=3D"0" cl=
+ass=3D"hide" /></td>=0A=
+   </tr>=0A=
+  <tr>=0A=
+   <td bgcolor=3D"#f5f5f5">=0A=
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ width=3D"600" class=3D"w100v">=0A=
+   <tr>=0A=
+   <td width=3D"50"  class=3D"w50b" ></td><!-- class modifi=C3=A9 -->=0A=
+   <td  class=3D"fallback-font  fs22 padt35 padb40" style=3D"font-family:Gi=
+tan Latin, 'gitan-latin',futura-pt, 'futura', Arial;font-size:18px;color:#0=
+00000;text-align: left;line-height: 22px;padding-top: 35px; padding-bottom:=
+ 40px;">*Offre valable sur KENZO=2Ecom et dans nos boutiques KENZO =C3=A0 p=
+artir de 300=E2=82=AC d'achat sur toute la collection KENZO, du 04/12/2021 =
+au 31/12/2021, dans la limite des stocks disponibles=2E<br /><br /> <a href=
+=3D"http://l=2Eemail=2Ekenzo=2Ecom/rts/go2=2Easpx?h=3D204369&tp=3Di-1NGB-FX=
+-3qN-A90mf-1x-M9fK-1c-A8Gs0-l6vZHvJw5g-1zTGl3" target=3D"_blank" style=3D"c=
+olor:#000000;text-decoration: underline;">Mentions l=C3=A9gales</a><br /> =
+=0A=
+       Pour vous d=C3=A9sabonner, <a href=3D"http://x=2Eemail=2Ekenzo=2Ecom=
+/ats/show=2Easpx?cr=3D963&fm=3D20&tp=3Di-1NHD-FX-3qN-A90mf-1x-M9fK-1c-82J-A=
+8Gs0-l6vZHvJw5g-24mtWZ" target=3D"_blank" style=3D"color:#000000;text-decor=
+ation:underline;">cliquez ici</a></td>=0A=
+    <td width=3D"10"  class=3D"w10b"></td>=0A=
+   <td width=3D"50"  class=3D"w50b " ></td>=0A=
+   </tr>=0A=
+   </table>=0A=
+   </td>=0A=
+     </tr>=0A=
+   =0A=
+   </table>=0A=
+ =0A=
+     </td>=0A=
+   </tr>=0A=
+   </table>=0A=
+       </body>=0A=
+   </html>
+----boundary_112756833_d261c476-5c07-4a1f-9d05-ffd4f9e56499--
+

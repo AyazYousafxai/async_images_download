@@ -1,0 +1,683 @@
+Delivered-To: shahrukh.swam@gmail.com
+Received: by 2002:a05:6520:4d0d:b0:13e:91c8:d006 with SMTP id cy13csp424068lkb;       
+ Thu, 23 Sep 2021 07:28:38 -0700 (PDT)
+Received: from mta-253-214-241.intercom.com.sparkpostmail.com
+ (mta-253-214-241.intercom.com.sparkpostmail.com. [147.253.214.241])       
+ by mx.google.com with ESMTPS id e18si7593352pfc.172.2021.09.23.07.28.37     
+   for <shahrukh.swam@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Thu, 23 Sep 2021
+ 07:28:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxulyjNFfVf9/+8k0RBJkXNriKv7xyft0KE6IqoxwPEoUGIL1BIjMvoKEK3gpv1KHcns/nR
+X-Received: by 2002:a63:dc03:: with SMTP id s3mr4490854pgg.88.1632407318400;        Thu,
+ 23 Sep 2021 07:28:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1632407318; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=M8Hwb6IMPV+fdfm3mI4NFZxtXcmXjRgbxj1CKijXt+jYIzBgkbuyevy0lr+4mmBGHx        
+ pq0jFDEoQvpj+KaDLfPIs4ON1fRuOS2EaX7pDceLvaVCpIehipH4V5zjoo7ZZzWNRsfS        
+ lfOR9jT+3yEn7i6alcIvmr5Kqk+02idRNqRKUQ7Xadw1HZp/jagK1B9WcLyFAz+pMdph        
+ iP1KuPUqS0w5lgPcsRSwhmCnuAmBudkD5jl8QyT/jRnQUhJEdWtdIno5Y4kqOXOe1Q4h        
+ py+M5ZPJLtxHQuClDGBY4AcKpMMR963gxaa/joWRPyBLHWhDhP5iyj/yKYMSyGIWSnNx        
+ XGPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:from:message-id:subject:reply-to:date:list-unsubscribe        
+ :mime-version:to:dkim-signature;       
+ bh=5sBlwPXAsQQkTKKnKrwJXT8C9XEckXcEtulOd8XUxc0=;       
+ b=XUgv0croEoCQovZO1wDjvZ0zGGJSOLw5JU4PoBOrtDE0OY4OIO/tPj/8OSAbqNTt7S        
+ BaAEmPobgwCcmLh+N8KGA017k5JzeNnmr2nVnC1PsN1d2lLLedMfausrIeQ1LU1u5AUw        
+ 1NQYk8cuO9p/zoM/j8bxB90QCn7pwDfTBRcfZEY0VJQGW+zroi8s2CeKRBzQzhoCItoG        
+ b4zPB9dLv/GJdKGfoO1EwCJPB8AeIp+KcGmYIu7jbvilFj+OguDr7IeKUIsi2uiMJxj2        
+ 762bpSNVdd6I/qBYNxvgjF9I/epYQ0cD6/spcZRHKyYaSIn4SoD6RmhzHB+QXjeUA4SA        
+ cQwg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@loom.com header.s=intercom
+ header.b=YLgffWqY;       spf=pass (google.com: domain of
+ bounces+28305762691460@outbound.intercom.loom.com designates 147.253.214.241
+ as permitted sender)
+ smtp.mailfrom=bounces+28305762691460@outbound.intercom.loom.com;      
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=loom.com
+Return-Path: <bounces+28305762691460@outbound.intercom.loom.com>
+Received-SPF: pass (google.com: domain of bounces+28305762691460@outbound.intercom.loom.com
+ designates 147.253.214.241 as permitted sender) client-ip=147.253.214.241;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@loom.com header.s=intercom
+ header.b=YLgffWqY;       spf=pass (google.com: domain of
+ bounces+28305762691460@outbound.intercom.loom.com designates 147.253.214.241
+ as permitted sender)
+ smtp.mailfrom=bounces+28305762691460@outbound.intercom.loom.com;      
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=loom.com
+X-MSFBL: MEwRTC5SyPS8AGyo0MUeb26JcKLbRWf5TmNo8hJ51Zc=|eyJtZXNzYWdlX2lkIjo	iNjE0YTEzOGY0YzYxMTdiOGE0Y2MiLCJ0ZW5hbnRfaWQiOiJpbnRlcmNvbSIsInN	1YmFjY291bnRfaWQiOiI5MDIiLCJyIjoic2hhaHJ1a2guc3dhbUBnbWFpbC5jb20	iLCJjdXN0b21lcl9pZCI6IjEifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=loom.com;	s=intercom; t=1632407315;
+ i=@loom.com;	bh=5sBlwPXAsQQkTKKnKrwJXT8C9XEckXcEtulOd8XUxc0=;	h=To:Content-Type:Date:Subject:Message-ID:From;	b=YLgffWqYc3tiBYlXpNuBjkevWVHehRcGklhhfgwPq0yG1PlYyuo39t9eku/KkMiGB	
+ v0Wj2kfIkKRYLtAVejCxiP0PJBKUiQ/WbtEJqVNRXt/7Al2RqNYa8ZdtWn1UvoQBAa	
+ iW/99F4QJrcd7i/r4WrXJ2sfR8pJvNxqBrjlirG8=
+To: shahrukh.swam@gmail.com
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:unsubscribe_28305762691460_5ace24330fd93957ce7eb672@loom-89a303127719.intercom-mail.com>,
+ <https://loom-89a303127719.intercom-mail.com/subscriptions/unsubscribe?app_id=cgfc6jcc&conversation_id=28305762691460&user_id=5ace24330fd93957ce7eb672&source=header>
+Date: Thu, 23 Sep 2021 14:28:34 +0000
+Reply-To: "The Loom Team" <loom-team@loom.com>
+X-Mailgun-Tag: user-custom
+X-Intercom-App-Id: cgfc6jcc
+X-Intercom-Bin: 140
+Subject: Be you with Loom: Introducing Canvas, new fall camera frames, recording tips,
+ and more.
+Message-ID: <833d4397-166ca4b0-1632407314-28305762691460@loom-89a303127719.intercom-mail-140.com>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+From: "The Loom Team" <loom-team@loom.com>
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"cgfc6jcc","conversation_id":"28305762691460","user_id":"5ace24330fd93957ce7eb672","intercom_localized_email_content_id":"4451688"}
+Feedback-ID: email:49489276:cgfc6jcc:intercom
+Content-Type: multipart/alternative;
+ boundary="_----ft/1wFSHFNOZ4uEUk4ZzXw===_99/CC-39929-31F8C416"
+
+--_----ft/1wFSHFNOZ4uEUk4ZzXw===_99/CC-39929-31F8C416
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+FEATURES AVAILABLE NOW=20
+ New fall camera frames =F0=9F=8D=82=20
+ With summer officially behind us in the northern hemisphere, we're celebra=
+ting with all-new fall-themed camera frames=2E Now available on the Loom de=
+sktop app=2E=20
+ [Image "82bf58eb33fb0d8d187915c70c26e0e48a475a3a-1440x900=2Egif"] Link to =
+Video Link to Video Link to Video Watch the demo=20
+ Embed a linked GIF in email=20
+ Sending a Loom via email? Drive more views by sharing your video as an ani=
+mated thumbnail in the body of your email=2E This will catch the eye of you=
+r recipient and give them a preview of what's to come=2E Learn how here=2E=
+=20
+ [Image "35e917a9c36d8f7a46cd4ec2da5f7788ef21af78-1440x900=2Egif"] Link to =
+Video Link to Video Link to Video Watch the demo=20
+ NEW FEATURES COMING SOON=20
+ Introducing Canvas=20
+ Canvas is a customizable recording backdrop that gives you more ways to ex=
+press yourself visually=2E It's great for all kinds of videos =E2=80=93 fro=
+m delivering updates to your team, to sending introductions that stand out=
+=2E Canvas is coming to the Loom Desktop app later this fall=2E=20
+ [Image "16ffa23cabc9918dd14acef155b1f16f36a825bf-1440x900=2Egif"] Link to =
+Video Link to Video Link to Video Watch the demo=20
+ LOOM 101: TIPS AND ADVICE FROM OUR TEAM=20
+ Introduce yourself with video=20
+ Whether it's for sales outreach, networking, or just introducing yourself =
+to a new team, video is a personal and professional way to make a strong fi=
+rst impression=2E Charles from the Loom team shares best practices=2E=20
+ [Image "1b93d0f446804d0aa032787b57e5ce6c-with-play=2Egif"] Link to Video L=
+ink to Video Link to Video Watch the video=20
+ How to use video to give clear answers to customers=20
+ At Loom, over one-third of our customer conversations include a Loom video=
+ link=2E Why? Because showing is a far richer experience than telling=2E La=
+uren from our Support team, shares how to use video in your support workflo=
+w=2E=20
+ [Image "5a3e8527e5b54caa86682b05a408d370-with-play=2Egif"] Link to Video L=
+ink to Video Link to Video Watch the video With =F0=9F=92=9C from =F0=9F=8C=
+=8D=F0=9F=8C=8E=F0=9F=8C=8F, The Loommates
+--_----ft/1wFSHFNOZ4uEUk4ZzXw===_99/CC-39929-31F8C416
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+	<title>Loom</title>
+<style>=2Eintercom-align-right {
+  text-align: right !important;
+}
+=2Eintercom-align-center {
+  text-align: center !important;
+}
+=2Eintercom-align-left {
+  text-align: left !important;
+}
+/* Over-ride for RTL */
+=2Eright-to-left =2Eintercom-align-right{
+  text-align: left !important;
+}
+=2Eright-to-left =2Eintercom-align-left{
+  text-align: right !important;
+}
+=2Eright-to-left =2Eintercom-align-left {
+  text-align:right !important;
+}
+=2Eright-to-left li {
+  text-align:right !important;
+  direction: rtl;
+}
+=2Eright-to-left =2Eintercom-align-left img,
+=2Eright-to-left =2Eintercom-align-left =2Eintercom-h2b-button {
+  margin-left: 0 !important;
+}
+=2Eintercom-attachment,
+=2Eintercom-attachments,
+=2Eintercom-attachments td,
+=2Eintercom-attachments th,
+=2Eintercom-attachments tr,
+=2Eintercom-attachments tbody,
+=2Eintercom-attachments =2Eicon,
+=2Eintercom-attachments =2Eicon img {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+=2Eintercom-attachments {
+  margin: 10px 0 !important;
+}
+=2Eintercom-attachments =2Eicon,
+=2Eintercom-attachments =2Eicon img {
+  width: 16px !important;
+  height: 16px !important;
+}
+=2Eintercom-attachments =2Eicon {
+  padding-right: 5px !important;
+}
+=2Eintercom-attachment {
+  display: inline-block !important;
+  margin-bottom: 5px !important;
+}
+
+=2Eintercom-interblocks-content-card {
+  width: 334px !important;
+  max-height: 136px !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  font-size: 16px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+=2Eintercom-interblocks-link,
+=2Eintercom-interblocks-article-card {
+  text-decoration: none !important;
+}
+
+=2Eintercom-interblocks-article-icon {
+  width: 22=2E5% !important;
+  height: 136px !important;
+  float: left !important;
+  background-color: #fafafa !important;
+  background-image: url('https://loom-89a303127719=2Eintercom-mail=2Ecom/as=
+sets/article_book-1a595be287f73c0d02f548f513bfc831=2Epng') !important;
+  background-repeat: no-repeat !important;
+  background-size: 32px !important;
+  background-position: center !important;
+}
+
+=2Eintercom-interblocks-article-text {
+  width: 77=2E5% !important;
+  float: right !important;
+  background-color: #fff !important;
+}
+
+=2Eintercom-interblocks-link-title,
+=2Eintercom-interblocks-article-title {
+  color: #519dd4 !important;
+  font-size: 15px !important;
+  margin: 16px 18px 12px !important;
+  line-height: 1=2E3em !important;
+  overflow: hidden !important;
+}
+
+=2Eintercom-interblocks-link-description,
+=2Eintercom-interblocks-article-body {
+  margin: 0 18px 12px !important;
+  font-size: 14px !important;
+  color: #65757c !important;
+  line-height: 1=2E3em !important;
+}
+
+=2Eintercom-interblocks-link-author,
+=2Eintercom-interblocks-article-author {
+  margin: 10px 15px !important;
+  height: 24px !important;
+  line-height: normal !important;
+}
+
+=2Eintercom-interblocks-link-author-avatar,
+=2Eintercom-interblocks-article-author-avatar {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  float: left;
+  margin-right: 5px;
+}
+
+=2Eintercom-interblocks-link-author-avatar-image,
+=2Eintercom-interblocks-article-author-avatar-image {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+  vertical-align: top !important;
+  font-size: 12px !important;
+}
+
+=2Eintercom-interblocks-link-author-name,
+=2Eintercom-interblocks-article-author-name {
+  color: #74848b !important;
+  margin: 0 0 0 5px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  overflow: hidden !important;
+}
+
+=2Eintercom-interblocks-article-written-by {
+  color: #8897a4 !important;
+  margin: 1px 0 0 5px !important;
+  font-size: 12px !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  float: left !important;
+}
+</style>
+</head>
+<body style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #F9F9F9; font-family: 'CircularXX', 'Circular Pro', 'Helv=
+etica Neue', Arial, sans-serif; height: 100% !important; margin: 0; padding=
+: 0; width: 100% !important" bgcolor=3D"#F9F9F9">
+<div style=3D"color:transparent;visibility:hidden;opacity:0;font-size:0px;b=
+order:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!im=
+portant;display:none!important;line-height:0px!important;"><img border=3D"0=
+" width=3D"1" height=3D"1" src=3D"https://loom-89a303127719=2Eintercom-mail=
+=2Ecom/q/rXhXBkJerRBTqgNXQI52HQ~~/AAAAAQA~/RgRjLxQTPVcIaW50ZXJjb21CCmFKE49M=
+YRe4pMxSF3NoYWhydWtoLnN3YW1AZ21haWwuY29tWAQAAAOG" alt=3D""/></div>
+
+<style type=3D"text/css">
+body {
+-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;
+}
+img {
+-ms-interpolation-mode: bicubic;
+}
+img {
+border: 0; height: auto; line-height: 100%; outline: none; text-decoration:=
+ none;
+}
+body {
+height: 100% !important; margin: 0 !important; padding: 0 !important; width=
+: 100% !important;
+}
+</style>=C2=A0=C2=A0=C2=A0 <meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3Dutf-8">
+=C2=A0=C2=A0=C2=A0 <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedg=
+e">
+=C2=A0=C2=A0=C2=A0 <style type=3D"text/css">
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-=
+adjust: 100%; }
+        img { -ms-interpolation-mode: bicubic; }
+        img { border: 0; height: auto; line-height: 100%; outline: none; te=
+xt-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !i=
+mportant; width: 100% !important; }
+
+        /* iOS BLUE LINKS */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* GMAIL BLUE LINKS */
+        u + #body a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        /* SAMSUNG MAIL BLUE LINKS */
+        #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+=2Econtent h1 {
+    font-family:'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans=
+-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1=2E3;
+    margin: 15px 0 10px;
+    color: inherit !important;
+  }
+
+=2Econtent h2 {
+    font-family:'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans=
+-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1=2E3;
+    margin: 15px 0 10px;
+    color: inherit !important;
+  }
+       =20
+        h3, h4, h5, h6, p { font-size: 16px; }
+        h1, h2, h3, h4, h5, h6 { font-weight: bold; margin: 0; }
+        p { margin: 0 0 16px 0; }
+
+        =2Econtent a { color: #625DF5; text-decoration: underline; }
+        =2Econtent a:hover { color: #3B37AA !important; }
+        =2Econtent img { max-width: 100%; }
+
+       =2Eintercom-h2b-button {
+            font-size: 18px;
+            color: #FFFFFF !important;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none !important;
+            background-color: #625DF5;
+            border: none !important;
+            background-color: #625DF5;
+            border-radius: 6px;
+        }
+       =20
+        table=2Eintercom-container {
+        	background-color: #ffffff;
+        }
+       =20
+        table=2Eintercom-container td {
+            background-color: #625DF5;
+            padding: 13px 20px;
+            border-radius: 6px;
+            font-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Ar=
+ial, sans-serif;
+            margin: 0;
+        }
+       =20
+        =2Efooter a { color: inherit; }
+        =2Efooter a:hover { color: #7C7C7C !important; }
+    </style>
+
+
+    <!--[if (gte mso 9)|(IE)]>
+    <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"600" a=
+lign=3D"center" role=3D"presentation"><tr><td>
+    <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-col=
+lapse: collapse !important; color: #000000; font-weight: 400; line-height: =
+26px; margin: 0 auto; max-width: 600px; width: 100%">
+    <tbody>
+        <tr>
+            <td class=3D"content" style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; background-color: #ffffff; border: 1px solid #a=
+09a9a; color: #000000; font-family: 'CircularXX', 'Circular Pro', 'Helvetic=
+a Neue', Arial, sans-serif; font-size: 16px; line-height: 26px; overflow: h=
+idden" bgcolor=3D"#ffffff">
+               =20
+                    <img src=3D"https://cdn=2Esanity=2Eio/images/pvn35iyy/p=
+roduction/f6945b3436037d0b42a6b6876d735aa2c65574d7-1200x675=2Epng" alt=3D"B=
+e you with Loom=2E New product features and advice to express yourself with=
+ video=2E" width=3D"100%" style=3D"-ms-interpolation-mode: bicubic; border:=
+ 0; height: auto; line-height: 100%; max-width: 100%; outline: none; text-d=
+ecoration: none">
+                <div style=3D"padding: 30px 30px 40px">
+<h2 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 14px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">FEATURES AVAILABLE NOW</=
+h2>
+<div></div>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">New fall camera frames =
+=F0=9F=8D=82</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">With summer officially behind=
+ us in the northern hemisphere, we're celebrating with all-new fall-themed =
+camera frames=2E Now available on the Loom desktop app=2E</p>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DHBq=
+DXVJ7mlJ6mXN8Y1vvJ1uBU7TkkpmqDiJy8rxIt9yUXnGDxT3cUPIcCphp33pD6lsmrd%2B8Rqqy=
+kkr3mH4Dcg%3D%3D&h=3D0d49da6163e573a9b2d4ed929179644983118a4a-cgfc6jcc_2830=
+5762691460&l=3D9c6a2110f2058ba9ec0281accd4d44a06911055c-10555490" target=3D"=
+_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%=
+; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Esanity=2Eio/images/pvn35iyy/production/82bf58=
+eb33fb0d8d187915c70c26e0e48a475a3a-1440x900=2Egif" alt=3D"" style=3D"-ms-in=
+terpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; max-=
+width: 100%; outline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DHBqDXVJ7mlJ6mXN8Y1vvJ1uBU7T=
+kkpmqDiJy8rxIt9yUXnGDxT3cUPIcCphp33pD6lsmrd%2B8Rqqykkr3mH4Dcg%3D%3D&h=3D0d4=
+9da6163e573a9b2d4ed929179644983118a4a-cgfc6jcc_28305762691460&l=3D969c073de=
+33da83b6af917f1b1693123d54b8b04-10556692" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border: none=
+; border-radius: 6px; color: #FFFFFF !important; display: inline-block; fon=
+t-size: 18px; font-weight: bold; text-decoration: none !important">Watch th=
+e demo</a></td></tr></tbody></table>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">=C2=A0</p>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Embed a linked GIF in em=
+ail</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Sending a Loom via email? Dri=
+ve more views by sharing your video as an animated thumbnail in the body of=
+ your email=2E This will catch the eye of your recipient and give them a pr=
+eview of what's to come=2E Learn how <a href=3D"https://loom-89a303127719=
+=2Eintercom-clicks=2Ecom/via/e?ob=3DmzgZV5z3mvvfGGQd711G2GjlFHrLkOsa9iyS714=
+uiwWF%2BcFT2x3V5470O6d2p%2FHbDXLdSoLUNpoiAthGTwsso42vGVcwtCGskyRyxKr6CbHwOJ=
+IXpnzAM57KPkRe5MzZ&h=3Dfb02b2319808e0e7843cd6e3bca1fb7e160bb66f-cgfc6jcc_28=
+305762691460&l=3D9eedc806a938ee5b85c1d16c9aad47e15bda4216-10556457" target=
+=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: =
+100%; color: #625DF5; text-decoration: underline">here</a>=2E=C2=A0</p>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DuP5=
+UNaKYzojHeKXmcCcDdBaOK4zVqnbEBe7G%2FgvtoHEaeGRwA9%2BeOqlYPd1VcOztt9n%2FMbb3=
+glil5dzbOtCAGw%3D%3D&h=3D8774b00495c1e7d7f9e6b7638339c7aa3a4af386-cgfc6jcc_=
+28305762691460&l=3D7d1ae7a84f0f142cba1aa68d2c0f780a9a227808-10555900" targe=
+t=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Esanity=2Eio/images/pvn35iyy/production/35e917=
+a9c36d8f7a46cd4ec2da5f7788ef21af78-1440x900=2Egif" alt=3D"" style=3D"-ms-in=
+terpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; max-=
+width: 100%; outline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DuP5UNaKYzojHeKXmcCcDdBaOK4z=
+VqnbEBe7G%2FgvtoHEaeGRwA9%2BeOqlYPd1VcOztt9n%2FMbb3glil5dzbOtCAGw%3D%3D&h=
+=3D8774b00495c1e7d7f9e6b7638339c7aa3a4af386-cgfc6jcc_28305762691460&l=3D236=
+9e936e29073d2338562f32c82c3228cf31955-10556465" style=3D"-ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border=
+: none; border-radius: 6px; color: #FFFFFF !important; display: inline-bloc=
+k; font-size: 18px; font-weight: bold; text-decoration: none !important">Wa=
+tch the demo</a></td></tr></tbody></table>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left"><br></p>
+<h2 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 14px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">NEW FEATURES COMING SOON=
+</h2>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Introducing Canvas</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Canvas is a customizable reco=
+rding backdrop that gives you more ways to express yourself visually=2E It'=
+s great for all kinds of videos =E2=80=93 from delivering updates to your t=
+eam, to sending introductions that stand out=2E Canvas is coming to the <a =
+href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DpYqEEB=
+BbCbDyo2i3pp%2FEkcEWRpUcB937c7nfLP0p%2FZU%3D&h=3D15bbf0cefab5cc8db32020abe4=
+2660f55de788aa-cgfc6jcc_28305762691460&l=3D438c509dd9bcd22534f1c453c5dafac6=
+3c0749ce-10556583" target=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -=
+webkit-text-size-adjust: 100%; color: #625DF5; text-decoration: underline">=
+Loom Desktop app</a> later this fall=2E=C2=A0</p>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DbaJ=
+pT%2FE9S4dZFTaB4bUGYPpR8M0TjBL0no6UzqLlKD%2By3YQNo1hFrdLvThQCGoRY5kdLykHR90=
+bgC5o0%2B0EsPw%3D%3D&h=3Dc5a56eb524f786b98fa841090c6e9b2163f35f3c-cgfc6jcc_=
+28305762691460&l=3Da530f9d0e169234a76f881f1bb3446d0654d52ca-10556511" targe=
+t=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Esanity=2Eio/images/pvn35iyy/production/16ffa2=
+3cabc9918dd14acef155b1f16f36a825bf-1440x900=2Egif" alt=3D"" style=3D"-ms-in=
+terpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; max-=
+width: 100%; outline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DbaJpT%2FE9S4dZFTaB4bUGYPpR8=
+M0TjBL0no6UzqLlKD%2By3YQNo1hFrdLvThQCGoRY5kdLykHR90bgC5o0%2B0EsPw%3D%3D&h=
+=3Dc5a56eb524f786b98fa841090c6e9b2163f35f3c-cgfc6jcc_28305762691460&l=3Dd2f=
+4415ea1d462a3d81cc2b6fee06082213fb451-10556576" style=3D"-ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border=
+: none; border-radius: 6px; color: #FFFFFF !important; display: inline-bloc=
+k; font-size: 18px; font-weight: bold; text-decoration: none !important">Wa=
+tch the demo</a></td></tr></tbody></table>
+<p class=3D"intercom-align-center" style=3D"font-size: 16px; margin: 0 0 16=
+px; text-align: center !important" align=3D"center">=C2=A0 <br>=C2=A0</p>
+<h2 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 14px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">LOOM 101: TIPS AND ADVIC=
+E FROM OUR TEAM</h2>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Introduce yourself with =
+video</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Whether it's for sales outrea=
+ch, networking, or just introducing yourself to a new team, video is a pers=
+onal and professional way to make a strong first impression=2E Charles from=
+ the Loom team shares best practices=2E</p>
+<div></div>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3D%2B=
+0OvsF1ysxXqrSpvN8GkuRItfyt2MhI2V3gt7al6gKwCo2b2y29WUuh1yHwOwhK6D1zSSwetoQwJ=
+rPcgoEB%2FuA%3D%3D&h=3D94a26cd1a078189c99e0830748b0a134c606065a-cgfc6jcc_28=
+305762691460&l=3D5b2f188660a59acd3f21835201c77b0f44498808-10555952" target=
+=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: =
+100%; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Eloom=2Ecom/sessions/thumbnails/1b93d0f446804d=
+0aa032787b57e5ce6c-with-play=2Egif" alt=3D"" style=3D"-ms-interpolation-mod=
+e: bicubic; border: 0; height: auto; line-height: 100%; max-width: 100%; ou=
+tline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3D%2B0OvsF1ysxXqrSpvN8GkuRItf=
+yt2MhI2V3gt7al6gKwCo2b2y29WUuh1yHwOwhK6D1zSSwetoQwJrPcgoEB%2FuA%3D%3D&h=3D9=
+4a26cd1a078189c99e0830748b0a134c606065a-cgfc6jcc_28305762691460&l=3D28653aa=
+b1d588b1c72251b00b2364e657be38db1-10557233" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border: no=
+ne; border-radius: 6px; color: #FFFFFF !important; display: inline-block; f=
+ont-size: 18px; font-weight: bold; text-decoration: none !important">Watch =
+the video</a></td></tr></tbody></table>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">=C2=A0</p>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">How to use video to give=
+ clear answers to customers</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">At Loom, over one-third of ou=
+r customer conversations include a Loom video link=2E Why? Because showing =
+is a far richer experience than telling=2E Lauren from our Support team, sh=
+ares how to use video in your support workflow=2E=C2=A0</p>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3Do%2=
+BF3dm0kQ4WpOCxr3k%2BrOHzZhTFcEsatEBS5yGUKnrKdMTcPDMYKXmkh%2FGna83B4oXgXfXcA=
+DWryHDDGXkL6pg%3D%3D&h=3D7c507d26a48135b066dece786cb56f41046fb073-cgfc6jcc_=
+28305762691460&l=3D7002f7c85bbff2dd76c9032d70af4783866bf98d-10556183" targe=
+t=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Eloom=2Ecom/sessions/thumbnails/5a3e8527e5b54c=
+aa86682b05a408d370-with-play=2Egif" alt=3D"" style=3D"-ms-interpolation-mod=
+e: bicubic; border: 0; height: auto; line-height: 100%; max-width: 100%; ou=
+tline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3Do%2BF3dm0kQ4WpOCxr3k%2BrOHz=
+ZhTFcEsatEBS5yGUKnrKdMTcPDMYKXmkh%2FGna83B4oXgXfXcADWryHDDGXkL6pg%3D%3D&h=
+=3D7c507d26a48135b066dece786cb56f41046fb073-cgfc6jcc_28305762691460&l=3D076=
+24f8226c105e03ce3dc446c7373f45e1a635f-10557234" style=3D"-ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border=
+: none; border-radius: 6px; color: #FFFFFF !important; display: inline-bloc=
+k; font-size: 18px; font-weight: bold; text-decoration: none !important">Wa=
+tch the video</a></td></tr></tbody></table>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left"><br><br>With =F0=9F=92=9C =C2=
+=A0from =F0=9F=8C=8D=F0=9F=8C=8E=F0=9F=8C=8F,<br>The Loommates</p>
+<div></div>
+</div>
+            </td>
+        </tr>
+   </tbody>
+</table>
+    <div style=3D"margin: 0 auto; max-width: 600px; overflow: hidden">
+        <div class=3D"footer" style=3D"color: #7C7C7C; font-size: 14px; lin=
+e-height: 18px; margin: 30px 0; padding: 0 30px">
+            <div>Loom, Inc=2E<address style=3D"font-style: normal">140 2nd =
+Street Floor 3<br>San Francisco, CA 94105</address>
+</div>
+            <p style=3D"font-size: 14px; margin: 16px 0"><a href=3D"https:/=
+/loom-89a303127719=2Eintercom-mail=2Ecom/subscriptions/unsubscribe?app_id=
+=3Dcgfc6jcc&conversation_id=3D28305762691460&user_id=3D5ace24330fd93957ce7e=
+b672&source=3Dbody" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-=
+adjust: 100%; color: inherit">Unsubscribe from our emails</a></p>
+        </div>
+    </div>
+    <!--[if (gte mso 9)|(IE)]>
+    </td></tr></table>
+    <![endif]-->
+
+
+
+<img src=3D"https://loom-89a303127719=2Eintercom-mail=2Ecom/via/o?h=3D55cd7=
+8fdb62d5859f0e4480aee2f6e4d5aed0250-cgfc6jcc_28305762691460" width=3D"1" he=
+ight=3D"1" style=3D"display: block;" alt=3D"intercom">
+
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://loom-89a=
+303127719=2Eintercom-mail=2Ecom/q/kpAtA16Fvial9tc5QrOYzQ~~/AAAAAQA~/RgRjLxQ=
+TPlcIaW50ZXJjb21CCmFKE49MYRe4pMxSF3NoYWhydWtoLnN3YW1AZ21haWwuY29tWAQAAAOG">=
+
+</body>
+</html>
+--_----ft/1wFSHFNOZ4uEUk4ZzXw===_99/CC-39929-31F8C416--
+

@@ -1,0 +1,727 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp4640348wrd;        Wed, 22 Dec
+ 2021 07:58:28 -0800 (PST)
+Received: from r216.usa.uniqlo.com (r216.usa.uniqlo.com. [192.243.228.216])        by
+ mx.google.com with ESMTPS id k71si2413825pgc.223.2021.12.22.07.58.27       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Wed, 22 Dec 2021
+ 07:58:28 -0800 (PST)
+Received: from [52.34.254.171] ([52.34.254.171:27358] helo=r213.usa.uniqlo.com)	by
+ momentum05.or1.cpt.adobe.net (envelope-from
+ <bounce@usa.uniqlo.com>)	(ecelerity 4.2.31.59853 r(Core:4.2.31.1)) with
+ ESMTP	id 54/25-06790-32B43C16; Wed, 22 Dec 2021 07:58:27 -0800
+X-Google-Smtp-Source: ABdhPJw93R+OpUY3GM6Yfl5XuFv+GqmT9CTiLq64yVoNU1qWsvYV7c8gcw2K74dY+Ax3qXZFdJo2
+X-Received: by 2002:a17:90a:5317:: with SMTP id x23mr2014020pjh.205.1640188708190;       
+ Wed, 22 Dec 2021 07:58:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640188708; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=nZvFAB8olW8dttfavFmHQJm4C6ZWOrZNQQbb63J8ld8u9gPvi3OvEEP7hU2uAnI4PA        
+ nRDCOj6Oyu6WNuH2/X8E0o0hWUH6FejH7E1OZHjpjg+rxNXiodz1VHasSwIAEZ99td9g        
+ 4poLnUfh8wK1NJoeHZe2GnDl7iq82vQ3ERGRK6xQTEuxkj5PrZIND1YyesAGNfHD7V0t        
+ 042rVLRehFq0WKl0KQuuiYxrLCok3Y4jgu9PbDYnJ2t85kJ8q7bu4wsD+q7PzzkAhIYC        
+ DfliJYs+FD74Ijys2n6pxezukuUbQyuc0o3Cu7QfKmDf7I7CX2ooFpMabqONZFX210QZ        
+ sfcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=content-transfer-encoding:message-id:mime-version:reply-to:to:date        
+ :subject:from:dkim-signature;       
+ bh=tuHa3eGBNLJbopTO5cTGRsVDHxJ+XRNXrzXgidnvvis=;       
+ b=jUuCLcI/Wnb08s1PsNfrW84t2GbCd9I58iMWdq+kC0BUsedmLa4BMLL8rGCrfe59Th        
+ ZpQuUT8D/nToR+amnZ5okXcW4mm80SxMfzGQYGXtBV2IAHk7V3Z4Ji6ao50kMfLiTCF+        
+ 4C8pQEsKbS08+GVqd9siVE12t7haZ4psRMHcK+geBCDIiQhLOaNx75iV/aijEUwC3m/7        
+ oUMw7SxIXRbLMWJfP1VSUjzhOcyxrxKkPgnFr0KIWqNaX58HFtn5tdii3QmxfI0JSIul        
+ 1Tu2lFHh0I9W2a0e+1w3/Js8/oabyvV1RKntdYuAwla0hvoOCyEfj/niqvKZGB47BONq        
+ BciA==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@usa.uniqlo.com header.s=neolane
+ header.b="JCP+V/XJ";       spf=pass (google.com: domain of
+ bounce@usa.uniqlo.com designates 192.243.228.216 as permitted sender)
+ smtp.mailfrom=bounce@usa.uniqlo.com;       dmarc=pass (p=NONE sp=NONE
+ dis=NONE) header.from=uniqlo.com
+Return-Path: <bounce@usa.uniqlo.com>
+Return-Path: <bounce@usa.uniqlo.com>
+Received-SPF: pass (google.com: domain of bounce@usa.uniqlo.com designates 192.243.228.216
+ as permitted sender) client-ip=192.243.228.216;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@usa.uniqlo.com header.s=neolane
+ header.b="JCP+V/XJ";       spf=pass (google.com: domain of
+ bounce@usa.uniqlo.com designates 192.243.228.216 as permitted sender)
+ smtp.mailfrom=bounce@usa.uniqlo.com;       dmarc=pass (p=NONE sp=NONE
+ dis=NONE) header.from=uniqlo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=usa.uniqlo.com;	s=neolane;
+ t=1640188707;	bh=tuHa3eGBNLJbopTO5cTGRsVDHxJ+XRNXrzXgidnvvis=;	h=From:Subject:Date:To:MIME-Version:Message-ID:Content-Type;	b=JCP+V/XJPMewlZLTRe/ULR9bdsHySqRg7yOkpChhAMYVXo0YXN5BtxW0Lk4IM8mI2	
+ X5Gk5GlFf0pbf3+LEVPfD0kLjlb6l8dGLV/7vrqIJmTLHyFQLZtZEad6Z26A9hS+5K	
+ XN+osaLr0VclgReXc5WRFwlWUVodrQUdM9cHMf+lT6TwQorbfFeWx35R9BvLnlhu+R	
+ Qxe39kwHF68BOgI199y756lh1InHxgSqrT6W7bMJDB4MpoS6Zs+zR5Bm86u+rYopSB	
+ bBZCTbSl8oBaqQkFga4LmxLXADeRrbqT7oZTaNXjJzXS9XjWRKioQhoL2PpfAtYZN1	
+ BVeFyOZkJw+6g==
+X-MSFBL: lfeRblNLK7esAAP5HCbwx9qA/eKkIHyWo1xOJ8Knb14=|eyJnIjoiZGVmYXVsdF8	5ZGVmNjQ5YS1iMDhmLTRhZTEtYTc3Ny02ZTkzMTBjZGViYmMiLCJiIjoiYXdzX2Z	ydXNhX3Byb2QxX2RlZmF1bHRfbW9tZW50dW0wNV9tdGEwMDNfMTkyLjI0My4yMjg	uMjE2IiwicmNwdF9tZXRhIjp7ICJpbiI6ICJmcnVzYV9ta3RfcHJvZDEiLCAiciI	6ICJqb2huLmRvZS55b3VuaXFAZ21haWwuY29tIiwgIm0iOiAiLTE3OTY0NDM0ODA	iLCAiZCI6ICI5NjY1MTQ0ODYiLCAiaSI6ICIiIH0sInIiOiJqb2huLmRvZS55b3V	uaXFAZ21haWwuY29tIn0=
+From: "Uniqlo USA" <email@usa.uniqlo.com>
+Subject: Frosty-weather favorites from just $9.90
+Date: Wed, 22 Dec 2021 07:58:27 -0800
+To: john.doe.youniq@gmail.com
+Reply-To: "Uniqlo USA" <no-reply@usa.uniqlo.com>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM694EC72A8399BD736frusa_mkt_prod1@usa.uniqlo.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN" "http://ww=
+w=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml">
+  <head>
+    <title>Frosty-weather favorites from just $9=2E90</title>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+" />
+    <meta name=3D"title" content=3D"Frosty-weather favorites from just $9=
+=2E90" />
+    <meta property=3D"og:site_name" content=3D"UNIQLO" />
+    <meta name=3D"description" content=3D"Frosty-weather favorites from jus=
+t $9=2E90" />
+    <meta name=3D"x-apple-disable-message-reformatting"/>
+    <link rel=3D"image_src" href=3D"http://www=2Euniqlo=2Ecom/global_images=
+/us/mail/nav/uniqlo_logo=2Epng" />
+  </head>
+  <body style=3D"margin:0; padding:0; background-color:#FFFFFF;">
+    <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+bgcolor=3D"#ffffff">
+      <tr>
+        <td align=3D"center" valign=3D"top">
+          <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center">
+            <tr>
+              <td>
+                <table width=3D"640" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">
+                  <tr>
+                    <td style=3D"padding-left:5px;"><p style=3D"font-size:0=
+=2E69em; color:#666666; font-family:Arial, Helvetica, sans-serif; line-heig=
+ht:28px;">Warm up with Ultra Light Down, HEATTECH + more<span style=3D"disp=
+lay: none; max-height: 0px;width:0; overflow: hidden;">&nbsp;=E2=80=8C&nbsp=
+;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp=
+;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp=
+;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<=
+wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C</span>: =
+<a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec72a8,399bd736,2886771=
+a&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeatherEssentials&bxid=3D6=
+84029536&recipientID=3D684029536&broadlogID=3D-1796443480&utm_source=3DNL-A=
+d-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"text-decoration:unde=
+rline;color:#666666;" target=3D"_blank">WOMEN</a> | <a href=3D"http://t=2Eu=
+sa=2Euniqlo=2Ecom/r/?id=3Dh94ec72a8,399bd736,2886771c&utm_medium=3Demail&ut=
+m_campaign=3D20211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D6=
+84029536&broadlogID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&m=
+i_ecmp=3D-1796443480" style=3D"text-decoration:underline;color:#666666;" ta=
+rget=3D"_blank">MEN</a></p>
+                    </td>
+                    <td align=3D"right" style=3D"padding-right:5px;">
+                      <p style=3D"font-size:0=2E69em; color:#666666; font-f=
+amily:Arial, Helvetica, sans-serif; line-height:14px;">
+                        <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh9=
+4ec72a8,399bd736,28867717&utm_medium=3Demail&utm_campaign=3D20211222-ColdWe=
+atherEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1796=
+443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480&p1=3D%=
+40u6htuOTEoJdBPDK5aHbtCeQx6EUWt5ul8kh8Vim3Y4o%3D" style=3D"text-decoration:=
+underline; color:#666666;">View in a browser</a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td align=3D"center" style=3D"padding: 30px 20px 50px 20px">
+                <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec72a8,=
+399bd736,28867718&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeatherEss=
+entials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1796443480&u=
+tm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=3D"_bl=
+ank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/F8F548F526D7A7E82=
+354596C480F7A53=2Epng" width=3D"152" height=3D"68" alt=3D"UNIQLO" style=3D"=
+display: block" border=3D"0"></a>
+              </td>
+            </tr>
+
+            <!--- MAIN CONTENT --->=20
+            <tr>
+              <td>
+                <table width=3D"640" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">
+                  <!--HERO-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867719&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/9BED958CF6D1BA0EB4555E026E414F63=2Egif" width=3D"640" height=3D"1107" a=
+lt=3D"HERO - WOMEN ULTRA LIGHT DOWN PARKA" style=3D"display:block;" border=
+=3D"0"/></a></td>
+                  </tr>
+
+                  <!--SUB-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,2886771b&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/D2508A8255D58FC0D73DA34FDAA01944=2Epng" width=3D"640" height=3D"141" al=
+t=3D"SUB - KEEP THE HEAT FROM $19=2E90 WITH DEALS ON ESSENTIAL FROSTY-WEATH=
+ER FAVORITES LIKE ULTRA LIGHT DOWN, HEATTECH + MORE!" style=3D"display:bloc=
+k;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--CTA-->              =20
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,2886778d&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/9C75F4C892=
+D4BD55DE407EF37BC4D747=2Epng" width=3D"320" height=3D"131" alt=3D"CTA1 - SH=
+OP WOMEN" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,2886778e&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/DAECFA2EC5=
+C4EF18CB501FF1D2667A0B=2Epng" width=3D"320" height=3D"131" alt=3D"CTA2 - SH=
+OP MEN" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--WOMEN 1 FLEECE-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,2886771d&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/F15E1BEB381CF465A76C01BC68FC394B=2Epng" width=3D"640" height=3D"892" al=
+t=3D"PDP1 - WOMEN FLUFFY YARN FLEECE JACKET" style=3D"display:block;" borde=
+r=3D"0"/></a></td>
+                  </tr>
+
+                  <!--FLEECE BANNER + COPY-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,2886771e&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/135B7FCA4C022CE2DB46A47E9ECDD5F0=2Epng" width=3D"640" height=3D"360" al=
+t=3D"BANNER 1 - FLUFFY FLEECE WITH A LIGHT SOFT FEEL + NATURAL STRETCH=2E" =
+style=3D"display:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--MEN 1 ULD-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,2886771f&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/AAD9AD3A7A7C868C3869BBEFC333B5EF=2Epng" width=3D"640" height=3D"806" al=
+t=3D"PDP2 - MEN ULTRA LIGHT JACKET" style=3D"display:block;" border=3D"0"/>=
+</a></td>
+                  </tr>
+
+                  <!--ULD BANNER + COPY-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867720&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/96AA1BD82AC33A6628A74B86D6EC5856=2Epng" width=3D"640" height=3D"371" al=
+t=3D"BANNER 2 - DESIGNED TO BE COMPACT + LIGHTWEIGHT YET INCREDIBLY WARM=2E"=
+ style=3D"display:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--WOMEN 2 HEATTECH-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867721&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/2C4A17A5CF2CC0594CED36DB99D33C58=2Epng" width=3D"640" height=3D"921" al=
+t=3D"PDP3 - WOMEN HEATTECH COTTON T-SHIRT (EXTRA WARM)" style=3D"display:bl=
+ock;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--HEATTECH BANNER + COPY-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867722&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/5BB0D0D6E3C0EEEE8BF631DC2FBD5F7E=2Epng" width=3D"640" height=3D"362" al=
+t=3D"BANNER 3 - WARM HEA COMBINED WITH CRISP COTTON=2E" style=3D"display:bl=
+ock;" border=3D"0"/></a></td>
+                  </tr>
+
+
+                  <!--MEN 2 HEATTECH-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867723&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/7160AB9590C7DEDCF5FB50BC87862DCE=2Epng" width=3D"640" height=3D"807" al=
+t=3D"PDP4 - MEN HEATTECH COTTON T-SHIRT (EXTRA WARM)" style=3D"display:bloc=
+k;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--HEATTECH BANNER + COPY-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867724&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/C34CA017EADDB98E8C09223412C74812=2Epng" width=3D"640" height=3D"375" al=
+t=3D"BANNER 4 - PERFECTLY FITTING INNERWEAR MADE WITH THE SOFT FEEL OF COTT=
+ON=2E" style=3D"display:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--PDP 5 & PDP6-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,28867725&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/8663124D02=
+068D7E65AD36B87A337A88=2Epng" width=3D"320" height=3D"517" alt=3D"PDP5 - HE=
+ATTECH RIBBED BEANIE" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,28867780&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/40893B9942=
+07B10F9102FC29C6419F61=2Epng" width=3D"320" height=3D"517" alt=3D"PDP6 - HE=
+ATTECH KNITTED GLOVES" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--SHOP ACCESSORIES CTA-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,28867781&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/92224B50A61E2EB60E0EE553E7FCBFF4=2Epng" width=3D"640" height=3D"163" al=
+t=3D"CTA3 - SHOP ACCESSORIES" style=3D"display:block;" border=3D"0"/></a></=
+td>
+                  </tr>
+
+
+                  <!--END OF SEASON SALE BANNER-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,2886778b&utm_medium=3Demail&utm_campaign=3D20=
+211222-ColdWeatherEssentials&bxid=3D684029536&recipientID=3D684029536&broad=
+logID=3D-1796443480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796=
+443480" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/=
+img/471662A31DD1CD296B4EF5BBC9546876=2Epng" width=3D"640" height=3D"253" al=
+t=3D"BANNER 5 - END OF SEASON SALE" style=3D"display:block;" border=3D"0"/>=
+</a></td>
+                  </tr>
+
+                  <!--END OF SEASON SALE CTA-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,2886778c&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/B0587A4402=
+28B5D9BBD9793AD1D4A7E1=2Epng" width=3D"320" height=3D"83" alt=3D"CTA4 - SHO=
+P WOMEN" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,28867790&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/95E0D3B8BE=
+66A22419FB95AB058A5E4F=2Epng" width=3D"320" height=3D"83" alt=3D"CTA5 - SHO=
+P MEN" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,28867791&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/DC250B5929=
+979838806E19132FF82187=2Epng" width=3D"320" height=3D"111" alt=3D"CT6 - SHO=
+P KIDS" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,28867792&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=
+=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/8C37572316=
+DB101208D13D201930EF60=2Epng" width=3D"320" height=3D"111" alt=3D"CTA7 - SH=
+OP BABY" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                </table>=20
+              </td>=20
+            </tr>=20
+            <!--- MAIN CONTENT ENDS --->
+            <!-- FOOTER STARTS -->
+          <tr>
+            <td style=3D"padding: 30px 0 0 0;">
+              <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec72a8,39=
+9bd736,28867782&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeatherEssen=
+tials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1796443480&utm=
+_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" target=3D"_blan=
+k"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/F8E9334CDBFEFDCC54A=
+716FDB3C4EB43=2Egif" width=3D"640" height=3D"83" alt=3D"HOLIDAY SHOPPING MA=
+DE EASY!" style=3D"display: block;" border=3D"0" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867783&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/6DFACCD5D19F4BD9C774=
+C2641C5C6333=2Egif" width=3D"200" height=3D"171" alt=3D"NAV-FOR-HER" border=
+=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867784&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/396C15045A82A53860F8=
+C3DFDA2BD3EF=2Egif" width=3D"191" height=3D"171" alt=3D"NAV-FOR-HIM" border=
+=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867785&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/F12D34B998D7DB1A87CF=
+3E4401F47811=2Egif" width=3D"249" height=3D"171" alt=3D"NAV-FOR-LITTLE-ONES=
+" border=3D"0" />
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867786&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/443F028152CF0F1FDC91=
+DBADA04BE84C=2Egif" width=3D"320" height=3D"275" alt=3D"NAV-APP" border=3D"=
+0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867787&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/8A3026911710A51A3DD9=
+0C83F340C519=2Egif" width=3D"320" height=3D"275" alt=3D"NAV-PERKS" border=
+=3D"0" />
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867788&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/1657E868B4919A4276BD=
+7CAED1F2231B=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-WOMEN" border=
+=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867789&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/25D77BC7C6091EF5BB40=
+A63A5E1F0597=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-MEN" border=3D"=
+0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,2886778a&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/4D116A840D004E3AEE47=
+77473F5FBF42=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-KIDS" border=3D"=
+0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,2886778f&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/CB3D63C4598353D63CD2=
+3BF33B99CC73=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-SALE" border=3D"=
+0" />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867793&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/5D4FC2C7D14068568A28=
+62C67837BA00=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-GIVE 10" border=
+=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867794&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/00428F05DDE6A4ADE1B3=
+EE4A7F65EC57=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-GIFT CARDS" bor=
+der=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867795&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/CEB1AE8992CBEA26CB2C=
+AA47C64F9C47=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-FREE SHIP" bord=
+er=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867796&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; outline: 0;" target=3D"_blank=
+"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/716DC1A2E70A2C568706=
+32F3AB237EDA=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-BOPUS" border=
+=3D"0" />
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td align=3D"center" colspan=3D"6" style=3D"padding: 50px=
+ 0 20px 0; font-size: 1em; font-family: Arial, Helvetica, sans-serif; color=
+: #212121; font-weight: bold;">Follow us for news on the new LifeWear you n=
+eed!</td>
+                </tr>
+                <tr>
+                  <td width=3D"160"></td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867797&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; border: 0;" target=3D"_blank"=
+><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/111A5E0C65C54BDFFF1B8=
+C306CE605B5=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-INSTAGRAM" border=
+=3D"0" />
+                    </a>
+                  </td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867798&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; border: 0;" target=3D"_blank"=
+><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/CDB5BDAB7FE6BC39286C8=
+3F2CE692698=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-FACEBOOK" border=
+=3D"0" />
+                    </a>
+                  </td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,28867799&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480"><img src=
+=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/FC05463C489A6CD7B417EE5A215C47=
+C3=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-PINTEREST" border=3D"0" /><=
+/a>
+                  </td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94ec7=
+2a8,399bd736,2886779a&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeathe=
+rEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-17964434=
+80&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=3D"=
+text-decoration: none; display: inline-block; border: 0;" target=3D"_blank"=
+><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/4925A32DDFA9BEDC2DB18=
+8E0D561D0C6=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-TWITTER" border=3D"=
+0" />
+                    </a>
+                  </td>
+                  <td width=3D"160"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style=3D"padding-top: 40px;">
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td style=3D"text-align: center; padding: 0 0 20px 0;">
+                    <p style=3D"font-size: 0=2E69em; font-family: Arial, He=
+lvetica, sans-serif; color: #666666; margin: 0;">
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,2886779b&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480&p1=3D%40=
+xET39bQ%2FrrLsb42wCkMqPw%3D%3D" style=3D"text-decoration: none; color: #666=
+666;" target=3D"_blank" _type=3D"optout">UNSUBSCRIBE</a> |
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,2886779c&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=
+=3D"text-decoration: none; color: #666666;" target=3D"_blank">CUSTOMER SUPP=
+ORT</a> |
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh94e=
+c72a8,399bd736,2886779d&utm_medium=3Demail&utm_campaign=3D20211222-ColdWeat=
+herEssentials&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-179644=
+3480&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1796443480" style=
+=3D"text-decoration: none; color: #666666;" target=3D"_blank">PRIVACY POLIC=
+Y</a>
+                    </p>
+                    <p style=3D"font-size: 0=2E69em; color: #666666; font-f=
+amily: Arial, Helvetica, sans-serif; line-height: 15px; margin: 0;">
+                      Don't miss out, add email@usa=2Euniqlo=2Ecom to your =
+address book to make sure you get our emails=2E <br />
+                      UNIQLO USA LLC 546-548 Broadway, 3rd floor New York N=
+Y 10012 | UNIQLO=2ECOM
+                    </p>
+                    <p style=3D"font-size: 0=2E69em; color: #666666; font-f=
+amily: Arial, Helvetica, sans-serif; line-height: 15px; margin: 10px 0;">
+                      *Colors, styles, prices and promotions may vary by lo=
+cation (online and in stores)=2E <br />
+                      Your email address : JOHN=2EDOE=2EYOUNIQ@GMAIL=2ECOM
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- FOOTER ENDS -->
+          </table>=20
+        </td>=20
+      </tr>=20
+    </table>=20
+    <img src=3D"http://mi=2Euniqlo=2Ecom/p/up/beec240a18bcee79b782765808d62=
+cf0/o=2Egif?mi_u=3D684029536&mi_ecmp=3DPDM127517" width=3D"1" height=3D"1" =
+alt=3D"" aria-hidden=3D"true" />
+  <img height=3D'0' width=3D'0' alt=3D'' src=3D'http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh94ec72a8,399bd736,1'/></body>=20
+</html>
+

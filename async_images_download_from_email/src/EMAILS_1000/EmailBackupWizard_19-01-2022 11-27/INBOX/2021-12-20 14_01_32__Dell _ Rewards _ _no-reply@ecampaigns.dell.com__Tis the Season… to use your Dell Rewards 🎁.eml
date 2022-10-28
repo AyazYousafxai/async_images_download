@@ -1,0 +1,1418 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp3088748wrd;        Mon, 20 Dec
+ 2021 06:01:51 -0800 (PST)
+Received: from mta145aa.pmx1.epsl1.com (mta145aa.pmx1.epsl1.com. [159.127.162.145])    
+    by mx.google.com with ESMTPS id r73si10037124oor.49.2021.12.20.06.01.50  
+      for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Mon, 20 Dec 2021
+ 06:01:51 -0800 (PST)
+Received: from [10.233.84.192] ([10.233.84.192:44940])	by pc1udsmtn2n13 (envelope-from
+ <bounce-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com>)	(ecelerity 3.6.9.48312 r(Core:3.6.9.0)) with ECSTREAM	id 53/32-52681-CBC80C16; Mon,
+ 20 Dec 2021 14:01:32 +0000
+X-Google-Smtp-Source: ABdhPJxYXmF2SCvPyzNtcD1zLX+KUCc8S4LqBI+EueSXdylRMo4pVcxlj0yG88sR2YC/pCv3ZaXA
+X-Received: by 2002:a05:6808:159a:: with SMTP id t26mr18809827oiw.106.1640008911070;     
+   Mon, 20 Dec 2021 06:01:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640008911; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=aizBFSSdzkoVVi8BDW9Lo6cKwnFPcIBa79uMEM3N1BlAq/himvislgtKWmBIAHBHrO        
+ HriQ3rR8M1BtnXIcnSEWAYAKRstwPX9Lj5GYG2A8BFedC7810BZVxo1LgOxcDtHR8NpG        
+ iSWwP2/NfjKzkkU3IoST5c/bsf8lItwV3Ha+u8OFjpnHsAUVYwuAE9LNA6aZXgmoADRG        
+ QNboU/+mXbfqNiozE7L7xjnjlZclWzoqMfAjTp9+ZNrLfUw0ym7ShZxKAfh5xIDFJCbg        
+ 2AGkTW+UHaOFQNbdjIpPNOzuzFp1zsOXtMqyFvNMskbbIZx4hAGrogKQpzPrIiLnTTa1        
+ zo3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=date:to:from:subject:reply-to:feedback-id:mime-version:message-id        
+ :list-unsubscribe:dkim-signature;       
+ bh=1s7njS6T2xVxROCZySLJ8/fz6HDDhGiQ1ZvWU+SMb2g=;       
+ b=EbEAHSQv25z0kLShMIP5yOYSPLz0hc2L5vh0FEI8m5yIje/+6OVZaJp58DrSsGyP+R        
+ OXsKWvPLciXsjKkZVmVFpRi/QXmifrRNqet+3UyrPdnHe4nvXtODoNUrZY9c1LiRtfLa        
+ LhgIwAn4vI6Uc8UJbtRaKi01B9q+nZdIapMTdUWfZqmqrzPWTpJZIfEG9pRLj4WECddD        
+ bBGilDEUU0kieVn6mYgNJbmL6Wt1UFUDv5+2O5c45MUVA4nnNfrWOH6kJgZxW5fLhBPM        
+ NA3BVOQP25K9ztq+RUrA1fz+uQAri19r/yHtv7Rr54Si2zK3v/Yd5pVZTuUJsRL1voIg        
+ 9I5Q==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@ecampaigns.dell.com
+ header.s=ep1 header.b="XL0I/n7l";       spf=pass (google.com: domain of
+ bounce-hp2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com
+ designates 159.127.162.145 as permitted sender)
+ smtp.mailfrom=bounce-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com;       dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=ecampaigns.dell.com
+Return-Path: <bounce-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com>
+Return-Path: <bounce-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com>
+Received-SPF: pass (google.com: domain of
+ bounce-hp2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com
+ designates 159.127.162.145 as permitted sender) client-ip=159.127.162.145;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@ecampaigns.dell.com header.s=ep1
+ header.b="XL0I/n7l";       spf=pass (google.com: domain of
+ bounce-hp2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com
+ designates 159.127.162.145 as permitted sender)
+ smtp.mailfrom=bounce-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com;       dmarc=pass (p=NONE sp=NONE dis=NONE)
+ header.from=ecampaigns.dell.com
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=ecampaigns.dell.com;	s=ep1;
+ t=1640008892;	bh=tZpC7heJDIxExMpihDw8T5fnm2iPNzL9CrWba4iN2FU=;	h=MIME-Version:Subject:From:To:Date:Content-Type;	b=XL0I/n7l+ThPC4YI8lJ1eSHR8xFqpwnhfgmHIpaP2Gk3Ze1Km/F7moGA3PjGZgJtj	
+ 24WqRp7d7le28PiOoU+uXJJlnAKbuwWyXCYklf8eJDQK1Mn3SZ9AABzCBEOoUA873Z	
+ CiFWAU3aabcPBjvtg6HYoaqxvTwNJTH7M5QZ1kgw=
+List-Unsubscribe: <mailto:bounce-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com?subject=list-unsubscribe>
+Message-ID: <HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com>
+MIME-Version: 1.0
+Feedback-ID: b0c05eac-d609-438d-91cd-49896dc3b729:575aecf0-3231-425e-bfc5-265d00d22ab7:email:epslh1
+X-NSS: b0c05eac-d609-438d-91cd-49896dc3b729
+Reply-To: "no-reply@ecampaigns.dell.com"
+ <no-reply-HP2v60000017dd825baef9184156e96c566a0155@ecampaigns.dell.com>
+Subject: =?UTF-8?B?VGlzIHRoZSBTZWFzb27igKYgdG8gdXM=?=
+ =?UTF-8?B?ZSB5b3VyIERlbGwgUmV3YXJkcyDwn46B?=
+From: "Dell | Rewards " <no-reply@ecampaigns.dell.com>
+To: john.doe.youniq@gmail.com
+Date: Mon, 20 Dec 2021 14:01:32 +0000
+Content-Type: multipart/alternative;
+ boundary="-=Part.679e91f.9b8117f0c081d393.17dd825c037.efbb52e4a56a3133=-"
+
+---=Part.679e91f.9b8117f0c081d393.17dd825c037.efbb52e4a56a3133=-
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN" "http://ww=
+w=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml">
+<head>
+	<!--[if gte mso 9]><xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8" />=
+
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1=
+=2E0"/>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />
+<title>Tis the Season=E2=80=A6 to use your Dell Rewards =F0=9F=8E=81</title=
+>
+<style type=3D"text/css">
+=2Elink {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
+=2Elink a, =2Elink a:link, =2Elink a:visited, =2Elink a:hover, =2Elink a:ac=
+tive {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
+a[href^=3Dtel], =2Enolinkcolor > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+=2Eapp_fff a {
+color: #ffffff;
+text-decoration: none;
+}
+=2Eapp_444 a {
+color: #444444;
+text-decoration: none;
+}
+body {
+width: 100% !important;
+min-width: 100%;
+margin: 0 auto !important;
+padding: 0;
+font-size: 0;
+-webkit-text-size-adjust: none;
+-ms-text-size-adjust: none;
+font-family: Arial, Helvetica, sans-serif;
+}
+#outlook a {
+padding: 0px;
+}
+=2EReadMsgBody {
+width: 100%;
+}
+=2EExternalClass {
+width: 100%;
+}
+=2EExternalClass * {
+line-height: 100%;
+}
+=2EExternalClass * {
+font-size: 100%
+}
+=2Emph {
+display: none !important;
+}
+#MessageViewBody a {
+color: inherit;
+text-decoration: none;
+font-size: inherit;
+font-family: inherit;
+font-weight: inherit;
+line-height: inherit;
+}
+@media only screen and (max-device-width: 600px), (max-width: 600px) {
+=2Emobilewrap, =2Ewd_auto {
+width: 100% !important;
+height: auto !important;
+}
+=2Ewd_auto_3up1 {
+width: 100% !important;
+height: auto !important;
+padding-bottom: 10px !important;
+}
+=2Ewd_auto_3up3 {
+width: 100% !important;
+height: auto !important;
+padding-top: 10px !important;
+}
+=2Ewd_auto_3up2 {
+width: 100% !important;
+height: auto !important;
+border-left: 0px !important;
+border-right: 0px !important;
+padding: 10px 0px !important;
+border-top: 1px solid #aaaaaa !important;
+border-bottom: 1px solid #aaaaaa !important;
+}
+=2EnoneMobile {
+display: none !important;
+}
+=2Efluid_image {
+width: 100% !important;
+height: auto !important;
+}
+=2Eh_10 {
+height: 10px !important;
+}
+=2Eh_15 {
+height: 15px !important;
+}
+=2Ewd_20 {
+width: 20px !important;
+}
+=2Emobilewrap_btmtray {
+width: 100% !important;
+border-bottom: 2px solid #ffffff !important;
+border-right: none !important;
+}
+=2Eh_auto {
+height: auto !important;
+}
+=2Efont11 {
+font-size: 11px !important;
+}
+=2Efont11 {
+    font-size: 11px !important;
+}
+=2Efont25 {
+    font-size: 25px !important;
+    line-height: 28px !important;
+    letter-spacing: 5px !important;
+}
+=2Efont15 {
+    font-size: 15px !important;
+    line-height: 18px !important;
+    letter-spacing: 3px !important;
+}
+=2EPadLR10 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+}
+@media only screen and (max-device-width: 480px), (max-width: 480px) {
+=2Evw2 {
+height: 2=2E5vw !important;
+}
+=2Efnt_12vw {
+font-size: 15px !important;
+line-height: 18px !important;
+}
+=2Efnt_13vw {
+font-size: 13=2E0vw !important;
+line-height: 13=2E0vw !important;
+}
+=2Efnt_32vw {
+font-size: 32=2E0vw !important;
+line-height: 32=2E0vw !important;
+}
+}
+@media only screen and (max-device-width: 330px), (max-width: 330px) {
+=2EnoneMobile330 {
+display: none !important;
+}
+}
+table {
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt;
+}
+</style>
+</head>
+
+<body bgcolor=3D"#ffffff" style=3D"font-family:Arial, Helvetica, sans-serif=
+; mso-line-height-rule: exactly;">
+<!--Start Hidden Pre_header-->
+<div style=3D"display: none!important;mso-hide:all; font-size: 1px; color: =
+#fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-h=
+eight: 0px; max-width: 0px; opacity: 0; overflow: hidden;">You deserve to t=
+reat yourself to something new=2E Use your rewards now!</div>
+<!--End Hidden Pre_header-->=20
+<!--<![endif] -->=20
+<!-- Start non break spcae -->
+<div style=3D"display: none; max-height: 0px; overflow: hidden;">&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbs=
+p;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&=
+zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwn=
+j;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&=
+nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+<table align=3D"center" width=3D"100%" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" bgcolor=3D"#ffffff">
+<tr>
+<td align=3D"center" valign=3D"top"><table class=3D"mobilewrap" width=3D"60=
+0" style=3D"width:600px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">=
+
+<tr>
+<td class=3D"h_10" height=3D"20" style=3D"font-size:0px; line-height:0px; b=
+order:0px;">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor=3D"#ffffff" valign=3D"top"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font-=
+size:12px; line-height:15px; color:#444444;">You deserve to treat yourself =
+to something new=2E Use your rewards now! <a href=3D"http://ecampaigns=2Ede=
+ll=2Ecom/H/2/v60000017dd825baef9184156e96c566a0/b0c05eac-d609-438d-91cd-498=
+96dc3b729/HTML" target=3D"_blank" style=3D"color:#0076ce; text-decoration:n=
+one;">View Online</a></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td valign=3D"top"><table class=3D"wd_auto" width=3D"60" style=3D"width:60p=
+x;" align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td align=3D"center"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017d=
+d825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcc2/b0c05eac-d609-438=
+d-91cd-49896dc3b729" target=3D"_blank"><img style=3D"display:block" src=3D"=
+https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_dell_logo=2Egi=
+f" alt=3D"DELL" title=3D"DELL" width=3D"40" height=3D"40" border=3D"0" /></=
+a></td>
+</tr>
+</table>
+<table class=3D"wd_auto" width=3D"480" style=3D"width:480px;" align=3D"righ=
+t" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td class=3D"h_15" height=3D"1" style=3D"font-size:0px; line-height:1px; bo=
+rder:0px;">&nbsp;</td>
+</tr>
+<tr>
+<td valign=3D"top" bgcolor=3D"#eeeeee"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"5">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td height=3D"13" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td class=3D"font11" align=3D"center" style=3D"font-family:Arial, Helvetica=
+, sans-serif; font-size:12px; line-height:14px; color:#444444;"><a href=3D"=
+http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05ea=
+cd609438d0000021ef3a0bcc3/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_=
+blank" style=3D"color:#0076ce; text-decoration:none;">Dell Deals</a> | <spa=
+n class=3D"app_444">Call 0800 085 4961</span> | <a href=3D"http://ecampaign=
+s=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021=
+ef3a0bcc4/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"=
+color:#0076ce; text-decoration:none;">CHAT</a></td>
+</tr>
+<tr>
+<td height=3D"13" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+<td width=3D"5">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+</table></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"12" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+<td width=3D"20">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td bgcolor=3D"#eeeeee" valign=3D"top"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20"></td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td height=3D"10" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+
+<tr>
+<td valign=3D"top" style=3D"font-family:Arial, Helvetica, sans-serif; font-=
+size:30px; line-height:50px; color:#0076ce;" align=3D"center"><a href=3D"ht=
+tp://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd=
+609438d0000021ef3a0bcc5/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_bl=
+ank" style=3D"color:#0076ce; text-decoration:none;">You have 1 x &#163;15 A=
+vailable</a></td>
+</tr>
+
+
+<tr>
+<td height=3D"10" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+<td width=3D"20"></td>
+</tr>
+</table></td>
+</tr>
+ <tr>
+          <td valign=3D"top" align=3D"center"><!--Starts Hero Section-->
+           =20
+            <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpaddin=
+g=3D"0" bgcolor=3D"#00447c" class=3D"tbl">
+              <tr>
+                <td align=3D"center" valign=3D"top" bgcolor=3D"#0076ce" sty=
+le=3D"padding: 24px 24px;"><table width=3D"100%" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0">
+                    <tbody>
+                      <tr>
+                        <td valign=3D"top" align=3D"center" bgcolor=3D"#fff=
+fff"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+ bgcolor=3D"#ffffff">
+                            <tbody>
+                              <tr>
+                                <td valign=3D"top" bgcolor=3D"#ffffff" styl=
+e=3D"font-size:1px; line-height:1px; background-color:#ffffff;" width=3D"20=
+" height=3D"24"><img style=3D"display:block;" src=3D"https://epidm=2Eepsilo=
+n=2Ecom//imagedir/DELL/1481666/blank=2Epng" width=3D"20" height=3D"24" alt=
+=3D"" title=3D"" border=3D"0"></td>
+                              </tr>
+								<tr>
+                                <td align=3D"center" valign=3D"top" style=
+=3D"font-family:Arial, sans-serif;color:#0076CE;font-size:50px;line-height:=
+ 45px;text-align: center;font-weight: normal;text-transform: uppercase; pad=
+ding: 0px 10px 0px 10px;letter-spacing: 9px;mso-line-height-rule: exactly;"=
+ class=3D"font25 PadLR10"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v6000=
+0017dd825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcc6/b0c05eac-d60=
+9-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"color:#0076ce; text-de=
+coration:none;">YOUR REWARDS</a></td>
+                              </tr>
+                              <tr>
+                                <td align=3D"center" valign=3D"top" style=
+=3D"font-family:Arial, sans-serif;color:#0076CE;font-size:30px;line-height:=
+ 33px;text-align: center;font-weight: normal;text-transform: uppercase; pad=
+ding: 8px 15px 0px 15px;letter-spacing: 5px;mso-line-height-rule: exactly;"=
+ class=3D"font15 PadLR10"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v6000=
+0017dd825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcc7/b0c05eac-d60=
+9-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"color:#0076ce; text-de=
+coration:none;">ARE WAITING FOR YOU</a></td>
+                              </tr>
+								   <tr>
+                                <td valign=3D"top" bgcolor=3D"#ffffff" styl=
+e=3D"font-size:1px; line-height:1px; background-color:#ffffff;" height=3D"1=
+2" width=3D"20"><img style=3D"display:block;" src=3D"https://epidm=2Eepsilo=
+n=2Ecom//imagedir/DELL/1481666/blank=2Epng" width=3D"20" height=3D"12" alt=
+=3D"" title=3D"" border=3D"0"></td>
+                              </tr>
+                              <tr>
+                                <td valign=3D"top" align=3D"center" style=
+=3D"font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1=
+5px; color:#444444;padding: 0px 22px 0px 22px;mso-line-height-rule: exactly=
+;" class=3D"PadLR10">Apply your rewards towards our most popular items such=
+ as Dell monitors, powerful gaming accessories, laptop bags and cases & mor=
+e=2E Hurry before your Dell Rewards are&nbsp;gone!</td>
+                              </tr>
+                              <tr>
+                                <td align=3D"center" valign=3D"middle" styl=
+e=3D"vertical-align:top; padding: 19px 0px 28px 0px;"><table width=3D"118" =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                                    <tr>
+                                      <td valign=3D"middle" width=3D"118" h=
+eight=3D"28" bgcolor=3D"#0076ce" style=3D"background-color: #0076ce; text-a=
+lign:center;font-size: 12px; font-family:Arial, Helvetica, sans-serif; colo=
+r: #FFFFFF; text-decoration: none; width: 118px; height: 28px;line-height: =
+normal; text-align:center; font-weight: bold; vertical-align: middle;"><a h=
+ref=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/=
+b0c05eacd609438d0000021ef3a0bcc8/b0c05eac-d609-438d-91cd-49896dc3b729" alia=
+s=3D"cta" target=3D"_blank" style=3D" color: #ffffff; text-decoration: none=
+;display: block;"><span class=3D"link">Redeem Rewards</span></a></td>
+                                    </tr>
+                                  </table></td>
+                              </tr>
+                            </tbody>
+                          </table></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+              </tr>
+            </table>
+           =20
+            <!--Ends Hero Section--></td>
+        </tr>
+<tr>
+          <td valign=3D"top" bgcolor=3D"#eeeeee"><table width=3D"100%" bord=
+er=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+              <tr>
+                <td width=3D"20"></td>
+                <td valign=3D"top"><table width=3D"100%" border=3D"0" cells=
+pacing=3D"0" cellpadding=3D"0">
+                    <tr>
+                      <td height=3D"20" style=3D"font-size:0px; line-height=
+:0px; border:0px;">&nbsp;</td>
+                    </tr>
+                    <tr>
+<td class=3D"fnt_12vw" bgcolor=3D"#eeeeee" style=3D"font-family:Arial, Helv=
+etica, sans-serif; letter-spacing:0=2E03em; font-size:24px; line-height:26p=
+x; color:#444444; letter-spacing:=2E10em;" align=3D"center">Reward Coupons =
+Available:</td>
+</tr>
+                    <tr>
+<td bgcolor=3D"#eeeeee" height=3D"5" style=3D"font-size:0px; line-height:0p=
+x; border:0px;">&nbsp;</td>
+</tr>
+                    <tr>
+<td height=3D"40" class=3D"fnt_12vw" bgcolor=3D"#eeeeee" style=3D"font-fami=
+ly:Arial, Helvetica, sans-serif; font-size:16px; line-height:22px; color:#4=
+44444; letter-spacing:=2E10em;" align=3D"center"><span style=3D"font-family=
+:Arial, Helvetica, sans-serif; font-size:24px; line-height:30px; color:#444=
+444; font-weight: 700; display:inline-block;">1 x &pound;15</span> coupons<=
+/td>
+</tr>
+                    <tr>
+                      <td height=3D"5" style=3D"font-size:0px; line-height:=
+0px; border:0px;">&nbsp;</td>
+                    </tr>
+					<tr>
+<td class=3D"fnt_12vw" bgcolor=3D"#eeeeee" style=3D"font-family:Arial, Helv=
+etica, sans-serif; letter-spacing:0=2E03em; font-size:15px; line-height:18p=
+x; color:#444444; letter-spacing:=2E10em;" align=3D"center"><span class=3D"=
+app_444">Coupons expire 17-Feb-2022=2E</span></td>
+</tr>
+					<tr>
+                      <td height=3D"20" style=3D"font-size:0px; line-height=
+:0px; border:0px;">&nbsp;</td>
+                    </tr>
+                    <tr>
+<td bgcolor=3D"#eeeeee" valign=3D"top"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+  <tbody>
+    <tr>
+      <td width=3D"20">&nbsp;</td>
+      <td bgcolor=3D"#eeeeee" align=3D"center" valign=3D"top" style=3D"font=
+-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:15px; col=
+or:#444444;"><span class=3D"app_444">Up to 5 reward coupons available to us=
+e at any given time=2E<br>To redeem your coupons against a purchase, you mu=
+st have a basket value of at least &pound;100 each time you add a coupon=2E =
+Check your reward balance by logging into <a href=3D"http://ecampaigns=2Ede=
+ll=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0b=
+cc9/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"color:=
+#0076ce; text-decoration:none;">My&nbsp;Account</a>=2E
+</span></td>
+      <td width=3D"20">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+</td>
+</tr>
+                    <tr>
+                      <td height=3D"20" style=3D"font-size:0px; line-height=
+:0px; border:0px;">&nbsp;</td>
+                    </tr>
+                  </table></td>
+                <td width=3D"20"></td>
+              </tr>
+            </table></td>
+        </tr>
+<tr>
+<td height=3D"25" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"font-size:0px; line-height:0px; border:0px;"><ta=
+ble width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20"></td>
+<td style=3D"font-family:Arial, Helvetica, sans-serif; font-size:14px; line=
+-height:20px; color:#0076ce; letter-spacing:=2E16em; font-weight:bold;" ali=
+gn=3D"center">IDEAS FOR HOW TO SPEND YOUR REWARDS</td>
+<td width=3D"20"></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td bgcolor=3D"#ffffff" valign=3D"top"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td height=3D"25" class=3D"vspacer10" style=3D"font-size:0px; line-height:0=
+px; border:0px;">&nbsp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><!--[if gte mso 9]>
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"width:560px;" width=3D"560">=20
+<tr>
+<td align=3D"left" valign=3D"top" width=3D"200" style=3D"width:200px;">
+<![endif]-->
+
+<table align=3D"left" class=3D"wd_auto_3up1" width=3D"200" style=3D"width:2=
+00px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td class=3D"h_auto" valign=3D"bottom" align=3D"center" height=3D"113" styl=
+e=3D"height:113px;"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd=
+825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcca/b0c05eac-d609-438d=
+-91cd-49896dc3b729" target=3D"_blank"><img style=3D"display:block;" src=3D"=
+http://images=2Eharmony=2Eepsilon=2Ecom/ContentHandler/images/575aecf0-3231=
+-425e-bfc5-265d00d22ab7/UKEN_Rewards/368519_uk_cs_co_fy21q3_sm_dell-rewards=
+-email_image_3_Monitor_SE2416H=2Ejpg" alt=3D"Dell 24 Monitor" title=3D"Dell=
+ 24 Monitor" width=3D"150" height=3D"150" border=3D"0" /></a></td>
+</tr>
+<tr>
+<td height=3D"14" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:12px; line-height:16px; color:#444444;">Dell 24 Monit=
+or</td>
+</tr>
+<tr>
+<td height=3D"4" style=3D"font-size:0px; line-height:0px; border:0px;">&nbs=
+p;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:11px; line-height:14px; font-weight:bold; color:#0076=
+ce;"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e=
+96c566a0/b0c05eacd609438d0000021ef3a0bccb/b0c05eac-d609-438d-91cd-49896dc3b=
+729" target=3D"_blank" style=3D"color:#0076ce; text-decoration:none;">Redee=
+m Now <span style=3D"font-size:14px;">&#8250;</span></a></td>
+</tr>
+</table></td>
+<td class=3D"noneMobile" width=3D"8">&nbsp;</td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"150" style=3D"width:150px;">
+<![endif]-->
+
+<table align=3D"left" class=3D"wd_auto_3up3" width=3D"150" style=3D"width:1=
+50px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td class=3D"noneMobile" width=3D"8">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td class=3D"h_auto" valign=3D"bottom" align=3D"center" height=3D"113" styl=
+e=3D"height:113px;"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd=
+825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bccc/b0c05eac-d609-438d=
+-91cd-49896dc3b729" target=3D"_blank"><img style=3D"display:block;" src=3D"=
+http://images=2Eharmony=2Eepsilon=2Ecom/ContentHandler/images/575aecf0-3231=
+-425e-bfc5-265d00d22ab7/UKEN_Rewards/Product_Premier_Slim_Briefcase_14_1-12=
+80x1280=2Ejpeg" alt=3D"Premier Slim Briefcase 14" title=3D"Premier Slim Bri=
+efcase 14" width=3D"150" height=3D"150" border=3D"0" /></a></td>
+</tr>
+<tr>
+<td height=3D"14" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:12px; line-height:16px; color:#444444;">Premier Slim =
+Briefcase 14</td>
+</tr>
+
+<tr>
+<td height=3D"4" style=3D"font-size:0px; line-height:0px; border:0px;">&nbs=
+p;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:11px; line-height:14px; font-weight:bold; color:#0076=
+ce;"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e=
+96c566a0/b0c05eacd609438d0000021ef3a0bccd/b0c05eac-d609-438d-91cd-49896dc3b=
+729" target=3D"_blank" style=3D"color:#0076ce; text-decoration:none;">Redee=
+m Now <span style=3D"font-size:14px;">&#8250;</span></a></td>
+</tr>
+</table></td>
+<td class=3D"noneMobile" width=3D"8">&nbsp;</td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"200" style=3D"width:200px;">
+<![endif]-->
+
+<table align=3D"left" class=3D"wd_auto_3up3" width=3D"200" style=3D"width:2=
+00px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td class=3D"noneMobile" width=3D"8">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td class=3D"h_auto" valign=3D"bottom" align=3D"center" height=3D"113" styl=
+e=3D"height:113px;"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd=
+825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcce/b0c05eac-d609-438d=
+-91cd-49896dc3b729" target=3D"_blank"><img style=3D"display:block;" src=3D"=
+http://images=2Eharmony=2Eepsilon=2Ecom/ContentHandler/images/575aecf0-3231=
+-425e-bfc5-265d00d22ab7/UKEN_Rewards/ms5120w_ckb_4050lf_gy-1280x1280=2Ejpeg=
+" alt=3D"Dell Mobile Pro Wireless Mouse" title=3D"Dell Mobile Pro Wireless =
+Mouse" width=3D"150" height=3D"150" border=3D"0" /></a></td>
+</tr>
+<tr>
+<td height=3D"14" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:12px; line-height:16px; color:#444444;">Dell Mobile P=
+ro Wireless Mouse</td>
+</tr>
+
+<tr>
+<td height=3D"4" style=3D"font-size:0px; line-height:0px; border:0px;">&nbs=
+p;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:11px; line-height:14px; font-weight:bold; color:#0076=
+ce;"><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e=
+96c566a0/b0c05eacd609438d0000021ef3a0bccf/b0c05eac-d609-438d-91cd-49896dc3b=
+729" target=3D"_blank" style=3D"color:#0076ce; text-decoration:none;">Redee=
+m Now <span style=3D"font-size:14px;">&#8250;</span></a></td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+</tr>
+</table>
+<![endif]--></td>
+</tr>
+<tr>
+<td height=3D"18" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+<td width=3D"20">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td bgcolor=3D"#0076ce" valign=3D"top"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"15">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td height=3D"8" style=3D"font-size:0px; line-height:0px; border:0px;">&nbs=
+p;</td>
+</tr>
+<tr>
+<td align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font-=
+size:13px; line-height:16px; color:#ffffff;"><b><span class=3D"app_fff">Nee=
+d Advice? Speak to a Dell Sales Advisor today | <span class=3D"link">0800&n=
+bsp;085&nbsp;4961</span> | <a href=3D"http://ecampaigns=2Edell=2Ecom/T/v600=
+00017dd825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcd0/b0c05eac-d6=
+09-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"color:#ffffff; text-d=
+ecoration:none;">CHAT</a></span></b></td>
+</tr>
+<tr>
+<td height=3D"8" style=3D"font-size:0px; line-height:0px; border:0px;">&nbs=
+p;</td>
+</tr>
+</table></td>
+<td width=3D"15">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"6" style=3D"font-size:0px; line-height:0px; border:0px;">&nbs=
+p;</td>
+</tr>
+<tr>
+<td valign=3D"top" bgcolor=3D"#eeeeee"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td valign=3D"top"><!--[if gte mso 9]>
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"600" style=3D"width:600px;">=20
+<tr>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px; bo=
+rder-right:2px solid #ffffff;" width=3D"198" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" width=3D"40" height=3D"40" style=3D"width:40px;"><img sr=
+c=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn1=
+=2Ejpg" width=3D"40" height=3D"33" border=3D"0" alt=3D"" title=3D"" style=
+=3D"display:block;" /></td>
+<td width=3D"10">&nbsp;</td>
+<td align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font-=
+size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd1/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Deals</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px; bo=
+rder-right:2px solid #ffffff;" width=3D"198" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" valign=3D"middle" height=3D"40" width=3D"40" style=3D"wi=
+dth:40px; height:40px;"><img src=3D"https://epidm=2Eepsilon=2Ecom//imagedir=
+/DELL/CS0006752/uk_cs_co_icn2=2Ejpg" width=3D"40" height=3D"34" border=3D"0=
+" alt=3D"" title=3D"" style=3D"display:block;" /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd2/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Laptops &amp;<br class=3D"noneMobile" =
+/>
+2-in-1s</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"wd_auto" align=3D"left" style=3D"width:198px;" width=3D"198=
+" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"center" width=3D"34" style=3D"width:40px; height:40px;"><img s=
+rc=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn3=
+=2Ejpg" width=3D"40" height=3D"37" border=3D"0" alt=3D"" title=3D"" style=
+=3D"display:block; " /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd3/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Desktops &amp;<br class=3D"noneMobile"=
+ />
+All-in-Ones</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+</tr>
+</table>
+<![endif]--></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td bgcolor=3D"#ffffff" height=3D"2" style=3D"font-size:0px; line-height:0p=
+x; border:0px;">&nbsp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td valign=3D"top"><!--[if gte mso 9]>
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"600" style=3D"width:600px;">=20
+<tr>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px; bo=
+rder-right:2px solid #ffffff;" width=3D"198" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" width=3D"40" style=3D"width:40px; height:40px;"><img src=
+=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn4=2Ej=
+pg" width=3D"40" height=3D"39" border=3D"0" alt=3D"" title=3D"" style=3D"di=
+splay:block; " /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd4/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Electronics &amp;  Accessories</a></td=
+>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px; bo=
+rder-right:2px solid #ffffff;" width=3D"198" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" width=3D"40" style=3D"width:40px; height:40px;"><img src=
+=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn5=2Ej=
+pg" width=3D"40" height=3D"36" border=3D"0" alt=3D"" title=3D"" style=3D"di=
+splay:block;" /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd5/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Support</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"wd_auto" align=3D"left" style=3D"width:198px;" width=3D"198=
+" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" valign=3D"middle" width=3D"40" height=3D"40" style=3D"wi=
+dth:40px; height:40px;"><img src=3D"https://epidm=2Eepsilon=2Ecom//imagedir=
+/DELL/CS0006752/uk_cs_co_icn7=2Ejpg" width=3D"40" height=3D"37" border=3D"0=
+" alt=3D"" title=3D"" style=3D"display:block;" /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd6/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Next Day Shipping</a></td>
+</tr>
+</table></td>
+</tr>
+
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+</tr>
+</table>
+<![endif]--></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td bgcolor=3D"#ffffff" height=3D"2" style=3D"font-size:0px; line-height:0p=
+x; border:0px;">&nbsp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td valign=3D"top"><!--[if gte mso 9]>
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"600" style=3D"width:600px;">=20
+<tr>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px; bo=
+rder-right:2px solid #ffffff;" width=3D"198" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" width=3D"40" style=3D"width:40px; height:40px;"><img src=
+=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn8=2Ej=
+pg" width=3D"40" height=3D"35" border=3D"0" alt=3D"" title=3D"" style=3D"di=
+splay:block; " /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd7/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Alienware</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px; bo=
+rder-right:2px solid #ffffff;" width=3D"198" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" width=3D"40" style=3D"width:40px; height:40px;"><img src=
+=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn10=
+=2Ejpg" width=3D"40" height=3D"37" border=3D"0" alt=3D"" title=3D"" style=
+=3D"display:block;" /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd8/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Dell Advantage</a></td>
+</tr>
+</table></td>
+
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+<td align=3D"left" valign=3D"top" width=3D"198" style=3D"width:198px;">
+<![endif]-->
+
+<table class=3D"mobilewrap_btmtray" align=3D"left" style=3D"width:198px;" w=
+idth=3D"198" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"100%" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0">
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" width=3D"90%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td align=3D"left" width=3D"40" style=3D"width:40px; height:40px;"><img src=
+=3D"https://epidm=2Eepsilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_icn9=2Ej=
+pg" width=3D"40" height=3D"37" border=3D"0" alt=3D"" title=3D"" style=3D"di=
+splay:block;" /></td>
+<td width=3D"10">&nbsp;</td>
+<td  align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font=
+-size:13px; line-height:16px; color:#444444;"><a href=3D"http://ecampaigns=
+=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021e=
+f3a0bcd9/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"c=
+olor:#444444; text-decoration:none;">Award Winning Technology</a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<!--[if gte mso 9]>
+</td>
+</tr>
+</table>
+<![endif]--></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td bgcolor=3D"#ffffff" height=3D"10" style=3D"font-size:0px; line-height:0=
+px; border:0px;">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td valign=3D"top" bgcolor=3D"#eeeeee"><table width=3D"100%" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"20">&nbsp;</td>
+<td valign=3D"top"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0">
+<tr>
+<td height=3D"20" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+<tr>
+<td valign=3D"top"><table align=3D"left" class=3D"wd_auto" width=3D"250" st=
+yle=3D"width:250px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td align=3D"left" style=3D"font-family:Arial, Helvetica, sans-serif; font-=
+size:11px; line-height:14px; color:#444444;">Did someone forward you this m=
+essage?<br />
+<a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e96c56=
+6a0/b0c05eacd609438d0000021ef3a0bcda/b0c05eac-d609-438d-91cd-49896dc3b729" =
+target=3D"_blank" style=3D"color:#0076ce; text-decoration:none;">Subscribe<=
+/a> to receive Dell Direct email=2E</td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table>
+<table class=3D"wd_auto" align=3D"right" width=3D"180" style=3D"width:180px=
+;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td valign=3D"top" align=3D"right"><table border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0">
+<tr>
+<td valign=3D"top"><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0">=
+
+<tr>
+<td valign=3D"middle" style=3D"font-family:Arial, Helvetica, sans-serif; fo=
+nt-size:11px; line-height:14px; color:#444444;">Follow us on:</td>
+<td width=3D"10">&nbsp;</td>
+<td><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e9=
+6c566a0/b0c05eacd609438d0000021ef3a0bcdb/b0c05eac-d609-438d-91cd-49896dc3b7=
+29" target=3D"_blank"><img style=3D"display:block" src=3D"https://epidm=2Ee=
+psilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_fb=2Ejpg" alt=3D"Facebook" t=
+itle=3D"Facebook" width=3D"26" height=3D"26" border=3D"0" /></a></td>
+<td width=3D"10">&nbsp;</td>
+<td><a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e9=
+6c566a0/b0c05eacd609438d0000021ef3a0bcdc/b0c05eac-d609-438d-91cd-49896dc3b7=
+29" target=3D"_blank"><img style=3D"display:block" src=3D"https://epidm=2Ee=
+psilon=2Ecom//imagedir/DELL/CS0006752/uk_cs_co_twitter=2Ejpg" alt=3D"Twitte=
+r" title=3D"Twitter" width=3D"26" height=3D"26" border=3D"0" /></a></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td valign=3D"top" class=3D"h_10" height=3D"20" style=3D"mso-line-height-ru=
+le:exactly; line-height:1px; border-bottom:1px solid #aaaaaa;">&nbsp;</td>
+</tr>
+<tr>
+<td height=3D"20" class=3D"h_10" style=3D"font-size:0px; line-height:0px; b=
+order:0px;">&nbsp;</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family:Arial, Helvetica, =
+sans-serif; font-size:10px; line-height:14px; color:#444444;"><a href=3D"ht=
+tp://ecampaigns=2Edell=2Ecom/T/v60000017dd825baef9184156e96c566a0/b0c05eacd=
+609438d0000021ef3a0bcdd/b0c05eac-d609-438d-91cd-49896dc3b729" target=3D"_bl=
+ank" style=3D"color:#0076ce; text-decoration:none;">Manage Your Preferences=
+</a>&nbsp;|&nbsp;<a href=3D"http://ecampaigns=2Edell=2Ecom/T/v60000017dd825=
+baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcde/b0c05eac-d609-438d-91=
+cd-49896dc3b729" target=3D"_blank" style=3D"color:#0076ce; text-decoration:=
+none;">Unsubscribe</a>&nbsp;|&nbsp;<a href=3D"http://ecampaigns=2Edell=2Eco=
+m/T/v60000017dd825baef9184156e96c566a0/b0c05eacd609438d0000021ef3a0bcdf/b0c=
+05eac-d609-438d-91cd-49896dc3b729" target=3D"_blank" style=3D"color:#0076ce=
+; text-decoration:none;">Privacy Statement</a><br />
+This email was sent to <a href=3D"mailto:john=2Edoe=2Eyouniq@gmail=2Ecom" s=
+tyle=3D"color:#0076ce; text-decoration:none;">john=2Edoe=2Eyouniq@gmail=2Ec=
+om</a> For questions about your email preferences, contact us at <a href=3D"=
+mailto:Privacy@Dell=2Ecom" style=3D"color:#0076ce; text-decoration:none;">P=
+rivacy@Dell=2Ecom</a> <span class=3D"app_444">Dell Technologies Global Head=
+quarters is located at One Dell Way, Round Rock, TX, 78682</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"font-size:1px; line-height:1px;">&nbsp;</td>
+</tr>
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family:Arial, Helvetica, sa=
+ns-serif; font-size:10px; line-height:14px; mso-line-height-rule:exactly; c=
+olor:#444444;"><span class=3D"link">
+Dell Products, c/o P=2EO=2E Box 69, Bracknell, Berkshire RG12 1RD, United K=
+ingdom=2E Call weekdays 8am-8pm, weekends 8am-5pm=2E Chat weekdays 8am-8pm,=
+ weekends 8am-5pm=2E Pricing & Promotion: Subject to availability, prices a=
+nd specifications are correct at date of publication and ay change without =
+notice, please check prices online=2E Dell Corporation Limited=2E Registere=
+d in England=2E Reg=2E No=2E 02081369 Dell House, The Boulevard, Cain Road,=
+ Bracknell, Berkshire, RG12 1LF=2E Dell Services do not affect customer's s=
+tatutory rights=2E Response times may vary according to the remoteness or a=
+ccessibility of product location=2E Promotional offers limited to maximum 5=
+ systems per customer=2E Microsoft, Windows, Windows 7, Windows 8, Windows =
+8=2E1 and Windows 10 are trademarks or registered trademarks of Microsoft C=
+orporation in the United States and/or other countries=2E Ultrabook, Celero=
+n, Celeron Inside, Core Inside, Intel, Intel Logo, Intel Atom, Intel Atom I=
+nside, Intel Core, Intel Inside, Intel Inside Logo, Intel vPro, Itanium, It=
+anium Inside, Pentium, Pentium Inside, vPro Inside, Xeon, Xeon Phi, Xeon In=
+side, and Intel Optane are trademarks of Intel Corporation or its subsidiar=
+ies in the U=2ES=2E and/or other countries=2E<br />
+<br />
+*Rewards are earned on Dell purchases (excluding Dell Outlet purchases and =
+third party products) made on dell=2Eco=2Euk=2E You will receive Dell Rewar=
+d points (&#163;1 is equal to 1 point), which will automatically convert in=
+to a &#163;15 reward coupon for every &#163;500 spent, to be used against y=
+our next Dell purchase (excluding Dell Outlet purchases and third party pro=
+ducts)=2E Up to 5 reward coupons can be issued at any time and may be used =
+on a single purchase transaction (providing a &#163;75 reward discount)=2E =
+<br />
+<br />
+Total rewards earned may not exceed 125 reward coupons within a 3 month per=
+iod=2E To redeem your coupons against a purchase, you must have a basket va=
+lue of at least &#163;100 each time you add a coupon=2E Check your reward b=
+alance by logging into My Account=2E "Current rewards balance" amount may n=
+ot reflect the most recent transactions &#8212; please check your Account f=
+or your most up-to-date coupon availability and points balance=2E Reward po=
+ints are issued to your online Dell Rewards Account typically within 30 bus=
+iness days after your order's ship date=2E
+<br /><br />
+Rewards coupons, once issued, in &#163;15 increments, expire in 90 days=2E =
+Reward points earned but not converted to coupons will be saved and shown i=
+n your online Dell Rewards Account, and may, together with further points e=
+arned, be converted into coupons for up to 12 months, providing that your a=
+ccount has remained active=2E Not valid for any orders for resale=2E</span>=
+
+</td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"font-size:0px; line-height:0px; border:0px;">&nb=
+sp;</td>
+</tr>
+</table></td>
+<td width=3D"20">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+</table></td>
+</tr>
+<tr>
+<td class=3D"h_10" align=3D"center" height=3D"20" style=3D"font-size:0px; l=
+ine-height:0px; border:0px;"><table class=3D"noneMobile" width=3D"600" alig=
+n=3D"center" cellpadding=3D"0" cellspacing=3D"0" style=3D"min-width: 600px;=
+ mso-hide:all;" border=3D"0">
+<tr>
+<td style=3D"font-size:0px; line-height:0px; border:0px;">&nbsp;</td>
+</tr>
+</table></td>
+</tr>
+</table>
+<img SRC=3D"https://ad=2Edoubleclick=2Enet/ddm/trackimp/N1153793=2E2788804E=
+PSILON/B23554506=2E266292311;dc_trk_aid=3D461305911;dc_trk_cid=3D125332209;=
+u=3DAffiliateIDMacro;ord=3D[timestamp];dc_lat=3D;dc_rdid=3D;tag_for_child_d=
+irected_treatment=3D;tfua=3D?" BORDER=3D"0" HEIGHT=3D"1" WIDTH=3D"1" ALT=3D"=
+Advertisement">
+
+<img src=3D'http://ecampaigns=2Edell=2Ecom/O/v60000017dd825baef9184156e96c5=
+66a0/b0c05eacd609438d00004c5a42963aa1' style=3D"display:none; max-height: 0=
+px; font-size: 0px; overflow: hidden; mso-hide: all"/></body>
+</html>
+---=Part.679e91f.9b8117f0c081d393.17dd825c037.efbb52e4a56a3133=---
+

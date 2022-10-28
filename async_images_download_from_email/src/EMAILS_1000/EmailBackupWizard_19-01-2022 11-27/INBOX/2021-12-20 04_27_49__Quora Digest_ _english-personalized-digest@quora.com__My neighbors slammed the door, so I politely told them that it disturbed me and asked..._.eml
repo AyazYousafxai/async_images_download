@@ -1,0 +1,879 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp2793519wrd;        Sun, 19 Dec
+ 2021 20:27:50 -0800 (PST)
+Received: from o26.pigeon.quora.com (o26.pigeon.quora.com. [52.71.221.28])        by
+ mx.google.com with ESMTPS id e12si6465262qty.431.2021.12.19.20.27.50       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Sun, 19 Dec 2021
+ 20:27:50 -0800 (PST)
+Received: by pigeon-at-10000 (OpenSMTPD) with ESMTP id d588af74	for
+ <john.doe.youniq@gmail.com>;	Mon, 20 Dec 2021 04:27:49 +0000 (UTC)
+X-Google-Smtp-Source: ABdhPJxfoSWXmVWRie8Yg0IJf0uYHItqu+PYbJC8YkLPUk9zZawAtKFnrnT1TzgCb77ZY6xenqzB
+X-Received: by 2002:a05:6214:19ea:: with SMTP id q10mr1009675qvc.81.1639974470823;       
+ Sun, 19 Dec 2021 20:27:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639974470; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=0HGAGaCX+mGhKtNWIE1tAPYWU52SOkeFIsBt49g+lc10GAz5+reA7Ybr9dhWSYaoL1        
+ TZWK68e+hi476b2JO7Wl69xGT6Zhs53JTb+ReZZhFrmdkAbBGGwDn3PytjzaLBhLS2VA        
+ 1PqrJOnhpk65Jf2MwXc4ZeKivIvGYtt8lVdDxTd3UD+saEX5dPK1kib84oG4yJ+CDxmz        
+ 76sVxnHnHCkRhfr7Tu9bKaImKqN9A2kdinj/JOy2Z3RCQ/nWJZ9t43GsgPdjPmEdOnSJ        
+ LD/966KsXs7donZoNjzHhqxER765w1IAcLYMIUjF6GU58ytxqoW74v8u8yhvs5+AhkzE        
+ mZmQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=message-id:date:list-unsubscribe:subject:to:from:mime-version        
+ :dkim-signature;        bh=AzAx5Z6tw8q3BMFoKeDXrklVJ5xThPXfvP3n5lyFGfI=;    
+    b=fseubi6XVAiYapGSf0UUk9dtgxagkX2NTn4LfgjyxTnx23I4hIPZGOtE2DcxQ3yG++     
+    FjuOYTY/Iz9myCtI5G8T5gfPO/kIMoooisJTQxMyHE++xT49QUPxmrzNZecxTJhBkjG1     
+    JAg4zhM5ZTxTbw15RIF4Y6kfPI6Yxtys2mxlnXN4tGIKjAguwC/pcDBaey8X+AHJ+3lk     
+    mEfHsfx9bSxEpxI5rVClXc37AjqjV4K//wafvoSy5Tfqt85ICtkUu27KNjv05qXsJTsW     
+    H+l9LKSYDX6zELnOWsPJOn8csGy1zOe0XnmobI6AxhayIzh15WN9Xp/vJ/V7NI1LE6W/     
+    KGAQ==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@quora.com header.s=pigeon
+ header.b=e5YpWTlC;       spf=pass (google.com: domain of noreply@quora.com
+ designates 52.71.221.28 as permitted sender)
+ smtp.mailfrom=noreply@quora.com;       dmarc=pass (p=REJECT sp=REJECT
+ dis=NONE) header.from=quora.com
+Return-Path: <noreply@quora.com>
+Received-SPF: pass (google.com: domain of noreply@quora.com designates 52.71.221.28 as
+ permitted sender) client-ip=52.71.221.28;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@quora.com header.s=pigeon
+ header.b=e5YpWTlC;       spf=pass (google.com: domain of noreply@quora.com
+ designates 52.71.221.28 as permitted sender)
+ smtp.mailfrom=noreply@quora.com;       dmarc=pass (p=REJECT sp=REJECT
+ dis=NONE) header.from=quora.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=quora.com;
+ h=	content-type:mime-version:from:to:subject:list-unsubscribe:date	:message-id; s=pigeon; bh=4n3sl7Emclz4xYklg6lAwMN6BIE=;
+ b=e5YpWT	lCM0o5k7km7P5NKIFCx5Mmx8kIvq5xCWTE6popFaNUdXbRZ3kFan1aSgrcZIgOwB	Q9DtfugYOz6RK0WCMbgwJB9iyQRDzSxna3KO3jWVvNUcvOFnzXb3WtUsEo6U6DXi	MZbJDjf7Tb9TiR8sv5M98voC1qPo5T/CfNqtdwIesy/lEIKu8hKJI7Mt8lq/Lu0i	kBPDHATSd1EFd6PwSKdWISpR/Bmv1VDzZIaCou5jJKWUbK7+LzfJBa9ARvNWfI7X	b9iD4a4r2DAY2N6MpOHrakUNpG7F8clH1sYpoISauyEysBxqd4HrmKY9kMc3gaE7	2ey/jbgmTI0utHLA==
+MIME-Version: 1.0
+From: "Quora Digest" <english-personalized-digest@quora.com>
+To: john.doe.youniq@gmail.com
+Subject: =?utf-8?q?My_neighbors_slammed_the_door=2C_so_I_politely_told_them_that_it_d?=
+ =?utf-8?q?isturbed_me_and_asked=2E=2E=2E=3F?=
+List-Unsubscribe: <https://www.quora.com/email_optout/qemail_unsubscribe?email_track_id=fd3906d9ac0c4805ba384bd40803fa1d&ish=1&t=1639974468806805&token=be97c2acde6228bbf0022fe5654b05521e489a8ea53a9828393b0ec51e4019f23d91fd6e1bff5a4f70c02842d2a5df8780ba8f7714fe4474d38c9ccd1d3a5392&type=2&uid=1671292416>
+X-CID: UgkfpsmRFmtD6AcNAApilFCMbvbbxlKBKdMtBnOQgNXLf7hiSBluWU5VW27d5HtbjzRueuy3g4rRXC5mDELsdFohiZ9FvEqWmioHgB1CDmZqcX_ABKJoVvtV2Qb4xa2dwZpbHwABAgA=
+Date: Mon, 20 Dec 2021 04:27:49 +0000
+Message-ID: <UgkfpsmRFmtD6AcNAApilFCMbvbbxlKBKdMtBnOQgNXLf7hiSBluWU5VW27d5HtbjzRueuy3g4rRXC5mDELsdFohiZ9FvEqWmioHgB1CDmZqcX_ABKJoVvtV2Qb4xa2dwZpbHwABAgA=@t1.msgid.quoramail.com>
+X-SMTPAPI: =?utf-8?q?=7B=22unique=5Fargs=22=3A_=7B=22Message-ID=22=3A_=22=3CUgkfpsmRFmt?= =?utf-8?q?D6AcNAApilFCMbvbbxlKBKdMtBnOQgNXLf7hiSBluWU5VW27d5HtbjzRueuy3g4rR?= =?utf-8?q?XC5mDELsdFohiZ9FvEqWmioHgB1CDmZqcX=5FABKJoVvtV2Qb4xa2dwZpbHwABAgA?= =?utf-8?q?=3D=40t1=2Emsgid=2Equoramail=2Ecom=3E=22=2C_=22account=22=3A_=22d?= =?utf-8?q?igest=22=2C_=22email=5Ftype=22=3A_2=2C_=22ip=5Fpool=22=3A_=22main?= =?utf-8?q?=22=2C_=22X-QMSG=22=3A_=22rFPwC60AIhh=5Fo5T6B6Ds6ud11ADc6CG4FHrWC?= =?utf-8?q?9krp7klQ5Hp7jojvlNcvjwo598lB0qdJWQ5WV-RXTx2OZdGXMPcn9VNxXB3DXHEHc?= =?utf-8?q?IkLZQ1R89vAmtY7x=5FGRCZlHXZEwYLDudet0Qhmu5tTXb6gdkXFOHpGhq9XhAQCj?= =?utf-8?q?VJC66cud0uk2qYuyJzgo9DSbqjQwt-BKOsfherSoT1SIvUwP-pgFErKLeXVOe0DTh?= =?utf-8?q?V14kqfpK2MrufchJPVfMFmwphnk7tNHL1wO3DSEtxKrVQc=5F2A2al=5FH863c8Fl?= =?utf-8?q?IlS4K7szkhnxZbsn2HH4nhlN=5FEcqJi5MgQzmxUQLyQIpNP2Q0m68s-zfDrt8DNE?= =?utf-8?q?UVVeFcKACIMCR1OMSwW-SRELt1f3z1OYnujIpcie5F2uVW6vTecbo3H-lO-dLKOGR?= =?utf-8?q?yiKzI79xXRXdY60LkR6mYVrFnDpDIGfAaB9qq1aD0jyoU2FBrqbmQ8ymrLrFHNeTX?= =?utf-8?q?zUYXZj-06K4rPSNu6VG95up=5FmYrG8Iiw5Q4rRsoAAQIA=22=7D=2C_=22catego?= =?utf-8?q?ry=22=3A_=5B=22account=5Fdigest=22=2C_=22email=5Ftype=5F2=22=2C_?=
+ =?utf-8?q?=22ip=5Fpool=5Fmain=22=5D=2C_=22filters=22=3A_=7B=22bypass=5Flist?= =?utf-8?q?=5Fmanagement=22=3A_=7B=22settings=22=3A_=7B=22enable=22=3A_1=7D?=
+ =?utf-8?q?=7D=7D=2C_=22ip=5Fpool=22=3A_=22main=22=7D?=
+X-QMSG: =?utf-8?q?rFPwC60AIhh=5Fo5T6B6Ds6ud11ADc6CG4FHrWC9krp7klQ5Hp7jojvlNcvjwo598l?= =?utf-8?q?B0qdJWQ5WV-RXTx2OZdGXMPcn9VNxXB3DXHEHcIkLZQ1R89vAmtY7x=5FGRCZlHXZ?= =?utf-8?q?EwYLDudet0Qhmu5tTXb6gdkXFOHpGhq9XhAQCjVJC66cud0uk2qYuyJzgo9DSbqjQ?= =?utf-8?q?wt-BKOsfherSoT1SIvUwP-pgFErKLeXVOe0DThV14kqfpK2MrufchJPVfMFmwphnk?= =?utf-8?q?7tNHL1wO3DSEtxKrVQc=5F2A2al=5FH863c8FlIlS4K7szkhnxZbsn2HH4nhlN=5F?= =?utf-8?q?EcqJi5MgQzmxUQLyQIpNP2Q0m68s-zfDrt8DNEUVVeFcKACIMCR1OMSwW-SRELt1f?= =?utf-8?q?3z1OYnujIpcie5F2uVW6vTecbo3H-lO-dLKOGRyiKzI79xXRXdY60LkR6mYVrFnDp?= =?utf-8?q?DIGfAaB9qq1aD0jyoU2FBrqbmQ8ymrLrFHNeTXzUYXZj-06K4rPSNu6VG95up=5Fm?= =?utf-8?q?YrG8Iiw5Q4rRsoAAQIA?=
+Content-Type: multipart/alternative; boundary="===============7851028105860511391=="
+
+--===============7851028105860511391==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+John's Digest
+
+-----
+
+Question: My neighbors slammed the door, so I politely told them that it di=
+sturbed me and asked if they could close them quieter=2E Now they are slamm=
+ing the door even stronger=2E What can I do?
+
+
+Answer from Pat Nelson
+
+
+I once rented the upstairs of a bungalow house that had a couple of guys li=
+ving in the basement apartment=2E They came in very early in the morning ev=
+ery day=2E They slammed t=20
+Read More: https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJ=
+oYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MXwxfDIxODM4NDE3OSJ9&al_pri=3D8&aoid=
+=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&cp=3D1&et=3D2&id=3Dfd3906d9ac0c4805ba384bd4=
+0803fa1d&uid=3DFNYwmX8wI4
+-----
+Question: What happens to a narcissist in the long run?
+
+
+Answer from Bryan Jamieson
+
+
+Chickens all come home to roost=2E The people they took for granted simply =
+ain=E2=80=99t there any longer and these were the ones who had the narcissi=
+sts back=2E The same friends, par=20
+Read More: https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJ=
+oYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=3D8&aoid=
+=3Dju4kFvEV6Gd&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba384bd4=
+0803fa1d&uid=3DFNYwmX8wI4
+-----
+Question: How has being fit affected your life?
+
+
+Answer from Nick Sch=C3=B6n
+
+
+My late wife was super fit=2E She was a professional ballet dancer=2E I did=
+n't want to be the guy about whom people asked "Why is she with that lard-a=
+rse?" So I exercised from=20
+Read More: https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJ=
+oYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5NDc2NDUyOSJ9&al_pri=3D8&aoid=
+=3Dmir784WHiJK&aoty=3D1&aty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c4805ba384bd4=
+0803fa1d&uid=3DFNYwmX8wI4
+-----
+Question: My boss did not inform me of his incoming visitors from abroad un=
+til the morning of their arrival=2E He wants me to stay with them for weeks=
+ in my apartment=2E What do I do? I am scared=2E
+
+
+Answer from Maura Rudd
+
+
+I think you mean he wants his guests to stay in your apartment with you=2E
+
+For me, that would be a hard no=2E
+
+That is unacceptable, and I would absolutely refuse his request=20
+Read More: https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJ=
+oYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NHwxfDMxOTgyMTkxOSJ9&al_pri=3D8&aoid=
+=3DadbVGMcmE6S&aoty=3D1&aty=3D4&cp=3D4&et=3D2&id=3Dfd3906d9ac0c4805ba384bd4=
+0803fa1d&uid=3DFNYwmX8wI4
+-----
+Question: How does a narcissist test you, and why?
+
+
+Answer from Joe B=2E House
+
+
+Narcissists are always trying to find that opening into your soul, the chin=
+k in your armor, any unhealed trauma and/ or unfulfilled wishes and desires=
+ within you=2E
+
+Once th=20
+Read More: https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJ=
+oYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D8&aoid=
+=3DjCQxdYOvR4S&aoty=3D1&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd4=
+0803fa1d&uid=3DFNYwmX8wI4
+-----
+
+-----
+
+To control which emails we send you, visit: https://www=2Equora=2Ecom/qemai=
+l/tc?aoid&aoty=3D14&aty=3D4&cp=3D0&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803=
+fa1d&uid=3DFNYwmX8wI4
+
+To unsubscribe from this type of email, visit: https://www=2Equora=2Ecom/em=
+ail_optout/qemail_unsubscribe?email_track_id=3Dfd3906d9ac0c4805ba384bd40803=
+fa1d&t=3D1639974468822514&token=3D677e971b47f9927a8dbfd9dd3a9608f9f5de47e50=
+4150c88c7e2b906765f3e19519a1de95b50d65cdb246688d29341bb773200208151f3ab32f9=
+2f9d5bdfcbea&type=3D2&uid=3D1671292416
+--===============7851028105860511391==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html lang=3D"en" xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml"=
+ xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:v=3D"urn:schemas=
+-microsoft-com:vml"><head><title>My neighbors slammed the door, so I polite=
+ly told them that it disturbed me and asked=2E=2E=2E?</title><!--[if !mso]>=
+<!--><meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible"><!--<![endi=
+f]--><meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Typ=
+e"><meta content=3D"width=3Ddevice-width,initial-scale=3D1" name=3D"viewpor=
+t"><style>#outlook a { padding:0; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-=
+size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }</style><!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]--><!--[if lte mso 11]>
+        <style type=3D"text/css">
+          =2Emj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]--><style>@media only screen and (min-width:480px) {
+        =2Emj-column-per-100 { width:100% !important; max-width: 100%; }
+      }</style><style media=3D"screen and (min-width:480px)">=2Emoz-text-ht=
+ml =2Emj-column-per-100 { width:100% !important; max-width: 100%; }</style>=
+<style>@media only screen and (max-width:480px) {
+      table=2Emj-full-width-mobile { width: 100% !important; }
+      td=2Emj-full-width-mobile { width: auto !important; }
+    }</style></head><body style=3D"word-spacing:normal;background-color:#ff=
+ffff;"><div style=3D"display:none;font-size:1px;color:#ffffff;line-height:1=
+px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">I once rented t=
+he upstairs of a bungalow house that had a couple of guys living in the bas=
+ement apartment=2E They came in very early in the morning every day=2E They=
+ slammed the door and tromped as =E2=80=A6</div><div style=3D"max-width: 52=
+5px; margin: 0 auto; text-align: center; background-color: #ffffff; padding=
+: 0 8px 16px;" class=3D"emailBody"><table style=3D"width:100%;" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center=
+"><tbody><tr><td><!--[if mso | IE]><table align=3D"center" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"=
+width:525px;" width=3D"525" ><tr><td style=3D"line-height:0px;font-size:0px=
+;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;m=
+ax-width:525px;"><table style=3D"width:100%;" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" align=3D"center"><tbody><tr><td s=
+tyle=3D"direction:ltr;font-size:0px;padding:0px;padding-bottom:24px;padding=
+-top:16px;text-align:center;"><!--[if mso | IE]><table role=3D"presentation=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"centere=
+d-group-outlook" style=3D"width:525px;" ><![endif]--><div style=3D"font-siz=
+e: 0; line-height: 0; display: inline-block; width: 100%; direction: ltr; t=
+ext-align: center;" class=3D"mj-column-per-100 mj-outlook-group-fix centere=
+d-group"><!--[if mso | IE]><table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" ><tr><td style=3D"vertical-align:top;width:52=
+5px;" ><![endif]--><div style=3D"font-size:0px;text-align:left;direction:lt=
+r;display:inline-block;vertical-align:top;width:100%;" class=3D"mj-column-p=
+er-100 mj-outlook-group-fix"><table style=3D"vertical-align:top;" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"=
+><tbody><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;" =
+align=3D"center" class=3D"of-contain"><table style=3D"border-collapse:colla=
+pse;border-spacing:0px;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation"><tbody><tr><td style=3D"width:104px;"><a href=3D"https=
+://www=2Equora=2Ecom/qemail/tc?aoid&aoty=3D7&aty=3D4&cp=3D0&et=3D2&id=3Dfd3=
+906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" target=3D"_blank"><img alt=
+=3D"Quora" height=3D"35=2E13513513513514" src=3D"http://qsf=2Efs=2Equoracdn=
+=2Enet/-4-images=2Elogo=2EWordmarkLogo_592x200_4x=2Epng-26-b469cd653dba282b=
+=2Epng" style=3D"object-fit: contain; border: 0; display: block; outline: n=
+one; text-decoration: none; height: 35=2E13513513513514px; width: 100%; fon=
+t-size: 13px;" width=3D"104"></a></td></tr></tbody></table></td></tr><tr><t=
+d style=3D"font-size:0px;padding:0px;word-break:break-word;" align=3D"cente=
+r" class=3D"of-contain"><table style=3D"border-collapse:collapse;border-spa=
+cing:0px;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
+ation"><tbody><tr><td style=3D"width:1px;"><img alt height=3D"1" src=3D"htt=
+ps://www=2Equora=2Ecom/qemail/mark_read?ct=3D1639974468757802&et=3D2&id=3Df=
+d3906d9ac0c4805ba384bd40803fa1d&request_id=3D1547883141078791096&src=3D1&st=
+=3D1639974468757802&stories=3D1_FDyNi0WWuqT%7C1_ju4kFvEV6Gd%7C1_mir784WHiJK=
+%7C1_adbVGMcmE6S%7C1_jCQxdYOvR4S&uid=3DFNYwmX8wI4&v=3D0" style=3D"object-fi=
+t: contain; border: 0; display: block; outline: none; text-decoration: none=
+; height: 1px; width: 100%; font-size: 13px;" width=3D"1"></td></tr></tbody=
+></table></td></tr><tr><td style=3D"font-size:0px;padding:0px;word-break:br=
+eak-word;" align=3D"center"><div style=3D"font-family:system-ui, Segoe UI, =
+sans-serif;font-size:19px;line-height:1=2E2;text-align:center;color:#333333=
+;">John's Digest</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;=
+word-break:break-word;"><div style=3D"height:5px;line-height:5px;">=E2=80=
+=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;word-break:br=
+eak-word;" align=3D"left"><div style=3D"font-family:system-ui, Segoe UI, sa=
+ns-serif;font-size:12px;letter-spacing:-0=2E5px;line-height:1=2E5;text-alig=
+n:left;text-transform:uppercase;color:#171717;">Top Stories For You</div></=
+td></tr><tr><td style=3D"font-size:0px;padding:0px;padding-top:4px;padding-=
+bottom:8px;word-break:break-word;" align=3D"center"><p style=3D"border-top:=
+ solid 1px #dee0e1; font-size: 1px; width: 100%; margin: 0;"></p><!--[if ms=
+o | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-top:solid 1px #dee0e1;font-size:1px;margin:0px auto;=
+width:525px;" role=3D"presentation" width=3D"525px" ><tr><td style=3D"heigh=
+t:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]--></td></tr><tr><td style=3D"font-size:0px;padd=
+ing:0px;word-break:break-word;"><div style=3D"height:16px;line-height:16px;=
+">=E2=80=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;paddi=
+ng-bottom:8px;word-break:break-word;" align=3D"left" class=3D"text-pass-col=
+or-to-links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font=
+-size:19px;font-weight:700;letter-spacing:-0=2E5px;line-height:1=2E4;text-a=
+lign:left;color:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al=
+_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MXwxfDIxODM4=
+NDE3OSJ9&al_pri=3D1&aoid=3DdO4LTewQlw6&aoty=3D2&aty=3D4&cp=3D1&et=3D2&id=3Df=
+d3906d9ac0c4805ba384bd40803fa1d&q_aid=3DFDyNi0WWuqT&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration: none; color: inherit;"><span style=3D"color:#333333"><=
+span>My neighbors slammed the door, so I politely told them that it disturb=
+ed me and asked if they could close them quieter=2E Now they are slamming t=
+he door even stronger=2E What can I do?</span></span></a></div></td></tr><t=
+r><td style=3D"font-size:0px;padding:0px;word-break:break-word;" align=3D"l=
+eft"><table style=3D"color:#000000;font-family:system-ui, Segoe UI, sans-se=
+rif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:non=
+e;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><tr><td=
+ valign=3D"middle"><div style=3D"padding:0;padding-bottom:4px" class=3D"tex=
+t-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Sego=
+e UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #333333; text=
+-align: left; margin: 0;"><b><a href=3D"https://www=2Equora=2Ecom/qemail/tc=
+?aoid=3DL2gPlSgsvOU&aoty=3D3&aty=3D4&cp=3D1&et=3D2&id=3Dfd3906d9ac0c4805ba3=
+84bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: none; color: inhe=
+rit;"><span style=3D"color:#333333"><span style=3D"font-weight:700">Pat Nel=
+son</span></span></a></b><span>, </span><span>senior instructor</span><span=
+ style=3D"color:#939598"> =E2=80=A2 </span><a href=3D"https://www=2Equora=
+=2Ecom/qemail/tc?aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&cp=3D1&et=3D2&id=3Dfd3=
+906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: n=
+one; color: inherit;"><span style=3D"color:#939598">Updated July 11, 2020</=
+span></a></p></div></td></tr></table></td></tr><tr><td style=3D"font-size:0=
+px;padding:0px;word-break:break-word;" align=3D"left"><div style=3D"font-fa=
+mily:system-ui, Segoe UI, sans-serif;font-size:16px;line-height:1=2E6;text-=
+align:left;color:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?a=
+l_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MXwxfDIxODM=
+4NDE3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&cp=3D1&et=3D2&id=
+=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decorat=
+ion:none;color:#333333"><span style=3D"color:#333333"><div style=3D"padding=
+:0;padding-bottom:16px;display:inline" class=3D"text-pass-color-to-links" d=
+ir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; font-s=
+ize: 16px; line-height: 1=2E6; color: #333333; text-align: left; display: i=
+nline; margin: 0;"><span>I once rented the upstairs of a bungalow house tha=
+t had a couple of guys living in the basement apartment=2E They came in ver=
+y early in the morning every day=2E They slammed th=2E=2E=2E</span></p></di=
+v><span> </span><div style=3D"padding:0;display:inline" dir=3D"ltr"><p styl=
+e=3D"font-family: system-ui, Segoe UI, sans-serif; font-size: 16px; line-he=
+ight: 1=2E6; color: #168de9; text-align: left; display: inline; margin: 0;"=
+>Read More =C2=BB</p></div></span></a><br><div style=3D"float:left;padding-=
+top:8px"><table><tr><td><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_i=
+mp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MXwxfDIxODM4ND=
+E3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&cp=3D1&et=3D2&id=3Dfd=
+3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:u=
+nderline"><img alt=3D"View" height=3D"20" src=3D"https://qsf=2Efs=2Equoracd=
+n=2Enet/-4-ans_frontend_assets=2Eicons=2Eeye_20_retina=2Epng-26-8e7c57fe615=
+87d46=2Epng" style=3D"text-decoration:none;display:block;border:0;outline:n=
+one;height:20px;float:none;padding:0;margin:auto" align=3D"none"></a></td><=
+td style=3D"padding-right:16px"><a href=3D"https://www=2Equora=2Ecom/qemail=
+/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MXwxfD=
+IxODM4NDE3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&cp=3D1&et=3D2=
+&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-deco=
+ration:none"><div style=3D"padding:0" class=3D"text-pass-color-to-links" di=
+r=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; font-si=
+ze: 13px; line-height: 1=2E2; color: #636466; text-align: left; margin: 0;"=
+>908=2E9K</p></div></a></td><td><a href=3D"https://www=2Equora=2Ecom/qemail=
+/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MXwxfD=
+IxODM4NDE3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&cp=3D1&et=3D2=
+&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-deco=
+ration:underline"><img alt=3D"Upvote" height=3D"20" src=3D"https://qsf=2Efs=
+=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=2Eupvote_20_retina=2Epng-2=
+6-3d9494ab59c37e56=2Epng" style=3D"text-decoration:none;display:block;borde=
+r:0;outline:none;height:20px;float:none;padding:0;margin:auto" align=3D"non=
+e"></a></td><td style=3D"padding-right:16px"><a href=3D"https://www=2Equora=
+=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3O=
+TEwOTZ8MXwxfDIxODM4NDE3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&=
+cp=3D1&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration:none"><div style=3D"padding:0" class=3D"text-pass-color=
+-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-s=
+erif; font-size: 13px; line-height: 1=2E2; color: #636466; text-align: left=
+; margin: 0;">4=2E7K</p></div></a></td><td><a href=3D"https://www=2Equora=
+=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3O=
+TEwOTZ8MXwxfDIxODM4NDE3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&aoty=3D1&aty=3D4&=
+cp=3D1&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration:underline"><img alt=3D"Comment" height=3D"20" src=3D"ht=
+tps://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=2Ecomment_20=
+_retina=2Epng-26-4dbd4e9124f23bec=2Epng" style=3D"text-decoration:none;disp=
+lay:block;border:0;outline:none;height:20px;float:none;padding:0;margin:aut=
+o" align=3D"none"></a></td><td style=3D"padding-right:16px"><a href=3D"http=
+s://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1ND=
+c4ODMxNDEwNzg3OTEwOTZ8MXwxfDIxODM4NDE3OSJ9&al_pri=3D0&aoid=3DFDyNi0WWuqT&ao=
+ty=3D1&aty=3D4&cp=3D1&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFN=
+YwmX8wI4" style=3D"text-decoration:none"><div style=3D"padding:0" class=3D"=
+text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, S=
+egoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #636466; t=
+ext-align: left; margin: 0;">204</p></div></a></td></tr></table></div></div=
+></td></tr><tr><td style=3D"font-size:0px;padding:0px;padding-top:16px;padd=
+ing-right:25%;padding-bottom:0px;padding-left:25%;word-break:break-word;" a=
+lign=3D"center"><p style=3D"border-top: solid 0=2E5px #dee0e1; font-size: 1=
+px; width: 100%; margin: 0;"></p><!--[if mso | IE]><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid =
+0=2E5px #dee0e1;font-size:1px;margin:0px auto;width:475px;" role=3D"present=
+ation" width=3D"475px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]--></td></tr><tr><td style=3D"font-size:0px;padd=
+ing:0px;word-break:break-word;"><div style=3D"height:16px;line-height:16px;=
+">=E2=80=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;paddi=
+ng-bottom:8px;word-break:break-word;" align=3D"left" class=3D"text-pass-col=
+or-to-links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font=
+-size:19px;font-weight:700;letter-spacing:-0=2E5px;line-height:1=2E4;text-a=
+lign:left;color:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al=
+_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4=
+MTUzNiJ9&al_pri=3D1&aoid=3DYkUSDm0Gw6B&aoty=3D2&aty=3D4&cp=3D2&et=3D2&id=3Df=
+d3906d9ac0c4805ba384bd40803fa1d&q_aid=3Dju4kFvEV6Gd&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration: none; color: inherit;"><span style=3D"color:#333333"><=
+span>What happens to a narcissist in the long run?</span></span></a></div><=
+/td></tr><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;"=
+ align=3D"left"><table style=3D"color:#000000;font-family:system-ui, Segoe =
+UI, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%=
+;border:none;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"10=
+0%"><tr><td valign=3D"middle"><div style=3D"padding:0;padding-bottom:4px" c=
+lass=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: syst=
+em-ui, Segoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #3=
+33333; text-align: left; margin: 0;"><b><a href=3D"https://www=2Equora=2Eco=
+m/qemail/tc?aoid=3Ddxp0Z8nmeux&aoty=3D3&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9=
+ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: none; =
+color: inherit;"><span style=3D"color:#333333"><span style=3D"font-weight:7=
+00">Bryan Jamieson</span></span></a></b><span>, </span><span>Psychologist a=
+nd Writer (1990-present)</span><span style=3D"color:#939598"> =E2=80=A2 </s=
+pan><a href=3D"https://www=2Equora=2Ecom/qemail/tc?aoid=3Dju4kFvEV6Gd&aoty=
+=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYw=
+mX8wI4" style=3D"text-decoration: none; color: inherit;"><span style=3D"col=
+or:#939598">Answered March 6</span></a></p></div></td></tr></table></td></t=
+r><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;" align=
+=3D"left"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font-si=
+ze:16px;line-height:1=2E6;text-align:left;color:#333333;"><a href=3D"https:=
+//www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4=
+ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=3D0&aoid=3Dju4kFvEV6Gd&aoty=
+=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYw=
+mX8wI4" style=3D"text-decoration:none;color:#333333"><span style=3D"color:#=
+333333"><div style=3D"padding:0;padding-bottom:16px;display:inline" class=
+=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-u=
+i, Segoe UI, sans-serif; font-size: 16px; line-height: 1=2E6; color: #33333=
+3; text-align: left; display: inline; margin: 0;"><span>Chickens all come h=
+ome to roost=2E The people they took for granted simply ain=E2=80=99t there=
+ any longer and these were the ones who had the narcissists back=2E The sam=
+e friends, part=2E=2E=2E</span></p></div><span> </span><div style=3D"paddin=
+g:0;display:inline" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe U=
+I, sans-serif; font-size: 16px; line-height: 1=2E6; color: #168de9; text-al=
+ign: left; display: inline; margin: 0;">Read More =C2=BB</p></div></span></=
+a><br><div style=3D"float:left;padding-top:8px"><table><tr><td><a href=3D"h=
+ttps://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE=
+1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=3D0&aoid=3Dju4kFvEV6Gd=
+&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=
+=3DFNYwmX8wI4" style=3D"text-decoration:underline"><img alt=3D"View" height=
+=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_assets=2Ei=
+cons=2Eeye_20_retina=2Epng-26-8e7c57fe61587d46=2Epng" style=3D"text-decorat=
+ion:none;display:block;border:0;outline:none;height:20px;float:none;padding=
+:0;margin:auto" align=3D"none"></a></td><td style=3D"padding-right:16px"><a=
+ href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=3D0&aoid=3Dj=
+u4kFvEV6Gd&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803=
+fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:none"><div style=3D"padding=
+:0" class=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family:=
+ system-ui, Segoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; colo=
+r: #636466; text-align: left; margin: 0;">454=2E7K</p></div></a></td><td><a=
+ href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=3D0&aoid=3Dj=
+u4kFvEV6Gd&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803=
+fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:underline"><img alt=3D"Upvo=
+te" height=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_=
+assets=2Eicons=2Eupvote_20_retina=2Epng-26-3d9494ab59c37e56=2Epng" style=3D"=
+text-decoration:none;display:block;border:0;outline:none;height:20px;float:=
+none;padding:0;margin:auto" align=3D"none"></a></td><td style=3D"padding-ri=
+ght:16px"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlI=
+jogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=
+=3D0&aoid=3Dju4kFvEV6Gd&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c480=
+5ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:none"><div sty=
+le=3D"padding:0" class=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"=
+font-family: system-ui, Segoe UI, sans-serif; font-size: 13px; line-height:=
+ 1=2E2; color: #636466; text-align: left; margin: 0;">1=2E1K</p></div></a><=
+/td><td><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjo=
+gMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MTUzNiJ9&al_pri=3D0=
+&aoid=3Dju4kFvEV6Gd&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd3906d9ac0c4805ba3=
+84bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:underline"><img al=
+t=3D"Comment" height=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-ans=
+_frontend_assets=2Eicons=2Ecomment_20_retina=2Epng-26-4dbd4e9124f23bec=2Epn=
+g" style=3D"text-decoration:none;display:block;border:0;outline:none;height=
+:20px;float:none;padding:0;margin:auto" align=3D"none"></a></td><td style=
+=3D"padding-right:16px"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_i=
+mp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8MnwxfDI2ODk4MT=
+UzNiJ9&al_pri=3D0&aoid=3Dju4kFvEV6Gd&aoty=3D1&aty=3D4&cp=3D2&et=3D2&id=3Dfd=
+3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:n=
+one"><div style=3D"padding:0" class=3D"text-pass-color-to-links" dir=3D"ltr=
+"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; font-size: 13px=
+; line-height: 1=2E2; color: #636466; text-align: left; margin: 0;">62</p><=
+/div></a></td></tr></table></div></div></td></tr><tr><td style=3D"font-size=
+:0px;padding:0px;padding-top:16px;padding-right:25%;padding-bottom:0px;padd=
+ing-left:25%;word-break:break-word;" align=3D"center"><p style=3D"border-to=
+p: solid 0=2E5px #dee0e1; font-size: 1px; width: 100%; margin: 0;"></p><!--=
+[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"border-top:solid 0=2E5px #dee0e1;font-size:1px;margin:=
+0px auto;width:475px;" role=3D"presentation" width=3D"475px" ><tr><td style=
+=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]--></td></tr><tr><td style=3D"font-size:0px;padd=
+ing:0px;word-break:break-word;"><div style=3D"height:16px;line-height:16px;=
+">=E2=80=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;paddi=
+ng-bottom:8px;word-break:break-word;" align=3D"left" class=3D"text-pass-col=
+or-to-links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font=
+-size:19px;font-weight:700;letter-spacing:-0=2E5px;line-height:1=2E4;text-a=
+lign:left;color:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al=
+_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5NDc2=
+NDUyOSJ9&al_pri=3D1&aoid=3DoNmuYyw5r8B&aoty=3D2&aty=3D4&cp=3D3&et=3D2&id=3Df=
+d3906d9ac0c4805ba384bd40803fa1d&q_aid=3Dmir784WHiJK&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration: none; color: inherit;"><span style=3D"color:#333333"><=
+span>How has being fit affected your life?</span></span></a></div></td></tr=
+><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;" align=
+=3D"left"><table style=3D"color:#000000;font-family:system-ui, Segoe UI, sa=
+ns-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;borde=
+r:none;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><t=
+r><td valign=3D"middle"><div style=3D"padding:0;padding-bottom:4px" class=
+=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-u=
+i, Segoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #33333=
+3; text-align: left; margin: 0;"><b><a href=3D"https://www=2Equora=2Ecom/qe=
+mail/tc?aoid=3DaeVQ5zautIq&aoty=3D3&aty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c=
+4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: none; colo=
+r: inherit;"><span style=3D"color:#333333"><span style=3D"font-weight:700">=
+Nick Sch=C3=B6n</span></span></a></b><span>, </span><span>Married for 37 ye=
+ars, father of 3=2E</span><span style=3D"color:#939598"> =E2=80=A2 </span><=
+a href=3D"https://www=2Equora=2Ecom/qemail/tc?aoid=3Dmir784WHiJK&aoty=3D1&a=
+ty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4=
+" style=3D"text-decoration: none; color: inherit;"><span style=3D"color:#93=
+9598">Updated November 13</span></a></p></div></td></tr></table></td></tr><=
+tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;" align=3D"=
+left"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font-size:1=
+6px;line-height:1=2E6;text-align:left;color:#333333;"><a href=3D"https://ww=
+w=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMx=
+NDEwNzg3OTEwOTZ8M3wxfDI5NDc2NDUyOSJ9&al_pri=3D0&aoid=3Dmir784WHiJK&aoty=3D1=
+&aty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8w=
+I4" style=3D"text-decoration:none;color:#333333"><span style=3D"color:#3333=
+33"><img alt height=3D"auto" src=3D"http://qph=2Efs=2Equoracdn=2Enet/main-q=
+img-f9ddaf727813c6b01b2259c432bc37ea-lq" style=3D"text-decoration:none;disp=
+lay:block;border:0;outline:none;max-height:100px;max-width:200px;float:righ=
+t;padding:0;padding-left:4px;margin:auto" align=3D"right"><div style=3D"pad=
+ding:0;padding-bottom:16px;display:inline" class=3D"text-pass-color-to-link=
+s" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; fo=
+nt-size: 16px; line-height: 1=2E6; color: #333333; text-align: left; displa=
+y: inline; margin: 0;"><span>My late wife was super fit=2E She was a profes=
+sional ballet dancer=2E I didn't want to be the guy about whom people asked=
+ "Why is </span><span style=3D"font-style:italic">she</span><span> with tha=
+t lard-arse?" So I exercised from =2E=2E=2E</span></p></div><span> </span><=
+div style=3D"padding:0;display:inline" dir=3D"ltr"><p style=3D"font-family:=
+ system-ui, Segoe UI, sans-serif; font-size: 16px; line-height: 1=2E6; colo=
+r: #168de9; text-align: left; display: inline; margin: 0;">Read More =C2=BB<=
+/p></div></span></a><br><div style=3D"float:left;padding-top:8px"><table><t=
+r><td><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogM=
+zMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5NDc2NDUyOSJ9&al_pri=3D0&=
+aoid=3Dmir784WHiJK&aoty=3D1&aty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c4805ba38=
+4bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:underline"><img alt=
+=3D"View" height=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-ans_fro=
+ntend_assets=2Eicons=2Eeye_20_retina=2Epng-26-8e7c57fe61587d46=2Epng" style=
+=3D"text-decoration:none;display:block;border:0;outline:none;height:20px;fl=
+oat:none;padding:0;margin:auto" align=3D"none"></a></td><td style=3D"paddin=
+g-right:16px"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0e=
+XBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5NDc2NDUyOSJ9&al_=
+pri=3D0&aoid=3Dmir784WHiJK&aoty=3D1&aty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c=
+4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:none"><div =
+style=3D"padding:0" class=3D"text-pass-color-to-links" dir=3D"ltr"><p style=
+=3D"font-family: system-ui, Segoe UI, sans-serif; font-size: 13px; line-hei=
+ght: 1=2E2; color: #636466; text-align: left; margin: 0;">2=2E8M</p></div><=
+/a></td><td><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXB=
+lIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5NDc2NDUyOSJ9&al_pr=
+i=3D0&aoid=3Dmir784WHiJK&aoty=3D1&aty=3D4&cp=3D3&et=3D2&id=3Dfd3906d9ac0c48=
+05ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:underline"><i=
+mg alt=3D"Upvote" height=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4=
+-ans_frontend_assets=2Eicons=2Eupvote_20_retina=2Epng-26-3d9494ab59c37e56=
+=2Epng" style=3D"text-decoration:none;display:block;border:0;outline:none;h=
+eight:20px;float:none;padding:0;margin:auto" align=3D"none"></a></td><td st=
+yle=3D"padding-right:16px"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?a=
+l_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5NDc=
+2NDUyOSJ9&al_pri=3D0&aoid=3Dmir784WHiJK&aoty=3D1&aty=3D4&cp=3D3&et=3D2&id=
+=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decorat=
+ion:none"><div style=3D"padding:0" class=3D"text-pass-color-to-links" dir=
+=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; font-siz=
+e: 13px; line-height: 1=2E2; color: #636466; text-align: left; margin: 0;">=
+13=2E9K</p></div></a></td><td><a href=3D"https://www=2Equora=2Ecom/qemail/t=
+c?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8M3wxfDI5=
+NDc2NDUyOSJ9&al_pri=3D0&aoid=3Dmir784WHiJK&aoty=3D1&aty=3D4&cp=3D3&et=3D2&i=
+d=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decora=
+tion:underline"><img alt=3D"Comment" height=3D"20" src=3D"https://qsf=2Efs=
+=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=2Ecomment_20_retina=2Epng-=
+26-4dbd4e9124f23bec=2Epng" style=3D"text-decoration:none;display:block;bord=
+er:0;outline:none;height:20px;float:none;padding:0;margin:auto" align=3D"no=
+ne"></a></td><td style=3D"padding-right:16px"><a href=3D"https://www=2Equor=
+a=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3=
+OTEwOTZ8M3wxfDI5NDc2NDUyOSJ9&al_pri=3D0&aoid=3Dmir784WHiJK&aoty=3D1&aty=3D4=
+&cp=3D3&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" styl=
+e=3D"text-decoration:none"><div style=3D"padding:0" class=3D"text-pass-colo=
+r-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-=
+serif; font-size: 13px; line-height: 1=2E2; color: #636466; text-align: lef=
+t; margin: 0;">164</p></div></a></td></tr></table></div></div></td></tr><tr=
+><td style=3D"font-size:0px;padding:0px;padding-top:16px;padding-right:25%;=
+padding-bottom:0px;padding-left:25%;word-break:break-word;" align=3D"center=
+"><p style=3D"border-top: solid 0=2E5px #dee0e1; font-size: 1px; width: 100=
+%; margin: 0;"></p><!--[if mso | IE]><table align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid 0=2E5px #dee0e=
+1;font-size:1px;margin:0px auto;width:475px;" role=3D"presentation" width=
+=3D"475px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]--></td></tr><tr><td style=3D"font-size:0px;padd=
+ing:0px;word-break:break-word;"><div style=3D"height:16px;line-height:16px;=
+">=E2=80=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;paddi=
+ng-bottom:8px;word-break:break-word;" align=3D"left" class=3D"text-pass-col=
+or-to-links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font=
+-size:19px;font-weight:700;letter-spacing:-0=2E5px;line-height:1=2E4;text-a=
+lign:left;color:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al=
+_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NHwxfDMxOTgy=
+MTkxOSJ9&al_pri=3D1&aoid=3Da9qQ8HGka96&aoty=3D2&aty=3D4&cp=3D4&et=3D2&id=3Df=
+d3906d9ac0c4805ba384bd40803fa1d&q_aid=3DadbVGMcmE6S&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration: none; color: inherit;"><span style=3D"color:#333333"><=
+span>My boss did not inform me of his incoming visitors from abroad until t=
+he morning of their arrival=2E He wants me to stay with them for weeks in m=
+y apartment=2E What do I do? I am scared=2E</span></span></a></div></td></t=
+r><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;" align=
+=3D"left"><table style=3D"color:#000000;font-family:system-ui, Segoe UI, sa=
+ns-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;borde=
+r:none;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><t=
+r><td valign=3D"middle"><div style=3D"padding:0;padding-bottom:4px" class=
+=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-u=
+i, Segoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #33333=
+3; text-align: left; margin: 0;"><b><a href=3D"https://www=2Equora=2Ecom/qe=
+mail/tc?aoid=3DYbm65J5XNAP&aoty=3D3&aty=3D4&cp=3D4&et=3D2&id=3Dfd3906d9ac0c=
+4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: none; colo=
+r: inherit;"><span style=3D"color:#333333"><span style=3D"font-weight:700">=
+Maura Rudd</span></span></a></b><span>, </span><span>Having good manners ma=
+y sound prissy, but it makes life run much smoother=2E</span><span style=3D"=
+color:#939598"> =E2=80=A2 </span><a href=3D"https://www=2Equora=2Ecom/qemai=
+l/tc?aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&cp=3D4&et=3D2&id=3Dfd3906d9ac0c480=
+5ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: none; color: =
+inherit;"><span style=3D"color:#939598">Answered November 12</span></a></p>=
+</div></td></tr></table></td></tr><tr><td style=3D"font-size:0px;padding:0p=
+x;word-break:break-word;" align=3D"left"><div style=3D"font-family:system-u=
+i, Segoe UI, sans-serif;font-size:16px;line-height:1=2E6;text-align:left;co=
+lor:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0e=
+XBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NHwxfDMxOTgyMTkxOSJ9&al_=
+pri=3D0&aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&cp=3D4&et=3D2&id=3Dfd3906d9ac0c=
+4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:none;color:=
+#333333"><span style=3D"color:#333333"><div style=3D"padding:0;padding-bott=
+om:16px;display:inline" class=3D"text-pass-color-to-links" dir=3D"ltr"><p s=
+tyle=3D"font-family: system-ui, Segoe UI, sans-serif; font-size: 16px; line=
+-height: 1=2E6; color: #333333; text-align: left; display: inline; margin: =
+0;"><span>I think you mean he wants his guests to stay in your apartment wi=
+th you=2E</span></p></div><span> </span><div style=3D"padding:0;padding-bot=
+tom:16px;display:inline" class=3D"text-pass-color-to-links" dir=3D"ltr"><p =
+style=3D"font-family: system-ui, Segoe UI, sans-serif; font-size: 16px; lin=
+e-height: 1=2E6; color: #333333; text-align: left; display: inline; margin:=
+ 0;"><span>For me, that would be a hard no=2E</span></p></div><span> </span=
+><div style=3D"padding:0;padding-bottom:16px;display:inline" class=3D"text-=
+pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe =
+UI, sans-serif; font-size: 16px; line-height: 1=2E6; color: #333333; text-a=
+lign: left; display: inline; margin: 0;"><span>That is unacceptable, and I =
+would absolutely refuse his request=2E</span></p></div><span> </span><div s=
+tyle=3D"padding:0;padding-bottom:16px;display:inline" class=3D"text-pass-co=
+lor-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, san=
+s-serif; font-size: 16px; line-height: 1=2E6; color: #333333; text-align: l=
+eft; display: inline; margin: 0;"><span>If h=2E=2E=2E</span></p></div><span=
+> </span><div style=3D"padding:0;display:inline" dir=3D"ltr"><p style=3D"fo=
+nt-family: system-ui, Segoe UI, sans-serif; font-size: 16px; line-height: 1=
+=2E6; color: #168de9; text-align: left; display: inline; margin: 0;">Read M=
+ore =C2=BB</p></div></span></a><br><div style=3D"float:left;padding-top:8px=
+"><table><tr><td><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3Dey=
+J0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NHwxfDMxOTgyMTkxOSJ9&=
+al_pri=3D0&aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&cp=3D4&et=3D2&id=3Dfd3906d9a=
+c0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:underlin=
+e"><img alt=3D"View" height=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet=
+/-4-ans_frontend_assets=2Eicons=2Eeye_20_retina=2Epng-26-8e7c57fe61587d46=
+=2Epng" style=3D"text-decoration:none;display:block;border:0;outline:none;h=
+eight:20px;float:none;padding:0;margin:auto" align=3D"none"></a></td><td st=
+yle=3D"padding-right:16px"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?a=
+l_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NHwxfDMxOTg=
+yMTkxOSJ9&al_pri=3D0&aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&cp=3D4&et=3D2&id=
+=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decorat=
+ion:none"><div style=3D"padding:0" class=3D"text-pass-color-to-links" dir=
+=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; font-siz=
+e: 13px; line-height: 1=2E2; color: #636466; text-align: left; margin: 0;">=
+771=2E7K</p></div></a></td><td><a href=3D"https://www=2Equora=2Ecom/qemail/=
+tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NHwxfDM=
+xOTgyMTkxOSJ9&al_pri=3D0&aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&cp=3D4&et=3D2&=
+id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decor=
+ation:underline"><img alt=3D"Upvote" height=3D"20" src=3D"https://qsf=2Efs=
+=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=2Eupvote_20_retina=2Epng-2=
+6-3d9494ab59c37e56=2Epng" style=3D"text-decoration:none;display:block;borde=
+r:0;outline:none;height:20px;float:none;padding:0;margin:auto" align=3D"non=
+e"></a></td><td style=3D"padding-right:16px"><a href=3D"https://www=2Equora=
+=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3O=
+TEwOTZ8NHwxfDMxOTgyMTkxOSJ9&al_pri=3D0&aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&=
+cp=3D4&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration:none"><div style=3D"padding:0" class=3D"text-pass-color=
+-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-s=
+erif; font-size: 13px; line-height: 1=2E2; color: #636466; text-align: left=
+; margin: 0;">8=2E8K</p></div></a></td><td><a href=3D"https://www=2Equora=
+=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3O=
+TEwOTZ8NHwxfDMxOTgyMTkxOSJ9&al_pri=3D0&aoid=3DadbVGMcmE6S&aoty=3D1&aty=3D4&=
+cp=3D4&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration:underline"><img alt=3D"Comment" height=3D"20" src=3D"ht=
+tps://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=2Ecomment_20=
+_retina=2Epng-26-4dbd4e9124f23bec=2Epng" style=3D"text-decoration:none;disp=
+lay:block;border:0;outline:none;height:20px;float:none;padding:0;margin:aut=
+o" align=3D"none"></a></td><td style=3D"padding-right:16px"><a href=3D"http=
+s://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1ND=
+c4ODMxNDEwNzg3OTEwOTZ8NHwxfDMxOTgyMTkxOSJ9&al_pri=3D0&aoid=3DadbVGMcmE6S&ao=
+ty=3D1&aty=3D4&cp=3D4&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFN=
+YwmX8wI4" style=3D"text-decoration:none"><div style=3D"padding:0" class=3D"=
+text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, S=
+egoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #636466; t=
+ext-align: left; margin: 0;">221</p></div></a></td></tr></table></div></div=
+></td></tr><tr><td style=3D"font-size:0px;padding:0px;padding-top:16px;padd=
+ing-right:25%;padding-bottom:0px;padding-left:25%;word-break:break-word;" a=
+lign=3D"center"><p style=3D"border-top: solid 0=2E5px #dee0e1; font-size: 1=
+px; width: 100%; margin: 0;"></p><!--[if mso | IE]><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid =
+0=2E5px #dee0e1;font-size:1px;margin:0px auto;width:475px;" role=3D"present=
+ation" width=3D"475px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]--></td></tr><tr><td style=3D"font-size:0px;padd=
+ing:0px;word-break:break-word;"><div style=3D"height:16px;line-height:16px;=
+">=E2=80=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;paddi=
+ng-bottom:8px;word-break:break-word;" align=3D"left" class=3D"text-pass-col=
+or-to-links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font=
+-size:19px;font-weight:700;letter-spacing:-0=2E5px;line-height:1=2E4;text-a=
+lign:left;color:#333333;"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al=
+_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQz=
+NjU3NiJ9&al_pri=3D1&aoid=3D9JSH5eaDqHu&aoty=3D2&aty=3D4&cp=3D5&et=3D2&id=3Df=
+d3906d9ac0c4805ba384bd40803fa1d&q_aid=3DjCQxdYOvR4S&uid=3DFNYwmX8wI4" style=
+=3D"text-decoration: none; color: inherit;"><span style=3D"color:#333333"><=
+span>How does a narcissist test you, and why?</span></span></a></div></td><=
+/tr><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;" alig=
+n=3D"left"><table style=3D"color:#000000;font-family:system-ui, Segoe UI, s=
+ans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;bord=
+er:none;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"><=
+tr><td valign=3D"middle"><div style=3D"padding:0;padding-bottom:4px" class=
+=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-u=
+i, Segoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #33333=
+3; text-align: left; margin: 0;"><a href=3D"https://www=2Equora=2Ecom/qemai=
+l/tc?aoid=3DYez4Lzrx3k4&aoty=3D3&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c480=
+5ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration: none; color: =
+inherit;"><span style=3D"color:#333333"><span style=3D"font-weight:700">Joe=
+ B=2E House</span></span></a><span style=3D"color:#939598"> =E2=80=A2 </spa=
+n><a href=3D"https://www=2Equora=2Ecom/qemail/tc?aoid=3DjCQxdYOvR4S&aoty=3D1=
+&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8w=
+I4" style=3D"text-decoration: none; color: inherit;"><span style=3D"color:#=
+939598">Updated June 28</span></a></p></div></td></tr></table></td></tr><tr=
+><td style=3D"font-size:0px;padding:0px;word-break:break-word;" align=3D"le=
+ft"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font-size:16p=
+x;line-height:1=2E6;text-align:left;color:#333333;"><a href=3D"https://www=
+=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxN=
+DEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0&aoid=3DjCQxdYOvR4S&aoty=3D1&=
+aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI=
+4" style=3D"text-decoration:none;color:#333333"><span style=3D"color:#33333=
+3"><div style=3D"padding:0;padding-bottom:16px;display:inline" class=3D"tex=
+t-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Sego=
+e UI, sans-serif; font-size: 16px; line-height: 1=2E6; color: #333333; text=
+-align: left; display: inline; margin: 0;"><span>Narcissists are always try=
+ing to find that opening into your soul, the chink in your armor, any unhea=
+led trauma and/ or unfulfilled wishes and desires within you=2E</span></p><=
+/div><span> </span><div style=3D"padding:0;padding-bottom:16px;display:inli=
+ne" class=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family:=
+ system-ui, Segoe UI, sans-serif; font-size: 16px; line-height: 1=2E6; colo=
+r: #333333; text-align: left; display: inline; margin: 0;"><span>Once that =
+=2E=2E=2E</span></p></div><span> </span><div style=3D"padding:0;display:inl=
+ine" dir=3D"ltr"><p style=3D"font-family: system-ui, Segoe UI, sans-serif; =
+font-size: 16px; line-height: 1=2E6; color: #168de9; text-align: left; disp=
+lay: inline; margin: 0;">Read More =C2=BB</p></div></span></a><br><div styl=
+e=3D"float:left;padding-top:8px"><table><tr><td><a href=3D"https://www=2Equ=
+ora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNz=
+g3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0&aoid=3DjCQxdYOvR4S&aoty=3D1&aty=
+=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" =
+style=3D"text-decoration:underline"><img alt=3D"View" height=3D"20" src=3D"=
+https://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=2Eeye_20_r=
+etina=2Epng-26-8e7c57fe61587d46=2Epng" style=3D"text-decoration:none;displa=
+y:block;border:0;outline:none;height:20px;float:none;padding:0;margin:auto"=
+ align=3D"none"></a></td><td style=3D"padding-right:16px"><a href=3D"https:=
+//www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4=
+ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0&aoid=3DjCQxdYOvR4S&aoty=
+=3D1&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYw=
+mX8wI4" style=3D"text-decoration:none"><div style=3D"padding:0" class=3D"te=
+xt-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: system-ui, Seg=
+oe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color: #636466; tex=
+t-align: left; margin: 0;">169=2E9K</p></div></a></td><td><a href=3D"https:=
+//www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE1NDc4=
+ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0&aoid=3DjCQxdYOvR4S&aoty=
+=3D1&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYw=
+mX8wI4" style=3D"text-decoration:underline"><img alt=3D"Upvote" height=3D"2=
+0" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_assets=2Eicons=
+=2Eupvote_20_retina=2Epng-26-3d9494ab59c37e56=2Epng" style=3D"text-decorati=
+on:none;display:block;border:0;outline:none;height:20px;float:none;padding:=
+0;margin:auto" align=3D"none"></a></td><td style=3D"padding-right:16px"><a =
+href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYX=
+NoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0&aoid=3DjC=
+QxdYOvR4S&aoty=3D1&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803f=
+a1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:none"><div style=3D"padding:=
+0" class=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"font-family: =
+system-ui, Segoe UI, sans-serif; font-size: 13px; line-height: 1=2E2; color=
+: #636466; text-align: left; margin: 0;">690</p></div></a></td><td><a href=
+=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIj=
+ogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0&aoid=3DjCQxdY=
+OvR4S&aoty=3D1&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&=
+uid=3DFNYwmX8wI4" style=3D"text-decoration:underline"><img alt=3D"Comment" =
+height=3D"20" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-ans_frontend_asse=
+ts=2Eicons=2Ecomment_20_retina=2Epng-26-4dbd4e9124f23bec=2Epng" style=3D"te=
+xt-decoration:none;display:block;border:0;outline:none;height:20px;float:no=
+ne;padding:0;margin:auto" align=3D"none"></a></td><td style=3D"padding-righ=
+t:16px"><a href=3D"https://www=2Equora=2Ecom/qemail/tc?al_imp=3DeyJ0eXBlIjo=
+gMzMsICJoYXNoIjogIjE1NDc4ODMxNDEwNzg3OTEwOTZ8NXwxfDI5MTQzNjU3NiJ9&al_pri=3D0=
+&aoid=3DjCQxdYOvR4S&aoty=3D1&aty=3D4&cp=3D5&et=3D2&id=3Dfd3906d9ac0c4805ba3=
+84bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"text-decoration:none"><div style=
+=3D"padding:0" class=3D"text-pass-color-to-links" dir=3D"ltr"><p style=3D"f=
+ont-family: system-ui, Segoe UI, sans-serif; font-size: 13px; line-height: =
+1=2E2; color: #636466; text-align: left; margin: 0;">12</p></div></a></td><=
+/tr></table></div></div></td></tr><tr><td style=3D"font-size:0px;padding:0p=
+x;padding-top:32px;padding-bottom:32px;word-break:break-word;" align=3D"cen=
+ter" vertical-align=3D"middle"><table style=3D"border-collapse:separate;lin=
+e-height:100%;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation"><tbody><tr><td style=3D"border:1px solid null;border-radius:25p=
+x;cursor:auto;height:50px;mso-padding-alt:8px 32px;background:#2e69ff;" ali=
+gn=3D"center" bgcolor=3D"#2e69ff" role=3D"presentation" valign=3D"middle"><=
+a href=3D"https://www=2Equora=2Ecom/qemail/tc?aoid&aoty=3D7&aty=3D4&cp=3D0&=
+et=3D2&id=3Dfd3906d9ac0c4805ba384bd40803fa1d&uid=3DFNYwmX8wI4" style=3D"dis=
+play:inline-block;background:#2e69ff;color:#ffffff;font-family:system-ui, S=
+egoe UI, sans-serif;font-size:14px;font-weight:500;line-height:120%;margin:=
+0;text-decoration:none;text-transform:none;padding:8px 32px;mso-padding-alt=
+:0px;border-radius:25px;" target=3D"_blank">Read More in Your Feed</a></td>=
+</tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></td=
+></tr></table><![endif]--></div><!--[if mso | IE]></td></tr></table><![endi=
+f]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><!=
+[endif]--></td></tr></tbody></table><table style=3D"background:#ebf0ff;back=
+ground-color:#ebf0ff;width:100%;border-radius:3px;" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center"><tbody><tr=
+><td><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:525px;=
+" width=3D"525" bgcolor=3D"#ebf0ff" ><tr><td style=3D"line-height:0px;font-=
+size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0p=
+x auto;border-radius:3px;max-width:525px;"><table style=3D"width:100%;borde=
+r-radius:3px;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" align=3D"center"><tbody><tr><td style=3D"direction:ltr;font-size=
+:0px;padding:24px;padding-bottom:16px;padding-top:32px;text-align:center;">=
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:4=
+77px;" ><![endif]--><div style=3D"font-size:0px;text-align:left;direction:l=
+tr;display:inline-block;vertical-align:top;width:100%;" class=3D"mj-column-=
+per-100 mj-outlook-group-fix"><table style=3D"vertical-align:top;" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td style=3D"font-size:0px;padding:0px;word-break:break-wor=
+d;" align=3D"center"><div style=3D"font-family:system-ui, Segoe UI, sans-se=
+rif;font-size:17px;font-weight:700;line-height:1=2E4;text-align:center;colo=
+r:#333333;">Never miss a story=2E Designed for readers on the go=2E</div></=
+td></tr><tr><td style=3D"font-size:0px;padding:0px;word-break:break-word;">=
+<div style=3D"height:16px;line-height:16px;">=E2=80=8A</div></td></tr><tabl=
+e style=3D"text-align: center; margin: 0 auto;" align=3D"center" class=3D"a=
+ppDownloadLinks"><tr><td><table><tr><td style=3D"text-align:center"><div st=
+yle=3D"width:100%;display:inline-block"><span><a href=3D"https://www=2Equor=
+a=2Ecom/app?campaign=3Demail_footer_links_experiment&inject=3D1&landing_url=
+=3Dhttps%3A%2F%2Fwww=2Equora=2Ecom%2Fqemail%2Ftc%3Faoid%26aoty%3D7%26aty%3D=
+4%26cp%3D0%26et%3D2%26id%3Dfd3906d9ac0c4805ba384bd40803fa1d%26uid%3DFNYwmX8=
+wI4&source=3Ddigest&target=3Diphone"><img alt=3D"Download on the App Store"=
+ height=3D"40" src=3D"https://qsf=2Efs=2Equoracdn=2Enet/-4-images=2Eapple_a=
+pp_store_badges=2Een=2Epng-26-4e3b66753949d78b=2Epng" style=3D"height:40px;=
+max-height:40px;margin-bottom:10px"></a></span><span><a href=3D"https://www=
+=2Equora=2Ecom/app?campaign=3Demail_footer_links_experiment&inject=3D1&land=
+ing_url=3Dhttps%3A%2F%2Fwww=2Equora=2Ecom%2Fqemail%2Ftc%3Faoid%26aoty%3D7%2=
+6aty%3D4%26cp%3D0%26et%3D2%26id%3Dfd3906d9ac0c4805ba384bd40803fa1d%26uid%3D=
+FNYwmX8wI4&source=3Ddigest&target=3Dandroid"><img alt=3D"Get it on Google P=
+lay" height=3D"60" src=3D"https://play=2Egoogle=2Ecom/intl/en_us/badges/ima=
+ges/generic/en_badge_web_generic=2Epng" style=3D"height:60px;max-height:60p=
+x"></a></span></div></td></tr></table></td></tr></table></tbody></table></d=
+iv><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></tabl=
+e></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody><=
+/table><table style=3D"width:100%;" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" align=3D"center"><tbody><tr><td><!--[if mso=
+ | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"" role=3D"presentation" style=3D"width:525px;" width=3D"525=
+" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exac=
+tly;"><![endif]--><div style=3D"margin:0px auto;max-width:525px;"><table st=
+yle=3D"width:100%;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" align=3D"center"><tbody><tr><td style=3D"direction:ltr;fo=
+nt-size:0px;padding:24px;padding-left:0px;padding-right:0px;padding-top:0px=
+;text-align:center;"><!--[if mso | IE]><table role=3D"presentation" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vert=
+ical-align:top;width:525px;" ><![endif]--><div style=3D"font-size:0px;text-=
+align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%=
+;" class=3D"mj-column-per-100 mj-outlook-group-fix"><table style=3D"vertica=
+l-align:top;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" width=3D"100%"><tbody><tr><td style=3D"font-size:0px;padding:0px;=
+word-break:break-word;"><div style=3D"height:64px;line-height:64px;">=E2=80=
+=8A</div></td></tr><tr><td style=3D"font-size:0px;padding:0px;padding-botto=
+m:8px;word-break:break-word;" align=3D"center" class=3D"text-pass-color-to-=
+links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font-size:=
+11px;line-height:1=2E6;text-align:center;color:#939598;"><div style=3D"font=
+-weight:bold">Missing out on Quora emails? Be sure to add us to your primar=
+y inbox=2E</div></div></td></tr><tr><td style=3D"font-size:0px;padding:0px;=
+padding-top:16px;padding-bottom:8px;word-break:break-word;" align=3D"center=
+" class=3D"text-pass-color-to-links"><div style=3D"font-family:system-ui, S=
+egoe UI, sans-serif;font-size:11px;line-height:1=2E6;text-align:center;colo=
+r:#939598;">This email was sent by Quora (605 Castro Street, Mountain View,=
+ CA 94041)=2E<br>If you don't want to receive this type of email in the fut=
+ure, please<span> </span><a href=3D"https://www=2Equora=2Ecom/email_optout/=
+qemail_unsubscribe?email_track_id=3Dfd3906d9ac0c4805ba384bd40803fa1d&t=3D16=
+39974468822514&token=3D677e971b47f9927a8dbfd9dd3a9608f9f5de47e504150c88c7e2=
+b906765f3e19519a1de95b50d65cdb246688d29341bb773200208151f3ab32f92f9d5bdfcbe=
+a&type=3D2&uid=3D1671292416" style=3D"text-decoration: underline; color: in=
+herit;">unsubscribe</a>=2E</div></td></tr><tr><td style=3D"font-size:0px;pa=
+dding:0px;word-break:break-word;" align=3D"center" class=3D"text-pass-color=
+-to-links"><div style=3D"font-family:system-ui, Segoe UI, sans-serif;font-s=
+ize:11px;line-height:1=2E6;text-align:center;color:#939598;"><a href=3D"htt=
+ps://www=2Equora=2Ecom" style=3D"text-decoration: underline; color: inherit=
+;">https://www=2Equora=2Ecom</a></div></td></tr></tbody></table></div><!--[=
+if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div>=
+<!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table><=
+/div></body></html>
+--===============7851028105860511391==--
+

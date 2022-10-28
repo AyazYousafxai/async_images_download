@@ -1,0 +1,638 @@
+Delivered-To: shahrukh.swam@gmail.com
+Received: by 2002:a05:6520:4441:b029:bc:87e0:e013 with SMTP id r1csp5730301lkv;       
+ Wed, 17 Feb 2021 21:31:53 -0800 (PST)
+Received: from mail131-18.mail.alibaba.com (mail131-18.mail.alibaba.com.
+ [198.11.131.18])        by mx.google.com with ESMTP id
+ 67si3962236pfv.245.2021.02.17.21.31.50        for <shahrukh.swam@gmail.com>;
+        Wed, 17 Feb 2021 21:31:53 -0800 (PST)
+Received: from
+ ump-delivery011010227128.na61(mailfrom:globalsupplier@service.alibaba.com
+ fp:SMTPD_----01Qrp0i)          by smtp.aliyun-inc.com(127.0.0.1);         
+ Thu, 18 Feb 2021 13:31:46 +0800
+X-Google-Smtp-Source: ABdhPJxtMDLo0D7tcb+fRxRSrG/pYPsnjv8/YI7aH0Av5oVbpe+WO0W/yB79Hp+wtGUSDFORbiqr
+X-Received: by 2002:a17:902:b103:b029:e3:a9bd:3856 with SMTP id
+ q3-20020a170902b103b02900e3a9bd3856mr601590plr.39.1613626313096;        Wed,
+ 17 Feb 2021 21:31:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613626313; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=elH2AIWyS5/enpiOtg+ziv4syieRVrx/4k81W4Gw4VRtCsRCl01QlvcrCXgwK8PE+3        
+ 8V1ilJcEqXPR/FZq/82pWqa43Fln/LBfAibaWG/dS3AxDFPfOkx5sOnFgiPjItEixrmv        
+ MEYt+SGfcOCfplGh78H9pUP66ScBo9Raay+KL6yhz/k1TuZSBJC92/xBZ/3/y4q932zO        
+ igJKQtoGGtA7oa68Zfnyefw9pNj6SjOtNnrHX7NqgSY6/bW2833TsysfqFj/rzZfHEWH        
+ wZNCJoQw8RnfwDfmi7ryXv6BaUliA9uzQHX3+/5PilkwnWUQEBVKSrQmgF2CUq3vL2FZ        
+ Vi5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=mime-version:subject:to:from:date:dkim-signature:feedback-id        
+ :message-id;        bh=uQSyIavs8W9FwEhSsoyNPeuCmwD/uPEY1UOGdcEaj/U=;       
+ b=uWpMSApzfTHLpz3Gb5+E1kjQaZkeKT/RquCbii86tTdV8lBgt+Bn1lAN5har0RREzC        
+ Jdp2a5+B4NFWkGmvaRvwUVdu56YhGRf6qI6nAS2wjhB0IG20FAMsJnAg2TcKNaXcNjK1        
+ YQKHBU9mPvPht82Dt2SAqI17Ede6fRcqQeCfEU7qDLujktUT7LiFvYlyH2N30pds9R9r        
+ n0Hfq+h7lC9xU+YlxIRpBd/1g5ufITWloguEtfVKboLYypTyBXO+9Wvqp9aIlz5mEBga        
+ 2JtMbjiykYH2fO56L6AoyGSyVMFc0XExCWtost9f+z9rceblIoQOsZRpZAHiQhhanNuQ        
+ F3jA==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@alibaba.com header.s=s1024
+ header.b=q48yglTg;       spf=pass (google.com: domain of
+ globalsupplier@service.alibaba.com designates 198.11.131.18 as permitted
+ sender) smtp.mailfrom=globalsupplier@service.alibaba.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=service.alibaba.com
+Return-Path: <globalsupplier@service.alibaba.com>
+Received-SPF: pass (google.com: domain of globalsupplier@service.alibaba.com designates
+ 198.11.131.18 as permitted sender) client-ip=198.11.131.18;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@alibaba.com header.s=s1024
+ header.b=q48yglTg;       spf=pass (google.com: domain of
+ globalsupplier@service.alibaba.com designates 198.11.131.18 as permitted
+ sender) smtp.mailfrom=globalsupplier@service.alibaba.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=service.alibaba.com
+Message-ID: <602dfbc9.1c69fb81.8ab51.2969SMTPIN_ADDED_BROKEN@mx.google.com>
+X-Google-Original-Message-ID: 8ab19269-20e4-43a9-b607-b065037226a9-0
+X-AliDM-RcptTo: c2hhaHJ1a2guc3dhbUBnbWFpbC5jb20=
+Feedback-ID: default:globalsupplier@service.alibaba.com:batch:11
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;	d=alibaba.com; s=s1024;	t=1613626306;
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type;	bh=uQSyIavs8W9FwEhSsoyNPeuCmwD/uPEY1UOGdcEaj/U=;	b=q48yglTghk5IB3sPUxlQpDgikl3fTbLfb2zUEcuqj++qrO3EoweQZgMql0zlqQey7bI5T/NLncslzOpFubEwbN1SbU8cZeJDjanH1kqO9jngwtAgG/wmxkDlbE+WoRqdYsuDw3YSZgXnZ948S/iRXRtA5ZsI4KQoak9lA17H5yA=
+X-EnvId: 141144576225
+Date: Thu, 18 Feb 2021 13:31:45 +0800 (CST)
+From: "Alibaba.com" <globalsupplier@service.alibaba.com>
+To: shahrukh.swam@gmail.com
+Subject: babar, here is a comprehensive guide for how to start exporting
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="----=_Part_7442885_217904567.1613626305681"
+
+------=_Part_7442885_217904567.1613626305681
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" data-xmlns-v=3D"urn:schema=
+s-microsoft-com:vml" data-xmlns-o=3D"urn:schemas-microsoft-com:office:offic=
+e">
+ <head>
+  <title></title>=20
+  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" =
+/>=20
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1=
+=2E0" />=20
+  <!--[if !mso]><!-->=20
+  <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />=20
+  <link href=3D"https://fonts=2Egoogleapis=2Ecom/css?family=3DRoboto:300,40=
+0,500,700" rel=3D"stylesheet" type=3D"text/css" />=20
+  <style type=3D"text/css">
+    @import url(https://fonts=2Egoogleapis=2Ecom/css?family=3DRoboto:300,40=
+0,500,700);
+  </style>=20
+  <!--<![endif]-->=20
+  <style type=3D"text/css">
+  #outlook a {
+    padding: 0;
+  }
+
+  body {
+    width: 100% !important;
+    min-width: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+
+  =2EReadMsgBody {
+    width: 100%;
+  }
+
+  =2EExternalClass,
+  =2EExternalClass p,
+  =2EExternalClass span,
+  =2EExternalClass font,
+  =2EExternalClass td,
+  =2EExternalClass div {
+    line-height: 100%;
+  }
+
+  =2Eaym_table_wrap{
+    width: 100% !important;
+  }
+
+  #backgroundTable {
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    line-height: 100% !important;
+  }
+
+  table {
+    border-collapse: collapse;
+    mso-table-lspace: 0pt !important;
+    mso-table-rspace: 0pt !important;
+  }
+
+  td {
+    border-collapse: collapse;
+  }
+
+  img {
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    -ms-interpolation-mode: bicubic;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    line-height: 100%;
+  }
+
+  p {
+    display: block;
+    margin: 0px;
+  }
+</style>=20
+  <!--[if !mso]><!-->=20
+  <style type=3D"text/css">
+    @media only screen and (max-width:480px) {
+      @-ms-viewport { width: 320px; }
+      @viewport { width: 320px; }
+    }
+  </style>=20
+  <!--<![endif]-->=20
+  <!--[if mso]>
+  <style type=3D"text/css">
+    =2Erml-column {width: 100% !important;}
+  </style>
+  <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+  </xml>
+  <![endif]-->
+ </head>
+ <body>
+  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"width:=
+100%">
+   <tbody>
+    <tr>
+     <td align=3D"center" style=3D"background-color:#F2F3F7">
+      <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+640" style=3D"width:640px">
+       <tbody>
+        <tr>
+         <td style=3D"width:640px;background-color:#F2F3F7">
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=
+=3D"width:100%">
+           <tbody>
+            <tr>
+             <td align=3D"center" style=3D"background-color:#F2F3F7">
+              <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"585" style=3D"width:585px">
+               <tbody>
+                <tr>
+                 <td style=3D"width:585px;background-color:#F2F3F7"><a targ=
+et=3D"_blank" href=3D"https://seller=2Ealibaba=2Ecom?to=3Dshahrukh=2Eswam%4=
+0gmail=2Ecom&node=3Daction-node-1613460027556&biz_type=3DNotifications_Conn=
+ections&crm_mtn_tracelog_template=3D2001810368&crm_mtn_tracelog_task_id=3Da=
+4827911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dservice_wol=
+f-web&crm_mtn_tracelog_log_id=3D24528094701&from=3Dglobalsupplier%40service=
+=2Ealibaba=2Ecom" style=3D"line-height:0;text-decoration:none"><img src=3D"=
+https://img=2Ealicdn=2Ecom/tfs/TB1mQYXbxD1gK0jSZFyXXciOVXa-432-72=2Epng" wi=
+dth=3D"216" alt=3D"https://seller=2Ealibaba=2Ecom" title=3D"Sell on Alibaba=
+=2Ecom - Reach millions of B2B buyers globally" style=3D"width:216px" borde=
+r=3D"0px" /></a></td>
+                </tr>
+               </tbody>
+              </table></td>
+            </tr>
+           </tbody>
+          </table></td>
+        </tr>
+       </tbody>
+      </table></td>
+    </tr>
+   </tbody>
+  </table>
+  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"width:=
+100%">
+   <tbody>
+    <tr>
+     <td align=3D"center" style=3D"background-color:#F2F3F7">
+      <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+640" style=3D"width:640px">
+       <tbody>
+        <tr>
+         <td style=3D"width:640px;background-color:#F2F3F7">
+          <div class=3D"edm-component">
+           <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=
+=3D"width:100%">
+            <tbody>
+             <tr>
+              <td align=3D"center" style=3D"background-color:#F2F3F7">
+               <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" =
+width=3D"640" style=3D"width:640px">
+                <tbody>
+                 <tr>
+                  <td style=3D"width:640px;background-color:#ffffff">
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0" style=3D"width:100%">
+                    <tbody>
+                     <tr>
+                      <td style=3D"height:392px;width:640px;background:url(=
+https://sc04=2Ealicdn=2Ecom/kf/H0e765b5f1cbf4db0847076820ddeb5c9T=2Ejpg) re=
+peat top;background-size:640px 392px">
+                       <table cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" border=3D"0" style=3D"width:100%">
+                        <tbody>
+                         <tr>
+                          <td style=3D"height:392px;width:640px;background:=
+linear-gradient(rgba(0,0,0,0) 60%,#ffffff);background-size:640px 392px"></t=
+d>
+                         </tr>
+                        </tbody>
+                       </table></td>
+                     </tr>
+                    </tbody>
+                   </table>
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0" style=3D"width:100%">
+                    <tbody>
+                     <tr>
+                      <td style=3D"width:640px;padding-top:1px;padding-bott=
+om:10px">
+                       <table cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0" width=3D"100%">
+                        <tbody>
+                         <tr>
+                          <td>
+                           <table align=3D"left" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"12" border=3D"0">
+                            <tbody>
+                             <tr>
+                              <td height=3D"178" style=3D"height:178px;back=
+ground-color:#0D50F1"></td>
+                             </tr>
+                            </tbody>
+                           </table>
+                           <table align=3D"left" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"570" border=3D"0">
+                            <tbody>
+                             <tr>
+                              <td align=3D"left" style=3D"padding-left:20px=
+"><img src=3D"https://img=2Ealicdn=2Ecom/tfs/TB1m38VF9f2gK0jSZFPXXXsopXa-14=
+8-20=2Epng" width=3D"148" alt=3D"https://Alibaba=2Ecom" style=3D"width:148p=
+x" border=3D"0px" /><p style=3D"color:#0D50F1;font-family:Roboto, =E5=BE=AE=
+=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:30px;line-height:32px;margin:0=
+;text-align:left;font-weight:700">How to start exporting: the ultimate guid=
+e</p><p style=3D"color:#0D50F1;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=
+=85=E9=BB=91, Arial;font-size:24px;line-height:32px;margin:0;text-align:lef=
+t">5 things to consider when you start exporting and 7 steps of how to do i=
+t=2E</p></td>
+                             </tr>
+                            </tbody>
+                           </table></td>
+                         </tr>
+                        </tbody>
+                       </table></td>
+                     </tr>
+                    </tbody>
+                   </table>
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0">
+                    <tbody>
+                     <tr>
+                      <td style=3D"height:10px;line-height:10px;font-size:1=
+px">=C2=A0</td>
+                     </tr>
+                    </tbody>
+                   </table>
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0" style=3D"width:100%">
+                    <tbody>
+                     <tr>
+                      <td style=3D"width:580px;padding-right:20px;padding-l=
+eft:20px"><p style=3D"color:#333;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=
+=9B=85=E9=BB=91, Arial;font-size:16px;line-height:22px;margin:0;text-align:=
+left">Thanks to advanced technology, it has never been easier to sell produ=
+cts to customers around the world=2E In this post, we're going to talk abou=
+t everything that small- and medium-sized enterprises (SMEs) need to know a=
+bout starting a business that sells goods around the world, or adding expor=
+t capabilities to your current business=2E We will start with a basic intro=
+duction to exporting that covers the benefits of export, who can export, an=
+d different types of exporting=2E From there, we will get into the real nit=
+ty-gritty of SME exporting with a list of things that you should consider b=
+efore getting started and an actionable list of steps that you can follow t=
+o start your business with exporting=2E Click [Read more] to start becoming=
+ a master of all things exporting now!</p></td>
+                     </tr>
+                    </tbody>
+                   </table>
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0">
+                    <tbody>
+                     <tr>
+                      <td style=3D"height:40px;line-height:40px;font-size:1=
+px">=C2=A0</td>
+                     </tr>
+                    </tbody>
+                   </table>
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0" style=3D"width:100%">
+                    <tbody>
+                     <tr>
+                      <td align=3D"center" style=3D"width:640px">
+                       <table cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%" border=3D"0">
+                        <tbody>
+                         <tr>
+                          <td align=3D"center">
+                           <table align=3D"center" cellpadding=3D"0" cellsp=
+acing=3D"0" border=3D"0" style=3D"border-collapse:separate;background-color=
+:#0f47f4;border-radius:30px">
+                            <tbody>
+                             <tr>
+                              <td><a target=3D"_blank" href=3D"https://sell=
+er=2Ealibaba=2Ecom/businessblogs/pxxw9v26-how-to-start-exporting-the-ultima=
+te-guide?tracelog=3Dggsedm_blog_en&to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=
+=3Daction-node-1613460027556&biz_type=3DNotifications_Connections&crm_mtn_t=
+racelog_template=3D2001810368&crm_mtn_tracelog_task_id=3Da4827911-e945-4623=
+-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dservice_wolf-web&crm_mtn_tra=
+celog_log_id=3D24528094701&from=3Dglobalsupplier%40service=2Ealibaba=2Ecom"=
+ style=3D"color:#ffffff;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=
+=BB=91, Arial;font-size:16px;line-height:40px;display:block;text-decoration=
+:none;height:40px;padding-left:25px;padding-right:25px;background-color:#0f=
+47f4;border-radius:30px;vertical-align:middle;position:relative;top:0;left:=
+0;right:0;bottom:0;margin:0 auto">Read more</a></td>
+                             </tr>
+                            </tbody>
+                           </table></td>
+                         </tr>
+                        </tbody>
+                       </table></td>
+                     </tr>
+                    </tbody>
+                   </table>
+                   <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+" border=3D"0">
+                    <tbody>
+                     <tr>
+                      <td style=3D"height:57px;line-height:57px;font-size:1=
+px">=C2=A0</td>
+                     </tr>
+                    </tbody>
+                   </table></td>
+                 </tr>
+                </tbody>
+               </table></td>
+             </tr>
+            </tbody>
+           </table>
+          </div></td>
+        </tr>
+       </tbody>
+      </table></td>
+    </tr>
+   </tbody>
+  </table>
+  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"width:=
+100%">
+   <tbody>
+    <tr>
+     <td align=3D"center" style=3D"background-color:#F2F3F7">
+      <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+640" style=3D"width:640px">
+       <tbody>
+        <tr>
+         <td style=3D"width:640px;background-color:#F2F3F7">
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=
+=3D"width:100%">
+           <tbody>
+            <tr>
+             <td align=3D"center" style=3D"background-color:#F2F3F7">
+              <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"640" style=3D"width:640px">
+               <tbody>
+                <tr>
+                 <td style=3D"width:640px;padding:30px;background-color:#F2=
+F3F7">
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0" style=3D"width:100%">
+                   <tbody>
+                    <tr>
+                     <td align=3D"center"><a href=3D"https://usmy=2Ealibaba=
+=2Ecom/user/account_settings=2Ehtm?tracelog=3Dggs_edm_footer&to=3Dshahrukh=
+=2Eswam%40gmail=2Ecom&node=3Daction-node-1613460027556&biz_type=3DNotificat=
+ions_Connections&crm_mtn_tracelog_template=3D2001810368&crm_mtn_tracelog_ta=
+sk_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dse=
+rvice_wolf-web&crm_mtn_tracelog_log_id=3D24528094701&from=3Dglobalsupplier%=
+40service=2Ealibaba=2Ecom" target=3D"_blank" style=3D"color:#333;font-famil=
+y:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:14px;line-h=
+eight:24px;text-decoration:underline">My Account</a><span style=3D"color:#3=
+33333;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-=
+size:14px;line-height:24px;margin:0;padding-left:6px;padding-right:6px">|</=
+span><a href=3D"https://rfq=2Ealibaba=2Ecom/rfq/post=2Ehtm?tracelog=3Dggs_e=
+dm_footer&to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=3Daction-node-16134600275=
+56&biz_type=3DNotifications_Connections&crm_mtn_tracelog_template=3D2001810=
+368&crm_mtn_tracelog_task_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn=
+_tracelog_from_sys=3Dservice_wolf-web&crm_mtn_tracelog_log_id=3D24528094701=
+&from=3Dglobalsupplier%40service=2Ealibaba=2Ecom" target=3D"_blank" style=
+=3D"color:#333;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Ar=
+ial;font-size:14px;line-height:24px;text-decoration:underline">Request for =
+Quotation</a><span style=3D"color:#333333;font-family:Roboto, =E5=BE=AE=E8=
+=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:14px;line-height:24px;margin:0;pa=
+dding-left:6px;padding-right:6px">|</span><a href=3D"https://selection=2Eal=
+ibaba=2Ecom/?tracelog=3Dggs_edm_footer&to=3Dshahrukh=2Eswam%40gmail=2Ecom&n=
+ode=3Daction-node-1613460027556&biz_type=3DNotifications_Connections&crm_mt=
+n_tracelog_template=3D2001810368&crm_mtn_tracelog_task_id=3Da4827911-e945-4=
+623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dservice_wolf-web&crm_mtn_=
+tracelog_log_id=3D24528094701&from=3Dglobalsupplier%40service=2Ealibaba=2Ec=
+om" target=3D"_blank" style=3D"color:#333;font-family:Roboto, =E5=BE=AE=E8=
+=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:14px;line-height:24px;text-decora=
+tion:underline">Top Selected Suppliers</a><span style=3D"color:#333333;font=
+-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:14px;=
+line-height:24px;margin:0;padding-left:6px;padding-right:6px">|</span><a hr=
+ef=3D"https://ai=2Ealimebot=2Ealibaba=2Ecom/intl/index=2Ehtm?from=3DAnppgS8=
+f6l&attemptquery=3Dhow%20to%20sell%20on%20alibaba&to=3Dshahrukh=2Eswam%40gm=
+ail=2Ecom&node=3Daction-node-1613460027556&biz_type=3DNotifications_Connect=
+ions&crm_mtn_tracelog_template=3D2001810368&crm_mtn_tracelog_task_id=3Da482=
+7911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dservice_wolf-w=
+eb&crm_mtn_tracelog_log_id=3D24528094701&from=3Dglobalsupplier%40service=2Ea=
+libaba=2Ecom" target=3D"_blank" style=3D"color:#333;font-family:Roboto, =E5=
+=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:14px;line-height:24px;te=
+xt-decoration:underline">Contact us</a></td>
+                    </tr>
+                   </tbody>
+                  </table>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0">
+                   <tbody>
+                    <tr>
+                     <td style=3D"height:5px;line-height:5px;font-size:1px"=
+>=C2=A0</td>
+                    </tr>
+                   </tbody>
+                  </table><p style=3D"color:#333333;font-family:Roboto, =E5=
+=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:14px;line-height:24px;ma=
+rgin:0;text-align:center">Connected with</p>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0">
+                   <tbody>
+                    <tr>
+                     <td style=3D"height:10px;line-height:10px;font-size:1p=
+x">=C2=A0</td>
+                    </tr>
+                   </tbody>
+                  </table>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0" style=3D"width:100%">
+                   <tbody>
+                    <tr>
+                     <td align=3D"center"><a target=3D"_blank" href=3D"http=
+s://www=2Efacebook=2Ecom/Alibaba=2EcomGlobal?tracelog=3Dedm_footer_facebook=
+&to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=3Daction-node-1613460027556&biz_ty=
+pe=3DNotifications_Connections&crm_mtn_tracelog_template=3D2001810368&crm_m=
+tn_tracelog_task_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog=
+_from_sys=3Dservice_wolf-web&crm_mtn_tracelog_log_id=3D24528094701&from=3Dg=
+lobalsupplier%40service=2Ealibaba=2Ecom" style=3D"line-height:0;text-decora=
+tion:none"><img src=3D"https://img=2Ealicdn=2Ecom/tfs/TB1Nve9bEH1gK0jSZSyXX=
+XtlpXa-448-512=2Epng" width=3D"25" style=3D"width:25px;padding-left:18px;bo=
+x-sizing:content-box" border=3D"0px" /></a><a target=3D"_blank" href=3D"htt=
+ps://twitter=2Ecom/?to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=3Daction-node-1=
+613460027556&biz_type=3DNotifications_Connections&crm_mtn_tracelog_template=
+=3D2001810368&crm_mtn_tracelog_task_id=3Da4827911-e945-4623-9632-5d060a65d9=
+6b&crm_mtn_tracelog_from_sys=3Dservice_wolf-web&crm_mtn_tracelog_log_id=3D2=
+4528094701&from=3Dglobalsupplier%40service=2Ealibaba=2Ecom#!/AlibabaTalk?tr=
+acelog=3Dedm_footer_twitter" style=3D"line-height:0;text-decoration:none"><=
+img src=3D"https://img=2Ealicdn=2Ecom/tfs/TB14E98bxD1gK0jSZFsXXbldVXa-448-5=
+12=2Epng" width=3D"25" style=3D"width:25px;padding-left:18px;box-sizing:con=
+tent-box" border=3D"0px" /></a><a target=3D"_blank" href=3D"https://www=2Ey=
+outube=2Ecom/user/TeamAlibaba?tracelog=3Dedm_footer_youtube&to=3Dshahrukh=
+=2Eswam%40gmail=2Ecom&node=3Daction-node-1613460027556&biz_type=3DNotificat=
+ions_Connections&crm_mtn_tracelog_template=3D2001810368&crm_mtn_tracelog_ta=
+sk_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dse=
+rvice_wolf-web&crm_mtn_tracelog_log_id=3D24528094701&from=3Dglobalsupplier%=
+40service=2Ealibaba=2Ecom" style=3D"line-height:0;text-decoration:none"><im=
+g src=3D"https://img=2Ealicdn=2Ecom/tfs/TB1G8K6bp67gK0jSZPfXXahhFXa-448-512=
+=2Epng" width=3D"25" style=3D"width:25px;padding-left:18px;box-sizing:conte=
+nt-box" border=3D"0px" /></a><a target=3D"_blank" href=3D"https://www=2Elin=
+kedin=2Ecom/company/alibaba-com?tracelog=3Dedm_footer_linkin&to=3Dshahrukh=
+=2Eswam%40gmail=2Ecom&node=3Daction-node-1613460027556&biz_type=3DNotificat=
+ions_Connections&crm_mtn_tracelog_template=3D2001810368&crm_mtn_tracelog_ta=
+sk_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dse=
+rvice_wolf-web&crm_mtn_tracelog_log_id=3D24528094701&from=3Dglobalsupplier%=
+40service=2Ealibaba=2Ecom" style=3D"line-height:0;text-decoration:none"><im=
+g src=3D"https://img=2Ealicdn=2Ecom/tfs/TB1_V99bvb2gK0jSZK9XXaEgFXa-448-512=
+=2Epng" width=3D"25" style=3D"width:25px;padding-left:18px;box-sizing:conte=
+nt-box" border=3D"0px" /></a></td>
+                    </tr>
+                   </tbody>
+                  </table>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0">
+                   <tbody>
+                    <tr>
+                     <td style=3D"height:35px;line-height:35px;font-size:1p=
+x">=C2=A0</td>
+                    </tr>
+                   </tbody>
+                  </table>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0" style=3D"width:100%">
+                   <tbody>
+                    <tr>
+                     <td align=3D"center"><span style=3D"color:#999;font-fa=
+mily:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:12px;lin=
+e-height:24px;margin:0;text-align:center">Read our </span><a href=3D"https:=
+//news=2Ealibaba=2Ecom/article/detail/help/100453303-1-privacy-policy=2Ehtm=
+l?url_type=3Dedm_footer_privacy&to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=3Da=
+ction-node-1613460027556&biz_type=3DNotifications_Connections&crm_mtn_trace=
+log_template=3D2001810368&crm_mtn_tracelog_task_id=3Da4827911-e945-4623-963=
+2-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dservice_wolf-web&crm_mtn_tracelo=
+g_log_id=3D24528094701&from=3Dglobalsupplier%40service=2Ealibaba=2Ecom" tar=
+get=3D"_blank" style=3D"color:#333;font-family:Roboto, =E5=BE=AE=E8=BD=AF=
+=E9=9B=85=E9=BB=91, Arial;font-size:12px;line-height:24px;text-decoration:u=
+nderline">Privacy Policy</a><span style=3D"color:#999;font-family:Roboto, =
+=E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:12px;line-height:24px=
+;margin:0;text-align:center"> and </span><a href=3D"https://news=2Ealibaba=
+=2Ecom/article/detail/help/100453293-1-terms-use=2Ehtml?url_type=3Dedm_foot=
+er_term&to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=3Daction-node-1613460027556=
+&biz_type=3DNotifications_Connections&crm_mtn_tracelog_template=3D200181036=
+8&crm_mtn_tracelog_task_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn_t=
+racelog_from_sys=3Dservice_wolf-web&crm_mtn_tracelog_log_id=3D24528094701&f=
+rom=3Dglobalsupplier%40service=2Ealibaba=2Ecom" target=3D"_blank" style=3D"=
+color:#333;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;=
+font-size:12px;line-height:24px;text-decoration:underline">Terms of Use</a>=
+</td>
+                    </tr>
+                   </tbody>
+                  </table><p style=3D"color:#999;font-family:Roboto, =E5=BE=
+=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:12px;line-height:24px;margi=
+n:0;text-align:center">Alibaba=2Ecom Singapore E-commerce Private Limited</=
+p><p style=3D"color:#999;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=
+=BB=91, Arial;font-size:12px;line-height:24px;margin:0;text-align:center">8=
+ Shenton Way, #45-01 AXA Tower, Singapore 068811</p><p style=3D"color:#999;=
+font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:1=
+2px;line-height:24px;margin:0;text-align:center">Email: DataProtection@serv=
+ice=2Ealibaba=2Ecom</p>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0">
+                   <tbody>
+                    <tr>
+                     <td style=3D"height:35px;line-height:35px;font-size:1p=
+x">=C2=A0</td>
+                    </tr>
+                   </tbody>
+                  </table>
+                  <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ border=3D"0" style=3D"width:100%">
+                   <tbody>
+                    <tr>
+                     <td align=3D"center"><span style=3D"color:#999;font-fa=
+mily:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:12px;lin=
+e-height:24px;margin:0;text-align:center">If you prefer not to receive emai=
+ls from Alibaba=2Ecom, you may</span><a href=3D"https://usmy=2Ealibaba=2Eco=
+m/user/emailservice/unsubscribe_entry=2Ehtm?url_type=3Dfooter_unsub&tracelo=
+g=3Dunsub_con&_000_e_a_=3DJA4-umvozX3mtlHcoK3jgCJcXXVERIB4ZH87WaRLbFo%3D&_0=
+00_e_t_=3Dk4N01mqL8kgPw7*btCYppwLo78p4wSO1MDIEzQHukkc%3D&to=3Dshahrukh=2Esw=
+am%40gmail=2Ecom&node=3Daction-node-1613460027556&biz_type=3DNotifications_=
+Connections&crm_mtn_tracelog_template=3D2001810368&crm_mtn_tracelog_task_id=
+=3Da4827911-e945-4623-9632-5d060a65d96b&crm_mtn_tracelog_from_sys=3Dservice=
+_wolf-web&crm_mtn_tracelog_log_id=3D24528094701&from=3Dglobalsupplier%40ser=
+vice=2Ealibaba=2Ecom" target=3D"_blank" style=3D"color:#999;font-family:Rob=
+oto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, Arial;font-size:12px;line-height=
+:24px;text-decoration:underline"> unsubscribe Alibaba=2Ecom Marketing Email=
+s</a><span style=3D"color:#999;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=
+=85=E9=BB=91, Arial;font-size:12px;line-height:24px;margin:0;text-align:cen=
+ter"> or set your</span><a href=3D"https://usmy=2Ealibaba=2Ecom/user/emails=
+ervice/email_service_home_page=2Ehtm?flag=3Disle&tracelog=3Dedm_footer_emai=
+l_preferences&to=3Dshahrukh=2Eswam%40gmail=2Ecom&node=3Daction-node-1613460=
+027556&biz_type=3DNotifications_Connections&crm_mtn_tracelog_template=3D200=
+1810368&crm_mtn_tracelog_task_id=3Da4827911-e945-4623-9632-5d060a65d96b&crm=
+_mtn_tracelog_from_sys=3Dservice_wolf-web&crm_mtn_tracelog_log_id=3D2452809=
+4701&from=3Dglobalsupplier%40service=2Ealibaba=2Ecom" target=3D"_blank" sty=
+le=3D"color:#999;font-family:Roboto, =E5=BE=AE=E8=BD=AF=E9=9B=85=E9=BB=91, =
+Arial;font-size:12px;line-height:24px;text-decoration:underline"> email pre=
+ferences</a></td>
+                    </tr>
+                   </tbody>
+                  </table></td>
+                </tr>
+               </tbody>
+              </table></td>
+            </tr>
+           </tbody>
+          </table></td>
+        </tr>
+       </tbody>
+      </table></td>
+    </tr>
+   </tbody>
+  </table>
+  <img style=3D"display:none; visibility:hidden; color:#fff;" width=3D"0" h=
+eight=3D"0" src=3D"http://stat=2Ealibaba=2Ecom/mail_callback=2Ehtml?crm_mtn=
+_tracelog_log_id=3D24528094701&crm_mtn_tracelog_task_id=3Da4827911-e945-462=
+3-9632-5d060a65d96b" />
+  <img style=3D"display:none; visibility:hidden; color:#fff;" width=3D"0" h=
+eight=3D"0" src=3D"http://gm=2Emmstat=2Ecom/btob=2E10?crm_mtn_tracelog_log_=
+id=3D24528094701&crm_mtn_tracelog_task_id=3Da4827911-e945-4623-9632-5d060a6=
+5d96b&from=3Dglobalsupplier@service=2Ealibaba=2Ecom&to=3Dshahrukh=2Eswam@gm=
+ail=2Ecom&from_sys=3Dservice_wolf-web&biz_type=3DNotifications_Connections&=
+template=3D2001810368" />
+ </body>
+</html>
+------=_Part_7442885_217904567.1613626305681--
+

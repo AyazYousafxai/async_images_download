@@ -1,0 +1,890 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp5049932wrd;        Wed, 22 Dec
+ 2021 23:37:47 -0800 (PST)
+Received: from o7.email.triggermail.io (o7.email.triggermail.io. [167.89.59.152])      
+  by mx.google.com with ESMTPS id 15si3945649pfl.174.2021.12.22.23.37.46     
+   for <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_128_GCM_SHA256 bits=128/128);        Wed, 22 Dec 2021
+ 23:37:47 -0800 (PST)
+Received: by filterdrecv-56986879c-v6vfn with SMTP id
+ filterdrecv-56986879c-v6vfn-1-61C42749-2F        2021-12-23
+ 07:37:45.667428489 +0000 UTC m=+9710210.299588419
+Received: from MTQ4NTY3NjQ (unknown)	by geopod-ismtpd-3-0 (SG) with HTTP	id
+ 8tTspdflQqe8_yBIs7UbzA	Thu, 23 Dec 2021 07:37:45.553 +0000 (UTC)
+X-Google-Smtp-Source: ABdhPJwgFI07IfQFui0vnBzHzv8aSJ4yaLM0UP4K5afDqukLWnDdB+n0CIKfssodnoJ5O6JJRqqV
+X-Received: by 2002:a17:90a:7c0d:: with SMTP id v13mr1422298pjf.193.1640245067461;       
+ Wed, 22 Dec 2021 23:37:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640245067; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=uS334C7C0T1rAQYwuqH/SIeK298gt3Qhh8T8di70lv13FIpUIM3+NO74isH1QL2Tf5        
+ bklH2+Wks79+NxMIfAQC77/n/c6XPMtkoDLRw9wG96rYLsXVeFZDUpXhAHQxZ0zfYdIZ        
+ QCeZ9Of1raMX+0ddve0Ex5En8rXaL6yjaE0qHVwPbi81+jsU5+Zmzqk++ss5Cek4KuT5        
+ /9AIHH7yD80cVUAx5fhsDhs+6PKuYPROtfK03iLC7yNcJWiCmBC9rNoI1I50b4zZfGUy        
+ ciwZkNkDBLbTtif/gcVWWasA7+931I3hZZJ29GUkvlStHHpuCEAziiGWfRtpWTxVByFI        
+ bhnw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=to:list-unsubscribe:reply-to:subject:message-id:mime-version:from        
+ :date:content-transfer-encoding:dkim-signature:dkim-signature;       
+ bh=BeaAzDL7mjUVWT7GmfXauXYd0xos4E3VtxfdJWsTlxk=;       
+ b=PEiN/5/A6cv/+2eYrqp2A3py/oAkPdd6OfpFT/EykvlF8hlkzVP+Y8Se8fT4JcykAz        
+ uddPfoYj/Zm/zYH0BFar2V2pZmnOgKEH437Okx5gDL79BPC0mVN4woVP9wugerb+MGge        
+ UxvIlNhf+bF963Qp3YMQGPI05WiWGs5cFCy/jddXiOH9FMRAxgCsrWw9v4XJOE8C0c4u        
+ 02bcnu17CeLS6mp5hgEqn0tD7xTdHRBXKzEtz2Xa2NFpw+qvoLfh/qzIdHKIqfl9rycO        
+ u7IsORYzxrMKF5Oz/6Y0gPBs4e7cfvUHsfTDKsaTn60sJRffiCiMJWjO4WiPOCa8xrLU        
+ QXbg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@react.whsmith.co.uk header.s=s1
+ header.b=nzVMJ7WI;       dkim=pass header.i=@sendgrid.info header.s=smtpapi
+ header.b=eqNGO0cz;       spf=pass (google.com: domain of
+ bounces+14856764-76d4-john.doe.youniq=gmail.com@em.react.whsmith.co.uk
+ designates 167.89.59.152 as permitted sender)
+ smtp.mailfrom="bounces+14856764-76d4-john.doe.youniq=gmail.com@em.react.whsmith.co.uk";       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE)
+ header.from=whsmith.co.uk
+Return-Path: <bounces+14856764-76d4-john.doe.youniq=gmail.com@em.react.whsmith.co.uk>
+Received-SPF: pass (google.com: domain of
+ bounces+14856764-76d4-john.doe.youniq=gmail.com@em.react.whsmith.co.uk
+ designates 167.89.59.152 as permitted sender) client-ip=167.89.59.152;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@react.whsmith.co.uk header.s=s1
+ header.b=nzVMJ7WI;       dkim=pass header.i=@sendgrid.info header.s=smtpapi
+ header.b=eqNGO0cz;       spf=pass (google.com: domain of
+ bounces+14856764-76d4-john.doe.youniq=gmail.com@em.react.whsmith.co.uk
+ designates 167.89.59.152 as permitted sender)
+ smtp.mailfrom="bounces+14856764-76d4-john.doe.youniq=gmail.com@em.react.whsmith.co.uk";       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE)
+ header.from=whsmith.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=react.whsmith.co.uk;	h=content-transfer-encoding:content-type:from:mime-version:subject:	reply-to:list-unsubscribe:x-feedback-id:to;	s=s1;
+ bh=BeaAzDL7mjUVWT7GmfXauXYd0xos4E3VtxfdJWsTlxk=;	b=nzVMJ7WI5mBM4AEzEDe92JqlSL9qQ58YnXSdBhRXIpjdhEELw2ID2FTDt6sc3WSHnpmo	aV/YkGA0O1ezMsti4zmVeDxCKJEnh17R0J3ceO5xa8u5s0htHyciS3rhtpA5SxX5lkM9UW	4iGhnYlSxHE1m4p2grKan86BwyHY1XGMXZLvBWHivox+rc9dLmVU20mqKbsZwyKmMWCUsf	91aj1fcnJDStqmwzIVLHqiWgfav6rWDorKxedlKPKuYJ1zRoNRIUHGwrbSkKIQqpcozovO	Am5penhzoiG/J42dC9lS4ssP/rrUdjXTS66O1LQvGyr8iV9HNccWqXsaoX8tLyHQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sendgrid.info;	h=content-transfer-encoding:content-type:from:mime-version:subject:	reply-to:list-unsubscribe:x-feedback-id:to;	s=smtpapi;
+ bh=BeaAzDL7mjUVWT7GmfXauXYd0xos4E3VtxfdJWsTlxk=;	b=eqNGO0czFf7pMd87V18K4gp7/Jn6B/Ibpa2riv975LRGhXHIZuN9Vi5QaFI8sXAVE5XA	bLpNN92XV/9ruq1ZUa72V6B3tRtCh9RytGyWQi3As7/GFmuR4xZZ6b+M3lJpA7eM+bN4uF	+wQp4cIKbNEqd+SlyZq1S1hfSusROvMb4=
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="us-ascii"
+Date: Thu, 23 Dec 2021 07:37:45 +0000 (UTC)
+From: "WHSmith" <hello@react.whsmith.co.uk>
+Mime-Version: 1.0
+Message-ID: <8tTspdflQqe8_yBIs7UbzA@geopod-ismtpd-3-0>
+Subject: Open For Perfect Last Minute Gifts =?UTF-8?B?8J+SnQ==?=
+Reply-To: support@whsmith.co.uk
+List-Unsubscribe: =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40em=2Ereact=2Ewhsmith=2Eco=2Euk=3Fsubject=3Dhttp=3A=2F=2Ftrk=2E?=
+ =?us-ascii?Q?react=2Ewhsmith=2Eco=2Euk=2Fss=2Fu=2FmO6oXoz-sxZGpf?=
+ =?us-ascii?Q?T9wLbjxQ=2F3i3=2F5zKhGxmJSDmd=5FCc5ZYUb7g=2Fum=3E?=
+X-Feedback-ID: 14856764:SG
+X-SG-EID: =?us-ascii?Q?WYpSZ4oW41Z6uoBXwewrMDhwa1WzsTBk5vauFY6TuA0huLqmFalDR8u5zYhFwG?=
+ =?us-ascii?Q?drOxMTSfnF4MVE20gCimIgecyIvOtxQFzjm+wAD?=
+ =?us-ascii?Q?Eg8yOkd6=2FujTGj=2FNIK+K44d90I2bp0OM5Kzswkz?=
+ =?us-ascii?Q?vt79oZZYahH0dp1XGeg3w018BO4DU6SlW0a8m2O?=
+ =?us-ascii?Q?=2F2=2FJWhdRKS0=2FSPqQgggogLUhH5eSRqaZ2HDwkFv?=
+ =?us-ascii?Q?bzY9sfHn1zWNMHK36blAEcFx7drsCGblhDf=2FlZ?=
+X-SG-ID: =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FK+Smgz7hPg1QWlxFBMil?= =?us-ascii?Q?7X+mdCj4Gzlbhtdwd4tg3iHMEnjyxrY7oupTiG4?=
+ =?us-ascii?Q?A6j4PmEuFUw4pogtPIxvBHz8FNFDJi9X7FwgZsR?=
+ =?us-ascii?Q?nQRAqQgzaEZCRxVm43ZZUxgluHaLywTK1TCcXUr?=
+ =?us-ascii?Q?+O4YoI0NSE9slhbvlkalHlg=2FNem2UxO1=2FPaogKt?=
+ =?us-ascii?Q?cdv96KmhFbWbSsyI55edgyMIO1=2FDat2hmHqoA6N?=
+ =?us-ascii?Q?hwHbjWO39Xp3IrG1yMLM2uUHfnWEXaGik6Io+gH?=
+ =?us-ascii?Q?ElUlQ4GzSFx8tJ2TcHrNwvhjb5ZQjUascmYsdoi?=
+ =?us-ascii?Q?AWY=2FXzOFlDtHLazRccuGCqwpqhRSeB+dy5yU9eN?=
+ =?us-ascii?Q?mI=2FJ1AzXCBXS1Z3mq8HmwFwiTM5w7LT2yoMXI4d?=
+ =?us-ascii?Q?zrM+KPUbGraYUp=2FqcQHJvSJNDHMyhy2DMrPrVOZ?=
+ =?us-ascii?Q?JPi3gJi3q7t=2F9XlgOQQzdknqyshQ0OL8iPmMQ5C?=
+ =?us-ascii?Q?2o4we+9P7WhvkDMTq9py7ICqd3pBThCIdv4IhCV?=
+ =?us-ascii?Q?t=2F5o7WRBg2SuBhgrTC0rYqYsRarADMawB+NDkO8?=
+ =?us-ascii?Q?PsPlUxd6FkKy7BHVA=2F4hgLDooa6hvX8do1xIecg?=
+ =?us-ascii?Q?WDB3HrdM+FMDfVXCtBC9wN40RdZWeEa04ldhX9R?=
+ =?us-ascii?Q?Wfx0GAmA1qI5D6A=3D=3D?=
+To: john.doe.youniq@gmail.com
+X-Entity-ID: u1PuCfzDwUqk2v01NKzAFA==
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<link rel=3D"stylesheet" href=3D"https://bluecore=2Ecom/admin/templates/fon=
+ts/whsmith=2Ecss">
+<style type=3D"text/css" media=3D"only screen and (max-width: 600px)">@medi=
+a screen and (max-width: 600px) {div,p,a,li,span,td { -webkit-text-size-adj=
+ust:none !important; }=2Eflex-image {width: 100% !important;height: auto !i=
+mportant;}=2Eflex-button {max-width:600px !important;width:100% !important;=
+}=2Eflex-button a {display: block !important;font-size: 18px !important;}=
+=2Emobile-hide { display: none !important; }=2Edesktop-hide {display: block=
+ !important;max-height: none !important;overflow: visible !important;float:=
+ none !important;font-size: 12px !important;line-height: 1=2E5 !important;}=
+=2Edisplay-table { display: table !important; }table=2Edesktop-hide {displa=
+y: table !important;}tr=2Edesktop-hide {display: table-row !important;}=2Ed=
+esktop-hide td,td=2Edesktop-hide {display: table-cell !important;}=2Edeskto=
+p-hide img,img=2Edesktop-hide {max-height: none !important;width: auto !imp=
+ortant;}=2Edesktop-hide =2Eflex-image {width: 100% !important;}#content-tab=
+le,=2Erow,=2Efluid-row,=2Emd-fluid-row,=2Erow-spacer,#navigation,=2Erow =2Ec=
+ol-1,=2Erow =2Ecol-2,=2Erow =2Ecol-3,=2Erow =2Ecol-4,=2Erow =2Ecol-5,=2Erow=
+ =2Ecol-6,=2Erow =2Ecol-7,=2Erow =2Ecol-8,=2Erow =2Ecol-9,=2Erow =2Ecol-10,=
+=2Erow =2Ecol-11,=2Ecol-12 { width: 100% !important; }=2Efluid-row =2Ecol-1=
+,=2Emd-fluid-row =2Ecol-1 { width: 8=2E25% !important;}=2Efluid-row =2Ecol-=
+2,=2Emd-fluid-row =2Ecol-2 { width: 16=2E5% !important;}=2Efluid-row =2Ecol=
+-3,=2Emd-fluid-row =2Ecol-3 { width: 25% !important;}=2Efluid-row =2Ecol-4,=
+=2Emd-fluid-row =2Ecol-4 { width: 33% !important;}=2Efluid-row =2Ecol-5,=2Em=
+d-fluid-row =2Ecol-5 { width: 41=2E25% !important;}=2Efluid-row =2Ecol-6,=
+=2Emd-fluid-row =2Ecol-6 { width: 50% !important;}=2Efluid-row =2Ecol-7,=2Em=
+d-fluid-row =2Ecol-7 { width: 57=2E75% !important;}=2Efluid-row =2Ecol-8,=
+=2Emd-fluid-row =2Ecol-8 { width: 66% !important;}=2Efluid-row =2Ecol-9,=2Em=
+d-fluid-row =2Ecol-8 { width: 74=2E25% !important;}=2Efluid-row =2Ecol-10,=
+=2Emd-fluid-row =2Ecol-10 { width: 82=2E5% !important; }=2Efluid-row =2Ecol=
+-11,=2Emd-fluid-row =2Ecol-11 { width: 90=2E75% !important;}#vte-hero-produ=
+ct =2Ehero-product-container {padding-top: 0 !important;}#vte-nav-widget-im=
+age-container {padding-top: 0 !important;padding-right: 0 !important;paddin=
+g-bottom: 0 !important;padding-left: 0 !important;}=2Emobile-center {text-a=
+lign: center !important;float: none !important;}=2Emobile-center img {text-=
+align: center !important;margin: 0 auto !important;}#widget_fe2ddfcecfa9c9f=
+58254979347832138 =2Eblock-content td {font-size: 11px !important;line-heig=
+ht: 18px !important;letter-spacing: 0=2E0em !important;padding-left: 15px !=
+important;padding-right: 15px !important;}#widget_fe2ddfcecfa9c9f5825497934=
+7832138 =2Ewidget_top_bottom_padding {padding-top: 10px !important;padding-=
+bottom: 10px !important;}
+   =20
+  #widget_e0f7d4de9b59f21559a9524f3403e248 =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_e0f7d4de9b59f21559a9524f3403e248 =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 140px !important;}#widget_e0f7d4de9b59f21559a9524=
+f3403e248 =2Ewidget_top_bottom_padding {padding-top: 20px !important;paddin=
+g-bottom: 20px !important;}
+   =20
+ =20
+   =20
+  #widget_c8a1ff89b9c3a2571b69dabb0f5ff8d7 =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_c8a1ff89b9c3a2571b69dabb0f5ff8d7 =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 320px !important;}#widget_c8a1ff89b9c3a2571b69dab=
+b0f5ff8d7 =2Ewidget_top_bottom_padding {padding-top: 0px !important;padding=
+-bottom: 0px !important;}
+   =20
+  #widget_81d01a711d4bde359272c05124922980 =2Eblock-content td {font-size: =
+13px !important;line-height: 20px !important;letter-spacing: 0=2E0em !impor=
+tant;padding-left: 5px !important;padding-right: 5px !important;}#widget_81=
+d01a711d4bde359272c05124922980 =2Ewidget_top_bottom_padding {padding-top: 1=
+8px !important;padding-bottom: 10px !important;}
+   =20
+  #widget_d6fc51288cc338b2a7cd38bad69d341e =2Etext-button-content td a {fon=
+t-size: 13px !important;line-height: 17px !important;letter-spacing: 0em !i=
+mportant;}#widget_d6fc51288cc338b2a7cd38bad69d341e =2Ebutton-container {pad=
+ding-left: 0px !important;padding-right: 0px !important;}#widget_d6fc51288c=
+c338b2a7cd38bad69d341e =2Ewidget_top_bottom_padding {padding-top: 10px !imp=
+ortant;padding-bottom: 20px !important;}
+   =20
+  #widget_6c4d4309d9b093cecde3e1df0e688e57 =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_6c4d4309d9b093cecde3e1df0e688e57 =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 320px !important;}#widget_6c4d4309d9b093cecde3e1d=
+f0e688e57 =2Ewidget_top_bottom_padding {padding-top: 0px !important;padding=
+-bottom: 0px !important;}
+   =20
+  #widget_87a5f6fd83b4441a256ab46def03bcfd =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_87a5f6fd83b4441a256ab46def03bcfd =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 320px !important;}#widget_87a5f6fd83b4441a256ab46=
+def03bcfd =2Ewidget_top_bottom_padding {padding-top: 0px !important;padding=
+-bottom: 0px !important;}
+   =20
+  #widget_d313d1b9b6a86f5ae574a68ca266773b =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_d313d1b9b6a86f5ae574a68ca266773b =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 320px !important;}#widget_d313d1b9b6a86f5ae574a68=
+ca266773b =2Ewidget_top_bottom_padding {padding-top: 0px !important;padding=
+-bottom: 0px !important;}
+   =20
+  #widget_bb8b051747429ba8b5c0c062b40b3fe0 =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_bb8b051747429ba8b5c0c062b40b3fe0 =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 320px !important;}#widget_bb8b051747429ba8b5c0c06=
+2b40b3fe0 =2Ewidget_top_bottom_padding {padding-top: 0px !important;padding=
+-bottom: 0px !important;}
+   =20
+  #widget_2dff53f1c845a39d27ec7d74210f195e =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_2dff53f1c845a39d27ec7d74210f195e =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 320px !important;}#widget_2dff53f1c845a39d27ec7d7=
+4210f195e =2Ewidget_top_bottom_padding {padding-top: 0px !important;padding=
+-bottom: 0px !important;}
+   =20
+  #widget_bea63a6c74eefec8e7805d59f5d530ad =2Eblock-content =2Eimage-widget=
+-content {padding-left: 0px !important;padding-right: 0px !important;}#widg=
+et_bea63a6c74eefec8e7805d59f5d530ad =2Eblock-content =2Eimage-widget-conten=
+t =2Emobile-width {width: 122px !important;}#widget_bea63a6c74eefec8e7805d5=
+9f5d530ad =2Ewidget_top_bottom_padding {padding-top: 25px !important;paddin=
+g-bottom: 0px !important;}
+   =20
+ =20
+   =20
+  #widget_45721a23df076eb6779904415d9aef94 =2Eblock-content td {font-size: =
+12px !important;line-height: 16px !important;letter-spacing: 0=2E0em !impor=
+tant;padding-left: 0px !important;padding-right: 0px !important;}#widget_45=
+721a23df076eb6779904415d9aef94 =2Ewidget_top_bottom_padding {padding-top: 2=
+0px !important;padding-bottom: 25px !important;}
+   =20
+  #widget_3206a9b841523d63971f4b9f5510fbda =2Eblock-content td {font-size: =
+10px !important;line-height: 18px !important;letter-spacing: 0=2E0em !impor=
+tant;padding-left: 0px !important;padding-right: 0px !important;}#widget_32=
+06a9b841523d63971f4b9f5510fbda =2Ewidget_top_bottom_padding {padding-top: 1=
+0px !important;padding-bottom: 10px !important;}
+   =20
+  #widget_1db4857ff8e8d69dfdd95ddcb8b06b14 =2Eblock-content td {font-size: =
+9px !important;line-height: 11px !important;letter-spacing: 0=2E0em !import=
+ant;padding-left: 0px !important;padding-right: 0px !important;}#widget_1db=
+4857ff8e8d69dfdd95ddcb8b06b14 =2Ewidget_top_bottom_padding {padding-top: 10=
+px !important;padding-bottom: 10px !important;}
+   =20
+  }
+</style>
+</head>
+<body style=3D"margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text=
+-size-adjust:100%">
+<!-- tracking pixel container --><div id=3D"bluecore-pixel" style=3D"displa=
+y: none; max-height: 0px; overflow: hidden;"><div style=3D"display:none"><i=
+mg src=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/o/mO6oXoz-sxZGpfT9wLbjx=
+Q/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/ho=2Egif" alt=3D"" width=3D"1" height=3D"1" bo=
+rder=3D"0" style=3D"height:1px !important;width:1px !important;border-width=
+:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-rig=
+ht:0 !important;margin-left:0 !important;padding-top:0 !important;padding-b=
+ottom:0 !important;padding-right:0 !important;padding-left:0 !important;"/>=
+</div></div>
+<table id=3D"wrapper-table" width=3D"100%" cellspacing=3D"0" cellpadding=3D"=
+0" border=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0pt; ms=
+o-table-rspace:0pt; margin:0; padding:0"><tr><td align=3D"center" style=3D"=
+border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tabl=
+e id=3D"content-table" width=3D"600" align=3D"center" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0pt; mso-table-rspace:0pt"><tr><td id=3D"content-cell" align=3D"center=
+" style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace=
+:0pt">
+<!-- preheader --><table bgcolor=3D"#FFFFFF" class=3D"row" id=3D"widget_fe2=
+ddfcecfa9c9f58254979347832138" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722153616162816l=
+w6329259252170752" add-link-instances=3D"True" style=3D"border-collapse:col=
+lapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td class=3D"widget_=
+top_bottom_padding" style=3D"border-collapse:collapse; mso-table-lspace:0pt=
+; mso-table-rspace:0pt; padding-top:10px; padding-bottom:10px"><table class=
+=3D"col-12" width=3D"600" align=3D"left" cellspacing=3D"0" cellpadding=3D"0=
+" border=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-t=
+able-rspace:0; border-left:1px; border-right:1px"><tr><td style=3D"border-c=
+ollapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><table class=
+=3D"block-content" width=3D"100%" align=3D"center" cellspacing=3D"0" cellpa=
+dding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-lspac=
+e:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><tr><td align=
+=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-ta=
+ble-rspace:0pt; font-size:11px; line-height:18px; letter-spacing:0=2E0em; t=
+ext-transform:none; padding-left:0px; padding-right:0px"><p style=3D"margin=
+:0 !important"><span style=3D"font-family: 'Gotham Book Regular', Arial, He=
+lvetica, sans-serif; color: #333333;"><span style=3D"color: #afafaf;"><span=
+ style=3D"color: #808080; font-family: Arial, Helvetica, sans-serif;">Digit=
+al gift cards, magazine subscriptions and more=2E=2E=2E&#160;</span></span>=
+<span style=3D"text-decoration: underline;"><span style=3D"color: #afafaf;"=
+><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3=
+N8kk0ggOctTmSTlgKBvtFkDnrYWDjvb4rDbk6SDZ5Rk4eOfkw-gNyv8s3HUU2Hrfttg/3i3/5zK=
+hGxmJSDmd_Cc5ZYUb7g/h0/PO4lY6iSXMQYM4ckb-JcNL2d0qBtTrPGtjYHmlv6cLs" target=
+=3D"_blank" rel=3D"noopener" style=3D"color:#afafaf; text-decoration:underl=
+ine">View email in browser</a></span></span></span></p></td></tr></table></=
+td></tr></table></td></tr></table>
+<!-- end preheader --><!-- image --><table class=3D"row" bgcolor=3D"#014483=
+" id=3D"widget_e0f7d4de9b59f21559a9524f3403e248" width=3D"100%" align=3D"ce=
+nter" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t=
+6722153616162816lw4921884368617472" add-link-instances=3D"True" style=3D"bo=
+rder-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td=
+ class=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso=
+-table-lspace:0pt; mso-table-rspace:0pt; padding-top:20px; padding-bottom:2=
+0px"><table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-ta=
+ble-lspace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><t=
+d style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace=
+:0pt"><table class=3D"block-content" width=3D"100%" align=3D"center" cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collaps=
+e; mso-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:cente=
+r"><tr><td align=3D"center" class=3D"image-widget-content" style=3D"border-=
+collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left=
+:0px; padding-right:0px; line-height:1px; font-size:1px">
+<a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N=
+8kk0ggOctTmSTlgKBvtFkDkKylvaq9ZgMmfn4XkHoBApoC4irmOiisylm49uvtKdYA/3i3/5zKh=
+GxmJSDmd_Cc5ZYUb7g/h1/BBiJa9ELfl7D9xpjdhkmrmrLTZ3NJCNt3FnIZ1K5vxI" target=
+=3D"_blank"><img class=3D"mobile-hide" width=3D"150" src=3D"https://storage=
+=2Egoogleapis=2Ecom/img=2Etriggermail=2Eio/whsmith/Logo=2Epng" alt=3D"WHSmi=
+th" border=3D"0" style=3D"display:block; height:auto; line-height:100%; tex=
+t-decoration:none; outline:none; -ms-interpolation-mode:bicubic; border:0 n=
+one; font-size:initial" height=3D"auto"></a><!-- [if !mso]><! --><div class=
+=3D"desktop-hide" style=3D"display:none; padding:0; max-height:0; overflow:=
+hidden; float:left; font-size:0; line-height:0; mso-hide:all"><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"borde=
+r-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td al=
+ign=3D"center" class=3D"desktop-hide" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; display:none; padding:0; max-heig=
+ht:0; overflow:hidden; float:left; mso-hide:all; line-height:0px; font-size=
+:0px"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihu=
+aVrA3N8kk0ggOctTmSTlgKBvtFkDkF8SGFeJ3y3t-CKEWOG_3AhhWR3O5IxsmIqhe8prla6A/3i=
+3/5zKhGxmJSDmd_Cc5ZYUb7g/h2/sdNXex6ldt2W46l7lXBfMP5Ai-c5JTK9xXslt7tNLmg" ta=
+rget=3D"_blank"><img class=3D"mobile-width" width=3D"0" src=3D"https://stor=
+age=2Egoogleapis=2Ecom/img=2Etriggermail=2Eio/whsmith/Logo=2Epng" alt=3D"WH=
+Smith" border=3D"0" style=3D"display:block; height:auto; line-height:100%; =
+text-decoration:none; outline:none; -ms-interpolation-mode:bicubic; border:=
+0 none; max-height:0; width:0; font-size:initial" height=3D"auto"></a></td>=
+</tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- navigation --><table class=3D"row" bgcolor=3D"#f0f2f=
+4" width=3D"600" align=3D"center" cellspacing=3D"0" cellpadding=3D"0" borde=
+r=3D"0" link-context-id=3D"t6722153616162816lw6047784275460096" add-link-in=
+stances=3D"True" style=3D"border-collapse:collapse; mso-table-lspace:0pt; m=
+so-table-rspace:0pt">
+<tr class=3D"mobile-hide"><td class=3D"mobile-hide" height=3D"15" bgcolor=
+=3D"#f0f2f4" style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-t=
+able-rspace:0pt; background-color:#f0f2f4; line-height:1px; font-size:1px">=
+&#160;</td></tr>
+<tr><td style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt"><table class=3D"col-6 mobile-hide" width=3D"600" align=3D"cente=
+r" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collaps=
+e:collapse; mso-table-lspace:0; mso-table-rspace:0; border-left:1px; border=
+-right:1px"><tr><td style=3D"border-collapse:collapse; mso-table-lspace:0pt=
+; mso-table-rspace:0pt"><table id=3D"navigation" width=3D"600" align=3D"lef=
+t" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td style=3D"bo=
+rder-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding=
+-top:0px; padding-left:0px; padding-right:0px"><table class=3D"block-conten=
+t" align=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" style=
+=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; w=
+idth:100%; text-align:center" width=3D"100%"><tr>
+<td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0p=
+t; mso-table-rspace:0pt; font-size:12px; font-family:Arial, Helvetica, sans=
+-serif; text-transform:none; text-align:center; letter-spacing:0em; line-he=
+ight:13px; background-color:#f0f2f4" width=3D"100" valign=3D"middle" bgcolo=
+r=3D"#f0f2f4"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQj=
+AVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDkfRay5gon3z6Et32BCAmABKEHYaqqeaXJy2l_VG=
+Y7BYA/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h3/H5kfHnooyiYPtesEy7rxh-Ut3npBA7H3u5YFMNc=
+VUag" target=3D"_blank" style=3D"color:#303031; text-decoration: none;font-=
+weight: bold;"><span style=3D"color: #303031;">Books</span></a></td>
+<td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0p=
+t; mso-table-rspace:0pt; font-size:12px; font-family:Arial, Helvetica, sans=
+-serif; text-transform:none; text-align:center; letter-spacing:0em; line-he=
+ight:13px; background-color:#f0f2f4" width=3D"100" valign=3D"middle" bgcolo=
+r=3D"#f0f2f4"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQj=
+AVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDkKcqRa9mlHQyksYE7RA4swCXJG-9QaKSanIN_IB=
+zTx7Q/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h4/M0dZ4GuKmahTtAIX9gw1y3mVsDPNnJz-TWq_fAv=
+brDs" target=3D"_blank" style=3D"color:#303031; text-decoration: none;font-=
+weight: bold;"><span style=3D"color: #303031;">Stationery</span></a></td>
+<td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0p=
+t; mso-table-rspace:0pt; font-size:12px; font-family:Arial, Helvetica, sans=
+-serif; text-transform:none; text-align:center; letter-spacing:0em; line-he=
+ight:13px; background-color:#f0f2f4" width=3D"100" valign=3D"middle" bgcolo=
+r=3D"#f0f2f4"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQj=
+AVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDkY_Xr7qZitHZsEkZ0ZACegIRf2FzN7b6N11mUXw=
+1zPbQ/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h5/YWFhrV7kkCpvpqQF8uTBLX41KpDaIQ5Y7-VEsL0=
+6QDQ" target=3D"_blank" style=3D"color:#303031; text-decoration: none;font-=
+weight: bold;"><span style=3D"color: #303031;">Christmas</span></a></td>
+<td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0p=
+t; mso-table-rspace:0pt; font-size:12px; font-family:Arial, Helvetica, sans=
+-serif; text-transform:none; text-align:center; letter-spacing:0em; line-he=
+ight:13px; background-color:#f0f2f4" width=3D"100" valign=3D"middle" bgcolo=
+r=3D"#f0f2f4"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQj=
+AVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDkNPTWfbrYWyUJsTU4ru_bClY_7wgRxc-SA6wYwf=
+-wYHg/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h6/RT37VqtSFRfZH-kgzkg0L_H1ivratQNeJtmvpZs=
+-0rk" target=3D"_blank" style=3D"color:#303031; text-decoration: none;font-=
+weight: bold;"><span style=3D"color: #303031;">Art &amp; Craft</span></a></=
+td>
+<td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0p=
+t; mso-table-rspace:0pt; font-size:12px; font-family:Arial, Helvetica, sans=
+-serif; text-transform:none; text-align:center; letter-spacing:0em; line-he=
+ight:13px; background-color:#f0f2f4" width=3D"100" valign=3D"middle" bgcolo=
+r=3D"#f0f2f4"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQj=
+AVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDlgzkCmCqwBqEjcCmZ6no6xQIKTVJGu9w4tVb-sa=
+5O-6w/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h7/sJqmtGD0D1qXkA-ZRnfWvh5O8k_3OOMnoyYn62x=
+FBng" target=3D"_blank" style=3D"color:#303031; text-decoration: none;font-=
+weight: bold;"><span style=3D"color: #303031;">Music &amp; Film</span></a><=
+/td>
+<td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:0p=
+t; mso-table-rspace:0pt; font-size:12px; font-family:Arial, Helvetica, sans=
+-serif; text-transform:none; text-align:center; letter-spacing:0em; line-he=
+ight:13px; background-color:#f0f2f4" width=3D"100" valign=3D"middle" bgcolo=
+r=3D"#f0f2f4"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQj=
+AVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDk7as48E-INxe0bc8ZSjZrh0AkvSiJAa_2qeAw4r=
+2jJgw/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h8/9hCNKgjjFpD9P4xlZxsDXIJtkRHD3K-Xurpo5b5=
+LB6s" target=3D"_blank" style=3D"color:#303031; text-decoration: none;font-=
+weight: bold;"><span style=3D"color: #303031;">Toys &amp; Games</span></a><=
+/td>
+</tr></table></td></tr></table></td></tr></table></td></tr>
+<tr class=3D"mobile-hide"><td class=3D"mobile-hide" height=3D"15" bgcolor=
+=3D"#f0f2f4" style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-t=
+able-rspace:0pt; background-color:#f0f2f4; line-height:1px; font-size:1px">=
+&#160;</td></tr>
+</table>
+<!-- end navigation --><!-- image --><table class=3D"row" bgcolor=3D"#fffff=
+f" id=3D"widget_c8a1ff89b9c3a2571b69dabb0f5ff8d7" width=3D"100%" align=3D"c=
+enter" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"=
+t6722153616162816lw5484834322038784" add-link-instances=3D"True" style=3D"b=
+order-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><t=
+d class=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; padding-top:0px; padding-bottom:0=
+px"><table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td=
+ style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:=
+0pt"><table class=3D"block-content" width=3D"100%" align=3D"center" cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse=
+; mso-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center=
+"><tr><td align=3D"center" class=3D"image-widget-content" style=3D"border-c=
+ollapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:=
+0px; padding-right:0px; line-height:1px; font-size:1px">
+<a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N=
+8kk0ggOctTmSTlgKBvtFkDnhIo7wMnfQlgpXmzMFUWBmx9WUfHqDb8qhNG8UypMI3g/3i3/5zKh=
+GxmJSDmd_Cc5ZYUb7g/h9/C6tsPvOT5m_pd4rTcBVLdDflMhWSGnPxxeYszl7-PMs" target=
+=3D"_blank"><img class=3D"mobile-hide" width=3D"600" src=3D"https://assets=
+=2Ewhsmith=2Eco=2Euk/content-image/default/xmas-egiftvouchers-giftcardhome-=
+171221-topbanner=2Ejpg" alt=3D"Gift cards and vouchers" border=3D"0" style=
+=3D"display:block; height:auto; line-height:100%; text-decoration:none; out=
+line:none; -ms-interpolation-mode:bicubic; border:0 none; font-size:initial=
+" height=3D"auto"></a><!-- [if !mso]><! --><div class=3D"desktop-hide" styl=
+e=3D"display:none; padding:0; max-height:0; overflow:hidden; float:left; fo=
+nt-size:0; line-height:0; mso-hide:all"><table align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt"><tr><td align=3D"center" class=3D"=
+desktop-hide" style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-=
+table-rspace:0pt; display:none; padding:0; max-height:0; overflow:hidden; f=
+loat:left; mso-hide:all; line-height:0px; font-size:0px"><a href=3D"http://=
+trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBv=
+tFkDn4SM7BMVh-kerXCYoFBCiuK1tjQnBMhTjNkOGJIcgJYg/3i3/5zKhGxmJSDmd_Cc5ZYUb7g=
+/h10/NP8E1UeTeeAJpBlnNdcaQchpK5CCStNJpa7psGP2kzI" target=3D"_blank"><img cl=
+ass=3D"flex-image" width=3D"0" src=3D"https://assets=2Ewhsmith=2Eco=2Euk/co=
+ntent-image/default/xmas-egiftvouchers-giftcardhome-171221-topbanner=2Ejpg"=
+ alt=3D"Gift cards and vouchers" border=3D"0" style=3D"display:block; heigh=
+t:auto; line-height:100%; text-decoration:none; outline:none; -ms-interpola=
+tion-mode:bicubic; border:0 none; max-height:0; width:0; font-size:initial"=
+ height=3D"auto"></a></td></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- text --><table bgcolor=3D"#ffffff" class=3D"row" id=
+=3D"widget_81d01a711d4bde359272c05124922980" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw6610734228881408" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:18px; padding-bottom:10px"=
+><table class=3D"col-12" width=3D"600" align=3D"left" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; font-size:13px; line-height:20px; letter-spacing=
+:0=2E0em; text-transform:none; padding-left:0px; padding-right:0px"><p styl=
+e=3D"margin:0 !important; text-align:center" align=3D"center"><strong><span=
+ style=3D"font-family: Arial, Helvetica, sans-serif;">There is still time! =
+You can still choose unique and thoughtful gifts today, from our digital gi=
+ft cards to a magazine subscription or an amazing gift experience they can =
+look forward to=2E Simply print off the email confirmations and present as =
+a gift=2E</span></strong></p></td></tr></table></td></tr></table></td></tr>=
+</table>
+<!-- end text --><!-- button --><table class=3D"row" id=3D"widget_d6fc51288=
+cc338b2a7cd38bad69d341e" bgcolor=3D"#ffffff" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw4781146880262144" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:10px; padding-bottom:20px"=
+><table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" c=
+ellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-=
+lspace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td cl=
+ass=3D"button-container" align=3D"center" style=3D"border-collapse:collapse=
+; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px; padding-rig=
+ht:0px"><table class=3D"text-button-content" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"mso-table-lspace:0pt; mso-ta=
+ble-rspace:0pt; border-collapse:initial"><tr><td align=3D"center" valign=3D"=
+middle" style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-=
+rspace:0pt; padding-top:7px; padding-bottom:7px; padding-left:24px; padding=
+-right:24px; background-color:#0073f0; font-size:16px; color:#FFFFFF; lette=
+r-spacing:0em; line-height:17px; border-radius:0px" bgcolor=3D"#0073f0"><ta=
+ble align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><=
+tr><td style=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-r=
+space:0pt; text-align:center" align=3D"center"><a href=3D"http://trk=2Ereac=
+t=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDksYqvQ=
+94gEaWDxc56HJC1Pg7wk2az9rR6YtJYxlp3skg/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h11/-S76U=
+hzYUZCne79AGoz4M_RpRI2I_pv8MfbQoGEd55c" target=3D"_blank" style=3D"color: #=
+FFFFFF;text-decoration: none;font-size: 16px;font-weight: bold;line-height:=
+ 17px;font-family:Arial, Helvetica, sans-serif;">Shop Now</a></td></tr></ta=
+ble></td></tr></table></td></tr></table></td></tr></table>
+<!-- end button --><!-- image --><table class=3D"row" bgcolor=3D"#ffffff" i=
+d=3D"widget_6c4d4309d9b093cecde3e1df0e688e57" width=3D"100%" align=3D"cente=
+r" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t672=
+2153616162816lw5907046787104768" add-link-instances=3D"True" style=3D"borde=
+r-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cl=
+ass=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-ta=
+ble-lspace:0pt; mso-table-rspace:0pt; padding-top:0px; padding-bottom:0px">=
+<table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" ce=
+llpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-l=
+space:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td sty=
+le=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"=
+><table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" class=3D"image-widget-content" style=3D"border-colla=
+pse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px;=
+ padding-right:0px; line-height:1px; font-size:1px">
+<img class=3D"mobile-hide" width=3D"600" src=3D"https://storage=2Egoogleapi=
+s=2Ecom/img=2Etriggermail=2Eio/whsmith/shadowgreyemail3=2Ejpg" alt border=
+=3D"0" style=3D"display:block; border:0 none; height:auto; line-height:100%=
+; text-decoration:none; outline:none; -ms-interpolation-mode:bicubic; font-=
+size:initial" height=3D"auto"><!-- [if !mso]><! --><div class=3D"desktop-hi=
+de" style=3D"display:none; padding:0; max-height:0; overflow:hidden; float:=
+left; font-size:0; line-height:0; mso-hide:all"><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:coll=
+apse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td align=3D"center" =
+class=3D"desktop-hide" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; display:none; padding:0; max-height:0; overflow:=
+hidden; float:left; mso-hide:all; line-height:0px; font-size:0px"><img clas=
+s=3D"flex-image" width=3D"0" src=3D"https://storage=2Egoogleapis=2Ecom/img=
+=2Etriggermail=2Eio/whsmith/shadowgreyemail3=2Ejpg" alt border=3D"0" style=
+=3D"display:block; border:0 none; height:auto; line-height:100%; text-decor=
+ation:none; outline:none; -ms-interpolation-mode:bicubic; max-height:0; wid=
+th:0; font-size:initial" height=3D"auto"></td></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- image --><table class=3D"row" bgcolor=3D"#ffffff" id=
+=3D"widget_87a5f6fd83b4441a256ab46def03bcfd" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw5344096833683456" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:0px; padding-bottom:0px"><=
+table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" class=3D"image-widget-content" style=3D"border-colla=
+pse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px;=
+ padding-right:0px; line-height:1px; font-size:1px">
+<a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N=
+8kk0ggOctTmSTlgKBvtFkDljr4tDZoLZoLZufRLuW_JnxaNQH4MKZcOi58RZxR8PSg/3i3/5zKh=
+GxmJSDmd_Cc5ZYUb7g/h12/6NPWowBcB1Lp4LalFlC7zziIWsNbSRnsQ5sMOoxZxjA" target=
+=3D"_blank"><img class=3D"mobile-hide" width=3D"600" src=3D"https://assets=
+=2Ewhsmith=2Eco=2Euk/content-image/default/magazine-subscriptions-christmas=
+-161221-banner=2Ejpg" alt=3D"Magazine Subscriptions and Gift Packs" border=
+=3D"0" style=3D"display:block; height:auto; line-height:100%; text-decorati=
+on:none; outline:none; -ms-interpolation-mode:bicubic; border:0 none; font-=
+size:initial" height=3D"auto"></a><!-- [if !mso]><! --><div class=3D"deskto=
+p-hide" style=3D"display:none; padding:0; max-height:0; overflow:hidden; fl=
+oat:left; font-size:0; line-height:0; mso-hide:all"><table align=3D"center"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td align=3D"cent=
+er" class=3D"desktop-hide" style=3D"border-collapse:collapse; mso-table-lsp=
+ace:0pt; mso-table-rspace:0pt; display:none; padding:0; max-height:0; overf=
+low:hidden; float:left; mso-hide:all; line-height:0px; font-size:0px"><a hr=
+ef=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0g=
+gOctTmSTlgKBvtFkDnCc99HECYi8VzuLcEJqA8gU9RMDZdXbqLiOjwmONR7aw/3i3/5zKhGxmJS=
+Dmd_Cc5ZYUb7g/h13/wr89TsD9YrlJNamA2qrMVrabSTEnJIr0FFuR5YYykVM" target=3D"_b=
+lank"><img class=3D"flex-image" width=3D"0" src=3D"https://assets=2Ewhsmith=
+=2Eco=2Euk/content-image/default/magazine-subscriptions-christmas-161221-ba=
+nner=2Ejpg" alt=3D"Magazine Subscriptions and Gift Packs" border=3D"0" styl=
+e=3D"display:block; height:auto; line-height:100%; text-decoration:none; ou=
+tline:none; -ms-interpolation-mode:bicubic; border:0 none; max-height:0; wi=
+dth:0; font-size:initial" height=3D"auto"></a></td></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- image --><table class=3D"row" bgcolor=3D"#ffffff" id=
+=3D"widget_d313d1b9b6a86f5ae574a68ca266773b" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw6399627996348416" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:0px; padding-bottom:0px"><=
+table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" class=3D"image-widget-content" style=3D"border-colla=
+pse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px;=
+ padding-right:0px; line-height:1px; font-size:1px">
+<img class=3D"mobile-hide" width=3D"600" src=3D"https://storage=2Egoogleapi=
+s=2Ecom/img=2Etriggermail=2Eio/whsmith/shadowgreyemail3=2Ejpg" alt border=
+=3D"0" style=3D"display:block; border:0 none; height:auto; line-height:100%=
+; text-decoration:none; outline:none; -ms-interpolation-mode:bicubic; font-=
+size:initial" height=3D"auto"><!-- [if !mso]><! --><div class=3D"desktop-hi=
+de" style=3D"display:none; padding:0; max-height:0; overflow:hidden; float:=
+left; font-size:0; line-height:0; mso-hide:all"><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:coll=
+apse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td align=3D"center" =
+class=3D"desktop-hide" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; display:none; padding:0; max-height:0; overflow:=
+hidden; float:left; mso-hide:all; line-height:0px; font-size:0px"><img clas=
+s=3D"flex-image" width=3D"0" src=3D"https://storage=2Egoogleapis=2Ecom/img=
+=2Etriggermail=2Eio/whsmith/shadowgreyemail3=2Ejpg" alt border=3D"0" style=
+=3D"display:block; border:0 none; height:auto; line-height:100%; text-decor=
+ation:none; outline:none; -ms-interpolation-mode:bicubic; max-height:0; wid=
+th:0; font-size:initial" height=3D"auto"></td></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- image --><table class=3D"row" bgcolor=3D"#ffffff" id=
+=3D"widget_bb8b051747429ba8b5c0c062b40b3fe0" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw4992253112795136" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:0px; padding-bottom:0px"><=
+table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" class=3D"image-widget-content" style=3D"border-colla=
+pse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px;=
+ padding-right:0px; line-height:1px; font-size:1px">
+<a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N=
+8kk0ggOctTmSTlgKBvtFkDlEdj9GGMHu6_W68Iibb-RcGtG5cz9vOjIIFjIHlM6pDQ/3i3/5zKh=
+GxmJSDmd_Cc5ZYUb7g/h14/R4zp0DWR9xzc4Y4CNAuPBuiBpaxenVuppJSlCCaxQLA" target=
+=3D"_blank"><img class=3D"mobile-hide" width=3D"600" src=3D"https://assets=
+=2Ewhsmith=2Eco=2Euk/content-image/default/smartbox-giftexperiences-lead-04=
+1021-banner=2Ejpg" alt=3D"xperience Gifts and Activity Vouchers" border=3D"=
+0" style=3D"display:block; height:auto; line-height:100%; text-decoration:n=
+one; outline:none; -ms-interpolation-mode:bicubic; border:0 none; font-size=
+:initial" height=3D"auto"></a><!-- [if !mso]><! --><div class=3D"desktop-hi=
+de" style=3D"display:none; padding:0; max-height:0; overflow:hidden; float:=
+left; font-size:0; line-height:0; mso-hide:all"><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:coll=
+apse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td align=3D"center" =
+class=3D"desktop-hide" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; display:none; padding:0; max-height:0; overflow:=
+hidden; float:left; mso-hide:all; line-height:0px; font-size:0px"><a href=
+=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggO=
+ctTmSTlgKBvtFkDlGlV_XKFWGRqBnI6i15FKagg9ycvQL86hwnLiLH3lLFA/3i3/5zKhGxmJSDm=
+d_Cc5ZYUb7g/h15/1OkImX1ojchDo47XWyFjnYf_F8zK36M8I-Rxa26kX0A" target=3D"_bla=
+nk"><img class=3D"flex-image" width=3D"0" src=3D"https://assets=2Ewhsmith=
+=2Eco=2Euk/content-image/default/smartbox-giftexperiences-lead-041021-banne=
+r=2Ejpg" alt=3D"xperience Gifts and Activity Vouchers" border=3D"0" style=
+=3D"display:block; height:auto; line-height:100%; text-decoration:none; out=
+line:none; -ms-interpolation-mode:bicubic; border:0 none; max-height:0; wid=
+th:0; font-size:initial" height=3D"auto"></a></td></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- image --><table class=3D"row" bgcolor=3D"#ffffff" id=
+=3D"widget_2dff53f1c845a39d27ec7d74210f195e" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw6118153019637760" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:0px; padding-bottom:0px"><=
+table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" class=3D"image-widget-content" style=3D"border-colla=
+pse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px;=
+ padding-right:0px; line-height:1px; font-size:1px">
+<img class=3D"mobile-hide" width=3D"600" src=3D"https://storage=2Egoogleapi=
+s=2Ecom/img=2Etriggermail=2Eio/whsmith/shadowgreyemail3=2Ejpg" alt border=
+=3D"0" style=3D"display:block; border:0 none; height:auto; line-height:100%=
+; text-decoration:none; outline:none; -ms-interpolation-mode:bicubic; font-=
+size:initial" height=3D"auto"><!-- [if !mso]><! --><div class=3D"desktop-hi=
+de" style=3D"display:none; padding:0; max-height:0; overflow:hidden; float:=
+left; font-size:0; line-height:0; mso-hide:all"><table align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse:coll=
+apse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td align=3D"center" =
+class=3D"desktop-hide" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; display:none; padding:0; max-height:0; overflow:=
+hidden; float:left; mso-hide:all; line-height:0px; font-size:0px"><img clas=
+s=3D"flex-image" width=3D"0" src=3D"https://storage=2Egoogleapis=2Ecom/img=
+=2Etriggermail=2Eio/whsmith/shadowgreyemail3=2Ejpg" alt border=3D"0" style=
+=3D"display:block; border:0 none; height:auto; line-height:100%; text-decor=
+ation:none; outline:none; -ms-interpolation-mode:bicubic; max-height:0; wid=
+th:0; font-size:initial" height=3D"auto"></td></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- image --><table class=3D"row" bgcolor=3D"#014483" id=
+=3D"widget_bea63a6c74eefec8e7805d59f5d530ad" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw5555203066216448" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:25px; padding-bottom:0px">=
+<table class=3D"col-12" width=3D"600" align=3D"center" cellspacing=3D"0" ce=
+llpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-l=
+space:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td sty=
+le=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"=
+><table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" class=3D"image-widget-content" style=3D"border-colla=
+pse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-left:0px;=
+ padding-right:0px; line-height:1px; font-size:1px">
+<a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N=
+8kk0ggOctTmSTlgKBvtFkDkPJSHe6XYNX1prJZ1YgaUrP5QVU_sglQoyLgLAsqrHcw/3i3/5zKh=
+GxmJSDmd_Cc5ZYUb7g/h16/luIjpwGiyBpBnkSmVsLbizRr7Ea2dljsblpo2s0Xhzs" target=
+=3D"_blank"><img class=3D"mobile-hide" width=3D"150" src=3D"https://storage=
+=2Egoogleapis=2Ecom/img=2Etriggermail=2Eio/whsmith/Flogo=2Epng" alt=3D"WHSm=
+ith" border=3D"0" style=3D"display:block; height:auto; line-height:100%; te=
+xt-decoration:none; outline:none; -ms-interpolation-mode:bicubic; border:0 =
+none; font-size:initial" height=3D"auto"></a><!-- [if !mso]><! --><div clas=
+s=3D"desktop-hide" style=3D"display:none; padding:0; max-height:0; overflow=
+:hidden; float:left; font-size:0; line-height:0; mso-hide:all"><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"borde=
+r-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td al=
+ign=3D"center" class=3D"desktop-hide" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; display:none; padding:0; max-heig=
+ht:0; overflow:hidden; float:left; mso-hide:all; line-height:0px; font-size=
+:0px"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihu=
+aVrA3N8kk0ggOctTmSTlgKBvtFkDlfGClWb9LqZzh0vrJXhDYzn_fL2NGFBhriuP-mwmmbDA/3i=
+3/5zKhGxmJSDmd_Cc5ZYUb7g/h17/KWsv-bR-jCfgewcIgr9HDLA3YJNKIk8voTzVPcpHn3g" t=
+arget=3D"_blank"><img class=3D"mobile-width" width=3D"0" src=3D"https://sto=
+rage=2Egoogleapis=2Ecom/img=2Etriggermail=2Eio/whsmith/Flogo=2Epng" alt=3D"=
+WHSmith" border=3D"0" style=3D"display:block; height:auto; line-height:100%=
+; text-decoration:none; outline:none; -ms-interpolation-mode:bicubic; borde=
+r:0 none; max-height:0; width:0; font-size:initial" height=3D"auto"></a></t=
+d></tr></table></div>
+<!-- <![endif] -->
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end image --><!-- social --><table id=3D"widget_e060cecffbab8b43835534=
+9ad8cdc7e2" bgcolor=3D"#004483" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722153616162816l=
+w6681102973059072" add-link-instances=3D"True" style=3D"border-collapse:col=
+lapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td style=3D"border-=
+collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; padding-top:=
+10px; padding-bottom:10px"><table align=3D"center" cellspacing=3D"0" cellpa=
+dding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-lspac=
+e:0pt; mso-table-rspace:0pt"><tr>
+<td align=3D"center" valign=3D"middle" width=3D"65" style=3D"border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><a href=3D"http://t=
+rk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvt=
+FkDkyt_RaxzrJ2_f0CvmHaI7aGMFIwTOYei9Dvdl2U3AlNQ/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/=
+h18/4XPJse-p_rCfBwWxB9i5OT733ghoQVq9mhgVkL0hjmI" target=3D"_blank"><img alt=
+=3D"Facebook" src=3D"https://storage=2Egoogleapis=2Ecom/img=2Etriggermail=
+=2Eio/whsmith/Fb=2Ejpg" width=3D"45" border=3D"0" style=3D"display:block; h=
+eight:auto; line-height:100%; text-decoration:none; outline:none; -ms-inter=
+polation-mode:bicubic; border:0 none" height=3D"auto"></a></td>
+<td align=3D"center" valign=3D"middle" width=3D"65" style=3D"border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><a href=3D"http://t=
+rk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvt=
+FkDlSF0p09DssJqVACCrwIX5XwfjNXgy4B_WoqUZo9yz9-Q/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/=
+h19/7xQeAG4uygPtFydyRDwATKpvH_fWLjSwE4_S8-kwTqE" target=3D"_blank"><img alt=
+=3D"Twitter" src=3D"https://storage=2Egoogleapis=2Ecom/img=2Etriggermail=2Ei=
+o/whsmith/tw=2Ejpg" width=3D"45" border=3D"0" style=3D"display:block; heigh=
+t:auto; line-height:100%; text-decoration:none; outline:none; -ms-interpola=
+tion-mode:bicubic; border:0 none" height=3D"auto"></a></td>
+<td align=3D"center" valign=3D"middle" width=3D"65" style=3D"border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><a href=3D"http://t=
+rk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvt=
+FkDnjIy1IhOKmvmC6uj1IgG5RT0akSnixN4bfMTn0K_27Ow/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/=
+h20/iOXFA9no5HnjkfcMes-FNpKEK8CB34TECuoVBl93RJM" target=3D"_blank"><img alt=
+=3D"Pinterest" src=3D"https://storage=2Egoogleapis=2Ecom/img=2Etriggermail=
+=2Eio/whsmith/pinterest=2Ejpg" width=3D"45" border=3D"0" style=3D"display:b=
+lock; height:auto; line-height:100%; text-decoration:none; outline:none; -m=
+s-interpolation-mode:bicubic; border:0 none" height=3D"auto"></a></td>
+<td align=3D"center" valign=3D"middle" width=3D"65" style=3D"border-collaps=
+e:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><a href=3D"http://t=
+rk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvt=
+FkDnF3vJlFDPO-HKATMBX7oD8_AauUi6udxetL4fzLznF6A/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/=
+h21/40qWuo1RMNT_PTPQkS6wXvCnOefqyp8a6iKzCQFltoQ" target=3D"_blank"><img alt=
+=3D"Instagram" src=3D"https://storage=2Egoogleapis=2Ecom/img=2Etriggermail=
+=2Eio/whsmith/insta_1=2Ejpg" width=3D"45" border=3D"0" style=3D"display:blo=
+ck; height:auto; line-height:100%; text-decoration:none; outline:none; -ms-=
+interpolation-mode:bicubic; border:0 none" height=3D"auto"></a></td>
+</tr></table></td></tr></table>
+<!-- end social --><!-- text --><table bgcolor=3D"#014483" class=3D"row" id=
+=3D"widget_45721a23df076eb6779904415d9aef94" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw4640409391906816" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:20px; padding-bottom:25px"=
+><table class=3D"col-12" width=3D"600" align=3D"left" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; font-size:12px; line-height:16px; letter-spacing=
+:0=2E0em; text-transform:none; padding-left:0px; padding-right:0px"><p styl=
+e=3D"margin:0 !important; text-align:center; color:#000001" align=3D"center=
+"><span style=3D"color: #cbcdca; font-family: 'Gotham Book Regular', Arial,=
+ Helvetica, sans-serif;"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/=
+ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDk-XQznA3gjFs_sqhfEbJJwkqasGK=
+opdjVJdZerJxoabg/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h22/c2WtyHXJq7NQWmG5C1joCX_TCsE=
+8XGk4BYHEVzuh6f0" target=3D"_blank" rel=3D"noopener" style=3D"text-decorati=
+on:inherit !important; color:#cbcdca">Contact us&#160;</a> &#160;|&#160; <a=
+ href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8k=
+k0ggOctTmSTlgKBvtFkDnfRM5JUcr5XA4CzyGm-2Qy7KMwNvo9HixNZcxlTJxggg/3i3/5zKhGx=
+mJSDmd_Cc5ZYUb7g/h23/wGb5rHkg9ZTPKp6b99TMDL5uEG-Nu5NPqwCFLJ7FQo0" target=3D"=
+_blank" rel=3D"noopener" style=3D"text-decoration:inherit !important; color=
+:#cbcdca">Terms &amp; Conditions</a>&#160; &#160;|&#160;<a href=3D"http://t=
+rk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvt=
+FkDkLNU_k7-oy8YHecKYEMy2XCDeGThjPStysWhRZ1iDLpA/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/=
+h24/AFC4mxTrvQFdz_3RwNJ3tBmCpzAuHAv5kQ-kr4u6G8c" target=3D"_blank" rel=3D"n=
+oopener" style=3D"text-decoration:inherit !important; color:#cbcdca"> Priva=
+cy Policy</a></span></p></td></tr></table></td></tr></table></td></tr></tab=
+le>
+<!-- end text --><!-- text --><table bgcolor=3D"#004483" class=3D"row" id=
+=3D"widget_3206a9b841523d63971f4b9f5510fbda" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw5766309298749440" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:10px; padding-bottom:10px"=
+><table class=3D"col-12" width=3D"600" align=3D"left" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; font-size:10px; line-height:18px; letter-spacing=
+:0=2E0em; text-transform:none; padding-left:0px; padding-right:0px">
+<p style=3D"margin:0 !important; text-align:center" align=3D"center"><span =
+style=3D"color: #ffffff;"><strong><span style=3D"font-family: Arial, Helvet=
+ica, sans-serif;">You're receiving this email because you are subscribed to=
+ receive emails from WHSmith=2E If you no longer wish to receive WHSmith ne=
+wsletters please click&#160;<span style=3D"text-decoration: underline;"><a =
+href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss/c/2BQfQjAVr19ihuaVrA3N8kk=
+0ggOctTmSTlgKBvtFkDk4T0f2Civ3mEvreDUMBdjHPi3jiiQde1hVSscgXzJUcw/3i3/5zKhGxm=
+JSDmd_Cc5ZYUb7g/h25/u1BNngpbnvX_4FeCzeH8NsmJCSVKXpnAvbOT6FUE8J4" target=3D"=
+_blank" rel=3D"noopener" style=3D"text-decoration:underline; color:#ffffff"=
+>here</a></span>&#160;to unsubscribe=2E</span></strong></span></p>
+<p style=3D"margin:0 !important; text-align:center" align=3D"center">&#160;=
+</p>
+</td></tr></table></td></tr></table></td></tr></table>
+<!-- end text --><!-- text --><table bgcolor=3D"#005cff" class=3D"row" id=
+=3D"widget_1db4857ff8e8d69dfdd95ddcb8b06b14" width=3D"100%" align=3D"center=
+" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" link-context-id=3D"t6722=
+153616162816lw5203359345328128" add-link-instances=3D"True" style=3D"border=
+-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt"><tr><td cla=
+ss=3D"widget_top_bottom_padding" style=3D"border-collapse:collapse; mso-tab=
+le-lspace:0pt; mso-table-rspace:0pt; padding-top:10px; padding-bottom:10px"=
+><table class=3D"col-12" width=3D"600" align=3D"left" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-ls=
+pace:0; mso-table-rspace:0; border-left:1px; border-right:1px"><tr><td styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt">=
+<table class=3D"block-content" width=3D"100%" align=3D"center" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" style=3D"border-collapse:collapse; ms=
+o-table-lspace:0pt; mso-table-rspace:0pt; width:100%; text-align:center"><t=
+r><td align=3D"center" style=3D"border-collapse:collapse; mso-table-lspace:=
+0pt; mso-table-rspace:0pt; font-size:9px; line-height:11px; letter-spacing:=
+0=2E0em; text-transform:none; padding-left:0px; padding-right:0px"><p style=
+=3D"margin:0 !important; text-align:center; color:#000001" align=3D"center"=
+><span style=3D"font-family: 'Gotham Book Medium', Arial, Helvetica, sans-s=
+erif; color: #ffffff;"><a href=3D"http://trk=2Ereact=2Ewhsmith=2Eco=2Euk/ss=
+/c/2BQfQjAVr19ihuaVrA3N8kk0ggOctTmSTlgKBvtFkDmRiiHZi1LTx1bRk1p29XmeIpbqXUCq=
+BD1917LBgndTUg/3i3/5zKhGxmJSDmd_Cc5ZYUb7g/h26/zeJojjhsjZPsDfrcern-l_bXTWHoJ=
+_eVA6FgnxFA4HU" target=3D"_blank" rel=3D"noopener" style=3D"text-decoration=
+:inherit !important; color:#ffffff">WHSmith=2Eco=2Euk=2E</a></span><span st=
+yle=3D"color: #ffffff; font-family: 'Gotham Book Medium', Arial, Helvetica,=
+ sans-serif;"> Greenbridge Road, Swindon, Wiltshire=2E SN3 3RX=2E Registere=
+d Number 6560339 VAT# GB238 5548 36</span></p></td></tr></table></td></tr><=
+/table></td></tr></table>
+<!-- end text -->
+</td></tr></table></td></tr></table>
+</body>
+</html>

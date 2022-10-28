@@ -1,0 +1,2790 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp1571974wrd;        Fri, 17 Dec
+ 2021 23:01:13 -0800 (PST)
+Received: from m32-143.eu.mailgun.net (m32-143.eu.mailgun.net. [141.193.32.143])       
+ by mx.google.com with UTF8SMTPS id e13si8202332edz.176.2021.12.17.23.01.13  
+      for <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_128_GCM_SHA256 bits=128/128);        Fri, 17 Dec 2021
+ 23:01:13 -0800 (PST)
+Received: from <unknown> (<unknown> []) by api-n03.prod.eu-central-1.postgun.com with
+ HTTP id 61bd87398c7026e196d99457; Sat, 18 Dec 2021 07:01:13 GMT
+X-Google-Smtp-Source: ABdhPJyAaa4N/WnGXhu/P/jsImh5Ex4F9iykfMwhmZGP57ohc7S1oCHQ5ANMTR3a3VSDgZUZ+xCO
+X-Received: by 2002:a17:906:c147:: with SMTP id dp7mr5219517ejc.173.1639810873654;       
+ Fri, 17 Dec 2021 23:01:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639810873; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=I7VeUL2W5YQ7h3+aDN8K2MKxuzFRKYbUlYumrA6dX3NKiaMdrH3ECsmLBSZQ9qzwkV        
+ IZ8JvszwQ0snx/CuMMSfD5l243PnfgW+TC+4KCc6waq03jDGsGskMt/s8ISLd1X8SgXT        
+ BcZ3XzukIc46mtJ8C0oaIw1haOjJ4yMO0JgnA65EeAQiWC0iiShA0Eno33k5KohBjSvq        
+ Mwiq3sOOI+Cia1EM2+9gRnO1P2K0UfDDAi2ry/+UT7IOcGZ6VTF0AXPVoi8oCCP6QFJ+        
+ 8Vn+I1rNScSDHSSgTCHxO7Bomzb9siVs8cpVtDgO5X/jT6lj/1utUa9dQW/WcMJs6q6k        
+ BHzw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=message-id:reply-to:sender:to:from:subject:mime-version:date        
+ :dkim-signature:dkim-signature;       
+ bh=LJefdYfmwVzrpVcbiPTzPQH3O/2UL4oNO/Pta3gxhGI=;       
+ b=T2mRQ+/rFQPeprJbUMUMT4dA3pEWDfntcxVJ6+NJgC+cNSKW2UExwKrA3I8ZTCimzj        
+ OnOrhTbXporlijE+7fGeAymRq2WtF2/pGyK0hOkWAD0Yo2wSB9EU9STZXO4rTttne3BG        
+ aF4H8ng0YyF1tKx6k/oOoKz+ZwdErNoGXxrd064ZpEl7rnP7/bLU7sfGH2jI4PTLi/1G        
+ iGN2AfJwXvrr+huypbw81Cer0amwtNU91Xcq9m6XmamhgHfF+DGDFPWSZENbRmOGaI95        
+ jgff4dKrqiUDJlohtYPkj0jWbAA8GCAhxOY53Iv7n2aH832zdikpkICzgnepttDql4ln        
+ 8xng==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@mail.rapha.cc header.s=k1
+ header.b=aELIvxpN;       dkim=pass header.i=@eu.mailgun.org header.s=krs
+ header.b="FdYFeP8/";       spf=pass (google.com: domain of
+ bounce+411a14.dcaf0-john.doe.youniq=gmail.com@mail.rapha.cc designates
+ 141.193.32.143 as permitted sender)
+ smtp.mailfrom="bounce+411a14.dcaf0-john.doe.youniq=gmail.com@mail.rapha.cc";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rapha.cc
+Return-Path: <bounce+411a14.dcaf0-john.doe.youniq=gmail.com@mail.rapha.cc>
+Received-SPF: pass (google.com: domain of
+ bounce+411a14.dcaf0-john.doe.youniq=gmail.com@mail.rapha.cc designates
+ 141.193.32.143 as permitted sender) client-ip=141.193.32.143;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@mail.rapha.cc header.s=k1
+ header.b=aELIvxpN;       dkim=pass header.i=@eu.mailgun.org header.s=krs
+ header.b="FdYFeP8/";       spf=pass (google.com: domain of
+ bounce+411a14.dcaf0-john.doe.youniq=gmail.com@mail.rapha.cc designates
+ 141.193.32.143 as permitted sender)
+ smtp.mailfrom="bounce+411a14.dcaf0-john.doe.youniq=gmail.com@mail.rapha.cc";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rapha.cc
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mail.rapha.cc; q=dns/txt; s=k1;
+ t=1639810873; h=Message-Id: Reply-To: sender: To: From: Subject:
+ Content-Type: Mime-Version: Date: X-Feedback-Id;
+ bh=LJefdYfmwVzrpVcbiPTzPQH3O/2UL4oNO/Pta3gxhGI=;
+ b=aELIvxpNKKplld6KPZeujamgpx1pS10zvhthxJ3F329pNdHzaiKA5KHKG2iuFbys7EnkM+36
+ QhvJIFuQ847NgA4GZncGi1jP6QNqeBJVg9bMqLeM2ptl09uyVi0Q/iK0UQBCxueZwKbcNRVw
+ VDuAr3jsfswkOvskiP5uX/hGaDU=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=eu.mailgun.org; q=dns/txt; s=krs;
+ t=1639810873; h=Message-Id: Reply-To: sender: To: From: Subject:
+ Content-Type: Mime-Version: Date: X-Feedback-Id;
+ bh=LJefdYfmwVzrpVcbiPTzPQH3O/2UL4oNO/Pta3gxhGI=;
+ b=FdYFeP8/QaGLLMALfCOOHhBj9Sp+Xtl2KzkRcnbABP0rpUjE3y72h+l//IWOmTGvLUxPHnE6
+ C/pjeFwV+pDZE5dd0swGdS67dkdN6CAOaOntapVI6Xwf6gdLJMXOgIqZflQMDKKMf4Ph+NlK
+ mRtcXt7SFZb+uOTQqW1IH20W2q8=
+X-Feedback-Id: 5d921c63410bb48c50ed78eb:mailgun
+X-Mailgun-Sending-Ip: 141.193.32.143
+X-Mailgun-Sid: WyIzOGJiMCIsICJqb2huLmRvZS55b3VuaXFAZ21haWwuY29tIiwgImRjYWYwIl0=
+Date: Sat, 18 Dec 2021 07:01:13 +0000
+Mime-Version: 1.0
+Subject: Ride for Black Lives with Ron Holden
+From: "Rapha" <rapha@mail.rapha.cc>
+To: john.doe.youniq@gmail.com
+X-Mailgun-Dkim: true
+X-Mailgun-Track: true
+X-Mailgun-Track-Opens: false
+X-Mailgun-Track-Clicks: false
+sender: "Rapha" <rapha@mail.rapha.cc>
+Reply-To: enquiries@rapha.cc
+X-Mailgun-Variables: {"my-custom-data":"{\"company_id\": \"9e33e6cc-d0c3-11e9-b813-e66e05894795\",
+ \"customer_id\": \"60ae49e744b92b0234b973b0\", \"email_hash\":
+ \"cd9a7920c8346ec501f6a86b7b4e087a032079295db67c3b5cfd3a19d072042e\",
+ \"properties\": {\"action_id\": 44, \"action_name\": \"RME-RAM-NWL 20211218
+ Newsletter\", \"action_type\": \"email\", \"campaign_id\":
+ \"617a7e88cc4fd39e340d2827\", \"campaign_name\": \"RME-RAM-NWL 20211218
+ Newsletter\", \"campaign_policy\": \"RCC and Marketing comms\",
+ \"integration_id\": \"5da5cea5441885f694bcbe60\", \"integration_name\":
+ \"mail.rapha.cc\", \"language\": \"\", \"sent_timestamp\": 1639810873.08481,
+ \"subject\": \"Ride for Black Lives with Ron Holden\"}, \"ts\": 1639810874}"}
+Message-Id: <20211218070113.4b6fd165094ca120@mail.rapha.cc>
+Content-Type: multipart/alternative;
+ boundary="a71cbd072526a05dea04de63be6b2845e4761af1ad5789d1813ca7353f66"
+
+--a71cbd072526a05dea04de63be6b2845e4761af1ad5789d1813ca7353f66
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoiclmlFSUlBspa9fXl6uV5RYkJGol5ysb9ie63ouMf-GoxUvF1NpsR=
+B7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaGhlaKPillhfnpJaUp=
+BZFWerrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdGGsSAKK05McrMwTDQ1SDVINEkxNDFLSU6uKUpN=
+zywGmpqaYpWVn5Gnl5KfqleZX5qXWeiQDnKUXnJ-bo2hgYlZWqqpcYqpuUmagZEZACwkWF0=2Ek=
+SouYCONGoncmQ/click]=20
+
+KEEP RIDING
+
+RON HOLDEN
+
+Born and raised in LA, Ron Holden feels like he owes the city everything bu=
+t at the same time, he=E2=80=99s always been missing something=2E Following=
+ Black Lives Matter protests in 2020, he offered his company the opportunit=
+y to make meaningful change but got nowhere=2E So instead, he quit his job,=
+ got on his bike and founded a movement that rides for social justice=2E
+
+WATCH NOW [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneU=
+cZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoieln1FSUlBspa9fXl6uV5RYkJGol5ysX1ySX5SZWqyf=
+nZpaoFuUmZKZl66ckZ-Tkppn2J7rei4x_4ajFS8XU2mxEHtqRUF-XmqiFTeQmyvEmpqbmJljpQr=
+kJAvJB_m66gY5-ur6hfsoGBkYGRoaGVoo-KWWF-eklpSkFkXZ6Osn5adU6pckJuWk6pdA2EX6JS=
+n6KZll0UaxIAobjjaJ1U9McrMwTDQ1SDVINEkxNDFLSU6uKUpNzywGGpyaYpWVn5Gnl5KfqleZX=
+5qXWeiQDnKXXnJ-bo2hgYlZWqqpcYqpuUmagZEZAE_PY4s=2EQhF11darIam3Fg/click]=20
+
+FESTIVE 500
+
+FIRST LIGHT WITH FRANCES
+
+As we prepare for this year=E2=80=99s Festive 500, we=E2=80=99ll be bringin=
+g you a host of inspiring stories from last year=2E First up, a father-daug=
+hter duo who rode in the early hours to enjoy the tranquility of daybreak i=
+n December and made memories that still inspire them today=2E
+
+READ MORE [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJxtjj9OhEAcheO_a=
+DQ2dNpIY2ExzAwL7AYt3GKtXIptTFwpBubHMgoMMrOLKL138ASewBuY2GgsPYmdiWxsLV7e-5ov=
+zzDfnxrzzSleV76fbx6Crfs1szkKX9rjqx9_77Nat_b7qdal8jGu69qqWJkyK46x0rISoHACSos=
+FIJcQxFAtCg2VQpplQB_z0QeTX0N_d3t1roxNuCtlAczf6TA3NiBnIvMPO4iNg8l4hCbDMQouzk=
+2b2JTadGAGUKsMdGe8PME4krzBmkUZYP23K6w55mIx7YXL-i9TJ8QsOhtQ5hIgzOHU8XgctxXMh=
+OrEwP1rmRYWl2A1cl6I29PZ8pcVy7ylxPEScHvc7TsJsb1fTphl-g=2EoXSx8MHeoMYJsg/clic=
+k]=20
+
+SIGN UP TO RIDE [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJxtT71OhEA=
+YjH_RaGzotJHGwgJ2lwMkaOEVZ-VRXGPiSbGwHz8KLLJ7IErvO_gEPoFvYGKjsfRJ7EwEbS0mM1=
+PMZEZR3x5b9dUsXpa-nq7vvY27FbU98J-7o8tvd-ejWtV3nUTKUrgINU2jC1nRmuohz1GY0CyDI=
+gaBKlomVItAyLQGzcJYM7BByEM-eaf8c-xuby4vhLIOtyUvgLpbvc2VNchpmrn7vQmVvdl0os3G=
+U807P1N_wwZxVA8akYGUUF0cIxRw1iJJgwyQ_NMVkgyxtJ6P_IH-w9zyEQ1OHUItDJiajJg2C8O=
+ugjgVfTEw94onhc446C1fFOnNSTzsGi52BJt2BNaIWYdmhA37BystZZg=2E97NbV4feV1kLYg/c=
+lick]=20
+
+GONE RACING
+
+A SOUTH AFRICAN EPIC
+
+Opportunities to race on the world stage are often few and far between for =
+Kenyan cyclists=2E So when EF=E2=80=99s Lachlan Morton reached out seeking =
+a partner for the Cape Epic, Kenneth Karaya knew that this, the biggest rac=
+e of his career, had the potential to inspire a new generation of riders=2E
+
+WATCH NOW [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneU=
+cZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielnVFSUlBspa9fXl6uV5lfWlKalKqXnJ-rX55Ykpxh=
+X2Yb4q6bWFBg5BEYZGDYnut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8k=
+H-brqBjn66vqF-ygYGRgZGhoZWij4pZYX56SWlKQWRdno6yflp1TqlyQm5aTql0DYRfolKfopmW=
+XRJrEgChsGSSUmuVkYJpoapBokmqQYmpilJCfXFKWmZxYDDU5NscrKz8jTS8lPBfknL7PQIR3kL=
+pCnagwNTMzSUk2NU0zNTdIMjMwA8XlhPg=2Ebo60W3vgToOLng/click]=20
+
+COAST IS CLEAR
+
+Sweeping beaches and towering cliffs, bright sunlight and a fresh ocean bre=
+eze=2E What=E2=80=99s not to like? With a design that captures the essence =
+of riding where land meets sea, the limited edition Coast Road collection c=
+omprises warm weather essentials perfect for your next seaside ride=2E
+
+SHOP THE COLLECTION [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg=
+7q1LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielkVFSUlBspa9fXl6uV5RYkJGol5ysn5=
+xYkpqeX1Spn5yfWFyiW5SfmGLYnut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlC=
+uQkC8kH-brqBjn66vqF-ygYGRgZGhoZWij4pZYX56SWlKQWRdno6yflp1TqlyQm5aTql0DYRfol=
+KfopmWXRprEgChuONonVT0xyszBMNDVINUg0STE0MUtJTq4pSk3PLAYanJpilZWfkaeXkp-qV5l=
+fmpdZ6JAOcpdecn5ujaGBiVlaqqlxiqm5SZqBkRkARpZg3Q=2E1Vc-CxoEZAzGvg/click]=20
+
+RIDING WITH ROXSOLT
+
+With another exciting year of racing fast approaching, we=E2=80=99re please=
+d to announce the latest team to join our roster: Roxsolt Liv SRAM=2E Austr=
+alia=E2=80=99s only UCI Women=E2=80=99s Conti team is a diverse mix of ride=
+rs who race for different reasons=2E Ahead of their 2022 campaign, get to k=
+now the riders and look out for their eye-catching kit=2E
+
+MEET THE TEAM [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1Lhh=
+EneUcZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielm1FSUlBspa9fXl6uV5RYkJGol5ysX1ySX5SZ=
+WqxflF9RnJ9TopuTWaZbXJSYa9ie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6U=
+K5CQLyQf5uuoGOfrq-oX7KBgZGBkaGhlaKPillhfnpJaUpBZF2ejrJ-WnVOqXJCblpOqXQNhF-i=
+Up-imZZdFmsSAKG442idVPTHKzMEw0NUg1SDRJMTQxS0lOrilKTc8sBhqcmmKVlZ-Rp5eSn6pXm=
+V-al1nokA5yl15yfm6NoYGJWVqqqXGKqblJmoGRGQCx_WMU=2E5jd75mkCPNyOVA/click]=20
+
+RECOMMENDED FOR YOU
+
+Just as your mechanic fine tunes your bike, we want to help fine tune your =
+cycling wardrobe and keep you inspired to ride with personalised product re=
+commendations, from bib shorts to books=2E Here=E2=80=99s what we have for =
+you this week=2E
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7O9jYBwR4e=
+IXadie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7K=
+BgZGBkaGhlaKPillhfnpJaUpBZFxevrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MkSR=
+j8bkJia5WRgmmhqkGiSapBiamKUkJ9cUpaZnFgPtTk2xysrPyNNLyU_Vq8wvzcssdEgHOV0vOT-=
+3xtDAxCwt1dQ4xdTcJM3AyAwAFDhrsw=2EraWsCDN-AjEf9A/click]=20
+
+Men's Long Sleeve Core Jersey
+
+A long sleeve jersey for riding in cooler climes, made with carefully selec=
+ted materials and technology to set the new standard in performance, comfor=
+t and value=2E
+
+*Buy now [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUc=
+ZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7=
+O9jYBwR4eIXadie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoG=
+Ofrq-oX7KBgZGBkaGhlaKPillhfnpJaUpBZFlenrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSA=
+KF442MkSRj0bjmkC4BfrFBYl5-sUlRfl56RB2YpKbhWGiqUGqQaJJiqGJWUpyck1RanpmMdBJqS=
+lWWfkZeXop-al6lfmleZmFDukgH-kl5-fWGBqYmKWlmhqnmJqbpBkYmQEAfRx0bA=2EdYUNxutx=
+G37Gmw/click]*
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7B9kYBIREe=
+TqYtie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7K=
+BgZGBkaGhlaKPillhfnpJaUpBZFxevrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MoxF=
+5aNygbKJSW4WhommBqkGiSYphiZmKcnJNUWp6ZnFQLtTU6yy8jPy9FLyU_Uq80vzMgsd0kFO10v=
+Oz60xNDAxS0s1NU4xNTdJMzAyAwAML2ur=2EN-aWvO7yWvYjCw/click]=20
+
+Men's Core Jersey
+
+A versatile mid-weight cycling jersey made for comfort on any ride=2E=20
+
+*Buy now [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUc=
+ZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7=
+B9kYBIREeTqYtie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoG=
+Ofrq-oX7KBgZGBkaGhlaKPillhfnpJaUpBZFlenrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSA=
+KF442MoxF5aNyTSDcAv3igsQ8_eKSovy8dAg7McnNwjDR1CDVINEkxdDELCU5uaYoNT2zGOik1B=
+SrrPyMPL2U_FS9yvzSvMxCh3SQj_SS83NrDA1MzNJSTY1TTM1N0gyMzAB0W3Rk=2EjTbO83ZqqM=
+6uaQ/click]*
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKIfEBJiYBQcHO=
+wbbtie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7K=
+BgZGBkaGhlaKPillhfnpJaUpBZFxevrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MkSR=
+jzZG5QJlE5PcLAwTTQ1SDRJNUgxNzFKSk2uKUtMzi4F2p6ZYZeVn5Oml5KfqVeaX5mUWOqSDnK6=
+XnJ9bY2hgYpaWamqcYmpukmZgZAYAL6pr0A=2Eonol48vSeDx-dg/click]=20
+
+Men's Pro Team Training Jersey
+
+A dedicated jersey designed for the demands of training =E2=80=93 day in, d=
+ay out=2E
+
+*Buy now [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUc=
+ZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKIfE=
+BJiYBQcHOwbbtie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoG=
+Ofrq-oX7KBgZGBkaGhlaKPillhfnpJaUpBZFlenrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSA=
+KF442MkSRjzZG5ZpAuAX6xQWJefrFJUX5eekQdmKSm4VhoqlBqkGiSYqhiVlKcnJNUWp6ZjHQSa=
+kpVln5GXl6KfmpepX5pXmZhQ7pIB_pJefn1hgamJilpZoap5iam6QZGJkBAJspdIk=2EaJw8sYA=
+FgZZ1sw/click]*
+
+LEFT IT LAST MINUTE?
+
+Don't worry, with the option to have your gift delivered directly to the re=
+cipient's inbox, our E-Vouchers are the perfect solution=2E And better stil=
+l, the lucky recipient will also have the freedom to choose from their favo=
+urite Rapha products for guaranteed glee on the big day=2E
+
+FIND OUT MORE [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1Lhh=
+EneUcZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoiellFFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1Ka=
+XKLvGhZkYGjYnut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn=
+66vqF-ygYGRgZGhoZWij4pZYX56SWlKQWRdno6yflp1TqlyQm5aTql0DYRfolKfopmWXRlrEgCh=
+uONonVT0xyszBMNDVINUg0STE0MUtJTq4pSk3PLAYanJpilZWfkaeXkp-qV5lfmpdZ6JAOcpdec=
+n5ujaGBiVlaqqlxiqm5SZqBkRkAKC5d3w=2ExARZKX1oA2jD1Q/click]=20
+
+FINAL SHIPPING DATES
+
+As the holidays are almost upon us, so too are our last shipping dates=2E T=
+o make sure all your gifts arrive in time for the big day, check out the fi=
+nal shipping dates for your area below=2E
+
+Standard Express UK Mon 20 Thu 23 Europe Sun 19 Tue 21 USA Fri 17 2-day: Tu=
+e 21
+Overnight: Wed 22 Japan Fri 17 Wed 22 Australia Wed 15 Thu 16 Taiwan Wed 22=
+ Thu 23 Korea Fri 17 Mon 20 ROW Thu 16 Tue 21=20
+
+MORE ON SHIPPING [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1=
+LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoiclm1FSUlBspa9fXl6uV5RYkJGol5ysX5yRW=
+VCQmZdu2J7rei4x_4ajFS8XU2mxEHtqRUF-XmqiFTeQmyvEmpqbmJljpQrkJAvJB_m66gY5-ur6=
+hfsoGBkYGRoaGVoo-KWWF-eklpSkFkXZ6usn5adU6pckJuWk6pdA2EX6JSn6KZll0YYGsSAaG44=
+2jdVPTHKzMEw0NUg1SDRJMTQxS0lOrilKTc8sBpqcmmKVlZ-Rp5eSn6pXmV-al1nokA5ymF5yfm=
+6NoYGJWVqqqXGKqblJmoGRGQAHalzo=2E4J9jQjCuZ1QIgA/click]=20
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoielmlFSUlBspa9fXl6ul5aYnJqUn5-tl5yfq1-UWJCRWJSYnJmXrm=
+_Ynut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-ygYG=
+RgZGhoZWij4pZYX56SWlKQWRUXq6yflp1TqlyQm5aTql0DYRfolKfopmWXRhkaxIJoYHG2IqjQx=
+yc3CMNHUINUg0STF0MQsJTm5pig1PbMYaGtqilVWfkaeXkp-ql5lfmleZqFDOsjRIK_WGBqYmKW=
+lmhqnmJqbpBkYmQEAquhqHA=2EFmnt6muwUd_FmA/click]=20
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoiclmVFSUlBspa9fUp5ZUpJapJecn6tflFiQkWjYnut6LjH_hqMVLx=
+dTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-ygYGRgZGhoZWij4pZYX5=
+6SCTI2K1NdPyk-p1C9JTMpJ1S-BsIv0S1L0UzLLog2NYkE0MTgaTWlikpuFYaKpQapBokmKoYlZ=
+SnJyTVFqemYx0NbUFKus_Iw8vZT8VL3K_NK8zEKHdJCjQX6sMTQwMUtLNTVOMTU3STMwMgMAW_d=
+ltA=2ET1mSxyHSCLBv1g/click]=20
+
+[https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Ti=
+qmBUqNWO31VjH_LWSvFDEoielkFFSUlBspa9fXl6ul5lXXJKYXpSYq5ecn6tflFiQkahv2J7rei=
+4x_4ajFS8XU2mxEHtqRUF-XmqiFTeQmyvEmpqbmJljpQrkJAvJB_m66gY5-ur6hfsoGBkYGRoaG=
+Voo-KWWF-eklpSkFkVF6usn5adU6pckJuWk6pdA2EX6JSn6KZll0YZGsSCaGBxtjKo0McnNwjDR=
+1CDVINEkxdDELCU5uaYoNT2zGGhraopVVn5Gnl5KfqpeZX5pXmahQzrI0SBP1hgamJilpZoap5i=
+am6QZGJkBAFrwaDE=2Eq7f7X1nBjqlxcg/click]=20
+
+View in web browser [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJx1ULt=
+SwkAAHHyMjo4NnTamsbAglwsJYGyMgIIaGMARQSkud0cSHnfxciAgvX9g4Rf4Bf6BMzY6ln6JnT=
+PCaGuxs7uzxe5sXHl7HCuvBnuJfT1170qrk0VlvNt6nu5ff1ubH2JJ3XqI-VKGkQUAJkylo5Azi=
+lTM-0Cg0EcJgXDAPAgoyHojT3QZq551hd2pmTht14qOjmgtVywdp4_sNuIoKcvZAs8VC93w0m1m=
+ynCyV_ZZBXuVgdMgsopN393zD7E38ocNbAaVi3On4TZFx1PD-sllE9eTk9PjIGPD-37-HfFP29p=
+YWxhE8ZW_adb6zPbjy7SPgp61MzM4vl118omq7SRK9TNF13QIdZhRSvQ26lEpqWiWAXA5GQOJ3B=
+4F8lcLIAkgwfAKJltz_g9X8DcO5yIKEQPIPcpAZGpUQwaBRopgPBXUC6JZFyVWh_tMJZyqYz5gw=
+c2BN586v3QKNSPVpmaSmGmjrempH6odjMI=2EfGOB4yNWxdak_g/click]
+
+Click here [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJx1ULtO40AAFC9x=
+OkSTDhrcUFwRr9exk2CEOB_PAE6UBBGSkGK9u1k7j12zXkMS0vMPfAHiA_gDJBoQJV9Ch0QirqU=
+YzYymmNGktJe7ofZs8aeZj_vuTfHXaE4b_mk9jjcvPp2VNzmvrz7MBEpFsQMAJlyng0hwinQs-k=
+CiKEBpiXDIGQQU7LABk13OKydd6XaqNs651YJnIlrdLRQPcvtuGwmUUaWdQ7FbOOxG534jX4Kjj=
+VLAy5iVE69OVAXbgb8R_MNsEFzVsR2Wz069ut-QHaZHtaPzBq5lRscHYd4FCY8TP8Yy9Ol2D3G2=
+RTm87e-9IvHuOsu_Z5M4tfh_rrM0sf3UAu2jsOesTwxOrVW8vXTF9dLF2olmGiaEJsxrRXod96h=
+SVDaOAPAFGQKF_B4F6ltLoAgg4VUTZlpT_glN-B1HTbMFkL-fh8g2qIEsAq0swXgsKQvjSQ0lTk=
+cEXCeC6kOR8PDyL5uunD48hoaVbVM7Q-yc1TbM7BdDP5K2=2ER_HwN_mNbsqkqA/click] to u=
+pdate your language and communications preferences or unsubscribe=2E
+
+Telephone: +44 (0) 207 485 5000 [tel:+4402074855000] | Email: enquiries@rap=
+ha=2Ecc [mailto:enquiries@rapha=2Ecc]
+
+Rapha Racing Ltd is registered in England & Wales=2E Registered number: 048=
+49594=2E
+
+Registered office: Imperial Works, 18 Tileyard St, London N7 9AH, United Ki=
+ngdom=2E
+
+Privacy Policy [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1Lh=
+hEneUcZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoielnFFSUlBspa9fXl6uV5RYkJGol5ysX1CUWZa=
+YXKlbkJ-TmVxp2J7rei4x_4ajFS8XU2mxEHtqRUF-XmqiFTeQmyvEmpqbmJljpQrkJAvJB_m66g=
+Y5-ur6hfsoGBkYGRoaGVoo-KWWF-eklpSkFkUF6esn5adU6pckJuWk6pdA2EX6JSn6KZll0YbGs=
+SAaF442gkgXRJvE6hcXJObpJ0Ybxia5WRgmmhqkGiSapBiamKUkJ9cUpaZnFgOtS02xysrPyNNL=
+yU_Vq8wvzcssdEgHuVYvOT-3xtDAxCwt1dQ4xdTcJM3AyAwA1OVmlQ=2EdnqYCrSzWjvnIw/cli=
+ck] | Cookies [https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1Lhh=
+EneUcZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoiclk1FSUlBspa9fXl6uV5RYkJGol5ysn5yfn52Z=
+WmzYnut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-yg=
+YGRgZGhoZWij4pZYX56SWlKQWRQXp6yflp1TqlyQm5aTql0DYRfolKfopmWXRhsaxIBoXjjaCSB=
+dEm8TqFxck5uknAoWS3CwME00NUg0STVIMTcxSkpNrilLTM4uB1qWmWGXlZ-TppeSn6lXml-ZlF=
+jqkg1yrl5yfW2NoYGKWlmpqnGJqbpJmYGQGAI9YY8E=2Ep7LQiH6p5Ty3LA/click]
+--a71cbd072526a05dea04de63be6b2845e4761af1ad5789d1813ca7353f66
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="us-ascii"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional //EN" "http://w=
+ww=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" xmlns:v=3D"urn:schemas-mic=
+rosoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head><=
+!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerI=
+nch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--><meta =
+http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><meta na=
+me=3D"viewport" content=3D"width=3Ddevice-width"><!--[if !mso]><!--><meta h=
+ttp-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![endif]--><title>=
+Ride for Black Lives with Ron Holden</title><!--[if !mso]><!--><link href=
+=3D"https://storage=2Egoogleapis=2Ecom/exp-app-storage/9e33e6cc-d0c3-11e9-b=
+813-e66e05894795/media/original/5f4302f2-4094-11ec-a0af-ca8d9a003caa" rel=
+=3D"stylesheet" type=3D"text/css"><!--<![endif]--><style type=3D"text/css">=
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		table,
+		td,
+		tr {
+			vertical-align: top;
+			border-collapse: collapse;
+		}
+
+		* {
+			line-height: inherit;
+		}
+
+		a[x-apple-data-detectors=3Dtrue] {
+			color: inherit !important;
+			text-decoration: none !important;
+		}
+	</style><style type=3D"text/css" id=3D"media-query">
+		@media (max-width: 620px) {
+
+			=2Eblock-grid,
+			=2Ecol {
+				min-width: 320px !important;
+				max-width: 100% !important;
+				display: block !important;
+			}
+
+			=2Eblock-grid {
+				width: 100% !important;
+			}
+
+			=2Ecol {
+				width: 100% !important;
+			}
+
+			=2Ecol_cont {
+				margin: 0 auto;
+			}
+
+			img=2Efullwidth,
+			img=2EfullwidthOnMobile {
+				width: 100% !important;
+			}
+
+			=2Eno-stack =2Ecol {
+				min-width: 0 !important;
+				display: table-cell !important;
+			}
+
+			=2Eno-stack=2Etwo-up =2Ecol {
+				width: 50% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum2 {
+				width: 16=2E6% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum3 {
+				width: 25% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum4 {
+				width: 33% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum5 {
+				width: 41=2E6% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum6 {
+				width: 50% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum7 {
+				width: 58=2E3% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum8 {
+				width: 66=2E6% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum9 {
+				width: 75% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum10 {
+				width: 83=2E3% !important;
+			}
+
+			=2Evideo-block {
+				max-width: none !important;
+			}
+
+			=2Emobile_hide {
+				min-height: 0px;
+				max-height: 0px;
+				max-width: 0px;
+				display: none;
+				overflow: hidden;
+				font-size: 0px;
+			}
+
+			=2Edesktop_hide {
+				display: block !important;
+				max-height: none !important;
+			}
+
+			=2Eimg-container=2Ebig img {
+				width: auto !important;
+			}
+		}
+	</style></head><body class=3D"clean-body" style=3D"margin: 0; padding: 0; =
+-webkit-text-size-adjust: 100%; background-color: #FFFFFF;"><span style=3D"=
+color: transparent; display: none !important; font-size: 0px; line-height: =
+0px; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; =
+mso-hide: all; visibility: hidden; width: 0;">Watch the latest film in our =
+Keep Riding Series now=2E</span><div style=3D"display: none; max-height: 0p=
+x; overflow: hidden;">&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&z=
+wnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj=
+;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&n=
+bsp;&zwnj;&nbsp;&zwnj;&nbsp;</div><img width=3D"1" height=3D"1" alt=3D"" sr=
+c=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/CgxgrknnRLkrAjS5c7ASIM2aeS=
+DING7FAfaoa3tOCHoDIHkpXbZ8O1z9OhnQcgQuMYdtRc5hb9hB=2EvmEW6MSEW3AWZw/open">
+	<!--[if IE]><div class=3D"ie-browser"><![endif]-->
+	<table class=3D"nl-container" style=3D"table-layout: fixed; vertical-align=
+: top; min-width: 320px; border-spacing: 0; border-collapse: collapse; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width:=
+ 100%;" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"=
+100%" bgcolor=3D"#FFFFFF" valign=3D"top"><tbody><tr style=3D"vertical-align=
+: top;" valign=3D"top"><td style=3D"word-break: break-word; vertical-align:=
+ top;" valign=3D"top">
+					<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr><td align=3D"center" style=3D"background-color:#FF=
+FFFF"><![endif]--><div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#FFFFFF;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+0px; padding-left: 0px; padding-top:10px; padding-bottom:5px;"><![endif]-->=
+
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:10px; padding-bottom:5px; padding-right: 0px; p=
+adding-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center fixedwidth" align=3D"center" =
+style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"https:/=
+/cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO=
+31VjH_LWSvFDEoiclmlFSUlBspa9fXl6uV5RYkJGol5ysb9ie63ouMf-GoxUvF1NpsRB7akVBfl=
+5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaGhlaKPillhfnpJaUpBZFWerrJ=
+-WnVOqXJCblpOqXQNhF-iUp-imZZdGGsSAKK05McrMwTDQ1SDVINEkxNDFLSU6uKUpNzywGmpqa=
+YpWVn5Gnl5KfqleZX5qXWeiQDnKUXnJ-bo2hgYlZWqqpcYqpuUmagZEZACwkWF0=2EkSouYCONG=
+oncmQ/click" target=3D"_blank" style=3D"outline:none" tabindex=3D"-1"><img =
+class=3D"center fixedwidth" align=3D"center" border=3D"0" src=3D"https://d1=
+5k2d11r6t6rl=2Ecloudfront=2Enet/public/users/Integrators/ae52a6e2-ca6a-4d8e=
+-8944-532f952aae85/9e33e6cc-d0c3-11e9-b813-e66e05894795/logo=2Epng" alt=3D"=
+Rapha" title=3D"Rapha" style=3D"text-decoration: none; -ms-interpolation-mo=
+de: bicubic; height: auto; border: 0; width: 210px; max-width: 100%; displa=
+y: block;" width=3D"210"></a>
+												<div style=3D"font-size:1px;line-height:5px">&#160;</div>
+												<!--[if mso]></td></tr></table><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #f5f5f5;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#f5f5f5;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#f5f5f5"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#f5f5f5;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:30px; padding-right: 0px; paddi=
+ng-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://d15k=
+2d11r6t6rl=2Ecloudfront=2Enet/public/users/Integrators/ae52a6e2-ca6a-4d8e-8=
+944-532f952aae85/9e33e6cc-d0c3-11e9-b813-e66e05894795/Newsletters/ron_holde=
+n_thumbnail_4_5=2Ejpg" style=3D"text-decoration: none; -ms-interpolation-mo=
+de: bicubic; height: auto; border: 0; width: 600px; max-width: 100%; displa=
+y: block;" width=3D"600"><!--[if mso]></td></tr></table><![endif]--></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 24px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 29px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 24px; color: #333333;=
+">KEEP RIDING</span></p>
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px; color: #333333;=
+">RON HOLDEN</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">Born and raised in LA, Ron Holden feels like he owes the city everything =
+but at the same time, he&#8217;s always been missing something=2E Following=
+ Black Lives Matter protests in 2020, he offered his company the opportunit=
+y to make meaningful change but got nowhere=2E So instead, he quit his job,=
+ got on his bike and founded a movement that rides for social justice=2E</s=
+pan></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELhovaHR0cHM6=
+Ly93d3cucmFwaGEuY2Mvc3Rvcmllcy9rZWVwLXJpZGluZyNob2xkZW4xh21FzmFv2EE6DQoCdXM=
+SB2V4cG9uZWE6CwoCdW0SBWVtYWlsOiUKAnVjEh9STUUtUkFNLU5XTCAyMDIxMTIxOCBOZXdzbG=
+V0dGVyYkY4MWE1MGUwYTRkMTQ2ZGNjfHJlZ2lzdGVyZWQ6am9obi5kb2UueW91bmlxQGdtYWlsL=
+mNvbXwxMDQ2ZmU1M2Q1NzRmMDI2=2E8M2Wd_aGOMYyAg/click" style=3D"height:28=2E5p=
+t;width:348pt;v-text-anchor:middle;" arcsize=3D"0%" stroke=3D"false" fillco=
+lor=3D"#fec4fe"><w:anchorlock/><v:textbox inset=3D"0,0,0,0"><center style=
+=3D"color:#0d0d0d; font-family:Georgia, serif; font-size:15px"><![endif]-->=
+<a href=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneU=
+cZvK7Kr_TiqmBUqNWO31VjH_LWSvFDEoieln1FSUlBspa9fXl6uV5RYkJGol5ysX1ySX5SZWqyf=
+nZpaoFuUmZKZl66ckZ-Tkppn2J7rei4x_4ajFS8XU2mxEHtqRUF-XmqiFTeQmyvEmpqbmJljpQr=
+kJAvJB_m66gY5-ur6hfsoGBkYGRoaGVoo-KWWF-eklpSkFkXZ6Osn5adU6pckJuWk6pdA2EX6JS=
+n6KZll0UaxIAobjjaJ1U9McrMwTDQ1SDVINEkxNDFLSU6uKUpNzywGGpyaYpWVn5Gnl5KfqleZX=
+5qXWeiQDnKXXnJ-bo2hgYlZWqqpcYqpuUmagZEZAE_PY4s=2EQhF11darIam3Fg/click" targ=
+et=3D"_blank" style=3D"-webkit-text-size-adjust: none; text-decoration: non=
+e; display: block; color: #0d0d0d; background-color: #fec4fe; border-radius=
+: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; width: 80%; wid=
+th: calc(80% - 2px); border-top: 1px solid #fec4fe; border-right: 1px solid=
+ #fec4fe; border-bottom: 1px solid #fec4fe; border-left: 1px solid #fec4fe;=
+ padding-top: 5px; padding-bottom: 5px; font-family: 'Rapha Sans Condensed'=
+, Georgia, Times New Roman, Times, serif; text-align: center; mso-border-al=
+t: none; word-break: keep-all;"><span style=3D"padding-left:20px;padding-ri=
+ght:20px;font-size:15px;display:inline-block;letter-spacing:undefined;"><sp=
+an style=3D"font-size: 16px; line-height: 1=2E8; word-break: break-word; ms=
+o-line-height-alt: 29px;"><span style=3D"font-size: 15px; line-height: 27px=
+;" data-mce-style=3D"font-size: 15px; line-height: 27px;">WATCH NOW</span><=
+/span></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #ffffff;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#ffffff;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#ffffff"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#ffffff;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:30px; padding-right: 0px; paddi=
+ng-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i8=
+=2Eamplience=2Enet/i/rapha/Rapha%20Festive%20500%20Frances-13?sm=3Daspect&a=
+mp;aspect=3D2:3&amp;fmt=2Ejpeg=2Einterlaced=3Dtrue&amp;w=3D900" style=3D"te=
+xt-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border:=
+ 0; width: 600px; max-width: 100%; display: block;" width=3D"600"><!--[if m=
+so]></td></tr></table><![endif]--></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 24px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 29px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 24px; color: #333333;=
+">FESTIVE 500</span></p>
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px; color: #333333;=
+">FIRST LIGHT WITH FRANCES</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">As we prepare for this year&#8217;s Festive 500, we&#8217;ll be bringing =
+you a host of inspiring stories from last year=2E First up, a father-daught=
+er duo who rode in the early hours to enjoy the tranquility of daybreak in =
+December and made memories that still inspire them today=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELho3aHR0cHM6=
+Ly93d3cucmFwaGEuY2Mvc3Rvcmllcy9mZXN0aXZlLTUwMC1hLXdpbnRlcnMtdGFsZTGHbUXOYW_=
+YQToNCgJ1cxIHZXhwb25lYToLCgJ1bRIFZW1haWw6JQoCdWMSH1JNRS1SQU0tTldMIDIwMjExMj=
+E4IE5ld3NsZXR0ZXJiRjgxYTUwZTBhNGQxNDZkY2N8cmVnaXN0ZXJlZDpqb2huLmRvZS55b3Vua=
+XFAZ21haWwuY29tfDEwNDZmZTUzZDU3NGYwMjY=2Ex1UNPSDeDgH1tw/click" style=3D"hei=
+ght:28=2E5pt;width:348pt;v-text-anchor:middle;" arcsize=3D"0%" stroke=3D"fa=
+lse" fillcolor=3D"#fa3c6e"><w:anchorlock/><v:textbox inset=3D"0,0,0,0"><cen=
+ter style=3D"color:#ffffff; font-family:Georgia, serif; font-size:15px"><![=
+endif]--><a href=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJxtjj9O=
+hEAcheO_aDQ2dNpIY2ExzAwL7AYt3GKtXIptTFwpBubHMgoMMrOLKL138ASewBuY2GgsPYmdiWx=
+sLV7e-5ovzzDfnxrzzSleV76fbx6Crfs1szkKX9rjqx9_77Nat_b7qdal8jGu69qqWJkyK46x0r=
+ISoHACSosFIJcQxFAtCg2VQpplQB_z0QeTX0N_d3t1roxNuCtlAczf6TA3NiBnIvMPO4iNg8l4h=
+CbDMQouzk2b2JTadGAGUKsMdGe8PME4krzBmkUZYP23K6w55mIx7YXL-i9TJ8QsOhtQ5hIgzOHU=
+8XgctxXMhOrEwP1rmRYWl2A1cl6I29PZ8pcVy7ylxPEScHvc7TsJsb1fTphl-g=2EoXSx8MHeoM=
+YJsg/click" target=3D"_blank" style=3D"-webkit-text-size-adjust: none; text=
+-decoration: none; display: block; color: #ffffff; background-color: #fa3c6=
+e; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px;=
+ width: 80%; width: calc(80% - 2px); border-top: 1px solid #fa3c6e; border-=
+right: 1px solid #fa3c6e; border-bottom: 1px solid #fa3c6e; border-left: 1p=
+x solid #fa3c6e; padding-top: 5px; padding-bottom: 5px; font-family: 'Rapha=
+ Sans Condensed', Georgia, Times New Roman, Times, serif; text-align: cente=
+r; mso-border-alt: none; word-break: keep-all;"><span style=3D"padding-left=
+:20px;padding-right:20px;font-size:15px;display:inline-block;letter-spacing=
+:undefined;"><span style=3D"font-size: 16px; line-height: 1=2E8; word-break=
+: break-word; mso-line-height-alt: 29px;"><span style=3D"font-size: 15px; l=
+ine-height: 27px;" data-mce-style=3D"font-size: 15px; line-height: 27px;">R=
+EAD MORE</span></span></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELho4aHR0cHM6=
+Ly93d3cuc3RyYXZhLmNvbS9jaGFsbGVuZ2VzL3JhcGhhLWZlc3RpdmUtNTAwLTIwMjExh21FzmF=
+v2EE6DQoCdXMSB2V4cG9uZWE6CwoCdW0SBWVtYWlsOiUKAnVjEh9STUUtUkFNLU5XTCAyMDIxMT=
+IxOCBOZXdzbGV0dGVyYkY4MWE1MGUwYTRkMTQ2ZGNjfHJlZ2lzdGVyZWQ6am9obi5kb2UueW91b=
+mlxQGdtYWlsLmNvbXwxMDQ2ZmU1M2Q1NzRmMDI2=2EggmZC8UPhguz0A/click" style=3D"he=
+ight:28=2E5pt;width:348pt;v-text-anchor:middle;" arcsize=3D"0%" stroke=3D"f=
+alse" fillcolor=3D"#f67599"><w:anchorlock/><v:textbox inset=3D"0,0,0,0"><ce=
+nter style=3D"color:#ffffff; font-family:Georgia, serif; font-size:15px"><!=
+[endif]--><a href=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJxtT71=
+OhEAYjH_RaGzotJHGwgJ2lwMkaOEVZ-VRXGPiSbGwHz8KLLJ7IErvO_gEPoFvYGKjsfRJ7EwEbS=
+0mM1PMZEZR3x5b9dUsXpa-nq7vvY27FbU98J-7o8tvd-ejWtV3nUTKUrgINU2jC1nRmuohz1GY0=
+CyDIgaBKlomVItAyLQGzcJYM7BByEM-eaf8c-xuby4vhLIOtyUvgLpbvc2VNchpmrn7vQmVvdl0=
+os3GU807P1N_wwZxVA8akYGUUF0cIxRw1iJJgwyQ_NMVkgyxtJ6P_IH-w9zyEQ1OHUItDJiajJg=
+2C8OugjgVfTEw94onhc446C1fFOnNSTzsGi52BJt2BNaIWYdmhA37BystZZg=2E97NbV4feV1kL=
+Yg/click" target=3D"_blank" style=3D"-webkit-text-size-adjust: none; text-d=
+ecoration: none; display: block; color: #ffffff; background-color: #f67599;=
+ border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; w=
+idth: 80%; width: calc(80% - 2px); border-top: 1px solid #f67599; border-ri=
+ght: 1px solid #f67599; border-bottom: 1px solid #f67599; border-left: 1px =
+solid #f67599; padding-top: 5px; padding-bottom: 5px; font-family: 'Rapha S=
+ans Condensed', Georgia, Times New Roman, Times, serif; text-align: center;=
+ mso-border-alt: none; word-break: keep-all;"><span style=3D"padding-left:2=
+0px;padding-right:20px;font-size:15px;display:inline-block;letter-spacing:u=
+ndefined;"><span style=3D"font-size: 16px; line-height: 1=2E8; word-break: =
+break-word; mso-line-height-alt: 29px;"><span style=3D"font-size: 15px; lin=
+e-height: 27px;" data-mce-style=3D"font-size: 15px; line-height: 27px;">SIG=
+N UP TO RIDE</span></span></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #fc0085;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#fc0085;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#fc0085"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#fc0085;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:30px; padding-right: 0px; paddi=
+ng-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://d15k=
+2d11r6t6rl=2Ecloudfront=2Enet/public/users/Integrators/ae52a6e2-ca6a-4d8e-8=
+944-532f952aae85/9e33e6cc-d0c3-11e9-b813-e66e05894795/Newsletters/Rapha_Gon=
+e_Racing_Cape_Epic_1_1_thumbnail-%281%29=2Ejpg" style=3D"text-decoration: n=
+one; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 600px=
+; max-width: 100%; display: block;" width=3D"600"><!--[if mso]></td></tr></=
+table><![endif]--></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 24px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 29px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 24px; color: #ffffff;=
+">GONE RACING</span></p>
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px; color: #ffffff;=
+">A SOUTH AFRICAN EPIC</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #ffffff;=
+">Opportunities to race on the world stage are often few and far between fo=
+r Kenyan cyclists=2E So when EF&#8217;s Lachlan Morton reached out seeking =
+a partner for the Cape Epic, Kenneth Karaya knew that this, the biggest rac=
+e of his career, had the potential to inspire a new generation of riders=2E<=
+/span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELhoraHR0cHM6=
+Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1URy1hcHAySFFSMDGHbUXOYW_YQToNCgJ1cxIHZXh=
+wb25lYToLCgJ1bRIFZW1haWw6JQoCdWMSH1JNRS1SQU0tTldMIDIwMjExMjE4IE5ld3NsZXR0ZX=
+JiRjgxYTUwZTBhNGQxNDZkY2N8cmVnaXN0ZXJlZDpqb2huLmRvZS55b3VuaXFAZ21haWwuY29tf=
+DEwNDZmZTUzZDU3NGYwMjY=2EmHdGe0Hpa0mUqQ/click" style=3D"height:28=2E5pt;wid=
+th:348pt;v-text-anchor:middle;" arcsize=3D"0%" stroke=3D"false" fillcolor=
+=3D"#0d0d0d"><w:anchorlock/><v:textbox inset=3D"0,0,0,0"><center style=3D"c=
+olor:#ffffff; font-family:Georgia, serif; font-size:15px"><![endif]--><a hr=
+ef=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7=
+Kr_TiqmBUqNWO31VjH_LWSvFDEoielnVFSUlBspa9fXl6uV5lfWlKalKqXnJ-rX55YkpxhX2Yb4=
+q6bWFBg5BEYZGDYnut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brq=
+Bjn66vqF-ygYGRgZGhoZWij4pZYX56SWlKQWRdno6yflp1TqlyQm5aTql0DYRfolKfopmWXRJrE=
+gChsGSSUmuVkYJpoapBokmqQYmpilJCfXFKWmZxYDDU5NscrKz8jTS8lPBfknL7PQIR3kLpCnag=
+wNTMzSUk2NU0zNTdIMjMwA8XlhPg=2Ebo60W3vgToOLng/click" target=3D"_blank" styl=
+e=3D"-webkit-text-size-adjust: none; text-decoration: none; display: block;=
+ color: #ffffff; background-color: #0d0d0d; border-radius: 0px; -webkit-bor=
+der-radius: 0px; -moz-border-radius: 0px; width: 80%; width: calc(80% - 2px=
+); border-top: 1px solid #0d0d0d; border-right: 1px solid #0d0d0d; border-b=
+ottom: 1px solid #0d0d0d; border-left: 1px solid #0d0d0d; padding-top: 5px;=
+ padding-bottom: 5px; font-family: 'Rapha Sans Condensed', Georgia, Times N=
+ew Roman, Times, serif; text-align: center; mso-border-alt: none; word-brea=
+k: keep-all;"><span style=3D"padding-left:20px;padding-right:20px;font-size=
+:15px;display:inline-block;letter-spacing:undefined;"><span style=3D"font-s=
+ize: 16px; line-height: 1=2E8; word-break: break-word; mso-line-height-alt:=
+ 29px;"><span style=3D"font-size: 15px; line-height: 27px;" data-mce-style=
+=3D"font-size: 15px; line-height: 27px;">WATCH NOW</span></span></span></a>=
+
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #ffffff;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#ffffff;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#ffffff"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#ffffff;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:30px; padding-right: 0px; paddi=
+ng-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i8=
+=2Eamplience=2Enet/i/rapha/SHS_PDP_7?fmt=2Ejpeg=2Einterlaced=3Dtrue&amp;sm=
+=3Daspect&amp;scaleFit=3Dpoi&amp;poi=3D%7B(%24this=2Emetadata=2EpointOfInte=
+rest=2Ew=3D=3D0)?0=2E5:%24this=2Emetadata=2EpointOfInterest=2Ex%7D,%7B(%24t=
+his=2Emetadata=2EpointOfInterest=2Ew=3D=3D0)?0=2E5:%24this=2Emetadata=2Epoi=
+ntOfInterest=2Ey%7D,%7B(%24this=2Emetadata=2EpointOfInterest=2Ew=3D=3D0)?0:=
+%24this=2Emetadata=2EpointOfInterest=2Ew%7D,%7B(%24this=2Emetadata=2EpointO=
+fInterest=2Eh=3D=3D0)?0:%24this=2Emetadata=2EpointOfInterest=2Eh%7D%7D&amp;=
+aspect=3D5:4&amp;w=3D900" style=3D"text-decoration: none; -ms-interpolation=
+-mode: bicubic; height: auto; border: 0; width: 600px; max-width: 100%; dis=
+play: block;" width=3D"600"><!--[if mso]></td></tr></table><![endif]--></di=
+v>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px;">COAST IS CLEAR=
+</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">Sweeping beaches and towering cliffs, bright sunlight and a fresh ocean b=
+reeze=2E What&#8217;s not to like? With a design that captures the essence =
+of riding where land meets sea, the limited edition Coast Road collection c=
+omprises warm weather essentials perfect for your next seaside ride=2E</spa=
+n></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELhooaHR0cHM6=
+Ly93d3cucmFwaGEuY2MvY2F0ZWdvcnkvY29hc3Qtcm9hZDGHbUXOYW_YQToNCgJ1cxIHZXhwb25=
+lYToLCgJ1bRIFZW1haWw6JQoCdWMSH1JNRS1SQU0tTldMIDIwMjExMjE4IE5ld3NsZXR0ZXJiRj=
+gxYTUwZTBhNGQxNDZkY2N8cmVnaXN0ZXJlZDpqb2huLmRvZS55b3VuaXFAZ21haWwuY29tfDEwN=
+DZmZTUzZDU3NGYwMjY=2E533P1prjRBCQdA/click" style=3D"height:28=2E5pt;width:3=
+48pt;v-text-anchor:middle;" arcsize=3D"0%" stroke=3D"false" fillcolor=3D"#f=
+a3c6e"><w:anchorlock/><v:textbox inset=3D"0,0,0,0"><center style=3D"color:#=
+ffffff; font-family:Georgia, serif; font-size:15px"><![endif]--><a href=3D"=
+https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Tiq=
+mBUqNWO31VjH_LWSvFDEoielkVFSUlBspa9fXl6uV5RYkJGol5ysn5xYkpqeX1Spn5yfWFyiW5S=
+fmGLYnut6LjH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-y=
+gYGRgZGhoZWij4pZYX56SWlKQWRdno6yflp1TqlyQm5aTql0DYRfolKfopmWXRprEgChuONonVT=
+0xyszBMNDVINUg0STE0MUtJTq4pSk3PLAYanJpilZWfkaeXkp-qV5lfmpdZ6JAOcpdecn5ujaGB=
+iVlaqqlxiqm5SZqBkRkARpZg3Q=2E1Vc-CxoEZAzGvg/click" target=3D"_blank" style=
+=3D"-webkit-text-size-adjust: none; text-decoration: none; display: block; =
+color: #ffffff; background-color: #fa3c6e; border-radius: 0px; -webkit-bord=
+er-radius: 0px; -moz-border-radius: 0px; width: 80%; width: calc(80% - 2px)=
+; border-top: 1px solid #fa3c6e; border-right: 1px solid #fa3c6e; border-bo=
+ttom: 1px solid #fa3c6e; border-left: 1px solid #fa3c6e; padding-top: 5px; =
+padding-bottom: 5px; font-family: 'Rapha Sans Condensed', Georgia, Times Ne=
+w Roman, Times, serif; text-align: center; mso-border-alt: none; word-break=
+: keep-all;"><span style=3D"padding-left:20px;padding-right:20px;font-size:=
+15px;display:inline-block;letter-spacing:undefined;"><span style=3D"font-si=
+ze: 16px; line-height: 1=2E8; word-break: break-word; mso-line-height-alt: =
+29px;"><span style=3D"font-size: 15px; line-height: 27px;" data-mce-style=
+=3D"font-size: 15px; line-height: 27px;">SHOP THE COLLECTION</span></span><=
+/span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #ffffff;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#ffffff;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#ffffff"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#ffffff;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:30px; padding-right: 0px; paddi=
+ng-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i8=
+=2Eamplience=2Enet/i/rapha/RoxsoltLivSram-Rapha-Kit-Launch-46?fmt=2Ejpeg=2Ei=
+nterlaced=3Dtrue&amp;sm=3Daspect&amp;scaleFit=3Dpoi&amp;poi=3D%7B(%24this=
+=2Emetadata=2EpointOfInterest=2Ew=3D=3D0)?0=2E5:%24this=2Emetadata=2EpointO=
+fInterest=2Ex%7D,%7B(%24this=2Emetadata=2EpointOfInterest=2Ew=3D=3D0)?0=2E5=
+:%24this=2Emetadata=2EpointOfInterest=2Ey%7D,%7B(%24this=2Emetadata=2Epoint=
+OfInterest=2Ew=3D=3D0)?0:%24this=2Emetadata=2EpointOfInterest=2Ew%7D,%7B(%2=
+4this=2Emetadata=2EpointOfInterest=2Eh=3D=3D0)?0:%24this=2Emetadata=2Epoint=
+OfInterest=2Eh%7D%7D&amp;aspect=3D4:5&amp;w=3D900" style=3D"text-decoration=
+: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 60=
+0px; max-width: 100%; display: block;" width=3D"600"><!--[if mso]></td></tr=
+></table><![endif]--></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px;">RIDING WITH RO=
+XSOLT</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">With another exciting year of racing fast approaching, we&#8217;re please=
+d to announce the latest team to join our roster: Roxsolt Liv SRAM=2E Austr=
+alia&#8217;s only UCI Women&#8217;s Conti team is a diverse mix of riders w=
+ho race for different reasons=2E Ahead of their 2022 campaign, get to know =
+the riders and look out for their eye-catching kit=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELhotaHR0cHM6=
+Ly93d3cucmFwaGEuY2Mvc3Rvcmllcy9yb3hzb2x0LWxpdi1zcmFtMYdtRc5hb9hBOg0KAnVzEgd=
+leHBvbmVhOgsKAnVtEgVlbWFpbDolCgJ1YxIfUk1FLVJBTS1OV0wgMjAyMTEyMTggTmV3c2xldH=
+RlcmJGODFhNTBlMGE0ZDE0NmRjY3xyZWdpc3RlcmVkOmpvaG4uZG9lLnlvdW5pcUBnbWFpbC5jb=
+218MTA0NmZlNTNkNTc0ZjAyNg=2EW2dJxv8r9OI4WQ/click" style=3D"height:28=2E5pt;=
+width:348pt;v-text-anchor:middle;" arcsize=3D"0%" stroke=3D"false" fillcolo=
+r=3D"#fa3c6e"><w:anchorlock/><v:textbox inset=3D"0,0,0,0"><center style=3D"=
+color:#ffffff; font-family:Georgia, serif; font-size:15px"><![endif]--><a h=
+ref=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK=
+7Kr_TiqmBUqNWO31VjH_LWSvFDEoielm1FSUlBspa9fXl6uV5RYkJGol5ysX1ySX5SZWqxflF9R=
+nJ9TopuTWaZbXJSYa9ie63ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf=
+5uuoGOfrq-oX7KBgZGBkaGhlaKPillhfnpJaUpBZF2ejrJ-WnVOqXJCblpOqXQNhF-iUp-imZZd=
+FmsSAKG442idVPTHKzMEw0NUg1SDRJMTQxS0lOrilKTc8sBhqcmmKVlZ-Rp5eSn6pXmV-al1nok=
+A5yl15yfm6NoYGJWVqqqXGKqblJmoGRGQCx_WMU=2E5jd75mkCPNyOVA/click" target=3D"_=
+blank" style=3D"-webkit-text-size-adjust: none; text-decoration: none; disp=
+lay: block; color: #ffffff; background-color: #fa3c6e; border-radius: 0px; =
+-webkit-border-radius: 0px; -moz-border-radius: 0px; width: 80%; width: cal=
+c(80% - 2px); border-top: 1px solid #fa3c6e; border-right: 1px solid #fa3c6=
+e; border-bottom: 1px solid #fa3c6e; border-left: 1px solid #fa3c6e; paddin=
+g-top: 5px; padding-bottom: 5px; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; text-align: center; mso-border-alt: none=
+; word-break: keep-all;"><span style=3D"padding-left:20px;padding-right:20p=
+x;font-size:15px;display:inline-block;letter-spacing:undefined;"><span styl=
+e=3D"font-size: 16px; line-height: 1=2E8; word-break: break-word; mso-line-=
+height-alt: 29px;"><span style=3D"font-size: 15px; line-height: 27px;" data=
+-mce-style=3D"font-size: 15px; line-height: 27px;">MEET THE TEAM</span></sp=
+an></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #ffffff;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#ffffff;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#ffffff"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#ffffff;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; paddin=
+g-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i8=
+=2Eamplience=2Enet/i/rapha/RAPHA_ISLANDE_01839?sm=3Daspect&amp;aspect=3D5:4=
+&amp;fmt=2Ejpeg=2Einterlaced=3Dtrue&amp;w=3D900" style=3D"text-decoration: =
+none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 600p=
+x; max-width: 100%; display: block;" width=3D"600"><!--[if mso]></td></tr><=
+/table><![endif]--></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px;">RECOMMENDED FO=
+R YOU</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">Just as your mechanic fine tunes your bike, we want to help fine tune you=
+r cycling wardrobe and keep you inspired to ride with personalised product =
+recommendations, from bib shorts to books=2E Here&#8217;s what we have for =
+you this week=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#FFFFFF;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+0px; padding-left: 0px; padding-top:0px; padding-bottom:20px;"><![endif]-->=
+
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:20px; padding-right: 0px; p=
+adding-left: 0px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid " style=3D"Margin: 0 auto; min-width: 320px;=
+ max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-b=
+reak: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#FFFFFF;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#FFFFFF;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+0px; padding-left: 0px; padding-top:10px; padding-bottom:15px;background-co=
+lor:#FFFFFF;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div style=3D"background-color:#FFFFFF;width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:10px; padding-bottom:15px; padding-right: 0px; =
+padding-left: 0px;">
+											<!--<![endif]-->
+											<table class=3D"divider" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"100%" style=3D"table-layout: fixed; vertical-align: top;=
+ border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%;" role=3D"presentation" valign=3D"top"><tbody><tr style=
+=3D"vertical-align: top;" valign=3D"top"><td class=3D"divider_inner" style=
+=3D"word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-=
+size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 0px; paddin=
+g-right: 0px; padding-bottom: 0px; padding-left: 0px;" valign=3D"top">
+															<table class=3D"divider_content" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed; vertical-=
+align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt; border-top: 0px solid transparent; height: 0px=
+; width: 100%;" align=3D"center" role=3D"presentation" height=3D"0" valign=
+=3D"top"><tbody><tr style=3D"vertical-align: top;" valign=3D"top"><td style=
+=3D"word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%;" height=3D"0" valign=3D"top"><span></span=
+></td>
+																	</tr></tbody></table></td>
+													</tr></tbody></table><!--[if (!mso)&(!IE)]><!--></div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+				=09
+
+
+
+
+
+
+
+
+
+
+
+=09
+=09
+	=09
+	=09
+		=09
+			=09
+				=09
+				=09
+			=09
+		=09
+	=09
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+	=09
+	=09
+		=09
+			=09
+				=09
+				=09
+			=09
+		=09
+	=09
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+	=09
+	=09
+		=09
+			=09
+				=09
+				=09
+			=09
+		=09
+	=09
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							</div>
+						</div>
+					</div>
+
+
+=09
+=09
+<div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid three-up" style=3D"Margin: 0 auto; min-width=
+: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word=
+; word-break: break-word; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+							=09
+							=09
+							=09
+							=09
+								=09
+							=09
+							=09
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#FFFFFF;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"200" style=3D"bac=
+kground-color:#FFFFFF;width:200px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+5px; padding-left: 5px; padding-top:20px; padding-bottom:20px;background-co=
+lor:#FFFFFF;"><![endif]-->
+								<div class=3D"col num4" style=3D"max-width: 320px; min-width: 200px=
+; display: table-cell; vertical-align: top; width: 199px; border-right: 1px=
+ solid #DDDDDD;">
+									<div style=3D"background-color:#FFFFFF;width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:20px; padding-bottom:20px; padding-right: 5px; =
+padding-left: 5px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth" align=
+=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"https:/=
+/cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO=
+31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7O9jYBwR4eIXadie63=
+ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaG=
+hlaKPillhfnpJaUpBZFxevrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MkSRj8bkJia5=
+WRgmmhqkGiSapBiamKUkJ9cUpaZnFgPtTk2xysrPyNNLyU_Vq8wvzcssdEgHOV0vOT-3xtDAxCw=
+t1dQ4xdTcJM3AyAwAFDhrsw=2EraWsCDN-AjEf9A/click"><img class=3D"center  autow=
+idth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i1=2Eadis=2Ew=
+s/i/rapha/COL03XX_DNY_Product_H121_01?w=3D960" alt=3D"" title=3D"Image" sty=
+le=3D"text-decoration: none; -ms-interpolation-mode: bicubic; border: 0; he=
+ight: auto; width: 100%; max-width: 189px; display: block;" width=3D"189"><=
+/a>
+												<div style=3D"font-size:1px;line-height:10px">&#160;</div>
+												<!--[if mso]></td></tr></table><![endif]-->
+											</div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+'Oswald', Georgia, Times New Roman, serif;line-height:1=2E2;padding-top:10p=
+x;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style=3D"font-family: 'Rapha Sans Condensed', 'Oswald', Ge=
+orgia, Times New Roman, serif; font-size: 12px; line-height: 1=2E2; color: =
+#333333; mso-line-height-alt: 14px;">
+													<p style=3D"font-size: 15px; text-transform: uppercase; line-h=
+eight: 1=2E2; text-align: center; font-family: Rapha Sans Condensed, Oswald=
+, Georgia, Times New Roman, serif; word-break: break-word; mso-line-height-=
+alt: 18px; margin: 0;"><span style=3D"color: #333333; font-size: 15px;">Men=
+'s Long Sleeve Core Jersey</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 15px; padding-left: 15p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#555555;font-family:Rapha Serif Text, Oswald=
+, Georgia, Times New Roman, serif;line-height:1=2E5;padding-top:0px;padding=
+-right:15px;padding-bottom:10px;padding-left:15px;">
+												<div style=3D"font-family: Rapha Serif Text, Oswald, Georgia, T=
+imes New Roman, serif; font-size: 14px; line-height: 1=2E5; color: #555555;=
+ mso-line-height-alt: 18px;">
+													<p style=3D"font-size: 14px; line-height: 1=2E5; text-align: c=
+enter; font-family: Rapha Serif Text, Oswald, Georgia, Times New Roman, ser=
+if; word-break: break-word; mso-line-height-alt: 20px; mso-ansi-font-size: =
+14px; margin: 0;"><span style=3D"font-size: 14px; mso-ansi-font-size: 14px;=
+">A long sleeve jersey for riding in cooler climes, made with carefully sel=
+ected materials and technology to set the new standard in performance, comf=
+ort and value=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#555555;font-family:Rapha Serif Text, Oswald=
+, Georgia, Times New Roman, serif;line-height:1=2E2;padding-top:0px;padding=
+-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style=3D"font-family: Rapha Serif Text, Oswald, Georgia, T=
+imes New Roman, serif; font-size: 12px; line-height: 1=2E2; color: #555555;=
+ mso-line-height-alt: 14px;">
+													<p style=3D"font-size: 13px; line-height: 1=2E2; text-align: c=
+enter; font-family: Rapha Serif Text, Oswald, Georgia, Times New Roman, ser=
+if; word-break: break-word; mso-line-height-alt: 16px; mso-ansi-font-size: =
+14px; margin: 0;"><span style=3D"font-size: 13px; mso-ansi-font-size: 14px;=
+"><strong><span style=3D"font-size: 13px; mso-ansi-font-size: 14px;"><a sty=
+le=3D"text-decoration: underline; color: #F5426C;" href=3D"https://cdn=2Eex=
+ponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LWS=
+vFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7O9jYBwR4eIXadie63ouMf-GoxU=
+vF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaGhlaKPillh=
+fnpJaUpBZFlenrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MkSRj0bjmkC4BfrFBYl5-=
+sUlRfl56RB2YpKbhWGiqUGqQaJJiqGJWUpyck1RanpmMdBJqSlWWfkZeXop-al6lfmleZmFDukg=
+H-kl5-fWGBqYmKWlmhqnmJqbpBkYmQEAfRx0bA=2EdYUNxutxG37Gmw/click" target=3D"_b=
+lank" rel=3D"noopener">Buy now</a></span></strong></span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							=09
+							=09
+							=09
+								=09
+							=09
+							=09
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#FFFFFF;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"200" style=3D"bac=
+kground-color:#FFFFFF;width:200px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+5px; padding-left: 5px; padding-top:20px; padding-bottom:20px;background-co=
+lor:#FFFFFF;"><![endif]-->
+								<div class=3D"col num4" style=3D"max-width: 320px; min-width: 200px=
+; display: table-cell; vertical-align: top; width: 199px; border-right: 1px=
+ solid #DDDDDD;">
+									<div style=3D"background-color:#FFFFFF;width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:20px; padding-bottom:20px; padding-right: 5px; =
+padding-left: 5px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth" align=
+=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"https:/=
+/cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO=
+31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7B9kYBIREeTqYtie63=
+ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaG=
+hlaKPillhfnpJaUpBZFxevrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MoxF5aNygbKJ=
+SW4WhommBqkGiSYphiZmKcnJNUWp6ZnFQLtTU6yy8jPy9FLyU_Uq80vzMgsd0kFO10vOz60xNDA=
+xS0s1NU4xNTdJMzAyAwAML2ur=2EN-aWvO7yWvYjCw/click"><img class=3D"center  aut=
+owidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i1=2Eadis=
+=2Ews/i/rapha/COR04XX_RED_Product_H120_01?w=3D960" alt=3D"" title=3D"Image"=
+ style=3D"text-decoration: none; -ms-interpolation-mode: bicubic; border: 0=
+; height: auto; width: 100%; max-width: 189px; display: block;" width=3D"18=
+9"></a>
+												<div style=3D"font-size:1px;line-height:10px">&#160;</div>
+												<!--[if mso]></td></tr></table><![endif]-->
+											</div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+'Oswald', Georgia, Times New Roman, serif;line-height:1=2E2;padding-top:10p=
+x;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style=3D"font-family: 'Rapha Sans Condensed', 'Oswald', Ge=
+orgia, Times New Roman, serif; font-size: 12px; line-height: 1=2E2; color: =
+#333333; mso-line-height-alt: 14px;">
+													<p style=3D"font-size: 15px; text-transform: uppercase; line-h=
+eight: 1=2E2; text-align: center; font-family: Rapha Sans Condensed, Oswald=
+, Georgia, Times New Roman, serif; word-break: break-word; mso-line-height-=
+alt: 18px; margin: 0;"><span style=3D"color: #333333; font-size: 15px;">Men=
+'s Core Jersey</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 15px; padding-left: 15p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#555555;font-family:Rapha Serif Text, Oswald=
+, Georgia, Times New Roman, serif;line-height:1=2E5;padding-top:0px;padding=
+-right:15px;padding-bottom:10px;padding-left:15px;">
+												<div style=3D"font-family: Rapha Serif Text, Oswald, Georgia, T=
+imes New Roman, serif; font-size: 14px; line-height: 1=2E5; color: #555555;=
+ mso-line-height-alt: 18px;">
+													<p style=3D"font-size: 14px; line-height: 1=2E5; text-align: c=
+enter; font-family: Rapha Serif Text, Oswald, Georgia, Times New Roman, ser=
+if; word-break: break-word; mso-line-height-alt: 20px; mso-ansi-font-size: =
+14px; margin: 0;"><span style=3D"font-size: 14px; mso-ansi-font-size: 14px;=
+">A versatile mid-weight cycling jersey made for comfort on any ride=2E </s=
+pan></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#555555;font-family:Rapha Serif Text, Oswald=
+, Georgia, Times New Roman, serif;line-height:1=2E2;padding-top:0px;padding=
+-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style=3D"font-family: Rapha Serif Text, Oswald, Georgia, T=
+imes New Roman, serif; font-size: 12px; line-height: 1=2E2; color: #555555;=
+ mso-line-height-alt: 14px;">
+													<p style=3D"font-size: 13px; line-height: 1=2E2; text-align: c=
+enter; font-family: Rapha Serif Text, Oswald, Georgia, Times New Roman, ser=
+if; word-break: break-word; mso-line-height-alt: 16px; mso-ansi-font-size: =
+14px; margin: 0;"><span style=3D"font-size: 13px; mso-ansi-font-size: 14px;=
+"><strong><span style=3D"font-size: 13px; mso-ansi-font-size: 14px;"><a sty=
+le=3D"text-decoration: underline; color: #F5426C;" href=3D"https://cdn=2Eex=
+ponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LWS=
+vFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLv7B9kYBIREeTqYtie63ouMf-GoxU=
+vF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaGhlaKPillh=
+fnpJaUpBZFlenrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MoxF5aNyTSDcAv3igsQ8_=
+eKSovy8dAg7McnNwjDR1CDVINEkxdDELCU5uaYoNT2zGOik1BSrrPyMPL2U_FS9yvzSvMxCh3SQ=
+j_SS83NrDA1MzNJSTY1TTM1N0gyMzAB0W3Rk=2EjTbO83ZqqM6uaQ/click" target=3D"_bla=
+nk" rel=3D"noopener">Buy now</a></span></strong></span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							=09
+							=09
+							=09
+								=09
+							=09
+							=09
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#FFFFFF;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"200" style=3D"bac=
+kground-color:#FFFFFF;width:200px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+5px; padding-left: 5px; padding-top:20px; padding-bottom:20px;background-co=
+lor:#FFFFFF;"><![endif]-->
+								<div class=3D"col num4" style=3D"max-width: 320px; min-width: 200px=
+; display: table-cell; vertical-align: top; width: 199px; border-right: non=
+e;">
+									<div style=3D"background-color:#FFFFFF;width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:20px; padding-bottom:20px; padding-right: 5px; =
+padding-left: 5px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth" align=
+=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"https:/=
+/cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO=
+31VjH_LWSvFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKIfEBJiYBQcHOwbbtie63=
+ouMf-GoxUvF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaG=
+hlaKPillhfnpJaUpBZFxevrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MkSRjzZG5QJl=
+E5PcLAwTTQ1SDRJNUgxNzFKSk2uKUtMzi4F2p6ZYZeVn5Oml5KfqVeaX5mUWOqSDnK6XnJ9bY2h=
+gYpaWamqcYmpukmZgZAYAL6pr0A=2Eonol48vSeDx-dg/click"><img class=3D"center  a=
+utowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i1=2Eadis=
+=2Ews/i/rapha/PTT02SS_SMW_Product_H120_01?w=3D960" alt=3D"" title=3D"Image"=
+ style=3D"text-decoration: none; -ms-interpolation-mode: bicubic; border: 0=
+; height: auto; width: 100%; max-width: 189px; display: block;" width=3D"18=
+9"></a>
+												<div style=3D"font-size:1px;line-height:10px">&#160;</div>
+												<!--[if mso]></td></tr></table><![endif]-->
+											</div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+'Oswald', Georgia, Times New Roman, serif;line-height:1=2E2;padding-top:10p=
+x;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style=3D"font-family: 'Rapha Sans Condensed', 'Oswald', Ge=
+orgia, Times New Roman, serif; font-size: 12px; line-height: 1=2E2; color: =
+#333333; mso-line-height-alt: 14px;">
+													<p style=3D"font-size: 15px; text-transform: uppercase; line-h=
+eight: 1=2E2; text-align: center; font-family: Rapha Sans Condensed, Oswald=
+, Georgia, Times New Roman, serif; word-break: break-word; mso-line-height-=
+alt: 18px; margin: 0;"><span style=3D"color: #333333; font-size: 15px;">Men=
+'s Pro Team Training Jersey</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 15px; padding-left: 15p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#555555;font-family:Rapha Serif Text, Oswald=
+, Georgia, Times New Roman, serif;line-height:1=2E5;padding-top:0px;padding=
+-right:15px;padding-bottom:10px;padding-left:15px;">
+												<div style=3D"font-family: Rapha Serif Text, Oswald, Georgia, T=
+imes New Roman, serif; font-size: 14px; line-height: 1=2E5; color: #555555;=
+ mso-line-height-alt: 18px;">
+													<p style=3D"font-size: 14px; line-height: 1=2E5; text-align: c=
+enter; font-family: Rapha Serif Text, Oswald, Georgia, Times New Roman, ser=
+if; word-break: break-word; mso-line-height-alt: 20px; mso-ansi-font-size: =
+14px; margin: 0;"><span style=3D"font-size: 14px; mso-ansi-font-size: 14px;=
+">A dedicated jersey designed for the demands of training &#8211; day in, d=
+ay out=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#555555;font-family:Rapha Serif Text, Oswald=
+, Georgia, Times New Roman, serif;line-height:1=2E2;padding-top:0px;padding=
+-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style=3D"font-family: Rapha Serif Text, Oswald, Georgia, T=
+imes New Roman, serif; font-size: 12px; line-height: 1=2E2; color: #555555;=
+ mso-line-height-alt: 14px;">
+													<p style=3D"font-size: 13px; line-height: 1=2E2; text-align: c=
+enter; font-family: Rapha Serif Text, Oswald, Georgia, Times New Roman, ser=
+if; word-break: break-word; mso-line-height-alt: 16px; mso-ansi-font-size: =
+14px; margin: 0;"><span style=3D"font-size: 13px; mso-ansi-font-size: 14px;=
+"><strong><span style=3D"font-size: 13px; mso-ansi-font-size: 14px;"><a sty=
+le=3D"text-decoration: underline; color: #F5426C;" href=3D"https://cdn=2Eex=
+ponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LWS=
+vFDEoielnlFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKIfEBJiYBQcHOwbbtie63ouMf-GoxU=
+vF1NpsRB7akVBfl5qohU3kJsrxJqam5iZY6UK5CQLyQf5uuoGOfrq-oX7KBgZGBkaGhlaKPillh=
+fnpJaUpBZFlenrJ-WnVOqXJCblpOqXQNhF-iUp-imZZdEWsSAKF442MkSRjzZG5ZpAuAX6xQWJe=
+frFJUX5eekQdmKSm4VhoqlBqkGiSYqhiVlKcnJNUWp6ZjHQSakpVln5GXl6KfmpepX5pXmZhQ7p=
+IB_pJefn1hgamJilpZoap5iam6QZGJkBAJspdIk=2EaJw8sYAFgZZ1sw/click" target=3D"_=
+blank" rel=3D"noopener">Buy now</a></span></strong></span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							=09
+							</div>
+						</div>
+					</div>
+
+</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #ffffff;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#ffffff;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#ffffff"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#ffffff;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid #dddddd; border-rig=
+ht: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px;=
+ padding-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid #dddddd; border-right:0px solid t=
+ransparent; padding-top:0px; padding-bottom:30px; padding-right: 0px; paddi=
+ng-left: 0px;">
+											<!--<![endif]-->
+											<div class=3D"img-container center  autowidth  fullwidth big" al=
+ign=3D"center" style=3D"padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-rig=
+ht: 0px;padding-left: 0px;" align=3D"center"><![endif]--><img class=3D"cent=
+er  autowidth  fullwidth" align=3D"center" border=3D"0" src=3D"https://i8=
+=2Eamplience=2Enet/i/rapha/2_3_GVR01V1_XXXXXX_product_H218_01?sm=3Daspect&a=
+mp;aspect=3D4:5&amp;fmt=2Ejpeg=2Einterlaced=3Dtrue&amp;w=3D900" style=3D"te=
+xt-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border:=
+ 0; width: 600px; max-width: 100%; display: block;" width=3D"600"><!--[if m=
+so]></td></tr></table><![endif]--></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px;">LEFT IT LAST M=
+INUTE?</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">Don't worry, with the option to have your gift delivered directly to the =
+recipient's inbox, our E-Vouchers are the perfect solution=2E And better st=
+ill, the lucky recipient will also have the freedom to choose from their fa=
+vourite Rapha products for guaranteed glee on the big day=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELhoiaHR0cHM6=
+Ly93d3cucmFwaGEuY2MvcHJvZHVjdC9FVlIwMTGHbUXOYW_YQToNCgJ1cxIHZXhwb25lYToLCgJ=
+1bRIFZW1haWw6JQoCdWMSH1JNRS1SQU0tTldMIDIwMjExMjE4IE5ld3NsZXR0ZXJiRjgxYTUwZT=
+BhNGQxNDZkY2N8cmVnaXN0ZXJlZDpqb2huLmRvZS55b3VuaXFAZ21haWwuY29tfDEwNDZmZTUzZ=
+DU3NGYwMjY=2EhT50wmCoTffL5Q/click" style=3D"height:28=2E5pt;width:348pt;v-t=
+ext-anchor:middle;" arcsize=3D"0%" stroke=3D"false" fillcolor=3D"#c50240"><=
+w:anchorlock/><v:textbox inset=3D"0,0,0,0"><center style=3D"color:#ffffff; =
+font-family:Georgia, serif; font-size:15px"><![endif]--><a href=3D"https://=
+cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO3=
+1VjH_LWSvFDEoiellFFSUlBspa9fXl6uV5RYkJGol5ysX1CUn1KaXKLvGhZkYGjYnut6LjH_hqM=
+VLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-ygYGRgZGhoZWij4pZ=
+YX56SWlKQWRdno6yflp1TqlyQm5aTql0DYRfolKfopmWXRlrEgChuONonVT0xyszBMNDVINUg0S=
+TE0MUtJTq4pSk3PLAYanJpilZWfkaeXkp-qV5lfmpdZ6JAOcpdecn5ujaGBiVlaqqlxiqm5SZqB=
+kRkAKC5d3w=2ExARZKX1oA2jD1Q/click" target=3D"_blank" style=3D"-webkit-text-=
+size-adjust: none; text-decoration: none; display: block; color: #ffffff; b=
+ackground-color: #c50240; border-radius: 0px; -webkit-border-radius: 0px; -=
+moz-border-radius: 0px; width: 80%; width: calc(80% - 2px); border-top: 1px=
+ solid #c50240; border-right: 1px solid #c50240; border-bottom: 1px solid #=
+c50240; border-left: 1px solid #c50240; padding-top: 5px; padding-bottom: 5=
+px; font-family: 'Rapha Sans Condensed', Georgia, Times New Roman, Times, s=
+erif; text-align: center; mso-border-alt: none; word-break: keep-all;"><spa=
+n style=3D"padding-left:20px;padding-right:20px;font-size:15px;display:inli=
+ne-block;letter-spacing:undefined;"><span style=3D"font-size: 16px; line-he=
+ight: 1=2E8; word-break: break-word; mso-line-height-alt: 29px;"><span styl=
+e=3D"font-size: 15px; line-height: 27px;" data-mce-style=3D"font-size: 15px=
+; line-height: 27px;">FIND OUT MORE</span></span></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#ffffff;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #ffffff;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#ffffff;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#ffffff;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#ffffff"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#ffffff;width:600px; border-top: 1px solid #DDDDDD; border-le=
+ft: 0px solid transparent; border-bottom: 0px solid #dddddd; border-right: =
+0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; padd=
+ing-left: 0px; padding-top:0px; padding-bottom:30px;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:1px solid #DDDDDD; border-left:0px solid=
+ transparent; border-bottom:0px solid #dddddd; border-right:0px solid trans=
+parent; padding-top:0px; padding-bottom:30px; padding-right: 0px; padding-l=
+eft: 0px;">
+											<!--<![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10p=
+x; padding-top: 30px; padding-bottom: 20px; font-family: Georgia, serif"><!=
+[endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Sans Condensed', =
+Georgia, Times New Roman, Times, serif;line-height:1=2E2;padding-top:30px;p=
+adding-right:10px;padding-bottom:20px;padding-left:10px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E2; color: #333333; font-family: 'Rapha Sans Condensed', Georg=
+ia, Times New Roman, Times, serif; mso-line-height-alt: 14px;">
+													<p style=3D"margin: 0; font-size: 30px; line-height: 1=2E2; te=
+xt-align: center; word-break: break-word; mso-line-height-alt: 36px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 30px;">FINAL SHIPPING=
+ DATES</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 20px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:20px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; font-family: 'Rapha Serif Text', Georgia, Times New Roman,=
+ Times, serif; color: #333333; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; text-align: center; line-height: 1=2E5;=
+ word-break: break-word; font-size: 15px; mso-line-height-alt: 23px; margin=
+-top: 0; margin-bottom: 0;"><span style=3D"font-size: 15px; color: #333333;=
+">As the holidays are almost upon us, so too are our last shipping dates=2E =
+To make sure all your gifts arrive in time for the big day, check out the f=
+inal shipping dates for your area below=2E</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><style>
+  =2Ecal table {
+    font-family: inherit;
+    font-size: 15px;
+    border-collapse: collapse;
+    width: 90%;
+  }
+
+  =2Ecal tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  =2Ecal td,
+  th {
+    text-align: left;
+    padding: 10px;
+  }
+
+  =2Esans {
+    font-family: "RaphaSans", Georgia, Times New Roman, serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  =2Ecal tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style><div class=3D"cal">
+  <table cellpadding=3D"10" cellspacing=3D"0" align=3D"center" border=3D"0"=
+ style=3D"font-family: " raphasans georgia times new roman serif font-size:=
+ border-collapse: collapse width: text-align: left><thead class=3D"sans"><t=
+r style=3D"border-bottom: 1px solid #dddddd;"><th></th>
+        <th class=3D"sans">Standard</th>
+        <th class=3D"sans">Express</th>
+      </tr></thead><tbody><tr style=3D"border-bottom: 1px solid #dddddd;"><=
+td>UK</td>
+        <td>Mon 20</td>
+        <td>Thu 23</td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>Europe</td>
+        <td>Sun 19</td>
+        <td>Tue 21</td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>USA</td>
+        <td>Fri 17</td>
+        <td>
+          <em>2-day</em>: Tue 21<br><em>Overnight</em>: Wed 22
+        </td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>Japan</td>
+        <td>Fri 17</td>
+        <td>Wed 22</td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>Australia</t=
+d>
+        <td>Wed 15</td>
+        <td>Thu 16</td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>Taiwan</td>
+        <td>Wed 22</td>
+        <td>Thu 23</td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>Korea</td>
+        <td>Fri 17</td>
+        <td>Mon 20</td>
+      </tr><tr style=3D"border-bottom: 1px solid #dddddd;"><td>ROW</td>
+        <td>Thu 16</td>
+        <td>Tue 21</td>
+      </tr></tbody></table></div></div>
+											<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"><tr><td style=3D"padding-right: 40px; padding-left: 40p=
+x; padding-top: 0px; padding-bottom: 10px; font-family: Georgia, serif"><![=
+endif]-->
+											<div style=3D"color:#333333;font-family:'Rapha Serif Text', Geor=
+gia, Times New Roman, Times, serif;line-height:1=2E5;padding-top:0px;paddin=
+g-right:40px;padding-bottom:10px;padding-left:40px;">
+												<div class=3D"txtTinyMce-wrapper" style=3D"font-size: 12px; lin=
+e-height: 1=2E5; color: #333333; font-family: 'Rapha Serif Text', Georgia, =
+Times New Roman, Times, serif; mso-line-height-alt: 18px;">
+													<p style=3D"margin: 0; font-size: 12px; line-height: 1=2E5; wo=
+rd-break: break-word; mso-line-height-alt: 18px; margin-top: 0; margin-bott=
+om: 0;">&#160;</p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<div class=3D"button-container" align=3D"center" style=3D"paddin=
+g-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border-spacing: 0; border-collapse: collapse;=
+ mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style=3D"padding-top:=
+ 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px" align=
+=3D"center"><v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=
+=3D"urn:schemas-microsoft-com:office:word" href=3D"https://cdn=2Eexponea=2Ec=
+om/rapha-racing1/e/EiDNmnkgyDRuxQH2qGt7Tgh6AyB5KV22fDtc_ToZ0HIELhodaHR0cHM6=
+Ly93d3cucmFwaGEuY2Mvc2hpcHBpbmcxh21FzmFv2EE6DQoCdXMSB2V4cG9uZWE6CwoCdW0SBWV=
+tYWlsOiUKAnVjEh9STUUtUkFNLU5XTCAyMDIxMTIxOCBOZXdzbGV0dGVyYkY4MWE1MGUwYTRkMT=
+Q2ZGNjfHJlZ2lzdGVyZWQ6am9obi5kb2UueW91bmlxQGdtYWlsLmNvbXwxMDQ2ZmU1M2Q1NzRmM=
+DI2=2EHL-UByaU1cCDSw/click" style=3D"height:28=2E5pt;width:348pt;v-text-anc=
+hor:middle;" arcsize=3D"0%" stroke=3D"false" fillcolor=3D"#0d0d0d"><w:ancho=
+rlock/><v:textbox inset=3D"0,0,0,0"><center style=3D"color:#ffffff; font-fa=
+mily:Georgia, serif; font-size:15px"><![endif]--><a href=3D"https://cdn=2Ee=
+xponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LW=
+SvFDEoiclm1FSUlBspa9fXl6uV5RYkJGol5ysX5yRWVCQmZdu2J7rei4x_4ajFS8XU2mxEHtqRU=
+F-XmqiFTeQmyvEmpqbmJljpQrkJAvJB_m66gY5-ur6hfsoGBkYGRoaGVoo-KWWF-eklpSkFkXZ6=
+usn5adU6pckJuWk6pdA2EX6JSn6KZll0YYGsSAaG442jdVPTHKzMEw0NUg1SDRJMTQxS0lOrilK=
+Tc8sBpqcmmKVlZ-Rp5eSn6pXmV-al1nokA5ymF5yfm6NoYGJWVqqqXGKqblJmoGRGQAHalzo=2E4=
+J9jQjCuZ1QIgA/click" target=3D"_blank" style=3D"-webkit-text-size-adjust: n=
+one; text-decoration: none; display: block; color: #ffffff; background-colo=
+r: #0d0d0d; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-rad=
+ius: 0px; width: 80%; width: calc(80% - 2px); border-top: 1px solid #0d0d0d=
+; border-right: 1px solid #0d0d0d; border-bottom: 1px solid #0d0d0d; border=
+-left: 1px solid #0d0d0d; padding-top: 5px; padding-bottom: 5px; font-famil=
+y: 'Rapha Sans Condensed', Georgia, Times New Roman, Times, serif; text-ali=
+gn: center; mso-border-alt: none; word-break: keep-all;"><span style=3D"pad=
+ding-left:20px;padding-right:20px;font-size:15px;display:inline-block;lette=
+r-spacing:undefined;"><span style=3D"font-size: 16px; line-height: 1=2E8; w=
+ord-break: break-word; mso-line-height-alt: 29px;"><span style=3D"font-size=
+: 15px; line-height: 27px;" data-mce-style=3D"font-size: 15px; line-height:=
+ 27px;">MORE ON SHIPPING</span></span></span></a>
+												<!--[if mso]></center></v:textbox></v:roundrect></td></tr></tab=
+le><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:#FFFFFF;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: #FFFFFF;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:#FFFFFF;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:#FFFFFF;"><tr><td align=
+=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+#FFFFFF"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:#FFFFFF;width:600px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+0px; padding-left: 0px; padding-top:10px; padding-bottom:10px;background-co=
+lor:#FFFFFF;"><![endif]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; background-color: #FFFFFF; wid=
+th: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:10px; padding-bottom:10px; padding-right: 0px; =
+padding-left: 0px;">
+											<!--<![endif]-->
+											<table class=3D"divider" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" width=3D"100%" style=3D"table-layout: fixed; vertical-align: top;=
+ border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%;" role=3D"presentation" valign=3D"top"><tbody><tr style=
+=3D"vertical-align: top;" valign=3D"top"><td class=3D"divider_inner" style=
+=3D"word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-=
+size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 0px; paddin=
+g-right: 0px; padding-bottom: 0px; padding-left: 0px;" valign=3D"top">
+															<table class=3D"divider_content" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed; vertical-=
+align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt; border-top: 1px solid #DDDDDD; height: 0px; wi=
+dth: 100%;" align=3D"center" role=3D"presentation" height=3D"0" valign=3D"t=
+op"><tbody><tr style=3D"vertical-align: top;" valign=3D"top"><td style=3D"w=
+ord-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -we=
+bkit-text-size-adjust: 100%;" height=3D"0" valign=3D"top"><span></span></td=
+>
+																	</tr></tbody></table></td>
+													</tr></tbody></table><!--[if (!mso)&(!IE)]><!--></div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:transparent;width:600px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]=
+-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; pa=
+dding-left: 0px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><div style=3D"background-color:#FFFFFF;">
+	<div class=3D"block-grid three-up no-stack" style=3D"Margin: 0 auto; min-w=
+idth: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-=
+word; word-break: break-word; background-color: #FFFFFF;padding-bottom:30px=
+;">
+		<div style=3D"border-collapse: collapse;display: table;width: 100%;backgr=
+ound-color:#FFFFFF;">
+			<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"background-color:#FFFFFF;"><tr><td align=3D"ce=
+nter"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"widt=
+h:600px"><tr class=3D"layout-full-width" style=3D"background-color:#FFFFFF"=
+><![endif]-->
+			<!--[if (mso)|(IE)]><td align=3D"center" width=3D"200" style=3D"backgrou=
+nd-color:#FFFFFF;width:200px; border-top: 0px solid transparent; border-lef=
+t: 0px solid transparent; border-bottom: 0px solid transparent; border-righ=
+t: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; =
+padding-left: 60px; padding-top:30px; padding-bottom:30px;"><![endif]-->
+			<div class=3D"col num4" style=3D"max-width: 320px; min-width: 200px; dis=
+play: table-cell; vertical-align: top; width: 200px;">
+				<div style=3D"width:100% !important;">
+					<!--[if (!mso)&(!IE)]><!-->
+					<div style=3D"border-top:0px solid transparent; border-left:0px solid =
+transparent; border-bottom:0px solid transparent; border-right:0px solid tr=
+ansparent; padding-top:30px; padding-bottom:5px; padding-right: 0px; paddin=
+g-left: 60px;">
+						<!--<![endif]-->
+						<div class=3D"img-container right fixedwidth" align=3D"right" style=
+=3D"padding-right: 0px;padding-left: 0px;">
+							<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-right: 0=
+px;padding-left: 0px;" align=3D"right"><![endif]--><a href=3D"https://cdn=
+=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31Vj=
+H_LWSvFDEoielmlFSUlBspa9fXl6ul5aYnJqUn5-tl5yfq1-UWJCRWJSYnJmXrm_Ynut6LjH_hq=
+MVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-ygYGRgZGhoZWij4p=
+ZYX56SWlKQWRUXq6yflp1TqlyQm5aTql0DYRfolKfopmWXRhkaxIJoYHG2IqjQxyc3CMNHUINUg=
+0STF0MQsJTm5pig1PbMYaGtqilVWfkaeXkp-ql5lfmleZqFDOsjRIK_WGBqYmKWlmhqnmJqbpBk=
+YmQEAquhqHA=2EFmnt6muwUd_FmA/click" target=3D"_blank" tabindex=3D"-1"> <img=
+ class=3D"right fixedwidth" align=3D"right" border=3D"0" src=3D"https://d15=
+k2d11r6t6rl=2Ecloudfront=2Enet/public/users/Integrators/ae52a6e2-ca6a-4d8e-=
+8944-532f952aae85/9e33e6cc-d0c3-11e9-b813-e66e05894795/editor_images/650475=
+545=2Epng" alt=3D"Facebook" title=3D"Facebook" style=3D"text-decoration: no=
+ne; -ms-interpolation-mode: bicubic; height: auto; border: none; width: 100=
+%; max-width: 35px; float: none; display: block;" width=3D"35"></a>
+							<!--[if mso]></td></tr></table><![endif]-->
+						</div>
+						<!--[if (!mso)&(!IE)]><!-->
+					</div>
+					<!--<![endif]-->
+				</div>
+			</div>
+			<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+			<!--[if (mso)|(IE)]></td><td align=3D"center" width=3D"200" style=3D"bac=
+kground-color:#FFFFFF;width:200px; border-top: 0px solid #dddddd; border-le=
+ft: 0px solid #dddddd; border-bottom: 0px solid #dddddd; border-right: 0px =
+solid #dddddd;" valign=3D"top"><table width=3D"100%" cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 0px; padding-lef=
+t: 0px; padding-top:30px; padding-bottom:5px;"><![endif]-->
+			<div class=3D"col num4" style=3D"max-width: 320px; min-width: 200px; dis=
+play: table-cell; vertical-align: top; width: 200px;">
+				<div style=3D"width:100% !important;">
+					<!--[if (!mso)&(!IE)]><!-->
+					<div style=3D"border-top:0px solid #dddddd; border-left:0px solid #ddd=
+ddd; border-bottom:0px solid #dddddd; border-right:0px solid #dddddd; paddi=
+ng-top:30px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+						<!--<![endif]-->
+						<div class=3D"img-container center fixedwidth" align=3D"center" style=
+=3D"padding-right: 0px;padding-left: 0px;">
+							<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-right: 0=
+px;padding-left: 0px;" align=3D"center"><![endif]--><a href=3D"https://cdn=
+=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31Vj=
+H_LWSvFDEoiclmVFSUlBspa9fUp5ZUpJapJecn6tflFiQkWjYnut6LjH_hqMVLxdTabEQe2pFQX=
+5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-ygYGRgZGhoZWij4pZYX56SCTI2K1NdPy=
+k-p1C9JTMpJ1S-BsIv0S1L0UzLLog2NYkE0MTgaTWlikpuFYaKpQapBokmKoYlZSnJyTVFqemYx=
+0NbUFKus_Iw8vZT8VL3K_NK8zEKHdJCjQX6sMTQwMUtLNTVOMTU3STMwMgMAW_dltA=2ET1mSxy=
+HSCLBv1g/click" target=3D"_blank" tabindex=3D"-1"> <img class=3D"center fix=
+edwidth" align=3D"center" border=3D"0" src=3D"https://d15k2d11r6t6rl=2Eclou=
+dfront=2Enet/public/users/Integrators/ae52a6e2-ca6a-4d8e-8944-532f952aae85/=
+9e33e6cc-d0c3-11e9-b813-e66e05894795/editor_images/654597250=2Epng" alt=3D"=
+Twitter" title=3D"Twitter" style=3D"text-decoration: none; -ms-interpolatio=
+n-mode: bicubic; height: auto; border: none; width: 100%; max-width: 34px; =
+display: block;" width=3D"34"></a>
+							<!--[if mso]></td></tr></table><![endif]-->
+						</div>
+						<!--[if (!mso)&(!IE)]><!-->
+					</div>
+					<!--<![endif]-->
+				</div>
+			</div>
+			<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+			<!--[if (mso)|(IE)]></td><td align=3D"center" width=3D"200" style=3D"bac=
+kground-color:#FFFFFF;width:200px; border-top: 0px solid transparent; borde=
+r-left: 0px solid transparent; border-bottom: 0px solid transparent; border=
+-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" cellpa=
+dding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: =
+60px; padding-left: 0px; padding-top:30px; padding-bottom:5px;"><![endif]--=
+>
+			<div class=3D"col num4" style=3D"max-width: 320px; min-width: 200px; dis=
+play: table-cell; vertical-align: top; width: 200px;">
+				<div style=3D"width:100% !important;">
+					<!--[if (!mso)&(!IE)]><!-->
+					<div style=3D"border-top:0px solid transparent; border-left:0px solid =
+transparent; border-bottom:0px solid transparent; border-right:0px solid tr=
+ansparent; padding-top:30px; padding-bottom:5px; padding-right: 60px; paddi=
+ng-left: 0px;">
+						<!--<![endif]-->
+						<div class=3D"img-container left fixedwidth" align=3D"left" style=3D"=
+padding-right: 0px;padding-left: 0px;">
+							<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0"><tr style=3D"line-height:0px"><td style=3D"padding-right: 0=
+px;padding-left: 0px;" align=3D"left"><![endif]--><a href=3D"https://cdn=2Ee=
+xponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_TiqmBUqNWO31VjH_LW=
+SvFDEoielkFFSUlBspa9fXl6ul5lXXJKYXpSYq5ecn6tflFiQkahv2J7rei4x_4ajFS8XU2mxEH=
+tqRUF-XmqiFTeQmyvEmpqbmJljpQrkJAvJB_m66gY5-ur6hfsoGBkYGRoaGVoo-KWWF-eklpSkF=
+kVF6usn5adU6pckJuWk6pdA2EX6JSn6KZll0YZGsSCaGBxtjKo0McnNwjDR1CDVINEkxdDELCU5=
+uaYoNT2zGGhraopVVn5Gnl5KfqpeZX5pXmahQzrI0SBP1hgamJilpZoap5iam6QZGJkBAFrwaDE=
+=2Eq7f7X1nBjqlxcg/click" target=3D"_blank" tabindex=3D"-1"> <img class=3D"l=
+eft fixedwidth" border=3D"0" src=3D"https://d15k2d11r6t6rl=2Ecloudfront=2En=
+et/public/users/Integrators/ae52a6e2-ca6a-4d8e-8944-532f952aae85/9e33e6cc-d=
+0c3-11e9-b813-e66e05894795/editor_images/1803891427=2Epng" alt=3D"Instagram=
+" title=3D"Instagram" style=3D"text-decoration: none; -ms-interpolation-mod=
+e: bicubic; height: auto; border: none; width: 100%; max-width: 35px; displ=
+ay: block;" width=3D"35"></a>
+							<!--[if mso]></td></tr></table><![endif]-->
+						</div>
+						<!--[if (!mso)&(!IE)]><!-->
+					</div>
+					<!--<![endif]-->
+				</div>
+			</div>
+			<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+			<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+		</div>
+	</div>
+</div></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div><div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 600p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:600px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"600" style=3D"bac=
+kground-color:transparent;width:600px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]=
+-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 600p=
+x; display: table-cell; vertical-align: top; width: 600px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; pa=
+dding-left: 0px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><!--[if mso]><table width=3D"100%" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-right: 10px; paddin=
+g-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia=
+, serif"><![endif]-->
+<div style=3D"color:#555555;font-family:'Rapha Serif', 'Oswald', Georgia, T=
+imes New Roman, serif;line-height:1=2E2;padding-top:10px;padding-right:10px=
+;padding-bottom:10px;padding-left:10px;">
+	<div style=3D"font-family: 'Rapha Serif', 'Oswald', Georgia, Times New Rom=
+an, serif; font-size: 12px; line-height: 15px; color: #555555; mso-line-hei=
+ght-alt: 14px;">
+		<p style=3D"font-size: 9px; line-height: 1=2E2; text-align: center; mso-l=
+ine-height-alt: 11px; margin: 0;"><span style=3D"font-size: 9px; color: #80=
+8080;"><a style=3D"color: #808080;" href=3D"https://cdn=2Eexponea=2Ecom/rap=
+ha-racing1/e/=2EeJx1ULtSwkAAHHyMjo4NnTamsbAglwsJYGyMgIIaGMARQSkud0cSHnfxciA=
+gvX9g4Rf4Bf6BMzY6ln6JnTPCaGuxs7uzxe5sXHl7HCuvBnuJfT1170qrk0VlvNt6nu5ff1ubH2=
+JJ3XqI-VKGkQUAJkylo5AzilTM-0Cg0EcJgXDAPAgoyHojT3QZq551hd2pmTht14qOjmgtVywdp=
+4_sNuIoKcvZAs8VC93w0m1mynCyV_ZZBXuVgdMgsopN393zD7E38ocNbAaVi3On4TZFx1PD-sll=
+E9eTk9PjIGPD-37-HfFP29pYWxhE8ZW_adb6zPbjy7SPgp61MzM4vl118omq7SRK9TNF13QIdZh=
+RSvQ26lEpqWiWAXA5GQOJ3B4F8lcLIAkgwfAKJltz_g9X8DcO5yIKEQPIPcpAZGpUQwaBRopgPB=
+XUC6JZFyVWh_tMJZyqYz5gwc2BN586v3QKNSPVpmaSmGmjrempH6odjMI=2EfGOB4yNWxdak_g/=
+click" target=3D"_blank" rel=3D"noopener">View in web browser</a></span></p=
+>
+		<br><p style=3D"font-size: 9px; line-height: 1=2E2; text-align: center; m=
+so-line-height-alt: 11px; margin: 0;"><a href=3D"https://cdn=2Eexponea=2Eco=
+m/rapha-racing1/e/=2EeJx1ULtO40AAFC9xOkSTDhrcUFwRr9exk2CEOB_PAE6UBBGSkGK9u1=
+k7j12zXkMS0vMPfAHiA_gDJBoQJV9Ch0QirqUYzYymmNGktJe7ofZs8aeZj_vuTfHXaE4b_mk9j=
+jcvPp2VNzmvrz7MBEpFsQMAJlyng0hwinQs-kCiKEBpiXDIGQQU7LABk13OKydd6XaqNs651YJn=
+IlrdLRQPcvtuGwmUUaWdQ7FbOOxG534jX4KjjVLAy5iVE69OVAXbgb8R_MNsEFzVsR2Wz069ut-=
+QHaZHtaPzBq5lRscHYd4FCY8TP8Yy9Ol2D3G2RTm87e-9IvHuOsu_Z5M4tfh_rrM0sf3UAu2jsO=
+esTwxOrVW8vXTF9dLF2olmGiaEJsxrRXod96hSVDaOAPAFGQKF_B4F6ltLoAgg4VUTZlpT_glN-=
+B1HTbMFkL-fh8g2qIEsAq0swXgsKQvjSQ0lTkcEXCeC6kOR8PDyL5uunD48hoaVbVM7Q-yc1TbM=
+7BdDP5K2=2ER_HwN_mNbsqkqA/click" target=3D"_blank" rel=3D"noopener" style=
+=3D"color: #F67599;">Click here</a> to update your language and communicati=
+ons preferences or unsubscribe=2E</p>
+	</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" bord=
+er=3D"0"><tr><td style=3D"padding-right: 10px; padding-left: 10px; padding-=
+top: 10px; padding-bottom: 10px; font-family: Georgia, serif"><![endif]-->
+<div style=3D"color:#555555;font-family:'Rapha Serif', 'Oswald', Georgia, T=
+imes New Roman, serif;line-height:15px;padding-top:10px;padding-right:10px;=
+padding-bottom:10px;padding-left:10px;">
+	<div style=3D"font-size: 9px; line-height: 15px; color: #555555; font-fami=
+ly: 'Rapha Serif', 'Oswald', Georgia, Times New Roman, serif; mso-line-heig=
+ht-alt: 15px;">
+		<p style=3D"font-size: 9px; line-height: 15px; text-align: center; mso-li=
+ne-height-alt: 15px; margin: 0;"><span style=3D"font-size: 9px;">Telephone:=
+ <a title=3D"tel:+4402074855000" href=3D"tel:+4402074855000" style=3D"color=
+: #F67599;">+44 (0) 207 485 5000</a> | Email: <a title=3D"enquiries@rapha=
+=2Ecc" href=3D"mailto:enquiries@rapha=2Ecc" style=3D"color: #F67599;">enqui=
+ries@rapha=2Ecc</a></span></p>
+		<p style=3D"font-size: 9px; line-height: 15px; text-align: center; mso-li=
+ne-height-alt: 15px; margin: 0;"><span style=3D"font-size: 9px;">Rapha Raci=
+ng Ltd is registered in England &amp; Wales=2E Registered number: 04849594=
+=2E</span></p>
+		<p style=3D"font-size: 9px; line-height: 15px; text-align: center; mso-li=
+ne-height-alt: 15px; margin: 0;"><span style=3D"font-size: 9px;">Registered=
+ office: Imperial Works, 18 Tileyard St, London N7 9AH, United Kingdom=2E</=
+span></p>
+		<p style=3D"font-size: 9px; line-height: 15px; text-align: center; mso-li=
+ne-height-alt: 15px; margin: 0;"><span style=3D"font-size: 9px;"><a href=3D"=
+https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7Kr_Tiq=
+mBUqNWO31VjH_LWSvFDEoielnFFSUlBspa9fXl6uV5RYkJGol5ysX1CUWZaYXKlbkJ-TmVxp2J7=
+rei4x_4ajFS8XU2mxEHtqRUF-XmqiFTeQmyvEmpqbmJljpQrkJAvJB_m66gY5-ur6hfsoGBkYGR=
+oaGVoo-KWWF-eklpSkFkUF6esn5adU6pckJuWk6pdA2EX6JSn6KZll0YbGsSAaF442gkgXRJvE6=
+hcXJObpJ0Ybxia5WRgmmhqkGiSapBiamKUkJ9cUpaZnFgOtS02xysrPyNNLyU_Vq8wvzcssdEgH=
+uVYvOT-3xtDAxCwt1dQ4xdTcJM3AyAwA1OVmlQ=2EdnqYCrSzWjvnIw/click" target=3D"_b=
+lank" rel=3D"noopener" style=3D"color: #F67599;">Privacy Policy</a> | <a hr=
+ef=3D"https://cdn=2Eexponea=2Ecom/rapha-racing1/e/=2EeJwTUjg7q1LhhEneUcZvK7=
+Kr_TiqmBUqNWO31VjH_LWSvFDEoiclk1FSUlBspa9fXl6uV5RYkJGol5ysn5yfn52ZWmzYnut6L=
+jH_hqMVLxdTabEQe2pFQX5eaqIVN5CbK8SampuYmWOlCuQkC8kH-brqBjn66vqF-ygYGRgZGhoZ=
+Wij4pZYX56SWlKQWRQXp6yflp1TqlyQm5aTql0DYRfolKfopmWXRhsaxIBoXjjaCSBdEm8TqFxc=
+k5uknAoWS3CwME00NUg0STVIMTcxSkpNrilLTM4uB1qWmWGXlZ-TppeSn6lXml-ZlFjqkg1yrl5=
+yfW2NoYGKWlmpqnGJqbpJmYGQGAI9YY8E=2Ep7LQiH6p5Ty3LA/click" style=3D"color: #=
+F67599;">Cookies</a></span></p>
+	</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]--></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+				</td>
+			</tr></tbody></table><!--[if (IE)]></div><![endif]--></body></html>
+--a71cbd072526a05dea04de63be6b2845e4761af1ad5789d1813ca7353f66--
+

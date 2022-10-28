@@ -1,0 +1,926 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp1837035wrd;        Sat, 18 Dec
+ 2021 08:10:46 -0800 (PST)
+Received: from mta.email.clarks.com (mta.email.clarks.com. [13.111.64.30])        by
+ mx.google.com with ESMTPS id w15si4835260qko.332.2021.12.18.08.10.45       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Sat, 18 Dec 2021
+ 08:10:46 -0800 (PST)
+Received: by mta.email.clarks.com id hno40c2fmd44 for <john.doe.youniq@gmail.com>; Sat,
+ 18 Dec 2021 16:03:19 +0000 (envelope-from
+ <bounce-38941_HTML-601318789-2001198-6422679-0@bounce.email.clarks.com>)
+X-Google-Smtp-Source: ABdhPJxbeGR+GYKOLvrMPXjA1oaWKTXSWEijcYSSLCzMWeNZ1gRES0E0wBMFqAP6A/HcedHlfix1
+X-Received: by 2002:a05:6214:21e8:: with SMTP id p8mr6600026qvj.99.1639843846056;       
+ Sat, 18 Dec 2021 08:10:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639843846; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=noCAnMq+z8f4sp5G94vSZBSpq6f/LOnOtut9Lw5XfH2wV0AdSqGYmEYBOm26T0ZkRI        
+ JRjf8ghIFylpk4uHXVnI/GFh/y1CEBW6Cur0pjESIX+LkxjWNcSZwg6d0GQkyzeZ5SbL        
+ GZF2bAN0I3j0U/xTs1muu30t19lyDDE+9jq1YvaVQHzQxt1BSWApX1j8+wNpGdfLtEba        
+ TBi8sJwMjOFf17ULgWZjSTB4kBODT8Z6QuLpy/9xNVnzJWTei1HZ9G0bxYLTTyA8R9ub        
+ rqIS7TJPt9x3JQxQ433YNR7PoDoJMzENGknKEfsMNHcz1tCo+JvdnMIcYErWMlWnOQGe        
+ EcUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:message-id:list-id:reply-to:mime-version        
+ :list-unsubscribe-post:list-unsubscribe:date:subject:to:from        
+ :dkim-signature;        bh=rHLpuk7cTMM7gbJNAZc3RmAX//hMhuPo9WX/16yvYp0=;    
+    b=K39GtvVwzVz85lEPlZ5SjfEHGmTQYgVWZUohNkg5LVs8uspZEMACJIGAjdLrY9h0y7     
+    uXuEluh4CgPnGyFj7B/UcE8SpIVg6lTPxatUIy0NDQ229beWawOY1e0ANuaWTArMP5Q8     
+    LVDW/4thhN3CT5ry2/T6QatHh0cIr29j7ZMp+Rz3Wq6/ttmNgaX0UEfMo/LTB9r8XJ23     
+    dnrFwjVTh1EMZE8ZKO+nl6osKop5cEvcKeswTV9oKt5+WerMzuIj0CfiIVY92iygkynX     
+    kwhBTS6/wp2MPwcP8I5CzmvQkoUfgW9vnU1dQ6/LmJ/5LcxsdWs8KPrxyPKJUjjmd8O8     
+    HHJQ==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@email.clarks.com
+ header.s=200608 header.b=l43aJJVN;       spf=pass (google.com: domain of
+ bounce-38941_html-601318789-2001198-6422679-0@bounce.email.clarks.com
+ designates 13.111.64.30 as permitted sender)
+ smtp.mailfrom=bounce-38941_HTML-601318789-2001198-6422679-0@bounce.email.clarks.com;       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE)
+ header.from=clarks.com
+Return-Path: <bounce-38941_HTML-601318789-2001198-6422679-0@bounce.email.clarks.com>
+Received-SPF: pass (google.com: domain of
+ bounce-38941_html-601318789-2001198-6422679-0@bounce.email.clarks.com
+ designates 13.111.64.30 as permitted sender) client-ip=13.111.64.30;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@email.clarks.com header.s=200608
+ header.b=l43aJJVN;       spf=pass (google.com: domain of
+ bounce-38941_html-601318789-2001198-6422679-0@bounce.email.clarks.com
+ designates 13.111.64.30 as permitted sender)
+ smtp.mailfrom=bounce-38941_HTML-601318789-2001198-6422679-0@bounce.email.clarks.com;       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE)
+ header.from=clarks.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=200608; d=email.clarks.com;
+ h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:
+ Reply-To:List-ID:X-CSA-Complaints:Message-ID:Content-Type;
+ i=clarks@email.clarks.com; bh=rHLpuk7cTMM7gbJNAZc3RmAX//hMhuPo9WX/16yvYp0=;
+ b=l43aJJVN2+XXjb4wPU1r4e4++GCeQAce2RjYwWMAQ8OVqmKJ8PmJZratrwQAcUCXzN8zjMhzn+qI  
+ do6UD7+B42u2LrqszooeSZP4wxb+hlmHQ8eJaYTuAVRQjJUCcojvXsOm9yXzuSB7kLVqiFrhI4bt
+   582rnPxDA536bSrYT/4=
+From: "Clarks" <clarks@email.clarks.com>
+To: john.doe.youniq@gmail.com
+Subject: =?UTF-8?B?T3VyIG11c3Qtc2VlIHNhbGUg4oCTIFRha2UgdXAgdG8gNTAlIG9m?=
+ =?UTF-8?B?ZiDwn5GA?=
+Date: Sat, 18 Dec 2021 10:03:19 -0600
+List-Unsubscribe: <https://click.email.clarks.com/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiI2NDIyNjc5IiwicyI6IjYwMTMxODc4OSIsImxpZCI6IjM4OTQxIiwiaiI6IjIwMDExOTgiLCJqYiI6IjAiLCJkIjoiNjAxNzMifQ.R5wd562t07DEQAR-5lJ47ozcqe0g6LvXwmd77MJhJO0>,
+ <mailto:leave-fce217787c6005122d502d29-fe24127074670575721c79-fe9a1670756505747d-fe8b12747766027a7c-ffcf14@leave.email.clarks.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-CSA-Compliance-Source: SFMC
+MIME-Version: 1.0
+Reply-To: "Clarks Shoes"
+ <reply-fe9a1670756505747d-38941_HTML-601318789-6422679-0@email.clarks.com>
+List-ID: <6243928.xt.local>
+X-CSA-Complaints: csa-complaints@eco.de
+X-SFMC-Stack: 6
+x-job: 6422679_2001198
+Message-ID: <ffdbd933-069e-484a-8d97-54a6745ccbd6@ind1s06mta1062.xt.local>
+Feedback-ID: 6422679:2001198:13.111.64.30:sfmktgcld
+Content-Type: multipart/alternative; boundary="pX968JujB8Ak=_?:"
+
+--pX968JujB8Ak=_?:
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+Discover up to 50% off stylish silhouettes 
+
+ Having problems viewing this email? 
+Wk46 W Festive Footwear/https://view.email.clarks.com/?qs=30f0f587a9e95434e202cc174632f85edb2e2f5dc92f56d25013cd7c9ddfcfa03a221e51b31d892d2864abfe5647138e2c4c5067c91d7f5a5cb2abb4093b0f30a0b052ba8e7f66c85ca5bdea60afbf81 
+Click here for a web version. 
+
+https://click.email.clarks.com/?qs=3656074b174af649ba0caaf34b06ce49c60c78832f5c270ed7a288d65151e17bd57105f22bc9bf63fa1664ed71f27c06 
+Free delivery L75 & over |
+https://click.email.clarks.com/?qs=3656074b174af64925074e9ef9a490222b1e24231d6048d0077333d5b6e87cf8c2633c1feb3089fd46923a0595b2e8ad 
+Find your nearest store 
+
+	- 
+	- Menu
+	- 
+https://click.email.clarks.com/?qs=3656074b174af649c14d9a524ab54ab5af792b8d706f027c48feac6f6490294c9b203e9012f2ce8ff390676f4f10482c 
+
+https://click.email.clarks.com/?qs=3656074b174af649bb659d4286f867fc81a9ac3d6f698d4c0d53186d70a18d714fc7ef6d08850ea36443cb7522b35246 
+Womens 
+https://click.email.clarks.com/?qs=3656074b174af649bb659d4286f867fc81a9ac3d6f698d4c0d53186d70a18d714fc7ef6d08850ea36443cb7522b35246 
+
+https://click.email.clarks.com/?qs=3656074b174af649e45140a051c385b39cb412bc30244f28e1abfd7bd3f78e97e88cdc3e2ace1d86682a93e1d05f9fb3 
+Mens 
+https://click.email.clarks.com/?qs=3656074b174af649e45140a051c385b39cb412bc30244f28e1abfd7bd3f78e97e88cdc3e2ace1d86682a93e1d05f9fb3 
+
+https://click.email.clarks.com/?qs=3656074b174af6491d09b23064992d0d766cbedd435d5896b69ae152e9acee4a7170f66b7778f3cb65b7975949aa88f3 
+Kids 
+https://click.email.clarks.com/?qs=3656074b174af6491d09b23064992d0d766cbedd435d5896b69ae152e9acee4a7170f66b7778f3cb65b7975949aa88f3 
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30a1c715cfc354f9f91884cb132e0b63cba8ca3792f5a81116eecdf0a07aa52fafb284ac2d0739be55e 
+New In 
+https://click.email.clarks.com/?qs=ac874aa65d19d30a1c715cfc354f9f91884cb132e0b63cba8ca3792f5a81116eecdf0a07aa52fafb284ac2d0739be55e 
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30a8d8d17c5e491d739e225d710ffec6f6d9c31f4f883e628c318c017f4f8a511f9f4b1e87e67bb601f 
+Originals 
+https://click.email.clarks.com/?qs=ac874aa65d19d30a8d8d17c5e491d739e225d710ffec6f6d9c31f4f883e628c318c017f4f8a511f9f4b1e87e67bb601f 
+
+https://click.email.clarks.com/?qs=3656074b174af649c14d9a524ab54ab5af792b8d706f027c48feac6f6490294c9b203e9012f2ce8ff390676f4f10482c 
+
+https://click.email.clarks.com/?qs=3656074b174af649bb659d4286f867fc81a9ac3d6f698d4c0d53186d70a18d714fc7ef6d08850ea36443cb7522b35246 
+Womens  
+https://click.email.clarks.com/?qs=3656074b174af649e45140a051c385b39cb412bc30244f28e1abfd7bd3f78e97e88cdc3e2ace1d86682a93e1d05f9fb3 
+Mens  
+https://click.email.clarks.com/?qs=3656074b174af6491d09b23064992d0d766cbedd435d5896b69ae152e9acee4a7170f66b7778f3cb65b7975949aa88f3 
+Kids  
+https://click.email.clarks.com/?qs=ac874aa65d19d30a1c715cfc354f9f91884cb132e0b63cba8ca3792f5a81116eecdf0a07aa52fafb284ac2d0739be55e 
+New In 
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+SALE 
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+UP TO 
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+50% OFF 
+
+Selected styles.Available online & in-store. T&Cs apply*
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+Shop Now 
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30a342ab066e4a24a4eb284f2eb9691a84ceb221eb51c372f2982ed210d82beb063949f163997320116 
+
+Pure T Bar
+Was £79.00
+Now £55.30
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30aba800621ad14f0060420b55378a58f18f33b4386190d3f99472ae91c0b586310d032fe7ac0647c2b 
+
+Aceley Lace
+Was £79.00
+Now £39.50
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30a7bf71f0d8a23af8911aefbd1c94784e9ca9c997b240c69508e75ae2c14674253942ade2d97c24000 
+
+Eden Mid Lace
+Was £99.00
+Now £69.00
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30aaa6b656d76086e7bbc59d77d4d11eb0941ff99c297914f4e9408ab3206f0b54778f3347e115f18a1 
+
+Kaylin 85 T Bar
+Was £69.00
+Now £34.50
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+Shop Now 
+
+https://click.email.clarks.com/?qs=3656074b174af6497eded70c4dfa4381e886cc1fa6e311706f2e385cf4d3c7e651850f64f7da82181703be41d13177ca 
+
+https://click.email.clarks.com/?qs=3656074b174af64925074e9ef9a490222b1e24231d6048d0077333d5b6e87cf8c2633c1feb3089fd46923a0595b2e8ad 
+Find your nearest store 
+https://click.email.clarks.com/?qs=3656074b174af649ba0caaf34b06ce49c60c78832f5c270ed7a288d65151e17bd57105f22bc9bf63fa1664ed71f27c06 
+Free delivery  
+
+ L75 & over|
+https://click.email.clarks.com/?qs=3656074b174af649ba0caaf34b06ce49c60c78832f5c270ed7a288d65151e17bd57105f22bc9bf63fa1664ed71f27c06 
+Next day delivery,  
+
+ order before 7pm|
+https://click.email.clarks.com/?qs=ac874aa65d19d30a6f952e0ee99ccad1d500ca29e66a762b54faa5f5a8d9fb5441a7969c044953847e2dee6ba25c00ee 
+Free returns 
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30ac0576eeeaffdaa3109ecd7ca9fa136602e22b27cba83029215c338d31b1231bd0d6d16c297bdbe1e 
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30afe955775f436879ccb596b09906e0f74d657cb508cf753b9e0d4c09be03b5f163be3305c7f391177 
+
+https://click.email.clarks.com/?qs=ac874aa65d19d30a6bac771ee109dd3aa01b8d739952804b4c87c54cb89ba4e4546264e9026280a830f8c173c3a28c8c 
+
+https://click.email.clarks.com/?qs=41d6f130b88fa87c04a387407cf99e041c4fa2a0fe65b762cf7c64e1dfe32e303ddd296f334f399f1fa32ac087122f9f 
+
+https://click.email.clarks.com/?qs=41d6f130b88fa87c02cf2962de0b74e4ac863de33dcbaf18c45b2c0c40201d72db2f7792d456b282a0e382197d19ff5a 
+
+*Terms & Conditions:
+
+https://click.email.clarks.com/?qs=41d6f130b88fa87cae8468204586927a70e05c4d4c5b5c9babd951aa91e59805b13ac0ffaf1628269242ba0c73bca060 
+Sale 
+If you no longer wish to receive emails from Clarks, 
+https://click.email.clarks.com/?qs=41d6f130b88fa87c702860fe828e7593e55fde53d01618f125c8d9ca451c0dfb4d041f5de9dc5078e08569f23703e8ac 'AES', 'Production_AES_Password_Key', @null, 'Production_AES_Salt_Key', @null, 'Production_AES_IV_Key', @null),1,1)=%%&delimiter=true 
+please click here to unsubscribe. 
+
+
+
+
+ 
+ If you are a registered Clarks customer you can 
+https://click.email.clarks.com/?qs=41d6f130b88fa87cac4d26038fe341e6af872b87e0e1cd21579b1e315d90f1be20a5b88dcb0c26fed94c1befa2e200bd 
+change your account details  for 
+
+ future communications. 
+https://click.email.clarks.com/?qs=41d6f130b88fa87c482f56d89ee825476c0a1ee47f23bb35dcdf998019dc0ed44063e3a502d17ee6ccc2985be6e6c869 
+View the Clarks Privacy Policy . 
+
+
+ (c) C&J Clark International Limited Trading as Clarks Registered in England number 141015
+
+ Registered office: 40 High Street, Street, Somerset, BA16 0EQ, England. 
+ 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+--pX968JujB8Ak=_?:
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
+   <head>
+      <!--[if gte mso 9]>       <style>          <xml>             <o:OfficeDocumentSettings>                <o:AllowPNG/>                <o:PixelsPerInch>96</o:PixelsPerInch>             </o:OfficeDocumentSettings>          </xml>       </style>       <![endif]-->
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta defang_name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+      <meta defang_http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta defang_name="format-detection" content="telephone=no" />
+      <meta defang_name="format-detection" content="date=no" />
+      <meta defang_name="format-detection" content="address=no" />
+      <meta defang_name="format-detection" content="email=no" />
+      <style type="text/css">
+    
+    
+      /* cyrillic-ext */
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v13/JTUSjIg1_i6t8kCHKm459WRhyyTh89ZNpQ.woff2) format('woff2');
+          unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+        /* cyrillic */
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v13/JTUSjIg1_i6t8kCHKm459W1hyyTh89ZNpQ.woff2) format('woff2');
+          unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+     
+        /* latin-ext */
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v13/JTUSjIg1_i6t8kCHKm459WdhyyTh89ZNpQ.woff2) format('woff2');
+          unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        /* latin */
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v13/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+    
+    
+    
+         
+<!--             #outlook a {              padding: 0;             }             body {              width: 100% !important;              height: 100% !important;              -webkit-text-size-adjust: 100% !important;              -ms-text-size-adjust: 100% !important;              margin: 0 !important;              padding: 0 !important;             }             .ReadMsgBody {              width: 100%;             }             .ExternalClass {              width: 100%;             }             .ExternalClass * {              line-height: 110%;             }             table td {              border-collapse: collapse !important;              font-size:0px;             }             th {              padding:0 !important;              margin:0 !important;             
+ font-weight:normal !important;              font-size:0px;             }             img {              font-size:12px;             }              @-ms-viewport {              width: device-width;             }                       /*HOVER STATE 2017 CSS*/             .ctahstate:hover {background-color:#333333 !important; border:1px solid #333333 !important;}             .ctahcolour:hover {color:#ffffff !important;}             /*HOVER STATE 2017 CSS*/                          @media screen and (min-width: 320px) and (max-width: 590px){                          div[style*="margin: 16px 0"] {margin: 0 !important; font-size: 100% !important;}             a[x-apple-data-detectors] {color:inherit !important; text-decoration:none !important; font-size:inherit !important; font-family:inherit
+ !important; font-weight:inherit !important; line-height:inherit !important;}                           table[id=wrapper] {width:100% !important; padding:0px !important; margin:0px !important;}             table[id=wrapper] #maintable {width:100%; max-width:590px !important; min-width:320px !important;}             table[id=wrapper] .inner {width: 100% !important; max-width: 590px !important;}             *[class~=show_on_mobile] {display:block !important; width:auto !important; max-height:inherit !important; overflow:visible !important; float:none !important;}             table[id=wrapper] .drop {width:100% !important; display:block !important;}             table[id=wrapper] .hide {width:0px !important; display:none !important;}             table[id=wrapper] .show {display:block
+ !important;}             img[class=scale] {width:100% !important; height:auto !important;}             table[id=wrapper] .header {font-size:15px !important; padding:5px 0;}             table[id=wrapper] .footer {padding:30px 20px 20px 20px !important; font-size:16px !important; line-height:24px !important;}             table[id=wrapper] .w280 {width:280px !important;}             table[id=wrapper] .w300 {width:320px !important;}             table[id=wrapper] .padlr20 {padding-left:20px !important; padding-right:20px !important;}             table[id=wrapper] .padtb15 {padding-top:15px !important; padding-bottom:15px !important;}             table[id=wrapper] .padtb18 {padding-top:18px !important; padding-bottom:18px !important;}             table[id=wrapper] .padt10 {padding-top:10px
+ !important;}             table[id=wrapper] .padb10 {padding-bottom:10px !important;}             table[id=wrapper] .padb15 {padding-bottom:15px !important;}             table[id=wrapper] .padt20 {padding-top:20px !important;}             table[id=wrapper] .padt30 {padding-top:30px !important;}             table[id=wrapper] .padb20 {padding-bottom:20px !important;}             table[id=wrapper] .f14 {font-size:14px !important;}             table[id=wrapper] .f15 {font-size:15px !important;}             table[id=wrapper] .f16 {font-size:16px !important;}             table[id=wrapper] .f17 {font-size:17px !important;}             table[id=wrapper] .center {text-align:center !important;}             img[class=wauto] {width:40px !important; height:auto !important;}                         
+ table[id=wrapper] {width:100%!important; padding:0px 0px !important;}             table[id=wrapper] #maintable {width:100%; max-width:590px !important; min-width:320px !important; }                          table[id=wrapper] .inner {width:100% !important; min-width:320px !important; max-width:590px !important;}             table[id=wrapper] .innerbutton {width:75% !important; min-width:290px !important; max-width:590px !important;}             table[id=wrapper] .drop {width:100% !important; display:block !important;}             table[id=wrapper] .hide {width:0px !important; display:none !important;}             table[id=wrapper] .show {display:block !important;}                          table[id=wrapper] .h5 {height:5px !important;}             table[id=wrapper] .h10 {height:10px
+ !important;}             table[id=wrapper] .h20 {height:20px !important;}                          table[id=wrapper] .center {text-align:center !important;}             table[id=wrapper] .pad {padding-left:10px !important; padding-right:10px !important;}             table[id=wrapper] .padl20 {padding-left:20px !important;}             table[id=wrapper] .padr20 {padding-right:20px !important;}             table[id=wrapper] .padb20 {padding-bottom:20px !important;}             table[id=wrapper] .padt10 {padding-top:5px !important;}             table[id=wrapper] .padb10 {padding-bottom:5px !important;}             table[id=wrapper] .padt20 {padding-top:20px !important;}             table[id=wrapper] .pad20 {padding:20px !important;}             table[id=wrapper] .padlr10 {padding-left:10px
+ !important; padding-right:10px !important;}                          table[id=wrapper] .m104 {width:104px !important; font-size:16px !important;}             table[id=wrapper] .m72 {width:72px !important; font-size:16px !important;}             table[id=wrapper] .mobfontsize {font-size:15px !important;}                          table[id=wrapper] .menu {font-size:20px !important; color:#000001 !important; line-height:42px !important;}             table[id=wrapper] .f14 {font-size:14px !important;}             table[id=wrapper] .f15 {font-size:15px !important;}             table[id=wrapper] .f17 {font-size:17px !important;}             table[id=wrapper] .f18 {font-size:18px !important;}             table[id=wrapper] .f18l {font-size:18px !important; line-height:24px !important;}           
+  table[id=wrapper] .f26 {font-size:26px !important;}             table[id=wrapper] .center {text-align:center !important;}             table[id=wrapper] .button {width:182px !important;}             table[id=wrapper] .w300 {width:250px !important;}             table[id=wrapper] .white {color:#ffffff !important;}             table[id=wrapper] .terms {font-size:15px !important;}                          /*Mobile button changes*/                          table[id=wrapper] .changeButtonBgForMob { background-color:#add colour here !important;}             table[id=wrapper] .changefontcolorformob { color:#add colour here !important;}             table[id=wrapper] .gapcolor { background-color:#inset colour here !important;}             table[id=wrapper] .ChangeSurroundBgForMob {
+ background-color:#add colour here !important;}             table[id=wrapper] .mobfontsize { font-size:18px !important;}             table[id=wrapper] .gapheight { height:10px !important;}                          /*Mobile button changes end*/                                       /*Image with live text block*/                          /*Mobile Image - add into 'background-image:url' and 'background:url'*/                          table[id=wrapper] .bgscaletext { background-image:url(ADD HERE) !important; background:url(ADD HERE) center/cover !important; padding-bottom:10% !important; background-size:100% !important; background-size:cover !important; height:auto !important; width:100% !important; background-repeat:no-repeat !important; }             table[id=wrapper] .ctapadding2
+ {padding-top:20px !important;}                          /*Image with live text block ENDS*/                          /*Mobile product name changes*/             table[id=wrapper] .mobproductnames { text-align:center !important;}             /*Mobile product name changes end*/                          img[class=scale]{ width:100% !important; height:auto !important;}             img[class=scale220]{ width:220px !important; height:auto !important;}    img[class=scale2]{ width:100% !important; height:auto !important;}                          table[id=wrapper] .drop {width:100% !important; display:block !important;}             table[id=wrapper] .border0 {border-radius:5px !important;}                          *[class~=mobile] {display:block !important; width:auto !important;
+ max-height:inherit !important; overflow:visible !important; float:none !important;}                          /*MOBILE HAMBURGER MENU 2017 CSS*/             input[type="checkbox"] {             display: none;             }             .arrow {             -moz-transition: all 0.4s ease;             -webkit-transition: all 0.4s ease;             -o-transition: all 0.4s ease;             transition: all 0.4as ease;             }             .bgarrow {              }             input[type="checkbox"]:checked+label .arrow {             -ms-transform: rotate(180deg);             -webkit-transform: rotate(180deg);             transform: rotate(180deg);             }             #hide-show {             width:100%;             overflow: hidden;             -webkit-transition: max-height 0.5s
+ cubic-bezier(0, 1.05, 0, 1);             -moz-transition: max-height 0.5s cubic-bezier(0, 1.05, 0, 1);             transition: max-height 0.5s ease cubic-bezier(0, 1.05, 0, 1);             max-height: 0px;             }             label .checkbox-div {             }             input[type="checkbox"]:checked+label + #hide-show {             -webkit-transition: max-height 0.5s ease-in-out;             -moz-transition: max-height 0.5s ease-in-out;             transition: max-height 0.5s ease-in-out;             max-height: 420px;             }             input[type="checkbox"]:checked+label + #hide-show .arrow2 {             display:block !important;             width:inherit !important;             }              table[id=wrapper] .navpad {             padding:15px 0 15px 0 !important; 
+            }             /*MOBILE HAMBURGER MENU 2017 CSS*/                          /*HOVER STATE 2017 CSS*/             .ctahcolour {line-height:48px !important;}             /*HOVER STATE 2017 CSS*/                          }             -->
+      </style>
+   </head>
+   <body bgcolor="#FFFFFF" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" style="-webkit-font-smoothing:antialiased; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; -ms-interpolation-mode: bicubic; margin:0; padding:0;">
+
+      <!-----------------*Font Fallback*-----------------> 
+      <!--[if mso]>       <style type="text/css">          body, table, td, th, strong {font-family: Arial, Helvetica, sans-serif !important;}       </style>       <![endif]--> 
+      <!-----------------*Font Fallback*----------------->
+     <img src="https://click.email.clarks.com/open.aspx?ffcb10-fe9a1670756505747d-fdf615747266027a71137274-fe8b12747766027a7c-fef617787c6005-fe24127074670575721c79-ffcf14&d=60173&bmt=0" width="1" height="1" alt="">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" id="wrapper">
+         <tr>
+            <td align="center">
+               <table border="0" cellpadding="0" cellspacing="0" width="590" class="inner" style="width:590px;">
+                  <!--------------------- *ADD PRE-HEADER TEXT HERE* --------------------->
+                  <tr>
+                     <td class="hide" width="590" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-weight:500; font-size:12px; color:#666666; padding-top:10px; padding-bottom:10px;"> 
+                        <a href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank" style="color:#666666;">Discover up to 50% off stylish silhouettes</a>
+
+<a  target="_blank" style="color:#666666;"></a>
+                        <br />
+                        <!--------------------- *ADD PRE-HEADER TEXT HERE* --------------------->
+                        Having problems viewing this email? <a href="https://click.email.clarks.com/?qs=c899cd58ce7633b63e954464bb6de52ef2b70753cc075cb511e7ef9036551453dc37a77efe915ad26b137adc46453305" target="_blank" style="color:#666666;">Click here for a web version.</a>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center" style="padding:10px 0;" bgcolor="#f3f3f3">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                           <tr>
+                              <td class="header" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family: Montserrat, Lato, Helvetica, sans-serif; font-weight:500; color:#666666; text-transform:uppercase; letter-spacing:1px;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b77580fd0acc6bd23313029c229690dd6fd893e30293de4aedcfe464ca5ddd5ce959c2f15d6ef584fc6ba" target="_blank" style="color:#666666; text-decoration:none;">Free delivery &#163;75 &amp; over</a></td>
+                              <td class="hide" align="center" valign="top" style="font-size:11px; line-height:16px; font-family: Montserrat, Lato, Helvetica, sans-serif; ; color:#666666; text-transform:uppercase;">|</td>
+                              <td class="hide" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family:Montserrat, Lato, Helvetica, sans-serif; font-weight:500; color:#666666; text-transform:uppercase; letter-spacing:1px;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758eaad2080e88f858a87344ea8defbb81a5ebcb6ad9214da10b9732b5e0c6a0cbb01a2269ef1671e52" target="_blank" style="color:#666666; text-decoration:none;">Find your nearest store</a></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <!-- mobile nav start -->
+                  <!--[if !mso]><!-->
+                  <tr>
+                     <td bgcolor="#ffffff" style="width:0; max-height:0; overflow:hidden; float:left; display:none; font-size:0px;" class="show_on_mobile">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                           <tr class="inner">
+                              <td style="width:0; max-height:0; overflow:hidden; float:left; display:none; font-size:0px;" class="show_on_mobile">
+                                 <div style="position: relative;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                       <tr>
+                                          <td align="left">
+                                             <input type="checkbox" name="checkbox" id="checkbox_id" value="value"/>
+                                             <label for="checkbox_id">
+                                                <div class="checkbox-div" style="background:url(https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/d60ae51e-cf0f-439d-9e08-02cecc6789b5.png) center no-repeat; background-image:url(https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/d60ae51e-cf0f-439d-9e08-02cecc6789b5.png); background-size:108px 30px;">
+                                                   <ul style="list-style:none; margin:0; padding:15px 0 15px 0;">
+                                                      <li style="display:inline-block; margin:0; padding-left:20px"><img class="arrow" src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/6eaa7f9c-d855-4bf9-8c11-d654830defae.png" alt="Clarks" width="20" style="display:block;" border="0" title="Clarks" /></li>
+                                                      <li style="display:inline-block; margin:0; padding-left:5px; font-weight:600;">
+                                                         <div style="font-size:16px; line-height:16px; font-family: Montserrat, Lato, Helvetica, sans-serif; font-weight:600;  color:#333333;">Menu</div>
+                                                      </li>
+                                                      <li style="display:inline-block; margin:0; text-align:center; width:70%">
+                                                         <div><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758fb30a654c3d39e263fb84d48b13a5533ec075a8b0bf77f6022e021653ef1bc315a64c968df2e497e" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="50" height="20" style="display:block;"></a></div>
+                                                      </li>
+                                                   </ul>
+                                                </div>
+                                             </label>
+                                             <div id="hide-show">
+
+                                                <table bgcolor="#111111" width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                   <tr>
+                                                      <td bgcolor="#ffffff" align="left"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/8af4943d-8d01-4075-8a78-bacf82495974.png" alt="" height="11" width="40" border="0" style="display:block;"/></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td align="center">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgarrow">
+                                                            <tr>
+                                                               <td align="center" style="font-size:16px; font-family:Montserrat, 'Lato', Arial, Helvetica, sans-serif; font-weight:600;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758e08cf9f3751bb6b6dbd758673debaf6e1f7aa6c892f9d09fa52730de69db1e33a7cba26fdc7358e4" target="_blank" style="color:#ffffff; text-decoration:none; display:block; line-height:60px; padding:0 0 0 15px;" class="link">Womens</a></td>
+                                                               <td width="25"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758e08cf9f3751bb6b6dbd758673debaf6e1f7aa6c892f9d09fa52730de69db1e33a7cba26fdc7358e4" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="25" height="48" style="display:block;"></a></td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td bgcolor="#3c3c3c" height="2" style="line-height:0px; font-size:0px;"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="2" height="2" style="display:block;"></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td align="center">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgarrow">
+                                                            <tr>
+                                                               <td align="center" style="font-size:16px; font-family:Montserrat, 'Lato', Arial, Helvetica, sans-serif; font-weight:600;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b77583c62c760bf5386e9cb2e0ff1f9790cc9fc7f024497595b45c0f8801055b1f2d82a1e6ec90c8f7671" target="_blank" style="color:#ffffff; text-decoration:none; display:block; line-height:60px; padding:0 0 0 15px;" class="link">Mens</a></td>
+                                                               <td width="25"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b77583c62c760bf5386e9cb2e0ff1f9790cc9fc7f024497595b45c0f8801055b1f2d82a1e6ec90c8f7671" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="25" height="48" style="display:block;"></a></td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td bgcolor="#3c3c3c" height="2" style="line-height:0px; font-size:0px;"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="2" height="2" style="display:block;"></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td align="center">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgarrow">
+                                                            <tr>
+                                                               <td align="center" style="font-size:16px; font-family:Montserrat, 'Lato', Arial, Helvetica, sans-serif; font-weight:600;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b775852acb95e66e984eaee4834fecb5f1228be52717f4f2d631520749205d8180732a1136bce855b5c40" target="_blank" style="color:#ffffff; text-decoration:none; display:block; line-height:60px; padding:0 0 0 15px;" class="link">Kids</a></td>
+                                                               <td width="25"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b775852acb95e66e984eaee4834fecb5f1228be52717f4f2d631520749205d8180732a1136bce855b5c40" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="25" height="48" style="display:block;"></a></td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td bgcolor="#3c3c3c" height="2" style="line-height:0px; font-size:0px;"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="2" height="2" style="display:block;"></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td align="center">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgarrow">
+                                                            <tr>
+                                                               <td align="center" style="font-size:16px; font-family:Montserrat, 'Lato', Arial, Helvetica, sans-serif; font-weight:600;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758ff2dafc93ce6cb81e4ffd85619eb4428e3450a739f1942d69ab5b1e331ab7a129da7dde0fcb3fd26" target="_blank" style="color:#ffffff; text-decoration:none; display:block; line-height:60px; padding:0 0 0 15px;" class="link">New In</a></td>
+                                                               <td width="25"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758ff2dafc93ce6cb81e4ffd85619eb4428e3450a739f1942d69ab5b1e331ab7a129da7dde0fcb3fd26" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="25" height="48" style="display:block;"></a></td>
+                                                            </tr>
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td bgcolor="#3c3c3c" height="2" style="line-height:0px; font-size:0px;"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="2" height="2" style="display:block;"></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td align="center">
+                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bgarrow">
+                                                            <tr>
+                                                               <td align="center" style="font-size:16px; font-family:Montserrat, 'Lato', Arial, Helvetica, sans-serif; font-weight:600;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758396a950496680e08f40227635eacab755270ff4be33cf57566d1125f792dc215839fa57958925125" target="_blank" style="color:#ffffff; text-decoration:none; display:block; line-height:60px; padding:0 0 0 15px;" class="link">Originals</a></td>
+                                                               <td width="25"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758396a950496680e08f40227635eacab755270ff4be33cf57566d1125f792dc215839fa57958925125" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="25" height="48" style="display:block;"></a></td>
+                                                            </tr>
+
+
+                                                         </table>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td bgcolor="#3c3c3c" height="2" style="line-height:0px; font-size:0px;"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/20c37acb-b8d0-4674-aee4-0833ed1d91f2.gif" border="0" width="2" height="2" style="display:block;"></td>
+                                                   </tr>
+                                                </table>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <!--<![endif]--> 
+                  <!-- mobile nav end -->  
+                  <!-- desktop nav start -->                          
+                  <tr>
+                     <td style="padding:16px 0;" align="center" class="hide">
+                        <table border="0" cellpadding="0" cellspacing="0" class="inner">
+                           <tr>
+                              <td align="center"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758fb30a654c3d39e263fb84d48b13a5533ec075a8b0bf77f6022e021653ef1bc315a64c968df2e497e" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/d60ae51e-cf0f-439d-9e08-02cecc6789b5.png" alt="Clarks" height="30" border="0" style="display:block;" title="Clarks"/></a></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td style="padding:5px 0 15px 0;" align="center" class="hide">
+                        <table width="410" border="0" cellspacing="0" cellpadding="0" class="w280">
+                           <tr>
+                                             <td class="navfont" align="center" style="color:#333333; font-size:13px; vertical-align:middle; font-family:Montserrat, 'Lato', Helvetica, Arial, sans-serif; font-weight:600;  line-height:15px; letter-spacing:1px;"><a target="_blank" style="color:#333333; text-decoration:none; display:block;" href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758e08cf9f3751bb6b6dbd758673debaf6e1f7aa6c892f9d09fa52730de69db1e33a7cba26fdc7358e4">Womens</a></td>
+                <td class="headgap" width="46">&nbsp;</td>
+                <td class="navfont" align="center" style="color:#666666; font-size:13px; vertical-align:middle; font-family:Montserrat, 'Lato', Helvetica, Arial, sans-serif; font-weight:600; line-height:15px; letter-spacing:1px;"><a target="_blank" style="color:#333333; text-decoration:none; display:block;" href="https://click.email.clarks.com/?qs=65be6cbb4f7b77583c62c760bf5386e9cb2e0ff1f9790cc9fc7f024497595b45c0f8801055b1f2d82a1e6ec90c8f7671">Mens</a></td>
+                <td class="headgap" width="46">&nbsp;</td>
+                <td class="navfont" align="center" style="color:#666666; font-size:13px; vertical-align:middle; font-family:Montserrat, 'Lato', Helvetica, Arial, sans-serif; line-height:15px; font-weight:600; letter-spacing:1px;"><a target="_blank" style="color:#333333; text-decoration:none; display:block;" href="https://click.email.clarks.com/?qs=65be6cbb4f7b775852acb95e66e984eaee4834fecb5f1228be52717f4f2d631520749205d8180732a1136bce855b5c40">Kids</a></td>
+                <td class="hide" width="46">&nbsp;</td>
+                <td class="hide" align="center" style="color:#666666; font-size:13px; vertical-align:middle; font-family:Montserrat, 'Lato', Helvetica, Arial, sans-serif; line-height:15px; font-weight:600; letter-spacing:1px;"><a target="_blank" style="color:#333333; text-decoration:none; display:block;" href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758ff2dafc93ce6cb81e4ffd85619eb4428e3450a739f1942d69ab5b1e331ab7a129da7dde0fcb3fd26">New In</a></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <!-- desktop nav end -->
+                  <tr>
+                     <td style="line-height:0px;" bgcolor="#cfcfcf"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/a207db18-d9f3-426f-ae78-58efbbafa767.jpg" alt="" width="1" height="1" border="0" style="display:block;" /></td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+         <tr>
+            <td align="center">
+
+
+ <!-- MAIN CONTENT HERE --> 
+
+<table border="0" cellpadding="0" cellspacing="0" width="590" class="inner" style="width:590px;">
+                  <!-- PLEASE PASTE YOUR MAIN CONTENT BETWEEN HERE -->
+
+                 
+                  
+
+                  
+
+
+
+  <!--IMAGE SCALE-->
+  <tr>
+    <td width="590"><a href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/13/5c49201c-c2dd-4313-a4d3-63a463ccd424.png" alt="patterned border links to mens sale page" title="patterned border links to mens sale page"  width="590" height="65" class="scale" style="display:block;" border="0" /></a></td>
+  </tr>
+  <!--IMAGE SCALE END-->
+
+
+           <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+   </tr>
+
+
+         <tr>
+   <td line-height="0" font-size="0" width="590" height="30" bgcolor="#DC2F36"></td>
+   </tr>
+
+  <!--FULL WIDTH HEADINGT-->
+<!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+ <tr>
+  <td align="center" bgcolor="#DC2F36">
+        
+      <table border="0" cellpadding="0" cellspacing="0" width="590" id="maintable">
+
+  <!--text-->
+   <td width="590" height="85" bgcolor="#DC2F36" align="center" valign="centre" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:85px; font-weight:600; letter-spacing: 0px; line-height:85px; color:#000000; padding-left:10px; padding-right:10px;"><a style="color:#000000; text-decoration:none; " href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank">SALE</a></td>
+  
+  <!--text end-->
+   
+    </table></td>
+  </tr>
+      <!--Full width HEADING END-->
+   <!--FULL WIDTH HEADINGT-->
+<!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+ <tr>
+  <td align="center" bgcolor="#DC2F36">
+        
+      <table border="0" cellpadding="0" cellspacing="0" width="590" id="maintable">
+
+  <!--text-->
+   <td width="590" height="25" bgcolor="#DC2F36" align="center" valign="centre" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:25px; font-weight:600; letter-spacing: 0px; line-height:25px; color:#FFFFFF; padding-left:10px; padding-right:10px;"><a style="color:#ffffff; text-decoration:none; " href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank">UP TO</a></td>
+  
+  <!--text end-->
+   
+    </table></td>
+  </tr>
+      <!--Full width HEADING END-->
+   <!--FULL WIDTH HEADINGT-->
+<!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+ <tr>
+  <td align="center" bgcolor="">
+        
+      <table border="0" cellpadding="0" cellspacing="0" width="590" id="maintable">
+
+  <!--text-->
+   <td width="590" height="75" bgcolor="#DC2F36" align="center" valign="centre" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:75px; font-weight:600; letter-spacing: 0px; line-height:75px; color:#FFFFFF; padding-left:10px; padding-right:10px;"><a style="color:#ffffff; text-decoration:none; " href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank">50% OFF</a></td>
+  
+  <!--text end-->
+   
+    </table></td>
+  </tr>
+      <!--Full width HEADING END-->
+
+  
+   <!--FULL WIDTH TEXT START-->
+<!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+ 
+  <tr>
+   <td width="590" height="20" bgcolor="#DC2F36"></td>
+  </tr>
+  <tr>
+  <td align="center" bgcolor="">
+        
+      <table border="0" cellpadding="0" cellspacing="0" width="590" id="maintable">
+  
+  <!--Text-->
+  <tr>
+    <td width="590" height="48" bgcolor="#DC2F36" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 500; letter-spacing:1px; line-height:23px; color:#FFFFFF; padding-left:20px; padding-right:20px;" class="mobfontsize">Selected styles.<br/>Available online & in-store. T&Cs apply*</td>
+  </tr>
+  
+    <tr>
+   <td width="590" height="20" bgcolor="#DC2F36"></td>
+  </tr>
+  
+  <!--text end-->
+   
+    </table></td>
+
+  </tr>
+    <!--Full width TEXT END-->
+     <tr>
+   <td width="590" height="30"></td>
+  </tr>
+ 
+ <!--1 Button start-->
+
+<!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+ <tr>
+  <td align="center" bgcolor="">
+        
+      <table border="0" cellpadding="0" cellspacing="0" width="590" id="maintable">
+
+  <tr>
+    <td width="590" height="" align="center" bgcolor="" class="ChangeSurroundBgForMob"><table border="0" cellpadding="0" cellspacing="0" class="innerbutton">
+      <tr>
+      <td width="180" height="40" align="center" valign="middle" bgcolor="#DC2F36" style="font-family:Montserrat, Lato, Helvetica, sans-serif; font-weight:600; font-size:13px; letter-spacing:1px; border-radius:3px; border:1px solid #DC2F36; font-weight:strong;" class="changebgformob padt10 padb10 mobfontsize ctahstate"><a href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank" style="text-decoration:none; color:#ffffff;" class="show changefontcolorformob ctahcolour">Shop Now</a></td>
+      </tr>
+    </table></td>
+  </tr>
+   
+    </table></td>
+  </tr>
+  <!--1 Button END-->
+
+
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="30"></td>
+  </tr>
+
+  <!--PRODUCT BLOCK-->
+  
+  <!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+  <tr>
+   <td width="590" bgcolor="" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;vertical-align:top;">
+   <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+      <td bgcolor=""><table align="left" border="0" cellpadding="0" cellspacing="0" width="295" style="border-collapse:collapse; border-spacing:0;" class="inner">
+   <tr>
+      
+      
+  <!--Product Image 1-->
+    <td><table width="295" border="0" cellspacing="0" cellpadding="0" class="inner">
+      <tr>
+ 
+        <td align="center"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b77588faab388f353cbb7dbf2b9c909663ecc9d69f342b5e4a4789d9d56152f1a0e1cc8ac3c687490cec1" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/13/8408fad2-f86b-4e09-90ec-11a505a15c2a.png" alt="womens shoe Pure T Bar in leopard print suede links to product page" title="womens shoe Pure T Bar in leopard print suede links to product page" width="295" height="158" class="scale" style="display:block;" border="0"></a></td>
+        </tr>
+     
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+  </tr>
+           
+          <!--Product name 1--> 
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:13px; line-height:20px; letter-spacing: 1px; font-weight: 600; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames">Pure T Bar</td>
+  </tr>
+
+    <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames2"><s>Was £79.00</s></td>
+  </tr>
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#cd1619; padding-left:40px; padding-right:40px;" class="mobproductnames">Now £55.30</td>
+        </tr>
+
+     
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+  </tr>
+           
+           
+      <tr>
+        <td align="center" bgcolor="">
+          <table class="padb20" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              </tr>
+            </table>
+          </td>
+        </tr>
+  </table>
+</td>
+    </tr>
+ </table>
+        <!--[if mso]>                     </td>                     <td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;vertical-align:top;">                     <![endif]-->
+    <table align="left" border="0" cellpadding="0" cellspacing="0" width="295" style="border-collapse:collapse; border-spacing:0;" class="inner">
+   <tr>
+   
+      
+    <!--Product Image 2-->
+     <td> <table width="295" border="0" cellspacing="0" cellpadding="0" class="inner">
+    <tr>
+      <td align="center"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b775817551d4f01bb41c859dc758d0a78ac2610f8b6ecc5e8887eaa07d13e2713b1e6d1456c597a74acb9" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/13/39a28a4b-1c02-4a3a-a49c-c9299f466ac8.png" alt="womens lace-up Aceley Lace in white leather links to product page" title="womens lace-up Aceley Lace in white leather links to product page" width="295" height="158" class="scale" style="display:block;" border="0"></a></td>
+    </tr>
+     
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+  </tr>
+  
+     <!--Product Name 2-->
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:13px; line-height:20px; letter-spacing: 1px; font-weight: 600; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames">Aceley Lace</td>
+  </tr>
+
+     <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames2"><s>Was £79.00</s></td>
+  </tr>
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#cd1619; padding-left:40px; padding-right:40px;" class="mobproductnames">Now £39.50</td>
+        </tr>
+
+    <tr>
+      <td align="center" bgcolor="">
+      <table border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    </tr>
+ </table>
+      </td>
+    </tr>
+</table>
+       </td>
+   </tr>
+ </table>
+    </td></tr></table>
+    </td>
+  </tr>
+
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="30"></td>
+  </tr>
+  
+  <!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+  <tr>
+   <td width="590" bgcolor="" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;vertical-align:top;">
+   <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+      <td bgcolor=""><table align="left" border="0" cellpadding="0" cellspacing="0" width="295" style="border-collapse:collapse; border-spacing:0;" class="inner">
+   <tr>
+
+      
+     <!--Product Image 3-->
+    <td><table width="295" border="0" cellspacing="0" cellpadding="0" class="inner">
+      <tr>
+        <td align="center"><a href="https://click.email.clarks.com/?qs=d71d75b895b5335799ada80fc746f2b0887467b59022a19aec905529bfe95cc631cf4f45c221bdfca17a3bfa1a89c092" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/13/7ee71703-734a-4c99-a16a-3be36c367105.png" alt="womens shoe Eden Mid Lace in black tumbled leather links to product page" title="womens shoe Eden Mid Lace in black tumbled leather links to product page" width="295" height="158" class="scale" style="display:block;" border="0"></a></td>
+        </tr>
+     
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+  </tr>
+           
+      <!--Product name 3-->
+        <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:13px; line-height:20px; letter-spacing: 1px; font-weight: 600; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames">Eden Mid Lace</td>
+  </tr>
+
+    <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames2"><s>Was £99.00</s></td>
+  </tr>
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#cd1619; padding-left:40px; padding-right:40px;" class="mobproductnames">Now £69.00</td>
+        </tr>
+
+ 
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+  </tr>
+
+      <tr>
+        <td align="center" bgcolor="">
+          <table class="padb20" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              </tr>
+            </table>
+          </td>
+        </tr>
+  </table>
+</td>
+    </tr>
+ </table>
+        <!--[if mso]>                     </td>                     <td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;vertical-align:top;">                     <![endif]-->
+    <table align="left" border="0" cellpadding="0" cellspacing="0" width="295" style="border-collapse:collapse; border-spacing:0;" class="inner">
+   <tr>  
+      
+     <!--Product Image 4-->
+    <td>
+       <table width="295" border="0" cellspacing="0" cellpadding="0" class="inner">
+    <tr>
+      <td align="center"><a href="https://click.email.clarks.com/?qs=d71d75b895b5335720e4ca951abee73543e09974b1e0cd511daddf6bba75b61abc7d4c21c87496c80e49944d9310a000" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/13/6ac5eedd-e922-460d-93c0-52a4cae6d141.png" alt="womens court shoe Kaylin 85 T Bar in dark brown croc leather links to product page" title="womens court shoe Kaylin 85 T Bar in dark brown croc leather links to product page" width="295" height="158" class="scale" style="display:block;" border="0"></a></td>
+    </tr>
+
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="10"></td>
+  </tr>
+      <!--Product name 4-->
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:13px; line-height:20px; letter-spacing: 1px; font-weight: 600; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames">Kaylin 85 T Bar</td>
+  </tr>
+
+    <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#333333; padding-left:40px; padding-right:40px;" class="mobproductnames2"><s>Was £69.00</s></td>
+  </tr>
+      <tr>
+    <td width="295" bgcolor="" align="center" valign="top" style="font-family: Montserrat, Lato, Helvetica, sans-serif; font-size:14px; font-weight: 400; letter-spacing:1px; color:#cd1619; padding-left:40px; padding-right:40px;" class="mobproductnames">Now £34.50</td>
+        </tr>
+
+    
+    <tr>
+      <td align="center" bgcolor="">
+      <table border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    </tr>
+ </table>
+      </td>
+    </tr>
+</table>
+       </td>
+   </tr>
+ </table>
+    </td></tr></table>
+    </td>
+  </tr>
+  
+  <!--PRODUCT BLOCK END-->
+  <!--1 Button start-->
+  
+         <tr>
+   <td line-height="0" font-size="0" width="590" height="30"></td>
+   </tr>
+ 
+ <!--1 Button start-->
+
+<!-- AMEND THE FIRST TD FROM HERE TO CHANGE BACKGROUND COLOUR ROW FOR ENTIRE BLOCK -->
+ <tr>
+  <td align="center" bgcolor="">
+        
+      <table border="0" cellpadding="0" cellspacing="0" width="590" id="maintable">
+
+  <tr>
+    <td width="590" height="" align="center" bgcolor="" class="ChangeSurroundBgForMob"><table border="0" cellpadding="0" cellspacing="0" class="innerbutton">
+      <tr>
+      <td width="180" height="40" align="center" valign="middle" bgcolor="#DC2F36" style="font-family:Montserrat, Lato, Helvetica, sans-serif; font-weight:600; font-size:13px; letter-spacing:1px; border-radius:3px; border:1px solid #DC2F36; font-weight:strong;" class="changebgformob padt10 padb10 mobfontsize ctahstate"><a href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank" style="text-decoration:none; color:#ffffff;" class="show changefontcolorformob ctahcolour">Shop Now</a></td>
+      </tr>
+    </table></td>
+  </tr>
+   
+    </table></td>
+  </tr>
+  <!--1 Button END-->
+       <tr>
+   <td line-height="0" font-size="0" width="590" height="20"></td>
+   </tr>
+
+
+
+
+  <!--IMAGE SCALE-->
+  <tr>
+    <td width="590"><a href="https://click.email.clarks.com/?qs=c899cd58ce7633b6a8aca3215314db7f326d86f706c6464bba87987bfd679df9c05538f24950cc287ae2b15556f64922" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/13/f49cd97c-04fe-4b1c-b30a-a5705fd4cd99.png" alt="patterned border links to mens sale page" title="patterned border links to mens sale page"  width="590" height="65" class="scale" style="display:block;" border="0" /></a></td>
+  </tr>
+  <!--IMAGE SCALE END-->
+
+
+      
+                  
+            <!-- PLEASE PASTE YOUR MAIN CONTENT BETWEEN HERE -->
+                  <tr>
+                     <td width="590" height="10"></td>
+                  </tr>
+
+               </table>
+                      <!-- MAIN CONTENT HERE -->
+ 
+            </td>
+         </tr>
+         <tr>
+            <td align="center">
+               <table border="0" cellpadding="0" cellspacing="0" width="590" class="inner" style="width:590px;">
+                  <tr>
+                     <td style="padding:17px 0;" bgcolor="#f3f3f3" class="padtb15 padlr20">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                           <tr>
+                              <!--[if !mso]><!--> 
+                              <th class="show_on_mobile drop f16 padt30 padb10" align="center" valign="top" style="width: 0; max-height: 0; overflow: hidden; float: left; display: none; line-height:0px; font-size:0px; font-family: Montserrat, Lato, Helvetica, sans-serif; font-weight: 600; color:#666666; text-transform:uppercase; letter-spacing:1px;  padding:0; margin:0px; vertical-align:top;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b7758eaad2080e88f858a87344ea8defbb81a5ebcb6ad9214da10b9732b5e0c6a0cbb01a2269ef1671e52" target="_blank" style="color:#666666; text-decoration:none;">Find your nearest store</a></th>
+                              <!--<![endif]-->
+                              <th class="drop f16 padt30" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family:Montserrat, Lato, Helvetica, sans-serif; color:#666666; text-transform:uppercase; letter-spacing:1px; font-weight:600; padding:0; margin:0px; vertical-align:middle;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b77580fd0acc6bd23313029c229690dd6fd893e30293de4aedcfe464ca5ddd5ce959c2f15d6ef584fc6ba" target="_blank" style="color:#666666; text-decoration:none;">Free delivery <br class="hide" />
+                                 &#163;75 &amp; over</a>
+                              </th>
+                              <td class="hide" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family:'Lato', Arial, Helvetica, sans-serif; color:#666666; text-transform:uppercase;">|</td>
+                              <th class="drop f16 padt30" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family:Montserrat, Lato, Helvetica, sans-serif; color:#666666; text-transform:uppercase; letter-spacing:1px; font-weight:600; padding:0; margin:0px; vertical-align:middle;"><a href="https://click.email.clarks.com/?qs=65be6cbb4f7b77580fd0acc6bd23313029c229690dd6fd893e30293de4aedcfe464ca5ddd5ce959c2f15d6ef584fc6ba" target="_blank" style="color:#666666; text-decoration:none;">Next day delivery, <br class="hide" />
+                                 order before 7pm</a>
+                              </th>
+                              <td class="hide" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family:'Lato', Arial, Helvetica, sans-serif; color:#666666; text-transform:uppercase;">|</td>
+                              <th class="drop f16 padt30 padb15" align="center" valign="middle" style="font-size:11px; line-height:16px; font-family:Montserrat, Lato, Helvetica, sans-serif; color:#666666; text-transform:uppercase; letter-spacing:1px; font-weight:600; padding:0; margin:0px; vertical-align:middle;"><a href="https://click.email.clarks.com/?qs=d71d75b895b533579852a91e101c67f9f4df6b58e5bc7cd80e18b3e91c4eff476dec2408b139fb9737fc24d8113399d7" target="_blank" style="color:#666666; text-decoration:none;">Free returns</a></th>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center" style="padding:18px 0;" class="padtb15">
+                        <table width="200" border="0" cellspacing="0" cellpadding="0" class="w300">
+                           <tr>
+                              <td><a href="https://click.email.clarks.com/?qs=d71d75b895b533570a7fa8195dadb50023068be811d8df2e93fb14d3a98888a9d608c22535cd424ea7d8176c1ff54837" target="_blank"><img src="http://image.email.clarks.com/lib/fe8b12747766027a7c/m/1/e2c222d0-1897-4f85-b9bf-6e8412165bc3.png" alt="Facebook" height="20" border="0" style="display:block;" title="Facebook" class="wauto" /></a></td>
+                              <td><a href="https://click.email.clarks.com/?qs=d71d75b895b53357d4399065084b3a570ae12bf7b605e1ea59bea709f73d86bc453aa24bfbf1b9137e070dc0605c501a" target="_blank"><img src="http://image.email.clarks.com/lib/fe8b12747766027a7c/m/1/3c39138d-1852-4070-b4aa-57eb1fcef229.png" alt="Twitter" height="20" border="0" style="display:block;" title="Twitter" class="wauto" /></a></td>
+                              <td><a href="https://click.email.clarks.com/?qs=d71d75b895b533570efa2b5d5b0794ee5abcdcdd6f9041e6a8557ed29572cf329278536957341ad4326ae601a9551386" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/2/474c5c33-9364-4a37-ba0f-071c93e9fa00.png" alt="Instagram" height="20" border="0" style="display:block;" title="Instagram" class="wauto" /></a></td>
+                              <td><a href="https://click.email.clarks.com/?qs=d71d75b895b533570c751fa05786948c5e43d45c1ef22fb754585aeb1c55a2fc5a47fa0c818a64ef08bed10a095acf5c" target="_blank"><img src="http://image.email.clarks.com/lib/fe8b12747766027a7c/m/1/6b9c8e7b-b065-4726-89c9-8e8303b34da1.png" alt="Youtube" height="20" border="0" style="display:block;" title="Youtube" class="wauto" /></a></td>
+                   <td><a href="https://click.email.clarks.com/?qs=d71d75b895b533570bc76cc210208c10e0deddc517a8dd1ebce6f19f630794e2d9078b097fc14d64b2639c9d81953ae9" target="_blank"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/10/70cfc8aa-bc91-4b14-bf85-c5393f407ff8.png" alt="TikTok" height="20" border="0" style="display:block;" title="TikTok" class="wauto" /></a></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td style="line-height:0px;" bgcolor="#cfcfcf"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/a207db18-d9f3-426f-ae78-58efbbafa767.jpg" alt="" width="1" height="1" border="0" style="display:block;" /></td>
+                  </tr>
+                  <tr>
+                                      <td align="center" valign="top" style="font-family:'Lato', Arial, Helvetica, sans-serif; font-size:12px; color:#333333; line-height:17px; padding:20px 0;" class="footer"><b>*Terms & Conditions:</b><br />
+                                 <a href="https://click.email.clarks.com/?qs=d71d75b895b5335746914fcde47f9de3a283ad42bbcb3736fcf2e3a136d5a13fdd84ffcd90d2b163aebdfb4c1f2e45f6" target="_blank" style="color:#0092ff; text-decoration:underline;">Sale</a>
+         
+         <br />
+         <br/>If you no longer wish to receive emails from Clarks, <a target="_blank" style="color:#0092ff; text-decoration:underline;"                  href="https://click.email.clarks.com/?qs=d71d75b895b533570e648c8af561b192380aa4521fd9d6239c47f48a99b580b3d8f93f9a26eba417a4cf2f1501b89bd6" >please click here to unsubscribe.</a><br />
+
+
+
+                       
+ If you are a registered Clarks customer you can <a href="https://click.email.clarks.com/?qs=3656074b174af649c7656a980b44cd9a799af6803e45a83c930976dbb802510cd1e684718ff73b006d6cf65e1e9be5f9" target="_blank" style="color:#0092ff; text-decoration:underline;">change your account details</a> for <br class="hide"/>
+                        future communications. <a href="https://click.email.clarks.com/?qs=3656074b174af6493b47d11a40153b400abb8b67ec29ce88a9d70b2151cacf9c04a9c076be7b095bec07bdb8aa14c46f" target="_blank" style="color:#0092ff; text-decoration:underline;">View the Clarks Privacy Policy</a>. <br />
+                        <br />
+                        &#169; C&amp;J Clark International Limited Trading as Clarks Registered in England number 141015<br />
+                        Registered office: 40 High Street, Street, Somerset, BA16 0EQ, England. 
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+         <tr class="hide">
+            <td bgcolor="#FFFFFF">
+               <table cellpadding="0" cellspacing="0" border="0" align="center" width="590" style="width:590px;">
+                  <tr>
+                     <td cellpadding="0" cellspacing="0" border="0" style="line-height:1px;" height="1"><img src="https://image.email.clarks.com/lib/fe8b12747766027a7c/m/6/9b6a7dc5-3f91-4cd9-be6c-03b87398f2c7.gif" alt="" width="590" height="1" border="0" style="max-height:1px; min-height:1px; display:block; width:590px; min-width:590px;"/></td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+      </table>
+      <div style="display:none; white-space:nowrap; font:15px courier; color:#ffffff;">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+    <img src="https://pixel.app.returnpath.net/pixel.gif?r=4bef5f250cd5d3bcf28c478a4f53fdef5dc57939" width="1" height="1" />
+  </body>
+</html>
+
+--pX968JujB8Ak=_?:--
+

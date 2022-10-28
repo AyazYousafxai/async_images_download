@@ -1,0 +1,2801 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp2192165wrd;        Sat, 18 Dec
+ 2021 22:06:35 -0800 (PST)
+Received: from mailwsout-c883.transactional-mail-a.com
+ (mailwsout-c883.transactional-mail-a.com. [185.215.216.206])        by
+ mx.google.com with ESMTPS id t187si13682582yba.779.2021.12.18.22.06.33      
+  for <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_256_GCM_SHA384 bits=256/256);        Sat, 18 Dec 2021
+ 22:06:35 -0800 (PST)
+Received: from mailwsout06.mailws.fraix1.retloc (localhost [127.0.0.1])	by
+ mailwsout06.transactional-mail-a.com (Postfix) with ESMTP id
+ 4JGsfx0kDDzC24	for <john.doe.youniq@gmail.com>; Sun, 19 Dec 2021 07:06:33
+ +0100 (CET)
+X-Google-Smtp-Source: ABdhPJyd2TDzvX5cpBQYnGRO8m0nsrUR/ukWhMTBos7FEBfj1OoJFIgtr8YstVPwWuskawMGV5Hs
+X-Received: by 2002:a25:d16:: with SMTP id 22mr15752022ybn.51.1639893995041;        Sat,
+ 18 Dec 2021 22:06:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639893995; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=QZsZ+1N4i8NoREt0ydHjqKtDMWZQAxiMIZGttVph/+pGwLcAd2KIoKCV+bwYoWpitT        
+ Jx0J3vl4Ppv8aF7iEhXpLGASyjJDn/gjhdQcCU3aPqWr8TDt9CBD7UvZy5g9emnRuKHm        
+ F9FHDyvLsJo0wNY3713I3jpEalm+PVWXyzG1yAk4qzAvTpW/3YNooRix5+rgkVijJ+zl        
+ Vo+8POTBcx2RSALAXwqlh0C+2wbFlDUWfPHM9qgrOscRFTb+yBNKcwGvDj3qwBbrx8Sf        
+ aqN7PgmKmuSZ+R325gxI6GH7Llg/iRBEccm+AQSyemE+3Tryf2smZ04ru9vuTHqr9Huq        
+ x0yA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:importance:mime-version:subject:to:reply-to:from:date        
+ :message-id:dkim-signature:dkim-filter;       
+ bh=DTuUn55Mz1XEoLPNEy3ZF4M9oQlSqBn7oIF2k2Fmlwk=;       
+ b=zsJU6tY6gQT90QvCnHWAzDnlfDHAa4G5FlOMhNWMwgV54e24tG2BYxkVJVsKk/XXaf        
+ ZISbb6VV1TuqAHtCvD+EOnv5lEuY9ObsLd2vTM3KIBEyCnae+KI3+XlUiqN2vzFpbeyO        
+ VVCssSZ8f+GNo4IErPBEtTid9xhlyNFSHFZ0JR6YVEOxiduJNOjv2FT9mFuGri13fyTq        
+ CPfPrKacNcXV63CKiCy1Qsv9KrXqnLuL/NKuMR3e+aFlRNneouKAYqghGe8+WLqHvQN2        
+ DnqXnvjD5ojfO8/7sL5FR0pJWwrjDjYL5rM1f7d4kq0Za9ioCvuH9UpMjt6kdqmRZnFS        
+ YH5g==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@news.hugoboss.com
+ header.s=HugoBossNew header.b=kp1YUwSJ;       spf=pass (google.com: domain
+ of hugoboss@news.hugoboss.com designates 185.215.216.206 as permitted
+ sender) smtp.mailfrom=hugoboss@news.hugoboss.com;       dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=news.hugoboss.com
+Return-Path: <hugoboss@news.hugoboss.com>
+Received-SPF: pass (google.com: domain of hugoboss@news.hugoboss.com designates
+ 185.215.216.206 as permitted sender) client-ip=185.215.216.206;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@news.hugoboss.com
+ header.s=HugoBossNew header.b=kp1YUwSJ;       spf=pass (google.com: domain
+ of hugoboss@news.hugoboss.com designates 185.215.216.206 as permitted
+ sender) smtp.mailfrom=hugoboss@news.hugoboss.com;       dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=news.hugoboss.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailwsout06.transactional-mail-a.com 4JGsfx0kDDzC24
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=news.hugoboss.com;	s=HugoBossNew;
+ t=1639893993;	bh=tBkEE5VrbA4w73/MI79kdFJHE1mJclaExx9p7X6ikZA=;	h=Date:From:Reply-To:To:Subject;	b=kp1YUwSJPz5vUJiusemDrIHVNC/Ryh+i0cao0BNJ3qXSYeJh94O2ei5UqQ1ApWra6	 6JwrgIqr36eg7EQuuGeo25CEPACKhNpGo1vxbLsjqzUngIaW39X8TlPU5t9f6t6l/Q	
+ ROiVX8qu8Ja5DaLpv3alCMRDb18Ft6v3S9r/Tjp4=
+Message-ID: <20211219-060633.4c8f2777-6869-4325-abb2-89ab8071d80e#d9268c43#cc2be967@retarus.com>
+Date: Sun, 19 Dec 2021 06:06:33 +0000 (GMT)
+From: "BOSS News" <hugoboss@news.hugoboss.com>
+Reply-To: "HUGO BOSS Customer Care" <service-uk@hugoboss.com>
+To: john.doe.youniq@gmail.com
+Subject: Enjoy free express delivery
+MIME-Version: 1.0
+X-Mailer: Retarus Mail4A
+X-Priority: 3
+Importance: Normal
+Feedback-ID: 0000017626:hugoboss@news.hugoboss.com:PK1_100:31553
+Content-Type: multipart/alternative; boundary="----=_Part_62181901_1981147153.1639893993033"
+
+------=_Part_62181901_1981147153.1639893993033
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+   =20
+   =20
+   =20
+   =20
+For a limited time only=C2=A0
+    [https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD=
+1D0A72C0CCA5506744DB1CF4/pixel=2Egif]
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/crmcampaigns_boss-=
+logo-w-b-150_2?$large$&align=3D0,-1&fit=3Dcrop,1&ts=3D1629962182817&wid=3D1=
+50&hei=3D58&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D742D34F2BBD919E4AE8CFE6D9D=
+5788BD9538BB70&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDAwMDAtMSZ1dG1fdGVybT1FLS1VS19lbi0t=
+YmxvY2tILS02MDAwMDAtMSZ1dG1fY29udGVudD1kZWZhdWx0X2hlYWRlcjFfaW1hZ2Uxb2YxJnV=
+0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMj=
+ExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZ=
+T1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3Db1e0b014ea25325381ee60631c0895f2a9537=
+96e92fc14fa273f0984f1f2cbe0=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+New In
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D777E23C2583000CD57C947F67A=
+4720FA48AB07A7&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD0zMDg4NiZwcmVmbjE9YnJhbmQmcHJlZnYxPUJP=
+U1MmdXRtX3Rlcm09RS0tVUtfZW4tLWJsb2NrSC0tMzA4ODYmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9=
+oZWFkZXIxX25hdmxpbmsxJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaG=
+lwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1b=
+T1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3Dc6f39614166c7=
+2569fa212c085aca5b8cb0f15b2eee4ce9db015d1ed2984649c=E2=80=BA
+   =20
+MEN
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DE67AEB6B0D2BAD21EEBDA0BA4B=
+CF87936F8A3D02&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD0yMDAwMC0xJnV0bV90ZXJtPUUtLVVLX2VuLS1i=
+bG9ja0gtLTIwMDAwLTEmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIxX25hdmxpbmsyJnV0bV9=
+jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMj=
+E5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZ=
+XdzbGV0dGVy&_K13_=3D94535&_K14_=3D7e67af9201b0d9075561ed54f518f7c27a135f8f7=
+705fa9485362046a2396e61=E2=80=BA
+   =20
+WOMEN
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D81A0072968A8D755A130F2FA1E=
+DE1C1AE83A8E00&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD0xMDAwMC0xJnV0bV90ZXJtPUUtLVVLX2VuLS1i=
+bG9ja0gtLTEwMDAwLTEmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIxX25hdmxpbmszJnV0bV9=
+jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMj=
+E5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZ=
+XdzbGV0dGVy&_K13_=3D94535&_K14_=3D31b7c2121f4b6b7870b0e81c756a6d4b931a87321=
+cb9401b0451842b9fbfad87=E2=80=BA
+   =20
+GIFTS
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D2788BBA4E5448BA1895C3B5C5C=
+A8313E98343EAA&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03MDAwMCZwcmVmbjE9YnJhbmQmcHJlZnYxPUJP=
+U1MmdXRtX3Rlcm09RS0tVUtfZW4tLWJsb2NrSC0tNzAwMDAmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9=
+oZWFkZXIxX25hdmxpbms0JnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaG=
+lwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1b=
+T1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D75d89a3edc06c=
+2d2a8af3f90a6b4a776837b8688ee91eacb08de17bf856dac48=E2=80=BA
+   =20
+INSPIRATION
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DE7A035F8095F233F11F53E21DF=
+4BF775E6E49E39&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDAwMC0xJnV0bV90ZXJtPUUtLVVLX2VuLS1i=
+bG9ja0gtLTYwMDAwLTEmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIxX25hdmxpbms1JnV0bV9=
+jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMj=
+E5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZ=
+XdzbGV0dGVy&_K13_=3D94535&_K14_=3De7eeb905e6bd22f53ce4c4c6de83390e94466f39e=
+e7f00949be6a0067ee7aef4=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D97BC2DFC5C4333EA0329100C39=
+0E5369AE279589&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9ob21lP3V0bV90ZXJtPUUtLUdCX2VuLS1ibG9jazEtLWhvbWUmdXRt=
+X2NvbnRlbnQ9bW9kXzJfZGVmYXVsdF9oZWFkdmlzdWFsM19pbWFnZTFvZjEmdXRtX2NhbXBhaWd=
+uPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV=
+9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0Z=
+XI=3D&_K13_=3D94535&_K14_=3Dd1b2f7f4673cb0a48b732a679447a3a38421f5c6529e901=
+cf24798609e73e313=E2=80=BA
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/content/hugobossdm/crmcampaigns_las=
+t_chance_express_deliver_pic_1?$large$&align=3D0,-1&ts=3D1639647794495&wid=
+=3D1280&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg]
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOS=
+S_Holiday_ACC_024_sRGB?$large$&align=3D0,-1&fit=3Dcrop,1&ts=3D1639647794498=
+&wid=3D1280&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg]
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/content/hugobossdm/crmcampaigns_las=
+t_chance_express_deliver_pic_1_mobile?$large$&align=3D0,-1&ts=3D16396477945=
+00&wid=3D1280&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg]
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+For a limited time only
+   =20
+   =20
+   =20
+Free Express Delivery
+   =20
+   =20
+    We=E2=80=99re celebrating the fact that the holidays are just around
+the corner by offering you free express delivery when you spend
+=C2=A3159 or more=2E Don't miss out on this offer valid until 21 December
+- shop=C2=A0the latest collections, plus gifts to surprise and delight
+your loved ones=2E Exclusions apply=2E
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    SHOP NOW
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DEF5DB60F1964E0F72EE836179E=
+CAD85639EB5FA4&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9ob21lP3V0bV90ZXJtPUUtLUdCX2VuLS1ibG9jazEtLWhvbWUmdXRt=
+X2NvbnRlbnQ9bW9kXzJfZGVmYXVsdF9oZWFkdmlzdWFsM19jdGExb2YxJnV0bV9jYW1wYWlnbj0=
+yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk=
+1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&=
+_K13_=3D94535&_K14_=3Dfd47f3d17d338f67f8ec3a913f0553e862f9296b9165e7cd3fb20=
+d4383f4ed33=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    GIFT FINDER FOR HIM
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOS=
+S_Holiday_ACC_016_sRGB?$large$&cropN=3D0=2E2023437,0,0=2E6664062,1&align=3D0=
+,-1&fit=3Dcrop,1&ts=3D1639647794551&wid=3D640&qlt=3D96&op_sharpen=3D1&resMo=
+de=3Dsharp2&fmt=3Dpjpeg]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D50C984E89BBF15DA1E8AD152BF=
+2459C5561659E8&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NDAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9w=
+dWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2syLS03NDAwMCZ1dG1fY29udGVudD1tb2RfM19=
+kZWZhdWx0X3RlYXNlcjFiX2ltYWdlMW9mMSZ1dG1fY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV=
+9SVl9GcmVlc2hpcF9OTCZjYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJ=
+nV0bV9tZWRpdW09ZS1tYWlsJnV0bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&_K13_=3D94535&_=
+K14_=3Dcb4d97a215cc313e23ae0926b63f20f81d592fec2bef339414387859de45dfcd=E2=
+=80=BA
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOS=
+S_Holiday_ACC_016_sRGB?$large$&cropN=3D0=2E2,0,0=2E6664062,1&align=3D0,-1&f=
+it=3Dcrop,1&ts=3D1639647794554&wid=3D1280&qlt=3D96&op_sharpen=3D1&resMode=
+=3Dsharp2&fmt=3Dpjpeg]
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    Top of their list=C2=A0
+   =20
+   =20
+   =20
+   =20
+    =E2=80=94=E2=80=94=C2=A0=C2=A0=C2=A0=C2=A0
+Searching for the perfect presents for those you love? Look no
+further than our thoughtfully-curated gift finder=2E
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    DISCOVER MORE
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DDB31C08BC979CEADB56F7AFB1D=
+963195D15300C1&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NDAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9w=
+dWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2syLS03NDAwMCZ1dG1fY29udGVudD1tb2RfM19=
+kZWZhdWx0X3RlYXNlcjFiX2N0YTFvZjEmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUl=
+ZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1d=
+G1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=
+=3D73d2c52cdd13469793a9a30758e1a9681a5e383cf8b37eabdf5d75e501a316a0=E2=80=
+=BA
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_button_boss_=
+arrow_black?wid=3D140&hei=3D140&fmt=3Dgif&op_sharpen=3D1&resMode=3Dsharp2]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DA92C0EF3A91AF8B90236C4C686=
+2E2879304CAB23&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NDAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9w=
+dWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2syLS03NDAwMCZ1dG1fY29udGVudD1tb2RfM19=
+kZWZhdWx0X3RlYXNlcjFiX2N0YTFvZjEmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUl=
+ZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1d=
+G1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=
+=3D070e3d473d627d9f3c85121f6197ca7b54e72f833666100d70c7fac37f2a3ccf=E2=80=
+=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    GIFT FINDER FOR HER
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOS=
+S_Holiday_ACC_029_sRGB?$large$&cropN=3D0=2E1375,0,0=2E6664062,1&align=3D0,-=
+1&fit=3Dcrop,1&ts=3D1639647794601&wid=3D640&qlt=3D96&op_sharpen=3D1&resMode=
+=3Dsharp2&fmt=3Dpjpeg]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D739A096BB528D449CB5E8DAF4A=
+63C8F37D10A1C1&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NTAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9w=
+dWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2szLS03NTAwMCZ1dG1fY29udGVudD1tb2RfNF9=
+kZWZhdWx0X3RlYXNlcjFhX2ltYWdlMW9mMSZ1dG1fY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV=
+9SVl9GcmVlc2hpcF9OTCZjYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJ=
+nV0bV9tZWRpdW09ZS1tYWlsJnV0bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&_K13_=3D94535&_=
+K14_=3D1477f9edbe806598a5a08069c7eb5457f85a6610d194c879719c3a076dbda734=E2=
+=80=BA
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOS=
+S_Holiday_ACC_029_sRGB?$large$&cropN=3D0=2E1421875,0,0=2E6664062,1&align=3D0=
+,-1&fit=3Dcrop,1&ts=3D1639647794604&wid=3D1280&qlt=3D96&op_sharpen=3D1&resM=
+ode=3Dsharp2&fmt=3Dpjpeg]
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+Spoil someone special
+   =20
+   =20
+   =20
+   =20
+    =E2=80=94=E2=80=94=C2=A0=C2=A0=C2=A0=C2=A0
+Discover a world of gift ideas to make=C2=A0their holidays unique =E2=80=93
+including modern leather accessories, fragrances and
+more
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    DISCOVER MORE
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DB5D1381BFD7D3DA662B1B49438=
+D9A76FC74BC107&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NTAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9w=
+dWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2szLS03NTAwMCZ1dG1fY29udGVudD1tb2RfNF9=
+kZWZhdWx0X3RlYXNlcjFhX2N0YTFvZjEmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUl=
+ZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1d=
+G1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=
+=3Da855498ee454b940513480e7acbbebef3fbda82b6e97c7814cd700ad047a68f2=E2=80=
+=BA
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_button_boss_=
+arrow_black?wid=3D140&hei=3D140&fmt=3Dgif&op_sharpen=3D1&resMode=3Dsharp2]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D4D493B96D0549CF87BE38A6BCE=
+57952452D7E8A9&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NTAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9w=
+dWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2szLS03NTAwMCZ1dG1fY29udGVudD1tb2RfNF9=
+kZWZhdWx0X3RlYXNlcjFhX2N0YTFvZjEmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUl=
+ZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1d=
+G1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=
+=3D3f308845ef1c10d935b8b8921944e23bf7f93e12cd2c6f69e830a95ea3049129=E2=80=
+=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foote=
+r_omnichannel_clickandcollect?wid=3D62&hei=3D62&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DDC3A2F03BBFB9D9885AA04D9B4=
+A10046E8E18135&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxv=
+Y2tGLS02MDE1NyZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbms=
+xb2YzJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaW=
+duPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX=
+3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D211be65c85d96fa83b30e6702182e=
+bdb9eda94a6ade886bebe61b59dce01cdcb=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+CLICK AND COLLECT
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DEF20F0749BD6CD3A0F828DE4D0=
+DC5E7EDEE64DB2&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxv=
+Y2tGLS02MDE1NyZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbms=
+xb2YzJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaW=
+duPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX=
+3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D7ad5d16e59cb260a46ea98eefd6f5=
+119ab1f16dea8f997aa09d2d5d82cd42b7a=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foote=
+r_omnichannel_orderfromstore?wid=3D62&hei=3D62&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DC88368EDC9BB832045D5F4A402=
+49349E310E8DA9&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxv=
+Y2tGLS02MDE1NyZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbms=
+yb2YzJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaW=
+duPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX=
+3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D6bbc00b5e1fd12cb6b54856cf477e=
+5c31c722219a6e422f199eb4c12df8b5c79=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+ORDER FROM STORE
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D79509FF49B982AD230710651A8=
+EF9577C459F8BA&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxv=
+Y2tGLS02MDE1NyZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbms=
+yb2YzJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaW=
+duPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX=
+3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3De370d8ba6692bea3f814635736ffd=
+cf1be9f7db89e0d7cd64d259e1bdedce911=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foote=
+r_omnichannel_returnandreplace?wid=3D62&hei=3D62&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D3E69618D189B395489DE8969B0=
+00BC94B498D1BC&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxv=
+Y2tGLS02MDE1NyZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbms=
+zb2YzJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaW=
+duPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX=
+3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D836cff61ff9a5e06173c26dcb2712=
+aae12fe67ea6ace36f5efe92361c4dee004=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+RETURN AND REPLACE
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D852830DF856BA32603505E06E5=
+91F47FC05CD866&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxv=
+Y2tGLS02MDE1NyZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbms=
+zb2YzJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaW=
+duPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX=
+3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D650b1c6d0f2866668b844da82f69a=
+43c6029ddc57542983882b1a1f13232460f=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_footer_sm_ic=
+on_facebook_b_w?wid=3D126&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D91E6B7D9D28C14F47C8A876306=
+40178CFF7E7602&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mZhY2Vib29rLmNvbS9odWdvYm9zcw=3D=3D&_K13_=3D94535&_K14_=3D0a8b80c3f2cbe4669=
+3d86804b98dd413e55c7a3c6084d5c2c768ace56a5f57e4=E2=80=BA
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_footer_sm_ic=
+on_twitter_b_w?wid=3D126&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D8933089C425A7BCD9FBF7D6E60=
+1E569C9E1EF2EE&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vdHdpd=
+HRlci5jb20vaHVnb2Jvc3M=3D&_K13_=3D94535&_K14_=3D925b7e9254478fe7cb99b0b0b2a=
+f420e5aeb1c4c9d0da880115eab936cae0e90=E2=80=BA
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_footer_sm_ic=
+on_youtube_b_w?wid=3D126&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DBE3413B6C7BBFF1B95726118A4=
+6BC8AFE5AC60AC&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8veW91d=
+HViZS5jb20vYm9zcw=3D=3D&_K13_=3D94535&_K14_=3D0d1446f15dd863f264725b11be8be=
+ea10f6f272442359793c9386eec95c10d87=E2=80=BA
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_footer_sm_ic=
+on_instagram_b_w?wid=3D126&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D90EF652934AB5A3F6E5000194A=
+E3F2FA4DF83785&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mluc3RhZ3JhbS5jb20vYm9zcw=3D=3D&_K13_=3D94535&_K14_=3Dcb2263e1283b3ebfe7383=
+b0b01c54f01943d7dba16c7ecb52a64cba75b084423=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foote=
+r_app_icon_android?fmt=3Dgif-alpha&wid=3D168&hei=3D52]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DF4CBBE96DED841014726D3C9A1=
+A1265DBEBE7E24&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vcGxhe=
+S5nb29nbGUuY29tL3N0b3JlL2FwcHMvZGV0YWlscz9pZD1jb20uaHVnb2Jvc3MuaHVnb2Jvc3Mm=
+aGw9ZW4=3D&_K13_=3D94535&_K14_=3D40dd628ab8c19b47999e008f2e3d00e4aaad197fd2=
+08744878ccba563b783845=E2=80=BA
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foote=
+r_app_icon_apple?fmt=3Dgif-alpha&wid=3D168&hei=3D52]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D585DB1D619E0862710393321F2=
+5971826E4CEA82&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vaXR1b=
+mVzLmFwcGxlLmNvbS9nYi9hcHAvaHVnby1ib3NzL2lkMzM2ODI4NTY0&_K13_=3D94535&_K14_=
+=3D50beba3e33e4b2105ed79304c5c1de030cf521d5ca992bf62e4ab51cfccae5f1=E2=80=
+=BA
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+Customer no=2E
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+=C2=A0
+   =20
+   =20
+   =20
+   =20
+101502120
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D4D4186A4295C9686E53A9F4540=
+D8104CA1086373&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9teWRhdGE/dXRtX3Rlcm09RS0tR0JfZW4tLWJsb2NrRi0tYWNjb3Vu=
+dCZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9jdXN0b21lcm51bWJlcmx=
+pbmsmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ2=
+49MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc=
+291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3D0a896d721d7ac02381c738e1518=
+c64cab972da02479bdc824ee8909bc42adcc7=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+Your digital membership card
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foote=
+r_wallet_icon_android?fmt=3Dgif-alpha&wid=3D168&hei=3D52]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DD91E98D989D69B562D21FA6E34=
+476CB796FFFD02&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vcGFzc=
+y55dC9wL1VnaGtVNHl0eXcvVklORUM1Qk0wUmNSck1EZldnWTJ0UT91dG1fY2FtcGFpZ249MjAy=
+MTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1J=
+WX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0bV9zb3VyY2U9bmV3c2xldHRlcg=3D=
+=3D&_K13_=3D94535&_K14_=3D5dcb073c9b65d2e9ee834df8a2f453de69666f71ba656a613=
+2a4b4de5e07169f=E2=80=BA
+   =20
+    [https://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_foot=
+er_wallet_icon_apple?fmt=3Dgif-alpha&wid=3D168&hei=3D52]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D65B3445F201AC7CBBAD69E527F=
+A09917795E145E&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vcGFzc=
+y55dC9wL1VnaGtVNHl0eXcvVklORUM1Qk0wUmNSck1EZldnWTJ0UT91dG1fY2FtcGFpZ249MjAy=
+MTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1J=
+WX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0bV9zb3VyY2U9bmV3c2xldHRlcg=3D=
+=3D&_K13_=3D94535&_K14_=3D1b530506c99bc9b3cc4584dc6f951f350436920488094795a=
+251778847790e99=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+RESPONSIBILITY HUGO=C2=A0BOSS=C2=A0AG
+   =20
+   =20
+   =20
+   =20
+Dieselstrasse 12, D-72555 Metzingen
+   =20
+   =20
+Telephone: +49 (0) 71=E2=80=8C23 94 - 0
+   =20
+   =20
+Fax: +49 (0) 71=E2=80=8C23 94 - 80259
+   =20
+   =20
+E-Mail:=C2=A0info@hugoboss=2Ecom
+    =E2=80=B9mailto:info@hugoboss=2Ecom=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+Authorized Representative of the Executive Board:
+   =20
+   =20
+   =20
+   =20
+Daniel Grieder, Chairman and CEO
+   =20
+   =20
+Yves M=C3=BCller,=C2=A0Dr=2E=C2=A0Heiko=C2=A0Sch=C3=A4fer, Oliver=C2=A0Timm=
+, Ingo=C2=A0Wilts
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+Chairman of the Supervisory=C2=A0Board:
+   =20
+   =20
+   =20
+   =20
+Hermann=C2=A0Waldemer
+   =20
+   =20
+Registered in: Register of commerce
+   =20
+   =20
+at Local court Stuttgart, Germany
+   =20
+   =20
+HRB=C2=A036=C2=A006=C2=A010=2E VAT No=2E DE=C2=A01=E2=80=8C4=E2=80=8C7=E2=
+=80=8C1=E2=80=8C6=E2=80=8C4=E2=80=8C4=E2=80=8C7=E2=80=8C2
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+CUSTOMER CARE
+   =20
+   =20
+   =20
+   =20
+Monday to Friday 8=2E00am - 7=2E00pm
+   =20
+   =20
+Saturday 8=2E00am - 5=2E00pm
+   =20
+   =20
+Telephone: +44 (0) 20 7660 8041
+    =E2=80=B9tel:+442076608041=E2=80=BA
+    *
+   =20
+   =20
+*Prices of your telephone provider apply
+   =20
+   =20
+E-Mail: service-uk@hugoboss=2Ecom
+    =E2=80=B9mailto:service-uk@hugoboss=2Ecom=E2=80=BA
+   =20
+    =E2=80=B9mailto:service-uk@hugoboss=2Ecom=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+STYLE ADVICE
+   =20
+   =20
+   =20
+    Chat with us
+    =E2=80=B9https://z2=2Eliveper=2Esn/api/account/88409905/route/campaign/=
+1312322432/engagement/1405181950?utm_term=3DE--UK_en--blockF--styleadvisor&=
+utm_content=3Dfooter1_styleadvisor=E2=80=BA
+   =20
+   =20
+   =20
+Monday to Friday
+   =20
+   =20
+07:=E2=80=8C00am =E2=80=93 06:=E2=80=8C00pm
+   =20
+   =20
+Sunday 10:=E2=80=8C00am =E2=80=93 05:=E2=80=8C00pm
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+WHATSAPP
+   =20
+   =20
+   =20
+   =20
+Monday to Friday
+   =20
+   =20
+07=E2=80=8C:00am =E2=80=93 06=E2=80=8C:00pm
+   =20
+   =20
+Sunday 10=E2=80=8C:00am =E2=80=93 05=E2=80=8C:00pm
+   =20
+   =20
++=E2=80=8C49=C2=A0151=C2=A040=E2=80=8C26=C2=A018=E2=80=8C09
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+UNSUBSCRIBE
+   =20
+   =20
+   =20
+   =20
+To Unsubscribe from the HUGO=C2=A0BOSS newsletter, please click=C2=A0here
+    =E2=80=B9https://www=2Ehugoboss=2Ecom/uk/unsubscribe?guid=3D47B775DE-77=
+BC-EB11-8123-005056AC0431&hash=3Debb7e915c299c7a9df0fc93d1189a3f827b629f6fe=
+0a5d75d24662a656cbec0f&utm_term=3DE--GB_en--blockF--unsubscribe&utm_content=
+=3Dcustomernum_wallet__textlink1of1&utm_campaign=3D20211219_PP_E_BM_RV_Free=
+ship_NL&campaign=3D20211219_PP_E_BM_RV_Freeship_NL&utm_medium=3De-mail&utm_=
+source=3Dnewsletter=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+Privacy Statement
+   =20
+   =20
+   =20
+    Privacy Statement HUGO BOSS EXPERIENCE
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D2DF7AEDF5F76F4DF387E7C8278=
+A5061371F784E6&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9wcml2YWN5LXN0YXRlbWVudC1leHBlcmllbmNlLmh0bWw/dXRtX3Rl=
+cm09RS0tR0JfZW4tLWJsb2NrRi0tcHJpdmFjeS1zdGF0ZW1lbnQtZXhwZXJpZW5jZS5odG1sJnV=
+0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9fdGV4dGxpbmsxb2Y1JnV0bV9jYW1wYWlnbj=
+0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQ=
+k1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy=
+&_K13_=3D94535&_K14_=3D1f4a0a1bed6f3f7eeaf1c90c4b08af46dcf3d92cf796259947ea=
+aa10bc3f9d42=E2=80=BA
+    ;=C2=A0Terms & Conditions
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D5CFE4F22CE983A7702D79DE47A=
+451E4DBA74B536&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay90ZXJtcy1jb25kaXRpb25zLmh0bWw/dXRtX3Rlcm09RS0tR0JfZW4t=
+LWJsb2NrRi0tdGVybXMtY29uZGl0aW9ucy5odG1sJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3d=
+hbGxldF9fdGV4dGxpbmsyb2Y1JnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZW=
+VzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZ=
+Gl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3Dd800bb9a3=
+27a4629b67a2f1a77157159064e0737fa80886ee80ace3de58a7a45=E2=80=BA
+    ;=C2=A0Privacy Statement HUGO BOSS Newsletter;
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DFFC2FCF8B3C8828A47FF36F57C=
+0BD3FA394D8B1E&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9wcml2YWN5LXN0YXRlbWVudC1uZXdzbGV0dGVyLmh0bWw/dXRtX3Rl=
+cm09RS0tR0JfZW4tLWJsb2NrRi0tcHJpdmFjeS1zdGF0ZW1lbnQtbmV3c2xldHRlci5odG1sJnV=
+0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9fdGV4dGxpbmszb2Y1JnV0bV9jYW1wYWlnbj=
+0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQ=
+k1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy=
+&_K13_=3D94535&_K14_=3Dd5d4c25279f8fa2976a4046a61c450e25a4d1962d4d357f58453=
+560870193005=E2=80=BA
+    =C2=A0Privacy Statement
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D1FF0C09E12729E3E39E40E154A=
+AC9D6EF95BE5FD&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9wcml2YWN5LXN0YXRlbWVudC5odG1sP3V0bV90ZXJtPUUtLUdCX2Vu=
+LS1ibG9ja0YtLXByaXZhY3ktc3RhdGVtZW50Lmh0bWwmdXRtX2NvbnRlbnQ9Y3VzdG9tZXJudW1=
+fd2FsbGV0X190ZXh0bGluazRvZjUmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRn=
+JlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fb=
+WVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3D215=
+2a5d94b8c7eef77da806f497f562b041d502a0dd92a5d7257988faaa5144f=E2=80=BA
+    ;=C2=A0Terms & Conditions HUGO BOSS
+EXPERIENCE
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DA7818024AE20305EDCD08C07DB=
+350B1B62ADB419&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay90ZXJtcy1jb25kaXRpb25zLWV4cGVyaWVuY2UuaHRtbD91dG1fdGVy=
+bT1FLS1HQl9lbi0tYmxvY2tGLS10ZXJtcy1jb25kaXRpb25zLWV4cGVyaWVuY2UuaHRtbCZ1dG1=
+fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfX3RleHRsaW5rNW9mNSZ1dG1fY2FtcGFpZ249Mj=
+AyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX=
+1JWX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0bV9zb3VyY2U9bmV3c2xldHRlcg=
+=3D=3D&_K13_=3D94535&_K14_=3D87eac6cce58fb30ce0b4bcb5da3457038bb8ef792fb0dd=
+71fe61738484df9f5a=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_footer_icon_=
+help?wid=3D88&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif]
+   =20
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D7EB9C4A2A94376A344167CAEE9=
+7198A4D088524C&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9jb250YWN0dXM/dXRtX3Rlcm09RS0tR0JfZW4tLWJsb2NrRi0tY29u=
+dGFjdHVzJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9mb290ZXIxX2hlbHBsaW5rJnV=
+0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMj=
+ExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZ=
+T1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D3308566e57a5c33e020e7999205aeadc3d59a=
+53482c838f0dc82b08acc1e904b=E2=80=BA
+   =20
+=C2=A0Help
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DF4E34CBE1A1A72C4425B86EA33=
+9B7880FB70627A&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9jb250YWN0dXM/dXRtX3Rlcm09RS0tR0JfZW4tLWJsb2NrRi0tY29u=
+dGFjdHVzJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9mb290ZXIxX2hlbHBsaW5rJnV=
+0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMj=
+ExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZ=
+T1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D5a39e81d4711ed39da3a1b78bd5f9cbf1787e=
+78a1c66857b2b48dc0258df0908=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+    [http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_footer_icon_=
+storelocator?wid=3D88&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif]
+   =20
+    =E2=80=B9https://www=2Ehugoboss=2Ecom/uk/stores?utm_term=3DE--GB_en--bl=
+ockF--stores&utm_content=3Dcustomernum_wallet_footer1_storelocatorlink=E2=
+=80=BA
+   =20
+Store Locator
+    =E2=80=B9https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D6747A49D667DC2E6E19235B9AD=
+DFCBFE9A2426DC&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9zdG9yZXM/dXRtX3Rlcm09RS0tR0JfZW4tLWJsb2NrRi0tc3RvcmVz=
+JnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9mb290ZXIxX3N0b3JlbG9jYXRvcmxpbms=
+mdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ249Mj=
+AyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc291c=
+mNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3De3d45d962c7bfd4c0e987fa5411e537=
+e43319dc9824acd67cf1769e665880feb=E2=80=BA
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+    =C2=A0
+   =20
+   
+------=_Part_62181901_1981147153.1639893993033
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN" "http://ww=
+w=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html lang=3D"en-GB" xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" xmlns:v=3D"=
+urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:=
+office">=20
+ <head>=20
+  <meta charset=3D"UTF-8">=20
+  <title>20211017_PP_E_BM_RV_Winteroutfit_NL</title>=20
+  <meta name=3D"template" content=3D"email-email">=20
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1=
+"> <!--[if !mso]><!-->=20
+  <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"> <!--<![endif]=
+-->=20
+  <style>@media{@font-face{
+font-weight:300;font-family:Univers;src:url(http://www=2Ehugoboss=2Ecom/on/=
+demandware=2Estatic/Sites-DE-Site/-/de_DE/fonts/df87702f-a933-4d3a-b9d9-4ae=
+72506ae9d=2Eeot?#iefix) format('eot'),url(http://www=2Ehugoboss=2Ecom/on/de=
+mandware=2Estatic/Sites-DE-Site/-/de_DE/fonts/a84a4c95-eec7-4dda-b4f9-eef86=
+c2f79b6=2Ewoff2) format('woff2'),url(http://www=2Ehugoboss=2Ecom/on/demandw=
+are=2Estatic/Sites-DE-Site/-/de_DE/fonts/e4ae19e7-c510-4127-837d-8f218498da=
+93=2Ewoff) format('woff'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Es=
+tatic/Sites-DE-Site/-/de_DE/fonts/6fdd43a7-c877-42cb-8a63-d81872f46de8=2Ett=
+f) format('truetype'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estati=
+c/Sites-DE-Site/-/de_DE/fonts/9da52489-293c-462c-b4c9-1fd1b464c454=2Esvg#9d=
+a52489-293c-462c-b4c9-1fd1b464c454) format('svg')}@font-face{font-weight:50=
+0;font-family:Univers;src:url(http://www=2Ehugoboss=2Ecom/on/demandware=2Es=
+tatic/Sites-DE-Site/-/de_DE/fonts/48a42ae4-2dae-4819-a76c-c4a39ba76875=2Eeo=
+t?#iefix) format('eot'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Esta=
+tic/Sites-DE-Site/-/de_DE/fonts/194b06cf-7326-4c18-9a5a-937865061822=2Ewoff=
+2) format('woff2'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/S=
+ites-DE-Site/-/de_DE/fonts/d7cf6a30-fb6a-4725-9c93-2372d9f4bb8d=2Ewoff) for=
+mat('woff'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE=
+-Site/-/de_DE/fonts/fb6dd99b-78b9-4459-b787-00d3f0fc0c9f=2Ettf) format('tru=
+etype'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE-Sit=
+e/-/de_DE/fonts/4bed78d0-7a4f-46bf-b802-29f04d1d2e11=2Esvg#4bed78d0-7a4f-46=
+bf-b802-29f04d1d2e11) format('svg')}@font-face{font-weight:700;font-family:=
+Univers;src:url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE=
+-Site/-/de_DE/fonts/2340800a-0509-4f45-b23e-458aed4eb29a=2Eeot?#iefix) form=
+at('eot'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE-S=
+ite/-/de_DE/fonts/d354d375-44e6-4b80-a3a0-f6465911e0b1=2Ewoff2) format('wof=
+f2'),url(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE-Site/-=
+/de_DE/fonts/237c1518-f6eb-40ef-a566-518918eacd9f=2Ewoff) format('woff'),ur=
+l(http://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE-Site/-/de_DE/=
+fonts/2a813e8f-bcaf-4abd-abff-cf49dedc775d=2Ettf) format('truetype'),url(ht=
+tp://www=2Ehugoboss=2Ecom/on/demandware=2Estatic/Sites-DE-Site/-/de_DE/font=
+s/9f007a5d-ea90-417c-83cf-55205ed2d4f5=2Esvg#9f007a5d-ea90-417c-83cf-55205e=
+d2d4f5) format('svg')}
+}
+=2Etext__body a{text-decoration:none}=2Etext__body a[x-apple-data-detectors=
+]{color:inherit!important;text-decoration:none!important;font-size:inherit!=
+important;font-family:inherit!important;font-weight:inherit!important;line-=
+height:inherit!important}=2Etext__body{color:#999}=2EaBn,=2Ex-gmail-data-de=
+tectors,=2Ex-gmail-data-detectors *,[x-apple-data-detectors]{color:inherit!=
+important;text-decoration:none!important;font-size:inherit!important;font-f=
+amily:inherit!important;font-weight:inherit!important;line-height:inherit!i=
+mportant}=2Eprevent-auto-links a{color:inherit!important;text-decoration:no=
+ne!important}=2Eprevent-auto-links a=2Eallowed-link{text-decoration:underli=
+ne!important}=2Erichtext-wrapper ol,=2Erichtext-wrapper span ol,=2Erichtext=
+-wrapper span ul,=2Erichtext-wrapper ul{list-style-position:inside}div>u+=
+=2Ebasicpage =2Erichtext-wrapper span,div>u+=2Ebasicpage span=2Einline span=
+{letter-spacing:-2px;margin-right:4px}=2Etext_light{font-weight:300}=2Etext=
+_uppercase{text-transform:uppercase}=2Etext_no_wrap{white-space:nowrap}=2Em=
+s{display:none}=2EUI_picture_editor img{width:100%!important;height:auto}=
+=2EUI_bg_mobile{background:0 0!important}=2EUI_bg_mobile =2Ecq-dd-image{mar=
+gin-top:200px}=2EUI_bg_mobile =2Erhom,=2EUI_bg_mobile2 =2Erhom{display:none=
+!important}=2Eprimary-color a{color:#111}=2Emedium-gray a{color:#999}=2Egra=
+y a{color:#666}=2Ewhite a{color:#fff}=2Esoft-gray a{color:#f6f6f6}=2Ehead-n=
+o-bg{background-image:none!important}=2Ehead-no-bg{background-image:none!im=
+portant}[office365] button,[office365] td div{display:block!important}table=
+ th{padding:0;Margin:0;border:0}[class~=3Dx_olf] td,[class~=3Dx_olf] th{fon=
+t-size:1px}</style> <!--[if (gte mso 9)]>
+<style type=3D"text/css">
+body {margin:0; padding:0;}
+table {border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt=
+; border:0;}
+table td, table th {border-collapse:collapse; font-size:1px; line-height:1p=
+x;}
+=2Elh {line-height:100% !important;}
+=2Einpl-not-mailing =2Elh, =2Einpl-not-mailing =2Elh font {line-height:1=2E2=
+ !important;}
+=2Elh10p {line-height:83% !important;}
+=2Einpl-not-mailing =2Elh10p, =2Einpl-not-mailing =2Elh10p font {line-heigh=
+t:1 !important;}
+=2Elh13p {line-height:108% !important;}
+=2Einpl-not-mailing =2Elh13p, =2Einpl-not-mailing =2Elh13p font {line-heigh=
+t:1=2E3 !important;}
+=2Eolshow {display:block !important;}
+=2Eolhide {display:none !important; mso-hide: all; visibility: hidden; widt=
+h: 0; height: 0;}
+</style>
+<![endif]--> <!--[if (gte mso 9)|(IE)|(false)]>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml><![endif]-->=20
+  <style>@media (max-width:640px){
+=2Emh,=2Emobile-hidden,=2Eshow-for-large{display:none!important}=2Eis-hidde=
+n-desktop{display:block!important}=2Ems{display:block!important}=2Emobile-n=
+o-bg{background-image:none!important}=2Ebg_mobile_white{background-color:#f=
+ff!important}=2Ebg_mobile_black{background-color:#000!important}=2Ebg_mobil=
+e_red{background-color:#b51f29!important}=2Ebg_mobile_soft-gray{background-=
+color:#f6f6f6!important}=2Emobile_black{color:#000!important}=2Emobile_whit=
+e{color:#fff!important}=2Ereset-height-on-mobile,=2Erhom{height:auto!import=
+ant}=2Efl{display:block!important;width:100%!important}=2Efw{width:100%!imp=
+ortant;min-width:0!important}=2Erw10{width:10px!important}=2Erw17{width:17p=
+x!important}=2Erw20{width:20px!important}=2Erw30{width:30px!important}=2Erw=
+130{width:130px!important}=2Erw70p{width:70%!important}=2Erh15{height:15px!=
+important}=2Erh17{height:17px!important}=2Erh20{height:20px!important}=2Erh=
+30{height:30px!important}=2Eplr10{padding:0 10px!important}=2Eplr20{padding=
+:0 20px!important}=2Eplr25{padding:0 25px!important}=2Eplr30{padding:0 30px=
+!important}=2Eboss =2Efs_h1,=2Eboss_inverted =2Efs_h1{font-size:33px!import=
+ant;line-height:36px!important}=2Eboss =2Efs_h2,=2Eboss_inverted =2Efs_h2{f=
+ont-size:30px!important;line-height:33px!important}=2Eboss =2Efs_s1,=2Eboss=
+_inverted =2Efs_s1{font-size:11px!important;line-height:13px!important}=2Eh=
+ugo =2Efs_h1,=2Ehugo_inverted =2Efs_h1{font-size:30px!important;line-height=
+:33px!important}=2Ehugo =2Efs_h2,=2Ehugo_inverted =2Efs_h2{font-size:27px!i=
+mportant;line-height:30px!important}=2Ehugo =2Efs_s1,=2Ehugo_inverted =2Efs=
+_s1{font-size:11px!important;line-height:13px!important}=2Ebg_ltr{backgroun=
+d-size:200%!important;background-position:left top}=2Ebg_rtl{background-siz=
+e:200%!important;background-position:right top}=2Em_fs33{font-size:33px!imp=
+ortant;line-height:36px!important}=2Em_fs11{font-size:11px!important;line-h=
+eight:14px!important}
+}
+</style>=20
+  <style>
+@media (max-width:640px){
+=2Econtainer{max-width:640px!important;width:100%!important}=2Erow=2Eproduc=
+t-row__inner-wrapper{width:100%;border-left:20px solid #f6f6f6;border-right=
+:20px solid #f6f6f6}=2Esapm-wrapper{width:100%!important}span=2Einline span=
+{letter-spacing:inherit!important}table=2Ebody img{width:auto;height:auto}t=
+able=2Ebody center{min-width:0!important}table=2Ebody =2Econtainer{width:32=
+0px!important}table=2Ebutton=2Esmall-expand,table=2Ebutton=2Esmall-expanded=
+{width:100%!important}table=2Ebutton=2Esmall-expand table,table=2Ebutton=2Es=
+mall-expanded table{width:100%}table=2Ebutton=2Esmall-expand table a,table=
+=2Ebutton=2Esmall-expanded table a{text-align:center!important;width:100%!i=
+mportant;padding-left:0!important;padding-right:0!important}table=2Ebutton=
+=2Esmall-expand center,table=2Ebutton=2Esmall-expanded center{min-width:0}
+}</style>=20
+ </head>=20
+=20
+<body class=3D"email-page page basicpage" id=3D"email-page-9cbc936c33">=20
+  <table class=3D"sapm-wrapper fw" align=3D"center" width=3D"640" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0">=20
+   <tbody>=20
+    <tr>=20
+     <td align=3D"center" style=3D"-ms-text-size-adjust:100%;-webkit-text-s=
+ize-adjust:100%;Margin:0;background:#fff!important;float:none;font-size:14p=
+x;line-height:22px;margin:0;padding:0" class=3D"fw" width=3D"640">=20
+      <table style=3D"Margin:0;background:#fff!important;border-collapse:co=
+llapse;border-spacing:0;font-size:14px;line-height:22px;margin:0;padding:0;=
+text-align:center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td class=3D"center" align=3D"center" valign=3D"middle" style=3D"M=
+argin:0;border-collapse:collapse;margin:0;padding:0">=20
+          <center style=3D"width:100%"><!--[if mso]><table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" align=3D"left" style=3D"mso-table-lspace:0=
+pt;  mso-table-rspace:0pt; border-collapse: collapse; width: 100%"><tr><td =
+style=3D"width: 100%;"><![endif]--><div style=3D"float: left; width: 100%" =
+class=3D"sapMktBlock inbox-preview"><div style=3D"color:#fff;display:none!i=
+mportant;font-size:1px;line-height:1px;max-height:0;max-width:0;mso-hide:al=
+l!important;opacity:0;overflow:hidden;visibility:hidden">
+             For a limited time only&nbsp;
+            </div>
+            <div class=3D"sap-pixel" style=3D"color:#fff;display:none!impor=
+tant;font-size:1px;line-height:1px;max-height:0;max-width:0;mso-hide:all;op=
+acity:0;overflow:hidden;text-align:right;visibility:hidden">
+             <img src=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/=
+100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4/pixel=2Egif" WIDTH=3D"1" HEIGH=
+T=3D"1" BORDER=3D"0" ALT=3D"" />&nbsp;
+            </div></div><!--[if mso]></td></tr></table><![endif]--><!--[if =
+mso]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"left"=
+ style=3D"mso-table-lspace:0pt;  mso-table-rspace:0pt; border-collapse: col=
+lapse; width: 100%"><tr><td style=3D"width: 100%;"><![endif]--><div style=
+=3D"float: left; width: 100%" class=3D"sapMktBlock"><table align=3D"center"=
+ class=3D"container header" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+">
+<tbody>
+<tr>
+<td>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"6=
+40" class=3D"fw dpi-fix boss" style=3D"width: 640px; background: #111111;" =
+border=3D"0">
+<tbody>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"rh17 dpi-fix-height"></t=
+d>
+</tr>
+<tr>
+<td align=3D"center">
+<table width=3D"75" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" class=3D"ac" style=3D"margin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D742D34F2BBD919E4AE8CFE6D9D5788BD9538BB70&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDAwMD=
+AtMSZ1dG1fdGVybT1FLS1VS19lbi0tYmxvY2tILS02MDAwMDAtMSZ1dG1fY29udGVudD1kZWZhd=
+Wx0X2hlYWRlcjFfaW1hZ2Uxb2YxJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0Zy=
+ZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21=
+lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3Db1e0b01=
+4ea25325381ee60631c0895f2a953796e92fc14fa273f0984f1f2cbe0" target=3D"_blank=
+" style=3D"border-width: 0; color: #262626; display: inline-block; font-fam=
+ily: Univers,Helvetica,Arial,sans-serif!important; font-weight: 400; line-h=
+eight: 1=2E3; padding: 0; text-align: left; text-decoration: none;"><img cl=
+ass=3D"sub-image__image db" src=3D"https://images=2Ehugoboss=2Ecom/is/image=
+/hugobossdm/crmcampaigns_boss-logo-w-b-150_2?$large$&align=3D0,-1&fit=3Dcro=
+p,1&ts=3D1629962182817&wid=3D150&hei=3D58&qlt=3D96&op_sharpen=3D1&resMode=
+=3Dsharp2&fmt=3Dpjpeg" border=3D"0" alt=3D"HUGO BOSS" width=3D"75" height=
+=3D"29" style=3D"display: block;" /> </a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height=3D"4" style=3D"height: 4px;" class=3D"rh17 dpi-fix-height"></td>=
+
+</tr>
+<tr class=3D"mh">
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" border=3D"=
+0">
+<tbody>
+<tr>
+<td align=3D"center" bgcolor=3D"#111111" style=3D"-moz-hyphens: auto; -webk=
+it-hyphens: auto; line-height: 1=2E2; mso-padding-alt: 10px 10px 10px 10px;=
+ word-wrap: break-word;" class=3D"lh"><a rel=3D"noopener noreferrer" href=
+=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1=
+D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D777E23C2583000CD57C947F67A4720FA48A=
+B07A7&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3=
+NzLmNvbS91ay9zZWFyY2g/Y2dpZD0zMDg4NiZwcmVmbjE9YnJhbmQmcHJlZnYxPUJPU1MmdXRtX=
+3Rlcm09RS0tVUtfZW4tLWJsb2NrSC0tMzA4ODYmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIx=
+X25hdmxpbmsxJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmN=
+hbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haW=
+wmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3Dc6f39614166c72569fa212=
+c085aca5b8cb0f15b2eee4ce9db015d1ed2984649c" target=3D"_blank" class=3D"ff" =
+style=3D"-webkit-text-fill-color: #fff; color: #fff; display: inline-block;=
+ font-family: Univers,Helvetica,Arial,sans-serif; font-size: 11px; font-wei=
+ght: 500; letter-spacing: 2px; line-height: 1; padding: 10px; text-align: c=
+enter; text-decoration: none; text-transform: uppercase;">New In </a></td>
+<td align=3D"center" bgcolor=3D"#111111" style=3D"-moz-hyphens: auto; -webk=
+it-hyphens: auto; line-height: 1=2E2; mso-padding-alt: 10px 10px 10px 10px;=
+ word-wrap: break-word;" class=3D"lh"><a rel=3D"noopener noreferrer" href=
+=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1=
+D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DE67AEB6B0D2BAD21EEBDA0BA4BCF87936F8=
+A3D02&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3=
+NzLmNvbS91ay9zZWFyY2g/Y2dpZD0yMDAwMC0xJnV0bV90ZXJtPUUtLVVLX2VuLS1ibG9ja0gtL=
+TIwMDAwLTEmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIxX25hdmxpbmsyJnV0bV9jYW1wYWln=
+bj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0V=
+fQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dG=
+Vy&_K13_=3D94535&_K14_=3D7e67af9201b0d9075561ed54f518f7c27a135f8f7705fa9485=
+362046a2396e61" target=3D"_blank" class=3D"ff" style=3D"-webkit-text-fill-c=
+olor: #fff; color: #fff; display: inline-block; font-family: Univers,Helvet=
+ica,Arial,sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2p=
+x; line-height: 1; padding: 10px; text-align: center; text-decoration: none=
+; text-transform: uppercase;">MEN </a></td>
+<td align=3D"center" bgcolor=3D"#111111" style=3D"-moz-hyphens: auto; -webk=
+it-hyphens: auto; line-height: 1=2E2; mso-padding-alt: 10px 10px 10px 10px;=
+ word-wrap: break-word;" class=3D"lh"><a rel=3D"noopener noreferrer" href=
+=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1=
+D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D81A0072968A8D755A130F2FA1EDE1C1AE83=
+A8E00&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3=
+NzLmNvbS91ay9zZWFyY2g/Y2dpZD0xMDAwMC0xJnV0bV90ZXJtPUUtLVVLX2VuLS1ibG9ja0gtL=
+TEwMDAwLTEmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIxX25hdmxpbmszJnV0bV9jYW1wYWln=
+bj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0V=
+fQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dG=
+Vy&_K13_=3D94535&_K14_=3D31b7c2121f4b6b7870b0e81c756a6d4b931a87321cb9401b04=
+51842b9fbfad87" target=3D"_blank" class=3D"ff" style=3D"-webkit-text-fill-c=
+olor: #fff; color: #fff; display: inline-block; font-family: Univers,Helvet=
+ica,Arial,sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2p=
+x; line-height: 1; padding: 10px; text-align: center; text-decoration: none=
+; text-transform: uppercase;">WOMEN </a></td>
+<td align=3D"center" bgcolor=3D"#111111" style=3D"-moz-hyphens: auto; -webk=
+it-hyphens: auto; line-height: 1=2E2; mso-padding-alt: 10px 10px 10px 10px;=
+ word-wrap: break-word;" class=3D"lh"><a rel=3D"noopener noreferrer" href=
+=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1=
+D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D2788BBA4E5448BA1895C3B5C5CA8313E983=
+43EAA&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3=
+NzLmNvbS91ay9zZWFyY2g/Y2dpZD03MDAwMCZwcmVmbjE9YnJhbmQmcHJlZnYxPUJPU1MmdXRtX=
+3Rlcm09RS0tVUtfZW4tLWJsb2NrSC0tNzAwMDAmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIx=
+X25hdmxpbms0JnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmN=
+hbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haW=
+wmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D75d89a3edc06c2d2a8af3f=
+90a6b4a776837b8688ee91eacb08de17bf856dac48" target=3D"_blank" class=3D"ff" =
+style=3D"-webkit-text-fill-color: #fff; color: #fff; display: inline-block;=
+ font-family: Univers,Helvetica,Arial,sans-serif; font-size: 11px; font-wei=
+ght: 500; letter-spacing: 2px; line-height: 1; padding: 10px; text-align: c=
+enter; text-decoration: none; text-transform: uppercase;">GIFTS </a></td>
+<td align=3D"center" bgcolor=3D"#111111" style=3D"-moz-hyphens: auto; -webk=
+it-hyphens: auto; line-height: 1=2E2; mso-padding-alt: 10px 10px 10px 10px;=
+ word-wrap: break-word;" class=3D"lh"><a rel=3D"noopener noreferrer" href=
+=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1=
+D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DE7A035F8095F233F11F53E21DF4BF775E6E=
+49E39&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3=
+NzLmNvbS91ay9zZWFyY2g/Y2dpZD02MDAwMC0xJnV0bV90ZXJtPUUtLVVLX2VuLS1ibG9ja0gtL=
+TYwMDAwLTEmdXRtX2NvbnRlbnQ9ZGVmYXVsdF9oZWFkZXIxX25hdmxpbms1JnV0bV9jYW1wYWln=
+bj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0V=
+fQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dG=
+Vy&_K13_=3D94535&_K14_=3De7eeb905e6bd22f53ce4c4c6de83390e94466f39ee7f00949b=
+e6a0067ee7aef4" target=3D"_blank" class=3D"ff" style=3D"-webkit-text-fill-c=
+olor: #fff; color: #fff; display: inline-block; font-family: Univers,Helvet=
+ica,Arial,sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 2p=
+x; line-height: 1; padding: 10px; text-align: center; text-decoration: none=
+; text-transform: uppercase;">INSPIRATION </a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%" class=3D"bg_soft-gray" border=3D"0" bgcolor=3D"#f6f6f6"></table>
+</td>
+</tr>
+</tbody>
+</table></div><!--[if mso]></td></tr></table><![endif]--><!--[if mso]><tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"left" style=3D"=
+mso-table-lspace:0pt;  mso-table-rspace:0pt; border-collapse: collapse; wid=
+th: 100%"><tr><td style=3D"width: 100%;"><![endif]--><div style=3D"float: l=
+eft; width: 100%" class=3D"sapMktBlock"><table align=3D"center" class=3D"co=
+ntainer headvisual" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+             <tbody>
+              <tr>
+               <td>=20
+                <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"640" class=3D"fw bg_soft-gray dpi-fix boss" border=3D"0" bgc=
+olor=3D"#f6f6f6" style=3D"width:640px;">
+                 <tbody>
+                  <tr>
+                   <td align=3D"center"><a href=3D"https://campaign=2Eapps=
+=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=
+=3D2&_K11_=3D97BC2DFC5C4333EA0329100C390E5369AE279589&_L54AD1F204_=3Dc2Nlbm=
+FyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9ob21lP3V0bV90Z=
+XJtPUUtLUdCX2VuLS1ibG9jazEtLWhvbWUmdXRtX2NvbnRlbnQ9bW9kXzJfZGVmYXVsdF9oZWFk=
+dmlzdWFsM19pbWFnZTFvZjEmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXN=
+oaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaX=
+VtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3Dd1b2f7f4=
+673cb0a48b732a679447a3a38421f5c6529e901cf24798609e73e313" target=3D"_blank"=
+ x-cq-linkchecker=3D"valid" rel=3D"noopener noreferrer"><!--[if !mso]><!-->=
+
+                     <div class=3D"olhide">
+                      <img class=3D"mobile-hidden fw rhom" src=3D"https://i=
+mages=2Ehugoboss=2Ecom/is/content/hugobossdm/crmcampaigns_last_chance_expre=
+ss_deliver_pic_1?$large$&align=3D0,-1&ts=3D1639647794495&wid=3D1280&qlt=3D9=
+6&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg" border=3D"0" width=3D"640" s=
+tyle=3D"width:640px;-ms-interpolation-mode:bicubic;display:block" alt=3D"fr=
+ee express delivery">=20
+                     </div><!--<![endif]--> <img class=3D"olshow fw rhom" s=
+rc=3D"https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BO=
+SS_Holiday_ACC_024_sRGB?$large$&align=3D0,-1&fit=3Dcrop,1&ts=3D163964779449=
+8&wid=3D1280&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg" border=
+=3D"0" width=3D"640" style=3D"display:none;width:640px" alt=3D"free express=
+ delivery"> <!--[if !mso]><!-->
+                     <div class=3D"olhide">
+                      <img class=3D"is-hidden-desktop fw rhom" src=3D"https=
+://images=2Ehugoboss=2Ecom/is/content/hugobossdm/crmcampaigns_last_chance_e=
+xpress_deliver_pic_1_mobile?$large$&align=3D0,-1&ts=3D1639647794500&wid=3D1=
+280&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dpjpeg" border=3D"0" alt=
+=3D"free express delivery" style=3D"display:none;mso-hide:all;overflow:hidd=
+en">=20
+                     </div><!--<![endif]--></a></td>
+                  </tr>
+                  <tr>
+                   <td class=3D"D_plr20" style=3D"padding:0 20px">
+                    <table cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" width=3D"100%" class=3D"bg_white" border=3D"0" bgcolor=3D"#ffffff=
+">
+                     <tbody>
+                      <tr>
+                       <td align=3D"center" class=3D"D_pad30" style=3D"padd=
+ing:30px">
+                        <table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" width=3D"100%" border=3D"0">
+                         <tbody>
+                          <tr>
+                           <td align=3D"center" class=3D"D_pbot10" style=3D"=
+padding-bottom:10px"><span class=3D"ff fs_s1 primary-color fwb ls1 ttu" sty=
+le=3D"color:#111;font-family:AvertaPE,Helvetica,Arial,sans-serif;font-size:=
+12px;font-weight:700;letter-spacing:=2E1em;line-height:14px;text-transform:=
+uppercase">For a limited time only</span></td>
+                          </tr>
+                          <tr>
+                           <td align=3D"center" class=3D"D_pbot10 boss" sty=
+le=3D"padding-bottom:10px"><h2 class=3D"ff fs_h2 ac fwsb" style=3D"color:#1=
+11111;font-family:AvertaPE,Helvetica,Arial,sans-serif;font-size:33px; line-=
+height:36px;font-weight:900;margin:0 auto">Free Express Delivery</h2></td>
+                          </tr>
+                          <tr>
+                           <td align=3D"center"><span class=3D"ff fs_c1 fwl=
+" style=3D"color:#666666;font-family:AvertaPE,Helvetica,Arial,sans-serif;fo=
+nt-size:14px;font-weight:300;line-height:20px"><span>We=E2=80=99re celebrat=
+ing the fact that the holidays are just around the corner by offering you f=
+ree express delivery when you spend =C2=A3159 or more=2E Don't miss out on =
+this offer valid until 21 December - shop&nbsp;the latest collections, plus=
+ gifts to surprise and delight your loved ones=2E Exclusions apply=2E</span=
+><br> </span></td>
+                          </tr>
+                         </tbody>
+                        </table>=20
+                        <table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" class=3D"fw" border=3D"0">
+                         <tbody>
+                          <tr>
+                           <td align=3D"center">
+                            <table cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" class=3D"fw" border=3D"0">
+                             <tbody>
+                              <tr>
+                               <td height=3D"25" class=3D"rh20 dpi-fix-heig=
+ht" colspan=3D"1" style=3D"height:25px;"></td>
+                              </tr>
+                              <tr>
+                               <th align=3D"center" class=3D"fl vat" valign=
+=3D"top">
+                                <table cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" width=3D"auto" class=3D"fw ac" style=3D"margin:0 auto=
+" border=3D"0">
+                                 <tbody>
+                                  <tr>
+                                   <td>
+                                    <table cellpadding=3D"0" cellspacing=3D"=
+0" role=3D"presentation" width=3D"100%" border=3D"0">
+                                     <tbody>
+                                      <tr>
+                                       <td align=3D"center">
+                                        <table cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"background:#111111;border:1px solid =
+#111111" x-cq-linkchecker=3D"valid" border=3D"0">
+                                         <tbody>
+                                          <tr>
+                                           <td align=3D"center" class=3D"lh=
+ cta_pad_ol" style=3D"line-height:1=2E2;mso-padding-alt:13px 13px 12px 13px=
+"><a href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE2=
+7F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DEF5DB60F1964E0F72EE836179E=
+CAD85639EB5FA4&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3L=
+mh1Z29ib3NzLmNvbS91ay9ob21lP3V0bV90ZXJtPUUtLUdCX2VuLS1ibG9jazEtLWhvbWUmdXRt=
+X2NvbnRlbnQ9bW9kXzJfZGVmYXVsdF9oZWFkdmlzdWFsM19jdGExb2YxJnV0bV9jYW1wYWlnbj0=
+yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk=
+1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&=
+_K13_=3D94535&_K14_=3Dfd47f3d17d338f67f8ec3a913f0553e862f9296b9165e7cd3fb20=
+d4383f4ed33" target=3D"_blank" class=3D"ff fwb tdn db cta_pad cta_fs ttu" s=
+tyle=3D"color:#FFFFFF;display:block;font-family:AvertaPE,Helvetica,Arial,sa=
+ns-serif;font-size:11px;font-weight:700;padding:13px 13px 12px 13px;text-de=
+coration:none;text-transform:uppercase" rel=3D"noopener noreferrer">SHOP NO=
+W </a></td>
+                                          </tr>
+                                          <tr>
+                                           <td>
+                                            <table cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" border=3D"0" width=3D"178">
+                                             <tbody>
+                                              <tr>
+                                               <td height=3D"1" style=3D"fo=
+nt-size:1px;line-height:1px">&nbsp;</td>
+                                              </tr>
+                                             </tbody>
+                                            </table></td>
+                                          </tr>
+                                         </tbody>
+                                        </table></td>
+                                      </tr>
+                                     </tbody>
+                                    </table></td>
+                                  </tr>
+                                 </tbody>
+                                </table></th>
+                              </tr>
+                             </tbody>
+                            </table></td>
+                          </tr>
+                         </tbody>
+                        </table></td>
+                      </tr>
+                     </tbody>
+                    </table></td>
+                  </tr>
+                  <tr>
+                   <td height=3D"40" style=3D"height:40px;font-size:1px;lin=
+e-height:1px" class=3D"rh30 dpi-fix-height">&nbsp;</td>
+                  </tr>
+                 </tbody>
+                </table>=20
+                <div class=3D"aem-Grid aem-Grid--12 aem-Grid--default--12 "=
+>=20
+                </div> </td>
+              </tr>
+             </tbody>
+            </table></div><!--[if mso]></td></tr></table><![endif]--><!--[i=
+f mso]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"lef=
+t" style=3D"mso-table-lspace:0pt;  mso-table-rspace:0pt; border-collapse: c=
+ollapse; width: 100%"><tr><td style=3D"width: 100%;"><![endif]--><div style=
+=3D"float: left; width: 100%" class=3D"sapMktBlock"><table align=3D"center"=
+ class=3D"container teaser" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+">
+             <tbody>
+              <tr>
+               <td>=20
+                <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"640" class=3D"fw bg_soft-gray dpi-fix" border=3D"0" bgcolor=
+=3D"#f6f6f6" style=3D"width:640px;">
+                 <tbody>
+                  <tr>
+                   <td width=3D"20" class=3D"dpi-fix" style=3D"width:20px;"=
+></td>
+                   <td><span style=3D"color:#111111;font-family:AvertaPE,He=
+lvetica,Arial,sans-serif;font-size:19px; line-height:19px;font-weight:900" =
+class=3D"ff fwsb boss_inverted">GIFT FINDER FOR HIM </span></td>
+                   <td width=3D"20" class=3D"dpi-fix" style=3D"width:20px;"=
+></td>
+                  </tr>
+                  <tr>
+                   <td height=3D"13" colspan=3D"3" class=3D"dpi-fix-height"=
+ style=3D"height:13px;"></td>
+                  </tr>
+                 </tbody>
+                </table>
+                <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"640" dir=3D"ltr" style=3D"width:640px;direction:ltr" class=
+=3D"fw bg_soft-gray dpi-fix boss_inverted" border=3D"0" bgcolor=3D"#f6f6f6"=
+>
+                 <tbody>
+                  <tr>
+                   <th width=3D"50%" class=3D"fl"><a href=3D"https://campai=
+gn=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744D=
+B1CF4?_V_=3D2&_K11_=3D50C984E89BBF15DA1E8AD152BF2459C5561659E8&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD03NDAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9wdWxhciZ1dG1fdGVybT1FLS1HQl9=
+lbi0tYmxvY2syLS03NDAwMCZ1dG1fY29udGVudD1tb2RfM19kZWZhdWx0X3RlYXNlcjFiX2ltYW=
+dlMW9mMSZ1dG1fY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wY=
+Wlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0=
+bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&_K13_=3D94535&_K14_=3Dcb4d97a215cc313e23ae=
+0926b63f20f81d592fec2bef339414387859de45dfcd" target=3D"_blank" x-cq-linkch=
+ecker=3D"valid" rel=3D"noopener noreferrer"><img class=3D"mobile-hidden fw =
+rhom" src=3D"https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S=
+22PS_BOSS_Holiday_ACC_016_sRGB?$large$&cropN=3D0=2E2023437,0,0=2E6664062,1&=
+align=3D0,-1&fit=3Dcrop,1&ts=3D1639647794551&wid=3D640&qlt=3D96&op_sharpen=
+=3D1&resMode=3Dsharp2&fmt=3Dpjpeg" border=3D"0" width=3D"320" style=3D"-ms-=
+interpolation-mode:bicubic;display:block" alt=3D"gift finder"> <!--[if !mso=
+]><!-->
+                     <div class=3D"olhide">
+                      <img class=3D"is-hidden-desktop fw rhom" src=3D"https=
+://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOSS_Holiday_=
+ACC_016_sRGB?$large$&cropN=3D0=2E2,0,0=2E6664062,1&align=3D0,-1&fit=3Dcrop,=
+1&ts=3D1639647794554&wid=3D1280&qlt=3D96&op_sharpen=3D1&resMode=3Dsharp2&fm=
+t=3Dpjpeg" border=3D"0" alt=3D"gift finder" style=3D"display:none;mso-hide:=
+all;overflow:hidden">=20
+                     </div><!--<![endif]--></a></th>
+                   <th width=3D"50%" class=3D"fl" style=3D"background:#FFFF=
+FF" valign=3D"middle">
+                    <table cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" width=3D"100%" dir=3D"ltr" style=3D"direction:ltr" border=3D"0">
+                     <tbody>
+                      <tr>
+                       <td height=3D"30" colspan=3D"3" class=3D"dpi-fix-hei=
+ght" style=3D"height:30px;"></td>
+                      </tr>
+                      <tr>
+                       <td width=3D"30" class=3D"dpi-fix rw30" style=3D"wid=
+th:30px;"></td>
+                       <td>
+                        <table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" width=3D"100%" border=3D"0">
+                         <tbody>
+                          <tr>
+                           <td align=3D"left"><h3 class=3D"ff fs_h3 ac fwsb=
+" style=3D"color:#111111;font-family:AvertaPE,Helvetica,Arial,sans-serif;fo=
+nt-size:20px; line-height:26px;font-weight:900;margin:0 auto"><p class=3D"M=
+soNormal">Top of their list&nbsp;</p> </h3></td>
+                          </tr>
+                          <tr>
+                           <td height=3D"5" class=3D"dpi-fix-height" style=
+=3D"height:5px;">
+                            <div></div></td>
+                          </tr>
+                          <tr>
+                           <td align=3D"left"><span class=3D"ff fs_c1 fwl" =
+style=3D"color:#666666;font-family:AvertaPE,Helvetica,Arial,sans-serif;font=
+-size:14px;font-weight:300;line-height:20px"><span style=3D"font-family:Ari=
+al;letter-spacing:-2px;"> =E2=80=94=E2=80=94&nbsp;&nbsp;&nbsp;&nbsp; </span=
+>Searching for the perfect presents for those you love? Look no further tha=
+n our thoughtfully-curated gift finder=2E</span></td>
+                          </tr>
+                         </tbody>
+                        </table>=20
+                        <table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" width=3D"100%" border=3D"0">
+                         <tbody>
+                          <tr>
+                           <td height=3D"20" class=3D"dpi-fix-height" style=
+=3D"height:20px;"></td>
+                          </tr>
+                          <tr>
+                           <td align=3D"right">
+                            <table cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" border=3D"0">
+                             <tbody>
+                              <tr>
+                               <td align=3D"right" class=3D"lh10p vam" styl=
+e=3D"line-height:1" valign=3D"middle"><a href=3D"https://campaign=2Eapps=2Eh=
+ugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2=
+&_K11_=3DDB31C08BC979CEADB56F7AFB1D963195D15300C1&_L54AD1F204_=3Dc2NlbmFyaW=
+89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03N=
+DAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9wdWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2sy=
+LS03NDAwMCZ1dG1fY29udGVudD1tb2RfM19kZWZhdWx0X3RlYXNlcjFiX2N0YTFvZjEmdXRtX2N=
+hbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMT=
+lfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld=
+3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3D73d2c52cdd13469793a9a30758e1a9681a5e383=
+cf8b37eabdf5d75e501a316a0" target=3D"_blank" class=3D"ff tdn fs_s2 ls03px f=
+wb ttu" style=3D"color:#111111;font-family:AvertaPE,Helvetica,Arial,sans-se=
+rif;font-size:11px;font-weight:700;letter-spacing:=2E3px;line-height:13px;t=
+ext-decoration:none;text-transform:uppercase" rel=3D"noopener noreferrer">D=
+ISCOVER MORE </a></td>
+                               <td width=3D"10" class=3D"dpi-fix-width"></t=
+d>
+                               <td><a href=3D"https://campaign=2Eapps=2Ehug=
+oboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_=
+K11_=3DA92C0EF3A91AF8B90236C4C6862E2879304CAB23&_L54AD1F204_=3Dc2NlbmFyaW89=
+TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NDA=
+wMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9wdWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2syLS=
+03NDAwMCZ1dG1fY29udGVudD1tb2RfM19kZWZhdWx0X3RlYXNlcjFiX2N0YTFvZjEmdXRtX2Nhb=
+XBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlf=
+UFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3N=
+sZXR0ZXI=3D&_K13_=3D94535&_K14_=3D070e3d473d627d9f3c85121f6197ca7b54e72f833=
+666100d70c7fac37f2a3ccf" target=3D"_blank" rel=3D"noopener noreferrer"><img=
+ src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_button_bo=
+ss_arrow_black?wid=3D140&hei=3D140&fmt=3Dgif&op_sharpen=3D1&resMode=3Dsharp=
+2" width=3D"34" border=3D"0" class=3D"db" style=3D"display:block"> </a></td=
+>
+                              </tr>
+                             </tbody>
+                            </table></td>
+                          </tr>
+                         </tbody>
+                        </table></td>
+                       <td width=3D"30" class=3D"dpi-fix rw30" style=3D"wid=
+th:30px;"></td>
+                      </tr>
+                      <tr>
+                       <td height=3D"30" colspan=3D"3" class=3D"dpi-fix-hei=
+ght" style=3D"height:30px;"></td>
+                      </tr>
+                     </tbody>
+                    </table></th>
+                  </tr>
+                  <tr>
+                   <td height=3D"40" colspan=3D"2" style=3D"height:40px;fon=
+t-size:1px;line-height:1px" class=3D"rh30 dpi-fix-height">&nbsp;</td>
+                  </tr>
+                 </tbody>
+                </table> </td>
+              </tr>
+             </tbody>
+            </table></div><!--[if mso]></td></tr></table><![endif]--><!--[i=
+f mso]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"lef=
+t" style=3D"mso-table-lspace:0pt;  mso-table-rspace:0pt; border-collapse: c=
+ollapse; width: 100%"><tr><td style=3D"width: 100%;"><![endif]--><div style=
+=3D"float: left; width: 100%" class=3D"sapMktBlock"><table align=3D"center"=
+ class=3D"container teaser" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+">
+             <tbody>
+              <tr>
+               <td>=20
+                <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"640" class=3D"fw bg_soft-gray dpi-fix" border=3D"0" bgcolor=
+=3D"#f6f6f6" style=3D"width:640px;">
+                 <tbody>
+                  <tr>
+                   <td width=3D"20" class=3D"dpi-fix" style=3D"width:20px;"=
+></td>
+                   <td><span style=3D"color:#111111;font-family:AvertaPE,He=
+lvetica,Arial,sans-serif;font-size:19px; line-height:19px;font-weight:900" =
+class=3D"ff fwsb boss_inverted">GIFT FINDER FOR HER </span></td>
+                   <td width=3D"20" class=3D"dpi-fix" style=3D"width:20px;"=
+></td>
+                  </tr>
+                  <tr>
+                   <td height=3D"13" colspan=3D"3" class=3D"dpi-fix-height"=
+ style=3D"height:13px;"></td>
+                  </tr>
+                 </tbody>
+                </table>
+                <table cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" width=3D"640" dir=3D"rtl" style=3D"width:640px;direction:rtl" class=
+=3D"fw bg_soft-gray dpi-fix boss_inverted" border=3D"0" bgcolor=3D"#f6f6f6"=
+>
+                 <tbody>
+                  <tr>
+                   <th width=3D"50%" class=3D"fl"><a href=3D"https://campai=
+gn=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744D=
+B1CF4?_V_=3D2&_K11_=3D739A096BB528D449CB5E8DAF4A63C8F37D10A1C1&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD03NTAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9wdWxhciZ1dG1fdGVybT1FLS1HQl9=
+lbi0tYmxvY2szLS03NTAwMCZ1dG1fY29udGVudD1tb2RfNF9kZWZhdWx0X3RlYXNlcjFhX2ltYW=
+dlMW9mMSZ1dG1fY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wY=
+Wlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0=
+bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&_K13_=3D94535&_K14_=3D1477f9edbe806598a5a0=
+8069c7eb5457f85a6610d194c879719c3a076dbda734" target=3D"_blank" x-cq-linkch=
+ecker=3D"valid" rel=3D"noopener noreferrer"><img class=3D"mobile-hidden fw =
+rhom" src=3D"https://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S=
+22PS_BOSS_Holiday_ACC_029_sRGB?$large$&cropN=3D0=2E1375,0,0=2E6664062,1&ali=
+gn=3D0,-1&fit=3Dcrop,1&ts=3D1639647794601&wid=3D640&qlt=3D96&op_sharpen=3D1=
+&resMode=3Dsharp2&fmt=3Dpjpeg" border=3D"0" width=3D"320" style=3D"-ms-inte=
+rpolation-mode:bicubic;display:block" alt=3D"gift finder"> <!--[if !mso]><!=
+-->
+                     <div class=3D"olhide">
+                      <img class=3D"is-hidden-desktop fw rhom" src=3D"https=
+://images=2Ehugoboss=2Ecom/is/image/hugobossdm/HBME_110_S22PS_BOSS_Holiday_=
+ACC_029_sRGB?$large$&cropN=3D0=2E1421875,0,0=2E6664062,1&align=3D0,-1&fit=
+=3Dcrop,1&ts=3D1639647794604&wid=3D1280&qlt=3D96&op_sharpen=3D1&resMode=3Ds=
+harp2&fmt=3Dpjpeg" border=3D"0" alt=3D"gift finder" style=3D"display:none;m=
+so-hide:all;overflow:hidden">=20
+                     </div><!--<![endif]--></a></th>
+                   <th width=3D"50%" class=3D"fl" style=3D"background:#FFFF=
+FF" valign=3D"middle">
+                    <table cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" width=3D"100%" dir=3D"ltr" style=3D"direction:ltr" border=3D"0">
+                     <tbody>
+                      <tr>
+                       <td height=3D"30" colspan=3D"3" class=3D"dpi-fix-hei=
+ght" style=3D"height:30px;"></td>
+                      </tr>
+                      <tr>
+                       <td width=3D"30" class=3D"dpi-fix rw30" style=3D"wid=
+th:30px;"></td>
+                       <td>
+                        <table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" width=3D"100%" border=3D"0">
+                         <tbody>
+                          <tr>
+                           <td align=3D"left"><h3 class=3D"ff fs_h3 ac fwsb=
+" style=3D"color:#111111;font-family:AvertaPE,Helvetica,Arial,sans-serif;fo=
+nt-size:20px; line-height:26px;font-weight:900;margin:0 auto">Spoil someone=
+ special</h3></td>
+                          </tr>
+                          <tr>
+                           <td height=3D"5" class=3D"dpi-fix-height" style=
+=3D"height:5px;">
+                            <div></div></td>
+                          </tr>
+                          <tr>
+                           <td align=3D"left"><span class=3D"ff fs_c1 fwl" =
+style=3D"color:#666666;font-family:AvertaPE,Helvetica,Arial,sans-serif;font=
+-size:14px;font-weight:300;line-height:20px"><span style=3D"font-family:Ari=
+al;letter-spacing:-2px;"> =E2=80=94=E2=80=94&nbsp;&nbsp;&nbsp;&nbsp; </span=
+>Discover a world of gift ideas to make&nbsp;their holidays unique =E2=80=
+=93 including <span>modern leather accessories, fragrances and more</span><=
+br> <p style=3D"margin:0;">&nbsp;</p> </span></td>
+                          </tr>
+                         </tbody>
+                        </table>=20
+                        <table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" width=3D"100%" border=3D"0">
+                         <tbody>
+                          <tr>
+                           <td height=3D"20" class=3D"dpi-fix-height" style=
+=3D"height:20px;"></td>
+                          </tr>
+                          <tr>
+                           <td align=3D"right">
+                            <table cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" border=3D"0">
+                             <tbody>
+                              <tr>
+                               <td align=3D"right" class=3D"lh10p vam" styl=
+e=3D"line-height:1" valign=3D"middle"><a href=3D"https://campaign=2Eapps=2Eh=
+ugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2=
+&_K11_=3DB5D1381BFD7D3DA662B1B49438D9A76FC74BC107&_L54AD1F204_=3Dc2NlbmFyaW=
+89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03N=
+TAwMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9wdWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2sz=
+LS03NTAwMCZ1dG1fY29udGVudD1tb2RfNF9kZWZhdWx0X3RlYXNlcjFhX2N0YTFvZjEmdXRtX2N=
+hbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMT=
+lfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld=
+3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3Da855498ee454b940513480e7acbbebef3fbda82=
+b6e97c7814cd700ad047a68f2" target=3D"_blank" class=3D"ff tdn fs_s2 ls03px f=
+wb ttu" style=3D"color:#111111;font-family:AvertaPE,Helvetica,Arial,sans-se=
+rif;font-size:11px;font-weight:700;letter-spacing:=2E3px;line-height:13px;t=
+ext-decoration:none;text-transform:uppercase" rel=3D"noopener noreferrer">D=
+ISCOVER MORE </a></td>
+                               <td width=3D"10" class=3D"dpi-fix-width"></t=
+d>
+                               <td><a href=3D"https://campaign=2Eapps=2Ehug=
+oboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_=
+K11_=3D4D493B96D0549CF87BE38A6BCE57952452D7E8A9&_L54AD1F204_=3Dc2NlbmFyaW89=
+TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFyY2g/Y2dpZD03NTA=
+wMCZzcnVsZT1zb3J0X2J5X21vc3RfcG9wdWxhciZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2szLS=
+03NTAwMCZ1dG1fY29udGVudD1tb2RfNF9kZWZhdWx0X3RlYXNlcjFhX2N0YTFvZjEmdXRtX2Nhb=
+XBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY2FtcGFpZ249MjAyMTEyMTlf=
+UFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFpbCZ1dG1fc291cmNlPW5ld3N=
+sZXR0ZXI=3D&_K13_=3D94535&_K14_=3D3f308845ef1c10d935b8b8921944e23bf7f93e12c=
+d2c6f69e830a95ea3049129" target=3D"_blank" rel=3D"noopener noreferrer"><img=
+ src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_button_bo=
+ss_arrow_black?wid=3D140&hei=3D140&fmt=3Dgif&op_sharpen=3D1&resMode=3Dsharp=
+2" width=3D"34" border=3D"0" class=3D"db" style=3D"display:block"> </a></td=
+>
+                              </tr>
+                             </tbody>
+                            </table></td>
+                          </tr>
+                         </tbody>
+                        </table></td>
+                       <td width=3D"30" class=3D"dpi-fix rw30" style=3D"wid=
+th:30px;"></td>
+                      </tr>
+                      <tr>
+                       <td height=3D"30" colspan=3D"3" class=3D"dpi-fix-hei=
+ght" style=3D"height:30px;"></td>
+                      </tr>
+                     </tbody>
+                    </table></th>
+                  </tr>
+                  <tr>
+                   <td height=3D"40" colspan=3D"2" style=3D"height:40px;fon=
+t-size:1px;line-height:1px" class=3D"rh30 dpi-fix-height">&nbsp;</td>
+                  </tr>
+                 </tbody>
+                </table> </td>
+              </tr>
+             </tbody>
+            </table></div><!--[if mso]></td></tr></table><![endif]--><!--[i=
+f mso]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"lef=
+t" style=3D"mso-table-lspace:0pt;  mso-table-rspace:0pt; border-collapse: c=
+ollapse; width: 100%"><tr><td style=3D"width: 100%;"><![endif]--><div style=
+=3D"float: left; width: 100%" class=3D"sapMktBlock"><table cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" width=3D"640" class=3D"fw bg_prim=
+ary-color" align=3D"center" border=3D"0" bgcolor=3D"#111111">
+<tbody>
+<tr>
+<td height=3D"18" style=3D"height: 18px;" class=3D"rh25 dpi-fix-height"></t=
+d>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" border=3D"=
+0">
+<tbody>
+<tr>
+<th width=3D"213" align=3D"center" class=3D"fl dpi-fix-width" valign=3D"top=
+">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+argin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td align=3D"center"><a rel=3D"noopener noreferrer" href=3D"https://campaig=
+n=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB=
+1CF4?_V_=3D2&_K11_=3DDC3A2F03BBFB9D9885AA04D9B4A10046E8E18135&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2tGLS02MDE1NyZ1dG1fY29udGV=
+udD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbmsxb2YzJnV0bV9jYW1wYWlnbj0yMD=
+IxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fU=
+lZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K1=
+3_=3D94535&_K14_=3D211be65c85d96fa83b30e6702182ebdb9eda94a6ade886bebe61b59d=
+ce01cdcb" target=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/i=
+mage/boss/crmcampaigns_global_footer_omnichannel_clickandcollect?wid=3D62&h=
+ei=3D62&fmt=3Dgif" border=3D"0" alt=3D"CLICK AND COLLECT" width=3D"31" heig=
+ht=3D"31" /> </a></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center"><a rel=3D"noopener noreferrer" href=3D"https://campaig=
+n=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB=
+1CF4?_V_=3D2&_K11_=3DEF20F0749BD6CD3A0F828DE4D0DC5E7EDEE64DB2&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2tGLS02MDE1NyZ1dG1fY29udGV=
+udD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbmsxb2YzJnV0bV9jYW1wYWlnbj0yMD=
+IxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fU=
+lZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K1=
+3_=3D94535&_K14_=3D7ad5d16e59cb260a46ea98eefd6f5119ab1f16dea8f997aa09d2d5d8=
+2cd42b7a" target=3D"_blank" class=3D"white" style=3D"color: #fff; font-weig=
+ht: 400; text-decoration: none;"><span class=3D"ff fs_c2 ttu white ls1" sty=
+le=3D"color: #fff; font-family: AvertaPE,Helvetica,Arial,sans-serif; font-s=
+ize: 12px; letter-spacing: =2E1em; line-height: 16px; text-transform: upper=
+case;">CLICK AND COLLECT </span></a></td>
+</tr>
+<tr>
+<td height=3D"25" style=3D"height: 25px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+</th>
+<th width=3D"213" align=3D"center" class=3D"fl dpi-fix-width" valign=3D"top=
+">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+argin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td align=3D"center"><a rel=3D"noopener noreferrer" href=3D"https://campaig=
+n=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB=
+1CF4?_V_=3D2&_K11_=3DC88368EDC9BB832045D5F4A40249349E310E8DA9&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2tGLS02MDE1NyZ1dG1fY29udGV=
+udD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbmsyb2YzJnV0bV9jYW1wYWlnbj0yMD=
+IxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fU=
+lZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K1=
+3_=3D94535&_K14_=3D6bbc00b5e1fd12cb6b54856cf477e5c31c722219a6e422f199eb4c12=
+df8b5c79" target=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/i=
+mage/boss/crmcampaigns_global_footer_omnichannel_orderfromstore?wid=3D62&he=
+i=3D62&fmt=3Dgif" border=3D"0" alt=3D"ORDER FROM STORE" width=3D"31" height=
+=3D"31" /> </a></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center"><a rel=3D"noopener noreferrer" href=3D"https://campaig=
+n=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB=
+1CF4?_V_=3D2&_K11_=3D79509FF49B982AD230710651A8EF9577C459F8BA&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2tGLS02MDE1NyZ1dG1fY29udGV=
+udD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbmsyb2YzJnV0bV9jYW1wYWlnbj0yMD=
+IxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fU=
+lZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K1=
+3_=3D94535&_K14_=3De370d8ba6692bea3f814635736ffdcf1be9f7db89e0d7cd64d259e1b=
+dedce911" target=3D"_blank" class=3D"white" style=3D"color: #fff; font-weig=
+ht: 400; text-decoration: none;"><span class=3D"ff fs_c2 white ttu ls1" sty=
+le=3D"color: #fff; font-family: AvertaPE,Helvetica,Arial,sans-serif; font-s=
+ize: 12px; letter-spacing: =2E1em; line-height: 16px; text-transform: upper=
+case;">ORDER FROM STORE </span></a></td>
+</tr>
+<tr>
+<td height=3D"25" style=3D"height: 25px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+</th>
+<th width=3D"213" align=3D"center" class=3D"fl dpi-fix-width" valign=3D"top=
+">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+argin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td align=3D"center"><a rel=3D"noopener noreferrer" href=3D"https://campaig=
+n=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB=
+1CF4?_V_=3D2&_K11_=3D3E69618D189B395489DE8969B000BC94B498D1BC&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2tGLS02MDE1NyZ1dG1fY29udGV=
+udD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbmszb2YzJnV0bV9jYW1wYWlnbj0yMD=
+IxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fU=
+lZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K1=
+3_=3D94535&_K14_=3D836cff61ff9a5e06173c26dcb2712aae12fe67ea6ace36f5efe92361=
+c4dee004" target=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/i=
+mage/boss/crmcampaigns_global_footer_omnichannel_returnandreplace?wid=3D62&=
+hei=3D62&fmt=3Dgif" border=3D"0" alt=3D"RETURN AND REPLACE" width=3D"31" he=
+ight=3D"31" /> </a></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center"><a rel=3D"noopener noreferrer" href=3D"https://campaig=
+n=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB=
+1CF4?_V_=3D2&_K11_=3D852830DF856BA32603505E06E591F47FC05CD866&_L54AD1F204_=
+=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zZWFy=
+Y2g/Y2dpZD02MDE1NyZ1dG1fdGVybT1FLS1HQl9lbi0tYmxvY2tGLS02MDE1NyZ1dG1fY29udGV=
+udD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9vY2xpbmszb2YzJnV0bV9jYW1wYWlnbj0yMD=
+IxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fU=
+lZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K1=
+3_=3D94535&_K14_=3D650b1c6d0f2866668b844da82f69a43c6029ddc57542983882b1a1f1=
+3232460f" target=3D"_blank" class=3D"white" style=3D"color: #fff; font-weig=
+ht: 400; text-decoration: none;"><span class=3D"ff fs_c2 white ttu ls1" sty=
+le=3D"color: #fff; font-family: AvertaPE,Helvetica,Arial,sans-serif; font-s=
+ize: 12px; letter-spacing: =2E1em; line-height: 16px; text-transform: upper=
+case;">RETURN AND REPLACE </span></a></td>
+</tr>
+<tr>
+<td height=3D"25" style=3D"height: 25px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"8=
+8%" class=3D"bg_gray ac" style=3D"margin: 0 auto;" border=3D"0" bgcolor=3D"=
+#cccccc">
+<tbody>
+<tr>
+<td height=3D"1" style=3D"height: 1px; font-size: 1px; line-height: 1px;" c=
+lass=3D"dpi-fix-height">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"6=
+40" class=3D"fw bg_primary-color" align=3D"center" border=3D"0" bgcolor=3D"=
+#111111">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"rh17">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" border=3D"=
+0">
+<tbody>
+<tr>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D91E6B7D9D28C14F47C8A87630640178CFF7E7602&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vd3d3LmZhY2Vib29rLmNvbS9odWdvYm9zcw=3D=3D&_K13_=3D9=
+4535&_K14_=3D0a8b80c3f2cbe46693d86804b98dd413e55c7a3c6084d5c2c768ace56a5f57=
+e4" target=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/image/b=
+oss/crmcampaigns_footer_sm_icon_facebook_b_w?wid=3D126&op_sharpen=3D1&resMo=
+de=3Dsharp2&fmt=3Dgif" alt=3D"facebook" width=3D"63" height=3D"68" /></a></=
+td>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D8933089C425A7BCD9FBF7D6E601E569C9E1EF2EE&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vdHdpdHRlci5jb20vaHVnb2Jvc3M=3D&_K13_=3D94535&_K14_=
+=3D925b7e9254478fe7cb99b0b0b2af420e5aeb1c4c9d0da880115eab936cae0e90" target=
+=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/crmcam=
+paigns_footer_sm_icon_twitter_b_w?wid=3D126&op_sharpen=3D1&resMode=3Dsharp2=
+&fmt=3Dgif" alt=3D"twitter" width=3D"63" height=3D"68" /></a></td>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3DBE3413B6C7BBFF1B95726118A46BC8AFE5AC60AC&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8veW91dHViZS5jb20vYm9zcw=3D=3D&_K13_=3D94535&_K14_=
+=3D0d1446f15dd863f264725b11be8beea10f6f272442359793c9386eec95c10d87" target=
+=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/crmcam=
+paigns_footer_sm_icon_youtube_b_w?wid=3D126&op_sharpen=3D1&resMode=3Dsharp2=
+&fmt=3Dgif" alt=3D"youtube" width=3D"63" height=3D"68" /></a></td>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D90EF652934AB5A3F6E5000194AE3F2FA4DF83785&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmluc3RhZ3JhbS5jb20vYm9zcw=3D=3D&_K13_=3D94535=
+&_K14_=3Dcb2263e1283b3ebfe7383b0b01c54f01943d7dba16c7ecb52a64cba75b084423" =
+target=3D"_blank"><img src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/=
+crmcampaigns_footer_sm_icon_instagram_b_w?wid=3D126&op_sharpen=3D1&resMode=
+=3Dsharp2&fmt=3Dgif" alt=3D"instagram" width=3D"63" height=3D"68" /></a></t=
+d>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"display: none; mso-hide: all; overflow: hidde=
+n;" class=3D"is-hidden-desktop">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+argin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3DF4CBBE96DED841014726D3C9A1A1265DBEBE7E24&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vcGxheS5nb29nbGUuY29tL3N0b3JlL2FwcHMvZGV0YWlscz9pZD=
+1jb20uaHVnb2Jvc3MuaHVnb2Jvc3MmaGw9ZW4=3D&_K13_=3D94535&_K14_=3D40dd628ab8c1=
+9b47999e008f2e3d00e4aaad197fd208744878ccba563b783845" target=3D"_blank"><im=
+g src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_f=
+ooter_app_icon_android?fmt=3Dgif-alpha&wid=3D168&hei=3D52" alt=3D"Get it on=
+ Google Play" width=3D"100" /></a></td>
+<td width=3D"15"></td>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D585DB1D619E0862710393321F25971826E4CEA82&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vaXR1bmVzLmFwcGxlLmNvbS9nYi9hcHAvaHVnby1ib3NzL2lkMz=
+M2ODI4NTY0&_K13_=3D94535&_K14_=3D50beba3e33e4b2105ed79304c5c1de030cf521d5ca=
+992bf62e4ab51cfccae5f1" target=3D"_blank"><img src=3D"http://images=2Ehugob=
+oss=2Ecom/is/image/boss/crmcampaigns_global_footer_app_icon_apple?fmt=3Dgif=
+-alpha&wid=3D168&hei=3D52" alt=3D"Download on the App Store" width=3D"100" =
+/></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height=3D"1" style=3D"height: 1px; font-size: 1px; line-height: 1px;" c=
+lass=3D"dpi-fix-height rh17">&nbsp;</td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"8=
+8%" class=3D"bg_gray ac" style=3D"margin: 0 auto;" border=3D"0" bgcolor=3D"=
+#cccccc">
+<tbody>
+<tr>
+<td height=3D"1" style=3D"height: 1px; font-size: 1px; line-height: 1px;" c=
+lass=3D"dpi-fix-height">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"6=
+40" class=3D"fw bg_primary-color" align=3D"center" border=3D"0" bgcolor=3D"=
+#111111">
+<tbody>
+<tr>
+<td height=3D"25" style=3D"height: 25px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center"><span class=3D"ff fs_c2 medium-gray fwl" style=3D"colo=
+r: #999; font-family: AvertaPE,Helvetica,Arial,sans-serif; font-size: 12px;=
+ font-weight: 300; line-height: 16px;">Customer no=2E</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"3=
+00" class=3D"dpi-fix-width ac" style=3D"margin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" class=3D"b=
+g_white ac" style=3D"margin: 0 auto;" border=3D"0" bgcolor=3D"#ffffff">
+<tbody>
+<tr>
+<td>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" border=3D"=
+0">
+<tbody>
+<tr>
+<td width=3D"150" style=3D"line-height: 1px;" class=3D"dpi-fix-width">&nbsp=
+;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"padding: 9px 15px 10px 15px;"><a rel=3D"noope=
+ner noreferrer" href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/1=
+00/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D4D4186A4295C968=
+6E53A9F4540D8104CA1086373&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dH=
+BzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9teWRhdGE/dXRtX3Rlcm09RS0tR0JfZW4tLWJsb2NrR=
+i0tYWNjb3VudCZ1dG1fY29udGVudD1jdXN0b21lcm51bV93YWxsZXRfZm9vdGVyMV9jdXN0b21l=
+cm51bWJlcmxpbmsmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkw=
+mY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbW=
+FpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3D0a896d721d7ac023=
+81c738e1518c64cab972da02479bdc824ee8909bc42adcc7" target=3D"_blank" class=
+=3D"ff fs_c2 primary-color tdn fwl" style=3D"color: #111; font-family: Aver=
+taPE,Helvetica,Arial,sans-serif; font-size: 12px; font-weight: 300; line-he=
+ight: 16px; text-decoration: none;">101502120</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height=3D"19" style=3D"height: 19px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"8=
+8%" class=3D"bg_gray ac" style=3D"margin: 0 auto;" border=3D"0" bgcolor=3D"=
+#cccccc">
+<tbody>
+<tr>
+<td height=3D"1" style=3D"height: 1px; font-size: 1px; line-height: 1px;" c=
+lass=3D"dpi-fix-height">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"6=
+40" class=3D"fw bg_primary-color" align=3D"center" border=3D"0" bgcolor=3D"=
+#111111">
+<tbody>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"line-height: 1=2E3;" class=3D"lh13p"><span cl=
+ass=3D"ff white fs_c2 fwl ttu" style=3D"color: #fff; font-family: AvertaPE,=
+Helvetica,Arial,sans-serif; font-size: 12px; font-weight: 300; line-height:=
+ 16px; text-transform: uppercase;">Your digital membership card</span></td>=
+
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td height=3D"5" style=3D"height: 5px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"height: 15px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" class=3D"a=
+c" style=3D"margin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3DD91E98D989D69B562D21FA6E34476CB796FFFD02&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vcGFzcy55dC9wL1VnaGtVNHl0eXcvVklORUM1Qk0wUmNSck1EZl=
+dnWTJ0UT91dG1fY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wY=
+Wlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0=
+bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&_K13_=3D94535&_K14_=3D5dcb073c9b65d2e9ee83=
+4df8a2f453de69666f71ba656a6132a4b4de5e07169f" target=3D"_blank"><img src=3D"=
+http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_footer_wal=
+let_icon_android?fmt=3Dgif-alpha&wid=3D168&hei=3D52" alt=3D"Add to  WalletP=
+asses" width=3D"80" /></a></td>
+<td width=3D"10"></td>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D65B3445F201AC7CBBAD69E527FA09917795E145E&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vcGFzcy55dC9wL1VnaGtVNHl0eXcvVklORUM1Qk0wUmNSck1EZl=
+dnWTJ0UT91dG1fY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wY=
+Wlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0=
+bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&_K13_=3D94535&_K14_=3D1b530506c99bc9b3cc45=
+84dc6f951f350436920488094795a251778847790e99" target=3D"_blank"><img src=3D"=
+https://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_global_footer_wa=
+llet_icon_apple?fmt=3Dgif-alpha&wid=3D168&hei=3D52" alt=3D"Add to Apple Wal=
+let" width=3D"80" /></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height=3D"19" style=3D"height: 19px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"8=
+8%" class=3D"bg_gray ac" style=3D"margin: 0 auto;" border=3D"0" bgcolor=3D"=
+#cccccc">
+<tbody>
+<tr>
+<td height=3D"1" style=3D"height: 1px; font-size: 1px; line-height: 1px;" c=
+lass=3D"dpi-fix-height">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"6=
+40" class=3D"fw bg_primary-color" align=3D"center" border=3D"0" bgcolor=3D"=
+#111111">
+<tbody>
+<tr>
+<td height=3D"30" style=3D"height: 30px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"8=
+8%" class=3D"ac" style=3D"margin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<th align=3D"center" valign=3D"top" class=3D"fl">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">RESPONSIBILITY HUGO&nbsp;BOSS&nbsp;AG=
+</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;">Dieselstra=
+sse 12, D-72555 Metzingen<br /> Telephone: +49 (0) 71&zwnj;23 94 - 0<br /> =
+Fax: +49 (0) 71&zwnj;23 94 - 80259<br /> E-Mail:&nbsp;<a rel=3D"noopener no=
+referrer" href=3D"mailto:info@hugoboss=2Ecom" target=3D"_blank" class=3D"rt=
+eLink" style=3D"color: #999999; text-decoration: underline;" data-link-type=
+=3D"mail">info@hugoboss=2Ecom</a><br /> </span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">Authorized Representative of the Exec=
+utive Board:</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;">Daniel Gri=
+eder, Chairman and CEO<br /> Yves M&uuml;ller,&nbsp;Dr=2E&nbsp;Heiko&nbsp;S=
+ch&auml;fer, Oliver&nbsp;Timm, Ingo&nbsp;Wilts</span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">Chairman of the Supervisory&nbsp;Boar=
+d:</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;">Hermann&nb=
+sp;Waldemer<br /> Registered in: Register of commerce<br /> at Local court =
+Stuttgart, Germany<br /> HRB&nbsp;36&nbsp;06&nbsp;10=2E VAT No=2E DE&nbsp;1=
+&zwnj;4&zwnj;7&zwnj;1&zwnj;6&zwnj;4&zwnj;4&zwnj;7&zwnj;2<br /> </span></td>=
+
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+</th>
+<th width=3D"60" class=3D"mh dpi-fix" style=3D"width: 60px;"></th>
+<th align=3D"center" valign=3D"top" class=3D"fl">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">CUSTOMER CARE</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;">Monday to =
+Friday 8=2E00am - 7=2E00pm<br /> Saturday 8=2E00am - 5=2E00pm<br /> Telepho=
+ne: <a rel=3D"noopener noreferrer" href=3D"tel:+442076608041" target=3D"_bl=
+ank" class=3D"rteLink" style=3D"color: #999999; text-decoration: underline;=
+" data-link-type=3D"tel">+44 (0) 20 7660 8041</a>*<br /> *Prices of your te=
+lephone provider apply<br /> E-Mail: <a rel=3D"noopener noreferrer" href=3D"=
+mailto:service-uk@hugoboss=2Ecom" target=3D"_blank" class=3D"rteLink" style=
+=3D"color: #999999; text-decoration: underline;" data-link-type=3D"mail">se=
+rvice-uk@hugoboss=2Ecom</a><a href=3D"mailto:service-uk@hugoboss=2Ecom" sty=
+le=3D"color: #999999; text-decoration: underline;"></a></span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">STYLE ADVICE</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;"><a rel=3D"=
+noopener noreferrer" href=3D"https://z2=2Eliveper=2Esn/api/account/88409905=
+/route/campaign/1312322432/engagement/1405181950?utm_term=3DE--UK_en--block=
+F--styleadvisor&utm_content=3Dfooter1_styleadvisor" target=3D"_blank" class=
+=3D"rteLink" style=3D"color: #999999; text-decoration: underline;" data-lin=
+k-type=3D"generic">Chat with us</a><br /> Monday to Friday<br /> 07:&zwnj;0=
+0am &ndash; 06:&zwnj;00pm<br /> Sunday 10:&zwnj;00am &ndash; 05:&zwnj;00pm<=
+/span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">WHATSAPP</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;">Monday to =
+Friday<br /> 07&zwnj;:00am &ndash; 06&zwnj;:00pm<br /> Sunday 10&zwnj;:00am=
+ &ndash; 05&zwnj;:00pm<br /> +&zwnj;49&nbsp;151&nbsp;40&zwnj;26&nbsp;18&zwn=
+j;09</span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">UNSUBSCRIBE</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;">To Unsubsc=
+ribe from the HUGO&nbsp;BOSS newsletter, please click&nbsp;<a rel=3D"noopen=
+er noreferrer" href=3D"https://www=2Ehugoboss=2Ecom/uk/unsubscribe?guid=3D4=
+7B775DE-77BC-EB11-8123-005056AC0431&hash=3Debb7e915c299c7a9df0fc93d1189a3f8=
+27b629f6fe0a5d75d24662a656cbec0f&utm_term=3DE--GB_en--blockF--unsubscribe&u=
+tm_content=3Dcustomernum_wallet__textlink1of1&utm_campaign=3D20211219_PP_E_=
+BM_RV_Freeship_NL&campaign=3D20211219_PP_E_BM_RV_Freeship_NL&utm_medium=3De=
+-mail&utm_source=3Dnewsletter" target=3D"_blank" class=3D"rteLink" style=3D"=
+color: #999999; text-decoration: underline;" data-link-type=3D"unsubscribe"=
+>here</a></span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"2=
+30" class=3D"dpi-fix" border=3D"0" style=3D"width: 230px;">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"color: #fff; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-height: 16p=
+x; text-transform: uppercase;" class=3D"ff fs_c2 white ttu ls1"><span class=
+=3D"ff fs_c2 white ttu ls1" style=3D"color: #fff; font-family: AvertaPE,Hel=
+vetica,Arial,sans-serif; font-size: 12px; letter-spacing: =2E1em; line-heig=
+ht: 16px; text-transform: uppercase;">Privacy Statement</span></td>
+</tr>
+<tr>
+<td height=3D"10" style=3D"height: 10px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"color: #999; font-family: AvertaPE,Helvetica,=
+Arial,sans-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;" c=
+lass=3D"lh13p ff medium-gray fs_c2 fwl"><span class=3D"lh13p ff medium-gray=
+ fs_c2 fwl" style=3D"color: #999; font-family: AvertaPE,Helvetica,Arial,san=
+s-serif; font-size: 12px; font-weight: 300; line-height: 1=2E3;"><a rel=3D"=
+noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/n=
+ews/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D2DF7AEDF5F=
+76F4DF387E7C8278A5061371F784E6&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0P=
+Wh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9wcml2YWN5LXN0YXRlbWVudC1leHBlcmllbmNl=
+Lmh0bWw/dXRtX3Rlcm09RS0tR0JfZW4tLWJsb2NrRi0tcHJpdmFjeS1zdGF0ZW1lbnQtZXhwZXJ=
+pZW5jZS5odG1sJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9fdGV4dGxpbmsxb2Y1Jn=
+V0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwM=
+jExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJj=
+ZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D1f4a0a1bed6f3f7eeaf1c90c4b08af46dcf3=
+d92cf796259947eaaa10bc3f9d42" target=3D"_blank" class=3D"rteLink" style=3D"=
+color: #999999; text-decoration: underline;" data-link-type=3D"speaking">Pr=
+ivacy Statement HUGO BOSS EXPERIENCE</a>;&nbsp;<a rel=3D"noopener noreferre=
+r" href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F=
+99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D5CFE4F22CE983A7702D79DE47A45=
+1E4DBA74B536&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh=
+1Z29ib3NzLmNvbS91ay90ZXJtcy1jb25kaXRpb25zLmh0bWw/dXRtX3Rlcm09RS0tR0JfZW4tLW=
+Jsb2NrRi0tdGVybXMtY29uZGl0aW9ucy5odG1sJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhb=
+GxldF9fdGV4dGxpbmsyb2Y1JnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVz=
+aGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl=
+1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3Dd800bb9a327=
+a4629b67a2f1a77157159064e0737fa80886ee80ace3de58a7a45" target=3D"_blank" cl=
+ass=3D"rteLink" style=3D"color: #999999; text-decoration: underline;" data-=
+link-type=3D"speaking">Terms & Conditions</a>;&nbsp;<a rel=3D"noopener nore=
+ferrer" href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33=
+EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DFFC2FCF8B3C8828A47FF36F=
+57C0BD3FA394D8B1E&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3=
+d3Lmh1Z29ib3NzLmNvbS91ay9wcml2YWN5LXN0YXRlbWVudC1uZXdzbGV0dGVyLmh0bWw/dXRtX=
+3Rlcm09RS0tR0JfZW4tLWJsb2NrRi0tcHJpdmFjeS1zdGF0ZW1lbnQtbmV3c2xldHRlci5odG1s=
+JnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9fdGV4dGxpbmszb2Y1JnV0bV9jYW1wYWl=
+nbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0=
+VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0d=
+GVy&_K13_=3D94535&_K14_=3Dd5d4c25279f8fa2976a4046a61c450e25a4d1962d4d357f58=
+453560870193005" target=3D"_blank" class=3D"rteLink" style=3D"color: #99999=
+9; text-decoration: underline;" data-link-type=3D"speaking">Privacy Stateme=
+nt HUGO BOSS Newsletter;</a>&nbsp;<a rel=3D"noopener noreferrer" href=3D"ht=
+tps://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C=
+0CCA5506744DB1CF4?_V_=3D2&_K11_=3D1FF0C09E12729E3E39E40E154AAC9D6EF95BE5FD&=
+_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNv=
+bS91ay9wcml2YWN5LXN0YXRlbWVudC5odG1sP3V0bV90ZXJtPUUtLUdCX2VuLS1ibG9ja0YtLXB=
+yaXZhY3ktc3RhdGVtZW50Lmh0bWwmdXRtX2NvbnRlbnQ9Y3VzdG9tZXJudW1fd2FsbGV0X190ZX=
+h0bGluazRvZjUmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmY=
+2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtPWUtbWFp=
+bCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3D2152a5d94b8c7eef77=
+da806f497f562b041d502a0dd92a5d7257988faaa5144f" target=3D"_blank" class=3D"=
+rteLink" style=3D"color: #999999; text-decoration: underline;" data-link-ty=
+pe=3D"speaking">Privacy Statement</a>;&nbsp;<a rel=3D"noopener noreferrer" =
+href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:443/news/100/A0F33EE27F99D=
+6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DA7818024AE20305EDCD08C07DB350B1=
+B62ADB419&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z2=
+9ib3NzLmNvbS91ay90ZXJtcy1jb25kaXRpb25zLWV4cGVyaWVuY2UuaHRtbD91dG1fdGVybT1FL=
+S1HQl9lbi0tYmxvY2tGLS10ZXJtcy1jb25kaXRpb25zLWV4cGVyaWVuY2UuaHRtbCZ1dG1fY29u=
+dGVudD1jdXN0b21lcm51bV93YWxsZXRfX3RleHRsaW5rNW9mNSZ1dG1fY2FtcGFpZ249MjAyMTE=
+yMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZjYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0=
+ZyZWVzaGlwX05MJnV0bV9tZWRpdW09ZS1tYWlsJnV0bV9zb3VyY2U9bmV3c2xldHRlcg=3D=3D&=
+_K13_=3D94535&_K14_=3D87eac6cce58fb30ce0b4bcb5da3457038bb8ef792fb0dd71fe617=
+38484df9f5a" target=3D"_blank" class=3D"rteLink" style=3D"color: #999999; t=
+ext-decoration: underline;" data-link-type=3D"speaking">Terms & Conditions =
+HUGO BOSS EXPERIENCE</a><br /> </span></td>
+</tr>
+<tr>
+<td height=3D"20" style=3D"height: 20px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height=3D"5" style=3D"height: 5px;" class=3D"dpi-fix-height">
+<div></div>
+</td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"8=
+8%" class=3D"bg_gray ac" style=3D"margin: 0 auto;" border=3D"0" bgcolor=3D"=
+#cccccc">
+<tbody>
+<tr>
+<td height=3D"1" style=3D"height: 1px; font-size: 1px; line-height: 1px;" c=
+lass=3D"dpi-fix-height">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"6=
+40" class=3D"fw bg_primary-color" align=3D"center" border=3D"0" bgcolor=3D"=
+#111111">
+<tbody>
+<tr>
+<td height=3D"15" style=3D"height: 15px;" class=3D"dpi-fix-height"></td>
+</tr>
+<tr>
+<td align=3D"center">
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" class=3D"a=
+c" style=3D"margin: 0 auto;" border=3D"0">
+<tbody>
+<tr>
+<td>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" border=3D"=
+0">
+<tbody>
+<tr>
+<td><a rel=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugobo=
+ss=2Ecom:443/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11=
+_=3D7EB9C4A2A94376A344167CAEE97198A4D088524C&_L54AD1F204_=3Dc2NlbmFyaW89TUx=
+DUEcmdGFyZ2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9jb250YWN0dXM/dXRtX3Rlcm=
+09RS0tR0JfZW4tLWJsb2NrRi0tY29udGFjdHVzJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhb=
+GxldF9mb290ZXIxX2hlbHBsaW5rJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0Zy=
+ZWVzaGlwX05MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21=
+lZGl1bT1lLW1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D3308566=
+e57a5c33e020e7999205aeadc3d59a53482c838f0dc82b08acc1e904b" target=3D"_blank=
+"><img src=3D"http://images=2Ehugoboss=2Ecom/is/image/boss/crmcampaigns_foo=
+ter_icon_help?wid=3D88&op_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif" border=3D"=
+0" alt=3D"Help" height=3D"16" /> </a></td>
+<td valign=3D"middle" style=3D"line-height: 12px;" class=3D"lh12px"><a rel=
+=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:4=
+43/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3DF4E34C=
+BE1A1A72C4425B86EA339B7880FB70627A&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ=
+2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9jb250YWN0dXM/dXRtX3Rlcm09RS0tR0Jf=
+ZW4tLWJsb2NrRi0tY29udGFjdHVzJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9mb29=
+0ZXIxX2hlbHBsaW5rJnV0bV9jYW1wYWlnbj0yMDIxMTIxOV9QUF9FX0JNX1JWX0ZyZWVzaGlwX0=
+5MJmNhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaXBfTkwmdXRtX21lZGl1bT1lL=
+W1haWwmdXRtX3NvdXJjZT1uZXdzbGV0dGVy&_K13_=3D94535&_K14_=3D5a39e81d4711ed39d=
+a3a1b78bd5f9cbf1787e78a1c66857b2b48dc0258df0908" target=3D"_blank" class=3D"=
+ff fs_c2 soft-gray fwl ls1 tdn" style=3D"color: #f6f6f6; font-family: Avert=
+aPE,Helvetica,Arial,sans-serif; font-size: 12px; font-weight: 300; letter-s=
+pacing: =2E1em; line-height: 16px; text-decoration: none;">&nbsp;Help </a><=
+/td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width=3D"15" style=3D"width: 15px;" class=3D"dpi-fix rw20"></td>
+<td>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" border=3D"=
+0">
+<tbody>
+<tr>
+<td><a rel=3D"noopener noreferrer" href=3D"https://www=2Ehugoboss=2Ecom/uk/=
+stores?utm_term=3DE--GB_en--blockF--stores&utm_content=3Dcustomernum_wallet=
+_footer1_storelocatorlink" target=3D"_blank"><img src=3D"http://images=2Ehu=
+goboss=2Ecom/is/image/boss/crmcampaigns_footer_icon_storelocator?wid=3D88&o=
+p_sharpen=3D1&resMode=3Dsharp2&fmt=3Dgif" border=3D"0" alt=3D"Store Locator=
+" height=3D"16" /></a></td>
+<td valign=3D"middle" style=3D"line-height: 12px;" class=3D"lh12px"><a rel=
+=3D"noopener noreferrer" href=3D"https://campaign=2Eapps=2Ehugoboss=2Ecom:4=
+43/news/100/A0F33EE27F99D6BD1D0A72C0CCA5506744DB1CF4?_V_=3D2&_K11_=3D6747A4=
+9D667DC2E6E19235B9ADDFCBFE9A2426DC&_L54AD1F204_=3Dc2NlbmFyaW89TUxDUEcmdGFyZ=
+2V0PWh0dHBzOi8vd3d3Lmh1Z29ib3NzLmNvbS91ay9zdG9yZXM/dXRtX3Rlcm09RS0tR0JfZW4t=
+LWJsb2NrRi0tc3RvcmVzJnV0bV9jb250ZW50PWN1c3RvbWVybnVtX3dhbGxldF9mb290ZXIxX3N=
+0b3JlbG9jYXRvcmxpbmsmdXRtX2NhbXBhaWduPTIwMjExMjE5X1BQX0VfQk1fUlZfRnJlZXNoaX=
+BfTkwmY2FtcGFpZ249MjAyMTEyMTlfUFBfRV9CTV9SVl9GcmVlc2hpcF9OTCZ1dG1fbWVkaXVtP=
+WUtbWFpbCZ1dG1fc291cmNlPW5ld3NsZXR0ZXI=3D&_K13_=3D94535&_K14_=3De3d45d962c7=
+bfd4c0e987fa5411e537e43319dc9824acd67cf1769e665880feb" target=3D"_blank" cl=
+ass=3D"ff fs_c2 soft-gray fwl ls1 tdn" style=3D"color: #f6f6f6; font-family=
+: AvertaPE,Helvetica,Arial,sans-serif; font-size: 12px; font-weight: 300; l=
+etter-spacing: =2E1em; line-height: 16px; text-decoration: none;">Store Loc=
+ator </a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td height=3D"15" style=3D"height: 15px;" class=3D"dpi-fix-height"></td>
+</tr>
+</tbody>
+</table>
+<table cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%" border=3D"0"></table></div><!--[if mso]></td></tr></table><![endif]-->=
+</center> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <div style=3D"clear:left">
+       &nbsp;
+      </div> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>=20
+ </body></html>
+------=_Part_62181901_1981147153.1639893993033--
+

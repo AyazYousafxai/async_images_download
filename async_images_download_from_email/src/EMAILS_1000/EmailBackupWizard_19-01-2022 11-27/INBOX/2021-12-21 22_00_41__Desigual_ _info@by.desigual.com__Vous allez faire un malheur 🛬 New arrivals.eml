@@ -1,0 +1,2135 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp4148631wrd;        Tue, 21 Dec
+ 2021 14:00:43 -0800 (PST)
+Received: from m207-120.eu.mailgun.net (m207-120.eu.mailgun.net. [161.38.207.120])     
+   by mx.google.com with UTF8SMTPS id l5si48599ejn.84.2021.12.21.14.00.43    
+    for <john.doe.youniq@gmail.com>        (version=TLS1_3
+ cipher=TLS_AES_128_GCM_SHA256 bits=128/128);        Tue, 21 Dec 2021
+ 14:00:43 -0800 (PST)
+Received: from <unknown> (<unknown> []) by api-n03.prod.eu-central-1.postgun.com with
+ HTTP id 61c24e898c7026e196d3dbee; Tue, 21 Dec 2021 22:00:41 GMT
+X-Google-Smtp-Source: ABdhPJzKXhXDj5BMEjFw6mD51JFsk2V+MPWL/SO6Fzgx7klB4dKaK+Mv2unC/5KA5f3A2ENg29XG
+X-Received: by 2002:aa7:c143:: with SMTP id r3mr264877edp.150.1640124043623;        Tue,
+ 21 Dec 2021 14:00:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640124043; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=S+t0+Od04YCF/4w41aJOycsOEchfV2Y9eqJkjXMKTGODhZ28y5lCof0ZSeokF1s3Tl        
+ a7MbY+BcwudmRsrL9cEnk1LIbh9GCvTSa+F2ev4MNV/2J6w8bEAH8wCz+ApsUlV/h7fQ        
+ pWVmpGKGcn9C5+MU9K4cpwGO1SXS2VVQ6gM5NfoJodts8UY9M6J73sdQWUPGVjXYtSZ6        
+ eCxrh/AxjxOpIz9N/Pu2AStJskqUlqxSh4r2wJqxcali5AtkoytIVVoVOcc8cyIRy3ur        
+ NrdMrrr+kddluDeCen0KEux4vzxev1UgzNOFoJbGekCpDlff24wTxaUV30gEV4x3HsGI        
+ v3NQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=message-id:reply-to:sender:to:from:subject:mime-version:date        
+ :dkim-signature:dkim-signature;       
+ bh=K/q6edQkgyhU+oTsX9w30Knl4JEZAiQTd2Tv4KWeuIQ=;       
+ b=vpH8DRhTSBbpIhtAeupjZt2dFyHfFQdqc8KbHZdF3EJ/xQjeH7ElJCNz7lof6zUhE3        
+ b2K1GaDkN4t/CCgXX7uYbjT1uc+KRdfxDv6vmfA6rvkQjs+fDRHsomM3486/N1gCOX6I        
+ b52gc1UvJiEkdEOD5pw2CNV13IEe22rzm9XjtWhnSMQX6ai2asHQctXS+MbOHOQ+gR+o        
+ AeXiCXYiiyq+czSsTwCOxFddnnPb6fcEkth6aami7X3Czurw8MQuXIXyrYQ6Yzrg82gZ        
+ uS2EP8GTB0atVyRZkUDjZ2+FuwREUjTAbR3+KFEdYXi97R0mF3S0ajoUJtnu707yp904        
+ xl7g==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@by.desigual.com header.s=smtp
+ header.b=mavcI8+c;       dkim=pass header.i=@eu.mailgun.org header.s=krs
+ header.b=bTGCUEDh;       spf=pass (google.com: domain of
+ bounce+ef3300.34f47-john.doe.youniq=gmail.com@by.desigual.com designates
+ 161.38.207.120 as permitted sender)
+ smtp.mailfrom="bounce+ef3300.34f47-john.doe.youniq=gmail.com@by.desigual.com";       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE)
+ header.from=desigual.com
+Return-Path: <bounce+ef3300.34f47-john.doe.youniq=gmail.com@by.desigual.com>
+Received-SPF: pass (google.com: domain of
+ bounce+ef3300.34f47-john.doe.youniq=gmail.com@by.desigual.com designates
+ 161.38.207.120 as permitted sender) client-ip=161.38.207.120;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@by.desigual.com header.s=smtp
+ header.b=mavcI8+c;       dkim=pass header.i=@eu.mailgun.org header.s=krs
+ header.b=bTGCUEDh;       spf=pass (google.com: domain of
+ bounce+ef3300.34f47-john.doe.youniq=gmail.com@by.desigual.com designates
+ 161.38.207.120 as permitted sender)
+ smtp.mailfrom="bounce+ef3300.34f47-john.doe.youniq=gmail.com@by.desigual.com";       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE)
+ header.from=desigual.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=by.desigual.com; q=dns/txt; s=smtp;
+ t=1640124043; h=Message-Id: Reply-To: sender: To: From: Subject:
+ Content-Type: Mime-Version: Date: X-Feedback-Id;
+ bh=K/q6edQkgyhU+oTsX9w30Knl4JEZAiQTd2Tv4KWeuIQ=;
+ b=mavcI8+cW4ZE7ByzZVlN+WxidRVsYLoyQNqpaWciOj2WG/XSI9pFLVqwI3yMtODpCK1m9lwA
+ veL/rZei4QR/iun8Uwx5gtbLkbTOC51eekjcwPq45DPJu+X6fD6zsPYBzNzed3YKT45ZZdq0
+ IYiEUWVEbzdaXU2XmMzoU03y+24NmwfQ+HidbgQ+/fS9MF5/HmyEBKfusWUtDLGiQkytn6v4
+ ZOWo2+uqNdVfX5QqVkXComNrNmu1K2emGwDkSIW5lKG9IwaMxVOz0LlXqGfpzwo7TSU9yueu
+ RPxQKC3X3+3we6yaDWamBEfTImXG7us57JWC3qZ8ywfg2wtXMNHZjg==
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=eu.mailgun.org; q=dns/txt; s=krs;
+ t=1640124043; h=Message-Id: Reply-To: sender: To: From: Subject:
+ Content-Type: Mime-Version: Date: X-Feedback-Id;
+ bh=K/q6edQkgyhU+oTsX9w30Knl4JEZAiQTd2Tv4KWeuIQ=;
+ b=bTGCUEDhDV3ktBFhcZvpbh9ogUzuFyYzGNWzcOtyYLw+g88uA7kNm/05RKp5Nfw5iLJ7TVcV
+ CdkW4QUuH21SmYSc12BShfdEsLagqDvp2tNBLBvtCpadTucg+Po8rPzq7jeYVOEAxtPDOiMs
+ k8i6aZsZp5glwyN8tmVY5uqenPs=
+X-Feedback-Id: 5ec78abb4c938e83ea3b133a:mailgun
+X-Mailgun-Sending-Ip: 161.38.207.120
+X-Mailgun-Sid: WyJkMGJlOCIsICJqb2huLmRvZS55b3VuaXFAZ21haWwuY29tIiwgIjM0ZjQ3Il0=
+Date: Tue, 21 Dec 2021 22:00:41 +0000
+Mime-Version: 1.0
+Subject: =?UTF-8?q?Vous_allez_faire_un_malheur_=F0=9F=9B=AC_New_arrivals?=
+From: "Desigual" <info@by.desigual.com>
+To: john.doe.youniq@gmail.com
+X-Mailgun-Track: true
+X-Mailgun-Track-Clicks: false
+X-Mailgun-Track-Opens: false
+X-Mailgun-Dkim: true
+sender: "Desigual" <info@by.desigual.com>
+Reply-To: help@help.desigual.com
+X-Mailgun-Tag: W51_22_E_N_NC_TOTAL_LOOK_GLOBALEN
+X-Mailgun-Variables: {"my-custom-data":"{\"company_id\": \"80f6ad84-b1e1-11e9-847e-263b6dfdc294\",
+ \"customer_id\": \"60acb8f5a1e0f665ebd0e34e\", \"email_hash\":
+ \"052ff0fb35dc22ce0ff020b6a1b9c623948ac1f4e7aa4739a2b71c8482773649\",
+ \"properties\": {\"action_id\": 3, \"action_name\":
+ \"W51_22_E_N_NC_TOTAL_LOOK_GLOBALEN\", \"action_type\": \"email\",
+ \"campaign_id\": \"61c03d059001fc171284ee1e\", \"campaign_name\":
+ \"W51_22_E_N_NC_TOTAL_LOOK_GLOBALEN\", \"campaign_policy\": \"\",
+ \"integration_id\": \"5ec796ce69d0ab5daf3aa640\", \"integration_name\":
+ \"Mailgun Pro\", \"language\": \"\", \"sent_timestamp\": 1640124040.975802,
+ \"subject\": \"{% if segmentations['615c29acdc9572772abb8353'] ==
+ 'Global-e_FR' %}{% set language = 'Global-e_FR' %...\"}, \"ts\":
+ 1640124042}"}
+Message-Id: <20211221220041.9f64f13f4563ee10@by.desigual.com>
+Content-Type: multipart/alternative;
+ boundary="58ccb795b963a19014e93558caa764ae045e6802869f135d552eaba12acc"
+
+--58ccb795b963a19014e93558caa764ae045e6802869f135d552eaba12acc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+Looks d=E2=80=99hiver=20
+
+Voir version en ligne [https://media-consumer365=2Edesigual=2Ecom/desigual-=
+prod/e/=2EeJxtkT9v00AAxQUoQqRCII-IoZSBqTnf-e7s84C4OM4f4sZFTYRIVVmXu6tjGsdu7=
+KSh6oSYusIXoBILHwDEyMLIzMDO2oGNhYaqG8PTez_pvekZ6xVw_of83Ph-53z90_sv3x6-O_36=
+-9fHFjv7fP_N6yPauffh2rgs88IFINUqEZsymxbzVM8sSmpKF0k8F5OazFJwBZv5LFNAAy9exrP=
+gJcx0Aw314hk28U6HDxbOdgEtLwgbEY_LwxZZJuEgKdomoXk7FF2r3dnx1PHw6daL_Hj7sNuXvX=
+Fdxsvx0QHtZHqcTmVsb8Wyhmd5X-VyMMI2ZRyeFo_P3uY_uHu7en1eGDf1Ms-mWriPLlAaD54TG=
+CEU-VEv6nlRP-zzIArCsBu1grDOA7_nrl0UU6OiU5FM3LvVG3OZGbcaSZyUYmIit1OtlNmBnhpP=
+OGWIeohz6Nu-ZTLMberZTZMRnxNIGfZY0_SQgx3CmnWOCEFeHTcJhBxinzrDHgCjTL0CpRhNNCg=
+v8wyUCqhksQv3VvY_7ZK9y82q82-wCmJkEwEtS6p9jYkymWAnVydFiXIpxNgiCOMTIZFkDmYjCx=
+KGsPMXLRGkig=2EfnUpJnlEVPPVGw/click]=20
+
+Publicit=C3=A9=20
+
+Femme [https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtjD=
+9Lw0AYh0EpYkWUjOLgH8Stl7vcpbkM4jUmpRjapSBYSrgmZw02SWmuRqGTOHXVL2BHP4Di6OLo7=
+ODu2sHNxYY6Ory87-_H87zKVgFMf8jnzvvadOvp4eVt9378-v31WKWT583bm0yvbeydS9lPTQCy=
+LCsFIg27Q94r-UkEUpkMBMiSSMQAjtODyV3_g5mrxYVhqiyJq34SC27uz6KvbJ8Q6CHk2V7dq1t=
+es9Fkruc2Gsde1W1UmGvXzZUZGCkFEfGwZ64XF4d-oiwfhd1Q8p6KzFqxIJMLESuHTKdItxBj0C=
+7bmkoxK-tW2VEpsRmBOsUWdVQLGdgg1KkwRAiyKtghEDKIbd04bQPQSYJrIHmnJ4Cc3wMgAxCEl=
+y3Yztd_09Lbcydn5KCF2rnz9yX38553yoRDTfODM4FJoFJOR34Sp8NIDLwwMHWIsUYQxiPuI58a=
+mHY0SCjCxi_UN35u=2EIHCXOLPpOKa5-Q/click] Homme [https://media-consumer365=
+=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtjDFLw0AYhkEpYkWUjOKgdnDr5S53aS6DeI=
+1JKZZ2KQiWEK7JWYNNU5KLVegkTl31D9jRH6A4ujg6O7i7dnBzsaGODh_f9748z6fsFMDsh3zuv=
+W_Mdp4eXt5K95PX76_HGp0-b9_ejPT6VulcymFqAjAajcqBSMNexvtlP45AKuNEgEgMAJykB9O7=
+4Qcz14tLWaqsiKthPBDc3J9HX9k9IdBDyLO9pte0vHarzRpeo9U69mqNVpU17Ka5NgcjpSAiHvb=
+NzeJy5sfK6lHYCyXvq8isFwsyvhAD5ZDpFOkWYgzaFVtTKWYV3ao4KiU2I1Cn2KKOaiEDG4Q6VY=
+YIQVYVOwRCBrGtG6cuAN04uAaSd_sCyMWdABmAILzsQDdf_01HdxdOzsikg9zc-fuS-3nDuxXCo=
+ab5wZnAJFApp2M_HqRZJBIvDEwdYqwRhPGY-8inBqZdDRKKsPELcSp9hw=2EfFWbFErBOn1P_A/=
+click] Kids [https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2Ee=
+JxtjDFLw0AAhUEpYkWUjOJQdXDRXu5yl-YyiNeYlmJpl4JgCeGanG1o2pTmahQ6iVNX_QN29Aco=
+ji6Ozg7urh3cXGyoo8PjvQfve0ouA2Y_5HP3fWOWe3p4edu7n7x-fz2W6fR5-_Ym0StbBx0pB7E=
+JQJIkeV_EQXvEw7wX9UAso6EA3cCPD70wkh0RAziJj6Z3gw9mrmeXRrGyIq4GUV9wc39ePWXnjE=
+AXIdd2a27Nchv1Bqu61Xr91C1X60VWtWvm2nzYUzKix4PQ3Mwuj7xIWT0J2oHkoYrMSjYjo67oK=
+8dMp0i3EGPQLtiaSjEr6FahpFJiMwJ1ii1aUi1kYIPQUpEhQpBVxCUCIYPY1o1zB4BW5F8DyVuh=
+AHKRh0D6wA8um9BJ7T81dWfBpBs5bCInZf5eUr6pOYC3CoRDTfP8C4GJr1JOx17Uj0c9MXQD39Q=
+hxhpBGI-5hzxqYNrSIKEIG78XEoEb=2ERozlaGDTH8a0UQ/click]=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti79Lw0AA=
+hUEpYkWUjCL4a3Dr5S53aS6DeI1JLYZmKQiWEi7JWYNJU5rEKHQSp676D9jRP0BxdHF0dnB37eD=
+mYlXcHB7vffA9ab0EJp_kbfNlabJ-f_v4vHUzevp4v6vT8cPq1WWhNlbWTrKsn-oAFEVRCUQadn=
+MeVfwkBmmWDASAo3RnfN1_ZfpieSZPpTlx3k96guvbU_SljUMCXYRc0226TcNtOS1mu7bjHLh12=
+6kx22zqC1Mxlkoi5mGkL5dncz-R5vfCbpjxSEZ6o1zKklPRk3aZSpFqIMagWTUVmWJWVY2qJVNi=
+MgJVig1qyQbSsEaoVWOIEGTUsEUgZBCbqna0D4CXBBcg414kQPa7ByALQBCetWHnu_5LW-v8fX5=
+s7lUJh4riB8cCk0CmnA79pJfmsRi4YaCrEGOFIIyH3Ec-1TD1FEgowtoXAv108Q=2EkTq6-rCc3=
+VpLrA/click]=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti79Lw0AA=
+hUEpYkWUjOJQdXDr5S53SS6DeI1JKS3tYKGgSLgkZw0mTWkuVqGTOHXVf8CO_gGKo4ujs4O7awc=
+3F-uP0eHx3gffU0oFMP0kb5svK9PS_e3j89bN-Onj_a5KJw_rV5dDvbamnkjZzywAhsNhORRZ1M=
+15XA7SBGQyHQiAYKezX9dUpGJUPpFJDMfZzuS6_8qs5eJcnikL4ryf9gS3tmcYKBsdAj2EPMdre=
+k3ba7farOE1Wq26V220KqzhNK2lmZgoBZHwKLZWi_N5kCqLe1E3kjxWkVUrFmR6KnrKLtMp0m3E=
+GHQMR1MpZoZuG65KicMI1Cm2qavayMQmoW6FIUKQXcEugZBB7OjmgQOAn4YXQHI_FkD-7gGQIQi=
+js0N09F3_5u_wo3LfIBxqWhAeC0xClXI6CtJelidi4EWhpUOMNYIwHvEABdTE1NcgoQibX1AqeM=
+0=2EGioCN-QRneTXLw/click]=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti79Lw0AA=
+hUEpYkWUjOJQdXDr5S53SS6DeI1JKS3tYKGgSLgkZw0mTWkuVqGTOHXVf8CO_gGKo4ujs4O7awc=
+3F-uP0eHx3gffU0oFMP0kb5svK9PS_e3j89bN-Onj_a5KJw_rV5dDvbamnkjZzywAhsNhORRZ1M=
+15XA7SBGQyHQiAYKezX9dUpGJUPpFJDMfZzuS6_8qs5eJcnikL4ryf9gS3tmcYKBsdAj2EPMdre=
+k3ba7farOE1Wq26V220KqzhNK2lmZgoBZHwKLZWi_N5kCqLe1E3kjxWkVUrFmR6KnrKLtMp0m3E=
+GHQMR1MpZoZuG65KicMI1Cm2qavayMQmoW6FIUKQXcEugZBB7OjmgQOAn4YXQHI_FkD-7gGQIQi=
+js0Pt6Lv-zd_hR-W-QTjUtCA8FpiEKuV0FKS9LE_EwItCS4cYawRhPOIBCqiJqa9BQhE2vwBQi3=
+jO=2Es8X3b4XMvqk1rA/click]=20
+
+# Look 1 # Urban jungle=20
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtizFLw0AA=
+hUEpYkWUjOJQdXDr5S53aS6DeI1JLS3tYKFgKeGanG0waUpzNQqdxKmr_gE7-gMURxdHZwd31w5=
+uLlbFzeHx3gffU3IZMPskb9sva7Pc_e3j887N5Onj_a5Epw-bV5epXt5Qe1IOEhOANE3zvkiC7o=
+iHeS-OQCLjoQAINptHFU1FKkb5noxCOEn2pteDV2auZhdGibIkzgdxX3Bzd46estUk0EXItd2aW=
+7PcRr3Bqm61Xq-4pWq9yKp2zVyZi5GSEREPQnM9uzjyYmX5IOgGkocqMsvZjIxPRV_ZZzpFuoUY=
+g3bB1lSKWUG3Co5Kic0I1Cm2qKNayMAGoU6RIUKQVcQOgZBBbOvG8SEAndi_AJJ3QgHk7x4C6QM=
+_OGvh9nf9lxZq_31-bN4pEA41zfNPBCa-Sjkde3E_GUVi6Aa-qUOMNYIwHnMPedTAtKNBQhE2vg=
+C-mXm8=2E18G3t4D5Gn0GhQ/click]=20
+
+Des sweat-shirts loungwear et des jupes qui vont avec tout, you=E2=80=99re =
+in !=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOJQdXDr5S53aS6DeI1pKQ3JYKFgKeGanDWYNKW5WoVO4tRV_4Ad_QGKo4ujs4O7awc=
+3F1vEzeH9gudVCjkw-yYfu28bs8Lj_fPr3t3k5evzoUqnT9s31yO9tqWeSdnPTABGo1ExFFnUHf=
+K4GKQJyGQ6EADBZvO4rqlIxah4JpMYTrKD6W3_nZnr-aVhpqyIy37aE9zcn89A2WkS6CPk277ru=
+5bf8BrM8R3Pq_tVxyszx3bNtTmYKDmR8Cg2N_PLwyBVVo-ibiR5rCKzls_J9Fz0lEOmU6RbiDFo=
+l2xNpZiVdKtUUSmxGYE6xRatqBYysEFopcwQIcgq4wqBkEFs68aJC0AnDa-A5J1YAPnbB0CGIIw=
+uWnp7Ef-phdp_nwXdgm3A59YpEQ41LQhPBSahSjkdB2kvGyZi4EehqUOMNYIwHvMABdTAtKNBQh=
+E2fgCmqXuW=2Ehm38Puy7UkzUMg/click]=20
+
+Sweat-shirt=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz9Lw0AA=
+xUEpYkWUjOJQdXDr5S53aS6DeI1pKQ3JYKFgKeGanDWYNKW5WoVO4tRVv4Ad_QCKo4ujs4O7awc=
+3F1vEzeHx_vB7SiEHZt_kY_dtY1Z4vH9-3bubvHx9PlTp9Gn75nqk17bUMyn7mQnAaDQqhiKLuk=
+MeF4M0AZlMBwIg2Gwe1zUVqRgVz2QSw0l2ML3tvzNzPb80zJQVcdlPe4Kb-_MaKDtNAn2EfNt3f=
+dfyG16DOb7jeXW_6nhl5tiuuTYHEyUnEh7F5mZ-eRikyupR1I0kj1Vk1vI5mZ6LnnLIdIp0CzEG=
+7ZKtqRSzkm6VKiolNiNQp9iiFdVCBjYIrZQZIgRZZVwhEDKIbd04cQHopOEVkLwTCyB_8wDIEIT=
+RRUtvL-w_tVD777OgW7AN-HzrlAiHmhaEpwKTUKWcjoO0lw0TMfCj0NQhxhpBGI95gAJqYNrRIK=
+EIGz-m5HuX=2Eolw7NMAvhJsxkw/click] [https://media-consumer365=2Edesigual=2Ec=
+om/desigual-prod/e/=2EeJxtizFLw0AAhUEpYkWUjOJQdXDr5S53aS6DeI1JKZZkKQQsJVyTs=
+waTpjRXq9BJnLrqH7CjP0BxdHF0dnB37eDmYou4OTze--B7SqkAZt_kY_dtY1Z6vH9-3bubvHx9=
+PtTo9Gn75nqk17fUMyn7uQnAaDQqRyKPu0OelMMsBbnMBgIg6PuOj4ihIlw-k2kCJ_nB9Lb_zsz=
+14tIwV1bEZT_rCW7uzzFUdnwCA4QCO3AD1wqaXpM1gobnHQe1hldlDds11-ZiqhREyuPE3CwuD8=
+NMWT2Ku7HkiYrMerEgs3PRUw6ZTpFuIcagXbE1lWJW0a2Ko1JiMwJ1ii3qqBYysEGoU2WIEGRVs=
+UMgZBDbunHiAtDJoisgeScRQP7uAZARiOKLlt5e1H9pofbfZ2EvkLdgu1MhHGpaGJ0KTCKVcjoO=
+s14-TMUgiCNThxhrBGE85iEKqYFpR4OEImz8ALH_e6A=2E5caO1r6wv0kctA/click]
+
+Jupe=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz9Lw0AA=
+xUEpYkWUjOJQdXDr5S53aS6DeI1JKZZ0KQQsEq7J2QaTpjQXq9BJnLrqF7CjH0BxdHF0dnB37eD=
+mYou4Obw_P3hPKRXA7Jt87L5tzEqP98-ve3eTl6_PhxqdPm3fXI_0-pbak3KQmQCMRqNyKLKom_=
+O4HKQJyGQ6FABBz3M8RAwV4XJPJjGcZAfT28E7M9eLS3mmrIjLQdoX3NyfY6DseAT6CPm27_qu5=
+beaLdbwG83msV9rNKusYbvm2nyYKAWR8Cg2N4vLeZAqq0dRN5I8VpFZLxZkei76yiHTKdItxBi0=
+K7amUswqulVxVEpsRqBOsUUd1UIGNgh1qgwRgqwqdgiEDGJbN05cADppeAUk78QCyN8-BDIEYXT=
+R1k8X8Z_a6PTvs1gvkM-tUyEcaloQnglMQpVyOg7SfpYnYuhHoalDjDWCMB7zAAXUwLSjQUIRNn=
+4Asjp7oQ=2EoibTyDGY6KQSBw/click] [https://media-consumer365=2Edesigual=2Eco=
+m/desigual-prod/e/=2EeJxtizFLw0AAhUEpYkWUjOJQdXDr5S53SS6DeI1pKS3tYKFgKeGanD=
+WYNKW5GIVO4tRV_4Ad_QGKo4ujs4O7awc3F1vEzeHx3gffUwo5MPsmH7tvG7PC4_3z697d5OXr8=
+6FCp0_bN9eZXt1Sz6QcJhYAWZYVfZEE_ZSHRS-OQCLjkQAIto9rTEVUhbR4JqMQTpKD6e3wnVnr=
+-aU0UVbE5TAeCG7tz9FTdtoEugi5jttwG7bbarZY3a03mzW3Um-WWN1pWGtzMVJyIuJBaG3ml1M=
+vVlaPgn4geagiq5rPyfhcDJRDplOk24gx6BiOplLMDN02yiolDiNQp9imZdVGJjYJLZcYIgTZJV=
+wmEDKIHd08aQDQi_0rIHkvFED-7hGQPvCDi47eXdR_6aDu32dhd7Qu4B3Y7RmEQ03z_FOBia9ST=
+sdePEjSSIzcwLd0iLFGEMZj7iGPmpj2NEgowuYPl-h7jA=2EzKJSgsUrHJUTJA/click]
+
+Baskets=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz9Lw0AA=
+xUEpYkWUjOJQdXDr5S53aS6DeI1pKS3JYKFgKeGSnDWYNKW5WoVO4tRVv4Ad_QCKo4ujs4O7awc=
+3F1vEzeHx_vB7SiEHZt_kY_dtY1Z4vH9-3bubvHx9PlTp9Gn75nqk17bUMyn7mQnAaDQqhiKLuk=
+MeF4M0AZlMBwIg2DquMxVRFdLimUxiOMkOprf9d2au55eGmbIiLvtpT3Bzf14DZadFoIeQZ3uO5=
+1he022yhtdw3bpXbbhl1rAdc20OJkpOJDyKzc388jBIldWjqBtJHqvIrOVzMj0XPeWQ6RTpFmIM=
+2iVbUylmJd0qVVRKbEagTrFFK6qFDGwQWikzRAiyyrhCIGQQ27px4gDgp-EVkNyPBZC_eQBkCML=
+ooq13Fvaf2qjz91nQba0D-HzzS4RDTQvCU4FJqFJOx0Hay4aJGHhRaOoQY40gjMc8QAE1MPU1SC=
+jCxg-YI3uN=2E9EHgAb4lxMig-Q/click]=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti79Lw0AA=
+hUEpYkWUjOJQdXDr_chdkssgXmNai6VdCgVLCdfkbINJU5qrVegkTl31H7Cjf4Di6OLo7ODu2sH=
+Nxaq4OTze--B7Wi4DZp_0bftlbZa7v3183rmZPH2835XY9GHz6nJklDdgV6l-agMwGo3ygUzDzl=
+BEeT-JQaqSgQQYNRqFBjYwhDDfVXGEJune9Lr_yu3V7MIw1ZbkeT_pSWHvztHXthoUeRh7rlf1q=
+o5Xr9V5xavUakdeqVIr8IpbtVfmYqxlZCzCyF7PLg79RFs-CDuhEhHEdjmbUcmp7Gn73GDYcDDn=
+yDVdHTLCTcMxi5BRl1NkMOKwInSwRSzKigWOKcVOgRQpQhwR17CODwFoJ8EFUKIdSaB-9wCoAAT=
+hWdNsfdd_aaLW3-fHFm2TCqTrfnAiCQ0gE2zsJ710GMuBFwa2gQjRKSZkLHzsM4uwto4ow8T6Ar=
+gkebg=2EnIqrFIHIEIPLKg/click]=20
+
+# Look 2 # Street code=20
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOJQdXDrfeQuzWUQLzEtxdIshYAi4ZqcNZg0pblahU7i1FX_gB39AYqji6Ozg7trBzc=
+X68fo8PK-DzyvViqA6Sd923xZmZbubx-ft27GTx_vdzU2eVi_uhwa9TV4olQvtwAYDoflSOZxZy=
+CScpilIFdZXwKMfN_2sYEhhOUTlSZonO9Mrnuv3Fouzg1ybUGe97KuFNb2DENtw6cowDhwg2bQd=
+IKW1-KNoOF5-0Gt4dm84TatpZmYagWZijixVovzgzDTFvfiTqxEArFVLxZUdiq72i43GDYczDly=
+K64OGeEVw6lUIaMup8hgxGFV6GCTmJRVbY4pxY5NqhQhjohrmAcuAO0sugBKtBMJ1O_uAxWBKD4=
+7NI--69_8HX5U0a5QgXQ9jI4loRFkgo3CrJsPUtkP4sgyECE6xYSMRIhDZhLW1hFlmJhfSyp4zQ=
+=2EhqTRhHQW2LhdQA/click]=20
+
+Code Street noir, avec une touche de couleur=2E Adjug=C3=A9 !=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOJQdXDrfeQuzWUQLzEtxdIshYKlhGty1mDSlOZqFTqJU1f9A3b0ByiOLo7ODu6uHdx=
+cbBE3h_cLnlcr5MDsm37svm3MCo_3z697d5OXr8-HCps-bd9cj4zqFjxTqp9ZAIxGo2Ios6g7FH=
+ExSBOQqXQgAUbNpt3EBoYQFs9UEqNJdjC97b9zaz2_NMy0FXnZT3tSWPvzGWg7TYp8jH3Xr_t1x=
+294DV7za5537Fdqns1rbt1am4OJlpOJiGJrM788DFJt9SjqRkrEEFvVfE6l57KnHXKDYcPBnCO3=
+5OqQEV4ynFIZMupyigxGHFaGDjaJSVnZ5phS7NikTBHiiLiGeeIB0EnDK6BEJ5ZA_fYBUCEIo4s=
+Wgu1F_qcWbv-dFngLtYGYW6dEBdL1IDyVhIaQCTYO0l42TOTAj0LLQIToFBMyFgEOmElYR0eUYW=
+L-AAuqe7w=2Es1unoQpJXH1HFw/click]=20
+
+Blouse=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOJQdXDrfeQuzWUQLzEtxdIshYKlhGty1mDSlOZqFTqJU1f9A3b0ByiOLo7ODu6uHdx=
+cbBE3h5f3g-fVCjkw-6Yfu28bs8Lj_fPr3t3k5evzocKmT9s31yOjugXPlOpnFgCj0agYyizqDk=
+VcDNIEZCodSIBRs2k3sYEhhMUzlcRokh1Mb_vv3FrPLw0zbUVe9tOeFNb-vAbaTpMiH2Pf9et-3=
+fEbXoPX_JrnHfuVmmfzmlu31uZgouVkIqLY2swvD4NUWz2KupESMcRWNZ9T6bnsaYfcYNhwMOfI=
+Lbk6ZISXDKdUhoy6nCKDEYeVoYNNYlJWtjmmFDs2KVOEOCKuYZ54AHTS8Aoo0YklUL95AFQIwui=
+ihWB74f-phdt_pwXeQm0g5lunRAXS9SA8lYSGkAk2DtJeNkzkwI9Cy0CE6BQTMhYBDphJWEdHlG=
+Fi_gAL5Xu9=2EjTEK8HMITBvPsQ/click] [https://media-consumer365=2Edesigual=2Ec=
+om/desigual-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr_chdmssgXmNaiqURLBQsJVyTs=
+waTpjRXq9BJnLrqP2BH_wDF0cXR2cHdtYObiy3i5vB474PvabkMmH7Tj-23tWnu8f75dedu_PL1=
+-VBmk6fNm-uhUdmAZ0r1UguA4XCYD2QadgYiyvtJDFKV9CXAqHHMjyDBEML8mYojNE73Jre9d26=
+tZhcGqbYkL3tJVwprd4a-ttWgyMPYc7yaV7O9ulvnVa_quodeueoWedWpWSszMdYyMhZhZK1nFw=
+d-oi0fhJ1QiQhiq5LNqORcdrV9bjBs2Jhz5BQcHTLCC4ZdKEFGHU6RwYjNStDGJjEpKxU5phTbR=
+VKiCHFEHMM8cQFoJ8EVUKIdSaB-dx-oAAThRRPB1rz_SxO3_k5zfY6iiVrtAhVI1_3gVBIaQCbY=
+yE-66SCWfS8MLAMRolNMyEj42GcmYW0dUYaJ-QP3yHut=2ETBhFAO91d5yfwQ/click]
+
+Bottines=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOJQdXDrfeQuzWUQrzEtxdIIFgpKCdfkbINJU5qrVegkTl31D9jRH6A4ujg6O7i7dnB=
+zsUXcHN6PB95Xy2XA9Jt-bL-tTXOP98-vO3fjl6_PhzKbPG3eXA-NygbsKNVLLQCGw2E-kGnYHo=
+go7ycxSFXSlwCjxjE_ggRDCPMdFUdonO5Nbnvv3FrNLgxSbUle9pKuFNbuDH1tq0GRh7HneDWvZ=
+nt1t86rXtV1D71y1S3yqlOzVmbDWMvIWISRtZ5dHPiJtnwQtkMlIoitSjajknPZ1fa5wbBhY86R=
+U3B0yAgvGHahBBl1OEUGIzYrQRubxKSsVOSYUmwXSYkixBFxDPPEBaCVBFdAiVYkgfrtfaACEIQ=
+Xpwg25_mfTnHz7zSfz1HMrFWgAum6H5xJQgPIBBv5STcdxLLvhYFlIEJ0igkZCR_7zCSspSPKMD=
+F_APgDe64=2Ev0AhiFhMxxz30A/click] [https://media-consumer365=2Edesigual=2Ec=
+om/desigual-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr_chdmssgXmNaiqVxKBQsJVyTs=
+w0mTWmuVqGTOHXVf8CO_gGKo4ujs4O7awc3F1vEzeHx3gff03IZMPumH7tvG7Pc4_3z697d5OXr=
+86HMpk_bN9cjo7IFu0r1UwuA0WiUD2QadoYiyvtJDFKVDCTAqNE4aSCEIYT5roojNEkPprf9d26=
+tZ5eGqbYiL_tJTwprf46-ttOgyMPYc7yaV7O9ulvnVa_qusdeueoWedWpWWtzMdYyMhZhZG1ml4=
+d-oq0ehZ1QiQhiq5LNqORc9rRDbjBs2Jhz5BQcHTLCC4ZdKEFGHU6RwYjNStDGJjEpKxU5phTbR=
+VKiCHFEHMM8dQFoJ8EVUKIdSaB-9wCoAAThRRPB1qL_SxO3_k4Lvam3gGiiVrtABdJ1PziThAaQ=
+CTb2k146jOXACwPLQIToFBMyFj72mUlYW0eUYWL-ABZLe8Y=2E4tLtHOrXXC5wSw/click]
+
+Pantalons=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOJQdXDrfeQuzWUQrzEtxdI4FAqWEq7J2QaTpjRXq9BJnLrqH7CjP0BxdHF0dnB37eD=
+mYou4Oby8HzyvlsuA2Tf92H3bmOUe759f9-4mL1-fD2U2fdq-uR4ZlS3YVaqfWgCMRqN8INOwMx=
+RR3k9ikKpkIAFGjcZJAyEMIcx3VRyhSXowve2_c2s9uzRMtRV52U96Ulj78-prOw2KPIw9x6t5N=
+duru3Ve9aque-yVq26RV52atTYHYy0jYxFG1mZ2eegn2upR2AmViCC2KtmMSs5lTzvkBsOGjTlH=
+TsHRISO8YNiFEmTU4RQZjNisBG1sEpOyUpFjSrFdJCWKEEfEMcxTF4B2ElwBJdqRBOo3D4AKQBB=
+eNBFsLfw_NXHr77TAm3oLiPnWLlCBdN0PziShAWSCjf2klw5jOfDCwDIQITrFhIyFj31mEtbWEW=
+WYmD8WhnvH=2E5HgW5qorYZmvEw/click]=20
+
+# Nouveaux accessoires : votre touche finale=20
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtizFLw0AA=
+hUEpYkWUjOJQdXCyl7vcpbkM4jWmpVjapSBYJFwv1xpseiWXWoVO4tRV_4Ad_QGKo4ujs4O7awc=
+3F6vi5vB474PvGbkMmH6St82XlWnu_vbxeetm_PTxflemk4f1q8uhXVmzT9K0r10AhsNhPpQ66g=
+x4Ny9UDHSqEgliFcqdtoxjCbgQUmsVJVIDONa7k-v-K3OXs3MDbSzI877qSe5uz1AYG4cEBggFf=
+lALal7QqDdYNajW6wdBuVovsqpfc5dmYmxkZMyjrruanR8IZSzuR50o5V0TuZVsJlWnsmfsMZsi=
+20OMQb_gWybFrGB7hZJJic8ItCn2aMn0kIMdQktFhghBXhGXCIQMYt92jioAtFR4AVLe6kqQ_u4=
+EpCEIo7MmNI-_-7808fHf6UfnrQLh0LJE2JaYhCbldCRUTw9imQRR6NoQY4sgjEdcIEEdTFsWJB=
+Rh5wvyqH4D=2E_H9z3w4_TdhuxQ/click]=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AA=
+hkEpYkWUjOLgx-Ckl7vcXXMZxGtMSrG0iyAoEq6XU4NNr-RSo9BJnLrqH7CjP0BxdHF0dnB3dXB=
+z8Qs3h5f3feB5rYUSePsgL0tPM28Lt9f3j8tXw4f315saG93NX5wXtD5Hj_K8ZzwAiqJYi5VJDv=
+uisyZ1CkyuMwVSHavVA5WmCggplTE6yZQBcGjWR5e9Z-5Nl8f6xppQpz3dVcJb-UJpLe4QGCEUB=
+VEzavrRdmubN6JGq7UV1RqtKm8ETW_qS0ytkkpF0vFmy-N9qa3JzeQwyUXHRl69XMr1sepaG5wy=
+RH3EOQwqgWMzzCvUr4Q2IwEnkDLss9D2kYtdwsIqR4Qgv4pDAiGHOKDubh2Ato7PQC7aHQXy352=
+BPAZxcrIH7f3v_i97dP_v9KOLdoUI6DgyPlCYxDYTbCB11_RTlUVJ7FGIsUMQxgMhkWQuZm0HEo=
+aw-wnzOn4F=2EMwmac7YzmjrZaA/click]=20
+
+Voir tous=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtizFLw0AA=
+hUEpYkWUjOJQdXCyl7vcpbkM4jWmpVjapSBYJFwv1xpseiWXWoVO4tRV_4Ad_QGKo4ujs4O7awc=
+3F6vi5vB474PvGbkMmH6St82XlWnu_vbxeetm_PTxflemk4f1q8uhXVmzT9K0r10AhsNhPpQ66g=
+x4Ny9UDHSqEgliFcqdtoxjCbgQUmsVJVIDONa7k-v-K3OXs3MDbSzI877qSe5uz1AYG4cEBggFf=
+lALal7QqDdYNajW6wdBuVovsqpfc5dmYmxkZMyjrruanR8IZSzuR50o5V0TuZVsJlWnsmfsMZsi=
+20OMQb_gWybFrGB7hZJJic8ItCn2aMn0kIMdQktFhghBXhGXCIQMYt92jioAtFR4AVLe6kqQ_u4=
+EpCEIo7MmNI-_-780neO_04_OWwXCoWWJsC0xCU3K6Uionh7EMgmi0LUhxhZBGI-4QII6mLYsSC=
+jCzhfzzH4H=2E-EiCr_0YBGeCkA/click]=20
+
+Bonjour Youniq! [https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e=
+/=2EeJxtTD1PwkAATTTEiDGajsYBddCJ613vSq-D8VoLITZ0ITERyeVoD2wEStoimjAZJ1b9AzL=
+6AzSOLo7ODu6uDG4uAjo6vLz38j6UXAZMvsnH9tvaJPd4__y6czd6-fp8KNHx0-bN9UAvb-ydpW=
+kvMQEYDAb5QCZhqy_aeT_qgGbMXQvEshUmqYwBHCX749veOzNXswv9RFmSl72oK4W5O7W-snVMI=
+EeIO7zCKzavelXmctfzjnjJ9SzmOhVzZVrsKBnZEWHbXM8u9v1IWT4MW2Eq2ioyy9lMGp3LrnLA=
+dIp0GzEGnYKjqRSzgm4XiiolDiNQp9imRdVGBjYILVoMEYJsCxcJhAxiRzdOTgFoRMEVSEWjLUH=
+6q2OQBiAIL2pQrc_4P8yz-aqG6n-Tv5O4BuszKxoFIqCm-UFTYhKoVNChH3WTfkfGPAxMHWKsEY=
+TxUPjIpwamDQ0SirDxA6Xkfrk=2EudjdWaCnH3zuiQ/click] Carte client: 614435244 [=
+https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtTD1PwkAAT=
+TTEiDGajsYBddCJ613vSq-D8VoLITZ0ITERyeVoD2wEStoimjAZJ1b9AzL6AzSOLo7ODu6uDG4u=
+Ajo6vLz38j6UXAZMvsnH9tvaJPd4__y6czd6-fp8KNHx0-bN9UAvb-ydpWkvMQEYDAb5QCZhqy_=
+aeT_qgGbMXQvEshUmqYwBHCX749veOzNXswv9RFmSl72oK4W5O7W-snVMIEeIO7zCKzavelXmct=
+fzjnjJ9SzmOhVzZVrsKBnZEWHbXM8u9v1IWT4MW2Eq2ioyy9lMGp3LrnLAdIp0GzEGnYKjqRSzg=
+m4XiiolDiNQp9imRdVGBjYILVoMEYJsCxcJhAxiRzdOTgFoRMEVSEWjLUH6q2OQBiAIL2pQrc_4=
+P8yz-aqG6n-Tv5O4ptVnVjQKREBN84OmxCRQqaBDP-om_Y6MeRiYOsRYIwjjofCRTw1MGxokFGH=
+jB6Zkfrs=2EhK0zhXVDWBXahQ/click]=20
+
+Shop finder [https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2Ee=
+JxtTD1Lw0AABaWIFVEyikNVxK2Xu9yluQziNaalGJqlIFjLcfloDaZNaBKr0EmcuuofsKM_QHF0=
+cXR2cHft4OZibXFzeLz3eB9SIQcm3-Rj-21tUni8f37duRu9fH0-VOn4afPmeqDWNnbP0jROdAA=
+Gg0HR85Ogk4mw6EZd0O5zqwySsyhOABwl--Pb-J3pq_mFLJGW_Ms46vlC35taV9o6JpAjxE1e53=
+WDN-wGs7hl20e8atllZpl1fWVa7Eo5vyuCUF_PL2ZuJC0fBp0gFaGM9Fo-l0bnfk86YCpFqoEYg=
+2bJVGSKWUk1ShWZEpMRqFJs0IpsIA1rhFbKDBGCjDKuEAgZxKaqnZwC4ETeFUiFE_ognes-SD3g=
+BRdNKLd--T_MstmqqbTmkyZs_f3MHoRTIgIqiuu1fUw8mQo6dKNeknX9Pg88XYUYKwRhPBQucqm=
+GqaNAQhHWfgC5HH1_=2E1syMOGG76zfRrw/click]=20
+
+[https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtTD1Lw0AA=
+BaWIFVEyikOtg1svd7lLchnEa5qWYmiXgmAJ4ZJcazBtSpMahU7i1FX_gB39AYqji6Ozg7trBzc=
+Xa4ubw-O9x_uQCjkw-yYfxbetWeHx_vl1_27y8vX5UKPTp92b60yt7xTP0nSQGABkWVbqcF94cX=
+xe8uMeqIgk7I54BOAkOZzeDt6ZsZlfGSXSmrgcxH3BjYO59aW9EwJdhFzLbbgN0201W8x27Wbz2=
+K3ZzTKzrYaxMS_2pJzo8TAytvOrIz-W1ithN0x5JCOjns-l8bnoS0dMpUg1EWPQ0ixFpphpqqlV=
+ZUosRqBKsUmrsol0rBNaLTNECDLLuEogZBBbqn7qAeDFwRVIuRcJkC71EKQBCMKLNpSdX_4Pi2y=
+xaivOctJGzt_PcKGDNnQA9zTCoaL4QUdgEsiU07Ef95NRTwzdMDBUiLFCEMZj7iOf6ph6CiQUYf=
+0HBuB-Tw=2EQfQKLQqexT0bDA/click] [https://media-consumer365=2Edesigual=2Eco=
+m/desigual-prod/e/=2EeJxtjD9Lw0AYxkEpYkWUjOJQ7eDWy13uklwG8RqTUiztUhAsJVz-WI=
+NNUpKLVegkTl31C9jRD6A4ujg6O7i7dnBzsba4OTy8v-d93-eRSgUw_SYfu28b09Lj_fNr-W788=
+vX5UKOTp-2b66Fa3yqfCTHIDACGw2EljDPBeymPKl4SAT_Iwl7O-wCOs_3J7eCdGevFpTyTVoLL=
+QRIH3NibWU_aOSbQQcixnKbTNJ12q80aTqPVOnJqjVaVNaymsTZ7jKRCEPGwb2wWl3MvkVYPw14=
+oeF9GRr1YEMl5EEsHTKVINRFj0NIsRaaYaaqp2TIlFiNQpdiktmwiHeuE2lWGCEFmFdsEQgaxpe=
+onLgBu4l8Bwd1-AMSCUyB84IcXHSh3f-d_mt_mqY7SXUQ6qPvXk855vuGuRjhUFM8_DTDxZcrpy=
+EviLI-C1Al9Q4UYKwRhPOIe8qiOqatAQhHWfwAH3n79=2EAEQ1My6-DgbRJg/click] [https:=
+//media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtTD1Lw0AABaWIFVE=
+yikPVQade7nKX5jKI15iUYmiXgmAp4ZKcNdg0pUmMhU7i1FX_gB39AYqji6Ozg7trBzcX-4Gbw-=
+O9x_uQCjkw-SGfu-8bk8LTw8vb3v3o9fvrsULHz9u3N5la3Tq4SJJerAOQZVlxEKVJ6oqiF4Ugj=
+UUfZML1RRy0U96Bo_hwfNf7YPp6fimNpRVx3Yu6guv7U-tJO6cEOgg5plNzaobTqDeY7dj1-olT=
+setlZps1fW1aDKWcCHnQ0Tfzy6kXSavHQTtIeEdGejWfS6JL0ZWOmEqRaiDGoFkyFZliVlKNkiV=
+TYjICVYoNaskG0rBGqFVmiBBklLFFIGQQm6p25gLgRv4AJNztCJAsdB8kPvCDqyaUWzP-D_Nsvm=
+oqrcWkiVp_P_259mcRd0uEQ0Xx_HOBiS9TTode1I3TUPSdwNdViLFCEMZD7iGPapi6CiQUYe0Xl=
+gCBRw=2EJQVTEcZEubVMZA/click] [https://media-consumer365=2Edesigual=2Ecom/d=
+esigual-prod/e/=2EeJxtTLtKw1AABaWIFVEyikPVQafeR-5NczOItzEtxdIsBcFSQh63Gmwe5=
+KEWOolTV_0BO_oBiqOLo7ODu2sHNxdri5vD4ZzDeUilAph804_tt7VJ6fH--XXnbvTy9flQZ-On=
+zZvrS6WxsXeWZXGqARDFIiyncZT5vUHZjQKQpyIBCCEGVQVSiEbp_vg2fufaanEhT6UlcRVHobC=
+13al1pa1jiiyMLcNqWS3daptt3rSapnlk1ZtmlTeNlrYyLQZSQQS239fWi4u5G0nLh_6pn9l9iL=
+VGsZBF5yKUDrjCsKJjzpFRMWTICK8oeqUGGTU4RQojOqtBHatEpaxW5ZhSrFdJjSLEETEU9cQBw=
+Im8Achspy9ANtcJyDzg-RcdBLu__B9m2WzVkbvzSQd3_36SmfY6pAtsp0JtJMuu1xOEepDZbOhG=
+YZoHIrF8T1MQITLFhAxtF7tMJcyREWWYqD-mhn8J=2Er45aiFqeUKO09A/click]=20
+
+Si tu souhaites te d=C3=A9sabonner de la newsletter de Desigual, clique ici=
+ [https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtkb1v00A=
+YxgUoQgQhkEfE0MLA1JzvfGf7LPFxcZwP4sZFTYRIVVmXu6tjGn_UdtJQdUJMXeEfoCN_AB8jCy=
+MzAztrBzYW2kI3hlfv--h9ftIjPdpKDZz8Jj_ufrt5svLh3eev994effn1832HHn-88_rVvtm7_=
+enStKry0gEgUTLmayJLy3miCsMkDanKOJrzWUNkCbgQa3mRSaCAGy2jwn8BM9VCY7V4inW82WOj=
+hb1RQsP1g1bIomqvQ5ZxMIrLrk7MvBvwvtHtbbryYPxk_Xl-sLHXH4rBtCmi5XR_1-xlapqkIrL=
+WI9HART6UuRhNsGVSBs5yqbR6NONp9GCnCFtjeFQ-PH6Tf2fOjfrlealdVcs8SxV37p9Koa0-Iz=
+BEKPTCQThww2EwZH7oB0E_7PhBk_newLl-aky0mkp4PHNu1a_MRaZda8VRXPGZjpxevVZluyrVH=
+jOTItNFjEHP8gydYmaZrtXWKfEYgSbFLm3rLrKxTWi7yRAhyG3iNoGQQeyZ9jgAYJLJl6Dik5kC=
+1d-7AJUEMl5sQX37bP9vzn_n1BbZ_ofkgE8swqFhCLmjMJE65fTworgwlo4JMTYIwviQCySojen=
+EgIQibP8BQr6r0A=2EuR41dsaiEvwcBQ/click]
+
+Tu peux g=C3=A9rer tes accords de mani=C3=A8re personnalis=C3=A9e dans ton =
+espace d'utilisateur=2E
+
+Tu peux consulter et exercer tes droits, ainsi que consulter les conditions=
+ d'utilisation de tes donn=C3=A9es dans notre politique de confidentialit=
+=C3=A9 en cliquant ici [https://media-consumer365=2Edesigual=2Ecom/desigual=
+-prod/e/=2EeJxti71Lw0AAxUEpYkWUjOLgx-BkL3e5S3MZxGtMpVjaRRAsJVwvZw0mudBcWwud=
+xMlV_wEd_QMURxdHZwd31w5uLn6ODo_3Hu_9jJUCmHyQ17XnhcnK3fXD0_rVxeP72-0uvblfPj8=
+b2rUl51jrLHcBGA6HpVDmUbfP45JQCci16kkQyy6PN1OlIyE3s1404GJUOtZJDC_yrZvL7IW588=
+Wpfm7MyNNMpZK7G19VGKsHBAYIBX7QCBpesN_cZ_Wg3mzuBbv1ZoXV_YY793VMjIJMeBS7i8Xpv=
+lDG7E7UjTSPTeTWigWtTmRqbDObIttDjEG_7Fsmxaxse-WqSYnPCLQp9mjV9JCDHUKrFYYIQV4F=
+VwmEDGLfdg4PAOiocAQ078QS6N_cAzoEYTRoQbP97f_pZ_uhWnb7D8laqA2OVKoB75QJh5YlwiO=
+JSWhSTsdCpXk_kb0gCl0bYmwRhPGYCySog2nHgoQi7HwCksyDkQ=2EEOOdtSOT79iBWQ/click]=
+=2E
+
+Conform=C3=A9ment =C3=A0 la r=C3=A9glementation en vigueur en mati=C3=A8re =
+de protection des donn=C3=A9es personnelles et selon notre Politique de con=
+fidentialit=C3=A9 (disponible ici) [https://media-consumer365=2Edesigual=2Ec=
+om/desigual-prod/e/=2EeJxti71Lw0AAxUEpYkWUjOLgx-BkL3e5S3MZxGtMpVjaRRAsJVwvZ=
+w0mudBcWwudxMlV_wEd_QMURxdHZwd31w5uLn6ODo_3Hu_9jJUCmHyQ17XnhcnK3fXD0_rVxeP7=
+2-0uvblfPj8b2rUl51jrLHcBGA6HpVDmUbfP45JQCci16kkQyy6PN1OlIyE3s1404GJUOtZJDC_=
+yrZvL7IW588Wpfm7MyNNMpZK7G19VGKsHBAYIBX7QCBpesN_cZ_Wg3mzuBbv1ZoXV_YY793VMjI=
+JMeBS7i8XpvlDG7E7UjTSPTeTWigWtTmRqbDObIttDjEG_7Fsmxaxse-WqSYnPCLQp9mjV9JCDH=
+UKrFYYIQV4FVwmEDGLfdg4PAeiocAQ078QS6N_cAzoEYTRoQbP97f_pZ_uhWnb7D8laVhscqVQD=
+3oLtTplwaFkiPJKYhCbldCxUmvcT2Qui0LUhxhZBGI-5QII6mHYsSCjCzici64R-=2E1-0buiV4=
+DgXU1Q/click], que vous avez lue et accept=C3=A9e avant la pr=C3=A9sente co=
+mmunication, nous vous informons que les donn=C3=A9es personnelles que vous=
+ nous avez fournies seront utilis=C3=A9es par Desigual (ABASIC, S=2EL=2E) e=
+n tant que responsable de leur utilisation, dans le but principal de vous e=
+nvoyer des communications commerciales visant =C3=A0 vous informer de produ=
+its, de nouveaut=C3=A9s, de promotions et d'avantages exclusifs, ou afin de=
+ r=C3=A9aliser des enqu=C3=AAtes de satisfaction pour nous aider =C3=A0 con=
+tinuer =C3=A0 nous am=C3=A9liorer=2EVous pouvez retirer votre consentement =
+=C3=A0 tout moment et exercer vos droits d'acc=C3=A8s, de rectification et =
+de suppression des donn=C3=A9es ou vous opposer au traitement de celles-ci =
+par l'envoi d'une lettre =C3=A0 l'adresse Passeig del Mare Nostrum, 15, - 0=
+8039 Barcelona ou clique ici [https://media-consumer365=2Edesigual=2Ecom/de=
+sigual-prod/e/=2EeJxtTj2L1FAUBWUQR0RJKRarFlbZ95H7XvJSLL6JmWVxmGkWhB2G8L6iwc=
+kkJG92XNhKrLbVP-CW_gDF0sbS2sLedgs7G8fV0uJw7uGcwz3BzgBd_GLf73-9dbHz4d2nLw_en=
+n3--eP9vjj_ePf1qw0_uLN57n3bpwi1XXWszEnbdF4tQ-t2m5Xz3br3u6ap0cbpsulqBFgzx8s4=
+jEpFQsCxCzVPcOgAYi4ioQUYpBKFTeJImNBYhWA5DxUAhIw7wFaQGOuSnPV752_abzK9Obyy7oN=
+r7mW7_ajSh1tpgntPGSkoLfJiWkyz4nB2KCfFZDZ7UuxPZiM5yafpjW2wDgauVtUyvT28ujZNcP=
+1x9aza7sc0PRgOfPPCrYJHkgvKMyolyeM8wgJkzLN4jAXLJSNcQCbGOKMJJEyMR5IyRrMRjBkhk=
+kDOk6MjhHRjT5BXeumQ_3t3yFtkq-M5wYs__D9cepetOV_8q7TzaIHKZuWRmtOFjpkiUWRs6YBZ=
+LJQ4Nc2qX9euKyqbcgIQMQpwqgw1IgGhI8IEheQ3doaTrQ=2EmwYqB2xsH05IXQ/click]=2E
+--58ccb795b963a19014e93558caa764ae045e6802869f135d552eaba12acc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="us-ascii"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional //EN" "http://w=
+ww=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" xmlns:v=3D"urn:schemas-mic=
+rosoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head><=
+!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerI=
+nch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--><meta =
+http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><meta na=
+me=3D"viewport" content=3D"width=3Ddevice-width"><!--[if !mso]><!--><meta h=
+ttp-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![endif]--><title>=
+Vous allez faire un malheur &#128748; New arrivals</title><!--[if !mso]><!-=
+-><!--<![endif]--><style type=3D"text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		table,
+		td,
+		tr {
+			vertical-align: top;
+			border-collapse: collapse;
+		}
+
+		* {
+			line-height: inherit;
+		}
+
+		a[x-apple-data-detectors=3Dtrue] {
+			color: inherit !important;
+			text-decoration: none !important;
+		}
+	</style><style type=3D"text/css" id=3D"media-query">
+		@media (max-width: 660px) {
+
+			=2Eblock-grid,
+			=2Ecol {
+				min-width: 320px !important;
+				max-width: 100% !important;
+				display: block !important;
+			}
+
+			=2Eblock-grid {
+				width: 100% !important;
+			}
+
+			=2Ecol {
+				width: 100% !important;
+			}
+
+			=2Ecol_cont {
+				margin: 0 auto;
+			}
+
+			img=2Efullwidth,
+			img=2EfullwidthOnMobile {
+				width: 100% !important;
+			}
+
+			=2Eno-stack =2Ecol {
+				min-width: 0 !important;
+				display: table-cell !important;
+			}
+
+			=2Eno-stack=2Etwo-up =2Ecol {
+				width: 50% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum2 {
+				width: 16=2E6% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum3 {
+				width: 25% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum4 {
+				width: 33% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum5 {
+				width: 41=2E6% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum6 {
+				width: 50% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum7 {
+				width: 58=2E3% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum8 {
+				width: 66=2E6% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum9 {
+				width: 75% !important;
+			}
+
+			=2Eno-stack =2Ecol=2Enum10 {
+				width: 83=2E3% !important;
+			}
+
+			=2Evideo-block {
+				max-width: none !important;
+			}
+
+			=2Emobile_hide {
+				min-height: 0px;
+				max-height: 0px;
+				max-width: 0px;
+				display: none;
+				overflow: hidden;
+				font-size: 0px;
+			}
+
+			=2Edesktop_hide {
+				display: block !important;
+				max-height: none !important;
+			}
+
+			=2Eimg-container=2Ebig img {
+				width: auto !important;
+			}
+		}
+	</style></head><body class=3D"clean-body" style=3D"margin: 0; padding: 0; =
+-webkit-text-size-adjust: 100%; background-color: transparent;"><span style=
+=3D"color: transparent; display: none !important; font-size: 0px; line-heig=
+ht: 0px; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidd=
+en; mso-hide: all; visibility: hidden; width: 0;">Looks d&#8217;hiver</span=
+><div style=3D"display: none; max-height: 0px; overflow: hidden;">&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</d=
+iv><img width=3D"1" height=3D"1" alt=3D"" src=3D"https://media-consumer365=
+=2Edesigual=2Ecom/desigual-prod/e/CgxgrLj1oeD2ZevQ404SIAUv8Ps13CLOD_AgtqG5x=
+iOUisH056pHOaK3HISCdzZJMYpzPqKTcNhB=2E3l4ocQaVcHdsjA/open">
+	<!--[if IE]><div class=3D"ie-browser"><![endif]-->
+	<table class=3D"nl-container" style=3D"table-layout: fixed; vertical-align=
+: top; min-width: 320px; border-spacing: 0; border-collapse: collapse; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; background-color: transparent; wi=
+dth: 100%;" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=
+=3D"100%" bgcolor=3D"transparent" valign=3D"top"><tbody><tr style=3D"vertic=
+al-align: top;" valign=3D"top"><td style=3D"word-break: break-word; vertica=
+l-align: top;" valign=3D"top">
+					<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0"><tr><td align=3D"center" style=3D"background-color:tra=
+nsparent"><![endif]-->
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:16px; padding-bottom:0px;"><![end=
+if]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:16px; padding-bottom:0px; padding-right: 16px; =
+padding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><style type=3D"text/css">
+    @media screen {
+        @font-face {
+            font-family: 'Volte Medium';
+            src: url('http://emails=2Edesigual=2Ecom/assets/fonts/volte-med=
+ium/Volte-Medium=2Ewoff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Volte Semibold';
+            src: url('http://emails=2Edesigual=2Ecom/assets/fonts/volte-sem=
+ibold/Volte-Semibold=2Ewoff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Quicksand Regular'), local('Quicksand-Regular'), ur=
+l(https://fonts=2Egstatic=2Ecom/s/quicksand/v9/6xKtdSZaM9iE8KbpRA_hJFQNcOM=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0102-0103, U + 0110-0111, U + 1EA0-1EF9, U +=
+ 20AB;
+        }/* latin-ext */
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Quicksand Regular'), local('Quicksand-Regular'), ur=
+l(https://fonts=2Egstatic=2Ecom/s/quicksand/v9/6xKtdSZaM9iE8KbpRA_hJVQNcOM=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0100-024F, U + 0259, U + 1E00-1EFF, U + 2020=
+, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U + A720-A7FF;
+        }/* latin */
+        @font-face {
+            font-family: 'Quicksand';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Quicksand Regular'), local('Quicksand-Regular'), ur=
+l(https://fonts=2Egstatic=2Ecom/s/quicksand/v9/6xKtdSZaM9iE8KbpRA_hK1QN=2Ew=
+off2) format('woff2');
+            unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02BB=
+-02BC, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U +=
+ 2122, U + 2191, U + 2193, U + 2212, U + 2215, U + FEFF, U + FFFD;
+        }/* cyrillic-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKOzY=2Ewoff2) format('wof=
+f2');
+            unicode-range: U + 0460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0=
+-2DFF, U + A640-A69F, U + FE2E-FE2F;
+        }/* cyrillic */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu5mxKOzY=2Ewoff2) format('wof=
+f2');
+            unicode-range: U + 0400-045F, U + 0490-0491, U + 04B0-04B1, U +=
+ 2116;
+        }/* greek-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu7mxKOzY=2Ewoff2) format('wof=
+f2');
+            unicode-range: U + 1F00-1FFF;
+        }/* greek */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu4WxKOzY=2Ewoff2) format('wof=
+f2');
+            unicode-range: U + 0370-03FF;
+        }/* vietnamese */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu7WxKOzY=2Ewoff2) format('wof=
+f2');
+            unicode-range: U + 0102-0103, U + 0110-0111, U + 1EA0-1EF9, U +=
+ 20AB;
+        }/* latin-ext */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu7GxKOzY=2Ewoff2) format('wof=
+f2');
+            unicode-range: U + 0100-024F, U + 0259, U + 1E00-1EFF, U + 2020=
+, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U + A720-A7FF;
+        }/* latin */
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Roboto'), local('Roboto-Regular'), url(https://font=
+s=2Egstatic=2Ecom/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxK=2Ewoff2) format('woff2'=
+);
+            unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02BB=
+-02BC, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U +=
+ 2122, U + 2191, U + 2193, U + 2212, U + 2215, U + FEFF, U + FFFD;
+        }/* cyrillic-ext */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFWJ0bbck=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0=
+-2DFF, U + A640-A69F, U + FE2E-FE2F;
+        }/* cyrillic */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFUZ0bbck=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0400-045F, U + 0490-0491, U + 04B0-04B1, U +=
+ 2116;
+        }/* greek-ext */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFWZ0bbck=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 1F00-1FFF;
+        }/* greek */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFVp0bbck=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0370-03FF;
+        }/* vietnamese */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFWp0bbck=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0102-0103, U + 0110-0111, U + 1EA0-1EF9, U +=
+ 20AB;
+        }/* latin-ext */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFW50bbck=
+=2Ewoff2) format('woff2');
+            unicode-range: U + 0100-024F, U + 0259, U + 1E00-1EFF, U + 2020=
+, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U + A720-A7FF;
+        }/* latin */
+        @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Open Sans Regular'), local('OpenSans-Regular'), url=
+(https://fonts=2Egstatic=2Ecom/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0b=2Ewo=
+ff2) format('woff2');
+            unicode-range: U + 0000-00FF, U + 0131, U + 0152-0153, U + 02BB=
+-02BC, U + 02C6, U + 02DA, U + 02DC, U + 2000-206F, U + 2074, U + 20AC, U +=
+ 2122, U + 2191, U + 2193, U + 2212, U + 2215, U + FEFF, U + FFFD;
+        }
+    }
+</style><style>
+    body {
+        font-family:'Volte Medium', Quicksand, Helvetica, Roboto, 'Open San=
+s', Arial, sans-serif;
+        font-size:16px;
+        margin:0px;
+        padding:0px;
+        -webkit-text-size-adjust:100%;
+    }
+    h1{font-family:'Volte Semibold', Quicksand, Helvetica, Roboto, 'Open Sa=
+ns', Arial, sans-serif;font-weight:600!important;}
+    h2{font-family:'Volte Semibold', Quicksand, Helvetica, Roboto, 'Open Sa=
+ns', Arial, sans-serif;font-weight:600!important;}
+</style><style type=3D"text/css">
+    :root {--swiper-theme-color:#2C2926;--swiper-navigation-size:44px;--men=
+uUnderlinePosition:0;--menuUnderlineWidth:0;}
+    html, body{color:inherit!important;text-align:left!important;margin:0 a=
+uto!important;padding:0!important;height:100%!important;width:100%!importan=
+t;min-width:100%;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-c=
+olor:rgba(2, 2, 2, 0);}
+    *{text-size-adjust:none!important;-moz-text-size-adjust:none!important;=
+-ms-text-size-adjust:none!important;-webkit-text-size-adjust:none!important=
+;box-sizing:border-box;}
+    div[style*=3D"margin:16px 0"]{margin:0!important;}
+    table, td{mso-table-lspace:0pt!important;mso-table-rspace:0pt!important=
+;}
+    table{font-size:16px!important;line-height:1=2E25;border-spacing:0!impo=
+rtant;border-collapse:collapse!important;margin:0 auto!important;text-align=
+:left!important;font-family:'Volte Medium', Quicksand, Helvetica, Roboto, '=
+Open Sans', Arial, sans-serif!important;}
+    table table table{table-layout:auto;}
+    img{-ms-interpolation-mode:bicubic;}
+    h1,h2,h3,h4{margin:0!important;}
+    p{margin-top:0!important;font-size:16px;line-height:1=2E25;margin-block=
+-start:0!important;margin-block-start:0!important;margin-block-end:0!import=
+ant;}
+    a{text-decoration:none!important;cursor:pointer;color:inherit!important=
+;}
+    strong{font-family:'Volte Semibold', Quicksand, Helvetica, Roboto, 'Ope=
+n Sans', Arial, sans-serif;font-weight:600;}
+    span{border-color:inherit!important;}
+    img=2Eg-img + div{display:none!important;}
+</style><style>
+	@media only screen and (max-device-width:480px) {
+        body{font-size:16px!important;width:100%!important;min-width:100%!i=
+mportant;}
+        h1{font-size:24px!important;line-height:24px!important;}
+        h2{font-size:18px!important;line-height:18px!important;}
+        =2Ehide-mobile{display:none!important;}
+        =2Eright-mobile{text-align:right!important;}
+        =2Eleft-mobile{text-align:left!important;}
+        =2Ecenter-mobile{text-align:center!important;}
+        =2Etable-md-25{width:100%!important;min-width:250px;}
+        =2Etable-md-50{width:100%!important;min-width:250px;}
+    }
+    @media only screen and (min-device-width:481px) {
+        body{width:100%!important;max-width:640px!important;}
+        h1{font-size:30px!important;line-height:30px;!important;}
+        h2{font-size:18px!important;line-height:18px;!important;}
+        =2Eonly-mobile{display:none!important;}
+        =2Eright-nomobile{text-align:right!important;}
+        =2Eleft-nomobile{text-align:left!important;}
+        =2Ecenter-nomobile{text-align:center!important;}
+        =2Etable-md-25{width:25%!important;}
+        =2Etable-md-50{width:50%!important;}
+    }
+</style></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+											=09
+											=09
+												</div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												</div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												</div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"left" style=
+=3D"font-family:'Volte Medium', Quicksand, Helvetica, Roboto, 'Open Sans', =
+Arial, sans-serif;width:60%;">
+															<p style=3D"margin-bottom:0;">
+																<font style=3D"font-size:12px;line-height:1=2E2;color:#8d8d=
+8d;">Looks d&#8217;hiver</font>
+															</p>
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxtkT9v00AAxQUoQqRCII-IoZSBqTnf-e7s84C4OM4f4sZFTYRIVVmXu6tjGs=
+du7KSh6oSYusIXoBILHwDEyMLIzMDO2oGNhYaqG8PTez_pvekZ6xVw_of83Ph-53z90_sv3x6-O=
+_36-9fHFjv7fP_N6yPauffh2rgs88IFINUqEZsymxbzVM8sSmpKF0k8F5OazFJwBZv5LFNAAy9e=
+xrPgJcx0Aw314hk28U6HDxbOdgEtLwgbEY_LwxZZJuEgKdomoXk7FF2r3dnx1PHw6daL_Hj7sNu=
+XvXFdxsvx0QHtZHqcTmVsb8Wyhmd5X-VyMMI2ZRyeFo_P3uY_uHu7en1eGDf1Ms-mWriPLlAaD5=
+4TGCEU-VEv6nlRP-zzIArCsBu1grDOA7_nrl0UU6OiU5FM3LvVG3OZGbcaSZyUYmIit1OtlNmBn=
+hpPOGWIeohz6Nu-ZTLMberZTZMRnxNIGfZY0_SQgx3CmnWOCEFeHTcJhBxinzrDHgCjTL0CpRhN=
+NCgv8wyUCqhksQv3VvY_7ZK9y82q82-wCmJkEwEtS6p9jYkymWAnVydFiXIpxNgiCOMTIZFkDmY=
+jCxKGsPMXLRGkig=2EfnUpJnlEVPPVGw/click" title=3D"Ver versi&#243;n online" s=
+tyle=3D"font-size:16px;color:#8d8d8d;text-decoration:underline;">
+																<font style=3D"font-size:12px;line-height:1=2E2;color:#8d8d=
+8d;">Voir version en ligne</font>
+															</a>
+														</td>
+														<td valign=3D"top" align=3D"right" style=3D"font-family:'Volt=
+e Medium', Quicksand, Helvetica, Roboto, 'Open Sans', Arial, sans-serif;">
+															<p style=3D"margin-bottom:0;">
+																<font style=3D"font-size:12px;line-height:1=2E2;color:#8d8d=
+8d;">Publicit&#233;</font>
+															</p>
+														</td>
+													</tr></table><table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" width=3D"100%" style=3D"width:100%;"><tr><td height=3D"8" style=3D"f=
+ont-size:0;line-height:0;">
+
+														</td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;">
+
+
+
+
+
+
+
+
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" styl=
+e=3D"width:100%;"><tr><td height=3D"32" style=3D"font-size:0;line-height:0;=
+"></td>
+  </tr><tr><td valign=3D"middle" align=3D"center">
+      <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0"><tr><td valig=
+n=3D"middle" align=3D"center" style=3D"padding-right:24px;"><a href=3D"http=
+s://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxtjD9Lw0AYh0EpY=
+kWUjOLgH8Stl7vcpbkM4jUmpRjapSBYSrgmZw02SWmuRqGTOHXVL2BHP4Di6OLo7ODu2sHNxYY6=
+Ory87-_H87zKVgFMf8jnzvvadOvp4eVt9378-v31WKWT583bm0yvbeydS9lPTQCyLCsFIg27Q94=
+r-UkEUpkMBMiSSMQAjtODyV3_g5mrxYVhqiyJq34SC27uz6KvbJ8Q6CHk2V7dq1tes9Fkruc2Gs=
+de1W1UmGvXzZUZGCkFEfGwZ64XF4d-oiwfhd1Q8p6KzFqxIJMLESuHTKdItxBj0C7bmkoxK-tW2=
+VEpsRmBOsUWdVQLGdgg1KkwRAiyKtghEDKIbd04bQPQSYJrIHmnJ4Cc3wMgAxCEly3Yztd_09Lb=
+cydn5KCF2rnz9yX38553yoRDTfODM4FJoFJOR34Sp8NIDLwwMHWIsUYQxiPuI58amHY0SCjCxi_=
+UN35u=2EIHCXOLPpOKa5-Q/click" title=3D"Femme" style=3D"text-decoration:none=
+;"><font style=3D"font-family:'Volte Semibold', Quicksand, Helvetica, Robot=
+o, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:18px;color:#000=
+000;">Femme</font></a></td>
+          <td valign=3D"middle" align=3D"center" style=3D"padding-left:24px=
+;padding-right:24px;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom=
+/desigual-prod/e/=2EeJxtjDFLw0AYhkEpYkWUjOKgdnDr5S53aS6DeI1JKZZ2KQiWEK7JWYN=
+NU5KLVegkTl31D9jRH6A4ujg6O7i7dnBzsaGODh_f9748z6fsFMDsh3zuvW_Mdp4eXt5K95PX76=
+_HGp0-b9_ejPT6VulcymFqAjAajcqBSMNexvtlP45AKuNEgEgMAJykB9O74Qcz14tLWaqsiKthP=
+BDc3J9HX9k9IdBDyLO9pte0vHarzRpeo9U69mqNVpU17Ka5NgcjpSAiHvbNzeJy5sfK6lHYCyXv=
+q8isFwsyvhAD5ZDpFOkWYgzaFVtTKWYV3ao4KiU2I1Cn2KKOaiEDG4Q6VYYIQVYVOwRCBrGtG6c=
+uAN04uAaSd_sCyMWdABmAILzsQDdf_01HdxdOzsikg9zc-fuS-3nDuxXCoab5wZnAJFApp2M_Hq=
+RZJBIvDEwdYqwRhPGY-8inBqZdDRKKsPELcSp9hw=2EfFWbFErBOn1P_A/click" title=3D"H=
+omme" style=3D"text-decoration:none;"><font style=3D"font-family:'Volte Sem=
+ibold', Quicksand, Helvetica, Roboto, 'Open Sans', Arial, sans-serif;font-w=
+eight:600;font-size:18px;color:#000000;">Homme</font></a></td>
+          <td valign=3D"middle" align=3D"center" style=3D"padding-left:24px=
+;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=
+=2EeJxtjDFLw0AAhUEpYkWUjOJQdXDRXu5yl-YyiNeYlmJpl4JgCeGanG1o2pTmahQ6iVNX_QN2=
+9Acoji6Ozg7urh3cXGyoo8PjvQfve0ouA2Y_5HP3fWOWe3p4edu7n7x-fz2W6fR5-_Ym0StbBx0=
+pB7EJQJIkeV_EQXvEw7wX9UAso6EA3cCPD70wkh0RAziJj6Z3gw9mrmeXRrGyIq4GUV9wc39ePW=
+XnjEAXIdd2a27Nchv1Bqu61Xr91C1X60VWtWvm2nzYUzKix4PQ3Mwuj7xIWT0J2oHkoYrMSjYjo=
+67oK8dMp0i3EGPQLtiaSjEr6FahpFJiMwJ1ii1aUi1kYIPQUpEhQpBVxCUCIYPY1o1zB4BW5F8D=
+yVuhAHKRh0D6wA8um9BJ7T81dWfBpBs5bCInZf5eUr6pOYC3CoRDTfP8C4GJr1JOx17Uj0c9MXQ=
+D39QhxhpBGI-5hzxqYNrSIKEIG78XEoEb=2ERozlaGDTH8a0UQ/click" title=3D"Kids" st=
+yle=3D"text-decoration:none;"><font style=3D"font-family:'Volte Semibold', =
+Quicksand, Helvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:60=
+0;font-size:18px;color:#000000;">Kids</font></a></td>
+        </tr></table></td>
+  </tr></table><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" widt=
+h=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=3D"8" =
+style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"4" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;">
+
+
+
+
+
+
+
+
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" styl=
+e=3D"width:100%;max-width:640px;"><tr><td valign=3D"top" align=3D"center" c=
+olspan=3D"2">
+			<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=
+=2EeJxti79Lw0AAhUEpYkWUjCL4a3Dr5S53aS6DeI1JLYZmKQiWEi7JWYNJU5rEKHQSp676D9jR=
+P0BxdHF0dnB37eDmYlXcHB7vffA9ab0EJp_kbfNlabJ-f_v4vHUzevp4v6vT8cPq1WWhNlbWTrK=
+sn-oAFEVRCUQadnMeVfwkBmmWDASAo3RnfN1_ZfpieSZPpTlx3k96guvbU_SljUMCXYRc0226Tc=
+NtOS1mu7bjHLh126kx22zqC1Mxlkoi5mGkL5dncz-R5vfCbpjxSEZ6o1zKklPRk3aZSpFqIMagW=
+TUVmWJWVY2qJVNiMgJVig1qyQbSsEaoVWOIEGTUsEUgZBCbqna0D4CXBBcg414kQPa7ByALQBCe=
+tWHnu_5LW-v8fX5s7lUJh4riB8cCk0CmnA79pJfmsRi4YaCrEGOFIIyH3Ec-1TD1FEgowtoXAv1=
+08Q=2EkTq6-rCc3VpLrA/click" title=3D"Desigual" style=3D"color: inherit;">
+				<img src=3D"https://newsletter=2Edesigual=2Ecom/assets/logo/desigual-lo=
+go=2Epng" alt=3D"Desigual" border=3D"0" width=3D"100%" style=3D"display:blo=
+ck;"></a>
+		</td>
+	</tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%"><tr><td valign=3D"top" align=3D"center" style=3D"padding-top:8px;=
+padding-bottom:8px;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/=
+desigual-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr5S53SS6DeI1JKS3tYKGgSLgkZw0m=
+TWkuVqGTOHXVf8CO_gGKo4ujs4O7awc3F-uP0eHx3gffU0oFMP0kb5svK9PS_e3j89bN-Onj_a5=
+KJw_rV5dDvbamnkjZzywAhsNhORRZ1M15XA7SBGQyHQiAYKezX9dUpGJUPpFJDMfZzuS6_8qs5e=
+JcnikL4ryf9gS3tmcYKBsdAj2EPMdrek3ba7farOE1Wq26V220KqzhNK2lmZgoBZHwKLZWi_N5k=
+CqLe1E3kjxWkVUrFmR6KnrKLtMp0m3EGHQMR1MpZoZuG65KicMI1Cm2qavayMQmoW6FIUKQXcEu=
+gZBB7OjmgQOAn4YXQHI_FkD-7gGQIQijs0N09F3_5u_wo3LfIBxqWhAeC0xClXI6CtJelidi4EW=
+hpUOMNYIwHvEABdTE1NcgoQibX1AqeM0=2EGioCN-QRneTXLw/click" title=3D"Looks at =
+me!" style=3D"color:inherit;"><img src=3D"https://newsletter=2Edesigual=2Ec=
+om/2021/12/nc-total-look/img_01=2Egif" width=3D"100%" alt=3D"" border=3D"0"=
+></a></td>
+													</tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%"><tr><td valign=3D"top" align=3D"center" style=3D"padding-top:8px;=
+padding-bottom:8px;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/=
+desigual-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr5S53SS6DeI1JKS3tYKGgSLgkZw0m=
+TWkuVqGTOHXVf8CO_gGKo4ujs4O7awc3F-uP0eHx3gffU0oFMP0kb5svK9PS_e3j89bN-Onj_a5=
+KJw_rV5dDvbamnkjZzywAhsNhORRZ1M15XA7SBGQyHQiAYKezX9dUpGJUPpFJDMfZzuS6_8qs5e=
+JcnikL4ryf9gS3tmcYKBsdAj2EPMdrek3ba7farOE1Wq26V220KqzhNK2lmZgoBZHwKLZWi_N5k=
+CqLe1E3kjxWkVUrFmR6KnrKLtMp0m3EGHQMR1MpZoZuG65KicMI1Cm2qavayMQmoW6FIUKQXcEu=
+gZBB7OjmgQOAn4YXQHI_FkD-7gGQIQijs0Pt6Lv-zd_hR-W-QTjUtCA8FpiEKuV0FKS9LE_EwIt=
+CS4cYawRhPOIBCqiJqa9BQhE2vwBQi3jO=2Es8X3b4XMvqk1rA/click" title=3D"Look 1 #=
+ Urban jungle" style=3D"color:inherit;"><img src=3D"https://newsletter=2Ede=
+sigual=2Ecom/2021/12/nc-total-look/img_02=2Ejpg" width=3D"100%" alt=3D"" bo=
+rder=3D"0"></a></td>
+													</tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"4" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center"><a =
+href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti=
+zFLw0AAhUEpYkWUjOJQdXDr5S53aS6DeI1JLS3tYKFgKeGanG0waUpzNQqdxKmr_gE7-gMURxdH=
+Zwd31w5uLlbFzeHx3gffU3IZMPskb9sva7Pc_e3j887N5Onj_a5Epw-bV5epXt5Qe1IOEhOANE3=
+zvkiC7oiHeS-OQCLjoQAINptHFU1FKkb5noxCOEn2pteDV2auZhdGibIkzgdxX3Bzd46estUk0E=
+XItd2aW7PcRr3Bqm61Xq-4pWq9yKp2zVyZi5GSEREPQnM9uzjyYmX5IOgGkocqMsvZjIxPRV_ZZ=
+zpFuoUYg3bB1lSKWUG3Co5Kic0I1Cm2qKNayMAGoU6RIUKQVcQOgZBBbOvG8SEAndi_AJJ3QgHk=
+7x4C6QM_OGvh9nf9lxZq_31-bN4pEA41zfNPBCa-Sjkde3E_GUVi6Aa-qUOMNYIwHnMPedTAtKN=
+BQhE2vgC-mXm8=2E18G3t4D5Gn0GhQ/click" title=3D"Look 1 # Urban jungle" style=
+=3D"color:inherit;text-decoration:none;">
+																<h1 style=3D"margin-top:0;margin-bottom:0;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;color:#000;=
+">Look 1 # Urban jungle</font>
+																</h1>
+															</a></td>
+													</tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center" sty=
+le=3D"font-family:'Volte Medium', Quicksand, Helvetica, Roboto, 'Open Sans'=
+, Arial, sans-serif;color:#000;">
+															Des sweat-shirts loungwear et des jupes qui vont avec tout, =
+you&#8217;re in !
+														</td>
+													</tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%"><tr><td valign=3D"top" class=3D"py-md-3" width=3D"33=2E33%" style=
+=3D"padding-top:8px;padding-bottom:8px;padding-right:4px;">
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxtiz1Lw0AAhkEpYkWUjOJQdXDr5S53aS6DeI1pKQ3JYKFgKeGanDWYNKW5Wo=
+VO4tRV_4Ad_QGKo4ujs4O7awc3F1vEzeH9gudVCjkw-yYfu28bs8Lj_fPr3t3k5evzoUqnT9s31=
+yO9tqWeSdnPTABGo1ExFFnUHfK4GKQJyGQ6EADBZvO4rqlIxah4JpMYTrKD6W3_nZnr-aVhpqyI=
+y37aE9zcn89A2WkS6CPk277ru5bf8BrM8R3Pq_tVxyszx3bNtTmYKDmR8Cg2N_PLwyBVVo-ibiR=
+5rCKzls_J9Fz0lEOmU6RbiDFol2xNpZiVdKtUUSmxGYE6xRatqBYysEFopcwQIcgq4wqBkEFs68=
+aJC0AnDa-A5J1YAPnbB0CGIIwuWnp7Ef-phdp_nwXdgm3A59YpEQ41LQhPBSahSjkdB2kvGyZi4=
+EehqUOMNYIwHvMABdTAtKNBQhE2fgCmqXuW=2Ehm38Puy7UkzUMg/click" title=3D"Sweat-=
+shirts" style=3D"color:inherit;display:block;">
+																<img src=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-=
+total-look/img_03=2Ejpg" width=3D"100%" alt=3D"Sweat-shirt" border=3D"0" st=
+yle=3D"display:inline-block;"></a>
+															<br><a href=3D"https://media-consumer365=2Edesigual=2Ecom/de=
+sigual-prod/e/=2EeJxtiz9Lw0AAxUEpYkWUjOJQdXDr5S53aS6DeI1pKQ3JYKFgKeGanDWYNK=
+W5WoVO4tRVv4Ad_QCKo4ujs4O7awc3F1vEzeHx_vB7SiEHZt_kY_dtY1Z4vH9-3bubvHx9PlTp9=
+Gn75nqk17bUMyn7mQnAaDQqhiKLukMeF4M0AZlMBwIg2Gwe1zUVqRgVz2QSw0l2ML3tvzNzPb80=
+zJQVcdlPe4Kb-_MaKDtNAn2EfNt3fdfyG16DOb7jeXW_6nhl5tiuuTYHEyUnEh7F5mZ-eRikyup=
+R1I0kj1Vk1vI5mZ6LnnLIdIp0CzEG7ZKtqRSzkm6VKiolNiNQp9iiFdVCBjYIrZQZIgRZZVwhED=
+KIbd04cQHopOEVkLwTCyB_8wDIEITRRUtvL-w_tVD777OgW7AN-HzrlAiHmhaEpwKTUKWcjoO0l=
+w0TMfCj0NQhxhpBGI95gAJqYNrRIKEIGz-m5HuX=2Eolw7NMAvhJsxkw/click" title=3D"Sw=
+eat-shirt" style=3D"text-decoration:none;color:inherit!important;background=
+-color:inherit!important;align:center;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;display:inline-block;text-align=
+:center;width:98%;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Sweat-shirt</font>
+																</div>
+															</a>
+														</td>
+														<td valign=3D"top" class=3D"py-md-3" width=3D"33=2E33%" style=
+=3D"padding-top:8px;padding-bottom:8px;padding-right:2px;padding-left:2px;"=
+>
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxtizFLw0AAhUEpYkWUjOJQdXDr5S53aS6DeI1JKZZkKQQsJVyTswaTpjRXq9=
+BJnLrqH7CjP0BxdHF0dnB37eDmYou4OTze--B7SqkAZt_kY_dtY1Z6vH9-3bubvHx9PtTo9Gn75=
+nqk17fUMyn7uQnAaDQqRyKPu0OelMMsBbnMBgIg6PuOj4ihIlw-k2kCJ_nB9Lb_zsz14tIwV1bE=
+ZT_rCW7uzzFUdnwCA4QCO3AD1wqaXpM1gobnHQe1hldlDds11-ZiqhREyuPE3CwuD8NMWT2Ku7H=
+kiYrMerEgs3PRUw6ZTpFuIcagXbE1lWJW0a2Ko1JiMwJ1ii3qqBYysEGoU2WIEGRVsUMgZBDbun=
+HiAtDJoisgeScRQP7uAZARiOKLlt5e1H9pofbfZ2EvkLdgu1MhHGpaGJ0KTCKVcjoOs14-TMUgi=
+CNThxhrBGE85iEKqYFpR4OEImz8ALH_e6A=2E5caO1r6wv0kctA/click" title=3D"Jupe" s=
+tyle=3D"color:inherit;display:block;">
+																<img src=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-=
+total-look/img_04=2Ejpg" width=3D"100%" alt=3D"Jupe" border=3D"0" style=3D"=
+display:inline-block;"></a><br><a href=3D"https://media-consumer365=2Edesig=
+ual=2Ecom/desigual-prod/e/=2EeJxtiz9Lw0AAxUEpYkWUjOJQdXDr5S53aS6DeI1JKZZ0KQ=
+QsEq7J2QaTpjQXq9BJnLrqF7CjH0BxdHF0dnB37eDmYou4Obw_P3hPKRXA7Jt87L5tzEqP98-ve=
+3eTl6_PhxqdPm3fXI_0-pbak3KQmQCMRqNyKLKom_O4HKQJyGQ6FABBz3M8RAwV4XJPJjGcZAfT=
+28E7M9eLS3mmrIjLQdoX3NyfY6DseAT6CPm27_qu5beaLdbwG83msV9rNKusYbvm2nyYKAWR8Cg=
+2N4vLeZAqq0dRN5I8VpFZLxZkei76yiHTKdItxBi0K7amUswqulVxVEpsRqBOsUUd1UIGNgh1qg=
+wRgqwqdgiEDGJbN05cADppeAUk78QCyN8-BDIEYXTR1k8X8Z_a6PTvs1gvkM-tUyEcaloQnglMQ=
+pVyOg7SfpYnYuhHoalDjDWCMB7zAAXUwLSjQUIRNn4Asjp7oQ=2EoibTyDGY6KQSBw/click" t=
+itle=3D"Jupe" style=3D"text-decoration:none;color:inherit!important;backgro=
+und-color:inherit!important;align:center;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;display:inline-block;text-align=
+:center;width:98%;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Jupe</font>
+																</div>
+															</a>
+														</td>
+														<td valign=3D"top" class=3D"py-md-3" width=3D"33=2E33%" style=
+=3D"padding-top:8px;padding-bottom:8px;padding-left:4px;">
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxtizFLw0AAhUEpYkWUjOJQdXDr5S53SS6DeI1pKS3tYKFgKeGanDWYNKW5GI=
+VO4tRV_4Ad_QGKo4ujs4O7awc3F1vEzeHx3gffUwo5MPsmH7tvG7PC4_3z697d5OXr86FCp0_bN=
+9eZXt1Sz6QcJhYAWZYVfZEE_ZSHRS-OQCLjkQAIto9rTEVUhbR4JqMQTpKD6e3wnVnr-aU0UVbE=
+5TAeCG7tz9FTdtoEugi5jttwG7bbarZY3a03mzW3Um-WWN1pWGtzMVJyIuJBaG3ml1MvVlaPgn4=
+geagiq5rPyfhcDJRDplOk24gx6BiOplLMDN02yiolDiNQp9imZdVGJjYJLZcYIgTZJVwmEDKIHd=
+08aQDQi_0rIHkvFED-7hGQPvCDi47eXdR_6aDu32dhd7Qu4B3Y7RmEQ03z_FOBia9STsdePEjSS=
+IzcwLd0iLFGEMZj7iGPmpj2NEgowuYPl-h7jA=2EzKJSgsUrHJUTJA/click" title=3D"Bask=
+ets" style=3D"color:inherit;display:block;">
+																<img src=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-=
+total-look/img_05=2Ejpg" width=3D"100%" alt=3D"Baskets" border=3D"0" style=
+=3D"display:inline-block;"></a><br><a href=3D"https://media-consumer365=2Ed=
+esigual=2Ecom/desigual-prod/e/=2EeJxtiz9Lw0AAxUEpYkWUjOJQdXDr5S53aS6DeI1pKS=
+3JYKFgKeGSnDWYNKW5WoVO4tRVv4Ad_QCKo4ujs4O7awc3F1vEzeHx_vB7SiEHZt_kY_dtY1Z4v=
+H9-3bubvHx9PlTp9Gn75nqk17bUMyn7mQnAaDQqhiKLukMeF4M0AZlMBwIg2DquMxVRFdLimUxi=
+OMkOprf9d2au55eGmbIiLvtpT3Bzf14DZadFoIeQZ3uO51he022yhtdw3bpXbbhl1rAdc20OJkp=
+OJDyKzc388jBIldWjqBtJHqvIrOVzMj0XPeWQ6RTpFmIM2iVbUylmJd0qVVRKbEagTrFFK6qFDG=
+wQWikzRAiyyrhCIGQQ27px4gDgp-EVkNyPBZC_eQBkCMLooq13Fvaf2qjz91nQba0D-HzzS4RDT=
+QvCU4FJqFJOx0Hay4aJGHhRaOoQY40gjMc8QAE1MPU1SCjCxg-YI3uN=2E9EHgAb4lxMig-Q/cl=
+ick" title=3D"Baskets" style=3D"text-decoration:none;color:inherit!importan=
+t;background-color:inherit!important;align:center;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;display:inline-block;text-align=
+:center;width:98%;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Baskets</font>
+																</div>
+															</a>
+														</td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"40" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%"><tr><td valign=3D"top" align=3D"center" style=3D"padding-top:8px;=
+padding-bottom:8px;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/=
+desigual-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr_chdkssgXmNai6VdCgVLCdfkbINJ=
+U5qrVegkTl31H7Cjf4Di6OLo7ODu2sHNxaq4OTze--B7Wi4DZp_0bftlbZa7v3183rmZPH2835X=
+Y9GHz6nJklDdgV6l-agMwGo3ygUzDzlBEeT-JQaqSgQQYNRqFBjYwhDDfVXGEJune9Lr_yu3V7M=
+Iw1ZbkeT_pSWHvztHXthoUeRh7rlf1qo5Xr9V5xavUakdeqVIr8IpbtVfmYqxlZCzCyF7PLg79R=
+Fs-CDuhEhHEdjmbUcmp7Gn73GDYcDDnyDVdHTLCTcMxi5BRl1NkMOKwInSwRSzKigWOKcVOgRQp=
+QhwR17CODwFoJ8EFUKIdSaB-9wCoAAThWdNsfdd_aaLW3-fHFm2TCqTrfnAiCQ0gE2zsJ710GMu=
+BFwa2gQjRKSZkLHzsM4uwto4ow8T6Argkebg=2EnIqrFIHIEIPLKg/click" title=3D"Look =
+2 # Street code" style=3D"color:inherit;"><img src=3D"https://newsletter=2Ed=
+esigual=2Ecom/2021/12/nc-total-look/img_06=2Ejpg" width=3D"100%" alt=3D"" b=
+order=3D"0"></a></td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"4" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center"><a =
+href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti=
+z1Lw0AAhkEpYkWUjOJQdXDrfeQuzWUQLzEtxdIshYAi4ZqcNZg0pblahU7i1FX_gB39AYqji6Oz=
+g7trBzcX68fo8PK-DzyvViqA6Sd923xZmZbubx-ft27GTx_vdzU2eVi_uhwa9TV4olQvtwAYDof=
+lSOZxZyCScpilIFdZXwKMfN_2sYEhhOUTlSZonO9Mrnuv3Fouzg1ybUGe97KuFNb2DENtw6cowD=
+hwg2bQdIKW1-KNoOF5-0Gt4dm84TatpZmYagWZijixVovzgzDTFvfiTqxEArFVLxZUdiq72i43G=
+DYczDlyK64OGeEVw6lUIaMup8hgxGFV6GCTmJRVbY4pxY5NqhQhjohrmAcuAO0sugBKtBMJ1O_u=
+AxWBKD47NI--69_8HX5U0a5QgXQ9jI4loRFkgo3CrJsPUtkP4sgyECE6xYSMRIhDZhLW1hFlmJh=
+fSyp4zQ=2EhqTRhHQW2LhdQA/click" title=3D"Look 2 # Street code" style=3D"col=
+or:inherit;text-decoration:none;">
+																<h1 style=3D"margin-top:0;margin-bottom:0;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;color:#000;=
+">Look 2 # Street code</font>
+																</h1>
+															</a></td>
+													</tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center" sty=
+le=3D"font-family:'Volte Medium', Quicksand, Helvetica, Roboto, 'Open Sans'=
+, Arial, sans-serif;color:#000;">
+															Code Street noir, avec une touche de couleur=2E Adjug&#233; =
+!
+														</td>
+													</tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif"></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<div style=3D"background-color:transparent;">
+						<div class=3D"block-grid " style=3D"min-width: 320px; max-width: 640p=
+x; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word=
+; Margin: 0 auto; background-color: transparent;">
+							<div style=3D"border-collapse: collapse;display: table;width: 100%;b=
+ackground-color:transparent;">
+								<!--[if (mso)|(IE)]><table width=3D"100%" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"background-color:transparent;"><tr><td ali=
+gn=3D"center"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"width:640px"><tr class=3D"layout-full-width" style=3D"background-color:=
+transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align=3D"center" width=3D"640" style=3D"bac=
+kground-color:transparent;width:640px; border-top: 0px solid transparent; b=
+order-left: 0px solid transparent; border-bottom: 0px solid transparent; bo=
+rder-right: 0px solid transparent;" valign=3D"top"><table width=3D"100%" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0"><tr><td style=3D"padding-rig=
+ht: 16px; padding-left: 16px; padding-top:0px; padding-bottom:0px;"><![endi=
+f]-->
+								<div class=3D"col num12" style=3D"min-width: 320px; max-width: 640p=
+x; display: table-cell; vertical-align: top; width: 640px;">
+									<div class=3D"col_cont" style=3D"width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style=3D"border-top:0px solid transparent; border-left:0px s=
+olid transparent; border-bottom:0px solid transparent; border-right:0px sol=
+id transparent; padding-top:0px; padding-bottom:0px; padding-right: 16px; p=
+adding-left: 16px;">
+											<!--<![endif]-->
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%"><tr><td valign=3D"top" class=3D"py-md-3" width=3D"33=2E33%" style=
+=3D"padding-top:8px;padding-bottom:8px;padding-right:4px;">
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxtiz1Lw0AAhkEpYkWUjOJQdXDrfeQuzWUQLzEtxdIshYKlhGty1mDSlOZqFT=
+qJU1f9A3b0ByiOLo7ODu6uHdxcbBE3h_cLnlcr5MDsm37svm3MCo_3z697d5OXr8-HCps-bd9cj=
+4zqFjxTqp9ZAIxGo2Ios6g7FHExSBOQqXQgAUbNpt3EBoYQFs9UEqNJdjC97b9zaz2_NMy0FXnZ=
+T3tSWPvzGWg7TYp8jH3Xr_t1x294DV7za5537Fdqns1rbt1am4OJlpOJiGJrM788DFJt9SjqRkr=
+EEFvVfE6l57KnHXKDYcPBnCO35OqQEV4ynFIZMupyigxGHFaGDjaJSVnZ5phS7NikTBHiiLiGee=
+IB0EnDK6BEJ5ZA_fYBUCEIo4sWgu1F_qcWbv-dFngLtYGYW6dEBdL1IDyVhIaQCTYO0l42TOTAj=
+0LLQIToFBMyFgEOmElYR0eUYWL-AAuqe7w=2Es1unoQpJXH1HFw/click" title=3D"Blouse"=
+ style=3D"color:inherit;display:block;">
+																<img src=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-=
+total-look/img_07=2Ejpg" width=3D"100%" alt=3D"Blouse" border=3D"0" style=
+=3D"display:inline-block;"></a>
+															<br><a href=3D"https://media-consumer365=2Edesigual=2Ecom/de=
+sigual-prod/e/=2EeJxtiz1Lw0AAhkEpYkWUjOJQdXDrfeQuzWUQLzEtxdIshYKlhGty1mDSlO=
+ZqFTqJU1f9A3b0ByiOLo7ODu6uHdxcbBE3h5f3g-fVCjkw-6Yfu28bs8Lj_fPr3t3k5evzocKmT=
+9s31yOjugXPlOpnFgCj0agYyizqDkVcDNIEZCodSIBRs2k3sYEhhMUzlcRokh1Mb_vv3FrPLw0z=
+bUVe9tOeFNb-vAbaTpMiH2Pf9et-3fEbXoPX_JrnHfuVmmfzmlu31uZgouVkIqLY2swvD4NUWz2=
+KupESMcRWNZ9T6bnsaYfcYNhwMOfILbk6ZISXDKdUhoy6nCKDEYeVoYNNYlJWtjmmFDs2KVOEOC=
+KuYZ54AHTS8Aoo0YklUL95AFQIwuiihWB74f-phdt_pwXeQm0g5lunRAXS9SA8lYSGkAk2DtJeN=
+kzkwI9Cy0CE6BQTMhYBDphJWEdHlGFi_gAL5Xu9=2EjTEK8HMITBvPsQ/click" title=3D"Bl=
+ouse" style=3D"text-decoration:none;color:inherit!important;background-colo=
+r:inherit!important;align:center;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;display:inline-block;text-align=
+:center;width:98%;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Blouse</font>
+																</div>
+															</a>
+														</td>
+														<td valign=3D"top" class=3D"py-md-3" width=3D"33=2E33%" style=
+=3D"padding-top:8px;padding-bottom:8px;padding-right:2px;padding-left:2px;"=
+>
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr_chdmssgXmNaiqURLBQsJVyTswaTpjRXq9=
+BJnLrqP2BH_wDF0cXR2cHdtYObiy3i5vB474PvabkMmH7Tj-23tWnu8f75dedu_PL1-VBmk6fNm=
+-uhUdmAZ0r1UguA4XCYD2QadgYiyvtJDFKV9CXAqHHMjyDBEML8mYojNE73Jre9d26tZhcGqbYk=
+L3tJVwprd4a-ttWgyMPYc7yaV7O9ulvnVa_quodeueoWedWpWSszMdYyMhZhZK1nFwd-oi0fhJ1=
+QiQhiq5LNqORcdrV9bjBs2Jhz5BQcHTLCC4ZdKEFGHU6RwYjNStDGJjEpKxU5phTbRVKiCHFEHM=
+M8cQFoJ8EVUKIdSaB-dx-oAAThRRPB1rz_SxO3_k5zfY6iiVrtAhVI1_3gVBIaQCbYyE-66SCWf=
+S8MLAMRolNMyEj42GcmYW0dUYaJ-QP3yHut=2ETBhFAO91d5yfwQ/click" title=3D"Bottin=
+es" style=3D"color:inherit;display:block;">
+																<img src=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-=
+total-look/img_08=2Ejpg" width=3D"100%" alt=3D"Bottines" border=3D"0" style=
+=3D"display:inline-block;"></a><br><a href=3D"https://media-consumer365=2Ed=
+esigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AAhkEpYkWUjOJQdXDrfeQuzWUQrzEtxd=
+IIFgpKCdfkbINJU5qrVegkTl31D9jRH6A4ujg6O7i7dnBzsUXcHN6PB95Xy2XA9Jt-bL-tTXOP9=
+8-vO3fjl6_PhzKbPG3eXA-NygbsKNVLLQCGw2E-kGnYHogo7ycxSFXSlwCjxjE_ggRDCPMdFUdo=
+nO5Nbnvv3FrNLgxSbUle9pKuFNbuDH1tq0GRh7HneDWvZnt1t86rXtV1D71y1S3yqlOzVmbDWMv=
+IWISRtZ5dHPiJtnwQtkMlIoitSjajknPZ1fa5wbBhY86RU3B0yAgvGHahBBl1OEUGIzYrQRubxK=
+SsVOSYUmwXSYkixBFxDPPEBaCVBFdAiVYkgfrtfaACEIQXpwg25_mfTnHz7zSfz1HMrFWgAum6H=
+5xJQgPIBBv5STcdxLLvhYFlIEJ0igkZCR_7zCSspSPKMDF_APgDe64=2Ev0AhiFhMxxz30A/cli=
+ck" title=3D"Bottines" style=3D"text-decoration:none;color:inherit!importan=
+t;background-color:inherit!important;align:center;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;display:inline-block;text-align=
+:center;width:98%;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Bottines</font>
+																</div>
+															</a>
+														</td>
+														<td valign=3D"top" class=3D"py-md-3" width=3D"33=2E33%" style=
+=3D"padding-top:8px;padding-bottom:8px;padding-left:4px;">
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxti79Lw0AAhUEpYkWUjOJQdXDr_chdmssgXmNaiqVxKBQsJVyTsw0mTWmuVq=
+GTOHXVf8CO_gGKo4ujs4O7awc3F1vEzeHx3gff03IZMPumH7tvG7Pc4_3z697d5OXr86HMpk_bN=
+9cjo7IFu0r1UwuA0WiUD2QadoYiyvtJDFKVDCTAqNE4aSCEIYT5roojNEkPprf9d26tZ5eGqbYi=
+L_tJTwprf46-ttOgyMPYc7yaV7O9ulvnVa_qusdeueoWedWpWWtzMdYyMhZhZG1ml4d-oq0ehZ1=
+QiQhiq5LNqORc9rRDbjBs2Jhz5BQcHTLCC4ZdKEFGHU6RwYjNStDGJjEpKxU5phTbRVKiCHFEHM=
+M8dQFoJ8EVUKIdSaB-9wCoAAThRRPB1qL_SxO3_k4Lvam3gGiiVrtABdJ1PziThAaQCTb2k146j=
+OXACwPLQIToFBMyFj72mUlYW0eUYWL-ABZLe8Y=2E4tLtHOrXXC5wSw/click" title=3D"Pan=
+talons" style=3D"color:inherit;display:block;">
+																<img src=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-=
+total-look/img_09=2Ejpg" width=3D"100%" alt=3D"Pantalons" border=3D"0" styl=
+e=3D"display:inline-block;"></a><br><a href=3D"https://media-consumer365=2Ed=
+esigual=2Ecom/desigual-prod/e/=2EeJxtiz1Lw0AAhkEpYkWUjOJQdXDrfeQuzWUQrzEtxd=
+I4FAqWEq7J2QaTpjRXq9BJnLrqH7CjP0BxdHF0dnB37eDmYou4Oby8HzyvlsuA2Tf92H3bmOUe7=
+59f9-4mL1-fD2U2fdq-uR4ZlS3YVaqfWgCMRqN8INOwMxRR3k9ikKpkIAFGjcZJAyEMIcx3VRyh=
+SXowve2_c2s9uzRMtRV52U96Ulj78-prOw2KPIw9x6t5Nduru3Ve9aque-yVq26RV52atTYHYy0=
+jYxFG1mZ2eegn2upR2AmViCC2KtmMSs5lTzvkBsOGjTlHTsHRISO8YNiFEmTU4RQZjNisBG1sEp=
+OyUpFjSrFdJCWKEEfEMcxTF4B2ElwBJdqRBOo3D4AKQBBeNBFsLfw_NXHr77TAm3oLiPnWLlCBd=
+N0PziShAWSCjf2klw5jOfDCwDIQITrFhIyFj31mEtbWEWWYmD8WhnvH=2E5HgW5qorYZmvEw/cl=
+ick" title=3D"Pantalons" style=3D"text-decoration:none;color:inherit!import=
+ant;background-color:inherit!important;align:center;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;display:inline-block;text-align=
+:center;width:98%;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Pantalons</font>
+																</div>
+															</a>
+														</td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"40" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center"><a =
+href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=2EeJxti=
+zFLw0AAhUEpYkWUjOJQdXCyl7vcpbkM4jWmpVjapSBYJFwv1xpseiWXWoVO4tRV_4Ad_QGKo4uj=
+s4O7awc3F6vi5vB474PvGbkMmH6St82XlWnu_vbxeetm_PTxflemk4f1q8uhXVmzT9K0r10AhsN=
+hPpQ66gx4Ny9UDHSqEgliFcqdtoxjCbgQUmsVJVIDONa7k-v-K3OXs3MDbSzI877qSe5uz1AYG4=
+cEBggFflALal7QqDdYNajW6wdBuVovsqpfc5dmYmxkZMyjrruanR8IZSzuR50o5V0TuZVsJlWns=
+mfsMZsi20OMQb_gWybFrGB7hZJJic8ItCn2aMn0kIMdQktFhghBXhGXCIQMYt92jioAtFR4AVLe=
+6kqQ_u4EpCEIo7MmNI-_-7808fHf6UfnrQLh0LJE2JaYhCbldCRUTw9imQRR6NoQY4sgjEdcIEE=
+dTFsWJBRh5wvyqH4D=2E_H9z3w4_TdhuxQ/click" title=3D"Nouveaux accessoires : v=
+otre touche finale" style=3D"color:inherit;text-decoration:none;">
+																<h1 style=3D"margin-top:0;margin-bottom:0;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;color:#000;=
+">Nouveaux accessoires : votre touche finale</font>
+																</h1>
+															</a></td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%"><tr><td valign=3D"top" align=3D"center" style=3D"padding-top:8px;=
+padding-bottom:8px;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/=
+desigual-prod/e/=2EeJxtiz1Lw0AAhkEpYkWUjOLgx-Ckl7vcXXMZxGtMSrG0iyAoEq6XU4NN=
+r-RSo9BJnLrqH7CjP0BxdHF0dnB3dXBz8Qs3h5f3feB5rYUSePsgL0tPM28Lt9f3j8tXw4f315s=
+aG93NX5wXtD5Hj_K8ZzwAiqJYi5VJDvuisyZ1CkyuMwVSHavVA5WmCggplTE6yZQBcGjWR5e9Z-=
+5Nl8f6xppQpz3dVcJb-UJpLe4QGCEUBVEzavrRdmubN6JGq7UV1RqtKm8ETW_qS0ytkkpF0vFmy=
+-N9qa3JzeQwyUXHRl69XMr1sepaG5wyRH3EOQwqgWMzzCvUr4Q2IwEnkDLss9D2kYtdwsIqR4Qg=
+v4pDAiGHOKDubh2Ato7PQC7aHQXy352BPAZxcrIH7f3v_i97dP_v9KOLdoUI6DgyPlCYxDYTbCB=
+11_RTlUVJ7FGIsUMQxgMhkWQuZm0HEoaw-wnzOn4F=2EMwmac7YzmjrZaA/click" title=3D"=
+Nouveaux accessoires : votre touche finale" style=3D"color:inherit;"><img s=
+rc=3D"https://newsletter=2Edesigual=2Ecom/2021/12/nc-total-look/img_10=2Egi=
+f" width=3D"100%" alt=3D"" border=3D"0"></a></td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"font-size:16px;text-align:center;font-family:Arial=
+, Helvetica Neue, Helvetica, sans-serif">
+												<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=
+=3D"100%" style=3D"width:100%;"><tr><td valign=3D"middle" align=3D"center" =
+style=3D"vertical-align:middle;">
+															<a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigu=
+al-prod/e/=2EeJxtizFLw0AAhUEpYkWUjOJQdXCyl7vcpbkM4jWmpVjapSBYJFwv1xpseiWXWo=
+VO4tRV_4Ad_QGKo4ujs4O7awc3F6vi5vB474PvGbkMmH6St82XlWnu_vbxeetm_PTxflemk4f1q=
+8uhXVmzT9K0r10AhsNhPpQ66gx4Ny9UDHSqEgliFcqdtoxjCbgQUmsVJVIDONa7k-v-K3OXs3MD=
+bSzI877qSe5uz1AYG4cEBggFflALal7QqDdYNajW6wdBuVovsqpfc5dmYmxkZMyjrruanR8IZSz=
+uR50o5V0TuZVsJlWnsmfsMZsi20OMQb_gWybFrGB7hZJJic8ItCn2aMn0kIMdQktFhghBXhGXCI=
+QMYt92jioAtFR4AVLe6kqQ_u4EpCEIo7MmNI-_-780neO_04_OWwXCoWWJsC0xCU3K6Uionh7EM=
+gmi0LUhxhZBGI-4QII6mLYsSCjCzhfzzH4H=2E-EiCr_0YBGeCkA/click" title=3D"Voir t=
+ous" style=3D"text-decoration:none;color:inherit!important;background-color=
+:inherit!important;">
+																<div style=3D"border-width:2px;border-style:solid;border-ra=
+dius:4px;padding-top:8px;padding-bottom:8px;padding-right:16px;padding-left=
+:16px;display:inline-block;text-align:center;width:230px;">
+																	<font style=3D"font-family:'Volte Semibold', Quicksand, He=
+lvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:1=
+6px;color:#000;">Voir tous</font>
+																</div>
+															</a>
+														</td>
+													</tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;"><table cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=
+=3D"16" style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table></div>
+											<div style=3D"padding-bottom:0px;padding-left:0px;padding-right:=
+0px;padding-top:0px;">
+
+
+
+
+
+
+
+
+
+
+=20
+=20
+
+=20
+
+
+
+
+
+
+ =20
+
+
+
+
+ =20
+ =20
+
+
+
+
+
+
+
+ =20
+
+
+
+
+
+
+
+
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" styl=
+e=3D"width:100%;"><tr><td aria-hidden=3D"true" height=3D"8" style=3D"font-s=
+ize:0;line-height:0;">
+
+        </td>
+    </tr></table><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" wi=
+dth=3D"100%" style=3D"width:100%;"><tr><td valign=3D"middle" align=3D"cente=
+r" style=3D"vertical-align:middle;">
+        <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%" style=3D"border-top-width:1px;border-top-style:solid;"><tr><td valign=
+=3D"top" align=3D"center" style=3D"padding-top:16px;">
+             =20
+              <a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigua=
+l-prod/e/=2EeJxtTD1PwkAATTTEiDGajsYBddCJ613vSq-D8VoLITZ0ITERyeVoD2wEStoimjA=
+ZJ1b9AzL6AzSOLo7ODu6uDG4uAjo6vLz38j6UXAZMvsnH9tvaJPd4__y6czd6-fp8KNHx0-bN9U=
+Avb-ydpWkvMQEYDAb5QCZhqy_aeT_qgGbMXQvEshUmqYwBHCX749veOzNXswv9RFmSl72oK4W5O=
+7W-snVMIEeIO7zCKzavelXmctfzjnjJ9SzmOhVzZVrsKBnZEWHbXM8u9v1IWT4MW2Eq2ioyy9lM=
+Gp3LrnLAdIp0GzEGnYKjqRSzgm4XiiolDiNQp9imRdVGBjYILVoMEYJsCxcJhAxiRzdOTgFoRME=
+VSEWjLUH6q2OQBiAIL2pQrc_4P8yz-aqG6n-Tv5O4BuszKxoFIqCm-UFTYhKoVNChH3WTfkfGPA=
+xMHWKsEYTxUPjIpwamDQ0SirDxA6Xkfrk=2EudjdWaCnH3zuiQ/click" title=3D"Magic" s=
+tyle=3D"text-decoration:none;display:block;">
+                  <font style=3D"font-family:'Volte Semibold', Quicksand, H=
+elvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:=
+20px;line-height:1=2E3;color:#000;">Bonjour Youniq!</font>
+              </a>
+             =20
+            </td>
+          </tr><tr><td valign=3D"top" align=3D"center" style=3D"padding-bot=
+tom:16px;">
+             =20
+            </td>
+          </tr><tr><td valign=3D"top" align=3D"center" style=3D"padding-bot=
+tom:24px;">
+              <a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigua=
+l-prod/e/=2EeJxtTD1PwkAATTTEiDGajsYBddCJ613vSq-D8VoLITZ0ITERyeVoD2wEStoimjA=
+ZJ1b9AzL6AzSOLo7ODu6uDG4uAjo6vLz38j6UXAZMvsnH9tvaJPd4__y6czd6-fp8KNHx0-bN9U=
+Avb-ydpWkvMQEYDAb5QCZhqy_aeT_qgGbMXQvEshUmqYwBHCX749veOzNXswv9RFmSl72oK4W5O=
+7W-snVMIEeIO7zCKzavelXmctfzjnjJ9SzmOhVzZVrsKBnZEWHbXM8u9v1IWT4MW2Eq2ioyy9lM=
+Gp3LrnLAdIp0GzEGnYKjqRSzgm4XiiolDiNQp9imRdVGBjYILVoMEYJsCxcJhAxiRzdOTgFoRME=
+VSEWjLUH6q2OQBiAIL2pQrc_4P8yz-aqG6n-Tv5O4ptVnVjQKREBN84OmxCRQqaBDP-om_Y6MeR=
+iYOsRYIwjjofCRTw1MGxokFGHjB6Zkfrs=2EhK0zhXVDWBXahQ/click" title=3D"Magic" s=
+tyle=3D"text-decoration:none;">
+                <font style=3D"font-size:12px;line-height:1=2E2;color:#000;=
+">
+                	Carte client: 614435244
+                </font>
+              </a>
+            </td>
+          </tr></table></td>
+  </tr></table><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" widt=
+h=3D"100%" style=3D"border-top-width:1px;border-top-style:solid;border-bott=
+om-width:1px;border-bottom-style:solid;"><tr><td valign=3D"middle" align=3D"=
+center" width=3D"50%" style=3D"border-right-width:1px;border-right-style:so=
+lid;vertical-align:middle;">
+      <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%=
+"><tr><td valign=3D"middle" align=3D"center" style=3D"vertical-align:middle=
+;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/e/=
+=2EeJxtTD1Lw0AABaWIFVEyikNVxK2Xu9yluQziNaalGJqlIFjLcfloDaZNaBKr0EmcuuofsKM_=
+QHF0cXR2cHft4OZibXFzeLz3eB9SIQcm3-Rj-21tUni8f37duRu9fH0-VOn4afPmeqDWNnbP0jR=
+OdAAGg0HR85Ogk4mw6EZd0O5zqwySsyhOABwl--Pb-J3pq_mFLJGW_Ms46vlC35taV9o6JpAjxE=
+1e53WDN-wGs7hl20e8atllZpl1fWVa7Eo5vyuCUF_PL2ZuJC0fBp0gFaGM9Fo-l0bnfk86YCpFq=
+oEYg2bJVGSKWUk1ShWZEpMRqFJs0IpsIA1rhFbKDBGCjDKuEAgZxKaqnZwC4ETeFUiFE_ognes-=
+SD3gBRdNKLd--T_MstmqqbTmkyZs_f3MHoRTIgIqiuu1fUw8mQo6dKNeknX9Pg88XYUYKwRhPBQ=
+ucqmGqaNAQhHWfgC5HH1_=2E1syMOGG76zfRrw/click" title=3D"Shop finder" style=
+=3D"text-decoration:none;"><font style=3D"font-family:'Volte Semibold', Qui=
+cksand, Helvetica, Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;f=
+ont-size:16px;line-height:1=2E3;color:#000000;">Shop finder</font></a></td>=
+
+        </tr></table></td>
+    <td valign=3D"middle" align=3D"center" width=3D"50%" style=3D"padding-r=
+ight:8px;padding-left:8px;vertical-align:middle;">
+      <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%=
+"><tr><td height=3D"24" style=3D"font-size:0;line-height:0;"></td>
+        </tr><tr><td valign=3D"middle" align=3D"center" style=3D"vertical-a=
+lign:middle;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigua=
+l-prod/e/=2EeJxtTD1Lw0AABaWIFVEyikOtg1svd7lLchnEa5qWYmiXgmAJ4ZJcazBtSpMahU7=
+i1FX_gB39AYqji6Ozg7trBzcXa4ubw-O9x_uQCjkw-yYfxbetWeHx_vl1_27y8vX5UKPTp92b60=
+yt7xTP0nSQGABkWVbqcF94cXxe8uMeqIgk7I54BOAkOZzeDt6ZsZlfGSXSmrgcxH3BjYO59aW9E=
+wJdhFzLbbgN0201W8x27Wbz2K3ZzTKzrYaxMS_2pJzo8TAytvOrIz-W1ithN0x5JCOjns-l8bno=
+S0dMpUg1EWPQ0ixFpphpqqlVZUosRqBKsUmrsol0rBNaLTNECDLLuEogZBBbqn7qAeDFwRVIuRc=
+JkC71EKQBCMKLNpSdX_4Pi2yxaivOctJGzt_PcKGDNnQA9zTCoaL4QUdgEsiU07Ef95NRTwzdMD=
+BUiLFCEMZj7iOf6ph6CiQUYf0HBuB-Tw=2EQfQKLQqexT0bDA/click" title=3D"Facebook =
+Desigual" style=3D"display:block;"><img src=3D"https://newsletter=2Edesigua=
+l=2Ecom/assets/icons/social/facebook=2Epng" width=3D"35" height=3D"35" alt=
+=3D"Facebook Desigual" border=3D"0" style=3D"display:block;"></a></td>
+          <td valign=3D"middle" align=3D"center" style=3D"vertical-align:mi=
+ddle;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/=
+e/=2EeJxtjD9Lw0AYxkEpYkWUjOJQ7eDWy13uklwG8RqTUiztUhAsJVz-WINNUpKLVegkTl31C9=
+jRD6A4ujg6O7i7dnBzsba4OTy8v-d93-eRSgUw_SYfu28b09Lj_fNr-W788vX5UKOTp-2b66Fa3=
+yqfCTHIDACGw2EljDPBeymPKl4SAT_Iwl7O-wCOs_3J7eCdGevFpTyTVoLLQRIH3NibWU_aOSbQ=
+QcixnKbTNJ12q80aTqPVOnJqjVaVNaymsTZ7jKRCEPGwb2wWl3MvkVYPw14oeF9GRr1YEMl5EEs=
+HTKVINRFj0NIsRaaYaaqp2TIlFiNQpdiktmwiHeuE2lWGCEFmFdsEQgaxpeonLgBu4l8Bwd1-AM=
+SCUyB84IcXHSh3f-d_mt_mqY7SXUQ6qPvXk855vuGuRjhUFM8_DTDxZcrpyEviLI-C1Al9Q4UYK=
+wRhPOIe8qiOqatAQhHWfwAH3n79=2EAEQ1My6-DgbRJg/click" title=3D"Instagram Desi=
+gual" style=3D"display:block;"><img src=3D"https://newsletter=2Edesigual=2Ec=
+om/assets/icons/social/instagram=2Epng" width=3D"35" height=3D"35" alt=3D""=
+ border=3D"0" style=3D"display:block;"></a></td>
+         =20
+            <td valign=3D"middle" align=3D"center" style=3D"vertical-align:=
+middle;">
+            <a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-=
+prod/e/=2EeJxtTD1Lw0AABaWIFVEyikPVQade7nKX5jKI15iUYmiXgmAp4ZKcNdg0pUmMhU7i1=
+FX_gB39AYqji6Ozg7trBzcX-4Gbw-O9x_uQCjkw-SGfu-8bk8LTw8vb3v3o9fvrsULHz9u3N5la=
+3Tq4SJJerAOQZVlxEKVJ6oqiF4UgjUUfZML1RRy0U96Bo_hwfNf7YPp6fimNpRVx3Yu6guv7U-t=
+JO6cEOgg5plNzaobTqDeY7dj1-olTsetlZps1fW1aDKWcCHnQ0Tfzy6kXSavHQTtIeEdGejWfS6=
+JL0ZWOmEqRaiDGoFkyFZliVlKNkiVTYjICVYoNaskG0rBGqFVmiBBklLFFIGQQm6p25gLgRv4AJ=
+NztCJAsdB8kPvCDqyaUWzP-D_NsvmoqrcWkiVp_P_259mcRd0uEQ0Xx_HOBiS9TTode1I3TUPSd=
+wNdViLFCEMZD7iGPapi6CiQUYe0XlgCBRw=2EJQVTEcZEubVMZA/click" title=3D"Youtube=
+ Desigual" style=3D"display:block;"><img src=3D"https://newsletter=2Edesigu=
+al=2Ecom/assets/icons/social/youtube=2Epng" width=3D"35" height=3D"35" alt=
+=3D"Youtube Desigual" border=3D"0" style=3D"display:block;"></a></td>
+         =20
+          <td valign=3D"middle" align=3D"center" style=3D"vertical-align:mi=
+ddle;"><a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-prod/=
+e/=2EeJxtTLtKw1AABaWIFVEyikPVQafeR-5NczOItzEtxdIsBcFSQh63Gmwe5KEWOolTV_0BO_=
+oBiqOLo7ODu2sHNxdri5vD4ZzDeUilAph804_tt7VJ6fH--XXnbvTy9flQZ-OnzZvrS6WxsXeWZ=
+XGqARDFIiyncZT5vUHZjQKQpyIBCCEGVQVSiEbp_vg2fufaanEhT6UlcRVHobC13al1pa1jiiyM=
+LcNqWS3daptt3rSapnlk1ZtmlTeNlrYyLQZSQQS239fWi4u5G0nLh_6pn9l9iLVGsZBF5yKUDrj=
+CsKJjzpFRMWTICK8oeqUGGTU4RQojOqtBHatEpaxW5ZhSrFdJjSLEETEU9cQBwIm8Achspy9ANt=
+cJyDzg-RcdBLu__B9m2WzVkbvzSQd3_36SmfY6pAtsp0JtJMuu1xOEepDZbOhGYZoHIrF8T1MQI=
+TLFhAxtF7tMJcyREWWYqD-mhn8J=2Er45aiFqeUKO09A/click" title=3D"Spotify Desigu=
+al" style=3D"display:block;"><img src=3D"https://newsletter=2Edesigual=2Eco=
+m/assets/icons/social/spotify=2Epng" width=3D"35" height=3D"35" alt=3D"" bo=
+rder=3D"0" style=3D"display:block;"></a></td>
+        </tr><tr><td height=3D"24" style=3D"font-size:0;line-height:0;"></t=
+d>
+        </tr></table></td>
+  </tr></table><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" widt=
+h=3D"100%" style=3D"width:100%;"><tr><td aria-hidden=3D"true" height=3D"16"=
+ style=3D"font-size:0;line-height:0;">
+
+        </td>
+    </tr></table><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" wi=
+dth=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center">=
+
+      <p><font style=3D"font-family:'Volte Semibold', Quicksand, Helvetica,=
+ Roboto, 'Open Sans', Arial, sans-serif;font-weight:600;font-size:14px;colo=
+r:#8d8d8d;">Si tu souhaites te d&#233;sabonner de la newsletter de Desigual=
+, </font><a href=3D"https://media-consumer365=2Edesigual=2Ecom/desigual-pro=
+d/e/=2EeJxtkb1v00AYxgUoQgQhkEfE0MLA1JzvfGf7LPFxcZwP4sZFTYRIVVmXu6tjGn_UdtJQ=
+dUJMXeEfoCN_AB8jCyMzAztrBzYW2kI3hlfv--h9ftIjPdpKDZz8Jj_ufrt5svLh3eev994effn=
+1832HHn-88_rVvtm7_enStKry0gEgUTLmayJLy3miCsMkDanKOJrzWUNkCbgQa3mRSaCAGy2jwn=
+8BM9VCY7V4inW82WOjhb1RQsP1g1bIomqvQ5ZxMIrLrk7MvBvwvtHtbbryYPxk_Xl-sLHXH4rBt=
+Cmi5XR_1-xlapqkIrLWI9HART6UuRhNsGVSBs5yqbR6NONp9GCnCFtjeFQ-PH6Tf2fOjfrleald=
+Vcs8SxV37p9Koa0-IzBEKPTCQThww2EwZH7oB0E_7PhBk_newLl-aky0mkp4PHNu1a_MRaZda8V=
+RXPGZjpxevVZluyrVHjOTItNFjEHP8gydYmaZrtXWKfEYgSbFLm3rLrKxTWi7yRAhyG3iNoGQQe=
+yZ9jgAYJLJl6Dik5kC1d-7AJUEMl5sQX37bP9vzn_n1BbZ_ofkgE8swqFhCLmjMJE65fTworgwl=
+o4JMTYIwviQCySojenEgIQibP8BQr6r0A=2EuR41dsaiEvwcBQ/click"><font style=3D"fo=
+nt-family:'Volte Semibold', Quicksand, Helvetica, Roboto, 'Open Sans', Aria=
+l, sans-serif;font-weight:600;font-size:14px;color:#8d8d8d;text-decoration:=
+underline;">clique ici</font></a></p></td>
+  </tr></table><br><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+width=3D"100%" style=3D"width:100%;"><tr><td valign=3D"top" align=3D"center=
+">
+      <p><font style=3D"font-family:'Volte Medium', Quicksand, Helvetica, R=
+oboto, 'Open Sans', Arial, sans-serif;font-size:12px;line-height:1=2E2;colo=
+r:#8d8d8d;">Tu peux g&#233;rer tes accords de mani&#232;re personnalis&#233=
+;e dans ton espace d'utilisateur=2E</font></p>
+      <p><font style=3D"font-family:'Volte Medium', Quicksand, Helvetica, R=
+oboto, 'Open Sans', Arial, sans-serif;font-size:12px;line-height:1=2E2;colo=
+r:#8d8d8d;">Tu peux consulter et exercer tes droits, ainsi que consulter le=
+s conditions d'utilisation de tes donn&#233;es dans notre politique de conf=
+identialit&#233; en <a href=3D"https://media-consumer365=2Edesigual=2Ecom/d=
+esigual-prod/e/=2EeJxti71Lw0AAxUEpYkWUjOLgx-BkL3e5S3MZxGtMpVjaRRAsJVwvZw0mu=
+dBcWwudxMlV_wEd_QMURxdHZwd31w5uLn6ODo_3Hu_9jJUCmHyQ17XnhcnK3fXD0_rVxeP72-0u=
+vblfPj8b2rUl51jrLHcBGA6HpVDmUbfP45JQCci16kkQyy6PN1OlIyE3s1404GJUOtZJDC_yrZv=
+L7IW588Wpfm7MyNNMpZK7G19VGKsHBAYIBX7QCBpesN_cZ_Wg3mzuBbv1ZoXV_YY793VMjIJMeB=
+S7i8XpvlDG7E7UjTSPTeTWigWtTmRqbDObIttDjEG_7Fsmxaxse-WqSYnPCLQp9mjV9JCDHUKrF=
+YYIQV4FVwmEDGLfdg4PAOiocAQ078QS6N_cAzoEYTRoQbP97f_pZ_uhWnb7D8laqA2OVKoB75QJ=
+h5YlwiOJSWhSTsdCpXk_kb0gCl0bYmwRhPGYCySog2nHgoQi7HwCksyDkQ=2EEOOdtSOT79iBWQ=
+/click" title=3D"Politique de confidentialit&#233;"><font style=3D"font-siz=
+e:12px;line-height:1=2E2;color:#8d8d8d;text-decoration:underline;">cliquant=
+ ici</font></a>=2E</font></p>
+      <p><font style=3D"font-family:'Volte Medium', Quicksand, Helvetica, R=
+oboto, 'Open Sans', Arial, sans-serif;font-size:12px;line-height:1=2E2;colo=
+r:#8d8d8d;">Conform&#233;ment &#224; la r&#233;glementation en vigueur en m=
+ati&#232;re de protection des donn&#233;es personnelles et selon notre Poli=
+tique de confidentialit&#233; <a href=3D"https://media-consumer365=2Edesigu=
+al=2Ecom/desigual-prod/e/=2EeJxti71Lw0AAxUEpYkWUjOLgx-BkL3e5S3MZxGtMpVjaRRA=
+sJVwvZw0mudBcWwudxMlV_wEd_QMURxdHZwd31w5uLn6ODo_3Hu_9jJUCmHyQ17XnhcnK3fXD0_=
+rVxeP72-0uvblfPj8b2rUl51jrLHcBGA6HpVDmUbfP45JQCci16kkQyy6PN1OlIyE3s1404GJUO=
+tZJDC_yrZvL7IW588Wpfm7MyNNMpZK7G19VGKsHBAYIBX7QCBpesN_cZ_Wg3mzuBbv1ZoXV_YY7=
+93VMjIJMeBS7i8XpvlDG7E7UjTSPTeTWigWtTmRqbDObIttDjEG_7Fsmxaxse-WqSYnPCLQp9mj=
+V9JCDHUKrFYYIQV4FVwmEDGLfdg4PAeiocAQ078QS6N_cAzoEYTRoQbP97f_pZ_uhWnb7D8laVh=
+scqVQD3oLtTplwaFkiPJKYhCbldCxUmvcT2Qui0LUhxhZBGI-5QII6mHYsSCjCzici64R-=2E1-=
+0buiV4DgXU1Q/click" title=3D"Politique de confidentialit&#233;"><font style=
+=3D"font-size:12px;line-height:1=2E2;color:#8d8d8d;text-decoration:underlin=
+e;">(disponible ici)</font></a>, que vous avez lue et accept&#233;e avant l=
+a pr&#233;sente communication, nous vous informons que les donn&#233;es per=
+sonnelles que vous nous avez fournies seront utilis&#233;es par Desigual (A=
+BASIC, S=2EL=2E) en tant que responsable de leur utilisation, dans le but p=
+rincipal de vous envoyer des communications commerciales visant &#224; vous=
+ informer de produits, de nouveaut&#233;s, de promotions et d'avantages exc=
+lusifs, ou afin de r&#233;aliser des enqu&#234;tes de satisfaction pour nou=
+s aider &#224; continuer &#224; nous am&#233;liorer=2EVous pouvez retirer v=
+otre consentement &#224; tout moment et exercer vos droits d'acc&#232;s, de=
+ rectification et de suppression des donn&#233;es ou vous opposer au traite=
+ment de celles-ci par l'envoi d'une lettre &#224; l'adresse Passeig del Mar=
+e Nostrum, 15, - 08039 Barcelona ou <a href=3D"https://media-consumer365=2Ed=
+esigual=2Ecom/desigual-prod/e/=2EeJxtTj2L1FAUBWUQR0RJKRarFlbZ95H7XvJSLL6JmW=
+VxmGkWhB2G8L6iwckkJG92XNhKrLbVP-CW_gDF0sbS2sLedgs7G8fV0uJw7uGcwz3BzgBd_GLf7=
+3-9dbHz4d2nLw_enn3--eP9vjj_ePf1qw0_uLN57n3bpwi1XXWszEnbdF4tQ-t2m5Xz3br3u6ap=
+0cbpsulqBFgzx8s4jEpFQsCxCzVPcOgAYi4ioQUYpBKFTeJImNBYhWA5DxUAhIw7wFaQGOuSnPV=
+752_abzK9Obyy7oNr7mW7_ajSh1tpgntPGSkoLfJiWkyz4nB2KCfFZDZ7UuxPZiM5yafpjW2wDg=
+auVtUyvT28ujZNcP1x9aza7sc0PRgOfPPCrYJHkgvKMyolyeM8wgJkzLN4jAXLJSNcQCbGOKMJJ=
+EyMR5IyRrMRjBkhkkDOk6MjhHRjT5BXeumQ_3t3yFtkq-M5wYs__D9cepetOV_8q7TzaIHKZuWR=
+mtOFjpkiUWRs6YBZLJQ4Nc2qX9euKyqbcgIQMQpwqgw1IgGhI8IEheQ3doaTrQ=2EmwYqB2xsH0=
+5IXQ/click" title=3D"clique ici" style=3D"color:#8d8d8d;"><font style=3D"fo=
+nt-size:12px;line-height:1=2E2;color:#8d8d8d;text-decoration:underline;">cl=
+ique ici</font></a>=2E</font></p>
+    </td>
+  </tr></table></div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]--=
+>
+							</div>
+						</div>
+					</div>
+					<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+				</td>
+			</tr></tbody></table><!--[if (IE)]></div><![endif]--></body></html>
+--58ccb795b963a19014e93558caa764ae045e6802869f135d552eaba12acc--
+

@@ -1,0 +1,714 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp4467305wrd;        Wed, 22 Dec
+ 2021 02:53:08 -0800 (PST)
+Received: from mta-2-101.ml.wish.com (mta-2-101.ml.wish.com. [144.2.145.101])        by
+ mx.google.com with ESMTPS id l8si213054qth.724.2021.12.22.02.53.07       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Wed, 22 Dec 2021
+ 02:53:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxf9JCtIh/MeveRAgkDjKHGC3NGNRg+COTOPiY7R370tacM2E0tMpBnWJQyj7aZ5/khwujO
+X-Received: by 2002:a05:620a:46ac:: with SMTP id bq44mr1539683qkb.414.1640170387939;     
+   Wed, 22 Dec 2021 02:53:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640170387; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=vp9VTqL1TIKy8JtUhLJqbDClKKoo53BBv3Dxub81izg/5sKuXlDO49Y2/RVgfK0e9J        
+ 0aMSZPXK9hUimwmm6Ngmuxui783JRDDT/2TqtlBPKx8QwZZ8xRELrPsXS0eTdXSSwDZy        
+ mD3bv+klOSt6esfZ0hu1LoIB7OjrO9WmYRttkbI7DeyI7Hi5JzODSmIkiqY3hLnvzWjn        
+ 5mvhbHyX6++8alIIcrvxQMyehWyV9p+QveMr9s3r57w32mJ8lOAJZ6/K7ke4jrOR/mWi        
+ G4QvxO/ogGw7dED72yYsFARn1p/wMVEHCxXkG8Qo3tt4vif+jHd7u0yzPX3EtDD2xfGc        
+ kv5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=content-transfer-encoding:list-unsubscribe:reply-to:from:message-id       
+  :to:subject:feedback-id:sender:date:mime-version:dkim-signature;       
+ bh=Pnr3ZhLKIQsCCfTAZg5ZU8xU+GnV4cZ6e6EpJVosPh8=;       
+ b=kNPZnsFZ303UJzcy1a2eSNIbCJ0er/pUIFjikiFwRb9+vYIcODj1yQ2q6F0U+LGd8A        
+ JYxmjZqyYjHOG5fVUCZNJ65f8TpYkepCe06/yKy3V8Accf+k6d+7pVDHRivXqPpAA9wi        
+ +3zFtPWGEoFH4pfWbOwiwzotlUdNSn3iWWLmMjR5kVNkrZtv+p6buK3ZtTEqndIrcrWJ        
+ bazSPjJxSRBvMBH6a5y0q4+b8xTDmdb91KqmpLNomcFG2eQS1hxpwlrmF7WtSruJizqh        
+ fGhhEen7KhpwJPXwvrzT9rYpYks7Nwm8pE2azKEROfE4dk1vrjCXT7Cl2zgdw1vMMsuh        
+ mqvQ==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@wish.com header.s=mail
+ header.b=L90YcxED;       spf=pass (google.com: domain of
+ bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com
+ designates 144.2.145.101 as permitted sender)
+ smtp.mailfrom=bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com;       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=wish.com
+Return-Path: <bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com>
+Received-SPF: pass (google.com: domain of
+ bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com
+ designates 144.2.145.101 as permitted sender) client-ip=144.2.145.101;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@wish.com header.s=mail
+ header.b=L90YcxED;       spf=pass (google.com: domain of
+ bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com
+ designates 144.2.145.101 as permitted sender)
+ smtp.mailfrom=bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com;       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=wish.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=wish.com;	 s=mail;
+ h=Content-Transfer-Encoding:Content-Type:List-Unsubscribe:From:	Message-ID:To:Subject:Feedback-ID:Date:Mime-Version;	bh=Pnr3ZhLKIQsCCfTAZg5ZU8xU+GnV4cZ6e6EpJVosPh8=;
+ b=L90YcxED9HTckR9qkLwB1m+8lv	LpUAoJ2ka1USsNdWvUJa7HU5dzJXwcETL4GFRyn+2zUFG6CeZuNPmD61S9Z3Scecfbqd9SISzgoz5	Y/FJxDweKChUz7EHRSpTM6wq8b74Hj87/AwPxEQ/Nx1OIqbb3JXn6OSQPB7oGxd0qxDc=;
+Mime-Version: 1.0
+Date: Wed, 22 Dec 2021 02:53:07 -0800
+Sender: bounces+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com
+Feedback-ID: 60af6a94a6b06730c57d4e0b:61c189b4760c6b48aaae74a0:14:wishmailx
+X-Mail-IP: 144.2.145.101
+Subject: Besoin d'une nouvelle paire de bottes \? Jetez un oeil aux
+ nouveaux styles !
+X-Email-ID: 2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563
+To: "Youniq Dev" <john.doe.youniq@gmail.com>
+Message-ID: <2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com>
+X-Email-Type: 14
+X-Campaign-ID: 61c189b4760c6b48aaae74a0
+From: "Wish" <offers@wish.com>
+Reply-To: replyto+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com
+List-Unsubscribe: <mailto:unsubscribe+2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com>
+X-Entity-Ref-ID: <2wfr8636sintchomxaj.2xle8msgngcua723mw0.14.fd582563@mail.wish.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title> Besoin d&#39;une nouvelle paire de bottes \? Jetez un oeil aux nouveaux styles ! </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width"/>
+<!-- Force outlook to not fallback to Times New Roman when web fonts fail to load -->
+<!--[if mso]>
+<style type="text/css">
+.web-font-fix {
+font-family:  helvetica !important;
+}
+</style>
+<![endif]-->
+
+<style>
+#outlook a { padding: 0; }
+.ExternalClass { width: 100%; }
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div { line-height: 100%; }
+</style>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+</head>
+<body style="width: 100% !important; min-width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;margin: 0;Margin: 0; padding: 0;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;">
+<img id="email-beacon" src="https://www.wish.com/email-beacon.png?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" height="1px" width="1px" />
+
+<span style="color:#FFF; display:none !important; font-size:1px;">
+Salut Youniq,&nbsp;Besoin d&#39;une nouvelle paire de bottes \? Jetez un oeil aux nouveaux styles !
+</span>
+
+<table style="background-color: #f5f5f5; width: 100%; border-collapse: collapse; border-spacing: 0"><tr><td align="center">
+<table style="max-width:100%; width: 600px; background-color:transparent;border-collapse:collapse;border-spacing:0">
+<tr>
+<td align="center" valign="top" style="background-color: white; width: 100%; min-width: 580px; padding: 0px;">
+
+<a href="https://www.wish.com/?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_logo&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b">
+
+<div style="background-color: #2FB7EC;">
+<img src="http://main.cdn.wish.com/latest/img/email/remix/logos/wish.png?v=c771013" height="40" style="margin-top: 8px; margin-bottom: 8px; height: 40px;" />
+</div>
+
+</a>
+
+<p style="text-align:center; margin: 10px 0 10px 0; margin: 14px 0 10px 0; ">
+<table style="width: 100%;"><tr align="middle">
+<td style="text-align: center; max-width: 135px;"><a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_women&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="font-family:  helvetica; word-wrap: normal; font-size:15px; color: #3c3c3c; font-weight: 100; font-family:  helvetica; letter-spacing:1.32px; margin: 0 0 8px 8px; text-decoration: none; text-transform: uppercase;">Femmes</a></td>
+<td style="text-align: center; max-width: 135px;"><a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_men&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="font-family:  helvetica; word-wrap: normal; font-size:15px; color: #3c3c3c; font-weight: 100; font-family:  helvetica; letter-spacing:1.32px; margin: 0 0 8px 8px; text-decoration: none; text-transform: uppercase;">Hommes</a></td>
+<td style="text-align: center; max-width: 135px;"><a href="https://www.wish.com/?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_accessories&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b#tag=tag_53dc186421a86318bdc87f16" style="font-family:  helvetica; word-wrap: normal; font-size:15px; color: #3c3c3c; font-weight: 100; font-family:  helvetica; letter-spacing:1.32px; margin: 0 0 8px 8px; text-decoration: none; text-transform: uppercase;">Accessoires</a></td>
+<td style="text-align: center; max-width: 135px;"><a href="https://www.wish.com/?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_home_decor&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b#tag=tag_53e9157121a8633c567eb0c2" style="font-family:  helvetica; word-wrap: normal; font-size:15px; color: #3c3c3c; font-weight: 100; font-family:  helvetica; letter-spacing:1.32px; margin: 0 0 8px 8px; text-decoration: none; text-transform: uppercase;">DÉCORATION MAISON</a></td>
+<td style="text-align: center; max-width: 135px;"><a href="https://www.wish.com/?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_gadgets&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b#tag=tag_53dc186421a86318bdc87f20" style="font-family:  helvetica; word-wrap: normal; font-size:15px; color: #3c3c3c; font-weight: 100; font-family:  helvetica; letter-spacing:1.32px; margin: 0 0 8px 8px; text-decoration: none; text-transform: uppercase;">Gadgets</a></td>
+</tr></table>
+</p>
+
+
+
+
+<p style="text-align:center; margin: 10px 0 10px 0; margin: 14px 0 10px 0; ">
+<table style="height: 60px; width: 100%; background:url('http://main.cdn.wish.com/latest/img/email/remix/referral_experiment/show_info_strip.png?v=15a2913') center/cover; background-image:url('http://main.cdn.wish.com/latest/img/email/remix/referral_experiment/show_info_strip.png?v=15a2913'); background-size:100%; background-size:cover; background-color: #006ba0;">
+<tbody>
+<tr height="12"><td></td></tr>
+<tr align="middle">
+<td style="text-align: center; max-width: 100%;">
+
+<a href="https://www.wish.com/invite?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=header_referral_campaign&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style=" font-family: helvetica; word-wrap: normal; font-size: 16px; color: #ffffff; font-weight: 600; font-family:  helvetica; letter-spacing:1.32px; margin: 0 0 8px 8px;">
+Parrainez vos amis et gagnez jusqu&#39;à 13 920 DA. Partagez votre code !
+</a>
+</td>
+</tr>
+<tr height="14"><td></td></tr>
+</tbody>
+</table>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody>
+<tr height="8"><td></td></tr>
+<tr><td style="text-align:center; padding-top: 32px; padding-bottom: 16px; font-family: serif; font-size: 28px; font-style: italic; color: #2FB7EC;" align="center">
+Les articles tendance du jour
+</td></tr>
+
+
+
+<tr><td style="text-align:center;" align="center">
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%; margin:0 auto;" align="center"><tbody>
+
+
+
+
+
+
+
+<tr>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_0&amp;rerank=61442d8af6f19286747303da&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=61442d8af6f19286747303da&amp;w=440&amp;h=440&amp;m=2" alt="Ladies Winter Warm S..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">4 180 DA</span>
+
+<span style="text-decoration: line-through; color: grey; font-weight: 500;">
+&nbsp;152 789 DA&nbsp;
+</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_1&amp;rerank=5d5e55828ddb4632f28d244a&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5d5e55828ddb4632f28d244a&amp;w=440&amp;h=440&amp;m=2" alt="Foreign Trade Short ..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">3 543 DA</span>
+
+<span style="text-decoration: line-through; color: grey; font-weight: 500;">
+&nbsp;10 288 DA&nbsp;
+</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+</tr>
+
+
+
+<tr>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_2&amp;rerank=5fec001757490f0048396b17&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5fec001757490f0048396b17&amp;w=440&amp;h=440&amp;m=2" alt="Autumn and Winter Ne..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">5 055 DA</span>
+
+<span style="text-decoration: line-through; color: grey; font-weight: 500;">
+&nbsp;13 764 DA&nbsp;
+</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_3&amp;rerank=614c5f1a9b5a19d6f7ada02e&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=614c5f1a9b5a19d6f7ada02e&amp;w=440&amp;h=440&amp;m=2" alt="Autumn Winter Women ..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">4 213 DA</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+</tr>
+
+
+
+<tr>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_4&amp;rerank=5fc9f0e41d6d0611ee6ca76e&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5fc9f0e41d6d0611ee6ca76e&amp;w=440&amp;h=440&amp;m=2" alt="Women&#39;s Winter Marti..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">3 058 DA</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_5&amp;rerank=5fdad00e170d918bf139fd56&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5fdad00e170d918bf139fd56&amp;w=440&amp;h=440&amp;m=2" alt="New Tassels Women Wi..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">7 538 DA</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+</tr>
+
+
+
+<tr>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_6&amp;rerank=6163d4a2331eed1a968a7aac&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=6163d4a2331eed1a968a7aac&amp;w=440&amp;h=440&amp;m=2" alt="Women Fashion Winter..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">1 122 DA</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+
+
+
+
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=core_cids_7&amp;rerank=5da02cb9a680f05dccaeedb8&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5da02cb9a680f05dccaeedb8&amp;w=440&amp;h=440&amp;m=2" alt="Women&#39;s Autumn and W..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">4 313 DA</span>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+</tr>
+
+
+</tbody></table>
+</td></tr>
+<tr><td style="text-align:center; padding-top: 32px; padding-bottom: 32px;" align="center">
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=shop_now&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="
+        border-radius: 3px;
+        color: #FFFFFF;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 16px;
+        text-decoration: none;
+        text-align: center;
+    background-color: #2FB7EC;
+            width: auto;
+            font-size: 22px;
+            padding: 12px 24px;
+        ; text-transform: uppercase;">
+Commandez dès maintenant
+</a>
+</td></tr>
+
+
+<tr><td style="text-align:center; padding-top: 16px; padding-bottom: 24px; font-family: serif; font-size: 28px; font-style: italic; color: #2FB7EC;" align="center">
+D&#39;autres produits top
+</td></tr>
+<tr><td style="text-align:center;" align="center">
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%; margin:0 auto;" align="center"><tbody>
+
+
+
+
+<tr>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+<a href="https://www.wish.com/c/5fc097ed16595feb4bbabab7?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=recommended_cids_0&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=5fc097ed16595feb4bbabab7&amp;w=440&amp;h=440&amp;m=2" alt="3 /10pairs Magnet Mi..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">1 070 DA</span>
+
+</div>
+
+</td>
+</tr>
+<tr>
+<td style="padding: 10px 0 14px;"></td>
+</tr>
+</table>
+</td>
+
+
+
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+<a href="https://www.wish.com/c/60b9e98f755b6cfc3d6681c7?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=recommended_cids_1&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=60b9e98f755b6cfc3d6681c7&amp;w=440&amp;h=440&amp;m=2" alt="3pcs/set Cute Elepha..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">648 DA</span>
+
+</div>
+
+</td>
+</tr>
+<tr>
+<td style="padding: 10px 0 14px;"></td>
+</tr>
+</table>
+</td>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+</tr>
+
+
+
+
+
+<tr>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+<a href="https://www.wish.com/c/54bdc35c429a6a442675bd7c?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=recommended_cids_2&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=54bdc35c429a6a442675bd7c&amp;w=440&amp;h=440&amp;m=2" alt="Mini Camera Spy Cam ..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">1 339 DA</span>
+
+<span style="text-decoration: line-through; color: grey; font-weight: 500;">
+&nbsp;27 110 DA&nbsp;
+</span>
+
+</div>
+
+</td>
+</tr>
+<tr>
+<td style="padding: 10px 0 14px;"></td>
+</tr>
+</table>
+</td>
+
+
+
+
+
+<td>
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="padding-top: 24px;">
+<tr>
+<td>
+<a href="https://www.wish.com/c/60c088b046cf6469ff651472?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=recommended_cids_3&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none; color:#000000;">
+<div style="display:inline-block; overflow:hidden; height: 220px; max-height:220px; width: 220px;">
+<img src="https://canary.contestimg.wish.com/api/image/fetch?contest_id=60c088b046cf6469ff651472&amp;w=440&amp;h=440&amp;m=2" alt="Xiaomi Redmi TWS Ear..."
+height="220" width="220" style="height: 220px; width: 220px"/>
+</div>
+</a>
+
+<div style="text-align: center; font-family: helvetica; font-weight: bold; font-size: 18px; padding-top: 12px;">
+<span style="color: #2FB7EC;">830 DA</span>
+
+</div>
+
+</td>
+</tr>
+<tr>
+<td style="padding: 10px 0 14px;"></td>
+</tr>
+</table>
+</td>
+
+<td style="width: 15px;" width="15">&nbsp;</td>
+</tr>
+
+
+
+</tbody></table>
+</td></tr>
+<tr><td style="text-align:center; padding-top: 24px; padding-bottom: 48px;" align="center">
+<a href="https://www.wish.com/home?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=shop_now_extra_recs&amp;exzpl=ctp-2&amp;filter=xparam-61c2f80262f2bc6c9d8ca23d&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="
+        border-radius: 3px;
+        color: #FFFFFF;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 16px;
+        text-decoration: none;
+        text-align: center;
+    background-color: #2FB7EC;
+            width: auto;
+            font-size: 22px;
+            padding: 12px 24px;
+        ; text-transform: uppercase;">
+Commandez dès maintenant
+</a>
+</td></tr>
+
+
+</tbody></table>
+
+
+
+<a href="https://www.wish.com/mobile-apps?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=download_apps&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style="text-decoration:none;">
+<table style="background-color: #2FB7EC; width:600px;">
+<tr align="center">
+<td align="right" style="padding:10px 15px 10px 10px;width:275px;"><span class="web-font-fix" style="font-size:18px;text-decoration: none;text-transform: uppercase;font-weight: 100;color: white;vertical-align:middle;font-family: 'Lato', helvetica;">téléchargez notre appli</span>
+</td>
+<td>
+<img style="vertical-align:middle" src="http://main.cdn.wish.com/latest/img/email/remix/components/right_arrow_2x.png?v=a0d0f13" height="16">
+</td>
+<td>
+<img style="vertical-align:middle" src="http://main.cdn.wish.com/latest/img/mobile_download_page/banner_google_equal.png?v=62cb513" width="100" height="30">
+</td>
+<td align="left" style="width:150px;" width="150">
+<img style="vertical-align:middle;" src="http://main.cdn.wish.com/latest/img/mobile_download_page/banner_apple_equal.png?v=61ed113" width="100" height="30">
+</td>
+</tr>
+</table>
+</a>
+
+
+
+<p style="margin-top: 24px; margin-bottom: 20px;">
+<a href="https://www.wish.com/invite?utm_campaign=61c189b4760c6b48aaae74a0&amp;uuid=50532ac9db2c4916a32ca78b79648c54&amp;cmpgnid=61c189b4760c6b48aaae74a0&amp;ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&amp;email_section=footer_referral_campaign&amp;exzpl=ctp-2&amp;utm_medium=email&amp;utm_source=Wish+Discount&amp;template=emails%252Fremix%252Fwish_discount_email.html&amp;recvuid=60af6a94a6b06730c57d4e0b" style='color: #2fb7ec; font-size: 20px; font-weight: 700;'>
+Parrainez vos amis et gagnez jusqu&#39;à 13 920 DA.
+</a>
+</p>
+
+
+<p style="font-family: Proxima Nova, helvetica; font-size: 11px; font-weight: 100; color: #597A88; text-align: center; margin-top: 24px; margin-bottom: 24px; letter-spacing: 0.005em;">
+
+Retrouvez toutes les dernières infos Wish ici <a href="https://blog.wish.com/" style="color: #0D6FFF; text-decoration: none;">blog</a> !
+</p>
+
+
+<p style="margin-top: 18px; margin-bottom: 16px;">
+<a href="https://www.facebook.com/wish/"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/facebook.png?v=d9bd013" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+<a href="https://www.instagram.com/wish/"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/instagram.png?v=3755713" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+<a href="https://www.linkedin.com/company/wishshopping"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/linkedin.png?v=d363113" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+<a href="https://www.pinterest.com/wishapp/"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/pinterest.png?v=69f3d13" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+<a href="https://www.tiktok.com/@wish"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/tiktok.png?v=092fd13" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+<a href="https://twitter.com/wishshopping"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/twitter.png?v=6bdfe13" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+<a href="https://www.youtube.com/channel/UCS0V-1JLtAV3iihfzHcdhfg"><img src="http://main.cdn.wish.com/latest/img/email/remix/footer_aug_2021/youtube.png?v=2f61113" style="margin: 0 7px 0 0; border-style: none; opacity:0.8;"/></a>
+</p>
+
+
+
+
+
+<p style="font-family:  Proxima Nova, helvetica; font-size: 11px; font-weight: 100; color: #597A88; text-align: center; margin: 0 45px; letter-spacing: 0.005em;">
+Wish est une plateforme de vente qui vous permet de découvrir des produits proposés par des vendeurs du monde entier. Regardez ces offres ! (Les listings produits, y compris les photos, prix de référence, réductions et économies réalisées sont fixés par les vendeurs)
+</p>
+
+<p style="font-family:  Proxima Nova, helvetica; font-size: 11px; font-weight: 100; line-height: 16px; color: #597A88; text-align: center; letter-spacing: 0.005em;">
+
+Vous avez reçu cet email car vous êtes abonné à 
+<a href="http://wish.com" style="color: #000000; text-decoration: underline;">wish.com</a>.
+<br />
+
+
+Pour ne plus recevoir d'emails de notre part, cliquez <a href=https://www.wish.com/unsubscribe-email?utm_campaign=61c189b4760c6b48aaae74a0&uuid=50532ac9db2c4916a32ca78b79648c54&cmpgnid=61c189b4760c6b48aaae74a0&ee=v1_EQP3VqK3qJSFRvTr1a4UGkLRHtcoAC6dgy6CCFeJ3rmqppAhnqm5brrddCQfpZ8NTWC8HWXizP1t8tRQCL21k232T&email_section=unsubscribe&exzpl=ctp-2&no_deep_link=True&utm_medium=email&utm_source=Wish+Discount&template=emails%252Fremix%252Fwish_discount_email.html&action=unsubscribe&recvuid=60af6a94a6b06730c57d4e0b&d=v1_4P2p9UUc88Jiwto9YAArLN5c7ejY1JDmGQKQv7qEifv66yjGgPUurZetekkHdYyubtzqwmvGUwLVCWFdUAHHAVxb style='color: #000000; text-decoration: underline;'>ici</a>.
+
+</p>
+<p style="font-family:  Proxima Nova, helvetica; font-size: 11px; font-weight: 100; color: #597A88; text-align: center; line-height: 16px; letter-spacing: 0.005em;">
+
+1 Sansome St., 33rd Floor, San Francisco, CA 94104 - USA
+
+</p>
+
+<p style="font-family:  Proxima Nova, helvetica; font-size: 11px; font-weight: 100; color: #597A88; text-align: center; line-height: 16px; padding-bottom: 24px; margin: 0px 24px ;letter-spacing: 0.005em;">
+Cet email a été envoyé d&#39;une adresse qui n&#39;accepte pas les emails entrants.
+<br />
+
+
+Veuillez ne pas répondre à ce message. Si vous avez des questions, contactez-nous à <a href="mailto:support@wish.com" style="color: #597A88; text-decoration: none;">support@wish.com</a> ou rendez-vous sur notre <a href="https://cs-help.wish.com/" style="color: #0D6FFF; text-decoration: none;">Help Center</a>.
+</p>
+
+
+
+</td>
+</tr>
+<tr>
+<td style="height:12px;background-color: white;"></td>
+</tr>
+</table>
+</td></tr></table>
+</body>
+</html>

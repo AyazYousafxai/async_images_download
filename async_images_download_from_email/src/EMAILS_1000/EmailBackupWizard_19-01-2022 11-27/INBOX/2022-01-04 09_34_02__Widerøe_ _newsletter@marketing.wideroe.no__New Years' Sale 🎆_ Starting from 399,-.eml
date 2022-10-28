@@ -1,0 +1,492 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:a5d:5086:0:0:0:0:0 with SMTP id a6csp6092827wrt;        Tue, 4 Jan
+ 2022 01:34:05 -0800 (PST)
+Received: from r172.marketing.wideroe.no (r172.marketing.wideroe.no. [172.82.227.172]) 
+       by mx.google.com with ESMTPS id
+ t11si22821113wrp.914.2022.01.04.01.34.05        for
+ <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 04 Jan 2022
+ 01:34:05 -0800 (PST)
+Received: from [34.251.200.164] ([34.251.200.164:63912]
+ helo=r171.marketing.wideroe.no)	by momentum08.lon7.cpt.adobe.net
+ (envelope-from <bounce@marketing.wideroe.no>)	(ecelerity 4.2.31.59853
+ r(Core:4.2.31.1)) with ESMTP	id 54/D0-13567-B8414D16; Tue, 04 Jan 2022
+ 09:34:04 +0000
+X-Google-Smtp-Source: ABdhPJziMLIt8QmZLLj+fje9443G7t7SlaPM/Z4vg2QtKQ2yIPbIepwBgtSEMEKNfNp9QfeSCr54
+X-Received: by 2002:a5d:4486:: with SMTP id j6mr40049639wrq.160.1641288845592;       
+ Tue, 04 Jan 2022 01:34:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641288845; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=Pzh3AErq6mjfb7+thdTD467RELL7mpNtb7OoYUfozBjqrcnNmiQySWc10rL7uPmt8b        
+ l6Ij8hNFPKnuD738fvUNEH2ObGJX6Z6pnrk7VYrq2bgeRmFOo6Qf+TBfljv5e6+q7R+8        
+ ZhCR87W507tkj7k0xbnuj1mCCIN9I3UdQwAtYzhs3tKDcrzyz/B9AbTbmTDMdJimkyXy        
+ qnUzYfe40nMIdm2sT6cHHzj9sYV4Hf70KBxjUB1QBK8/ZuNGvnlFZbIAhUnX0pVCQFpQ        
+ NCwRBKJAZu/AmaZ6hG7UOzgaPsUNGb8+UqOOrRkcr6Ti5qWbPf97p15Mu12IVgDOAt92        
+ sfsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=list-unsubscribe:precedence:message-id:mime-version:reply-to:to        
+ :subject:date:from:dkim-signature;       
+ bh=ueOFvnxIkK49AW4Skcyfw5BzLgWOfSJUHQAozhwR7Mg=;       
+ b=lrLV+efEej4pT9KftPUa7ydtgH9fdo7Qp9J65ai3jAVwr4GHTaYaRJG6YtNbzTzr9y        
+ vtnij6ZItQT/bEGL9F5uOq2r3PWZLsuUo+3+peysJtS6gZ8Xb4natqzHvoy9vVRlMZnE        
+ 0T+Fhv9ISl+Ea+CFdTnvMp6xDKmDDIt2l+zdMW6KkHHT0dS66jwWIVfGLLZko4dzKoqY        
+ vqteG4r9i3JuykrVlvJ31UwyHhsTyBD6dg3XQgdnSgzARQ0hats/UO+EP46y/sxVwjZl        
+ 9lzOg6JHVQZCvYf41uWT4pg3iIy++Vzj/gjpLUgIPOVtdsfQMWTd6ukubRk2nuIkwr4N        
+ D6zg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@marketing.wideroe.no
+ header.s=wideroe header.b="H/jR9UyX";       spf=pass (google.com: domain of
+ bounce@marketing.wideroe.no designates 172.82.227.172 as permitted sender)
+ smtp.mailfrom=bounce@marketing.wideroe.no;       dmarc=pass (p=QUARANTINE
+ sp=QUARANTINE dis=NONE) header.from=wideroe.no
+Return-Path: <bounce@marketing.wideroe.no>
+Return-Path: <bounce@marketing.wideroe.no>
+Received-SPF: pass (google.com: domain of bounce@marketing.wideroe.no designates
+ 172.82.227.172 as permitted sender) client-ip=172.82.227.172;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@marketing.wideroe.no
+ header.s=wideroe header.b="H/jR9UyX";       spf=pass (google.com: domain of
+ bounce@marketing.wideroe.no designates 172.82.227.172 as permitted sender)
+ smtp.mailfrom=bounce@marketing.wideroe.no;       dmarc=pass (p=QUARANTINE
+ sp=QUARANTINE dis=NONE) header.from=wideroe.no
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;	d=marketing.wideroe.no; s=wideroe;
+ t=1641288844;	bh=ueOFvnxIkK49AW4Skcyfw5BzLgWOfSJUHQAozhwR7Mg=;	h=From:Date:Subject:To:MIME-Version:Message-ID:List-Unsubscribe:	
+ Content-Type;	b=H/jR9UyX8EZbnagD0oAyMP4SFWl22iaelE+lB8+RvGZ8Z9tCdpyk3nAHY4BIa6Xrk	 m6AUQG3TTkJbpYSlx0UE1y7pvFkqdbdqZlYf3d32urHPflL5t/vUTf+ae89se/4ltV	
+ UOZTCtyfm3dVtbj40AnqtTuVgdedCD4zGHGY3XpK0js0XbB+XHk/U7xXlT35wqg1Zc	
+ arJQyk3y+2S5UHGPd1SJFhRD8iDanD0FoLGQrmiH/ZSgtswHto5u8VoHcBmiitbztx	
+ 076Vav0aijtqp4SDjYRbVgK31F06NOCu+5PAWKVDqmq4NzgKZopeVp51no51Bg2H2w	
+ h2HHotFQzlF9Q==
+X-MSFBL: f759RJ2PgSu+NWaTE7VRFoEtwt3UePLgUwXjBmi/wfY=|eyJyY3B0X21ldGEiOns	gImluIjogIndpZGVyb2VfbWt0X3Byb2QxIiwgInIiOiAiam9obi5kb2UueW91bml	xQGdtYWlsLmNvbSIsICJtIjogIjI2NjQyNDkyIiwgImQiOiAiMTMyNDU2ODI4Iiw	gImkiOiAiQUU2Njg4MjY1OTUzNTREOTBBNDk1QzE5QEFkb2JlT3JnIiB9LCJiIjo	iYXdzX3dpZGVyb2VfcHJvZDFfbWFya2V0aW5nX21vbWVudHVtMDhfbXRhMDAyXzE	3Mi44Mi4yMjcuMTcyIiwiZyI6Im1hcmtldGluZ185ZjI2Nzc5NC0yOTBhLTQ1ZmE	tOWYyYi1jYzg4NThmNTMzNDIiLCJyIjoiam9obi5kb2UueW91bmlxQGdtYWlsLmN	vbSJ9
+From: =?windows-1252?Q?Wider=F8e?= <newsletter@marketing.wideroe.no>
+Date: Tue, 04 Jan 2022 09:34:02 GMT
+Subject: =?utf-8?B?TmV3IFllYXJzJyBTYWxlIPCfjoZ8IFN0YXJ0aW5nIGZyb20gMw==?=
+ =?utf-8?B?OTksLQ==?=
+To: john.doe.youniq@gmail.com
+Reply-To: =?windows-1252?Q?Wider=F8e?= <marketing@wideroe.no>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 7.0.0.10622
+Message-ID: <AC7000000000196883C07E5217Cwideroe_mkt_prod1@marketing.wideroe.no>
+Precedence: bulk
+List-Unsubscribe: <mailto:bounce@marketing.wideroe.no?subject=unsubscribe%3CAC7000000000196883C07E5217Cwideroe_mkt_prod1@marketing.wideroe.no%3E>
+Content-Type: multipart/alternative; boundary="----=_NextPart_694_24CFA4B8.24CFA4B8"
+
+------=_NextPart_694_24CFA4B8.24CFA4B8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+NEW YEAR, NEW DESTINATIONS FROM 399,-
+We believe that 2022 will be a magical year filled with new and exciting experiences. Our lowest fares are now on sale!
+Sales period: 4 - 9 January 2022
+Travel period: 14 February - 31 October 31, 2022
+Book as soon as possible to get the best tickets available!
+
+BOOK HERE: http://t.marketing.wideroe.no/r/?id=t196883c,7e5217c,7e5219e
+
+Free change of tickets
+We are now offering free change of travel dates on all trips booked during the sales period. Change and new travel must take place before 31 October 2022.
+TERMS &amp; CONDITIONS: http://t.marketing.wideroe.no/r/?id=t196883c,7e5217c,7e5219f
+
+Dear recipient, you are received this email because you have signed up for our newsletter at wideroe.no or through Eurobonus. Stay tuned for offers, news and information about Wideroe. Don't want to receive news from Wideroe? You can unsubscribe here: http://t.marketing.wideroe.no/r/?id=t196883c,7e5217c,7e521a0
+
+------=_NextPart_694_24CFA4B8.24CFA4B8
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html style=3D""><head><meta name=3D"content-version" content=3D"3=2E3=2E8"=
+><base href=3D"http://t=2Emarketing=2Ewideroe=2Eno"/><meta name=3D"x-apple-=
+disable-message-reformatting"><meta name=3D"viewport" content=3D"width=3Dde=
+vice-width,initial-scale=3D1=2E0"><style data-name=3D"default" type=3D"text=
+/css">body{font-family:sans-serif;margin:0 !important;padding:0 !important;=
+background:#FFFFFF;min-width:750px;}td{padding:0;border-collapse:collapse;}=
+th{font-weight:normal;text-align:left;}=2Eacr-fragment,=2Eacr-component{pad=
+ding:0;}=2Edivider-container{padding:5px 0;font-size:0px;}=2Etext-container=
+ p{margin:0;}=2Eimage-container{line-height:0;}=2Eacr-tmp-component img,=2Ei=
+mage-container img{height:auto;}=2Ebutton-container a{text-decoration:none;=
+color:inherit;}=2Eacr-structure{background-size:auto;background-repeat:no-r=
+epeat;}=2Estructure__table{table-layout:fixed;margin:0 auto;border-spacing:=
+0;background-size:auto;background-repeat:no-repeat;mso-table-lspace:0pt !im=
+portant;mso-table-rspace:0pt !important;}=2Ecolspan1,=2Ecolspan2,=2Ecolspan=
+3,=2Ecolspan4,=2Ecolspan33,=2Ecolspan66{background-size:auto;background-rep=
+eat:no-repeat;box-sizing:border-box;}=2Ecolspan1{width:100%;}=2Ecolspan2{wi=
+dth:50%;}=2Ecolspan3{width:75%;}=2Ecolspan4{width:25%;}=2Ecolspan33{width:3=
+3%;}=2Ecolspan66{width:66%;}=2Ecomponent-social-container{width:100%;text-a=
+lign:center;}span=2Epreheader{display:none !important;visibility:hidden;mso=
+-hide:all;opacity:0;}=2EExternalClass{width:100%;}=2EExternalClass,=2EExter=
+nalClass p,=2EExternalClass span,=2EExternalClass font,=2EExternalClass td,=
+=2EExternalClass div{line-height:100%;}h1,h2,h3,h4,h5{display:block;font-we=
+ight:bold;}h1{font-size:24px;margin:19px 0 19px 0;}h2{font-size:24px;margin=
+:20px 0 20px 0;}h3{font-size:19px;margin:19px 0 19px 0;}h4{font-size:16px;m=
+argin:21px 0 21px 0;}h5{font-size:13px;margin:22px 0 22px 0;}h6{font-size:1=
+1px;margin:25px 0 25px 0;}@media screen and (min-width: 500px){=2Eis-deskto=
+p-hidden{display:none !important;}}</style><style data-name=3D"custom" type=
+=3D"text/css">body{min-width:600px;}</style><style data-name=3D"media-defau=
+lt-max-width-500px" type=3D"text/css">@media screen and (max-width: 500px){=
+body{width:100% !important;min-width:0px !important;}=2Estructure__table{wi=
+dth:100%;}=2Ecolspan1,=2Ecolspan2,=2Ecolspan3,=2Ecolspan4,=2Ecolspan33,=2Ec=
+olspan66,=2Ecolspan-n{display:block !important;min-width:100%;}=2Econtainer=
+-small-size =2Ecolspan1,=2Econtainer-small-size =2Ecolspan2,=2Econtainer-sm=
+all-size =2Ecolspan3,=2Econtainer-small-size =2Ecolspan4,=2Econtainer-small=
+-size =2Ecolspan33,=2Econtainer-small-size =2Ecolspan66,=2Econtainer-small-=
+size =2Ecolspan-n{display:table-cell !important;width:100% !important;}=2Ei=
+s-mobile-hidden{display:none !important;}}</style><style data-name=3D"media=
+-custom-max-width-500px" type=3D"text/css">@media screen and (max-width: 50=
+0px){body{min-width:0px;}#acr-2584099{width:99px!important;height:30px!impo=
+rtant;}#acr-18993060{padding-left:20px!important;padding-right:201px!import=
+ant;padding-top:15px!important;padding-bottom:15px!important;}#acr-69516450=
+{margin-top:15px!important;margin-bottom:15px!important;margin-left:20px!im=
+portant;margin-right:201px!important;}#acr-79429708{font-family:Arial!impor=
+tant;color:rgb(255,255,255)!important;}#acr-37954738{font-size:20px!importa=
+nt;}#acr-21692395{width:418px!important;}#acr-26197237{margin-bottom:10px!i=
+mportant;text-align:center!important;}#acr-54564311,body{background-color:r=
+gb(243,245,246)!important;}#acr-26929197{width:100%!important;}#acr-4214784=
+1{height:220px!important;}#acr-91835244{margin-bottom:0px!important;margin-=
+left:0px!important;margin-right:0px!important;}#acr-85722699{padding-top:15=
+px!important;padding-bottom:5px!important;}#acr-92160611{margin-top:10px!im=
+portant;}}</style><!--[if gte mso 9]><style acrite-mso-css=3D"true">=2Eimag=
+e-container div {  display: block;}=2Estructure__table td {  padding: 0;  b=
+order: none;}=2Ebutton-container {  border: none !important;  padding: 0 !i=
+mportant;  margin: 0 !important;  line-height: normal !important;}=2Eacr-st=
+ructure {  margin: 0 !important;}=2Eacr-component {  margin: 0 !important;}=
+=2Eacr-fragment {  margin: 0 !important;}=2Ecolspan1, =2Ecolspan2, =2Ecolsp=
+an3, =2Ecolspan4, =2Ecolspan33, =2Ecolspan66 {  box-sizing: border-box !imp=
+ortant;}</style><![endif]--></head><body class=3D"" id=3D"acr-54564311" sty=
+le=3D"font-family:Tahoma;"><!--[if mso]><table cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"font-family: Tahoma;">=
+<![endif]--><span style=3D"display:none !important;visibility:hidden;mso-hi=
+de:all;opacity:0;" class=3D"acr-preheader"></span><div class=3D"acr-contain=
+er"><div class=3D"acr-structure" data-structure-id=3D"1-1-column" data-stru=
+cture-name=3D"richtext=2Estructure_1_1_column" style=3D"background-size:aut=
+o;"><table class=3D"structure__table" width=3D"600" cellspacing=3D"0" cellp=
+adding=3D"0" border=3D"0" align=3D"center"><tbody><tr><th class=3D"colspan1=
+" style=3D"background-image:url(&quot;http://wideroe-mkt-stage1-res=2Eadobe=
+-campaign=2Ecom/res/wideroe_mkt_stage1/6cdd65b0369b7afe2bd9648adc966335fcd6=
+32fdfc49ce322dc08571e607c231=2Epng&quot;);vertical-align:middle;background-=
+size:cover;background-position:initial;" id=3D"acr-18993060" data-upload=3D"=
+uploadLoader-1611855893033-653842384"><!--[if gte mso 9]>
+<v:rect xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"true" stroke=3D"f=
+alse" style=3D"width: 450pt; height:60pt;">
+<v:fill type=3D"tile" src=3D"http://res=2Emarketing=2Ewideroe=2Eno/res/wide=
+roe_mkt_prod1/6cdd65b0369b7afe2bd9648adc966335fcd632fdfc49ce322dc08571e607c=
+231=2Epng" color=3D"#7bceeb" />
+<![endif]--><div class=3D"acr-fragment acr-component image-container" data-=
+component-id=3D"image" style=3D"width:100%;text-align:left;margin:22px 459p=
+x 22px 22px;" id=3D"acr-69516450" data-contenteditable=3D"false"><!--[if ms=
+o]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><=
+tr><td><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100=
+%"><tr><td style=3D"text-align: top;padding: 22px 459px 22px 22px; display:=
+ inline-block;position: absolute;"><![endif]--><a class=3D"arc-link" data-n=
+l-type=3D"externalLink" href=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=
+=3Dh196883c,7e5217c,7e5218e" ><img src=3D"http://res=2Emarketing=2Ewideroe=
+=2Eno/res/wideroe_mkt_prod1/34561827cad6fd07e3f42e3206c2c8b06d420eeba17425e=
+c285549d07c3c6051=2Epng" style=3D"width:119px;height:36px;" id=3D"acr-25840=
+99" width=3D"119" height=3D"36"></a><!--[if mso]></td></tr></table></td></t=
+r></table><![endif]--></div><!--[if gte mso 9]>
+</v:rect>
+<![endif]--></th></tr></tbody></table></div><div class=3D"acr-structure" da=
+ta-structure-id=3D"1-1-column" data-structure-name=3D"richtext=2Estructure_=
+1_1_column"><table class=3D"structure__table" width=3D"600" cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" align=3D"center"><tbody><tr><th class=3D"=
+colspan1" style=3D"background-color:rgb(255, 255, 255);"><div><table style=
+=3D"width:100%;table-layout:fixed;" cellspacing=3D"0" cellpadding=3D"0" bor=
+der=3D"0" align=3D"center"><tbody><tr><th class=3D"colspan1"><!--[if mso]><=
+table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" class=
+=3D"" style=3D"mso-hide:"><tr><td style=3D"null"><![endif]--><div class=3D"=
+acr-fragment acr-component image-container is-mobile-hidden" data-component=
+-id=3D"image" style=3D"width:100%;text-align:center;background-color:rgb(25=
+5, 255, 255);" data-upload=3D"uploadLoader-1637052287977-173782746" data-co=
+ntenteditable=3D"false"><!--[if mso]><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"text-align: center; wid=
+th: 600px; height: 250px; background-color: rgb(255, 255, 255);"><![endif]-=
+-><a class=3D"arc-link" data-nl-type=3D"externalLink" href=3D"http://t=2Ema=
+rketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e5218f" ><img src=3D"http:=
+//res=2Emarketing=2Ewideroe=2Eno/res/wideroe_mkt_prod1/47d059c61a0f21329f2a=
+61f7fe6d9d603e17be10ded56f2a2329e59be65ee6c1=2Ejpg" style=3D"width:600px;he=
+ight:250px;" id=3D"acr-21692395" width=3D"600" height=3D"250"></a><!--[if m=
+so]></td></tr></table><![endif]--></div><!--[if mso]></td></tr></table><![e=
+ndif]--><!--[if mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0=
+" width=3D"100%" class=3D"mso-is-desktop-hidden" style=3D"mso-hide:all"><tr=
+><td style=3D"null"><![endif]--><div class=3D"acr-fragment acr-component im=
+age-container is-desktop-hidden" data-component-id=3D"image" style=3D"width=
+:100%;text-align:center;background-color:rgb(255, 255, 255);" data-contente=
+ditable=3D"false"><!--[if mso]><table cellpadding=3D"0" cellspacing=3D"0" b=
+order=3D"0" width=3D"100%"><tr><td style=3D"class=3D"mso-is-desktop-hidden"=
+ style=3D"mso-hide:all" text-align: center; width: 600px; height: 250px; ba=
+ckground-color: rgb(255, 255, 255);"><![endif]--><a class=3D"arc-link" data=
+-nl-type=3D"externalLink" href=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=
+=3Dh196883c,7e5217c,7e52190" ><img src=3D"http://res=2Emarketing=2Ewideroe=
+=2Eno/res/wideroe_mkt_prod1/47d059c61a0f21329f2a61f7fe6d9d603e17be10ded56f2=
+a2329e59be65ee6c1=2Ejpg" style=3D"width:600px;height:auto;" width=3D"600" i=
+d=3D"acr-26929197" height=3D"332"></a><!--[if mso]></td></tr></table><![end=
+if]--></div><!--[if mso]></td></tr></table><![endif]--></th></tr></tbody></=
+table></div></th></tr></tbody></table></div><div class=3D"acr-structure" da=
+ta-structure-id=3D"1-1-column" data-structure-name=3D"richtext=2Estructure_=
+1_1_column"><table class=3D"structure__table" width=3D"600" cellspacing=3D"=
+0" cellpadding=3D"0" border=3D"0" align=3D"center"><tbody><tr><th class=3D"=
+colspan1" style=3D"background-color:rgb(255, 255, 255);"><div><table style=
+=3D"width:100%;table-layout:fixed;" cellspacing=3D"0" cellpadding=3D"0" bor=
+der=3D"0" align=3D"center"><tbody><tr><th class=3D"colspan1" style=3D"borde=
+r-width:0px;border-style:none;" id=3D"acr-91142996"><div class=3D"acr-fragm=
+ent acr-component" style=3D"padding-left:20px;padding-top:15px;font-family:=
+Tahoma;padding-bottom:5px;background-color:rgb(255, 255, 255);" id=3D"acr-5=
+1760394" data-component-id=3D"text" data-contenteditable=3D"false"><!--[if =
+mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+><tr><td style=3D"padding-left: 20px; padding-top: 15px; font-family: Tahom=
+a; padding-bottom: 5px; background-color: rgb(255, 255, 255);"><![endif]-->=
+<div class=3D"text-container" data-contenteditable=3D"true"><p><span style=
+=3D"color:rgb(0, 96, 44);font-size:24px;font-weight:700;">NEW YEAR, NEW DES=
+TINATIONS FROM 399,-</span></p></div><!--[if mso]></td></tr></table><![endi=
+f]--></div><div class=3D"acr-fragment acr-component" style=3D"padding-left:=
+20px;font-family:Tahoma;line-height:1=2E44;padding-top:10px;padding-right:2=
+0px;background-color:rgb(255, 255, 255);" id=3D"acr-18562222" data-componen=
+t-id=3D"text" data-contenteditable=3D"false"><!--[if mso]><table cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"padd=
+ing-left: 20px; font-family: Tahoma; line-height: 1=2E44; padding-top: 10px=
+; padding-right: 20px; background-color: rgb(255, 255, 255);"><![endif]--><=
+div class=3D"text-container" data-contenteditable=3D"true"><p><span style=
+=3D"color:rgb(76, 77, 79);font-size:14px;">We believe that 2022 will be a m=
+agical year filled with new and exciting experiences=2E Our lowest fares ar=
+e now on sale!</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:=
+14px;"><br></span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14p=
+x;font-weight:700;">Sales period: 4 - 9 January 2022
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;"><span s=
+tyle=3D"font-weight:700;">Travel period: 14 February - 31 October 31, 2022<=
+/span>
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;"><br></s=
+pan></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;">Book as so=
+on as possible to get the best tickets available!</span></p><p><span style=
+=3D"color:rgb(76, 77, 79);font-size:14px;">
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;">
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;">
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;">
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;">
+</span></p><p><span style=3D"color:rgb(76, 77, 79);font-size:14px;">
+</span></p></div><!--[if mso]></td></tr></table><![endif]--></div><!--[if m=
+so]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%">=
+<tr><td style=3D""><![endif]--><div class=3D"acr-fragment acr-component" st=
+yle=3D"width:100%;text-align:center;font-family:Tahoma;background-color:rgb=
+(255, 255, 255);" id=3D"acr-56765912" data-component-id=3D"button:2" data-c=
+ontenteditable=3D"false"><!--[if mso]><table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"text-align: center; pad=
+ding-left: 20px; padding-top: 25px; padding-bottom: 25px; background-color:=
+ rgb(255, 255, 255);"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0" width=3D"164"><tr><td style=3D"text-align: center;"><v:roundrect xmlns:v=
+=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:off=
+ice:word" style=3D"height:37=2E5pt; width:123pt; v-text-anchor:middle;" arc=
+size=3D"8%" fillcolor=3D"rgb(160, 219, 42)" strokeweight=3D"0pt" strokecolo=
+r=3D"rgb(0, 0, 238)"><v:stroke opacity=3D"0" /><v:textbox inset=3D"0,0,0,0"=
+><center style=3D"color:rgb(0, 96, 44); font-family:Tahoma; font-size:14px"=
+><![endif]--><a href=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883=
+c,7e5217c,7e52191" class=3D"arc-link" style=3D"text-decoration:none;" data-=
+nl-type=3D"externalLink" ><div class=3D"button-container" style=3D"width:16=
+4px;text-align:center;margin:25px auto 25px 20px;max-width:100%;display:inl=
+ine-block;border-width:0px;border-style:none;border-image:initial;line-heig=
+ht:50px;height:50px;border-radius:4px;background-color:rgb(160, 219, 42);" =
+id=3D"acr-3790961">
+                                <span style=3D"color:rgb(0, 96, 44);font-si=
+ze:14px;" data-contenteditable=3D"true">BOOK HERE</span>
+                              </div>
+                            </a><!--[if mso]></center></v:textbox></v:strok=
+e></v:roundrect></td></tr></table></td></tr></table><![endif]--></div><!--[=
+if mso]></td></tr></table><![endif]--></th></tr></tbody></table></div></th>=
+</tr></tbody></table></div><div class=3D"acr-structure" data-structure-id=
+=3D"2-2-column" data-structure-name=3D"richtext=2Estructure_2_2_column"><ta=
+ble class=3D"structure__table" width=3D"600" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" align=3D"center"><tbody><tr><th class=3D"colspan2" styl=
+e=3D"text-align:center;background-color:rgb(255, 255, 255);" id=3D"acr-8156=
+1165"><!--[if mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+width=3D"100%" class=3D"" style=3D"mso-hide:"><tr><td style=3D"border-radiu=
+s: 0px;"><![endif]--><div class=3D"acr-fragment acr-component image-contain=
+er is-mobile-hidden" style=3D"text-align:center;margin:0px 20px 20px;" id=
+=3D"acr-20954507" data-component-id=3D"image" data-contenteditable=3D"false=
+"><!--[if mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" widt=
+h=3D"100%"><tr><td style=3D"padding: 0px 20px 20px; text-align: center;"><t=
+able cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><tr><t=
+d style=3D"text-align: center;"><![endif]--><a class=3D"arc-link" data-nl-t=
+ype=3D"externalLink" href=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh1=
+96883c,7e5217c,7e52192" ><img src=3D"http://res=2Emarketing=2Ewideroe=2Eno/=
+res/wideroe_mkt_prod1/1a89da2725f993fded7071dff948c9dc275dcbe5035474be324f9=
+b1d50deac08=2Ejpg" style=3D"width:100%;height:160px;" width=3D"260" height=
+=3D"160"></a><!--[if mso]></td></tr></table></td></tr></table><![endif]--><=
+/div><!--[if mso]></td></tr></table><![endif]--><!--[if mso]><table cellpad=
+ding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" class=3D"mso-is-de=
+sktop-hidden" style=3D"mso-hide:all"><tr><td style=3D"border-radius: 0px;">=
+<![endif]--><div class=3D"acr-fragment acr-component image-container is-des=
+ktop-hidden" style=3D"text-align:center;margin:0px 20px 20px;" data-compone=
+nt-id=3D"image" id=3D"acr-91835244" data-contenteditable=3D"false"><!--[if =
+mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+ class=3D"mso-is-desktop-hidden" style=3D"mso-hide:all"><tr><td style=3D"pa=
+dding: 0px 20px 20px; text-align: center;"><table cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" width=3D"100%" class=3D"mso-is-desktop-hidden" styl=
+e=3D"mso-hide:all"><tr><td style=3D"text-align: center;"><![endif]--><a cla=
+ss=3D"arc-link" data-nl-type=3D"externalLink" href=3D"http://t=2Emarketing=
+=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e52193" ><img src=3D"http://res=
+=2Emarketing=2Ewideroe=2Eno/res/wideroe_mkt_prod1/1a89da2725f993fded7071dff=
+948c9dc275dcbe5035474be324f9b1d50deac08=2Ejpg" style=3D"width:100%;height:1=
+60px;" width=3D"260" id=3D"acr-42147841" height=3D"160"></a><!--[if mso]></=
+td></tr></table></td></tr></table><![endif]--></div><!--[if mso]></td></tr>=
+</table><![endif]--></th><th class=3D"colspan2" style=3D"border-style:none;=
+border-radius:0px;border-width:0px;vertical-align:top;background-color:rgb(=
+255, 255, 255);" id=3D"acr-62097569"><!--[if mso]><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"border-radiu=
+s: 0px;"><![endif]--><div class=3D"acr-fragment acr-component" style=3D"pad=
+ding:0px 5px 5px;font-family:Tahoma;background-color:rgb(255, 255, 255);" i=
+d=3D"acr-85722699" data-component-id=3D"text" data-contenteditable=3D"false=
+"><!--[if mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" widt=
+h=3D"100%"><tr><td style=3D"padding: 0px 5px 5px; font-family: Tahoma; back=
+ground-color: rgb(255, 255, 255);"><![endif]--><div class=3D"text-container=
+" data-contenteditable=3D"true"><p><span style=3D"color:rgb(0, 96, 44);font=
+-size:18px;font-weight:700;">Free change of tickets</span></p></div><!--[if=
+ mso]></td></tr></table><![endif]--></div><div class=3D"acr-fragment acr-co=
+mponent" style=3D"padding:5px 5px 0px;font-family:Tahoma;font-size:16px;bac=
+kground-color:rgb(255, 255, 255);" id=3D"acr-65934659" data-component-id=3D"=
+text" data-contenteditable=3D"false"><!--[if mso]><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"padding: 5px=
+ 5px 0px; font-family: Tahoma; font-size: 16px; background-color: rgb(255, =
+255, 255);"><![endif]--><div class=3D"text-container" data-contenteditable=
+=3D"true"><p><span style=3D"color:rgb(77, 78, 80);font-size:14px;">We are n=
+ow offering free change of travel dates on all trips booked during the sale=
+s period=2E Change and new travel must take place before 31 October 2022=2E<=
+/span></p></div><!--[if mso]></td></tr></table><![endif]--></div><!--[if ms=
+o]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><=
+tr><td style=3D"padding-bottom: 0px; padding-top: 0px;"><![endif]--><div cl=
+ass=3D"acr-fragment acr-component" style=3D"width:100%;text-align:left;font=
+-family:Tahoma;margin-bottom:0px;margin-top:0px;background-color:rgb(255, 2=
+55, 255);" id=3D"acr-26197237" data-component-id=3D"button:2" data-contente=
+ditable=3D"false"><!--[if mso]><table cellpadding=3D"0" cellspacing=3D"0" b=
+order=3D"0" width=3D"100%"><tr><td style=3D"text-align: left; padding: 5px;=
+ background-color: rgb(255, 255, 255);"><table cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" width=3D"180"><tr><td style=3D"text-align: center;"><v=
+:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas=
+-microsoft-com:office:word" style=3D"height:39pt; width:136=2E5pt; v-text-a=
+nchor:middle;" arcsize=3D"8%" fillcolor=3D"rgb(255, 255, 255)" strokeweight=
+=3D"0=2E75pt" strokecolor=3D"rgb(31, 162, 38)"><v:stroke dashstyle=3D"solid=
+" /><v:textbox inset=3D"0,0,0,0"><center style=3D"color:rgb(0, 96, 44); fon=
+t-family:Tahoma; font-size:14px"><![endif]--><a href=3D"http://t=2Emarketin=
+g=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e52194" class=3D"arc-link" style=
+=3D"text-decoration:none;" data-nl-type=3D"externalLink" ><div class=3D"but=
+ton-container" style=3D"width:180px;text-align:center;margin:5px;max-width:=
+100%;display:inline-block;border:1px solid rgb(31, 162, 38);line-height:50p=
+x;height:50px;border-radius:4px;background-color:rgb(255, 255, 255);" id=3D"=
+acr-92160611">
+                      <span style=3D"color:rgb(0, 96, 44);font-size:14px;" =
+data-contenteditable=3D"true">TERMS &amp; CONDITIONS</span>
+                    </div>
+                  </a><!--[if mso]></center></v:textbox></v:stroke></v:roun=
+drect></td></tr></table></td></tr></table><![endif]--></div><!--[if mso]></=
+td></tr></table><![endif]--><!--[if mso]></td></tr></table><![endif]--></th=
+></tr></tbody></table></div><div class=3D"acr-structure" data-structure-id=
+=3D"1-1-column" data-structure-name=3D"richtext=2Estructure_1_1_column"><ta=
+ble class=3D"structure__table" width=3D"600" cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" align=3D"center"><tbody><tr><th class=3D"colspan1" styl=
+e=3D"background-color:rgb(255, 255, 255);"><div><table style=3D"border-widt=
+h:0px;border-style:none;width:100%;table-layout:fixed;" cellspacing=3D"0" c=
+ellpadding=3D"0" border=3D"0" align=3D"center"><tbody><tr><th class=3D"cols=
+pan1" style=3D"border-width:0px;border-style:none;border-radius:0px;"><!--[=
+if mso]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"10=
+0%"><tr><td style=3D"border-radius: 0px; padding-bottom: 0px; padding-top: =
+0px;"><![endif]--><div class=3D"acr-fragment acr-component" style=3D"paddin=
+g-top:5px;background-color:rgb(220, 226, 230);margin-bottom:0px;margin-top:=
+0px;color:rgb(31, 130, 38);" id=3D"acr-94774117" data-component-id=3D"text"=
+ data-contenteditable=3D"false"><!--[if mso]><table cellpadding=3D"0" cells=
+pacing=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"font-family: Taho=
+ma; padding-top: 5px; background-color: rgb(220, 226, 230); color: rgb(31, =
+130, 38);"><![endif]--><div class=3D"text-container" data-contenteditable=
+=3D"true"><p style=3D"text-align:center;"><span style=3D"color:rgb(31, 130,=
+ 38);font-size:24px;font-weight:700;"><a class=3D"arc-link" data-nl-type=3D"=
+externalLink" href=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,=
+7e5217c,7e52195" style=3D"text-decoration:none;color:rgb(31, 130, 38);" >wi=
+deroe=2Eno</a></span></p></div><!--[if mso]></td></tr></table><![endif]--><=
+/div><!--[if mso]></td></tr></table><![endif]--><div class=3D"acr-fragment =
+acr-component" style=3D"width:100%;text-align:center;background-color:rgb(2=
+20, 226, 230);padding-top:5px;padding-bottom:5px;" data-component-id=3D"soc=
+ial" data-contenteditable=3D"false"><!--[if mso]><table cellpadding=3D"0" c=
+ellspacing=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"text-align: c=
+enter; background-color: rgb(220, 226, 230); padding-top: 5px; padding-bott=
+om: 5px;"><![endif]--><table style=3D"width:auto;display:inline-block;"><tb=
+ody><tr class=3D"component-social-container"><td style=3D"padding:10px 25px=
+ 0px 25px;">
+                                    <a style=3D"text-decoration:none;" href=
+=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e52196" d=
+ata-component-social-icon-id=3D"instagram" ><img width=3D"21" style=3D"widt=
+h:21px;" src=3D"http://res=2Emarketing=2Ewideroe=2Eno/res/wideroe_mkt_prod1=
+/0d1be7f002d6e234e41baa4986ff57dc35285f7742edba62aee01241ce837c15=2Epng" al=
+t=3D"Instagram">
+                                    </a>
+                                  </td><td style=3D"padding:10px 25px 0px 2=
+5px;">
+                                    <a style=3D"text-decoration:none;" href=
+=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e52197" d=
+ata-component-social-icon-id=3D"twitter" ><img width=3D"24" style=3D"width:=
+24px;" src=3D"http://res=2Emarketing=2Ewideroe=2Eno/res/wideroe_mkt_prod1/5=
+b45d34dc6d15508f97da9bd80d405466a7c9fe7e7deaba4e27ba39cb7a54628=2Epng" alt=
+=3D"Twitter">
+                                    </a>
+                                  </td><td style=3D"padding:10px 25px 0px 2=
+5px;">
+                                    <a style=3D"text-decoration:none;" href=
+=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e52198" d=
+ata-component-social-icon-id=3D"facebook" ><img width=3D"12" style=3D"width=
+:12px;" src=3D"http://res=2Emarketing=2Ewideroe=2Eno/res/wideroe_mkt_prod1/=
+d7db7fe518f45fb9d0db56029e34fe6d41fe2d39fb8d933100ac822651c4347c=2Epng" alt=
+=3D"Facebook">
+                                    </a>
+                                  </td><td style=3D"padding:10px 25px 0px 2=
+5px;">
+                                    <a style=3D"text-decoration:none;" href=
+=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e52199" d=
+ata-component-social-icon-id=3D"youtube" class=3D"" ><img width=3D"24" styl=
+e=3D"width:24px;" src=3D"http://res=2Emarketing=2Ewideroe=2Eno/res/wideroe_=
+mkt_prod1/b51a221087be174a1814ec894d235e48b9408e269106ebb84b16e6ebb9beb5fa=
+=2Epng" alt=3D"Youtube">
+                                    </a>
+                                  </td><td style=3D"padding:10px 25px 0px 2=
+5px;">
+                                    <a style=3D"text-decoration:none;" href=
+=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e5219a" d=
+ata-component-social-icon-id=3D"7312402" class=3D"" ><img width=3D"24" styl=
+e=3D"width:25px;" src=3D"http://res=2Emarketing=2Ewideroe=2Eno/res/wideroe_=
+mkt_prod1/be50d22631c4709d0690c0b94bcc8373a877034b2f1656259b314822bad318ce=
+=2Epng" alt=3D"undefined">
+                                    </a>
+                                  </td></tr></tbody></table><!--[if mso]></=
+td></tr></table><![endif]--></div><div class=3D"acr-fragment acr-component"=
+ style=3D"padding:16px 50px;border-width:0px;border-style:none;font-family:=
+Arial;background-color:rgb(255, 255, 255);" id=3D"acr-26402418" data-compon=
+ent-id=3D"text" data-contenteditable=3D"false"><!--[if mso]><table cellpadd=
+ing=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><tr><td style=3D"pa=
+dding: 16px 50px; font-family: Arial; background-color: rgb(255, 255, 255);=
+"><![endif]--><div class=3D"text-container" data-contenteditable=3D"true"><=
+p style=3D"text-align:center;"><span style=3D"color:rgb(116, 116, 116);font=
+-size:12px;">Dear recipient, you are received this email because you have s=
+igned up for our newsletter at wideroe=2Eno or through Eurobonus=2E Stay tu=
+ned for offers, news and information about Wideroe=2E Don't want to receive=
+ news from Wideroe? You can unsubscribe <a class=3D"arc-link" data-nl-type=
+=3D"externalLink" href=3D"http://t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh1968=
+83c,7e5217c,7e5219b" >here</a></span></p></div><!--[if mso]></td></tr></tab=
+le><![endif]--></div><div class=3D"acr-fragment acr-component" style=3D"pad=
+ding-top:18px;padding-bottom:18px;border-width:1px 0px 0px;border-style:sol=
+id none none;border-color:rgb(216, 216, 216);background-color:rgb(255, 255,=
+ 255);" data-component-id=3D"text" data-contenteditable=3D"false"><!--[if m=
+so]><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%">=
+<tr><td style=3D"padding-top: 18px; padding-bottom: 18px; background-color:=
+ rgb(255, 255, 255);"><![endif]--><div class=3D"text-container" style=3D"te=
+xt-align:center;" data-contenteditable=3D"true"><p style=3D"text-align:cent=
+er;"><span style=3D"color:rgb(116, 116, 116);font-size:14px;">
+ =20
+      	  <a class=3D"arc-link" data-nl-type=3D"externalLink" href=3D"http:/=
+/t=2Emarketing=2Ewideroe=2Eno/r/?id=3Dh196883c,7e5217c,7e5219d&p1=3D@hsCDsY=
+r4iYwiduWVLjYO2vCbVVTYy1NPyfz15EwJc2uF_YXgrnL7jZ2EE_mTZAvTby1_qWknzkhRxxnco=
+zz9FhzmTDd7ps4zc50qceer-Jye0W8a" _label=3D"Mirror page" _type=3D"mirrorPage=
+" style=3D"color:rgb(116, 116, 116); text-decoration: none; data-nl-lnkep-p=
+erso-attr-href=3D" =3D"" >Read this email online</a>
+     =20
+</span>
+
+                            </div><!--[if mso]></td></tr></table><![endif]-=
+-></div></th></tr></tbody></table></div></th></tr></tbody></table></div></d=
+iv><!--[if mso]></td></tr></table><![endif]-->
+<img height=3D'0' width=3D'0' alt=3D'' src=3D'http://t=2Emarketing=2Ewidero=
+e=2Eno/r/?id=3Dh196883c,7e5217c,1'/>
+</body></html>
+
+------=_NextPart_694_24CFA4B8.24CFA4B8--
+

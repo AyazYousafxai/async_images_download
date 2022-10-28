@@ -1,0 +1,705 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp1827798wrd;        Sat, 18 Dec
+ 2021 07:56:38 -0800 (PST)
+Received: from r220.usa.uniqlo.com (r220.usa.uniqlo.com. [192.243.228.220])        by
+ mx.google.com with ESMTPS id v11si11206930plo.405.2021.12.18.07.56.38       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Sat, 18 Dec 2021
+ 07:56:38 -0800 (PST)
+Received: from [54.218.50.255] ([54.218.50.255:3585] helo=r216.usa.uniqlo.com)	by
+ momentum02.or1.cpt.adobe.net (envelope-from
+ <bounce@usa.uniqlo.com>)	(ecelerity 4.2.31.59853 r(Core:4.2.31.1)) with
+ ESMTP	id AF/09-18105-6B40EB16; Sat, 18 Dec 2021 07:56:38 -0800
+X-Google-Smtp-Source: ABdhPJxs//a2luZ7+XzI+eCYZbHJ1nURbKzkqsj6/Hvvk5P5MiZtXdeQstiVHwwsNO7ycwJknTyO
+X-Received: by 2002:a05:6a00:10d3:b0:4a4:e516:826f with SMTP id
+ d19-20020a056a0010d300b004a4e516826fmr8069495pfu.70.1639842998578;       
+ Sat, 18 Dec 2021 07:56:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639842998; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=WQrW+idVApfZYRIviMGk5gybv+ec11qKJjyILWT42c+bY2bnikzlIX8oe2MV6i12Dv        
+ HbaKxnXJHx95DWTsqXafaODP2+ScVCnJzTrdkDHfrT3QPeDpoJFUWQ8NnY4xguW9nzFJ        
+ CdkAus/c61n9WDgqlkibY4chZk1ey5rkZow4i4n5k20pa1aIb+ebvFGRgB6jFPbM4gcI        
+ xLAcD7zHaCRoSYve8jc7gWSdjL2IDmZSfiKzPs4c7ntykc+fOeaDiEkJTjgI4eJLo0AE        
+ upVuZ8JdMC6j6lUfPtkoxCWY67k41+TqlDYgiq7n06ZeQoNVfdzth9LN5Iassydz6ufm        
+ GXnw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=content-transfer-encoding:message-id:mime-version:reply-to:to:date        
+ :subject:from:dkim-signature;       
+ bh=/oVbCvYZBxoxo04Cb50fqWSFD5B4y5rJemX7kN70F84=;       
+ b=iXOqRU91V7ALkuPG+JViUC2HNVAWJ0yIctWWdT9g5L9DYoRTHUa5o8cr+/mKtzDZdM        
+ OzbUzODO9MNsEHseY6lfa1hT43EjEHoKKRWU+7zFR/ZWBVwFJ4wLk7cL1X40FM6HRspI        
+ NVErs9ufWEFb3ftO5h2333tggbrSpS3bGo6IzUXrY5W3G1fH4RSkcTU0isPxdCg52cmX        
+ H/CvjBuUeFrPAIG24ruPOmJUiPCNNZPsO+3rb709DlMwTvZoegJ196sUDzyMvC7R3MiS        
+ oKMxk0EvuYrNCySato9/drwnYeLvtQ7LrP7Fh3jsL3p9ClIM1MDheRU7Ohfk3KqPAZMS        
+ Ba5g==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@usa.uniqlo.com header.s=neolane
+ header.b=B3Cz0YZ0;       spf=pass (google.com: domain of
+ bounce@usa.uniqlo.com designates 192.243.228.220 as permitted sender)
+ smtp.mailfrom=bounce@usa.uniqlo.com;       dmarc=pass (p=NONE sp=NONE
+ dis=NONE) header.from=uniqlo.com
+Return-Path: <bounce@usa.uniqlo.com>
+Return-Path: <bounce@usa.uniqlo.com>
+Received-SPF: pass (google.com: domain of bounce@usa.uniqlo.com designates 192.243.228.220
+ as permitted sender) client-ip=192.243.228.220;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@usa.uniqlo.com header.s=neolane
+ header.b=B3Cz0YZ0;       spf=pass (google.com: domain of
+ bounce@usa.uniqlo.com designates 192.243.228.220 as permitted sender)
+ smtp.mailfrom=bounce@usa.uniqlo.com;       dmarc=pass (p=NONE sp=NONE
+ dis=NONE) header.from=uniqlo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=usa.uniqlo.com;	s=neolane;
+ t=1639842998;	bh=/oVbCvYZBxoxo04Cb50fqWSFD5B4y5rJemX7kN70F84=;	h=From:Subject:Date:To:MIME-Version:Message-ID:Content-Type;	b=B3Cz0YZ0ahNUGvM8WBco10v+uKqJO+B8s9BxiFCpe8i78FMSgGFg1tR2LkkGSJeqS	
+ leKj03b669oZQ+4QjzEANW1I4IXlcSAttlyRhecO6I6CuiPQzo/6u8zVKFeTFBqFHJ	
+ K+OJ+e5JFRtNsgfrCCTDUkVaFGKG6F6oQY6+3miDReERBS81UoDBOUee3r8U5aQCM6	
+ 1tk5fsvG+Om6MxG7OIR5YYYPA8sZimCJOyy/VooVKS7Ol/tNIbevzUmIZk1TWp6fI1	
+ UuiY1yW40KXVmh9A9MgskKgVAhGvuyv3iWG6bpMUrBHFAoIcvaKO5Q0WfVpKViiz+9	
+ ilgf+7IZg5a4w==
+X-MSFBL: ISap60qYx9kWYzBZK/xjOJ/uSdKopcJyRSO57nGoG34=|eyJiIjoiYXdzX2ZydXN	hX3Byb2QxX2RlZmF1bHRfbW9tZW50dW0wMl9tdGEwMDlfMTkyLjI0My4yMjguMjI	wIiwiZyI6ImRlZmF1bHRfOWRlZjY0OWEtYjA4Zi00YWUxLWE3NzctNmU5MzEwY2R	lYmJjIiwiciI6ImpvaG4uZG9lLnlvdW5pcUBnbWFpbC5jb20iLCJyY3B0X21ldGE	iOnsgImluIjogImZydXNhX21rdF9wcm9kMSIsICJyIjogImpvaG4uZG9lLnlvdW5	pcUBnbWFpbC5jb20iLCAibSI6ICItMTgyNTk0OTAwNSIsICJkIjogIjk2NDYxNjU	zOCIsICJpIjogIiIgfX0=
+From: "Uniqlo USA" <email@usa.uniqlo.com>
+Subject: =?utf-8?B?SEVBVFRFQ0ggZm9yIHRoZSBob2xpZGF5cyBzdGFydGluZyBhdA==?=
+ =?utf-8?B?ICQ5LjkwIPCflKU=?=
+Date: Sat, 18 Dec 2021 07:56:34 -0800
+To: john.doe.youniq@gmail.com
+Reply-To: "Uniqlo USA" <no-reply@usa.uniqlo.com>
+MIME-Version: 1.0
+X-mailer: nlserver, Build 6.7.0
+Message-ID: <NM6932A3AB3397EE15Afrusa_mkt_prod1@usa.uniqlo.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1=2E0 Transitional//EN" "http://ww=
+w=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-transitional=2Edtd">
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml">
+  <head>
+    <title>HEATTECH for the holidays starting at $9=2E90 =F0=9F=94=A5</titl=
+e>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+" />
+    <meta name=3D"title" content=3D"HEATTECH for the holidays starting at $=
+9=2E90 =F0=9F=94=A5" />
+    <meta property=3D"og:site_name" content=3D"UNIQLO" />
+    <meta name=3D"description" content=3D"HEATTECH for the holidays startin=
+g at $9=2E90 =F0=9F=94=A5" />
+    <meta name=3D"x-apple-disable-message-reformatting"/>
+    <link rel=3D"image_src" href=3D"http://www=2Euniqlo=2Ecom/global_images=
+/us/mail/nav/uniqlo_logo=2Epng" />
+  </head>
+  <body style=3D"margin:0; padding:0; background-color:#FFFFFF;">
+    <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+bgcolor=3D"#ffffff">
+      <tr>
+        <td align=3D"center" valign=3D"top">
+          <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center">
+            <tr>
+              <td>
+                <table width=3D"640" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">
+                  <tr>
+                    <td style=3D"padding-left:5px;"><p style=3D"font-size:0=
+=2E69em; color:#666666; font-family:Arial, Helvetica, sans-serif; line-heig=
+ht:28px;">Heat up with 3 levels of insulating warmth<span style=3D"display:=
+ none; max-height: 0px;width:0; overflow: hidden;">&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr>&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C<wbr=
+>&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C</span>: <a =
+href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3ab3,397ee15a,28865d4d&u=
+tm_medium=3Demail&utm_campaign=3D20211218-HeattechLovers&bxid=3D684029536&r=
+ecipientID=3D684029536&broadlogID=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=
+=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-decoration:underline;colo=
+r:#666666;" target=3D"_blank">WOMEN</a> | <a href=3D"http://t=2Eusa=2Euniql=
+o=2Ecom/r/?id=3Dh932a3ab3,397ee15a,28865d4e&utm_medium=3Demail&utm_campaign=
+=3D20211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlo=
+gID=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594=
+9005" style=3D"text-decoration:underline;color:#666666;" target=3D"_blank">=
+MEN</a></p>
+                    </td>
+                    <td align=3D"right" style=3D"padding-right:5px;">
+                      <p style=3D"font-size:0=2E69em; color:#666666; font-f=
+amily:Arial, Helvetica, sans-serif; line-height:14px;">
+                        <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh9=
+32a3ab3,397ee15a,28865d4f&utm_medium=3Demail&utm_campaign=3D20211218-Heatte=
+chLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&=
+utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005&p1=3D%40IupV5=
+BzW0l5P6Xxc%2Bdpap%2FBVKB8PcUCa2UXtkG3RA%2Fc%3D" style=3D"text-decoration:u=
+nderline; color:#666666;">View in a browser</a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td align=3D"center" style=3D"padding: 30px 20px 50px 20px">
+                <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3ab3,=
+397ee15a,28865d50&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLovers=
+&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_sour=
+ce=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_blank"><i=
+mg src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/F8F548F526D7A7E82354596C=
+480F7A53=2Epng" width=3D"152" height=3D"68" alt=3D"UNIQLO" style=3D"display=
+: block" border=3D"0"></a>
+              </td>
+            </tr>
+
+            <!--- MAIN CONTENT --->=20
+            <tr>
+              <td>
+                <table width=3D"640" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">
+
+                  <!--SHIPPING PROMO-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,28865d53&utm_medium=3Demail&utm_campaign=3D20=
+211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=
+=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594900=
+5" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/1=
+115C8AD06BCBAD5AF450AE6A8C88E3D=2Epng" width=3D"640" height=3D"336" alt=3D"=
+TOP BANNER - LAST DAY TOMORROW! GET THEIR GIFTS IN TIME" style=3D"display:b=
+lock;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--HERO-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,28865d52&utm_medium=3Demail&utm_campaign=3D20=
+211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=
+=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594900=
+5" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/1=
+0DF702438B38C7D3D8A5E6EDFF9DB07=2Epng" width=3D"640" height=3D"810" alt=3D"=
+HERO - WOMEN HEATTECH COTTON TURTLE NECK T-SHIRT (EXTRA WARM)" style=3D"dis=
+play:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--SUB-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,28865d54&utm_medium=3Demail&utm_campaign=3D20=
+211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=
+=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594900=
+5" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/A=
+FB49917512820F24C37B6A8236D40D1=2Epng" width=3D"640" height=3D"136" alt=3D"=
+SUB - STOCK UP ON WINTER'S WARMEST ESSENTIALS THE WHOLE FAMILY WILL LOVE TH=
+IS HOLIDAY SEASON!" style=3D"display:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--CTA-->              =20
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d55&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/218B086C655EF54AA7=
+74E6BFAEF72398=2Epng" width=3D"320" height=3D"97" alt=3D"CTA1 - SHOP MEN" s=
+tyle=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d56&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/BA92B98472D1DA166E=
+0E3659E8D3AE83=2Epng" width=3D"320" height=3D"97" alt=3D"CTA2 - SHOP WOMEN"=
+ style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--HEATTECH BANNER-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,28865d57&utm_medium=3Demail&utm_campaign=3D20=
+211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=
+=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594900=
+5" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/2=
+3491A3C6E310F54984B9A0156291504=2Epng" width=3D"640" height=3D"354" alt=3D"=
+HEATTECH BANNER - WITH A SOFT 100% COTTON LINING, NEWLY DESIGNED HEATTECH C=
+OTTON (EXTRA WARM) IS 1=2E5 TIMES WARMER THAN REGULAR HEATTECH=2E" style=3D"=
+display:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--PDP 1 & PDP 2-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d58&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/BD21268060CBC890B9=
+5FA7D91D036174=2Epng" width=3D"320" height=3D"716" alt=3D"PDP 1 - WOMEN HEA=
+TTECH COTTON CREW NECK T-SHIRT (EXTRA WARM)" style=3D"display:block;" borde=
+r=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d59&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/EC11B90D5A07CA8165=
+E283EA6C0A788B=2Epng" width=3D"320" height=3D"716" alt=3D"PDP 2 - WOMEN HEA=
+TTECH COTTON LEGGINGS (EXTRA WARM)" style=3D"display:block;" border=3D"0"/>=
+
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--PDP 3-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,28865d5a&utm_medium=3Demail&utm_campaign=3D20=
+211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=
+=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594900=
+5" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/7=
+6D0E38EC6D3A5906F2736FE57B192A9=2Epng" width=3D"640" height=3D"824" alt=3D"=
+PDP 3 - MEN HEATTECH COTTON CREW NECK T-SHIRT (EXTRA WARM)" style=3D"displa=
+y:block;" border=3D"0"/></a></td>
+                  </tr>
+
+                  <!--PDP 4 & PDP 5-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d5b&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/4C0013FFB956C4AD8A=
+2F69769CD7F572=2Epng" width=3D"320" height=3D"727" alt=3D"PDP 4 - MEN HEATT=
+ECH COTTON V-NECK T-SHIRT (EXTRA WARM)" style=3D"display:block;" border=3D"=
+0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d5c&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/7F41F4749A12E4ADC3=
+92B853A90F6290=2Epng" width=3D"320" height=3D"727" alt=3D"PDP 5 - MEN HEATT=
+ECH COTTON TIGHTS (EXTRA WARM)" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--HEATTECH DEALS PDP 6 & PDP 7-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d5d&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/3E3E2D45EEC436BB3B=
+98814D25C0ACE8=2Epng" width=3D"320" height=3D"844" alt=3D"PDP 6 - WOMEN HEA=
+TTECH ULTRA STRETCH HIGH-RISE LEGGINGS PANTS" style=3D"display:block;" bord=
+er=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d5e&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/3345A76F4E9E966F20=
+13680E786446E0=2Epng" width=3D"320" height=3D"844" alt=3D"PDP 7 - WOMEN HEA=
+TTECH BEANIE" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--DONT MISS THESE DEALS CTAS-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d51&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/89A30C7C7A87C21A32=
+CF3DFF0ED0CC70=2Epng" width=3D"320" height=3D"339" alt=3D"CTA 3 - SHOP WOME=
+N " style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d5f&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/21F5740DA595324C9C=
+10F4D84502E1CF=2Epng" width=3D"320" height=3D"339" alt=3D"CTA 4 - SHOP MEN"=
+ style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--HEATTECH DEALS PDP 8 & PDP 9-->
+                  <tr>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d60&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/BCF2A05AD044B851B2=
+94ACEE3D843E6A=2Epng" width=3D"320" height=3D"575" alt=3D"PDP 8 - WOMEN FLU=
+FFY YARN FLEECE FULL-ZIP JACKET" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                    <td>
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d61&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_bla=
+nk"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/E40F55953D169828C1=
+A8454F9F607FFB=2Epng" width=3D"320" height=3D"575" alt=3D"PDP 9 - MEN ULTRA=
+ LIGHT DOWN JACKET" style=3D"display:block;" border=3D"0"/>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <!--DONATION BANNER-->
+                  <tr>
+                    <td colspan=3D"2"><a href=3D"http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,28865d62&utm_medium=3Demail&utm_campaign=3D20=
+211218-HeattechLovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=
+=3D-1825949005&utm_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-182594900=
+5" target=3D"_blank"><img src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/C=
+13380FF7927DD95815E3065A69EA012=2Epng" width=3D"640" height=3D"619" alt=3D"=
+BOTTOM BANNER - DONATE TO SPREAD THE WARMTH" style=3D"display:block;" borde=
+r=3D"0"/></a></td>
+                  </tr>
+
+
+                </table>=20
+              </td>=20
+            </tr>=20
+            <!--- MAIN CONTENT ENDS --->
+            <!-- FOOTER STARTS -->
+          <tr>
+            <td style=3D"padding: 30px 0 0 0;">
+              <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3ab3,39=
+7ee15a,28865d63&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLovers&b=
+xid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_source=
+=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" target=3D"_blank"><img=
+ src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/F8E9334CDBFEFDCC54A716FDB3=
+C4EB43=2Egif" width=3D"640" height=3D"83" alt=3D"HOLIDAY SHOPPING MADE EASY=
+!" style=3D"display: block;" border=3D"0" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d64&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/6DFACCD5D19F4BD9C774C2641C5=
+C6333=2Egif" width=3D"200" height=3D"171" alt=3D"NAV-FOR-HER" border=3D"0" =
+/>
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d65&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/396C15045A82A53860F8C3DFDA2=
+BD3EF=2Egif" width=3D"191" height=3D"171" alt=3D"NAV-FOR-HIM" border=3D"0" =
+/>
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d66&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/F12D34B998D7DB1A87CF3E4401F=
+47811=2Egif" width=3D"249" height=3D"171" alt=3D"NAV-FOR-LITTLE-ONES" borde=
+r=3D"0" />
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d67&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/443F028152CF0F1FDC91DBADA04=
+BE84C=2Egif" width=3D"320" height=3D"275" alt=3D"NAV-APP" border=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d68&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/8A3026911710A51A3DD90C83F34=
+0C519=2Egif" width=3D"320" height=3D"275" alt=3D"NAV-PERKS" border=3D"0" />=
+
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d69&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/1657E868B4919A4276BD7CAED1F=
+2231B=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-WOMEN" border=3D"0" />=
+
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d6a&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/25D77BC7C6091EF5BB40A63A5E1=
+F0597=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-MEN" border=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d6b&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/4D116A840D004E3AEE4777473F5=
+FBF42=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-KIDS" border=3D"0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d6c&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/CB3D63C4598353D63CD23BF33B9=
+9CC73=2Egif" width=3D"160" height=3D"117" alt=3D"NAV-SALE" border=3D"0" />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d6d&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/5D4FC2C7D14068568A2862C6783=
+7BA00=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-GIVE 10" border=3D"0" =
+/>
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d6e&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/00428F05DDE6A4ADE1B3EE4A7F6=
+5EC57=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-GIFT CARDS" border=3D"=
+0" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d6f&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/CEB1AE8992CBEA26CB2CAA47C64=
+F9C47=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-FREE SHIP" border=3D"0=
+" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d70&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; outline: 0;" target=3D"_blank"><img =
+src=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/716DC1A2E70A2C56870632F3AB2=
+37EDA=2Egif" width=3D"160" height=3D"144" alt=3D"NAV-BOPUS" border=3D"0" />=
+
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td align=3D"center" colspan=3D"6" style=3D"padding: 50px=
+ 0 20px 0; font-size: 1em; font-family: Arial, Helvetica, sans-serif; color=
+: #212121; font-weight: bold;">Follow us for news on the new LifeWear you n=
+eed!</td>
+                </tr>
+                <tr>
+                  <td width=3D"160"></td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d71&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; border: 0;" target=3D"_blank"><img s=
+rc=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/111A5E0C65C54BDFFF1B8C306CE6=
+05B5=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-INSTAGRAM" border=3D"0" /=
+>
+                    </a>
+                  </td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d72&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; border: 0;" target=3D"_blank"><img s=
+rc=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/CDB5BDAB7FE6BC39286C83F2CE69=
+2698=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-FACEBOOK" border=3D"0" />=
+
+                    </a>
+                  </td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d73&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005"><img src=3D"http=
+s://res=2Eusa=2Euniqlo=2Ecom/res/img/FC05463C489A6CD7B417EE5A215C47C3=2Epng=
+" width=3D"34" height=3D"34" alt=3D"NAV-PINTEREST" border=3D"0" /></a>
+                  </td>
+                  <td align=3D"center" width=3D"80">
+                    <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932a3=
+ab3,397ee15a,28865d74&utm_medium=3Demail&utm_campaign=3D20211218-HeattechLo=
+vers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&utm_=
+source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-de=
+coration: none; display: inline-block; border: 0;" target=3D"_blank"><img s=
+rc=3D"https://res=2Eusa=2Euniqlo=2Ecom/res/img/4925A32DDFA9BEDC2DB188E0D561=
+D0C6=2Epng" width=3D"34" height=3D"34" alt=3D"NAV-TWITTER" border=3D"0" />
+                    </a>
+                  </td>
+                  <td width=3D"160"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style=3D"padding-top: 40px;">
+              <table width=3D"640" cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0">
+                <tr>
+                  <td style=3D"text-align: center; padding: 0 0 20px 0;">
+                    <p style=3D"font-size: 0=2E69em; font-family: Arial, He=
+lvetica, sans-serif; color: #666666; margin: 0;">
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d75&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005&p1=3D%40HjjwXxH=
+gKDWnfCBXKrUoDA%3D%3D" style=3D"text-decoration: none; color: #666666;" tar=
+get=3D"_blank" _type=3D"optout">UNSUBSCRIBE</a> |
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d76&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-=
+decoration: none; color: #666666;" target=3D"_blank">CUSTOMER SUPPORT</a> |=
+
+                      <a href=3D"http://t=2Eusa=2Euniqlo=2Ecom/r/?id=3Dh932=
+a3ab3,397ee15a,28865d77&utm_medium=3Demail&utm_campaign=3D20211218-Heattech=
+Lovers&bxid=3D684029536&recipientID=3D684029536&broadlogID=3D-1825949005&ut=
+m_source=3DNL-Ad-Hoc&mi_u=3D684029536&mi_ecmp=3D-1825949005" style=3D"text-=
+decoration: none; color: #666666;" target=3D"_blank">PRIVACY POLICY</a>
+                    </p>
+                    <p style=3D"font-size: 0=2E69em; color: #666666; font-f=
+amily: Arial, Helvetica, sans-serif; line-height: 15px; margin: 0;">
+                      Don't miss out, add email@usa=2Euniqlo=2Ecom to your =
+address book to make sure you get our emails=2E <br />
+                      UNIQLO USA LLC 546-548 Broadway, 3rd floor New York N=
+Y 10012 | UNIQLO=2ECOM
+                    </p>
+                    <p style=3D"font-size: 0=2E69em; color: #666666; font-f=
+amily: Arial, Helvetica, sans-serif; line-height: 15px; margin: 10px 0;">
+                      *Colors, styles, prices and promotions may vary by lo=
+cation (online and in stores)=2E <br />
+                      Your email address : JOHN=2EDOE=2EYOUNIQ@GMAIL=2ECOM
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- FOOTER ENDS -->
+          </table>=20
+        </td>=20
+      </tr>=20
+    </table>=20
+    <img src=3D"http://mi=2Euniqlo=2Ecom/p/up/beec240a18bcee79b782765808d62=
+cf0/o=2Egif?mi_u=3D684029536&mi_ecmp=3DPDM127160" width=3D"1" height=3D"1" =
+alt=3D"" aria-hidden=3D"true" />
+  <img height=3D'0' width=3D'0' alt=3D'' src=3D'http://t=2Eusa=2Euniqlo=2Ec=
+om/r/?id=3Dh932a3ab3,397ee15a,1'/></body>=20
+</html>
+

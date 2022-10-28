@@ -1,0 +1,921 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp3676375wrd;        Tue, 21 Dec
+ 2021 00:02:37 -0800 (PST)
+Received: from mta-92-44-ometria.com.sparkpostmail.com
+ (mta-92-44-ometria.com.sparkpostmail.com. [192.174.92.44])        by
+ mx.google.com with ESMTPS id b202si1512427wmb.74.2021.12.21.00.02.36       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 21 Dec 2021
+ 00:02:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw8wb7lIHccYHUh5vlDNH7o4+BbT8kh6D0esk0YGWRHpEO+3EUGfrXGbExjlqoKwUkV6/++
+X-Received: by 2002:a05:600c:a54:: with SMTP id c20mr1596753wmq.48.1640073756915;       
+ Tue, 21 Dec 2021 00:02:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640073756; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=rHDBMKhs9MQNOlyu/Qt2IwF2eGop/SROn0CGQ19xPsRw4yww+hEqtMKSCoc7+EVJ0G        
+ zi7s3H+lJe0zLS1KcN4PVFltCQF01luhGQiA4ITn9LQ26c31HsdjVz+YI3SvxbjjvjGI        
+ 3Td3lfLgu+KeuIAvapEzrwMDLcVQv4ryu3I4ub/kD63xcVW/FBLlA7WKO8kehqRnhkf4        
+ fegl7uYBoTBdKOBO639g+unI8z1I2W3jcrNeHVrM3jOyfdvnvF3B2s6d9VbGfE8ORubz        
+ UOQDJZAuwFMg/5W15B8jK8nfAr+reuofZrIDnUYCfAkCc2x6PLVLNPpvdNnzE5pQ4M1/        
+ XcTQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=list-id:list-unsubscribe:from:subject:mime-version:date:message-id        
+ :to:dkim-signature;        bh=kJoBDW+qx4GT20LADCrxfa00vVgDVNM9liYy1Bt+s0U=; 
+       b=V6Iqv/02Ih/t01O2uLj/oW/EGg6QO5Rq3zYi0lKKUGAoTpEf7Ace91D2QR+o4UJCIe  
+       uPEgaEZSi/SJqxeV61omFYs8zwjehp9njJ4UxUHF4L540luwaFiSHXWCknRl29LCi4wJ  
+       iDL9uoQmpesyV58rCJr4hnjF6fCWg4RLsToWkFuTd7UNxiscPMrQITYOBa8zCSyWV5qk  
+       zRZ5IJiljkrO8Kze0EBEUaJVIbko2EQ1/4TsFab5meNeZ7gVLGpOU8MchDUpxg1B0ymm  
+       s20KidIbyRkMUzIXDVkJHjkrhz8NvpP2Bv5QYXOvRddVZrZ0My8jsFKfthrpBdO1jwXj  
+       U8eg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@mkt.hackett.com
+ header.s=scph0121 header.b="Qy2f2vN/";       spf=pass (google.com: domain of
+ bounces-12a9da0ebf9c473b@ometria.mail.e.sparkpost.com designates
+ 192.174.92.44 as permitted sender)
+ smtp.mailfrom=bounces-12a9da0ebf9c473b@ometria.mail.e.sparkpost.com;      
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hackett.com
+Return-Path: <bounces-12a9da0ebf9c473b@ometria.mail.e.sparkpost.com>
+Received-SPF: pass (google.com: domain of
+ bounces-12a9da0ebf9c473b@ometria.mail.e.sparkpost.com designates
+ 192.174.92.44 as permitted sender) client-ip=192.174.92.44;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@mkt.hackett.com header.s=scph0121
+ header.b="Qy2f2vN/";       spf=pass (google.com: domain of
+ bounces-12a9da0ebf9c473b@ometria.mail.e.sparkpost.com designates
+ 192.174.92.44 as permitted sender)
+ smtp.mailfrom=bounces-12a9da0ebf9c473b@ometria.mail.e.sparkpost.com;      
+ dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hackett.com
+X-MSFBL: BBUgKI3OFSlWP17xu+Ar/soDmNy4XY6VqJX0xH3V/cc=|eyJtZXNzYWdlX2lkIjo	iNjFiYzFjOGFjMTYxZDMxNjI4NTMiLCJ0ZW5hbnRfaWQiOiJvbWV0cmlhIiwiY3V	zdG9tZXJfaWQiOiIxIiwiciI6ImpvaG4uZG9lLnlvdW5pcUBnbWFpbC5jb20iLCJ	zdWJhY2NvdW50X2lkIjoiMzkwIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mkt.hackett.com;	s=scph0121;
+ t=1640073756;
+ i=@mkt.hackett.com;	bh=kJoBDW+qx4GT20LADCrxfa00vVgDVNM9liYy1Bt+s0U=;	h=To:Message-ID:Date:Content-Type:Subject:From;	b=Qy2f2vN/xovYDKkAtdDUlbu4H4kJg+nTj23e6EkeyguJUPOmr9zITwvJ/pH664w6Z	
+ 5v9lSlE61+OPuxbIrgjpQ1kz8nn9YAO3JCNU4EHHIEhEmOh3/MPtOUYqZxXuZFf3Y5	
+ br8C5V504FVqwWSj7a6ziHka3yBBsV/gHLBtHXmI=
+To: "Youniq Dev" <john.doe.youniq@gmail.com>
+Message-ID: <82.35.10267.C1A81C16@ar.mta3vrest.cc.prd.sparkpost>
+Date: Tue, 21 Dec 2021 08:02:36 +0000
+MIME-Version: 1.0
+Subject: Discover the Spring Summer '22 Pre-Collection
+From: "Hackett" <info@mkt.hackett.com>
+List-Unsubscribe: <mailto:unsubscribe@spe.ometria.email?subject=unsubscribe:Zx-ZHv5jPWZDzegM1jMDXgrbJ4dTFeCRavpWoMHuhDI~|eyAicmNwdF90byI6ICJqb2huLmRvZS55b3VuaXFAZ21haWwuY29tIiwgInRlbmFudF9pZCI6ICJvbWV0cmlhIiwgImN1c3RvbWVyX2lkIjogIjEiLCAibWVzc2FnZV9pZCI6ICI2MWJjMWM4YWMxNjFkMzE2Mjg1MyIsICJzdWJhY2NvdW50X2lkIjogIjM5MCIgfQ~~>
+List-Id: <ometria.1.390.sparkpostmail.com>
+Content-Type: multipart/alternative;
+ boundary="_----7I6ZE4HJaFVz2JvqR8b80w===_32/35-10267-C1A81C16"
+
+--_----7I6ZE4HJaFVz2JvqR8b80w===_32/35-10267-C1A81C16
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+--_----7I6ZE4HJaFVz2JvqR8b80w===_32/35-10267-C1A81C16
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html>=0A=
+<html lang=3D"en" xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" xmlns:v=3D"urn=
+:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:off=
+ice">=0A=
+<head><!--yahoo-app-android-fix--></head>=0A=
+<head>=0A=
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">=
+=0A=
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">=0A=
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1=
+=2E0, minimum-scale=3D1=2E0, maximum-scale=3D1=2E0">=0A=
+<meta name=3D"format-detection" content=3D"telephone=3Dno, date=3Dno, addre=
+ss=3Dno, email=3Dno">=0A=
+<meta name=3D"x-apple-disable-message-reformatting">=0A=
+<meta name=3D"robots" content=3D"noindex, nofollow">=0A=
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"css/app=2Ecss">=0A=
+<title> Discover the Spring Summer '22 Pre-Collection </title> <!-- Hackett=
+ -->=0A=
+<!--[if gte mso 15]>=0A=
+<style type=3D"text/css">=0A=
+body {font-size:0; line-height:0; mso-line-height-rule:exactly;} tr {font-s=
+ize:0px; mso-line-height-alt:0px; mso-margin-top-alt:0px; mso-line-height-r=
+ule:exactly;}=0A=
+</style>=0A=
+<![endif]-->=0A=
+<style type=3D"text/css">=0A=
+#outlook a{padding:0 !important;border: none;} =2EExternalClass * {line-hei=
+ght:100%;} html{font-size:14px;} html, body{margin:0 !important; padding:0 =
+!important; width:100% !important; min-width:100% !important; height:100% !=
+important;} body, table, th, td, a{-webkit-text-size-adjust:100%; -ms-text-=
+size-adjust:100%;} table{min-width:0 !important; border-spacing:0 !importan=
+t; padding:0 !important; border-collapse:collapse;} table, th, td{mso-table=
+-lspace:0pt; mso-table-rspace:0pt;} table th{font-weight:normal; box-sizing=
+:border-box;} table th, table td{border-collapse:collapse;} img{border:0 !i=
+mportant; outline:none !important; display:block; max-width:100%; text-deco=
+ration:none; vertical-align:middle;} a img{border:none !important;outline: =
+none;text-decoration: none;-ms-interpolation-mode: bicubic;} sup{line-heigh=
+t:1=2E5; font-size: 65%; vertical-align:top; mso-ansi-font-size:100%;} =2En=
+otalink a{color: inherit !important; text-decoration: inherit !important;}=
+=0A=
+</style>=0A=
+<style type=3D"text/css">=0A=
+@font-face{font-family:MaisonNeue;src:local("MaisonNeue Book"),local("Maiso=
+nNeue-Book"),url(https://d1uewsh0mmowj3=2Ecloudfront=2Enet/emails/hackett/a=
+ssets/fonts/MaisonNeue-Book-f099b0f87f=2Ewoff2) format("woff2"),url(https:/=
+/d1uewsh0mmowj3=2Ecloudfront=2Enet/emails/hackett/assets/fonts/MaisonNeue-B=
+ook-8cf96af80a=2Ewoff) format("woff"),url(https://d1uewsh0mmowj3=2Ecloudfro=
+nt=2Enet/emails/hackett/assets/fonts/MaisonNeue-Book-28c652627b=2Eeot);font=
+-weight:normal;font-style:normal;mso-font-alt:"arial";}=0A=
+@font-face{font-family:MaisonNeue;src:local("MaisonNeue Demi"),local("Maiso=
+nNeue-Demi"),url(https://d1uewsh0mmowj3=2Ecloudfront=2Enet/emails/hackett/a=
+ssets/fonts/MaisonNeue-Demi-917ffe2e54=2Ewoff2) format("woff2"),url(https:/=
+/d1uewsh0mmowj3=2Ecloudfront=2Enet/emails/hackett/assets/fonts/MaisonNeue-D=
+emi-9e6a0f51f1=2Ewoff) format("woff"),url(https://d1uewsh0mmowj3=2Ecloudfro=
+nt=2Enet/emails/hackett/assets/fonts/MaisonNeue-Demi-e4c435c747=2Eeot);font=
+-weight:bold;font-style:normal;mso-font-alt:"arial";}=0A=
+</style>=0A=
+<style type=3D"text/css">=0A=
+a, a:link, a:hover {margin:0; padding:0; color: #1F2134; text-decoration: n=
+one;} th, td, ol, ul, li, h1, h2, h3, h4, h5, h6, p {margin:0; padding:0; c=
+olor:#1F2134; font-family:'MaisonNeue', MaisonNeue, Arial, sans-serif;} h1,=
+ h2, h3, h4, h5, h6 {border: none; display: block;}=0A=
+h1 {font-size: 40px; line-height: 120%; letter-spacing: 0px; font-weight: n=
+ormal; font-family:'Times New Roman', Times, serif;}=0A=
+h2 {font-size: 24px; line-height: 150%; letter-spacing: 0px; font-weight: n=
+ormal;}=0A=
+h3 {font-size: 14px; line-height: 150%; letter-spacing: 0px; font-weight: n=
+ormal;}=0A=
+h4 {font-size: 14px; line-height: 150%; letter-spacing: 0px; font-weight: n=
+ormal;}=0A=
+h5 {font-size: 14px; line-height: 150%; letter-spacing: 0px; font-weight: n=
+ormal;}=0A=
+h6 {font-size: 14px; line-height: 150%; letter-spacing: 0px; font-weight: n=
+ormal;}=0A=
+p {font-size: 14px; line-height: 150%; letter-spacing: 0=2E32px; font-weigh=
+t: normal;}=0A=
+li {font-size: 14px; line-height: 150%; letter-spacing: 0=2E32px; font-weig=
+ht: normal;} ol, ul {list-style-position: inside;}=0A=
+=2Erich span {line-height: 140%;} =2Erich img {display:inline !important;}=
+=0A=
+strong {font-weight: bold;}=0A=
+</style>=0A=
+<style type=3D"text/css">=0A=
+=2Eunderline {margin-bottom:1px; text-decoration: none !important;} =2Eunde=
+rline span {border-bottom:1px solid #1F2134; padding-bottom:3px;} =2Eunderl=
+ine span:hover, =2Eunderline span:active {border-bottom:1px solid #1F2134;}=
+ =2Efade-effect:hover, =2Efade-effect:active {transition:0=2E3s !important;=
+ opacity:0=2E9 !important;} =2Ebold-effect:hover, =2Ebold-effect:active {tr=
+ansition:0=2E3s !important; font-weight:bold !important; } =2Eflip-effect:h=
+over, =2Eflip-effect a:hover, =2Eflip-effect:active, =2Eflip-effect a:activ=
+e {transition: 0=2E3s; background-color:#ffffff !important; color:#1F2134 !=
+important;}=0A=
+</style>=0A=
+<style type=3D"text/css">=0A=
+#MessageViewBody a{color: inherit;text-decoration: none;font-size: inherit;=
+font-family: inherit;font-weight: inherit;line-height: inherit;}=0A=
+u + =2Ebody a{color: inherit;text-decoration: none;font-size: inherit;font-=
+family: inherit;font-weight: inherit;line-height: inherit;} body[data-outlo=
+ok-cycle] a{color: inherit;} a[x-apple-data-detectors], a[x-apple-data-dete=
+ctors]:link, a[x-apple-data-detectors]:hover {color: inherit !important;tex=
+t-decoration: none !important;pointer-events: none !important;} img{-webkit=
+-touch-callout: none;} img=2Eimg-g+div{display: none;} =2Ehide{padding: 0; =
+margin: 0;} =2Eshow{display: none; overflow: hidden; float: left; width: 0p=
+x; max-height: 0px; max-width: 0px; line-height: 0px; visibility: hidden; m=
+so-hide:all;}=0A=
+</style>=0A=
+<style type=3D"text/css">=0A=
+@media only screen and (max-width:599px) {=0A=
+#MessageViewBody, #MessageWebViewDiv {min-width:100vw; margin:0 !important;=
+ zoom:1 !important;}=0A=
+u + =2Ebody {width:100vw !important;max-width:100% !important;} div > u + =
+=2Ebody {width:100% !important;}=0A=
+=2Ehide {display: none; display: none !important;} =2Eshow {display: block =
+!important; width: auto !important; overflow: visible !important; float: no=
+ne !important; max-height: inherit !important; max-width: inherit !importan=
+t; line-height: auto !important; margin-top: 0px !important; visibility: in=
+herit !important;}=0A=
+=2Etal {text-align:left !important;} =2Etac {text-align:center !important;}=
+ =2Etar {text-align:right !important;} =2Ep0 {padding: 0 !important;} =2Ep1=
+0 {padding: 10px !important;} =2Ep20 {padding: 20px !important;} =2Ept0 {pa=
+dding-top:0 !important;} =2Ept10 {padding-top:10px !important;} =2Ept20 {pa=
+dding-top:20px !important;} =2Epb0 {padding-bottom:0 !important;} =2Epb10 {=
+padding-bottom:10px !important;} =2Epb20 {padding-bottom:20px !important;} =
+=2Epl0 {padding-left:0px !important;} =2Epl5 {padding-left:5px !important;}=
+ =2Epl10 {padding-left:10px !important;} =2Epl20 {padding-left:20px !import=
+ant;} =2Epr0 {padding-right:0px !important;} =2Epr5 {padding-right:5px !imp=
+ortant;} =2Epr10 {padding-right:10px !important;} =2Epr20 {padding-right:20=
+px !important;} =2Eplr0 {padding-left:0px !important; padding-right:0px !im=
+portant;} =2Eplr2 {padding-left:2px !important; padding-right:2px !importan=
+t;} =2Eplr10 {padding-left:10px !important; padding-right:10px !important;}=
+ =2Eplr20 {padding-left:20px !important; padding-right:20px !important;} =
+=2Emobile-sidepadding {padding-left: 2px !important; padding-right: 2px !im=
+portant; box-sizing:border-box;} =2Ew25 {width: 25% !important; max-width: =
+25% !important; height:auto !important;} =2Ew33 {width: 33=2E33333333333333=
+6% !important; max-width: 33=2E333333333333336% !important; height:auto !im=
+portant;} #MessageViewBody =2Ew33 {width: 33% !important; max-width: 33% !i=
+mportant;} =2Ew50 {width: 50% !important; max-width: 50% !important; height=
+:auto !important;} =2Ew66 {width: 66=2E666666666666672% !important; max-wid=
+th: 66=2E666666666666672% !important; height:auto !important;} #MessageView=
+Body =2Ew66 {width: 67% !important; max-width: 67% !important;} =2Ew75 {wid=
+th: 75% !important; max-width: 75% !important; height:auto !important;} =2Ew=
+f {width: 100% !important; max-width: 100% !important; height:auto !importa=
+nt;} =2Ewr {display:block !important;} =2Ecol {display:inline-block !import=
+ant;} =2Eauto {height:auto !important; max-width: 100% !important; width:au=
+to !important;} =2Ehauto {height: auto !important;}=0A=
+=2Enostack th {box-sizing:border-box; margin: 0;} =2Enostack h1 {font-size:=
+ 20px; line-height: 125%; letter-spacing: 0px;} =2Enostack h2 {font-size: 1=
+8px; line-height: 125%; letter-spacing: 0px;} =2Enostack h3 {font-size: 16p=
+x; line-height: 125%; letter-spacing: 0px;} =2Enostack h4 {font-size: 14px;=
+ line-height: 125%; letter-spacing: 0px;} =2Enostack h5 {font-size: 13px; l=
+ine-height: 125%; letter-spacing: 0px;} =2Enostack h6 {font-size: 12px; lin=
+e-height: 125%; letter-spacing: 0px;} =2Enostack p {font-size: 12px; line-h=
+eight: 125%; letter-spacing: 0px;} =2Enostack =2Erich span {line-height: 12=
+5%;} =2Enostack =2Ebutton a {font-size: 12px !important;} =2Efs16 {font-siz=
+e: 16px !important;} =2Efs15 {font-size: 15px !important;} =2Efs14 {font-si=
+ze: 14px !important;} =2Efs13 {font-size: 13px !important;} =2Efs12 {font-s=
+ize: 12px !important;} =2Efs11 {font-size: 11px !important;} =2Efs10 {font-=
+size: 10px !important;} =2Elh20 {line-height: 20px !important;} =2Elh18 {li=
+ne-height: 18px !important;} =2Elh16 {line-height: 16px !important;} =2Elh1=
+4 {line-height: 14px !important;} =2Elh12 {line-height: 12px !important;} =
+=2Ehackett65b {max-width:150px !important;} =2Elogo {padding-top:24px !impo=
+rtant; padding-bottom:24px !important;} =2Ebutton {width:100% !important;}=
+=0A=
+}=0A=
+</style>=0A=
+<!--[if mso]>=0A=
+<style type=3D"text/css">=0A=
+span=2EMsoHyperlink {mso-style-priority:99; color:inherit;} span=2EMsoHyper=
+linkFollowed {mso-style-priority:99; color:inherit;} =2Eunderline {margin:0=
+; text-decoration:underline !important;} =2Eunderline span {border:none; pa=
+dding-bottom:0;} p, a, li, th, td, blockquote { mso-line-height-rule:exactl=
+y; }=0A=
+</style>=0A=
+<![endif]-->=0A=
+<!--[if (mso 16)]>=0A=
+<style type=3D"text/css">=0A=
+a { text-decoration: none; }=0A=
+</style>=0A=
+<![endif]-->=0A=
+<!--[if gte mso 9]>=0A=
+<xml>=0A=
+<o:OfficeDocumentSettings>=0A=
+<o:AllowPNG/>=0A=
+<o:PixelsPerInch>96</o:PixelsPerInch>=0A=
+</o:OfficeDocumentSettings>=0A=
+</xml>=0A=
+<![endif]-->=0A=
+</head>=0A=
+<body class=3D"body" style=3D"margin:0; padding:0; word-spacing:normal; tex=
+t-align:center;">=0A=
+<table id=3D"body" aria-roledescription=3D"email" aria-label=3D"Discover th=
+e Spring Summer '22 Pre-Collection" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" lang=3D"en" role=3D"article" style=3D"font-size:1rem; width:100%;=
+ min-width:100%; text-align:center; margin:0 auto; table-layout:fixed; colo=
+r: #1F2134; font-family: MaisonNeue, Arial, sans-serif;">=0A=
+<tr>=0A=
+<td style=3D"background-color:#FFFFFF;">=0A=
+<!--=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+-->=0A=
+<!--[if !mso]><! --><div style=3D"display:none !important; display:none; ov=
+erflow:hidden; float:left; width:0px; max-height:0px; max-width:0px; line-h=
+eight:0px; visibility:hidden;"> Anticipate Sunnier Skies &#847; &#847; &#84=
+7; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#=
+847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; =
+&#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847=
+; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#8=
+47; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &=
+#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847;=
+ &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#84=
+7; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#=
+847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; =
+&#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847=
+; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#8=
+47; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &=
+#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847;=
+ &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#84=
+7; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#=
+847; &#847;</div><!--<![endif]-->=0A=
+<!-- wrapper --> <table class=3D"wf" align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"margin:0 auto; w=
+idth:600px; max-width:600px;">=0A=
+<tr>=0A=
+<td class=3D"wf" align=3D"center" style=3D"padding-top:0px; padding-bottom:=
+0px; width:600px; max-width:600px;">=0A=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"background-color:#EEEEEE;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;">=0A=
+<table class=3D"wf" align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" role=3D"presentation" style=3D"margin:0 auto; width:600px; max-w=
+idth:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"font-size:10px; line-height:14px; padding-top=
+:9px; padding-bottom:9px; padding-left:10px; padding-right:10px;">=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/6BlX1AyY5sldzyfcBFG3-g=
+~~/AAAAAQA~/RgRjpA8cP0UGLTE6MDowhFQBaHR0cDovL29tZXRyaWEuZW1haWwvMTJhOWRhMGV=
+iZjljNDczYi9hcmNoaXZlL21lLzgxNTUvM2U4Yzc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhYjk3OD=
+M_b21fY2FtcGFpZ249b21tZV82OWZjNmViMi03ZDFfMTQ2NzFfNzM4MTImb21fcHJvZmlsZT0yY=
+zU3LTBlNjIyMy0wMTFlYjQ5MCZvbV9zZW5kPTNlOGM3NzZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5=
+NzgzJnV0bV9jYW1wYWlnbj0yMDIxMTIyMV9QcmVfU1MyMl9UaGVUcmFuc2l0aW9uYWxHaWxldCZ=
+1dG1fY29udGVudD1oYWNrZXR0X2VuJnV0bV9tZWRpdW09bWFpbCZ1dG1fc291cmNlPUVOX25ld3=
+NsZXR0ZXImdXRtX3Rlcm09ZW1haWxfcHJvZHVjdFcHb21ldHJpYUIKYbwcisFh0xYoU1IZam9ob=
+i5kb2UueW91bmlxQGdtYWlsLmNvbVgEAAABhg~~" style=3D"text-decoration:none; col=
+or:#1F2134;" target=3D"_blank" >=0A=
+<!--  --> View in browser=0A=
+<!--  -->=0A=
+</a>=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+<!-- start blocks --><div><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"background-color:#FFFFFF;" width=3D"1=
+00%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;">=0A=
+<table class=3D"wf" align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" role=3D"presentation" style=3D"margin:0 auto; width:600px; max-w=
+idth:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:0px; padding-bottom:0px; padding-=
+left:0px; padding-right:0px;">=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/XQYQu_V4qM4NpGWy93cIhw=
+~~/AAAAAQA~/RgRjpA8cP0UFMDowOjCEGQFodHRwczovL3d3dy5oYWNrZXR0LmNvbS9nYi8_b21=
+fY2FtcGFpZ249b21tZV82OWZjNmViMi03ZDFfMTQ2NzFfNzM4MTImb21fcHJvZmlsZT0yYzU3LT=
+BlNjIyMy0wMTFlYjQ5MCZvbV9zZW5kPTNlOGM3NzZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5NzgzJ=
+nV0bV9jYW1wYWlnbj0yMDIxMTIyMV9QcmVfU1MyMl9UaGVUcmFuc2l0aW9uYWxHaWxldCZ1dG1f=
+Y29udGVudD1oYWNrZXR0X2VuJnV0bV9tZWRpdW09bWFpbCZ1dG1fc291cmNlPUVOX25ld3NsZXR=
+0ZXImdXRtX3Rlcm09ZW1haWxfcHJvZHVjdFcHb21ldHJpYUIKYbwcisFh0xYoU1IZam9obi5kb2=
+UueW91bmlxQGdtYWlsLmNvbVgEAAABhg~~" target=3D"_blank" style=3D"text-decorat=
+ion:none; color:#1F2134;" ><img class=3D"wf" alt=3D"Hackett London" border=
+=3D"0" src=3D"https://d1uewsh0mmowj3=2Ecloudfront=2Enet/emails/hackett/asse=
+ts/img/logo-hackett-london-header-eb9f97497b=2Epng" style=3D"display:block;=
+ margin:0 auto; font-size:18px; max-width:100%; height:auto; padding:0;" wi=
+dth=3D"600" height=3D"auto"></a>=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:0px; padding-bottom:0px; padding-=
+left:0px; padding-right:0px;">=0A=
+<!--  -->=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/J6-HwBPcLT_LvewvcYVNpw=
+~~/AAAAAQA~/RgRjpA8cP0UNMTozOjA6aGVyb19lboQuAWh0dHBzOi8vd3d3LmhhY2tldHQuY29=
+tL2diL2NhdGVnb3J5P2NnaWQ9SEtNMTE5MCZvbV9jYW1wYWlnbj1vbW1lXzY5ZmM2ZWIyLTdkMV=
+8xNDY3MV83MzgxMiZvbV9wcm9maWxlPTJjNTctMGU2MjIzLTAxMWViNDkwJm9tX3NlbmQ9M2U4Y=
+zc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhYjk3ODMmdXRtX2NhbXBhaWduPTIwMjExMjIxX1ByZV9T=
+UzIyX1RoZVRyYW5zaXRpb25hbEdpbGV0JnV0bV9jb250ZW50PWhhY2tldHRfZW4mdXRtX21lZGl=
+1bT1tYWlsJnV0bV9zb3VyY2U9RU5fbmV3c2xldHRlciZ1dG1fdGVybT1lbWFpbF9wcm9kdWN0Vw=
+dvbWV0cmlhQgphvByKwWHTFihTUhlqb2huLmRvZS55b3VuaXFAZ21haWwuY29tWAQAAAGG" sty=
+le=3D"display:block;" target=3D"_blank" ><img class=3D"wf" src=3D"https://d=
+1a2o89e23clzw=2Ecloudfront=2Enet/emails/12a9da0ebf9c473b/a15affc39ff941c498=
+885dd84e13ac7a=2Ejpg" alt=3D"/" border=3D"0" style=3D"display:block; margin=
+:0 auto; max-width:100%; height:auto; padding:0;" width=3D"600" height=3D"a=
+uto"></a>=0A=
+<!--  -->=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;"><!-- width=
+ must not exceed 600px -->=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:10px; padding-bottom:10px; paddin=
+g-left:10px; padding-right:10px;">=0A=
+<p style=3D"margin-bottom:0px; font-size:16px; line-height:150%; letter-spa=
+cing:0=2E32px; font-weight:normal; font-style:normal; color:#1F2134;">=0A=
+<!--  --> Ready your wardrobe with our Spring-Summer 22 Pre-Collection=2E=
+=0A=
+<!--  -->=0A=
+</p>=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin: 0 auto; width: 600px; max-width: 600px;"><!-- wi=
+dth must not exceed 600px -->=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:10px; padding-bottom:10px; paddin=
+g-left:10px; padding-right:10px;">=0A=
+<a class=3D"underline" href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/mQ=
+J0WY9psN6opQh78VrDOA~~/AAAAAQA~/RgRjpA8cP0UPYnV0dG9uX2NhdGVnb3J5hC4BaHR0cHM=
+6Ly93d3cuaGFja2V0dC5jb20vZ2IvY2F0ZWdvcnk_Y2dpZD1IS00xMTkwJm9tX2NhbXBhaWduPW=
+9tbWVfNjlmYzZlYjItN2QxXzE0NjcxXzczODEyJm9tX3Byb2ZpbGU9MmM1Ny0wZTYyMjMtMDExZ=
+WI0OTAmb21fc2VuZD0zZThjNzc2ZjAyMDI0M2Q1ODYzMDIyMTVjMGFiOTc4MyZ1dG1fY2FtcGFp=
+Z249MjAyMTEyMjFfUHJlX1NTMjJfVGhlVHJhbnNpdGlvbmFsR2lsZXQmdXRtX2NvbnRlbnQ9aGF=
+ja2V0dF9lbiZ1dG1fbWVkaXVtPW1haWwmdXRtX3NvdXJjZT1FTl9uZXdzbGV0dGVyJnV0bV90ZX=
+JtPWVtYWlsX3Byb2R1Y3RXB29tZXRyaWFCCmG8HIrBYdMWKFNSGWpvaG4uZG9lLnlvdW5pcUBnb=
+WFpbC5jb21YBAAAAYY~" style=3D"font-size:16px; letter-spacing:0px; font-weig=
+ht:normal; font-style:normal; color:#1F2134; text-decoration:underline;" ta=
+rget=3D"_blank" data-msys-linkname=3D"6:0:0"><span>=0A=
+<!--  --> Shop the Pre-Collection=0A=
+<!--  -->=0A=
+</span></a>=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:0px; padding-bottom:0px; padding-=
+left:0px; padding-right:0px;">=0A=
+<!--  -->=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/iwwHLXi22qhtcQjXCgi4Gw=
+~~/AAAAAQA~/RgRjpA8cP0UNOTozOjA6aGVyb19lboQxAWh0dHBzOi8vd3d3LmhhY2tldHQuY29=
+tL2diL3Byb2R1Y3RzP3BpZD1ITTcwMjc3MjlMViZvbV9jYW1wYWlnbj1vbW1lXzY5ZmM2ZWIyLT=
+dkMV8xNDY3MV83MzgxMiZvbV9wcm9maWxlPTJjNTctMGU2MjIzLTAxMWViNDkwJm9tX3NlbmQ9M=
+2U4Yzc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhYjk3ODMmdXRtX2NhbXBhaWduPTIwMjExMjIxX1By=
+ZV9TUzIyX1RoZVRyYW5zaXRpb25hbEdpbGV0JnV0bV9jb250ZW50PWhhY2tldHRfZW4mdXRtX21=
+lZGl1bT1tYWlsJnV0bV9zb3VyY2U9RU5fbmV3c2xldHRlciZ1dG1fdGVybT1lbWFpbF9wcm9kdW=
+N0VwdvbWV0cmlhQgphvByKwWHTFihTUhlqb2huLmRvZS55b3VuaXFAZ21haWwuY29tWAQAAAGG"=
+ style=3D"display:block;" target=3D"_blank" ><img class=3D"wf" src=3D"https=
+://d1a2o89e23clzw=2Ecloudfront=2Enet/emails/12a9da0ebf9c473b/4dd40a6acc4cbb=
+5b0767289c5fde10a3=2Ejpg" alt=3D"/" border=3D"0" style=3D"display:block; ma=
+rgin:0 auto; max-width:100%; height:auto; padding:0;" width=3D"600" height=
+=3D"auto"></a>=0A=
+<!--  -->=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:0px; padding-bottom:0px; padding-=
+left:0px; padding-right:0px;">=0A=
+<!--  -->=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/fmLwHzRcipGFJ2QiyI5QBA=
+~~/AAAAAQA~/RgRjpA8cP0UOMTA6MzowOmhlcm9fZW6EMQFodHRwczovL3d3dy5oYWNrZXR0LmN=
+vbS9nYi9wcm9kdWN0cz9waWQ9SE0zMDg5NzAwQUEmb21fY2FtcGFpZ249b21tZV82OWZjNmViMi=
+03ZDFfMTQ2NzFfNzM4MTImb21fcHJvZmlsZT0yYzU3LTBlNjIyMy0wMTFlYjQ5MCZvbV9zZW5kP=
+TNlOGM3NzZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5NzgzJnV0bV9jYW1wYWlnbj0yMDIxMTIyMV9Q=
+cmVfU1MyMl9UaGVUcmFuc2l0aW9uYWxHaWxldCZ1dG1fY29udGVudD1oYWNrZXR0X2VuJnV0bV9=
+tZWRpdW09bWFpbCZ1dG1fc291cmNlPUVOX25ld3NsZXR0ZXImdXRtX3Rlcm09ZW1haWxfcHJvZH=
+VjdFcHb21ldHJpYUIKYbwcisFh0xYoU1IZam9obi5kb2UueW91bmlxQGdtYWlsLmNvbVgEAAABh=
+g~~" style=3D"display:block;" target=3D"_blank" ><img class=3D"wf" src=3D"h=
+ttps://d1a2o89e23clzw=2Ecloudfront=2Enet/emails/12a9da0ebf9c473b/f5644470ea=
+edf5d41ba5b19704ec4b3e=2Ejpg" alt=3D"/" border=3D"0" style=3D"display:block=
+; margin:0 auto; max-width:100%; height:auto; padding:0;" width=3D"600" hei=
+ght=3D"auto"></a>=0A=
+<!--  -->=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;">=0A=
+<table class=3D"wf" align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" role=3D"presentation" style=3D"margin:0 auto; width:600px; max-w=
+idth:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:0px; padding-bottom:0px; padding-=
+left:0px; padding-right:0px;">=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/1VJagJ12c5GfPT2XietISw=
+~~/AAAAAQA~/RgRjpA8cP0ULMTE6MDowOmhlcm-ELgFodHRwczovL3d3dy5oYWNrZXR0LmNvbS9=
+nYi9jYXRlZ29yeT9jZ2lkPUhLTTExOTAmb21fY2FtcGFpZ249b21tZV82OWZjNmViMi03ZDFfMT=
+Q2NzFfNzM4MTImb21fcHJvZmlsZT0yYzU3LTBlNjIyMy0wMTFlYjQ5MCZvbV9zZW5kPTNlOGM3N=
+zZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5NzgzJnV0bV9jYW1wYWlnbj0yMDIxMTIyMV9QcmVfU1My=
+Ml9UaGVUcmFuc2l0aW9uYWxHaWxldCZ1dG1fY29udGVudD1oYWNrZXR0X2VuJnV0bV9tZWRpdW0=
+9bWFpbCZ1dG1fc291cmNlPUVOX25ld3NsZXR0ZXImdXRtX3Rlcm09ZW1haWxfcHJvZHVjdFcHb2=
+1ldHJpYUIKYbwcisFh0xYoU1IZam9obi5kb2UueW91bmlxQGdtYWlsLmNvbVgEAAABhg~~" sty=
+le=3D"display:block;" target=3D"_blank" ><img class=3D"wf" src=3D"https://d=
+1a2o89e23clzw=2Ecloudfront=2Enet/emails/12a9da0ebf9c473b/87c46185169b682859=
+ac32df49240b86=2Ejpg" border=3D"0" style=3D"display:block; margin:0 auto; m=
+ax-width:100%; height:auto; padding:0;" width=3D"600" height=3D"auto"></a>=
+=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;"><!-- width=
+ must not exceed 600px -->=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:10px; padding-bottom:10px; paddin=
+g-left:10px; padding-right:10px;">=0A=
+<p style=3D"margin-bottom:0px; font-size:16px; line-height:150%; letter-spa=
+cing:0=2E32px; font-weight:normal; font-style:normal; color:#1F2134;">=0A=
+<!--  --> Browse from a selection of transitional layers including lightwei=
+ght knitwear, printed button-ups and textured trousers in anticipation of t=
+he next season=2E=0A=
+<!--  -->=0A=
+</p>=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;"><!-- width=
+ must not exceed 600px -->=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:10px; padding-bottom:10px; paddin=
+g-left:10px; padding-right:10px;">=0A=
+<p style=3D"margin-bottom:0px; font-size:16px; line-height:150%; letter-spa=
+cing:0=2E32px; font-weight:normal; font-style:normal; color:#1F2134;">=0A=
+<!--  --> Pair any of these pieces with our reversible gilet to complete th=
+e perfect interseasonal outfit=2E=0A=
+<!--  -->=0A=
+</p>=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin: 0 auto; width: 600px; max-width: 600px;"><!-- wi=
+dth must not exceed 600px -->=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:10px; padding-bottom:10px; paddin=
+g-left:10px; padding-right:10px;">=0A=
+<a class=3D"underline" href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/mQ=
+J0WY9psN6opQh78VrDOA~~/AAAAAQA~/RgRjpA8cP0UPYnV0dG9uX2NhdGVnb3J5hC4BaHR0cHM=
+6Ly93d3cuaGFja2V0dC5jb20vZ2IvY2F0ZWdvcnk_Y2dpZD1IS00xMTkwJm9tX2NhbXBhaWduPW=
+9tbWVfNjlmYzZlYjItN2QxXzE0NjcxXzczODEyJm9tX3Byb2ZpbGU9MmM1Ny0wZTYyMjMtMDExZ=
+WI0OTAmb21fc2VuZD0zZThjNzc2ZjAyMDI0M2Q1ODYzMDIyMTVjMGFiOTc4MyZ1dG1fY2FtcGFp=
+Z249MjAyMTEyMjFfUHJlX1NTMjJfVGhlVHJhbnNpdGlvbmFsR2lsZXQmdXRtX2NvbnRlbnQ9aGF=
+ja2V0dF9lbiZ1dG1fbWVkaXVtPW1haWwmdXRtX3NvdXJjZT1FTl9uZXdzbGV0dGVyJnV0bV90ZX=
+JtPWVtYWlsX3Byb2R1Y3RXB29tZXRyaWFCCmG8HIrBYdMWKFNSGWpvaG4uZG9lLnlvdW5pcUBnb=
+WFpbC5jb21YBAAAAYY~" style=3D"font-size:16px; letter-spacing:0px; font-weig=
+ht:normal; font-style:normal; color:#1F2134; text-decoration:underline;" ta=
+rget=3D"_blank" data-msys-linkname=3D"17:0:0"><span>=0A=
+<!--  --> Shop the Pre-Collection=0A=
+<!--  -->=0A=
+</span></a>=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr><td style=3D"font-size: 1px; line-height: 20px;">&nbsp;</td><!-- adjust=
+ spacer height by increasing/decreasing the line-height pixel value --></tr=
+>=0A=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"background-color:#FFFFFF;" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;"><table class=3D"wf" ali=
+gn=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" role=3D"pres=
+entation" style=3D"margin:0 auto; width:600px; max-width:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:0px; padding-bottom:0px; padding-=
+left:0px; padding-right:0px;">=0A=
+<!--  -->=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/eXXphQqLCCgRggMI1PWF3g=
+~~/AAAAAQA~/RgRjpA8cP0UOMjA6MzowOmhlcm9fZW6EMQFodHRwczovL3d3dy5oYWNrZXR0LmN=
+vbS9nYi9wcm9kdWN0cz9waWQ9SE0yMTIyODEyNzMmb21fY2FtcGFpZ249b21tZV82OWZjNmViMi=
+03ZDFfMTQ2NzFfNzM4MTImb21fcHJvZmlsZT0yYzU3LTBlNjIyMy0wMTFlYjQ5MCZvbV9zZW5kP=
+TNlOGM3NzZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5NzgzJnV0bV9jYW1wYWlnbj0yMDIxMTIyMV9Q=
+cmVfU1MyMl9UaGVUcmFuc2l0aW9uYWxHaWxldCZ1dG1fY29udGVudD1oYWNrZXR0X2VuJnV0bV9=
+tZWRpdW09bWFpbCZ1dG1fc291cmNlPUVOX25ld3NsZXR0ZXImdXRtX3Rlcm09ZW1haWxfcHJvZH=
+VjdFcHb21ldHJpYUIKYbwcisFh0xYoU1IZam9obi5kb2UueW91bmlxQGdtYWlsLmNvbVgEAAABh=
+g~~" style=3D"display:block;" target=3D"_blank" ><img class=3D"wf" src=3D"h=
+ttps://d1a2o89e23clzw=2Ecloudfront=2Enet/emails/12a9da0ebf9c473b/8f5dca2f14=
+0ef0ec32722b5700d13f93=2Ejpg" alt=3D"/" border=3D"0" style=3D"display:block=
+; margin:0 auto; max-width:100%; height:auto; padding:0;" width=3D"600" hei=
+ght=3D"auto"></a>=0A=
+<!--  -->=0A=
+</td>=0A=
+</tr>=0A=
+</table></td>=0A=
+</tr>=0A=
+</table></div>=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+=0A=
+<!-- end blocks -->=0A=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" width=3D"100%">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;">=0A=
+<table class=3D"wf" align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" role=3D"presentation" style=3D"background-color:#FFFFFF; margin:=
+0 auto; width:600px; max-width:600px;">=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;">=0A=
+<table class=3D"wf" align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" role=3D"presentation" style=3D"margin:0 auto;" width=3D"100%">=
+=0A=
+<tr>=0A=
+<!-- LINK 1 --> <th class=3D"w33" align=3D"center" style=3D"font-size:12px;=
+ line-height:130%; font-weight:normal; font-style:normal; color:#1F2134; bo=
+rder-top:1px solid #1F2134; border-bottom:none; border-left:1px solid #1F21=
+34; border-right:none; padding-top:20px; padding-bottom:20px; padding-left:=
+2px; padding-right:2px; vertical-align:middle;" width=3D"33=2E3333333333333=
+36%">=0A=
+<a class=3D"bold-effect" href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/=
+BSyFUUN6ib6RZ95PMuuFnA~~/AAAAAQA~/RgRjpA8cP0UWLTE6MTowOmZvb3Rlcl9uYXZfMV9lb=
+oQoAWh0dHBzOi8vd3d3LmhhY2tldHQuY29tL2diL2NvbnRhY3QtdXMuaHRtbD9vbV9jYW1wYWln=
+bj1vbW1lXzY5ZmM2ZWIyLTdkMV8xNDY3MV83MzgxMiZvbV9wcm9maWxlPTJjNTctMGU2MjIzLTA=
+xMWViNDkwJm9tX3NlbmQ9M2U4Yzc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhYjk3ODMmdXRtX2NhbX=
+BhaWduPTIwMjExMjIxX1ByZV9TUzIyX1RoZVRyYW5zaXRpb25hbEdpbGV0JnV0bV9jb250ZW50P=
+WhhY2tldHRfZW4mdXRtX21lZGl1bT1tYWlsJnV0bV9zb3VyY2U9RU5fbmV3c2xldHRlciZ1dG1f=
+dGVybT1lbWFpbF9wcm9kdWN0VwdvbWV0cmlhQgphvByKwWHTFihTUhlqb2huLmRvZS55b3VuaXF=
+AZ21haWwuY29tWAQAAAGG" target=3D"_blank" style=3D"text-decoration:none; col=
+or:#1F2134;" >=0A=
+<!--  --> Customer care=0A=
+<!--  -->=0A=
+</a>=0A=
+</th>=0A=
+<!-- LINK 2 --> <th class=3D"w33" align=3D"center" style=3D"font-size:12px;=
+ line-height:130%; font-weight:normal; font-style:normal; color:#1F2134; bo=
+rder-top:1px solid #1F2134; border-bottom:none; border-left:1px solid #1F21=
+34; border-right:1px solid #1F2134; padding-top:20px; padding-bottom:20px; =
+padding-left:2px; padding-right:2px; vertical-align:middle;" width=3D"33=2E3=
+33333333333336%">=0A=
+<!--  --> <a class=3D"bold-effect" href=3D"https://clickom=2Emkt=2Ehackett=
+=2Ecom/f/a/m05NOcDjRx6pi79w_5sM0Q~~/AAAAAQA~/RgRjpA8cP0UWLTE6MjowOmZvb3Rlcl=
+9uYXZfMV9lboQpAWh0dHBzOi8vc3RvcmVsb2NhdG9yLmhhY2tldHQuY29tL2luZGV4Lmh0bWw_b=
+21fY2FtcGFpZ249b21tZV82OWZjNmViMi03ZDFfMTQ2NzFfNzM4MTImb21fcHJvZmlsZT0yYzU3=
+LTBlNjIyMy0wMTFlYjQ5MCZvbV9zZW5kPTNlOGM3NzZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5Nzg=
+zJnV0bV9jYW1wYWlnbj0yMDIxMTIyMV9QcmVfU1MyMl9UaGVUcmFuc2l0aW9uYWxHaWxldCZ1dG=
+1fY29udGVudD1oYWNrZXR0X2VuJnV0bV9tZWRpdW09bWFpbCZ1dG1fc291cmNlPUVOX25ld3NsZ=
+XR0ZXImdXRtX3Rlcm09ZW1haWxfcHJvZHVjdFcHb21ldHJpYUIKYbwcisFh0xYoU1IZam9obi5k=
+b2UueW91bmlxQGdtYWlsLmNvbVgEAAABhg~~" target=3D"_blank" style=3D"text-decor=
+ation:none; color:#1F2134;" >Store locator</a>=0A=
+<!--  -->=0A=
+</th>=0A=
+<!-- LINK 3 --> <th class=3D"w33" align=3D"center" style=3D"font-size:12px;=
+ line-height:130%; font-weight:normal; font-style:normal; color:#1F2134; bo=
+rder-top:1px solid #1F2134; border-bottom:none; border-left:none; border-ri=
+ght:1px solid #1F2134; padding-top:20px; padding-bottom:20px; padding-left:=
+2px; padding-right:2px; vertical-align:middle;" width=3D"33=2E3333333333333=
+36%">=0A=
+<a class=3D"bold-effect" href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/=
+FPqnxuOr0MxPxjqns51puw~~/AAAAAQA~/RgRjpA8cP0UWLTE6NzowOmZvb3Rlcl9uYXZfMV9lb=
+oQlAWh0dHBzOi8vd3d3LmhhY2tldHQuY29tL2diL3JldHVybnMuaHRtbD9vbV9jYW1wYWlnbj1v=
+bW1lXzY5ZmM2ZWIyLTdkMV8xNDY3MV83MzgxMiZvbV9wcm9maWxlPTJjNTctMGU2MjIzLTAxMWV=
+iNDkwJm9tX3NlbmQ9M2U4Yzc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhYjk3ODMmdXRtX2NhbXBhaW=
+duPTIwMjExMjIxX1ByZV9TUzIyX1RoZVRyYW5zaXRpb25hbEdpbGV0JnV0bV9jb250ZW50PWhhY=
+2tldHRfZW4mdXRtX21lZGl1bT1tYWlsJnV0bV9zb3VyY2U9RU5fbmV3c2xldHRlciZ1dG1fdGVy=
+bT1lbWFpbF9wcm9kdWN0VwdvbWV0cmlhQgphvByKwWHTFihTUhlqb2huLmRvZS55b3VuaXFAZ21=
+haWwuY29tWAQAAAGG" target=3D"_blank" style=3D"text-decoration:none; color:#=
+1F2134;" >=0A=
+<!--  --> Free returns=0A=
+<!--  -->=0A=
+</a></th>=0A=
+=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0; background-color:#1F2134=
+;">=0A=
+<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" ro=
+le=3D"presentation" style=3D"margin:0 auto; background-color:#1F2134;">=0A=
+<tr>=0A=
+<!-- FOLLOW US --> <th class=3D"w33 pl10" align=3D"center" style=3D"font-si=
+ze:12px; line-height:120%; font-weight:bold; font-style:normal; color:#FFFF=
+FF; padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right=
+:20px; vertical-align:middle;" width=3D"33=2E333333333333336%">=0A=
+<!--  --> FOLLOW US=0A=
+<!--  -->=0A=
+</th>=0A=
+<!-- LINK 1 --> <th class=3D"w33 plr10" align=3D"center" style=3D"font-size=
+:12px; line-height:120%; font-weight:normal; font-style:normal; color:#FFFF=
+FF; padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right=
+:20px; vertical-align:middle;" width=3D"33=2E333333333333336%">=0A=
+<a class=3D"bold-effect" href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/=
+Jl1_zjLXmN8hf2saskgOsQ~~/AAAAAQA~/RgRjpA8cP0UPLTE6ODowOnNvY2lhbF8xRChodHRwc=
+zovL3d3dy5pbnN0YWdyYW0uY29tL2hhY2tldHRsb25kb24vVwdvbWV0cmlhQgphvByKwWHTFihT=
+Uhlqb2huLmRvZS55b3VuaXFAZ21haWwuY29tWAQAAAGG" target=3D"_blank" style=3D"te=
+xt-decoration:none; color:#FFFFFF;" >INSTAGRAM</a>=0A=
+</th>=0A=
+<!-- LINK 2 --> <th class=3D"w33 pr10" align=3D"center" style=3D"font-size:=
+12px; line-height:120%; font-weight:normal; font-style:normal; color:#FFFFF=
+F; padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:=
+20px; vertical-align:middle;" width=3D"33=2E333333333333336%">=0A=
+<a class=3D"bold-effect" href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/=
+68w8L-41IkR2rmzkZ6j-dg~~/AAAAAQA~/RgRjpA8cP0UPLTE6OTowOnNvY2lhbF8yRCZodHRwc=
+zovL3d3dy5mYWNlYm9vay5jb20vSGFja2V0dExvbmRvblcHb21ldHJpYUIKYbwcisFh0xYoU1IZ=
+am9obi5kb2UueW91bmlxQGdtYWlsLmNvbVgEAAABhg~~" target=3D"_blank" style=3D"te=
+xt-decoration:none; color:#FFFFFF;" >FACEBOOK</a>=0A=
+</th>=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"margin:0; padding:0;">=0A=
+<table class=3D"wf" align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" role=3D"presentation" style=3D"margin:0 auto;" width=3D"100%">=
+=0A=
+<tr>=0A=
+<td align=3D"center" style=3D"padding-top:40px; padding-bottom:10px; paddin=
+g-left:0px; padding-right:0px;">=0A=
+<a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/B1fy7cRkD4bVgLRleX-OiQ=
+~~/AAAAAQA~/RgRjpA8cP0UHLTE6MTA6MIQZAWh0dHBzOi8vd3d3LmhhY2tldHQuY29tL2diLz9=
+vbV9jYW1wYWlnbj1vbW1lXzY5ZmM2ZWIyLTdkMV8xNDY3MV83MzgxMiZvbV9wcm9maWxlPTJjNT=
+ctMGU2MjIzLTAxMWViNDkwJm9tX3NlbmQ9M2U4Yzc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhYjk3O=
+DMmdXRtX2NhbXBhaWduPTIwMjExMjIxX1ByZV9TUzIyX1RoZVRyYW5zaXRpb25hbEdpbGV0JnV0=
+bV9jb250ZW50PWhhY2tldHRfZW4mdXRtX21lZGl1bT1tYWlsJnV0bV9zb3VyY2U9RU5fbmV3c2x=
+ldHRlciZ1dG1fdGVybT1lbWFpbF9wcm9kdWN0VwdvbWV0cmlhQgphvByKwWHTFihTUhlqb2huLm=
+RvZS55b3VuaXFAZ21haWwuY29tWAQAAAGG" target=3D"_blank" style=3D"text-decorat=
+ion:none; color:#1F2134;" ><img alt=3D"Hackett London" border=3D"0" src=3D"=
+https://d1uewsh0mmowj3=2Ecloudfront=2Enet/emails/hackett/assets/img/icon-ha=
+ckett-f49ba24715=2Epng" style=3D"display:block; margin:0 auto;max-width:100=
+%; height:auto; padding:0;" width=3D"24" height=3D"auto"></a>=0A=
+</td>=0A=
+</tr>=0A=
+<tr>=0A=
+<td class=3D"plr20" align=3D"center" style=3D"padding-top:10px; padding-bot=
+tom:40px; padding-left:80px; padding-right:80px;">=0A=
+<!--  --> <p style=3D"margin-bottom:0px; font-size:10px; line-height:160%; =
+font-weight:normal; font-style:normal; color:#1F2134;">=0A=
+This email was sent to: <a href=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/=
+a/krhsdihdaYdhbGQhdis-YA~~/AAAAAQA~/RgRjpA8cP0UbLTE6MTE6MDp0b19lbWFpbF9hZGR=
+yZXNzX2VuhBkBaHR0cHM6Ly93d3cuaGFja2V0dC5jb20vZ2IvP29tX2NhbXBhaWduPW9tbWVfNj=
+lmYzZlYjItN2QxXzE0NjcxXzczODEyJm9tX3Byb2ZpbGU9MmM1Ny0wZTYyMjMtMDExZWI0OTAmb=
+21fc2VuZD0zZThjNzc2ZjAyMDI0M2Q1ODYzMDIyMTVjMGFiOTc4MyZ1dG1fY2FtcGFpZ249MjAy=
+MTEyMjFfUHJlX1NTMjJfVGhlVHJhbnNpdGlvbmFsR2lsZXQmdXRtX2NvbnRlbnQ9aGFja2V0dF9=
+lbiZ1dG1fbWVkaXVtPW1haWwmdXRtX3NvdXJjZT1FTl9uZXdzbGV0dGVyJnV0bV90ZXJtPWVtYW=
+lsX3Byb2R1Y3RXB29tZXRyaWFCCmG8HIrBYdMWKFNSGWpvaG4uZG9lLnlvdW5pcUBnbWFpbC5jb=
+21YBAAAAYY~" style=3D"text-decoration:none; color:#1F2134;" target=3D"_blan=
+k" >john=2Edoe=2Eyouniq@gmail=2Ecom</a> by Hackett London=2E Registered in =
+England and Wales, N=C2=BA 1872280=2E 14 Savile Row, Mayfair, London, W1S 3=
+JN, United Kingdom=2E You can see your <a href=3D"https://clickom=2Emkt=2Eh=
+ackett=2Ecom/f/a/Hx824dMTrSPQSvlexsFp0g~~/AAAAAQA~/RgRjpA8cP0USLTE6MTI6MDpw=
+cml2YWN5X2VuhCwBaHR0cHM6Ly93d3cuaGFja2V0dC5jb20vZ2IvcHJpdmFjeS1wb2xpY3kuaHR=
+tbD9vbV9jYW1wYWlnbj1vbW1lXzY5ZmM2ZWIyLTdkMV8xNDY3MV83MzgxMiZvbV9wcm9maWxlPT=
+JjNTctMGU2MjIzLTAxMWViNDkwJm9tX3NlbmQ9M2U4Yzc3NmYwMjAyNDNkNTg2MzAyMjE1YzBhY=
+jk3ODMmdXRtX2NhbXBhaWduPTIwMjExMjIxX1ByZV9TUzIyX1RoZVRyYW5zaXRpb25hbEdpbGV0=
+JnV0bV9jb250ZW50PWhhY2tldHRfZW4mdXRtX21lZGl1bT1tYWlsJnV0bV9zb3VyY2U9RU5fbmV=
+3c2xldHRlciZ1dG1fdGVybT1lbWFpbF9wcm9kdWN0VwdvbWV0cmlhQgphvByKwWHTFihTUhlqb2=
+huLmRvZS55b3VuaXFAZ21haWwuY29tWAQAAAGG" style=3D"text-decoration:underline;=
+ color:#1F2134;" target=3D"_blank" >privacy rights</a>, update your <a href=
+=3D"https://clickom=2Emkt=2Ehackett=2Ecom/f/a/upb31-y9yxkDXhSHsuanXA~~/AAAA=
+AQA~/RgRjpA8cP0UdLTE6MTM6MDp1cGRhdGVfcHJlZmVyZW5jZXNfZW6EQQFodHRwczovL29tZX=
+RyaWEuZW1haWwvMTJhOWRhMGViZjljNDczYi9wcm9maWxlLzJjNTctMGU2MjIzLTAxMWViNDkwP=
+29tX2NhbXBhaWduPW9tbWVfNjlmYzZlYjItN2QxXzE0NjcxXzczODEyJm9tX3Byb2ZpbGU9MmM1=
+Ny0wZTYyMjMtMDExZWI0OTAmb21fc2VuZD0zZThjNzc2ZjAyMDI0M2Q1ODYzMDIyMTVjMGFiOTc=
+4MyZ1dG1fY2FtcGFpZ249MjAyMTEyMjFfUHJlX1NTMjJfVGhlVHJhbnNpdGlvbmFsR2lsZXQmdX=
+RtX2NvbnRlbnQ9aGFja2V0dF9lbiZ1dG1fbWVkaXVtPW1haWwmdXRtX3NvdXJjZT1FTl9uZXdzb=
+GV0dGVyJnV0bV90ZXJtPWVtYWlsX3Byb2R1Y3RXB29tZXRyaWFCCmG8HIrBYdMWKFNSGWpvaG4u=
+ZG9lLnlvdW5pcUBnbWFpbC5jb21YBAAAAYY~" style=3D"text-decoration:underline; c=
+olor:#1F2134;" target=3D"_blank" >preferences</a>, or <a href=3D"https://cl=
+ickom=2Emkt=2Ehackett=2Ecom/f/a/sUZ68EDbzFaVVLux1Pa-KQ~~/AAAAAQA~/RgRjpA8cP=
+0UWLTE6MTQ6MDp1bnN1YnNjcmliZV9lboRBAWh0dHBzOi8vb21ldHJpYS5lbWFpbC8xMmE5ZGEw=
+ZWJmOWM0NzNiL3Byb2ZpbGUvMmM1Ny0wZTYyMjMtMDExZWI0OTA_b21fY2FtcGFpZ249b21tZV8=
+2OWZjNmViMi03ZDFfMTQ2NzFfNzM4MTImb21fcHJvZmlsZT0yYzU3LTBlNjIyMy0wMTFlYjQ5MC=
+ZvbV9zZW5kPTNlOGM3NzZmMDIwMjQzZDU4NjMwMjIxNWMwYWI5NzgzJnV0bV9jYW1wYWlnbj0yM=
+DIxMTIyMV9QcmVfU1MyMl9UaGVUcmFuc2l0aW9uYWxHaWxldCZ1dG1fY29udGVudD1oYWNrZXR0=
+X2VuJnV0bV9tZWRpdW09bWFpbCZ1dG1fc291cmNlPUVOX25ld3NsZXR0ZXImdXRtX3Rlcm09ZW1=
+haWxfcHJvZHVjdFcHb21ldHJpYUIKYbwcisFh0xYoU1IZam9obi5kb2UueW91bmlxQGdtYWlsLm=
+NvbVgEAAABhg~~" style=3D"text-decoration:underline; color:#1F2134;" target=
+=3D"_blank" >unsubscribe</a> at any time=2E &copy; 2021 Hackett London=0A=
+</p>=0A=
+<!--  -->=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+=0A=
+</td>=0A=
+</tr>=0A=
+</table><!-- end wrapper -->=0A=
+</td>=0A=
+</tr>=0A=
+</table>=0A=
+
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://clickom=
+=2Emkt=2Ehackett=2Ecom/q/igyJ_OMFr08-472wNwDLsg~~/AAAAAQA~/RgRjpA8cPlcHb21l=
+dHJpYUIKYbwcisFh0xYoU1IZam9obi5kb2UueW91bmlxQGdtYWlsLmNvbVgEAAABhg~~">
+</body>=0A=
+</html>
+--_----7I6ZE4HJaFVz2JvqR8b80w===_32/35-10267-C1A81C16--
+

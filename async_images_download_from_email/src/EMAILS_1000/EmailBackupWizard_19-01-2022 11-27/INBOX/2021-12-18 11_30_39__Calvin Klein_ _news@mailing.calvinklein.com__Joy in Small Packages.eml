@@ -1,0 +1,1401 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp1686665wrd;        Sat, 18 Dec
+ 2021 03:32:59 -0800 (PST)
+Received: from mta.mailing.tommy.com (mta.mailing.tommy.com. [13.111.6.28])        by
+ mx.google.com with ESMTPS id z17si4607846qta.707.2021.12.18.03.32.58       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Sat, 18 Dec 2021
+ 03:32:59 -0800 (PST)
+Received: by mta.mailing.tommy.com id hnn3em2fmd4o for <john.doe.youniq@gmail.com>;
+ Sat, 18 Dec 2021 11:30:39 +0000 (envelope-from
+ <bounce-25102_HTML-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com>)
+X-Google-Smtp-Source: ABdhPJzHp3GN8UZuHf4/p1/8F/NaQxSG7MQNc9Sai17gM2PsX6vMtCZNpgp9gCa52o5aNLg7t1/q
+X-Received: by 2002:ac8:5654:: with SMTP id 20mr5875530qtt.652.1639827179415;        Sat,
+ 18 Dec 2021 03:32:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1639827179; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=Wc6VVqHvVzgr9AKcnEHIXh2z4uTfeOZOEohgiD5zI0P6SsTrCcDtUuib9DKKA5oUbL        
+ nvXmJ0fyJrWNc1aVBPzk1VU7mV80/Qn7X/WfvrpgLasrhmREdqo8EqlAKA9G7w4moDwQ        
+ WElN0zY5j3uoJGY27szOVx8UIULwIfzSce5nvUOmpChCDrzJjyVA/MYsdk4MTID0+QCn        
+ OcrITVVXZIfrmdt1dUhTZ9bOiV+InnS9HNnL3TsIjQ/XEZeY8rgUekwW7YU02nGaf8cS        
+ KfIitMIExYx1q9crSpApmYP8QnZto0ie7vup9OBwBMzGw618ogcSKnWvgPc6Dm4kZItA        
+ IPtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:message-id:reply-to:list-id:mime-version        
+ :list-unsubscribe-post:list-unsubscribe:date:subject:to:from        
+ :dkim-signature;        bh=1XNwKJlTN/5d9+pysTxf0m22m4kWQALcE/vr675u7Bg=;    
+    b=ETRUezpNaGLPXJCGN4ELqIR6SwlwfaMDYJpe+0DtaOPFt7AthvrPC8Hm1fYN7jzo0L     
+    6/wIh/7uiQsenSGJroAzgFNl0eVWsAJluc36Va/8so/ev17ws0r4iaCFDWaMKW2mPnwm     
+    LvXtFgtKtdn65o83Di3UA9NMBzDraKwDzh5pmUqHh6jGwS/qSYd5sZ5NLjwy3kfMoxgL     
+    SsEDiCdShN/385SmLmknpcni0fW/gF6DpSTwXX5RJRLiDBZwM7SAVwtqLt/JWkfKxPqH     
+    oWwpf+42PikRLoIqPFI7YiNzDd5whSax+3P0c0nkQIJIFqP3qDytOguwUR90Ut6h8W6Q     
+    nPYA==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@mailing.calvinklein.com
+ header.s=200608 header.b=g9oTsdUu;       spf=pass (google.com: domain of
+ bounce-25102_html-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com designates 13.111.6.28 as permitted sender)
+ smtp.mailfrom=bounce-25102_HTML-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com
+Return-Path: <bounce-25102_HTML-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com>
+Received-SPF: pass (google.com: domain of
+ bounce-25102_html-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com designates 13.111.6.28 as permitted sender) client-ip=13.111.6.28;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@mailing.calvinklein.com
+ header.s=200608 header.b=g9oTsdUu;       spf=pass (google.com: domain of
+ bounce-25102_html-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com designates 13.111.6.28 as permitted sender)
+ smtp.mailfrom=bounce-25102_HTML-227392269-15091003-6407581-3202@bounce.mailing.calvinklein.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=200608; d=mailing.calvinklein.com;
+ h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:
+ List-ID:X-CSA-Complaints:Reply-To:Message-ID:Content-Type;
+ i=news@mailing.calvinklein.com;
+ bh=1XNwKJlTN/5d9+pysTxf0m22m4kWQALcE/vr675u7Bg=;
+ b=g9oTsdUug580UUPkYRzsxN17D66e7Hop0Z73dZTSjnNpA0PS+s3xIDsQWmrMVaF8hC6Yj70rM/YL  
+ ISnxSewc3QqxGAWJxfGVVuzLKi+mB0wPTeqhIPTHv3iSkrk/rF7T61cnaKH6oLAAaqbG5DeA7zRF
+   7V5pzR7SUPUi+5wJvlo=
+From: "Calvin Klein" <news@mailing.calvinklein.com>
+To: john.doe.youniq@gmail.com
+Subject: Joy in Small Packages
+Date: Sat, 18 Dec 2021 05:30:39 -0600
+List-Unsubscribe: <https://click.mailing.calvinklein.com/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiI2NDA3NTgxIiwicyI6IjIyNzM5MjI2OSIsImxpZCI6IjI1MTAyIiwiaiI6IjE1MDkxMDAzIiwiamIiOiIzMjAyIiwiZCI6IjYwMTczIn0._NyykWaGvEKK1tmqcnZUXKjN8neJuZ26osXwSUJXp6s>,
+ <mailto:leave-fcf11675746406122d502d29-fe25167272670d7f771279-fe6c1575756d057d7517-fe9012747563017574-ff3817727566@leave.mailing.calvinklein.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-CSA-Compliance-Source: SFMC
+MIME-Version: 1.0
+List-ID: <6403311.xt.local>
+X-CSA-Complaints: csa-complaints@eco.de
+X-SFMC-Stack: 6
+x-job: 6407581_15091003
+Reply-To: "Calvin Klein Service" <service.uk@calvinklein.com>
+Message-ID: <3d347cae-08f6-4a0e-a146-307ec795ee6c@ind1s06mta1747.xt.local>
+Feedback-ID: 6407581:15091003:13.111.6.28:sfmktgcld
+Content-Type: multipart/alternative; boundary="S5tvYe6odx6c=_?:"
+
+--S5tvYe6odx6c=_?:
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Calvin Klein
+
+
+ &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;
+ &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;
+
+
+ 
+ If you are having trouble viewing images, please 
+https://view.mailing.calvinklein.com/?qs=2c25029df1b25bb31dd4bb47c0595c40a08346bbf05dc898b303ed6b1f37085934a6f75aea19598415c15f261bb24963417c0769ea7a67e7641569a315a1976ccfa461bb72c0125176208dac075a313c5be3955d93d1047b 
+click here .If you are having trouble viewing images, please 
+https://view.mailing.calvinklein.com/?qs=2c25029df1b25bb31dd4bb47c0595c40a08346bbf05dc898b303ed6b1f37085934a6f75aea19598415c15f261bb24963417c0769ea7a67e7641569a315a1976ccfa461bb72c0125176208dac075a313c5be3955d93d1047b 
+click here .
+
+
+
+
+
+FREE SHIPPING ON ORDERS OVER £50 + 120-DAY FREE RETURNS
+
+
+
+
+
+
+ 
+ 
+ 
+
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa8880ca678d40bc25fb8a785ece480239bb247f36289d3abeaff841f06ba948c7b3d626d7aabdfca373ef8336db60223e3c5f9638ab68f7eaae 
+
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa88d206741221830827802b57ea521c5d04dc13f340746e0391be93a8763714759aafcf1f6c84db1a895cf6697e6466c77f19ee8e58579cbe11 
+WOMEN 
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa88be2bc87a8c0c1cd03c4d0dde5ea336efc797ab24f0799818e3a758670d8631f3a0220a8d99f7ec88999d79c31ecd9102fd4ab5a032f9e8b5 
+MEN 
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa886a7bd7ffc5bcc9d0d8245c0b95a1d1f3a0ef150c902ca38cf927f327d9b1f87bafbc90ecedb218c14af8a03152648fe510811e734e928ef4 
+UNDERWEAR 
+ 
+
+
+
+
+
+ 
+ 
+THE LITTLE THINGS
+ 
+ 
+Jewellery. Wallets. Hats. <br>Joy in small packages.
+ 
+ 
+
+https://www.calvinklein.co.uk/small-gifts-women?utm_source=Newsletter&utm_medium=email&utm_term=Omni_Newsletter_PanEuropean_en-GB_Mixed_Other_eActive_192662__&utm_campaign=FW21_20211218_CK_Holiday_Acc_&cmpid=ch:email%7Cdp:Omni%7Cso:Newsletter%7Cpi:PanEuropean%7Ccp:FW21_20211218_CK_Holiday_Acc_%7Clb:Mixed%7Cca:Other%7Cts:eActive%7Ccr:%7Cmt:192662%7Csl:&CIN=CK9845096&sid=227392269&sfmc_id=227392269&utm_source=Trigger&utm_term=&utm_content=428913&utm_id=453cb93a-3255-4f78-83b6-44ad51308f8d&sfmc_id=227392269&sfmc_activityid=e80ed0c1-743f-4c97-9e45-567dc83e6149&utm_medium=email&utm_campaign=20211218_CK_Holiday_Acc 
+SMALL GIFTS FOR HER 
+
+https://www.calvinklein.co.uk/small-gifts-men?utm_source=Newsletter&utm_medium=email&utm_term=Omni_Newsletter_PanEuropean_en-GB_Mixed_Other_eActive_192662__&utm_campaign=FW21_20211218_CK_Holiday_Acc_&cmpid=ch:email%7Cdp:Omni%7Cso:Newsletter%7Cpi:PanEuropean%7Ccp:FW21_20211218_CK_Holiday_Acc_%7Clb:Mixed%7Cca:Other%7Cts:eActive%7Ccr:%7Cmt:192662%7Csl:&CIN=CK9845096&sid=227392269&sfmc_id=227392269&utm_source=Trigger&utm_term=&utm_content=428913&utm_id=453cb93a-3255-4f78-83b6-44ad51308f8d&sfmc_id=227392269&sfmc_activityid=e80ed0c1-743f-4c97-9e45-567dc83e6149&utm_medium=email&utm_campaign=20211218_CK_Holiday_Acc 
+SMALL GIFTS FOR HIM 
+
+ 
+ 
+
+
+
+
+
+https://www.calvinklein.co.uk/small-gifts-women?utm_source=Newsletter&utm_medium=email&utm_term=Omni_Newsletter_PanEuropean_en-GB_Mixed_Other_eActive_192662_F_&utm_campaign=FW21_20211218_CK_Holiday_Acc_&cmpid=ch:email%7Cdp:Omni%7Cso:Newsletter%7Cpi:PanEuropean%7Ccp:FW21_20211218_CK_Holiday_Acc_%7Clb:Mixed%7Cca:Other%7Cts:eActive%7Ccr:F%7Cmt:192662%7Csl:&CIN=CK9845096&sid=227392269&sfmc_id=227392269&utm_source=Trigger&utm_term=&utm_content=428913&utm_id=453cb93a-3255-4f78-83b6-44ad51308f8d&sfmc_id=227392269&sfmc_activityid=e80ed0c1-743f-4c97-9e45-567dc83e6149&utm_medium=email&utm_campaign=20211218_CK_Holiday_Acc 
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+LOOKING FOR MORE?
+ 
+ 
+
+ 
+ 
+WOMEN 
+ MEN
+
+ 
+ 
+ 
+
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48927a00521e5f764363a0be23e34413b256ef37c44c6f7683abf798777ce930215b4531c8ecf81daa6c7a736205f3ba218d186b6614d9e590 
+COATS & JACKETS 
+
+ 
+ 
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8ca4b5b59aa85e9fce284bbd9b4456b93cff797b4fd3c712c93ccc7b7cf178cfd78c4b6701777ad227f65c7063f17a3c06fb728300482684d9 
+COATS & JACKETS 
+
+ 
+
+
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8c5368441d47edb0fda90052f0bfd2794896df0270ee6e6bdfe2f199758763ce46ffafe8ffca997c85fe79ea582f21ca1b9b80c6c513587fd7 
+SWEATSHIRTS 
+
+ 
+ 
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8cbd68490bba320a9f44e2707f9fb03bd48d2268d66d96a0ded732a3f9c75ba34341dc450803c35e3bb2a26de88c22c668422d0d1a55e5bee0 
+SWEATSHIRTS 
+
+ 
+
+
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8c51b6dac0df93b0332cdff83f1d294e3870a927e403f6a9ab3e2ffff5ec063ae2a99a6047f4dbb5571ecdce13f3bfac775e521865f95dace7 
+LOUNGEWEAR 
+
+ 
+ 
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8cebaef64cb55487464c3be98743d6f908ae9d7b5925abe4faa10fb3dc1b8b110c0f70ac71e2f74ff41bcec4fe451d103974263b9bbe730f4c 
+LOUNGEWEAR 
+
+ 
+
+
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8c8277bf14dafbd088f99224ded891278ae74cd44b25b8297352dc8b5a3c53f5bc61f4f2b5c64768acf08cdb6f49cbbbcb9e11af206717b5a3 
+BAGS   
+
+ 
+ 
+https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8cfc673761bb9b65582b44f6ee3c86005ee33f6b44ddeb608764038360a365dc4cf2d918275e45e47ffd6d4ae8e7681b7e467ca703d2a11c28 
+BAGS   
+
+ 
+
+
+https://click.mailing.calvinklein.com/?qs=878ca50f85cfddc669b729ceba1e35d29084a617ed6966c9ee196f4409daef5475e15b3842dfc00cd9a196edbe1a9c10585b14a91ccf366cc34582d0e54224dd 
+GIRLS 
+
+ 
+ 
+https://click.mailing.calvinklein.com/?qs=878ca50f85cfddc61bd64e48a72998893a7395e6126acef8aae77c7a259ec58c809fc4a2d4e4abf064436db7d3275eaae1798e24ddfff5199326989dc6dcd2a6 
+BOYS 
+
+ 
+ 
+
+
+
+ 
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa88a4cb2704e04bbf23e5be1c683f55a3bcad5fd3f8f9fd368545b203e546fbd3166a4c5179486539fb6476a2c68f6f9d4aaeb66cf94fdec630 
+WOMEN 
+
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa888693d35acb7f6f1df26e236ac6483f2db92b3cc31186046e9bc8ea09c27a25d996909d5ace5034896442bad9cca30445578ad16b33fad986 
+MEN 
+
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa88509718a917ecaed12ae3cccec21bdc1c68f146f08e8c29c2c579e115ec919af2ce5f5257542b8825ad4ccbf63c53e0f435192c69b3516845 
+UNDERWEAR 
+
+
+ 
+ 
+
+
+
+
+
+  
+ 
+
+https://click.mailing.calvinklein.com/?qs=0d025ed85469fa8866f58dbb59a77fa1b9ca835d93bbfc79bc2ed404f201a40dd35ad4ea22598c61dc915e0ab9c6502935169a08f24860bd 
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48e30daa1513986a1304455696c5658352b1e9564b6e697f24daf20c314424df32f3b8b50d2b51092c021e4182f923cca9 
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48937e595c8c6d07974b232c76c001d7119fb329f1d672361bd603c111fa431499c549f3678d0f4414276156bdebb8efb4 
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48fe4bdaac462c7a165c9ec01e9462f5a5dad263fa302f226d672ee10b8ff2319c38356947d4579b5b614dd0484b836005 
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb484a5f77516e498c3e35587fee5c83c1c9090db575112792facf0340cd45a30eb0631c924831dc144cfb68a0c276c6f94f 
+
+ 
+ 
+ 
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48b38e4886023c27f4dd7960a2fc425ee015a76c003af873d2dcd3ef19c97d5e2b92ee0c0d486d11ec3d45c3cfe7c95beda171dce8905b8034 
+STORE LOCATOR 
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48b69bb33f1e021be3096909c504a4dd642dcb64b1824c89855867688628978b6d22e6b97b6fb7c1d2bc7b0242d4b6fc725cb3b9653be80936 
+SECURE PAYMENT 
+
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48411b5bf71e7d15a73e5ea519992938f37cd3e0bf335fb9797266b2016453982a3e8d16559fa3de9bf7a714c64bcca0ded8156c154231a593 
+Free shipping on orders over £50 
+https://click.mailing.calvinklein.com/?qs=a3f99fd95b6ecb48cf40a639abe976d977a17806f259d5e8925d29275d91db3c32b0c0a701c5c5f5a69848fa1fc2282f1374c17d4253359bee577015b6ed4847 
+FREE 120-DAY RETURN 
+
+ 
+You have received this message because you have either registered or accepted our invitation to receive emails from Calvin Klein, or made a purchase from Calvin Klein. If you no longer wish to receive emails from us, please click 
+https://click.mailing.calvinklein.com/?qs=878ca50f85cfddc6be050f10d5f3204826f2326000ef28177bccf30c598c9b5de9cfb76e839bab8cd94308d110dc44ae0f0c85dc7873d21c1223b09ea8a18653 
+here  to unsubscribe. Please add news_eu@mail.calvinklein.com to your address book or safe sender list to ensure that you continue to receive Calvin Klein emails.Should you have any questions please do not hesitate to 
+https://www.calvinklein.co.uk/webapp/wcs/stores/servlet/HelpContactUsView?catalogId=10188&langId=44&storeId=20027 
+contact us . 
+ Calvin Klein Europe B.V. | chamber of commerce of Amsterdam No. 24271819 | Tax Number NL006585978B01. CK Stores B.V. | chamber of commerce of Amsterdam No 34154107 | Tax Number GB188047871. Danzigerkade 165 | 1013 AP AMSTERDAM | The Netherlands. Operational responsibility: Erik&nbsp;Janshen. Directors: Martijn&nbsp;Hagman, Marc&nbsp;Busscher.<br>© Calvin Klein Inc. All rights reserved.
+
+
+  
+ 
+
+
+
+
+
+
+--S5tvYe6odx6c=_?:
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--[if gte mso 9]><html xmlns="http://www.w3.org/1999/xhtml"  xmlns:v="urn:schemas-microsoft-com:vml"  xmlns:o="urn:schemas-microsoft-com:office:office"><![endif]-->
+<!--[if !mso]><!--><html><!--<![endif]-->
+<head>
+<!--[if gte mso 9]><xml>  <o:OfficeDocumentSettings>   <o:AllowPNG/>   <o:PixelsPerInch>96</o:PixelsPerInch>  </o:OfficeDocumentSettings> </xml><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="width=device-width" name="viewport">
+<meta name="format-detection" content="date=no">
+<meta name="format-detection" content="address=no">
+<meta name="format-detection" content="telephone=no">
+<title>Calvin Klein</title>
+<!--[if gte mso 9]> <style type="text/css"> html, body { font-family: Arial, sans-serif !important; } table, td, th, a, span, font, p, div { font-family: Arial, sans-serif !important; } </style> <![endif]-->
+<style type="text/css" media="screen">
+@font-face {
+ font-family: 'KleinMediumItalic';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-66MediumItalic-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-66MediumItalic-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-66MediumItalic-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-66MediumItalic-Web.woff) format('woff');
+ font-weight: 600;
+ font-style: italic;
+}
+@font-face {
+ font-family: 'KleinMedium';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-65Medium-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-65Medium-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-65Medium-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-65Medium-Web.woff) format('woff');
+ font-weight: 600;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'KleinRegular';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-55Regular-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-55Regular-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-55Regular-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-55Regular-Web.woff) format('woff');
+ font-weight: 400;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'KleinCondensedMed';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-67CondensedMed-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-67CondensedMed-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-67CondensedMed-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-67CondensedMed-Web.woff) format('woff');
+ font-weight: 500;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'KleinLight';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-45Light-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-45Light-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-45Light-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-45Light-Web.woff) format('woff');
+ font-weight: 300;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'KleinLightItalic';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-46LightItalic-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-46LightItalic-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-46LightItalic-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-46LightItalic-Web.woff) format('woff');
+ font-weight: 300;
+ font-style: italic;
+}
+@font-face {
+ font-family: 'KleinRegularItalic';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-56RegularItalic-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-56RegularItalic-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-56RegularItalic-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-56RegularItalic-Web.woff) format('woff');
+ font-weight: 400;
+ font-style: italic;
+}
+@font-face {
+ font-family: 'KleinBold';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-75Bold-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-75Bold-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-75Bold-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-75Bold-Web.woff) format('woff');
+ font-weight: 700;
+ font-style: normal;
+}
+@font-face {
+ font-family: 'KleinBoldItalic';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-76BoldItalic-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-76BoldItalic-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-76BoldItalic-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-76BoldItalic-Web.woff) format('woff');
+ font-weight: 700;
+ font-style: italic;
+}
+@font-face {
+ font-family: 'KleinCondensedReg';
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-57CondensedReg-Web.eot);
+ src: url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-57CondensedReg-Web.eot) format('embedded-opentype'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-57CondensedReg-Web.woff2) format('woff2'), url(https://mediaeu.calvinklein.com/b2c/static/fonts/Klein-57CondensedReg-Web.woff) format('woff');
+ font-weight: 400;
+ font-style: normal;
+}
+html {
+ height: 100%;
+ width: 100%;
+ margin: 0;
+ padding: 0;
+}
+body {
+ -webkit-text-size-adjust: none;
+ -ms-text-size-adjust: none;
+ -webkit-font-smoothing: antialiased;
+ margin: 0 !important;
+ padding: 0 !important;
+ width: 100% !important;
+ min-width: 100% !important;
+}
+.ReadMsgBody {
+ width: 100%;
+}
+.ExternalClass {
+ width: 100%;
+ min-width: 640px;
+}
+.ExternalClass * {
+ line-height: 100%;
+}
+table {
+ border-collapse: collapse;
+ mso-table-lspace: 0pt;
+ mso-table-rspace: 0pt;
+}
+table td {
+ border-collapse: collapse;
+ border: 0;
+}
+th {
+ padding: 0;
+ font-weight: normal;
+}
+p {
+ margin: 0;
+ padding: 0;
+ margin-bottom: 0;
+}
+img {
+ display: block;
+ line-height: 100%;
+ outline: none;
+ text-decoration: none;
+ border: none;
+}
+a:link {
+ color: #000001;
+}
+body[data-outlook-cycle] .black a, .black a {
+ color: #000001;
+}
+body[data-outlook-cycle] .white a, .white a {
+ color: #fffffe;
+}
+a[x-apple-data-detectors] {
+ color: inherit !important;
+ text-decoration: none !important;
+ font-size: inherit !important;
+ font-family: inherit !important;
+ font-weight: inherit !important;
+ line-height: inherit !important;
+}
+.gmailfix, .video-wrapper {
+ display: none;
+ display: none!important;
+}
+.show {
+ display: none;
+}
+.content-wrapper, .content-wrapper-small {
+ margin: 0 auto;
+}
+.button a, .button2 a {
+ text-decoration: none !important;
+ padding: 10px 30px 10px !important;
+ display: block;
+}
+
+@media only screen and (max-width: 480px) {
+*, *::before, *::after {
+ box-sizing: border-box;
+}
+body {
+ width: auto !important;
+}
+.full-width {
+ width: 100% !important;
+ max-width: 100% !important;
+ min-width: 100% !important;
+}
+.content-wrapper {
+ width: 100% !important;
+ margin: 0 auto;
+}
+.content-wrapper-small {
+ width: 90% !important;
+ margin: 0 auto;
+}
+.full-width-img img {
+ width: 100% !important;
+ height: auto !important;
+ display: block !important;
+}
+.column, .column-spacer, .column-spacer-small {
+ display: block !important;
+ width: 100% !important;
+ height: auto !important;
+}
+.column-spacer {
+ height: 20px !important;
+}
+.column-spacer-small {
+ height: 8px !important;
+}
+.float-img {
+ float: left;
+ width: 130px !important;
+ margin-right: 10px;
+}
+.float-img td {
+ padding-bottom: 0 !important;
+}
+.float-img td img {
+ width: 100% !important;
+ height: auto;
+}
+.mobile-hide {
+ display: none !important;
+ visibility: hidden !important;
+ overflow: hidden !important;
+}
+.show {
+ display: block!important;
+ margin: 0!important;
+ padding: 0!important;
+ overflow: visible!important;
+ width: auto!important;
+ max-height: inherit!important;
+ line-height: inherit!important;
+}
+.font-11-14 {
+ font-size: 11px !important;
+ line-height: 14px !important;
+}
+.font-11-18 {
+ font-size: 11px !important;
+ line-height: 18px !important;
+}
+.font-13 {
+ font-size: 13px !important;
+ line-height: 14px !important;
+}
+.font-13-18 {
+ font-size: 13px !important;
+ line-height: 18px !important;
+}
+.font-20 {
+ font-size: 20px !important;
+ line-height: 21px !important;
+}
+.font-30 {
+ font-size: 30px !important;
+ line-height: 31px !important;
+}
+.center, .center img {
+ text-align: center !important;
+ margin: 0 auto !important;
+}
+.pad-l-r-0 {
+ padding-left: 0px !important;
+ padding-right: 0px !important;
+}
+.pad-l-r-8 {
+ padding-left: 8px !important;
+ padding-right: 8px !important;
+}
+.pad-l-r-11 {
+ padding-left: 11px !important;
+ padding-right: 11px !important;
+}
+.pad-l-r-15 {
+ padding-left: 15px !important;
+ padding-right: 15px !important;
+}
+.pad-l-r-30 {
+ padding-left: 30px !important;
+ padding-right: 30px !important;
+}
+.width-4 {
+ width: 4px !important;
+}
+.width-8 {
+ width: 8px !important;
+}
+.height-8 {
+ height: 8px !important;
+}
+.height-30 {
+ width: 30px !important;
+}
+.button {
+ height: 48px !important;
+}
+.button a {
+ text-decoration: none !important;
+ padding: 10px !important;
+ display: block;
+}
+.button2 {
+ height: auto !important;
+}
+.button2 a {
+ text-decoration: none !important;
+ padding: 20px 10px !important;
+ display: block;
+}
+.width-100pct {
+ width: 100% !important;
+}
+.min-width-auto {
+ min-width: auto !important;
+ width: auto !important;
+}
+.width-3col {
+ width: auto !important;
+}
+.spacer-3col {
+ width: 8px !important;
+}
+.height-auto {
+ height: auto !important;
+}
+}
+</style>
+<style type="text/css" media="screen">
+@media screen yahoo and (max-width:480px) {
+html, body {
+font-family: Arial, sans-serif !important;
+}
+table, td, th, a, span, font, p, div {
+font-family: Arial, sans-serif !important;
+}
+}
+</style>
+<style type="text/css">
+@media (-webkit-min-device-pixel-ratio: 0) and (min-device-width:1024px) { 
+.video-wrapper { display:block!important; } .video-fallback { display:none!important; } 
+} 
+@supports (-webkit-overflow-scrolling:touch) and (color:#ffff) { 
+div[class^=video-wrapper] { display:block!important; } div[class^=video-fallback] { display:none!important; } 
+} 
+body[data-outlook-cycle] .video-wrapper { display:none!important; } body[data-outlook-cycle] .video-fallback { display:block!important; }
+[class="x_video-wrapper"] { display:none!important; } [class="x_video-fallback"] { display:block!important; }
+#MessageViewBody .video-wrapper { display:block!important; } #MessageViewBody .video-fallback { display:none!important; }
+
+@media only screen and (max-width: 480px) {
+video {
+ width: 100% !important;
+ height: auto !important;
+ object-fit: fill!important;
+}
+}
+</style>
+
+
+</head>
+<body style="box-sizing:border-box; padding:0 !important; margin:0 !important; display:block !important;"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Stocking fillers.</div>
+<table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="wrapper" bgcolor="#f3f2f1">
+  <tr>
+    <td align="center"><table role="presentation" width="670" border="0" cellspacing="0" cellpadding="0" class="full-width" align="center" style="width:670px; margin:0 auto;">
+        <tr>
+          <td height="20" style="font-size:1px; line-height:1px; height:20px;">
+            
+            
+<div class="gmailfix" style="display:none; max-height: 0px; overflow: hidden; white-space:nowrap; font:15px courier; line-height:1px;
+ background:#ffffff;">&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+            
+          </td>
+        </tr>
+        <tr>
+          <td class="full-width" style="width:670px; max-width:670px; min-width:670px;" align="center"><table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+
+<table cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"> 
+<!-- Hidden preheader and online version -->                
+<div style="display:none;font-size:1px;color:#000001;line-height:1px;font-family: 'KleinRegular', Arial, sans-serif;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;"> If you are having trouble viewing images, please <a href="https://view.mailing.calvinklein.com/?qs=2c25029df1b25bb31dd4bb47c0595c40a08346bbf05dc898b303ed6b1f37085934a6f75aea19598415c15f261bb24963417c0769ea7a67e7641569a315a1976ccfa461bb72c0125176208dac075a313c5be3955d93d1047b" target="_blank" style="color:#a7a7a7;">click here</a>.</div>
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#f3f2f1">
+  <tr>
+    <td valign="middle" class="black" align="center" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 9px; line-height: 11px; padding: 8px 0 20px 0; vertical-align: middle;">If you are having trouble viewing images, please <a href="https://view.mailing.calvinklein.com/?qs=2c25029df1b25bb31dd4bb47c0595c40a08346bbf05dc898b303ed6b1f37085934a6f75aea19598415c15f261bb24963417c0769ea7a67e7641569a315a1976ccfa461bb72c0125176208dac075a313c5be3955d93d1047b" target="_blank" style="color:#a7a7a7;">click here</a>.</td>
+  </tr>
+</table>
+<!-- /Hidden preheader and online version  --></td></tr></table>
+
+
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+<!-- Optional Bar -->
+<table role="presentation" class="content-wrapper" style="width:640px; margin:0 auto;" width="640" cellspacing="0" cellpadding="0" border="0" bgcolor="#000000" align="center">
+  <tr class="white">
+    <td class="font-13" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #fffffe; font-size: 14px; line-height: 15px; padding: 8px 30px 8px 30px; vertical-align: middle; text-transform: uppercase; font-weight: 500;" align="center">FREE SHIPPING ON ORDERS OVER £50 + 120-DAY FREE RETURNS</td>
+  </tr>
+</table>
+
+<!-- /Optional Bar  --></td></tr></table>
+
+
+<table role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper" width="100%" cellspacing="0" cellpadding="0"><tr><td class="stylingblock-content-wrapper camarker-inner"> 
+<!-- Logo and 4 menu-items - choose mobile menu 4 items too at the bottom -->
+
+<table class="content-wrapper" style="width:640px; margin:0 auto;" width="640" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+  <tr>
+    <td style="font-size:1px; line-height:1px; height: 30px;" height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" style="font-size:1px; line-height:1px; height: 10px;" height="10">&nbsp;</td>
+  </tr>
+</table>
+<table role="presentation" class="content-wrapper" style="width:640px; margin:0 auto;" width="640" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+  <tr>
+    <td class="center" style="padding-left: 30px; padding-right: 30px;"><a href="https://click.mailing.calvinklein.com/?qs=8fce3dbf1a73b3e759f94dbb85389186b44b16a3ccf41d80bd32b141b2347c42005229e51763b729975ece53963a4b38f788514abdc810be173e0e4dcbf6be4f" target="_blank" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/6/0fe1d2d8-abd2-4c37-a9c2-159db1cdb310.png" title="Calvin Klein" alt="Calvin Klein" style="display: block; font-family: 'KleinRegular', Arial, sans-serif; font-size: 14px;" height="30" border="0"></a></td>
+    <td class="mobile-hide" style="padding-right: 30px; vertical-align: bottom" valign="bottom" align="right"><table cellspacing="0" cellpadding="0" border="0">
+        <tr class="black">
+          <td style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; vertical-align: middle; text-transform: uppercase; font-weight: 500; padding-right: 30px; vertical-align: bottom;" valign="bottom" align="left"><a href="https://click.mailing.calvinklein.com/?qs=8fce3dbf1a73b3e73dad9b31d2c46c94262cb08fef145c6cf92a7f70ca9bb4287d7d50e3c340b46dca149f14ebe7b6ac1ff52a4d8f6a4f77b938f0da76a523ab" target="_blank" style="color: #000001; text-decoration: none;" >WOMEN</a></td>
+          <td style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; vertical-align: middle; text-transform: uppercase; font-weight: 500; padding-right: 30px; vertical-align: bottom;" valign="bottom" align="left"><a href="https://click.mailing.calvinklein.com/?qs=8fce3dbf1a73b3e761d0fcf1994e0a514074960b2829bf6c6f76f684d473676292be3701ee63524c5e0bbcfae0f9c668d3d53584c4ce0322e6bbf9156148c6b1" target="_blank" style="color: #000001; text-decoration: none;" >MEN</a></td>
+          <td style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; vertical-align: middle; text-transform: uppercase; font-weight: 500; padding-right: 30px; vertical-align: bottom;" valign="bottom" align="left"><a href="https://click.mailing.calvinklein.com/?qs=8fce3dbf1a73b3e7522011cd2ef11ad45ae6c3bad43f71dff31badeb76e9ad41a37112db38dd74e49e1a1eff04d28d1c70ae239499c85aea54c8f23f349a403b" target="_blank" style="color: #000001; text-decoration: none;" >UNDERWEAR</a></td>
+         
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table class="content-wrapper" style="width:640px; margin:0 auto;" width="640" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="center">
+  <tr>
+    <td style="font-size:1px; line-height:1px; height: 30px; border-bottom: 2px solid #f5f4f3;" height="30">&nbsp;</td>
+  </tr>
+</table>
+<!-- /Logo and 4 menu-items - choose mobile menu 4 items too at the bottom --> </td></tr></table>
+
+</td></tr></table><!----></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+<!-- Headline 01 with text and button -->
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+    <tr>
+      <td height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="mobile-hide" height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+    </tr> 
+  <tr class="black">
+    <td class="font-30" align="center" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 40px; line-height: 41px; vertical-align: middle; text-transform: uppercase; font-weight: 500; padding-left: 30px; padding-right: 30px;">THE LITTLE THINGS</td>
+  </tr>
+  <tr>
+    <td height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" height="5" style="font-size:1px; line-height:1px; height: 5px;">&nbsp;</td>
+  </tr>
+  <tr class="black">
+    <td class="font-13-18 pad-l-r-30" align="center" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 18px; line-height: 23px; padding: 0 90px;">Jewellery. Wallets. Hats. <br>Joy in small packages.</td>
+  </tr>
+  <tr>
+    <td height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="button pad-l-r-11" style="padding: 0 22px;"><table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center">
+        <tr>
+          <th class="column" align="center" width="290" valign="top" style="font-weight:normal; vertical-align:top; width:290px;"> <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+              <tr>
+                <td align="center" class="button"><table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                    <tr>
+                      <td align="center" bgcolor="#ffffff" class="button" height="49" style="height: 54px; border: 1px solid #000000; padding: 2px 5px; height: 49px;"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                          <tr class="black"> 
+                            <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]-->
+                            <td align="center" bgcolor="#ffffff" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 220px;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5fc45b84d24b94272d20eb10e185875999dd9a3c30179b7668e8cc94a82387191b53950be919159aeb3fed6e09f7799b49b8ceba93cfa119a5" style="color:#111111; text-decoration:none; padding:8px 25px;" >SMALL GIFTS FOR HER</a></td>
+                            <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]--></tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+          </th>
+          <th class="column-spacer-small" width="16" style="width:16px;"> </th>
+          <th class="column" align="left" width="290" valign="top" style="font-weight:normal; vertical-align:top; width:290px;"> <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+              <tr>
+                <td align="center" class="button"><table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                    <tr>
+                      <td align="center" bgcolor="#ffffff" class="button" height="49" style="height: 54px; border: 1px solid #000000; padding: 2px 5px; height: 49px;"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                          <tr class="black"> 
+                            <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]-->
+                            <td align="center" bgcolor="#ffffff" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 220px;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5fa588aa8ec0ef0ab372440dea9dfd2881402e79afcdbe233bfcf271789654839ca16806ff3c1355c672a66c9b7afb01f7e81de627e9f49a6d" style="color:#111111; text-decoration:none; padding:8px 25px;" >SMALL GIFTS FOR HIM</a></td>
+                            <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]--></tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></th>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+  <tr>
+    <td height="30" style="font-size:1px; line-height:1px; height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+  </tr>
+</table>
+
+
+</td></tr></table><!----></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+<!-- Banner-V3 -->
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;">
+   
+  <tr>
+    <td class="full-width-img" style=""><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f9aad354d41058f341de35669d1e1dfa588cdf0afa236275353dc59662c660804937503ded7e8336c828d144fb78ea6acf4d49356c9e1b7c4" target="_blank" style="color: #363636; text-decoration: none;" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/10/afc11024-f3b3-4de5-a2d4-539b60788ade.jpg" width="640" height="auto" alt="/small-gifts-women" border="0" style="display: block;"></a></td>
+  </tr>
+</table>
+<table width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+<tr>
+      <td height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="mobile-hide" height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+    </tr>
+</table>
+</td></tr></table><!----></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"></td></tr></table><!----></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner">
+<style>
+@media only screen and (max-width: 480px) {
+.height-20 {height:20px !important;}
+}
+</style>
+
+<table width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+  <tr>
+    <td height="0" style="font-size:1px; line-height:1px; height: 0px; border-bottom: 2px solid #f5f4f3;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+  </tr> 
+    <tr>
+    <td class="mobile-hide" height="15" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+  </tr>
+</table>
+
+<!-- Headline 02 -->                
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+  <tr class="black">
+    <td class="font-20 pad-l-r-30" align="center" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 25px; line-height: 26px; vertical-align: middle; text-transform: uppercase; font-weight: 500; padding-left: 90px; padding-right: 90px; vertical-align: bottom;">LOOKING FOR MORE?</td>
+  </tr>
+  <tr>
+    <td height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+</table>
+<!-- /Headline 02 -->
+
+<!-- Banner-V3 -->
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;">
+  <tr>
+    <td class="full-width-img" style=""><img src="http://image.mailing.calvinklein.com/lib/fe9012747563017574/m/6/cdb289b5-10ff-4d03-8f9c-65c333b627fb.jpg" width="640" height="201" alt="LOOKING FOR MORE?" border="0" style="display: block;"></td>
+  </tr>
+</table>
+<table width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+  <tr>
+    <td height="30" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" height="30" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+  </tr>
+</table>
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+                  
+<tr>
+  <td class="pad-l-r-11" style="padding: 0 22px;" align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%"><table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr class="black">
+              <td class="font-20" align="center" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 25px; line-height: 26px; vertical-align: middle; text-transform: uppercase; font-weight: 500; vertical-align: bottom;">WOMEN</td>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+            </tr>
+          </table></td>
+        <td width="50%"><table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr class="black">
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+              <td class="font-20" align="center" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 25px; line-height: 26px; vertical-align: middle; text-transform: uppercase; font-weight: 500; vertical-align: bottom;">MEN</td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+</tr>
+<tr>
+  <td class="mobile-hide" height="15" style="font-size:1px; line-height:1px; height: 15px;">&nbsp;</td>
+</tr>
+</table>
+<!-- /Banner-V3 --> 
+
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+<tr>
+  <td class="pad-l-r-11" style="padding: 0 22px;" align="center">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;"><table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c37810f7f82a1f9b39bd01c16e344ba227c67d1865c28131f52a21fe04f92977cab877b5c36e30f798e45d9b428a685bf1e18555dbbb1969a9c8" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">COATS & JACKETS</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;">
+                      <table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c378128f19a0323ad9010f9c772c9c9018ac4cd5a783d6344644c8833783fa47ea12641b2a3f8aa33c8943e9646daad080b0a34731ad39275362" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">COATS & JACKETS</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class="height-20" height="16" style="font-size:1px; line-height:1px; height: 16px;">&nbsp;</td>
+</tr>
+</table>
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+<tr>
+  <td class="pad-l-r-11" style="padding: 0 22px;" align="center">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;"><table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c3783e3f451e3a4ed5f6f39f87eb538060ba0e4fde6c644a8d43e51357dd7a478a93c5c70b7c58e9f5b2b4741d4ad54f69b959d7b5144164192d" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">SWEATSHIRTS</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;">
+                      <table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c378fef04b56cbcac5d0501d3140b39e75bd70d2873646bc4998a2039bbdeb7f10c3a54438bc1020f9f340448d382d623bc52c705e8e50662107" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">SWEATSHIRTS</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class="height-20" height="16" style="font-size:1px; line-height:1px; height: 16px;">&nbsp;</td>
+</tr>
+</table>
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+<tr>
+  <td class="pad-l-r-11" style="padding: 0 22px;" align="center">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;"><table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c378b68457eccebff77efb41ed24cf5ea92006f0fba7e3369984a476464987ff75ece546b65c1846ec0f8661646e3ef6c9fb90a685fc90c2fe8a" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">LOUNGEWEAR</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;">
+                      <table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c378a0f11f3b4b1383eefa6e20c6895b41e27a22b2598d9a7f2493a1159e5355a31624d5ee9134a458415081234a906cbcaa2102713bc3a43b0a" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">LOUNGEWEAR</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class="height-20" height="16" style="font-size:1px; line-height:1px; height: 16px;">&nbsp;</td>
+</tr>
+</table>
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+<tr>
+  <td class="pad-l-r-11" style="padding: 0 22px;" align="center">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;"><table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c3780da5f681f12bd62c3688c015e16993160106bda8f356d8f6badebf367afac77d61cc6a27140cfa578b2a991480c1e37fb2a6e1f905634d28" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">BAGS  </a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;">
+                      <table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=530346b9f9c7c3787a1beba8b9141a397572d1a12d151bc74ad92ff97b9193c6b5fcb7bcacd6516a671e3b42937997ba2fec73758f48d16e6b37f828a0d6291f" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">BAGS  </a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class="height-20" height="16" style="font-size:1px; line-height:1px; height: 16px;">&nbsp;</td>
+</tr>
+</table>
+
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+<tr>
+  <td class="pad-l-r-11" style="padding: 0 22px;" align="center">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;"><table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8c20960ca30326ab156bf98648807286c2dad1621afb05e09e532b9125705a231e997930937326d091dc74b352fa9807350c11a9601fcc93d7" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">GIRLS</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td width="50%">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td class="width-4" width="8" style="font-size: 1px; line-height: 1px; width: 8px">&nbsp;</td>
+              <td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" class="width-100pct" width="100%">
+                  <tr>
+                    <td align="center" bgcolor="#f5f4f3" class="button" height="49" style="height: 54px; padding: 2px 5px; height: 49px;">
+                      <table bgcolor="#f5f4f3" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="black"> 
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]-->
+                          <td class="min-width-auto" align="center" bgcolor="#f5f4f3" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500; min-width: 280px;"><a href="https://click.mailing.calvinklein.com/?qs=f1d0345cfe690c8cc7e62ddcccb6c3546657adfe99dee55887147714b53c19fee810aeca9e95343757c83c607fc23f7a17c03f482bc745576bfc202d49f4f9c3" style="color:#111111; text-decoration:none; padding:8px 25px;"  target="_blank">BOYS</a></td>
+                          <!--[if mso ]> <td width="30" bgcolor="#f5f4f3">&nbsp;</td> <![endif]--></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" height="30" style="font-size:1px; line-height:1px; height: 30px;">&nbsp;</td>
+  </tr>
+</table>
+</td></tr></table><!----></td>
+              </tr>
+              <tr>
+                <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"> <!-- mobile menu 3/4 items --> 
+                  
+<!--[if !mso]><!-->
+<table role="presentation" width="640" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:640px; margin:0 auto;" bgcolor="#ffffff">
+  <tr class="black">
+    <td align="center"><div class="show" style="font-size: 0px; max-height: 0px; overflow: hidden; display: none;">
+        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tr>
+            <td align="center" class="button2"><table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                <tr>
+                  <td align="center" bgcolor="#ffffff" class="button2" style="height: 54px; border-top: 2px solid #f5f4f3; padding: 0px 5px;"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tr class="black"> 
+                        <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]-->
+                        <td align="center" bgcolor="#ffffff" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f7830cf863f22a10dde228e009616067ca0ee8ed4e37adf6e96e96a464bf64fa02528b457b8683a95f0e0b20e0c9bcc8a4778d1641b03407d" style="color:#111111; text-decoration:none; padding:8px 25px;" >WOMEN</a></td>
+                        <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]--></tr>
+                    </table></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td align="center" class="button2"><table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                <tr>
+                  <td align="center" bgcolor="#ffffff" class="button2" style="height: 54px; border-top: 2px solid #f5f4f3; padding: 0px 5px;"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tr class="black"> 
+                        <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]-->
+                        <td align="center" bgcolor="#ffffff" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f8b638f6e0146930ea29075775571ae6dcb92268016c46d69773ae2a934e0b98bb14592d5fea57537ce507819be560dca411e4fd4a2b3414a" style="color:#111111; text-decoration:none; padding:8px 25px;" >MEN</a></td>
+                        <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]--></tr>
+                    </table></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td align="center" class="button2"><table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                <tr>
+                  <td align="center" bgcolor="#ffffff" class="button2" style="height: 54px; border-top: 2px solid #f5f4f3; padding: 0px 5px;"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tr class="black"> 
+                        <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]-->
+                        <td align="center" bgcolor="#ffffff" style="font-family: 'KleinCondensedMed', Arial, sans-serif; color: #000001; font-size: 14px; line-height: 15px; text-transform: uppercase; font-weight: 500;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f035d621eaaf4c4d5793a12275b1762959d7d2b3a6c5516e0c71d03e909feab3e571187234d4f34e934a54f9656cb41ac7f4efc2504d8b046" style="color:#111111; text-decoration:none; padding:8px 25px;" >UNDERWEAR</a></td>
+                        <!--[if mso ]>   <td width="30" bgcolor="#ffffff">&nbsp;</td>   <![endif]--></tr>
+                    </table></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td align="center" class="button2"><table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                <tr>
+                  <td align="center" bgcolor="#ffffff" class="button2" style="height: 54px; border-top: 2px solid #f5f4f3; padding: 0px 5px;"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      
+                    </table></td>
+                </tr>
+              </table></td>
+          </tr>
+          
+        </table>
+      </div></td>
+  </tr>
+</table>
+
+<!--<![endif]--> 
+<!-- /mobile menu 3/4 items --> </td></tr></table><!----></td>
+              </tr><tr>
+              <td class="full-width" style="width:640px; max-width:640px; min-width:640px;" align="center"><!----><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper" width="100%" cellspacing="0" cellpadding="0"><tr><td class="stylingblock-content-wrapper camarker-inner">
+<style>
+@media only screen and (max-width: 480px) {
+  .width50pc {
+    width:50%!important;
+  }
+  .width100pc {
+    width:100%!important;
+  }
+  .right {
+    text-align:right!important;
+  }
+  .left {
+    text-align:left!important;
+  }
+}
+</style>
+  <!-- socials -->
+<table role="presentation" class="content-wrapper" style="width:640px; margin:0 auto;" width="640" cellspacing="0" cellpadding="0" border="0" align="center">
+
+  <tr>
+    <td style="font-size:1px; line-height:1px; height: 30px;border-top: 2px solid #f5f4f3;" height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" style="font-size:1px; line-height:1px; height: 10px;" height="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="" align="center">
+      <table cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td style="padding: 0 15px;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5fc06c690feba318fe110032707ca3887df9d78a144ca4912b3d688dcd15e36a30fd92263cc66919577f2ad2d5e4f38860" target="_blank" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/4/84f05e6f-9c3c-43d3-b7b6-752b9e52ee0a.jpg" alt="" style="display: block;" width="21" height="21" border="0"></a></td>
+          <td style="padding: 0 15px;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f86b17d4d6dd476ac9305b470be6133bc1e9f7731499db6090d74e57d144f4d47f1f8f9b9f41f0507e4091cbb6740dc1b" target="_blank" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/4/f3c58f25-4923-49c8-98fc-38b92dca1038.jpg" alt="" style="display: block;" width="21" height="21" border="0"></a></td>
+          <td style="padding: 0 15px;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f47f0b1db5b0351fd0f700c64cf6f369be0c1774f1d7f7f8964805d6c6330c6d4f4a31b4761a6b34b70412e39e2d51fbd" target="_blank" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/4/0c22ab1b-1d86-45c4-bf9b-defdd452c257.jpg" alt="" style="display: block;" width="21" height="21" border="0"></a></td>
+          <td style="padding: 0 15px;"><a href="https://click.mailing.calvinklein.com/?qs=efeac8a832d53a5f09b1d6b5cb7db3158c3258f20feaea531e6247ffd2e26b91e180bb9c06fc1c57baafeb94bd56694b85321e1c451c0b0d" target="_blank" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/4/85cda3c7-12f7-45f2-9f83-2ab67086d063.jpg" alt="" style="display: block;" width="25" height="21" border="0"></a></td>
+          <td style="padding: 0 15px;"><a href="https://click.mailing.calvinklein.com/?qs=0d025ed85469fa884eaa121147379b15e729ed269178a15a1619494631fd8e875864d20e0e4d5f6e8a77b8af77a934eb194f3384d95a2192" target="_blank" ><img src="https://image.mailing.calvinklein.com/lib/fe9012747563017574/m/6/0b14c31c-5070-41c9-9eb6-3d140c01d542.png" alt="" style="display: block;" width="21" height="21" border="0"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="font-size:1px; line-height:1px; height: 30px;" height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" style="font-size:1px; line-height:1px; height: 10px;" height="10">&nbsp;</td>
+  </tr>
+</table>
+
+<!-- /socials --> 
+
+<!-- footer -->
+
+<table role="presentation" class="content-wrapper" style="width:640px; margin:0 auto;" width="640" cellspacing="0" cellpadding="0" border="0" bgcolor="#f3f2f1" align="center">
+  <tr>
+    <td style="font-size:1px; line-height:1px; height:30px; border-top:2px solid #f5f4f3;" height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
+        <tr>
+          <th class="column" style="font-weight:normal; vertical-align:top;" valign="top" align="left">
+            <table class="black content-wrapper" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td class="font-11-18 pad-l-r-15 width50pc" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 9px; line-height: 11px; padding: 0 20px; text-transform: uppercase;" align="center"><div class="width100pc right"><a href="https://click.mailing.calvinklein.com/?qs=0d025ed85469fa888aede5d9700ce238d1d061d06a26a0e50fe90c751b9ae68889fbbaea5d7547bf7f6ad811d0a76fa41cd2a676a2ca1aa2659fe7cf29b69744" target="_blank" style="color: # color: #000001; text-decoration: underline;" >STORE LOCATOR</a></div></td>
+                <td class="font-11-18 pad-l-r-15 width50pc" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 9px; line-height: 11px; padding: 0 20px; text-transform: uppercase;" align="center"><div class="width100pc left"><a href="https://click.mailing.calvinklein.com/?qs=0d025ed85469fa88ad4569cd1ebf949df00cac14957f4f58f97ad1565b4eaa0b18e563a0c0b83168b8a8bb23bc22f383de01670bcbca62c150f9e333200f1608" target="_blank" style="color: # color: #000001; text-decoration: underline;" >SECURE PAYMENT</a></div></td>
+              </tr>
+            </table>
+          </th>
+          <th class="column" style="font-weight:normal; vertical-align:top;" valign="top" align="left">
+            <table class="black content-wrapper" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td class="font-11-18 pad-l-r-15 width50pc" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 9px; line-height: 11px; padding: 0 20px; text-transform: uppercase;" align="center"><div class="width100pc right"><a href="https://click.mailing.calvinklein.com/?qs=0d025ed85469fa880b03331551937e65c0505e727cc1d05e8f559b23bf322e77682a9fef2de478e719cebca018b71d7f82e8029ac916b327c063f52a89e586ac" target="_blank" style="color: # color: #000001; text-decoration: underline;" >Free shipping on orders over £50</a></div></td>
+                <td class="font-11-18 pad-l-r-15 width50pc" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 9px; line-height: 11px; padding: 0 20px; text-transform: uppercase;" align="center"><div class="width100pc left"><a href="https://click.mailing.calvinklein.com/?qs=0d025ed85469fa88345d29fc012f88df5ca2b66b5520c58ad928ccf6f4023fabc6e1f14b7ea1e52e527409ae570041edf29794a8a7a202e75f086c1adaa39b03" target="_blank" style="color: # color: #000001; text-decoration: underline;" >FREE 120-DAY RETURN</a></div></td>
+              </tr>
+            </table>
+          </th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="height-30" style="font-size:1px; line-height:1px; height: 20px;border-top: 2px solid #f5f4f3;" height="20">&nbsp;</td>
+  </tr>
+  <tr class="black">
+    <td class="font-11-18 pad-l-r-30" style="font-family: 'KleinRegular', Arial, sans-serif; color: #000001; font-size: 9px; line-height: 11px; padding: 0 90px;" align="center">You have received this message because you have either registered or accepted our invitation to receive emails from Calvin Klein, or made a purchase from Calvin Klein. If you no longer wish to receive emails from us, please click 
+<a href="https://mcvr8kwd9nhjp18gv6y-bfwkjqd1.pub.sfmc-content.com/srx3qzhyfwv?qs=d71227d4df8c0160baadcb8ea3603302fc31e6a98fe75da0ad59f0ad2565d69508e6d2edfa94ea6704931cc59758cd4a382d013c0f36fc6ced4c06d8f3437596d23e545b8fad4edf38adf98b2a2f2436f1b7e2b5a6d970892d961c4b1353ee35e506ce6469dacaa5a89582d9f1e11f150675a8d9c84d12d3b470635dd962ec826b058a6d2b35dc126f63dd430307578a726ae05e52139b026241f14c9b4f1b4c721889d4e7393a50&utm_source=Trigger&utm_term=&utm_content=137314&utm_id=453cb93a-3255-4f78-83b6-44ad51308f8d&sfmc_id=227392269&sfmc_activityid=e80ed0c1-743f-4c97-9e45-567dc83e6149&utm_medium=email&utm_campaign=20211218_CK_Holiday_Acc" style="color: #363636; text-decoration: underline;" target="_blank" alias="click here">here</a> to unsubscribe. Please add news_eu@mail.calvinklein.com to your address book or safe sender list to ensure that you continue to receive Calvin Klein emails.Should you have any questions please do not hesitate to 
+<a href="https://www.calvinklein.co.uk/webapp/wcs/stores/servlet/HelpContactUsView?catalogId=10188&langId=44&storeId=20027" style="color: #363636; text-decoration: underline;" target="_blank" alias="contact us">contact us</a>. <br> Calvin Klein Europe B.V. | chamber of commerce of Amsterdam No. 24271819 | Tax Number NL006585978B01. CK Stores B.V. | chamber of commerce of Amsterdam No 34154107 | Tax Number GB188047871. Danzigerkade 165 | 1013 AP AMSTERDAM | The Netherlands. Operational responsibility: Erik&nbsp;Janshen. Directors: Martijn&nbsp;Hagman, Marc&nbsp;Busscher.<br>© Calvin Klein Inc. All rights reserved.</td>
+  </tr>
+
+  <tr>
+    <td style="font-size:1px; line-height:1px; height: 30px;" height="30">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="mobile-hide" style="font-size:1px; line-height:1px; height: 10px;" height="10">&nbsp;</td>
+  </tr>
+</table>
+
+<!-- /footer --></td></tr></table></td></tr></table><!----></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!-- ET Tracking Code--> 
+<!-- https://click.mailing.calvinklein.com/profile_center.aspx?qs=b7550f05a40bfc6dd4290405d49498adf5f39b1afa0349df4901a0aaba22598e04b65e356800413e77e413f8895385e35b1ea2e35ef58974, PVH Europe BV, Stadhouderskade 6 Amsterdam, Amsterdam, 1054ES, Netherlands-->
+<img src="https://click.mailing.calvinklein.com/open.aspx?ffcb10-fe6c1575756d057d7517-fe2c107374670c7a711071-fe9012747563017574-ff051675746406-fe25167272670d7f771279-ff3817727566&d=60173&bmt=0" width="1" height="1" alt=""></custom>
+</body>
+</html>
+
+--S5tvYe6odx6c=_?:--
+

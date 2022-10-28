@@ -1,0 +1,1013 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:a5d:5086:0:0:0:0:0 with SMTP id a6csp2353958wrt;        Tue, 11 Jan
+ 2022 03:37:10 -0800 (PST)
+Received: from mta-174-84-115.intercom.com.sparkpostmail.com
+ (mta-174-84-115.intercom.com.sparkpostmail.com. [192.174.84.115])        by
+ mx.google.com with ESMTPS id j9si9437129plt.45.2022.01.11.03.37.09       
+ for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 11 Jan 2022
+ 03:37:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx6zwdZ0rLkf6MxQhFDtOwUzhsGdL9xGB2S4+2LtdK9ss/U29n0Dy/4F0K1Xl8SzyeJ6XgR
+X-Received: by 2002:a17:90a:8809:: with SMTP id s9mr2628846pjn.163.1641901030181;       
+ Tue, 11 Jan 2022 03:37:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641901030; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=noLuxA/V/nRUTQ5Ql+o6LOISDMDVTYkCEIbWJFSj6q5zvjw8u/SRW5zn0GPg/vh9Ex        
+ H8SqKQDe2jf2AIUqzdTElmCYfx0j6JR5TW54I0vvHjy9MPHaYL9PNoV8BiTUnr8uVhy1        
+ NsIgWMYMQITBfLDHsZQdcnaaQQk+ZKAiqv7mAGv9HLuOP6tdS5nHayKrI12IlfY7wW9d        
+ MEZif5TOhIxSU6mieHiwSMEnrG+m4veOYDpQ0BMd3yCYRZREHTxr4Vw5CcfUsxuRZH3F        
+ glTeWTQZK1Jtpd/+/gRDaQ4N9psLHraOgoXBEHRynQokwUtsswt9L0BsoYrpO5s38zIM        
+ BGOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:from:message-id:subject:reply-to:date:list-unsubscribe        
+ :mime-version:to:dkim-signature;       
+ bh=WooSK5iuPsCp6Zj0pbWpReIFBxcFANZZq6mzCzNYwVg=;       
+ b=hory7RjuNpvruE2yv4+PU90leGz6z72T4kTAKVdGHmTHPbIhs5m9aBQ8qYrtBj2I0R        
+ 4l9VVtA5kJh6uq5SYiqwnnQRpadPJF8sEgjKVam0KzhacIl4L+tYL5kl9xn0znOGuBc5        
+ O3bBdZmKZvPN33LUbJ6PiVzpqrcvJywnKdnD/eVlDoA3t9FXL2TzEOcx0XoxhbdLETBk        
+ HQFRanVZ2xIEGd980pfzI3r1UCDEbfv8dlrAzzOPh4IHnBw9QaWb50ZDQs/zkjGBKDW8        
+ 8PkbGDqnZNjfh746C7uYeOY2XrpdWHQQL+587YxJeHrBQZi37p/8h4yD1aeHn4FO2RH/        
+ lTCw==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@appradar.com header.s=intercom
+ header.b=AgdQx4UY;       spf=pass (google.com: domain of
+ bounces+87491301016513@outbound.intercom.appradar.com designates
+ 192.174.84.115 as permitted sender)
+ smtp.mailfrom=bounces+87491301016513@outbound.intercom.appradar.com
+Return-Path: <bounces+87491301016513@outbound.intercom.appradar.com>
+Received-SPF: pass (google.com: domain of
+ bounces+87491301016513@outbound.intercom.appradar.com designates
+ 192.174.84.115 as permitted sender) client-ip=192.174.84.115;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@appradar.com header.s=intercom
+ header.b=AgdQx4UY;       spf=pass (google.com: domain of
+ bounces+87491301016513@outbound.intercom.appradar.com designates
+ 192.174.84.115 as permitted sender)
+ smtp.mailfrom=bounces+87491301016513@outbound.intercom.appradar.com
+X-MSFBL: XNIhJDV2OYulLHNXLkqYgCNMhkVmyLfS4cwDRMRbYd0=|eyJ0ZW5hbnRfaWQiOiJ	pbnRlcmNvbSIsIm1lc3NhZ2VfaWQiOiI2MWQ1ZTU2YmRkNjFhZmY1YTA5OCIsInI	iOiJqb2huLmRvZS55b3VuaXFAZ21haWwuY29tIiwic3ViYWNjb3VudF9pZCI6IjM	4NTU5IiwiY3VzdG9tZXJfaWQiOiIxIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=appradar.com;	s=intercom;
+ t=1641901029;
+ i=@appradar.com;	bh=WooSK5iuPsCp6Zj0pbWpReIFBxcFANZZq6mzCzNYwVg=;	h=To:Content-Type:Date:Subject:Message-ID:From;	b=AgdQx4UYX4awsTd0kaIw8sGjOLwJJBDDjBHNLZi3mDhpMxchbGEga585xxrsm+rw/	
+ fPeFpwba3qMCckiM0ssvbV2KdO38Hwjy2P1E528OuKOzThqQIYZu3rDpC4Bj3v1apZ	
+ wQX4H9gIVNVoAfu0XsmMwNhHh26cGMiiEYGkSDvM=
+To: john.doe.youniq@gmail.com
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:unsubscribe_87491301016513_60e4c0b1cd73872bf005c239@app-radar.intercom-mail.com>,
+ <https://app-radar.intercom-mail.com/subscriptions/unsubscribe?app_id=rpif1wvl&conversation_id=87491301016513&user_id=60e4c0b1cd73872bf005c239&source=header>
+Date: Tue, 11 Jan 2022 11:37:09 +0000
+Reply-To: "Rebecca from App Radar" <rebecca.vacchio@app-radar.intercom-mail.com>
+X-Mailgun-Tag: user-company
+X-Intercom-App-Id: rpif1wvl
+X-Intercom-Bin: 100
+Subject: Monthly Update: New Year, New Possibilities for ASO + Google Policy Changes
+ Webinar
+Message-ID: <f0f91215-c234aefa-1641901029-87491301016513@app-radar.intercom-mail-100.com>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+From: "Rebecca from App Radar" <rebecca.vacchio@appradar.com>
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"rpif1wvl","conversation_id":"87491301016513","user_id":"60e4c0b1cd73872bf005c239","intercom_localized_email_content_id":"6702249"}
+Feedback-ID: email:56744614:rpif1wvl:intercom
+Content-Type: multipart/alternative;
+ boundary="_----7TF51na6b7wEr3CriAhDxg===_D9/89-20970-5EB6DD16"
+
+--_----7TF51na6b7wEr3CriAhDxg===_D9/89-20970-5EB6DD16
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi john,=20
+ I hope you had really nice holidays! I've got a feeling that your app mark=
+eting goals for 2022 are even more ambitious than for 2021 so let's get sta=
+rted =F0=9F=8E=89=20
+ New Year, New Learnings=20
+ After our December break, we are BACK with another App Talks on January 19=
+, 2022 at 4:30 pm CET / 10:30 am EST about Google Play Policy changes=2E=20
+ [Image "22JAN_Newsletter+Banner=2Ejpg"] Our App Marketing Expert Elena Wib=
+mer will share insights about:=20
+ - What crucial changes were introduced so far?=20
+- How can we adapt our ASO strategy accordingly?=20
+- How can we optimize app metadata with fewer characters?=20
+Reserve My Spot=20
+ Stay up-to-date with industry events in 2022=20
+ The start of the year is the best time to mark your calendar with upcoming=
+ industry events! No worries, you don=E2=80=99t need to spend your time sea=
+rching for the relevant app marketing and mobile developer events=2E We hav=
+e gathered for you 42 Mobile App Conferences to Attend in 2022 - Full List =
+with Prices=2E Check it out and hope we see each other at one of the events=
+!=20
+ We added Competitor Creatives!=20
+ [Image "image=2Epng"] We updated our Competitor feature and added a new ta=
+b for creatives, so that YOU can easily compare and explore the visuals of =
+your competitors=2E=20
+ In a few words: importance of Creatives=20
+ While the keywords help your app rank higher in App Store and Google Play,=
+ it's the creatives that are the actual first impression of your app=2E Use=
+rs decide within a few seconds whether they want to download an app or not,=
+ so your creatives need to show your app's value proposition in a dynamic a=
+nd attention-grabbing way=2E Your app store listing has 3 visual elements t=
+hat drives downloads:=20
+ 1=2E App icon=20
+2=2E App screenshot=20
+3=2E App preview or promo video=20
+ These 3 need to work together and show a unanimous picture in order to cat=
+ch the users`attention=2E Learn more:=20
+ - How to Design App Icons for Your Game=20
+- Using App Store Listing Visuals to Make a Good First Impression=20
+ [Image "balken=2Epng"] Other App Radar News=20
+ As you know, TikTok has become a very important and interesting social med=
+ia for marketers all around the world=2E Have you been wondering how to use=
+ TikTok for your app marketing strategy? Cool! We have just the thing for y=
+ou on our website: TikTok Marketing 101 For App Marketers &amp; Developers=
+=2E Hit reply and let me know your thoughts on TikTok as an app marketing c=
+hannel!=20
+ Stay tuned, next week we have more news for you =F0=9F=A4=AB!=20
+ That's it for our January update=20
+ I am always interested in what you have to say, so let's chat about your a=
+pp's 2022 goals and how App Radar can help you reach them!=20
+ Keep optimizing!=20
+ Best, Rebecca from App Radar
+--_----7TF51na6b7wEr3CriAhDxg===_D9/89-20970-5EB6DD16
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4=2E01//EN" "http://www=2Ew3=2Eorg/=
+TR/html4/strict=2Edtd">
+<html>
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+
+<!-- Resets -->
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  #outlook a{
+    padding: 0;
+  }
+  body{
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  =2EReadMsgBody{
+    width: 100%;
+  }
+  =2EExternalClass{
+    width: 100%;
+  }
+  img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    outline: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    line-height: 100%;
+  }
+  #backgroundTable{
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+  }
+</style>
+
+
+<!-- Main styles -->
+
+<style type=3D"text/css">
+  /**
+   * Generic
+   */
+
+  body {
+     background-color: #f9f9f9;
+  }
+
+  body =2Emain {
+    background-color: white;
+  }
+
+  =2Emain {
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+  }
+
+  =2Emain =2Emain-td {
+    padding: 40px 60px;
+    border: 1px solid #dddddd;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0=2E05);
+    border-radius: 2px;
+  }
+
+  table {
+    border-spacing: 0;
+    border-collapse: separate;
+    table-layout: fixed;
+  }
+
+  td {
+    font-size: 16px;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  a {
+    border: none;
+    outline: none !important;
+  }
+
+
+  /**
+   * Header
+   */
+
+  =2Eheader td img {
+    padding: 15px 0 30px;
+    text-align: left;
+  }
+
+  =2Eheader =2Elogo {
+    text-align: left;
+  }
+
+  /**
+   * Content
+   */
+
+  =2Econtent-td {
+    font-size: 15px;
+    line-height: 22px;
+    padding: 0;
+    color: #525252;
+  }
+
+  =2Econtent-td > :first-child {
+    margin-top: 0;
+  }
+
+  =2Econtent-td h1 {
+    font-size: 26px;
+    line-height: 33px;
+    color: #282F33;
+    margin-bottom: 7px;
+    margin-top: 30px;
+    font-weight: normal;
+  }
+
+  =2Econtent-td h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #282F33;
+    margin-top: 30px;
+    margin-bottom: 7px;
+  }
+
+  =2Econtent-td h1 + h2 {
+    margin-top: 0px !important;
+  }
+
+  =2Econtent-td h2 + h1 {
+    margin-top: 0px !important;
+  }
+
+  =2Econtent-td h3 ,
+  =2Econtent-td h4 ,
+  =2Econtent-td h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  =2Econtent-td p {
+    margin: 0 0 17px 0;
+    line-height: 1=2E5;
+  }
+
+  =2Econtent-td p img,
+  =2Econtent-td h1 img,
+  =2Econtent-td h2 img,
+  =2Econtent-td li img,
+  =2Econtent-td =2Eintercom-h2b-button img {
+    margin: 0;
+    padding: 0;
+  }
+
+  =2Econtent-td p=2Eintro {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  =2Econtent-td blockquote {
+    margin: 40px 0;
+    font-style: italic;
+    color: #8C8C8C;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 30px;
+    font-family: Georgia, sans-serif;
+    quotes: none;
+  }
+
+  =2Econtent-td blockquote a {
+    color: #8C8C8C;
+  }
+
+  =2Econtent-td ul {
+    list-style: disc;
+    margin: 0 0 20px 40px;
+    padding: 0;
+  }
+
+  =2Econtent-td ol {
+    list-style: decimal;
+    margin: 0 0 20px 40px;
+    padding: 0;
+  }
+
+  =2Econtent-td img {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  =2Econtent-td =2Eintercom-container {
+    margin-bottom: 16px;
+  }
+
+  =2Econtent-td div=2Eintercom-container {
+    margin-bottom: 17px;
+    margin-top: 17px;
+    line-height: 0;
+   }
+
+  =2Econtent-td hr {
+    border: none;
+    border-top: 1px solid #DDD;
+    margin: 50px 30% 50px 30%;
+  }
+
+  =2Econtent-td table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+  }
+
+  =2Econtent-td td,
+  =2Econtent-td th {
+    padding: 5px 7px;
+    border: 1px solid #DADADA;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  =2Econtent-td th {
+    font-weight: bold;
+    background: #F6F6F6;
+  }
+
+  =2Econtent-td a {
+    color: #1251BA;
+  }
+
+  =2Econtent td=2Econtent-td table=2Eintercom-container {
+    margin: 17px 0;
+  }
+  =2Econtent td=2Econtent-td table=2Eintercom-container=2Eintercom-align-ce=
+nter {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  =2Econtent td=2Econtent-td table=2Eintercom-container td {
+    background-color: #6153ff;
+    padding: 12px 35px;
+    border-radius: 3px;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    border: none;
+  }
+
+  =2Econtent td=2Econtent-td table=2Eintercom-container =2Eintercom-h2b-but=
+ton {
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #6153ff;
+    border: none !important;
+    border-radius: 3px;
+  }
+
+  /**/
+  =2Econtent-td pre {
+    margin: 0 0 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    overflow: auto;
+  }
+
+  =2Econtent-td pre code {
+    font-family: Courier, monospace;
+    font-size: 14px;
+    line-height: 1=2E4;
+    white-space: nowrap;
+  }
+
+  =2Efooter-main {
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+  }
+
+  =2Efooter-td {
+    text-align: center;
+    padding: 21px 30px 15px;
+  }
+
+  =2Efooter-td p ,
+  =2Efooter-td a {
+    font-size: 12px;
+    color: #b7b7b7;
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  =2Efooter-td p {
+    margin: 0 0 6px 0;
+  }
+
+  =2Efooter-td p=2Eaddress {
+    margin-top: 9px;
+    line-height: 1=2E5em;
+  }
+
+  =2Efooter-td p=2Epowered-by {
+    margin-top: 18px;
+  }
+
+  =2Efooter-td p=2Eunsub {
+    margin: 0;
+  }
+
+  =2Efooter =2Eunsub a {
+    text-decoration: underline;
+    display: block;
+    margin: 12px 0 0;
+  }
+
+  p=2Eunsub a {
+    text-decoration: underline;
+  }
+
+  =2Efooter-td p=2Epowered-by a {
+    font-weight: bold;
+  }
+
+  =2Efooter-td textarea {
+    text-decoration: none;
+    font-size: 12px;
+    color: #b7b7b7;
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 9px 0;
+    font-weight: 300;
+    line-height: normal;
+
+  }
+
+  a=2Eintercom-h2b-button {
+    background-color: #6153ff;
+    font-size: 14px;
+    color: #FFF;
+    font-weight: bold;
+    border-radius: 3px;
+    display: inline-block;
+    text-decoration: none;
+   =20
+  }
+
+  table=2Eintercom-container td > a=2Eintercom-h2b-button {
+    padding: 0px;
+  }
+</style>
+
+<!-- Responsive-->
+<style type=3D"text/css" data-premailer=3D"ignore">
+  @media screen and (max-width: 595px) {
+    body {
+      padding: 10px !important;
+    }
+    =2Emain {
+      width: 100% !important;
+    }
+    =2Emain =2Emain-td {
+      padding: 20px !important;
+    }
+    =2Eheader td {
+      text-align: center;
+    }
+    =2Efooter-main {
+      width: 100% !important;
+    }
+  }
+
+  =2Econtent-td blockquote + * {
+    margin-top: 20px !important;
+  }
+
+  =2EExternalClass =2Econtent-td h1 {
+    padding: 20px 0 !important;
+  }
+
+  =2EExternalClass =2Econtent-td h2 {
+    padding: 0 0 5px !important;
+  }
+
+  =2EExternalClass =2Econtent-td p {
+    padding: 10px 0 !important;
+  }
+
+  =2EExternalClass =2Econtent-td =2Eintercom-container {
+    padding: 5px 0 !important;
+  }
+
+  =2EExternalClass =2Econtent-td hr + * {
+    padding-top: 30px !important;
+  }
+
+  =2EExternalClass =2Econtent-td ol ,
+  =2EExternalClass =2Econtent-td ul {
+    padding: 0 0 20px 40px !important;
+    margin: 0 !important;
+  }
+
+  =2EExternalClass =2Econtent-td ol li,
+  =2EExternalClass =2Econtent-td ul li {
+    padding: 3px 0 !important;
+    margin: 0 !important;
+  }
+
+  =2EExternalClass table =2Efooter-td p {
+    padding: 0 0 6px 0 !important;
+    margin: 0 !important;
+  }
+
+  =2EExternalClass table =2Efooter-td p=2Epowered-by ,
+  =2EExternalClass table =2Efooter-td p=2Eunsub {
+    padding-top: 15px;
+  }
+
+</style>
+
+
+<!-- Outlook fix -->
+
+<!--[if gte mso 9]>
+    <style type=3D"text/css">
+      table {
+        border-collapse: collapse !important;
+      }
+      td {
+        border-collapse: collapse !important;
+      }
+    </style>
+<![endif]-->
+
+
+<style type=3D"text/css">
+  =2Eintercom-align-right {
+  text-align: right !important;
+}
+=2Eintercom-align-center {
+  text-align: center !important;
+}
+=2Eintercom-align-left {
+  text-align: left !important;
+}
+/* Over-ride for RTL */
+=2Eright-to-left =2Eintercom-align-right{
+  text-align: left !important;
+}
+=2Eright-to-left =2Eintercom-align-left{
+  text-align: right !important;
+}
+=2Eright-to-left =2Eintercom-align-left {
+  text-align:right !important;
+}
+=2Eright-to-left li {
+  text-align:right !important;
+  direction: rtl;
+}
+=2Eright-to-left =2Eintercom-align-left img,
+=2Eright-to-left =2Eintercom-align-left =2Eintercom-h2b-button {
+  margin-left: 0 !important;
+}
+=2Eintercom-attachment,
+=2Eintercom-attachments,
+=2Eintercom-attachments td,
+=2Eintercom-attachments th,
+=2Eintercom-attachments tr,
+=2Eintercom-attachments tbody,
+=2Eintercom-attachments =2Eicon,
+=2Eintercom-attachments =2Eicon img {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+=2Eintercom-attachments {
+  margin: 10px 0 !important;
+}
+=2Eintercom-attachments =2Eicon,
+=2Eintercom-attachments =2Eicon img {
+  width: 16px !important;
+  height: 16px !important;
+}
+=2Eintercom-attachments =2Eicon {
+  padding-right: 5px !important;
+}
+=2Eintercom-attachment {
+  display: inline-block !important;
+  margin-bottom: 5px !important;
+}
+
+=2Eintercom-interblocks-content-card {
+  width: 334px !important;
+  max-height: 136px !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  font-size: 16px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+=2Eintercom-interblocks-link,
+=2Eintercom-interblocks-article-card {
+  text-decoration: none !important;
+}
+
+=2Eintercom-interblocks-article-icon {
+  width: 22=2E5% !important;
+  height: 136px !important;
+  float: left !important;
+  background-color: #fafafa !important;
+  background-image: url('https://app-radar=2Eintercom-mail=2Ecom/assets/art=
+icle_book-1a595be287f73c0d02f548f513bfc831=2Epng') !important;
+  background-repeat: no-repeat !important;
+  background-size: 32px !important;
+  background-position: center !important;
+}
+
+=2Eintercom-interblocks-article-text {
+  width: 77=2E5% !important;
+  float: right !important;
+  background-color: #fff !important;
+}
+
+=2Eintercom-interblocks-link-title,
+=2Eintercom-interblocks-article-title {
+  color: #519dd4 !important;
+  font-size: 15px !important;
+  margin: 16px 18px 12px !important;
+  line-height: 1=2E3em !important;
+  overflow: hidden !important;
+}
+
+=2Eintercom-interblocks-link-description,
+=2Eintercom-interblocks-article-body {
+  margin: 0 18px 12px !important;
+  font-size: 14px !important;
+  color: #65757c !important;
+  line-height: 1=2E3em !important;
+}
+
+=2Eintercom-interblocks-link-author,
+=2Eintercom-interblocks-article-author {
+  margin: 10px 15px !important;
+  height: 24px !important;
+  line-height: normal !important;
+}
+
+=2Eintercom-interblocks-link-author-avatar,
+=2Eintercom-interblocks-article-author-avatar {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  float: left;
+  margin-right: 5px;
+}
+
+=2Eintercom-interblocks-link-author-avatar-image,
+=2Eintercom-interblocks-article-author-avatar-image {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+  vertical-align: top !important;
+  font-size: 12px !important;
+}
+
+=2Eintercom-interblocks-link-author-name,
+=2Eintercom-interblocks-article-author-name {
+  color: #74848b !important;
+  margin: 0 0 0 5px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  overflow: hidden !important;
+}
+
+=2Eintercom-interblocks-article-written-by {
+  color: #8897a4 !important;
+  margin: 1px 0 0 5px !important;
+  font-size: 12px !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  float: left !important;
+}
+
+</style>
+
+
+
+
+</head>
+
+<body style=3D"background-color: #f9f9f9; margin: 0px; padding: 20px" class=
+=3D"intercom-template-body" bgcolor=3D"#f9f9f9">
+<div style=3D"color:transparent;visibility:hidden;opacity:0;font-size:0px;b=
+order:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!im=
+portant;display:none!important;line-height:0px!important;"><img border=3D"0=
+" width=3D"1" height=3D"1" src=3D"https://app-radar=2Eintercom-mail=2Ecom/q=
+/5vtYfkRigiyJs8VckrHZkw~~/AAAAAQA~/RgRjv_DlPVcIaW50ZXJjb21CCmHV5WvdYa_1oJhS=
+GWpvaG4uZG9lLnlvdW5pcUBnbWFpbC5jb21YBAAAlp8~" alt=3D""/></div>
+
+<style type=3D"text/css">
+body {
+background-color: #f9f9f9;
+}
+body =2Emain {
+background-color: white;
+}
+</style>
+
+  <table cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"center" =
+width=3D"595" class=3D"main company" style=3D"background-color: white; bord=
+er-collapse: separate; border-spacing: 0; font-family: Helvetica, Arial, sa=
+ns-serif; letter-spacing: 0; table-layout: fixed" bgcolor=3D"white">
+    <tbody>
+<tr>
+      <td class=3D"main-td intercom-template-content" style=3D"border: 1px =
+solid #dddddd; border-radius: 2px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0=
+=2E05); font-family: Helvetica, Arial, sans-serif; font-size: 16px; padding=
+: 40px 60px">
+
+        <!-- Header -->
+       =20
+  <table width=3D"100%" class=3D"header" style=3D"border-collapse: separate=
+; border-spacing: 0; table-layout: fixed">
+    <tbody>
+<tr>
+      <td class=3D"logo" style=3D"font-family: Helvetica, Arial, sans-serif=
+; font-size: 16px; padding: 0; text-align: left" align=3D"left">
+       =20
+          <img src=3D"https://app-radar=2Eintercom-mail=2Ecom/i/o/218907330=
+/2cc599c0f74cfe2d77d06562/File1592394518992" width=3D"165" height=3D"38" cl=
+ass=3D"featured" style=3D"padding: 15px 0 30px; text-align: left">
+       =20
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+        <!-- Main content -->
+        <table width=3D"100%" class=3D"content" style=3D"border-collapse: s=
+eparate; border-spacing: 0; table-layout: fixed">
+          <tbody>
+<tr>
+            <td class=3D"content-td" style=3D"color: #525252; font-family: =
+Helvetica, Arial, sans-serif; font-size: 15px; line-height: 22px; padding: =
+0">
+           =20
+              <p style=3D"line-height: 1=2E5; margin: 0 0 17px">Hi john,</p=
+>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">I hope you had really nic=
+e holidays! I've got a feeling that your app marketing goals for 2022 are e=
+ven more ambitious than for 2021 so let's get started =F0=9F=8E=89</p>
+<h2 class=3D"intercom-align-center" style=3D"color: #282F33; font-size: 18p=
+x; font-weight: bold; margin-bottom: 7px; margin-top: 30px; text-align: cen=
+ter !important" align=3D"center">New Year, New Learnings</h2>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">After our December break,=
+ we are BACK with another App Talks on January 19, 2022 at 4:30 pm CET / 10=
+:30 am EST about Google Play Policy changes=2E</p>
+<div class=3D"intercom-container intercom-align-center" style=3D"line-heigh=
+t: 0; margin-bottom: 17px; margin-top: 17px; text-align: center !important"=
+ align=3D"center"><img src=3D"https://app-radar=2Eintercom-mail=2Ecom/i/o/4=
+45737088/174409f6c16db8a5c071c220/22JAN_Newsletter+Banner=2Ejpg" alt=3D"Aft=
+er our December break, we are BACK with another App Talks on January 19, 20=
+22 at 4:30 pm CET / 10:30 am EST about Google Play Policy changes=2E" style=
+=3D"margin: 0; max-width: 100%"></div>
+<p class=3D"intercom-align-center" style=3D"line-height: 1=2E5; margin: 0 0=
+ 17px; text-align: center !important" align=3D"center"><br>Our App Marketin=
+g Expert Elena Wibmer will share insights about:</p>
+<ul style=3D"list-style-type: disc; margin: 0 0 20px 40px; padding: 0">
+<li>What crucial changes were introduced so far?</li>
+<li>How can we adapt our ASO strategy accordingly?</li>
+<li>How can we optimize app metadata with fewer characters?</li>
+</ul>
+<table class=3D"intercom-container intercom-align-center" align=3D"center" =
+style=3D"border-collapse: collapse; border-spacing: 0; margin: 17px auto; t=
+able-layout: fixed; text-align: center !important"><tbody><tr><td style=3D"=
+background-color: #6153ff; border: 1px none #dadada; border-radius: 3px; fo=
+nt-family: Helvetica, Arial, sans-serif; font-size: 16px; margin: 0; paddin=
+g: 12px 35px; text-align: left; vertical-align: top" align=3D"left" bgcolor=
+=3D"#6153ff" valign=3D"top"><a class=3D"intercom-h2b-button" target=3D"_bla=
+nk" href=3D"https://app-radar=2Eintercom-clicks=2Ecom/via/e?ob=3DfCBBbHKDYA=
+WpQZjJHcEle6tCkSiWYAaPNtgoEs60K8kXgmwInoxkScHcEH%2FIyMPbpRn%2BMJg7pUFer7yL6=
+GPsVI%2FV1dWIgZz%2B3laTgANtHccp%2Ft3wPpPVhAi3HTkLgm65&h=3D043c2af91a80f1922=
+f58b26f3e3315617fca362b-rpif1wvl_87491301016513&l=3De8ec307d23c493dff1c40af=
+17348c4f98a7714de-13499204" style=3D"background-color: #6153ff; border: non=
+e; border-radius: 3px; color: white; display: inline-block; font-size: 14px=
+; font-weight: bold; outline: none !important; padding: 0px; text-decoratio=
+n: none">Reserve My Spot</a></td></tr></tbody></table>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px"></p>
+<h2 class=3D"intercom-align-center" style=3D"color: #282F33; font-size: 18p=
+x; font-weight: bold; margin-bottom: 7px; margin-top: 30px; text-align: cen=
+ter !important" align=3D"center"><b>Stay up-to-date with industry events in=
+ 2022</b></h2>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">The start of the year is =
+the best time to mark your calendar with upcoming industry events! No worri=
+es, you don=E2=80=99t need to spend your time searching for the relevant ap=
+p marketing and mobile developer events=2E We have gathered for you<a href=
+=3D"https://app-radar=2Eintercom-clicks=2Ecom/via/e?ob=3DDvBJXB91aR314YlWvc=
+19sip3KWsCbn5xt3OSxaXaP9gvGYvgdwpCkQrwJB3YHsMueNOJS99OClt7XIyYo6qaZA%3D%3D&=
+h=3Ded88bb72cee51b7026e60fbe42557070f68fd90a-rpif1wvl_87491301016513&l=3Db4=
+807d2c76d4757d8fe0e60f2fc41559bd37aac2-13499205" target=3D"_blank" class=3D"=
+intercom-content-link" style=3D"border: none; color: #1251BA; outline: none=
+ !important"> 42 Mobile App Conferences to Attend in 2022 - Full List with =
+Prices</a>=2E Check it out and hope we see each other at one of the events!=
+</p>
+<h2 class=3D"intercom-align-center" style=3D"color: #282F33; font-size: 18p=
+x; font-weight: bold; margin-bottom: 7px; margin-top: 30px; text-align: cen=
+ter !important" align=3D"center">We added Competitor Creatives! </h2>
+<div class=3D"intercom-container intercom-align-center" style=3D"line-heigh=
+t: 0; margin-bottom: 17px; margin-top: 17px; text-align: center !important"=
+ align=3D"center"><img src=3D"https://app-radar=2Eintercom-mail=2Ecom/i/o/4=
+38656545/3b8b859ac594d2c99b0689af/image=2Epng" alt=3D"We have released a ne=
+w feature! " style=3D"margin: 0; max-width: 100%"></div>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">We updated our Competitor=
+ feature and added <b><a href=3D"https://app-radar=2Eintercom-clicks=2Ecom/=
+via/e?ob=3DAc5XNYAJ4MCn0KgRsxPilJlYK%2BYHlEj3CZLv%2BBdZwyeJIvePTI3QQWHgUhTI=
+TUoGld3SvQxGU5FmhxulK8Tir%2FrQgVig5XdHzSUp8yeVUB9KRBajm2w%2F9O67nlgekto5&h=
+=3D45da7e684d45d25d8b358f0e55e9de9a8df081f5-rpif1wvl_87491301016513&l=3D68e=
+331b032e4176b1ee910fefd595ca8f8f8a5ca-13499206" target=3D"_blank" class=3D"=
+intercom-content-link" style=3D"border: none; color: #1251BA; outline: none=
+ !important">a new tab for  creatives</a></b>, so that YOU can easily compa=
+re and explore the visuals of your competitors=2E</p>
+<h2 class=3D"intercom-align-center" style=3D"color: #282F33; font-size: 18p=
+x; font-weight: bold; margin-bottom: 7px; margin-top: 30px; text-align: cen=
+ter !important" align=3D"center">In a few words: importance of Creatives</h=
+2>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">While the keywords help y=
+our app rank higher in App Store and Google Play, it's the creatives that <=
+b>are the actual first impression</b> of your app=2E Users decide within a =
+few seconds whether they want to download an app or not, so your creatives =
+need to show your app's value proposition in a dynamic and attention-grabbi=
+ng way=2E<br>Your app store listing has 3 visual elements that drives downl=
+oads: </p>
+<ol style=3D"color: #1e183f; list-style-type: decimal; margin: 0 0 20px 40p=
+x; padding: 0">
+<li><b>App icon</b></li>
+<li><b>App screenshot </b></li>
+<li><b>App preview or promo video</b></li>
+</ol>
+<p style=3D"color: #1e183f; line-height: 1=2E5; margin: 0 0 17px">These 3 n=
+eed to work together and show a unanimous picture in order to catch the use=
+rs`attention=2E<br>Learn more:</p>
+<ul style=3D"list-style-type: disc; margin: 0 0 20px 40px; padding: 0">
+<li><a href=3D"https://app-radar=2Eintercom-clicks=2Ecom/via/e?ob=3DN8jnrCG=
+mP7wB5rRMRvTLQ6UxzGkYLpeyXZO3TITR1WeOAhP3iw0RkpYV%2FQ2R9bCXY0Jyn0d0wjXwuFeb=
+a4n%2B3g%3D%3D&h=3D76036a9ecfc4556c0ebb7e06ee74192883942b22-rpif1wvl_874913=
+01016513&l=3D086299d43b904e9767276660441e3032c15862f1-13499207" target=3D"_=
+blank" class=3D"intercom-content-link" style=3D"border: none; color: #1251B=
+A; outline: none !important">How to Design App Icons for Your Game</a></li>=
+
+<li><a href=3D"https://app-radar=2Eintercom-clicks=2Ecom/via/e?ob=3Dcof99U5=
+aQX1sQG%2FhvEGKdNXb3pgmcVxahlPyc9LlHvKmVwAofCo4PiTxS1T0lq9qghyBJS3pat8vecC4=
+SekDrw%3D%3D&h=3Deed1812d3c65e6e5437b422cbd43de55991a7d27-rpif1wvl_87491301=
+016513&l=3D2a3619bce431b9304849bf0b0e69610007782217-13499208" target=3D"_bl=
+ank" class=3D"intercom-content-link" style=3D"border: none; color: #1251BA;=
+ outline: none !important">Using App Store Listing Visuals to Make a Good F=
+irst Impression</a></li>
+</ul>
+<div class=3D"intercom-container" style=3D"line-height: 0; margin-bottom: 1=
+7px; margin-top: 17px"><img src=3D"https://app-radar=2Eintercom-mail=2Ecom/=
+i/o/415463737/d7ea94f635c7e31d6c2f2c15/balken=2Epng" style=3D"margin: 0; ma=
+x-width: 100%"></div>
+<h2 style=3D"color: #282F33; font-size: 18px; font-weight: bold; margin-bot=
+tom: 7px; margin-top: 30px">Other App Radar News</h2>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">As you know, <b>TikTok</b=
+> has become a very important and interesting social media for marketers al=
+l around the world=2E Have you been wondering how to use TikTok for your ap=
+p marketing strategy? Cool! We have just the thing for you on our website: =
+<a href=3D"https://app-radar=2Eintercom-clicks=2Ecom/via/e?ob=3Dtv0VVQmZJ9X=
+3lSDX10zJpnlWLoQ4B3oCUS3dnInZKoMS%2FIONwMzKGP3Vt3gB61sVyEQbXWPVsy4wBit3VFAA=
+qDAOotBH6aZE6kCokaSV4VU%3D&h=3D32c80011b674cb177422ae1ea87f163f9b80bdfe-rpi=
+f1wvl_87491301016513&l=3Df5af21cd0d923356413e18eaff84eddb4ad35149-13499209"=
+ target=3D"_blank" class=3D"intercom-content-link" style=3D"border: none; c=
+olor: #1251BA; outline: none !important">TikTok Marketing 101 For App Marke=
+ters &amp; Developers</a>=2E<br><b>Hit reply and let me know your thoughts<=
+/b> on TikTok as an app marketing channel!</p>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px"><b>Stay tuned</b>, next w=
+eek we have more news for you =F0=9F=A4=AB!</p>
+<h2 style=3D"color: #282F33; font-size: 18px; font-weight: bold; margin-bot=
+tom: 7px; margin-top: 30px">That's it for our January update</h2>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">I am always interested in=
+ what you have to say, so let's chat about your app's 2022 goals and how Ap=
+p Radar can help you reach them!</p>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px"><i>Keep optimizing!</i></=
+p>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px">Best,<br>Rebecca from App=
+ Radar</p>
+<p style=3D"line-height: 1=2E5; margin: 0 0 17px"></p>
+           =20
+            </td>
+          </tr>
+        </tbody>
+</table>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  <!-- Footer -->
+  <table width=3D"100%" class=3D"footer" align=3D"middle" style=3D"border-c=
+ollapse: separate; border-spacing: 0; table-layout: fixed">
+    <tbody>
+<tr>
+      <td style=3D"font-family: Helvetica, Arial, sans-serif; font-size: 16=
+px; padding: 0">
+        <table cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"ce=
+nter" width=3D"600" bgcolor=3D"transparent" class=3D"footer-main" style=3D"=
+border-collapse: separate; border-spacing: 0; font-family: Helvetica, Arial=
+, sans-serif; letter-spacing: 0; table-layout: fixed">
+          <tbody>
+<tr>
+            <td class=3D"footer-td" style=3D"font-family: Helvetica, Arial,=
+ sans-serif; font-size: 16px; padding: 21px 30px 15px; text-align: center" =
+align=3D"center">
+             =20
+  <p style=3D"color: #b7b7b7; font-size: 12px; font-weight: 300; margin: 0 =
+0 6px; text-decoration: none">App Radar is a brand of App Radar Software Gm=
+bH |
+
+Lastenstra=C3=9Fe 13a, 8020 Graz, Austria</p>
+
+
+             =20
+               =20
+                  <p class=3D"unsub" style=3D"color: #b7b7b7; font-size: 12=
+px; font-weight: 300; margin: 0; text-decoration: none"><a href=3D"https://=
+app-radar=2Eintercom-mail=2Ecom/subscriptions/unsubscribe?app_id=3Drpif1wvl=
+&conversation_id=3D87491301016513&user_id=3D60e4c0b1cd73872bf005c239&source=
+=3Dbody" style=3D"border: none; color: #b7b7b7; display: block; font-size: =
+12px; font-weight: 300; margin: 12px 0 0; outline: none !important; text-de=
+coration: underline">Unsubscribe from our emails</a></p>
+               =20
+             =20
+             =20
+                <p class=3D"powered-by" style=3D"color: #b7b7b7; font-size:=
+ 12px; font-weight: 300; margin: 18px 0 6px; text-decoration: none">Powered=
+ by <a href=3D"https://app-radar=2Eintercom-mail=2Ecom/via/e?ob=3DmjoU1sm0I=
+894lNcfPY3Lize95zs3sEVACN5o5iVX1ntMVMEgqErvAy4NUdAHJOiA6wRIEBLbogRnFgF2bVZB=
+x4jvILR3%2F1IN2H%2BjJukjjWw%3D&h=3D6a1d3d52acc987d7b03a6c3ddd65564588de516a=
+-rpif1wvl_87491301016513" style=3D"border: none; color: #b7b7b7; font-size:=
+ 12px; font-weight: bold; outline: none !important; text-decoration: none">=
+Intercom</a></p>
+             =20
+            </td>
+          </tr>
+        </tbody>
+</table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+<img src=3D"https://app-radar=2Eintercom-mail=2Ecom/via/o?h=3D7cc9001e0161b=
+947516c269087bdb323d2af8cee-rpif1wvl_87491301016513" width=3D"1" height=3D"=
+1" style=3D"display: block;" alt=3D"intercom">
+
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://app-rada=
+r=2Eintercom-mail=2Ecom/q/ylnqvc8V22CrnTRhCXcUrw~~/AAAAAQA~/RgRjv_DlPlcIaW5=
+0ZXJjb21CCmHV5WvdYa_1oJhSGWpvaG4uZG9lLnlvdW5pcUBnbWFpbC5jb21YBAAAlp8~">
+</body>
+</html>
+--_----7TF51na6b7wEr3CriAhDxg===_D9/89-20970-5EB6DD16--
+

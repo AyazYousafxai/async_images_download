@@ -1,0 +1,965 @@
+Delivered-To: john.doe.youniq@gmail.com
+Received: by 2002:adf:aa04:0:0:0:0:0 with SMTP id p4csp4367738wrd;        Tue, 21 Dec
+ 2021 23:03:39 -0800 (PST)
+Received: from mta4.icelandemail.co.uk (mta4.icelandemail.co.uk. [161.71.69.45])       
+ by mx.google.com with ESMTPS id bb36si986615oob.66.2021.12.21.23.03.38      
+  for <john.doe.youniq@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Tue, 21 Dec 2021
+ 23:03:38 -0800 (PST)
+Received: by mta4.icelandemail.co.uk id hob6sk2fmd4u for <john.doe.youniq@gmail.com>;
+ Wed, 22 Dec 2021 07:01:49 +0000 (envelope-from
+ <bounce-458_HTML-44124018-69093-510004251-26011@bounce.icelandemail.co.uk>)
+X-Google-Smtp-Source: ABdhPJwjgPb1Qo7z5SORRZnv2rVdsqs2jo3Asad4WHikE8/1QqGRdb+bpVip99VEDGK8e6GNaCWb
+X-Received: by 2002:a9d:6358:: with SMTP id y24mr1273274otk.369.1640156618908;       
+ Tue, 21 Dec 2021 23:03:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640156618; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=cuqXrVnA/U6RVQSzwJiLidFhkJD+lr8hPxCOjrm33QQ8bccBrmOYMe6HF6XhaDa2NS        
+ 3kKj3o0mxiS0M+QLJdQczicPw+xw6XeasKKFdKAZbOn4s6TOPzZbkrEVDkOkA2xbg+SE        
+ t6bm97QQD5J+d199QJtWngnBa7MFE5fsyiAb/9DZnzx8HRvkDCGeSNyAI8VJO86GbJCs        
+ 27v6F3X6c8s/zUT57+bffcOdaVDEK1CybOpL/pUPUuNA8D/LOeXENlB7BYmsgKEzVwQt        
+ pKxoADFxJwseV16JTyj9JY0iVzPVMMcpSPdZmwZouuB0yy6uBs7LO+0zNS83iE/9ByD/        
+ QcRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:message-id:list-id:reply-to:mime-version        
+ :list-unsubscribe-post:list-unsubscribe:date:subject:to:from        
+ :dkim-signature;        bh=gpiRSTM+DCWv6VEfl8U0UKzjNj0CDA29UD6CdERCIBk=;    
+    b=AOKamsO49fSm8fewwlPs/K6Ik7QEDPEU0yx483iKP82y9C8aG4S6u5WrncujrbGB99     
+    GJG5opTMElTocj09N1lAeoD4mwlmdCuDEeVL7eptGx7g7G7ydJkuBjrKBZpNA8+bSrzE     
+    1Fy/+hIUEkYuxHK+I1WRKzHMpk32+BBM1EQfoURrMpNE2E/XRPV3BxrwbaPepSTuQHl2     
+    3j+FtrIIWdKBYpGT4jCYZXZvqdmReVDb9IwzWIU0w11Qrp7rvsBNxeS2yMxSma1q/7wQ     
+    yPAUBJ4IZamEcAhw2o+6BMmexHbfsozDh1/0W8I0ABiryaSB2mtvu/D4S4PUiO9EZ92A     
+    4Zlw==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@icelandemail.co.uk
+ header.s=50dkim1 header.b=miaqWRuq;       spf=pass (google.com: domain of
+ bounce-458_html-44124018-69093-510004251-26011@bounce.icelandemail.co.uk
+ designates 161.71.69.45 as permitted sender)
+ smtp.mailfrom=bounce-458_HTML-44124018-69093-510004251-26011@bounce.icelandemail.co.uk;       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=icelandemail.co.uk
+Return-Path: <bounce-458_HTML-44124018-69093-510004251-26011@bounce.icelandemail.co.uk>
+Received-SPF: pass (google.com: domain of
+ bounce-458_html-44124018-69093-510004251-26011@bounce.icelandemail.co.uk
+ designates 161.71.69.45 as permitted sender) client-ip=161.71.69.45;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@icelandemail.co.uk header.s=50dkim1
+ header.b=miaqWRuq;       spf=pass (google.com: domain of
+ bounce-458_html-44124018-69093-510004251-26011@bounce.icelandemail.co.uk
+ designates 161.71.69.45 as permitted sender)
+ smtp.mailfrom=bounce-458_HTML-44124018-69093-510004251-26011@bounce.icelandemail.co.uk;       dmarc=pass (p=REJECT sp=REJECT dis=NONE)
+ header.from=icelandemail.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=50dkim1; d=icelandemail.co.uk;
+ h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:
+ Reply-To:List-ID:X-CSA-Complaints:Message-ID:Content-Type;
+ i=iceland@icelandemail.co.uk;
+ bh=gpiRSTM+DCWv6VEfl8U0UKzjNj0CDA29UD6CdERCIBk=;
+ b=miaqWRuqyw8UM/rUWFVWlJb6G6kVfk68bLY3GbH2g2PG/x9QtV3Rc7JvuwQA2/AW9T1SDRN9aVS9  
+ aUURa4H7gByjeXJljfbMRU/w8V1brq1u/w0rMRZuKxbbcU6clC0tresMG7wtsTcCJzfF1cEyPiMm
+  
+ Jact8jRPuRYpW5JqpEL4F+tQUsAsJPua8mp0to8LNDkUh6LHsYoMHzz7t/4XztcZ1toJeXkRLT9w
+  
+ ZvSnd25VUmdWGVbGjWGKKKQ1cXsIi8wXtyk2OWNvJsIUl4UM/WtZKKcoUpVSSZ/03MBwIBKLqmAw
+   jGjSgUm1k+gitJmkcdO3VcejBpRS1IL9C9Oz2A==
+From: "Iceland.co.uk" <iceland@icelandemail.co.uk>
+To: john.doe.youniq@gmail.com
+Subject: =?UTF-8?B?T3VyIGZlc3RpdmUgZmxhc2ggc2FsZSBoYXMgbGFuZGVkIPCfjoQ=?=
+Date: Wed, 22 Dec 2021 01:01:49 -0600
+List-Unsubscribe: <http://click.icelandemail.co.uk/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiI1MTAwMDQyNTEiLCJzIjoiNDQxMjQwMTgiLCJsaWQiOiI0NTgiLCJqIjoiNjkwOTMiLCJqYiI6IjI2MDExIiwiZCI6IjUwMDAwNyJ9.nZIa_-fPKavEZIyb5OhqDahgp3F3L592iTDS0QSHxvE>,
+ <mailto:leave-fd4a10757d0b5c392848-fe6710747466007d741c-fef41279756d07-fe3d117175640479771171-ff051676756505@leave.icelandemail.co.uk>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-CSA-Compliance-Source: SFMC
+MIME-Version: 1.0
+Reply-To: "Iceland.co.uk"
+ <reply-fef41279756d07-458_HTML-44124018-510004251-26011@icelandemail.co.uk>
+List-ID: <510004120.xt.local>
+X-CSA-Complaints: csa-complaints@eco.de
+X-SFMC-Stack: 50
+x-job: 510004251_69093
+Message-ID: <cd8b6d28-5548-4074-b013-6faffecb1539@fra3s50mta330.xt.local>
+Feedback-ID: 510004251:69093:161.71.69.45:sfmktgcld
+Content-Type: multipart/alternative; boundary="T0RMe4PzWDxL=_?:"
+
+--T0RMe4PzWDxL=_?:
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Iceland  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;
+ &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj; &zwnj;  
+ 
+ 
+                                                          
+
+http://view.icelandemail.co.uk/?qs=1a9c870ab37f3c78a5f64a0c916c5933344798955afdf11b5138934939072ab8735c5c9d91dad12a60ce765183af91ab33aee7cb44dc9a297493ebedd4c25c734b34232b7e65c4f4ef62684a1d48fdc3 
+View in browser | 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a891a4b01a079ded8bc4031e958564cba30766456570b988f3d2a84df94bf2b9df39597af37b0df3398d3b370494c7747a50ccea02d9146951 
+Unsubscribe
+
+  
+ 
+ 
+
+To ensure Iceland emails always arrive in your inbox, add 
+mailto:iceland@icelandemail.co.uk 
+iceland@icelandemail.co.uk  to your address book.
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86c7f66d2cbbbf05df45f1e72b35b88a1629854d7385c60d6ef4ee522581f44fb9c55e9373d662c1201c13a78ff2c1c427c108fda9f46e6b3 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86c7f66d2cbbbf05df45f1e72b35b88a1629854d7385c60d6ef4ee522581f44fb9c55e9373d662c1201c13a78ff2c1c427c108fda9f46e6b3 
+Start shopping 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a885dd970008c818ffed1ce37c1e47245e08780c3de8c6e9abb2d466e166dc8462ab62a8b5e0c11786e2067b82f43c850e15cbbf86f1950fc1 
+My account 
+
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8e2d461882711fd7b5890e7a26cd521e0b3c4909d5a2f594c7ed4a4aaa79b5ff9609914119e568337598eda6050b5859c17135d49c1f85aaf 
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8e2d461882711fd7b5890e7a26cd521e0b3c4909d5a2f594c7ed4a4aaa79b5ff9609914119e568337598eda6050b5859c17135d49c1f85aaf 
+Shop Now 
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a87281e0898ea8236609d4f09f2483bc42f79088d1087eb716099819801bbbb276271506109f647ba1e581c5e8af17a6f508179c4ac9b528de 
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a87281e0898ea8236609d4f09f2483bc42f79088d1087eb716099819801bbbb276271506109f647ba1e581c5e8af17a6f508179c4ac9b528de 
+Shop Festive Drinks 
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8b992c7265d31b878f5e047d32b29d8b530b4f8f783cc45e85bf040aad7c3420c7efb783cf950d3180591993d6f4738b6161c768db5132e25 
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8b992c7265d31b878f5e047d32b29d8b530b4f8f783cc45e85bf040aad7c3420c7efb783cf950d3180591993d6f4738b6161c768db5132e25 
+Shop Now 
+
+
+**T&C's Apply.
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a89dddce596c072941b627e15f882b4c871504b1845aaf3dab36b758f821ed7255cf46761645e8f2112a58c09dcf7ad05c9054e03d3a3bb706 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a880ed3f89590285410e10ed13550b153aa8c7049b5bf4538c2eae9885c767f49276d7e74c805a0c631155bc8450583141aa03973177be6d5c 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a88835f7645dc7334b1c44a9f5464567118879b2cb793a9edb018df51e3726cba375889dc2092136b85a0d3ffdac4f23876d45fe6cc69e34b8 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a80ba889b44f7f2125f42625af0b221a7a8366de81c36cd40766fd1e0112c1c73a431a800453284ec0bc7b82497fb9e423ac9d268b75314a06 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a87697be6080b9bea0f35ce972ea732748dbf45dfd05163758b7f1bf3979cd540b3e06a495302b660d058f3dcf69851a71832832c13a3566d3 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a87281e0898ea8236609d4f09f2483bc42f79088d1087eb716099819801bbbb276271506109f647ba1e581c5e8af17a6f508179c4ac9b528de 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a81b5202bb2336038a9c7f660fa35bbb7661917a0b0c88bf2ac302fb5b08d27b59e40ab68462afbe93d91a3c0450831bdd2888716b32fff9ba 
+
+
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86c40183a8eb5de7b48359364c6e8be61cfed772c7c4de4c38bd9c80bdef1157fb57f7e212759cc33c0a0a3614a6e3fde4dd2f5e3d2b5e51a 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86c7f66d2cbbbf05df45f1e72b35b88a1629854d7385c60d6ef4ee522581f44fb9c55e9373d662c1201c13a78ff2c1c427c108fda9f46e6b3 
+
+
+Free Delivery
+We&rsquo;re Number #1
+
+Free next day
+
+delivery when you
+
+spend over L40*
+For customer
+
+satisfaction for the
+
+second year running
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8814c088b8c3e2b4965e442daebee83d68c3f8e544768decb85845dcaa0ca03cbd7fe2c9c13a3389e71ac6b8cb41fa768d93b51186697ceb1 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8a457e91d9eace7a03545218df98937b6afee2d87d229a6bee10d2d047aebdb1a2ebe06b6af64a935497558b33f62df5d76d01b5f09d0113a 
+
+
+Big Brands
+Bonus Card
+
+Exclusive brands
+
+like Slimming World
+
+& Greggs
+Enjoy exclusive
+
+offers and bonuses,
+
+just for you
+
+
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8bd5c879df3add44d31be8a5e78f153f1d2daa6e13dbd4c2597e7582610cbaa2bb149aa407e850a8d04e1444614b13c5384a5440344538cda 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a81372056c5c808ca0f545aebfc8198781823561f668762dce5880e47d8ef79ae4f4a3f21ca2bf89897aeb0080e481cef7dd435d8417405178 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a89d78cad68f20128277d6dcc72c0964bb8c6c4cd933ef6a5fc6d8a86cdaeb6c806012e63c6b55f6b93bf8566de121681f922626b662e5f212 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a824b4ae4041f6066fdc2cc2210a455426ee13000e19930b7ca621c9cb4299e1840de277cc5170b5fbfedbc11c6fed2d93267cdb4907dadc2f 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a82462387f265b0166b2221c99913f3ae2d1f1459e73c7182a4255a40bbb8974419f6c88cf89f4c2c29b93293511c06f94e822de91bb84078f 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86c7f66d2cbbbf05df45f1e72b35b88a1629854d7385c60d6ef4ee522581f44fb9c55e9373d662c1201c13a78ff2c1c427c108fda9f46e6b3 
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8eb1b37cbaa0c160368d5e71dd7adaa8cd2d913447e8d16a2c57e943211d91ebf9b4d678130aa1cbbd58aedd414db9485cfd07e97aa88bc84 
+Store Finder
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8b9185c64e50d70e55e1dcf58a8c20c9b7f465b5f5cbb7e7eabf86c6d1410651c609d7346a6f4416193b04fe5e3312071502e429095dffec2 
+FAQs
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8e58fd27e0788c8d49f09c6eb215bb01b5f11ddfe217729f526bcf8bc8fb88eab781dcdb0e7ae7cf56bd4ed9e7fdda3e8cd9e1e0f310cb434 
+Start Shopping
+
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8f944451a89e99ad4e03595a155a824027785a8bdb5674744b88717b3a3e2ac10f073a6a67c003f233f498adedf686d29959267440bd1e6fb 
+Offers
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a87411770b346600927c16f3663954cae25e1dc3d4c29d1aa41c294b72afbd31fcc666f373456dbcd41e8c92b5d8a6199ca1fde83c3d503db8 
+My Account
+
+**Win L2,500 loaded onto a Bonus Card: 1. There will be one winner. To be entered into the &lsquo;Win L2,500&rsquo; prize draw entrants must complete an online shopping transaction by 23:59 on 24.12.21 (&ldquo;the Prize Draw Period&rdquo;) and add at least one product from the 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8aa8a0ccd744d715e4adf477afb02f64154435f769519a2e2126995dc3cf8018763ae31eb906a6a4fb0234887e993879e021f2c9327f29b24 
+'festive favourites'  page to their basket. 2. The completed order must be delivered by 30.12.21. Online shopping account required. Only one entry per customer, per online shop. 4. Iceland's Contact Centre will call the winner to confirm receipt of the Prize by 05.01.22. Once the winner has been contacted, a L2,500 bonus will be uploaded onto their Bonus Card. The bonus can take up to 5 days, from the date it was uploaded, to appear on the winner's Bonus Card. The total amount received on the Bonus Card will be a L2,500 bonus. 5. The amount uploaded to the winner's Bonus Card can be redeemed online or in store and must be redeemed by 31.12.22. Any amount outstanding from the L2,500 bonus after this date will expire and will be forfeited. This does not affect savings that may already be
+ held on an existing Bonus Card. 6. In the event that the winner does not have a Bonus Card, Iceland's Customer Care team will arrange for a Bonus Card to be registered for the winner. The registered Bonus Card will be sent to the winner and the Prize will then be loaded onto the Bonus Card. This may cause a delay in the winner receiving their Prize, which Iceland accepts no liability for. 7. No cash alternative will be offered for the Prize and the Prize is non-exchangeable and non-transferable. Iceland reserves the right to substitute the Prize for an item of similar value.
+
+*Online delivery: A minimum spend of L25 is required to place an order online plus a L3 delivery charge will apply up to the value of L39.99. Free next day delivery for orders over L40.  Delivery charges may apply for orders placed for delivery on other days.  Delivery address must be within the delivery catchment area. Customers must register online to use the service. Home Delivery from store: minimum order of L25 required to use in store home delivery service. To use the service, you must have a valid postal address and registered Bonus Card. Subject to availability from participating Iceland stores, to addresses within a 10 mile radius (3 miles within the M25 perimeters). Minimum spends for both in-store and online deliveries exclude the purchase of Bonus Card savings and carrier
+ bags. Online and home delivery terms and conditions apply, 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8f9aedecd1a54928216f70a2fb46d8da5cebe3a7d1520815d9c5984a9e40e9bab64fd0b6513157870d50e1e5c4f9993113bea07ff1d266414 
+click here . Same day delivery: Home deliveries from store will usually be delivered on the same day as purchase. Same day delivery slots are available for online deliveries in the majority of stores. If you are within the delivery area of that store then, subject to availability, you will be able to choose a same day delivery slot. For a same day delivery slot you must book your slot by 2pm. You must complete your order (including any amendments) by 3pm for same day delivery. The minimum order value for online orders is L25 plus an additional delivery charge for same day delivery slots, as shown at checkout. The minimum order value is calculated after all discounts and promotional offers have been applied.
+
+&dagger;Please drink responsibly. Alcohol is not available in Northern Ireland stores. Alcohol products are available at licensed stores only to customers aged 18 years or over. Iceland operate a Challenge 25, serve 18 policy. All products subject to availability. While stocks last. Discount code terms and conditions apply, 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86bea6ff3bc44f98961defc56ffb5eee83527cd687a4a63bb7c1cb7a5a183a2d726365ccc398b7ccdc77465b9ffebcc77897267a1a9a03ac2 
+click here.  Online terms and conditions apply, 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86bea6ff3bc44f98961defc56ffb5eee83527cd687a4a63bb7c1cb7a5a183a2d726365ccc398b7ccdc77465b9ffebcc77897267a1a9a03ac2 
+click here. 
+
+
+Iceland's Bonus Card terms and conditions apply to all use of Bonus Cards. 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a86bea6ff3bc44f98961defc56ffb5eee83527cd687a4a63bb7c1cb7a5a183a2d726365ccc398b7ccdc77465b9ffebcc77897267a1a9a03ac2 
+Click here for details.
+
+
+Products and offers subject to availability, while stocks last. Selected UK stores only, All photography is serving suggestion only. Max 4 deals per customer unless stated otherwise.
+
+
+For more information regarding Feefo customer service rating reviews, 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8fef11d313ea4445761ee7308a89f60f8433ded0e61fbe39b823c85458fc9f502c789bddf7d626b3bd94dec1e417a027524561b0e7cc95a0b 
+click here.
+
+
+To view our Privacy Policy please 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8225ef179e4fa92fcc66ccf28d2d23a24726ac2aa5174d015be7cdb5a4554cd43cd2d7236793a000f7fd0b3c189e0ba198782a8909967ca17 
+click here.
+
+
+If you no longer want to receive special offers and updates by email from the Iceland marketing team please 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a891a4b01a079ded8bc4031e958564cba30766456570b988f3d2a84df94bf2b9df39597af37b0df3398d3b370494c7747a50ccea02d9146951 
+click here.
+
+
+You can't reply to this email directly but we're always pleased to hear from you. To contact us please 
+http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8b9185c64e50d70e55e1dcf58a8c20c9b7f465b5f5cbb7e7eabf86c6d1410651c609d7346a6f4416193b04fe5e3312071502e429095dffec2 
+click here.
+
+
+Iceland Foods Ltd. Registered in England and Wales No: 1107406. Registered Office: Second Avenue, Deeside Industrial Estate, Deeside, Flintshire, GB,CH5 2NW.
+
+
+
+
+
+--T0RMe4PzWDxL=_?:
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:v="urn:schemas-microsoft-com:vml"  xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<!--[if gte mso 9]><xml>  <o:OfficeDocumentSettings>   <o:AllowPNG/>   <o:PixelsPerInch>96</o:PixelsPerInch>  </o:OfficeDocumentSettings> </xml><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="width=device-width" name="viewport">
+<meta name="format-detection" content="date=no">
+<meta name="format-detection" content="address=no">
+<base target="_blank">
+<title>Iceland</title>
+<!--[if gte mso 9]> <style> h1, h2, h3, h4, h5, h6 { padding: 0 !important; margin: 0 !important; } .nav-link .grey { padding: 14px 16px; } .btn td { padding: 15px 30px 16px 30px; } .btn-border td { padding: 13px 30px 14px 30px; } .btn-small td { padding: 15px 30px 16px 30px; } .btn-small-border td { padding: 13px 30px 14px 30px; } </style> <![endif]-->
+<style type="text/css" media="screen">
+html {
+ height: 100%;
+ width: 100%;
+ margin: 0;
+ padding: 0;
+}
+body {
+ -webkit-text-size-adjust: none;
+ -ms-text-size-adjust: none;
+ -webkit-font-smoothing: antialiased;
+ margin: 0 !important;
+ padding: 0 !important;
+ width: 100% !important;
+ min-width: 100% !important;
+}
+.ReadMsgBody {
+ width: 100%;
+}
+.ExternalClass {
+ width: 100%;
+ min-width: 640px;
+}
+.ExternalClass * {
+ line-height: 100%;
+}
+table {
+ border-collapse: collapse;
+ mso-table-lspace: 0pt;
+ mso-table-rspace: 0pt;
+}
+table td {
+ border-collapse: collapse;
+ border: 0;
+}
+th {
+ padding: 0;
+ font-weight: normal;
+}
+p {
+ margin: 0;
+ padding: 0;
+ margin-bottom: 0;
+}
+img {
+ display: block;
+ line-height: 100%;
+ outline: none;
+ text-decoration: none;
+ border: none;
+}
+a:link {
+ color: #1b1b1b;
+ text-decoration: none;
+}
+body[data-outlook-cycle] .grey a, .grey a {
+ color: #4a4b4d;
+ text-decoration: none;
+}
+body[data-outlook-cycle] .black a, .black a {
+ color: #1b1b1b;
+ text-decoration: none;
+}
+body[data-outlook-cycle] .white a, .white a {
+ color: #fffffe;
+ text-decoration: none;
+}
+body[data-outlook-cycle] .red a, .red a {
+ color: #d0021b;
+ text-decoration: none;
+}
+a[x-apple-data-detectors] {
+ color: inherit !important;
+ text-decoration: none !important;
+ font-size: inherit !important;
+ font-family: inherit !important;
+ font-weight: inherit !important;
+ line-height: inherit !important;
+}
+h1, h2, h3, h4 {
+ font-family: Verdana, sans-serif;
+ margin: 0;
+ padding: 0;
+}
+h1 {
+ font-size: 42px;
+ line-height: 44px;
+ font-weight: bold;
+}
+h2 {
+ font-size: 32px;
+ line-height: 36px;
+ font-weight: bold;
+}
+h3 {
+ font-size: 26px;
+ line-height: 32px;
+ font-weight: bold;
+}
+h4 {
+ font-size: 20px;
+ line-height: 28px;
+ font-weight: normal;
+}
+p {
+ font-family: Verdana, sans-serif;
+ font-size: 16px;
+ line-height: 24px;
+ color: #1b1b1b;
+ padding: 0;
+ margin: 0;
+}
+.gmailfix {
+ display: none;
+ display: none!important;
+}
+.show {
+ display: none;
+}
+.content-wrapper, .content-wrapper-small {
+ margin: 0 auto;
+}
+
+@media only screen and (max-width: 480px) {
+*, *::before, *::after {
+ box-sizing: border-box;
+}
+body {
+ width: auto !important;
+}
+.full-width {
+ width: 100% !important;
+ max-width: 100% !important;
+ min-width: 100% !important;
+}
+.content-wrapper {
+ width: 100% !important;
+ margin: 0 auto;
+}
+.content-wrapper-small {
+ width: 90% !important;
+ margin: 0 auto;
+}
+.full-width-img img {
+ width: 100% !important;
+ height: auto !important;
+ display: block !important;
+}
+  
+.full-width-price img {
+ width: 60% !important;
+ height: auto !important;
+ display: block !important;
+}
+.column, .column-spacer, .column-spacer-small, .column-spacer-tiny {
+ display: block !important;
+ width: 100% !important;
+ height: auto !important;
+}
+  .column-50 {
+  width: 48.5% !important;
+  min-width: 48.5% !important;
+ } 
+ .cta-font{
+  font-size: 13px !important;
+ }
+ .cta-mob-width{
+  width: 40vw;
+  }
+ .column-padding-10{
+  padding: 10px !important;
+ }  
+.column-spacer {
+ height: 25px !important;
+}
+.column-spacer-small {
+ height: 10px !important;
+}
+.column-spacer-tiny {
+ height: 8px !important;
+}
+.logo-bonus img {
+ width: 150px !important;
+ height: 72px !important;
+}
+.logo-bonus2 img {
+ width: 290px !important;
+ height: auto !important;
+}
+.logo img {
+ width: 99px !important;
+ height: 22px !important;
+}
+.logo-vip {
+ padding-left: 5px !important;
+}
+.logo-vip img {
+ width: 27px !important;
+ height: 17px !important;
+ margin-top: 4px;
+}
+.vip img {
+ width: 80px !important;
+ height: auto !important;
+ margin-top: 5px !important;
+}
+.center {
+ text-align: center !important;
+ margin: 0 auto !important;
+ float: none !important;
+}
+.left {
+ text-align: left !important;
+}
+.right {
+ float: right !important;
+}
+h1 {
+ font-size: 32px !important;
+ line-height: 36px !important;
+}
+h2 {
+ font-size: 26px !important;
+ line-height: 32px !important;
+}
+h3 {
+ font-size: 24px !important;
+ line-height: 28px !important;
+}
+h4 {
+ font-size: 24px !important;
+ line-height: 28px !important;
+}
+.star-title {
+ font-size: 24px !important;
+ line-height: 20px !important;
+}
+.title-big {
+ font-size: 24px !important;
+ line-height: 28px !important;
+}
+.title {
+ font-size: 24px !important;
+}
+.code {
+ font-size: 30px !important;
+ line-height: 34px !important;
+}
+.btn-small td {
+ min-width: 220px !important;
+}
+.btn a, .btn-border a, .btn-small a {
+ padding-left: 30px !important;
+ padding-right: 30px !important;
+}
+.width-auto {
+ width: auto !important;
+}
+.height-auto {
+ height: auto !important;
+}
+.nav-link {
+ border-radius: 0px !important;
+ background-color: transparent !important;
+}
+.nav-link a {
+ padding: 0px !important;
+ text-decoration: underline !important;
+}
+.pad-0 {
+ padding: 0px !important;
+}
+.pad-lr-10 {
+ padding-left: 10px !important;
+ padding-right: 10px !important;
+}
+.pad-lr-15 {
+ padding-left: 15px !important;
+ padding-right: 15px !important;
+}
+.pad-lr-20 {
+ padding-left: 20px !important;
+ padding-right: 20px !important;
+}
+.pad-tb-15 {
+ padding-top: 15px !important;
+ padding-bottom: 15px !important;
+}
+.pad-tb-10 {
+ padding-top: 10px !important;
+ padding-bottom: 10px !important;
+}
+.pad-tb-20 {
+ padding-top: 20px !important;
+ padding-bottom: 20px !important;
+}
+.pad-b-5 {
+ padding-bottom: 5px !important;
+}
+.pad-b-10 {
+ padding-bottom: 10px !important;
+}
+.pad-b-20 {
+ padding-bottom: 20px !important;
+}
+.pad-t-0 {
+ padding-top: 0px !important;
+}
+.pad-t-5 {
+ padding-top: 5px !important;
+}
+.pad-t-20 {
+ padding-top: 20px !important;
+}
+.margin-t-5 {
+ margin-top: 5px;
+}
+.margin-t-10 {
+ margin-top: 10px;
+}
+.mobile-hide, .yahoo-none {
+ display: none !important;
+ visibility: hidden !important;
+ overflow: hidden !important;
+}
+.yahoo-none {
+ width: 0px !important;
+ height: 0px !important;
+}
+.show {
+ display: block!important;
+ margin: 0!important;
+ padding: 0!important;
+ overflow: visible!important;
+ width: auto!important;
+ max-height: inherit!important;
+ line-height: inherit!important;
+}
+}
+
+@media only screen and (max-width: 370px) {
+.nav-link a {
+ font-size: 12px !important;
+}
+.apps img {
+ width: 90px !important;
+ height: auto !important;
+  
+}
+}
+</style>
+</head>
+<body style="box-sizing:border-box; padding:0 !important; margin:0 !important; display:block !important;" bgcolor="#ffffff"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Sleigh these new offers!</div>
+<!-- preheader hidden fill -->
+<div class="gmailfix" style="display:none; font-size:0px; color:#000001; line-height:0px; font-family:Arial, sans-serif; max-height:0px; max-width:0px;  opacity:0; overflow:hidden; mso-hide:all;">
+ &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+<!-- preheader hidden fill -->
+<table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="wrapper" bgcolor="#ffffff">
+  <tr>
+    <td align="center"><table role="presentation" width="650" border="0" cellspacing="0" cellpadding="0" class="full-width" align="center" style="width:650px; margin:0 auto;" bgcolor="#ffffff">
+        <tr>
+          <td class="full-width" style="width:650px; max-width:650px; min-width:650px;" align="center"><!-- online --> 
+            
+            
+            <table role="presentation" width="630" border="0" cellspacing="0" cellpadding="0" class="content-wrapper-small" align="center" style="width:630px; margin:0 auto;">
+              <tr>
+                <td height="15" style="font-size:1px; line-height:1px; height:15px;"><!--[if !mso]><!-->
+                  
+                  <div class="gmailfix" style="white-space:nowrap; font:15px courier; line-height:1px; background:#ffffff;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                  
+                  <!--<![endif]--></td>
+              </tr>
+              <tr>
+                <td class="grey" align="center" style="font-family: Arial, sans-serif; font-size: 12px; color: #4a4b4d; padding-bottom: 10px;"><a href="http://view.icelandemail.co.uk/?qs=1a9c870ab37f3c78a5f64a0c916c5933344798955afdf11b5138934939072ab8735c5c9d91dad12a60ce765183af91ab33aee7cb44dc9a297493ebedd4c25c730cc69e69187218fbe61e83cc6bb89266" style="color: #4a4b4d; text-decoration: none;"><u>View in browser</u></a> | <a    href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89efb64fcaf6d4d660f54c22789a40b722f77ce992c792a836a24017b47bfbc32b5f908fa6fa1e07d907005e72d012e039458375c1b40cdcde" style="color: #4a4b4d; text-decoration: none;"><u>Unsubscribe</u></a></td>
+              </tr>
+            </table>
+             
+            
+            <!-- /online --></td>
+        </tr>
+        <tr>
+          <td class="full-width" style="width:650px; max-width:650px; min-width:650px;" align="center"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- logo --><table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:650px; margin:0 auto;" width="650">
+	
+		<tr>
+			<td align="center" style="padding: 15px 5px 15px; font-family: Verdana, sans-serif; font-size: 10px; line-height: 14px; color: rgb(27, 27, 27); text-align: center;">
+				To ensure Iceland emails always arrive in your inbox, add <a href="mailto:iceland@icelandemail.co.uk" style="color:#666666;">iceland@icelandemail.co.uk</a> to your address book.</td></tr><tr>
+			<td class="pad-lr-10 pad-tb-15" style="padding: 25px 30px;">
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td align="left">
+								<table border="0" cellpadding="0" cellspacing="0" role="presentation">
+									
+										<tr>
+											<td class="logo">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89e16142cbbe90032c1d61b911da5b8bdff5950abd4a7e4931d22882502e0b5062f4d0e04a334aa2ec04aeecb91ea68ce2666276dbdb44af15" title=""><img alt="Iceland Logo" height="30" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/logo-iceland.png" style="display: block; padding: 0px; height: 30px; width: 135px; text-align: center;" width="135"></a></td></tr></table></td><td align="right">
+								<table border="0" cellpadding="0" cellspacing="0" role="presentation">
+									
+										<tr>
+											<td class="pad-lr-10" style="padding-right: 3px;">
+												<table bgcolor="#ececec" border="0" cellpadding="0" cellspacing="0" class="nav-link" role="presentation" style="border-radius:4px;">
+													
+														<tr>
+															<td align="center" class="grey" style="font-family: Tahoma, sans-serif; font-size: 14px; line-height: 16px; color: #4a4b4d; white-space: nowrap;">
+																<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89a682d01ec6ee4eeb42c70ebd008093eec2dc914f5a4602ca74d848603e3bfea1d1a7994291daaebd4fcd1ac1b4293673f40d1a5c1e018e99" style="color:#4a4b4d;text-decoration:none; display: block; padding: 14px 16px;" title="">Start shopping</a></td></tr></table></td><td>
+												<table bgcolor="#ececec" border="0" cellpadding="0" cellspacing="0" class="nav-link" role="presentation" style="border-radius:4px;">
+													
+														<tr>
+															<td align="center" class="grey" style="font-family: Tahoma, sans-serif; font-size: 14px; line-height: 16px; color: #4a4b4d; white-space: nowrap;">
+																<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d890f24a1e9745a15ea14f06fc0dc9cbd3b53aee5bb5d85e86ae1aa55a21ad17e5eb242e4346b8b9fad2ddd95b35951db3f62e0f8fed95fbb46" style="color:#4a4b4d;text-decoration:none; display: block; padding: 14px 16px;" title="">My account</a></td></tr></table></td></tr></table></td></tr></table></td></tr></table><!-- /logo --></td></tr></table></td>
+        </tr>
+      </table>
+      <table role="presentation" width="650" border="0" cellspacing="0" cellpadding="0" class="full-width" align="center" style="width:650px; margin:0 auto;" bgcolor="#f2f2f2">
+        <tr>
+          <td bgcolor="#f2f2f2" class="full-width" style="width:650px; max-width:650px; min-width:650px;" align="center"><table role="presentation" width="650" border="0" cellspacing="0" cellpadding="0" class="content-wrapper" align="center" style="width:650px; margin:0 auto;" bgcolor="#f2f2f2">
+              <tr>
+                <td align="center" style="padding: 10px 10px 10px 10px;"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- fullwidth image --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td class="full-width-img">
+				<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89e29c093bee0cbb1dadb946c811374cfb722a72e39f8047e810c3ce55ed4a7f11c595f6cbc6f581e9fe485d6cd1974c6510d5c255b2c3b01f" title=""><img alt="Festive flash sale limited time offer when it's gone it's gone lots to choose from" border="0" data-assetid="31984" height="752" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/5/CD-12520+-+FESTIVE+FLASH.png" style="display: block; padding: 0px; text-align: center; height: 752px; width: 630px;" width="630"></a></td></tr></table><!-- /fullwidth image --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- cta white text -->
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td align="center" class="pad-tb-20" style="padding: 20px 20px 30px 20px;">
+				<!-- start: btn --><table align="center" border="0" cellpadding="0" cellspacing="0" class="btn" role="presentation">
+					
+						<tr>
+							<td align="center" bgcolor="#20ae91" class="white" style="font-family: Verdana, sans-serif; font-size: 16px; line-height: 19px; color: #ffffff; font-weight: bold; border-radius:5px; min-width: 220px; width: 100vw;">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89a9e330cb1cdbf46a65424d4d95a145360a520981f474a0ead0b252c6bd9d179b6ee3527e8e784e7a2dd3594ee8200caf0ced33a453c40622" style="color:#ffffff;text-decoration:none; display: block; padding: 15px 12px 16px 12px;" title="">Shop Now</a></td></tr></table><!-- end: btn --></td></tr></table><!-- /cta white text --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- spacer 10px --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td height="10" style="height: 10px; font-size: 1px; line-height: 1px;">
+			</td></tr></table><!-- /spacer 10px --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- fullwidth image --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td class="full-width-img">
+				<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89e6cec176178739feb8e6204041e49405092386a4de48ac491860b8d148a40e87820d0da60dfc7a1169da2c859c98d0d75de21e964a5d84f1" title=""><img alt="Festive Flash sale any 2 £18 Save £2 Online Exclusive *prices in Scotland &amp; Wales may vary" border="0" data-assetid="32003" height="670" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/5/CD-12429-Festive-Flash-Sale-Email-1.jpg" style="display: block; padding: 0px; text-align: center; height: 670px; width: 630px;" width="630"></a></td></tr></table><!-- /fullwidth image --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- cta white text -->
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td align="center" class="pad-tb-20" style="padding: 20px 20px 30px 20px;">
+				<!-- start: btn --><table align="center" border="0" cellpadding="0" cellspacing="0" class="btn" role="presentation">
+					
+						<tr>
+							<td align="center" bgcolor="#20ae91" class="white" style="font-family: Verdana, sans-serif; font-size: 16px; line-height: 19px; color: #ffffff; font-weight: bold; border-radius:5px; min-width: 220px; width: 100vw;">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89c8e130463983ebaae3035a5b67534a89ee08e984cfca4d141579fb657902f05b94ef3327e4ccd7739770c07b6f29e58435e8c56b8e760d13" style="color:#ffffff;text-decoration:none; display: block; padding: 15px 12px 16px 12px;" title="">Shop Festive Drinks</a></td></tr></table><!-- end: btn --></td></tr></table><!-- /cta white text --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- spacer 10px --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td height="10" style="height: 10px; font-size: 1px; line-height: 1px;">
+			</td></tr></table><!-- /spacer 10px --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- fullwidth image --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td class="full-width-img">
+				<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d8944578580f15e9298c9e3ba9b7694b68fe4f6aa369e0bc2934b1d19bc198a5889fcfe9243cb34b586186dc574777cd6f95f331574beac9d5b" title=""><img alt="Win £2,500 that's a year's free shopping shop by Christmas eve &amp; add at least one of our festive favourites to your baskets to enter our prize draw *£2,500 loaded onto a Bonus Card" data-assetid="31993" height="376" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/5/CD-12529+-+WIN+SHOPPING.png" style="display: block; padding: 0px; text-align: center; height: 376px; width: 630px;" width="630"></a></td></tr></table><!-- /fullwidth image --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- cta white text -->
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td align="center" class="pad-tb-20" style="padding: 20px 20px 30px 20px;">
+				<!-- start: btn --><table align="center" border="0" cellpadding="0" cellspacing="0" class="btn" role="presentation">
+					
+						<tr>
+							<td align="center" bgcolor="#20ae91" class="white" style="font-family: Verdana, sans-serif; font-size: 16px; line-height: 19px; color: #ffffff; font-weight: bold; border-radius:5px; min-width: 220px; width: 100vw;">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89d4d48c6d4e3471c2359ed257f05c877ea1da66df5da6efc14c442e288b7cf28c7e62dac1ffa4a600799676eed87bbf3a4b3996af634cded4" style="color:#ffffff;text-decoration:none; display: block; padding: 15px 12px 16px 12px;" title="">Shop Now</a></td></tr></table><!-- end: btn --></td></tr></table><!-- /cta white text --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- text black --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td style="padding: 20px 20px 20px 20px;">
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td align="center" style="font-family: Verdana, sans-serif; font-size: 14px; line-height: 24px; color: #1b1b1b;">
+								**T&amp;C's Apply.</td></tr></table></td></tr></table><!-- /text black --></td></tr></table><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- fullwidth image --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td class="full-width-img">
+				<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d891f89b2c5aeb4c5c59fab147c60898d3baad0d52bf5ea138317a9173317d131ebedd6b659ea27f192b73a167b8880c780bd9b871c7c27dfdd" title=""><img alt="Free* Delivery" data-assetid="29623" height="103" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-DELIVERY-larger-CD-12408.jpg" style="display: block; padding: 0px; text-align: center; height: 103px; width: 630px;" width="630"></a></td></tr></table><!-- /fullwidth image --><!-- spacer 10px --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td height="10" style="height: 10px; font-size: 1px; line-height: 1px;">
+			</td></tr></table><!-- /spacer 10px --><!-- half width squoval img and cta - mb 2columns --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+		</tr><tr>
+			<th class="column-50" style="font-weight: normal; vertical-align: top; width: 310px;" valign="top" width="310">
+				<table bgcolor="#d3d3d3" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+				</table><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="full-width-img">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89dd076bd4e40ce49faac6cf7b130308548a5d829f88ec396b5859fd39f74ea1b04ae835ef366900469898412a68a3e7ead0cc578fefca5e4a" title=""><img alt="Turkeys &amp; Joints" data-assetid="29226" height="109" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-JOINTS-CD-12408.jpg" style="display: block; padding: 0px; text-align: center; height: 109px; width: 310px;" width="310"></a></td></tr></table></th><th class="column-spacer-padding" style="width: 10px;" width="10">
+			</th><th class="column-50" style="font-weight: normal; vertical-align: top; width: 310px;" valign="top" width="310">
+				<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="full-width-img">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89ab4b20d5ccece682ef90c93853a99e9247e60425320ebdb3050d40be3c1d0be1cc87629460045faa2f618995a0a58740d0dcfb822b37b697" title=""><img alt="Chocolate &amp; Gifts" data-assetid="31640" height="109" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-Choc-CD-12408_V2.jpg" style="display: block; padding: 0px; height: 109px; width: 310px; text-align: center;" width="310"></a></td></tr></table></th></tr></table><!-- /half width squoval img and cta - mb 2columns --><!-- spacer 10px --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td height="10" style="height: 10px; font-size: 1px; line-height: 1px;">
+			</td></tr></table><!-- /spacer 10px --><!-- half width squoval img and cta - mb 2columns --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<th class="column-50" style="font-weight: normal; vertical-align: top; width: 310px;" valign="top" width="310">
+				<table bgcolor="#d3d3d3" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+				</table><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="full-width-img">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89ec0532ce874e6dc058eb9dd980b4d6b17f6930288774dc168660c16f960173a73b2fab575e83b62d074328f6397e08132d6091c12effdafd" title=""><img alt="Party Food" data-assetid="29228" height="109" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-PARTY-CD-12408.jpg" style="display: block; padding: 0px; text-align: center; height: 109px; width: 310px;" width="310"></a></td></tr></table></th><th class="column-spacer-padding" style="width: 10px;" width="10">
+			</th><th class="column-50" style="font-weight: normal; vertical-align: top; width: 310px;" valign="top" width="310">
+				<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="full-width-img">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89dc6b2164786edbed9fdaf5f879ea286ed559efcf6a99cd38f45bcf8bcc946fe6a972c69ce505599fb1362841198ed6c56ff3ea2c75e88711" title=""><img alt="Festive desserts" data-assetid="29225" height="109" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-DESSERTS-CD-12408.jpg" style="display: block; padding: 0px; text-align: center; height: 109px; width: 310px;" width="310"></a></td></tr></table></th></tr></table><!-- /half width squoval img and cta - mb 2columns --><!-- spacer 10px --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td height="10" style="height: 10px; font-size: 1px; line-height: 1px;">
+			</td></tr></table><!-- /spacer 10px --><!-- half width squoval img and cta - mb 2columns --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<th class="column-50" style="font-weight: normal; vertical-align: top; width: 310px;" valign="top" width="310">
+				<table bgcolor="#d3d3d3" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+				</table><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="full-width-img">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89bc7707bc1b4e57e687bd159e5426e138a9da76c38de43cfbda549cf65d3c0a5ea75833261d91bd51f6eeaaa89aca4a7869cd7e477c1f9474" title=""><img alt="Festive Drinks" data-assetid="30149" height="109" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-Drinks-CD-12408-3.jpg" style="display: block; padding: 0px; text-align: center; height: 109px; width: 310px;" width="310"></a></td></tr></table></th><th class="column-spacer-padding" style="width: 10px;" width="10">
+			</th><th class="column-50" style="font-weight: normal; vertical-align: top; width: 310px;" valign="top" width="310">
+				<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="full-width-img">
+								<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89872f506a2e0055541eae5d2960af164c79e14ec55dfd31b678197905eff2f681b425dc3b6889a52c1cb3616805c183442bc858ec153e9889" title=""><img alt="Veg &amp; Trimmings" data-assetid="29221" height="109" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/4/POP-CAT-TRIMMINGS-CD-12408.jpg" style="display: block; padding: 0px; text-align: center; height: 109px; width: 310px;" width="310"></a></td></tr></table></th></tr></table><!-- /half width squoval img and cta - mb 2columns --><!-- spacer 10px --><table align="center" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:630px; margin:0 auto;" width="630">
+	
+		<tr>
+			<td height="10" style="height: 10px; font-size: 1px; line-height: 1px;">
+			</td></tr></table><!-- /spacer 10px --></td></tr></table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+      <table role="presentation" width="650" border="0" cellspacing="0" cellpadding="0" class="full-width" align="center" style="width:650px; margin:0 auto;" bgcolor="#ffffff">
+        <tr>
+          <td class="full-width" style="width:650px; max-width:650px; min-width:650px;" align="center"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- usps --><table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:650px; margin:0 auto;" width="650">
+	
+		<tr>
+			<td class="pad-lr-10" style="padding: 17px 30px 20px 30px; border-top: 1px solid #cccccc;">
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<th align="center" class="column" style="font-weight: normal; vertical-align: top;" valign="top" width="50%">
+								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+									
+										<tr>
+											<td align="center" style="padding: 0 5px;" width="50%">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d897cf44dccad67de65e6e83e69176c4f60a3def9328b30358314cc18ff162808ccc761255bf2681470589b2f2cafa44a012a7322fe83189b9a" title=""><img alt="Free Delivery Van" height="40" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-free-delivery2.png" style="display: block; margin: 0px auto; padding: 0px; text-align: center; height: 40px; width: 40px;" width="40"></a></td><td align="center" style="padding: 0 5px;" width="50%">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89ecd7cc38286dcd9a113ba02c96d4f22e5cda5bfe42ca453a68446a85b61ba3cdd8c9ea87c7e41681bf05e5d8bedbc4f7cb0be938370bf816" title=""><img alt="We're Number 1" height="40" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-numberone2.png" style="display: block; margin: 0px auto; padding: 0px; text-align: center; height: 40px; width: 40px;" width="40"></a></td></tr><tr class="red">
+											<td align="center" style="font-family: Tahoma, sans-serif; font-size: 12px; color: #d0021b; font-weight: bold; padding-top: 14px;" valign="top">
+												Free Delivery</td><td align="center" style="font-family: Tahoma, sans-serif; font-size: 12px; color: #d0021b; font-weight: bold; padding-top: 14px;" valign="top">
+												We&rsquo;re Number #1</td></tr><tr class="black">
+											<td align="center" style="font-family: Arial, sans-serif; font-size: 12px; color: #1b1b1b; padding-top: 10px;" valign="top">
+												Free next day<br>
+												delivery when you<br>
+												spend over &pound;40*</td><td align="center" style="font-family: Arial, sans-serif; font-size: 12px; color: #1b1b1b; padding-top: 10px;" valign="top">
+												For customer<br>
+												satisfaction for the<br>
+												second year running</td></tr></table></th><th class="column-spacer">
+							</th><th align="center" class="column" style="font-weight: normal; vertical-align: top;" valign="top" width="50%">
+								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+									
+										<tr>
+											<td align="center" style="padding: 0 5px;" width="50%">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d89578eb0963195c308f0ccfda7df8edeacddd1154d71d234885c90062c9740810cf950f61737da6916b655337e229ef3d286db2f95aab742f7" title=""><img alt="Exclusive Big Brands" height="40" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-big-brands2.png" style="display: block; margin: 0px auto; padding: 0px; text-align: center; height: 40px; width: 40px;" width="40"></a></td><td align="center" style="padding: 0 5px;" width="50%">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=c1aa7b1812589d8968d79d9ee7383c408793d6df2a0abf923fa9e6d3186522417570a7b55bd82e3f0b417a26c69ae45ab11fa90b3c18fb532a21ef102fd4e0d1" title=""><img alt="Bonus Card" height="40" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-bonuscard2.png" style="display: block; margin: 0px auto; padding: 0px; text-align: center; height: 40px; width: 40px;" width="40"></a></td></tr><tr class="red">
+											<td align="center" style="font-family: Tahoma, sans-serif; font-size: 12px; color: #d0021b; font-weight: bold; padding-top: 14px;" valign="top">
+												Big Brands</td><td align="center" style="font-family: Tahoma, sans-serif; font-size: 12px; color: #d0021b; font-weight: bold; padding-top: 14px;" valign="top">
+												Bonus Card</td></tr><tr class="black">
+											<td align="center" style="font-family: Arial, sans-serif; font-size: 12px; color: #1b1b1b; padding-top: 10px;" valign="top">
+												Exclusive brands<br>
+												like Slimming World<br>
+												&amp; Greggs</td><td align="center" style="font-family: Arial, sans-serif; font-size: 12px; color: #1b1b1b; padding-top: 10px;" valign="top">
+												Enjoy exclusive<br>
+												offers and bonuses,<br>
+												just for you</td></tr></table></th></tr></table></td></tr></table><!-- /usps --></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="full-width" style="width:650px; max-width:650px; min-width:650px;" align="center"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><!-- footer --><table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:650px; margin:0 auto;" width="650">
+	
+		<tr>
+			<td class="pad-lr-10 pad-tb-15" style="padding: 20px 30px; border-top: 1px solid #cccccc;">
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td align="left" class="full-width-img center">
+								<a  href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8feb20a8d27ab93622aeb837e26737af89e65a92fa2103ab88df432aa227afca7879816373d0bdf576c97c3bed8286c2191d87c632c4d28f1"><img alt="Customer Service Rating" border="0" class="center" height="35" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/customer-service.png" style="display: block; max-width: 352px;" width="352"></a></td></tr></table></td></tr></table><table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:650px; margin:0 auto;" width="650">
+	
+		<tr>
+			<td class="pad-lr-10 pad-b-20" style="padding: 0 30px 15px 30px; border-top: 1px solid #cccccc;">
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="center">
+								<table align="right" border="0" cellpadding="0" cellspacing="0" class="center" role="presentation">
+									
+										<tr>
+											<td style="padding: 25px 4px 0 4px;">
+												<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8f0f647bd63ca966544ae8f11615611f2a745f5ed4a54a342cade4193a057384a49a410217edf74492fa5f8d47fea5525129f3f17d78bc7fc"><img alt="FB" border="0" height="28" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-facebook.png" width="28"></a></td><td style="padding: 25px 4px 0 4px;">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a860bdbac387c865dddf290b7db7301de1a21a47bf51e809b9575d7fa3dedd2088e60dcd1a6aeff8ecbe248a025b50db680e6b2caebb430165" title=""><img alt="TW" height="28" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-twitter.png" style="height: 28px; width: 28px;" width="28"></a></td><td style="padding: 25px 4px 0 4px;">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8e0ff03d997d80d206e6e7203ba3b3d2ed472891d8f91e07db0206d1b7c546c92ff21b65f6adc8e57ee458d0e0e51c5ea5308e04d90a2e15f" title=""><img alt="YT" height="28" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-youtube.png" style="height: 28px; width: 28px;" width="28"></a></td><td style="padding: 25px 4px 0 4px;">
+												<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a81c93c5d7d4501271e9f5ebcc00ba42dc0a9f4c4ec70a17660c8aaa7b171038215aae5c72dec850de922681dc2989b49898fb70575c5584b3"><img alt="IG" border="0" height="28" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/icon-instagram.png" width="28"></a></td></tr></table><table align="left" border="0" cellpadding="0" cellspacing="0" class="center" role="presentation">
+									
+										<tr>
+											<td class="logo" style="padding-top: 25px;">
+												<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a80b2b5cba4673d47d71794b7d46c14b6871e66b3231a50cdd7bc4fac9606aff1fe56a97dfeffefe44653328e63e9b23575a02d90fbc9ad8ce" title=""><img alt="Iceland" height="28" src="http://image.icelandemail.co.uk/lib/fe3d117175640479771171/m/1/logo-iceland.png" style="display: block; padding: 0px; text-align: center; height: 28px; width: 126px;" width="126"></a></td></tr></table></td></tr><tr>
+							<td align="left" class="center" style="padding-top: 15px;">
+								<table border="0" cellpadding="0" cellspacing="0" class="center" role="presentation">
+									
+										<tr>
+											<th align="left" class="column" style="font-weight: normal; vertical-align: top;" valign="top">
+												<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation">
+													
+														<tr class="grey">
+															<td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #4a4b4d; border-right: 1px solid #dbdbdb; padding-right: 12px;">
+																<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8dd193889dcdb8a1e56763f12ef36ce1e95a4d62f1e0055ba1769f5bcfca5acf99268f89ad3c4b610f8e3dee8a4ba0cbcc27e0330cd69abe9" style="color: #4a4b4d; text-decoration: none;"><u>Store Finder</u></a></td><td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #4a4b4d; border-right: 1px solid #dbdbdb; padding: 0 12px;">
+																<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8c70178e220ffb25781b4ca274f6e4c0a41ebd468b91dbb2d6c6112066837a54311965830b42049cd3134592e4e77e83c4268b6dbdc1545de" style="color: #4a4b4d; text-decoration: none;"><u>FAQs</u></a></td><td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #4a4b4d; padding-left: 12px;">
+																<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8b257b1b53a8c3e00c4b64c1ed7abde020e46291004f426effe8f08b4ba9b65ec162312423245793d59b023454a2d620b09750ff19eace88b" style="color: #4a4b4d; text-decoration: none;"><u>Start Shopping</u></a></td></tr></table></th><th class="mobile-hide" style="border-right: 1px solid #dbdbdb; padding-left: 12px;">
+											</th><th class="mobile-hide" style="width: 12px;" width="12">
+											</th><th align="left" class="column" style="font-weight: normal; vertical-align: top;" valign="top">
+												<table align="center" border="0" cellpadding="0" cellspacing="0" class="margin-t-10" role="presentation">
+													
+														<tr class="grey">
+															<td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #4a4b4d; border-right: 1px solid #dbdbdb; padding-right: 12px;">
+																<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a80863b18923014293ad9e1efd06515abd0597604ee1b481b95b154651e7f19025a95350faf46250f8bb88bbec8439c552cb32c4a8850e6b91" style="color: #4a4b4d; text-decoration: none;"><u>Offers</u></a></td><td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 18px; color: #4a4b4d; padding-left: 12px;">
+																<a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8f38488f3108a54f053f9d06626604790c54f642e788ac5fa7cb5d05d70b60807a7666ddb5dfa690b65b1d500b24208bd89c763ffccd692ee" style="color: #4a4b4d; text-decoration: none;"><u>My Account</u></a></td></tr></table></th></tr></table></td></tr></table></td></tr></table><table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content-wrapper" role="presentation" style="width:650px; margin:0 auto;" width="650">
+	
+		<tr>
+			<td class="pad-lr-10 pad-tb-15" style="padding: 20px 30px; border-top: 1px solid #cccccc;">
+				<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+					
+						<tr>
+							<td class="grey" style="font-family: Arial, sans-serif; font-size: 12px; color: #4a4b4d;">
+								<b>**Win &pound;2,500 loaded onto a Bonus Card: </b>1. There will be one winner. To be entered into the &lsquo;Win &pound;2,500&rsquo; prize draw entrants must complete an online shopping transaction by 23:59 on 24.12.21 (&ldquo;the Prize Draw Period&rdquo;) and add at least one product from the <a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a80eb6f470f2c73b17df792a6199a62571b1a6f2ed600b4f947594ed0d666072f11b34f6a2f87b75e65971bc485272945a4f3459f224a00f54" style="text-decoration:underline;" title="'festive favourites'">'festive favourites'
+</a> page to their basket. 2. The completed order must be delivered by 30.12.21. Online shopping account required. Only one entry per customer, per online shop. 4. Iceland's Contact Centre will call the winner to confirm receipt of the Prize by 05.01.22. Once the winner has been contacted, a &pound;2,500 bonus will be uploaded onto their Bonus Card. The bonus can take up to 5 days, from the date it was uploaded, to appear on the winner's Bonus Card. The total amount received on the Bonus Card will be a &pound;2,500 bonus. 5. The amount uploaded to the winner's Bonus Card can be redeemed online or in store and must be redeemed by 31.12.22. Any amount outstanding from the &pound;2,500 bonus after this date will expire and will be forfeited. This does not affect savings that may already be
+ held on an existing Bonus Card. 6. In the event that the winner does not have a Bonus Card, Iceland's Customer Care team will arrange for a Bonus Card to be registered for the winner. The registered Bonus Card will be sent to the winner and the Prize will then be loaded onto the Bonus Card. This may cause a delay in the winner receiving their Prize, which Iceland accepts no liability for. 7. No cash alternative will be offered for the Prize and the Prize is non-exchangeable and non-transferable. Iceland reserves the right to substitute the Prize for an item of similar value.<br>
+								<br>
+								<b>*Online delivery:</b> A minimum spend of &pound;25 is required to place an order online plus a &pound;3 delivery charge will apply up to the value of &pound;39.99. Free next day delivery for orders over &pound;40. &nbsp;Delivery charges may apply for orders placed for delivery on other days. &nbsp;Delivery address must be within the delivery catchment area. Customers must register online to use the service.&nbsp;<b>Home Delivery from store: 
+</b>minimum order of &pound;25 required to use in store home delivery service. To use the service, you must have a valid postal address and registered Bonus Card. Subject to availability from participating Iceland stores, to addresses within a 10 mile radius (3 miles within the M25 perimeters). Minimum spends for both in-store and online deliveries exclude the purchase of Bonus Card savings and carrier bags. Online and home delivery terms and conditions apply,&nbsp;<a   data-linkto="http://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a829011e71552b590cc397a755c92c174e9cdc2363e42c64c3aa7fcb39239246f8ca0aa9ab384c7c79621adebe946298878b5056d8bc1e5f47" style="text-decoration:underline;" title=" click here">click here</a>.<b> Same day delivery:
+</b> Home deliveries from store will usually be delivered on the same day as purchase. Same day delivery slots are available for online deliveries in the majority of stores. If you are within the delivery area of that store then, subject to availability, you will be able to choose a same day delivery slot. For a same day delivery slot you must book your slot by 2pm. You must complete your order (including any amendments) by 3pm for same day delivery. The minimum order value for online orders is &pound;25 plus an additional delivery charge for same day delivery slots, as shown at checkout. The minimum order value is calculated after all discounts and promotional offers have been applied.<br>
+								<br>
+								<b>&dagger;Please drink responsibly.</b> Alcohol is not available in Northern Ireland stores. Alcohol products are available at licensed stores only to customers aged 18 years or over. Iceland operate a Challenge 25, serve 18 policy. All products subject to availability. While stocks last. Discount code terms and conditions apply, <a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a87f4c45d6d47f6279a720855015ffe5f34e53cbc08dc0f22dbfdac316ac29b71756f42bb52787859f7f7eff5d0eeb0ab2629921cf4f6df656" style="text-decoration:underline;" title="click here.">click here.</a> Online terms and conditions apply,&nbsp;<a   data-linkto="https://" href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a897c9c30107bd6ff8b0a7d7451fd548a0955219cfcb99ae66e19b2dfd87dff09c19668ff128ff347e31a60276ea2a699aa3dedfbe8dd310ca" style="text-decoration:underline;" title=" click here.">click here.</a><br>
+								<br>
+								Iceland's Bonus Card terms and conditions apply to all use of Bonus Cards. <a  href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a858046a7aa18a9c7c6fd9b6527f4edafbadf38968b6267025f2fd4d973e929b2bd650372184fd620eecec331d2887429b5cf7f7e7241215d7" style="color: #4a4b4d; text-decoration: none;"><u>Click here</u></a> for details.<br>
+								<br>
+								Products and offers subject to availability, while stocks last. Selected UK stores only, All photography is serving suggestion only. Max 4 deals per customer unless stated otherwise.<br>
+								<br>
+								For more information regarding Feefo customer service rating reviews, <a  href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8788f859d099ee9737233d7662688a2cad671da4ad21f21295061dcbef4dabda2510cabed7c576257adeac1813cef3205db2d30918a838295" style="color: #4a4b4d; text-decoration: none;"><u>click here</u></a>.<br>
+								<br>
+								To view our Privacy Policy please <a  href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8d46f469e909305fca251f324a6019fe83caad1ddbaf17c8a2cee5b63c23b79815df47a4bc47564b34cae5d9bfbcea173d29f28596f0ef65d" style="color: #4a4b4d; text-decoration: none;"><u>click here</u></a>.<br>
+								<br>
+								If you no longer want to receive special offers and updates by email from the Iceland marketing team please <a  href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8ef564a1442c6508a28e6d7476012b57a9dd880e062331d9b4bbe1482558e0dd7ebffa607841511225d16cded76e931839ece53651a2727a0" style="color: #4a4b4d; text-decoration: none;"><u>click here</u></a>.<br>
+								<br>
+								You can't reply to this email directly but we're always pleased to hear from you. To contact us please <a href="http://click.icelandemail.co.uk/?qs=32e0e991683ab3a8c70178e220ffb25781b4ca274f6e4c0a41ebd468b91dbb2d6c6112066837a54311965830b42049cd3134592e4e77e83c4268b6dbdc1545de" style="color: #4a4b4d; text-decoration: none;"><u>click here</u></a>.<br>
+								<br>
+								Iceland Foods Ltd. Registered in England and Wales No: 1107406. Registered Office: Second Avenue, Deeside Industrial Estate, Deeside, Flintshire, GB,CH5 2NW.</td></tr></table></td></tr></table><!-- /footer --></td></tr></table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<img src="http://click.icelandemail.co.uk/open.aspx?ffcb10-fef41279756d07-fe581670766d02757311-fe3d117175640479771171-ff5e10757d-fe6710747466007d741c-ff051676756505&d=500007&bmt=0" width="1" height="1" alt=""></custom>
+</body>
+</html>
+
+--T0RMe4PzWDxL=_?:--
+

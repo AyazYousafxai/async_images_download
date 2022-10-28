@@ -1,0 +1,651 @@
+Delivered-To: shahrukh.swam@gmail.com
+Received: by 2002:aa6:c04c:0:b0:139:206d:ea41 with SMTP id k12csp696209lkp;        Thu,
+ 9 Sep 2021 07:25:23 -0700 (PDT)
+Received: from mta-174-84-125.intercom.com.sparkpostmail.com
+ (mta-174-84-125.intercom.com.sparkpostmail.com. [192.174.84.125])        by
+ mx.google.com with ESMTPS id m11si2238754pfk.114.2021.09.09.07.25.22       
+ for <shahrukh.swam@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);        Thu, 09 Sep 2021
+ 07:25:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEV9sNghAL62GQE7jJnIXiUi4irw8rQM/B0cQaPZZtXqtVqJXURv6JAX/wmqrvcocYOmy+
+X-Received: by 2002:a17:90b:513:: with SMTP id r19mr3774358pjz.93.1631197522702;       
+ Thu, 09 Sep 2021 07:25:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1631197522; cv=none;        d=google.com;
+ s=arc-20160816;       
+ b=FSnborKTjJxG/QfDZ43GZDiZrIpslnw56RskV2NwAnzOLlRQlwB9NPov8bF3pTCUDj        
+ aYf1UMde4mHI2E61zMep9u/b+e86tts9h9r3GON9iwdi0SqF7/SWvyhCVULil2L/0scM        
+ jicHQrj5YxM8sXJwhesmTMZbD13vfQs1z2v8TcbyFXr14rf5EcxzVvZdjo65gVqWumma        
+ ZfF6t4QnmJ8UY6U9dEVZLu0Wk9P6TnSenZwoE14Tu641pfikSYiecCLl+tRzzYriujCD        
+ 02LxcroLxW26NFefYbnBbLYasCXahEK4ERVbqZzX0Wpb7V/w/hceeT2ZaaRS3UP0Gndk        
+ nKbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;       
+ h=feedback-id:from:message-id:subject:reply-to:date:list-unsubscribe        
+ :mime-version:to:dkim-signature;       
+ bh=IHGAJObkTppR2x+dU/ZLReBvwlkFRC21vZ24yKRfmPQ=;       
+ b=F8wloc2W8Qz5+/wwMbutLGMDXHLclsmcpZO/qHrg8U4B1rEy/ATOWySk/imKKuq0fw        
+ NvK6J2A1ALlDTV208AVtCPyuKMLZKu2vhaHJL8yrtg+AmKuXQQ92GqacZfyO2fvD8Yqh        
+ d++lZv6+e0t9xLiysQOizQ/Wnd2PvFA7qPAbwR131hc8JarHxmfpelzJOZ5IuxFT8pIs        
+ rg6EA/93KxEewp4LJLxtDKKqqnRdPC/UE/TRaPSRh3kEjMe+U4BOdmgPfXw1zbXTyoFz        
+ 7hCRZkC1ulq2suSuEtgZ/x43mldDLc1yZj6Hu09So73XtxIyPDaztl2xcJ1rqV2nQVjz        
+ Qfbg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@loom.com header.s=intercom
+ header.b=a1LMhGph;       spf=pass (google.com: domain of
+ bounces+28305758428610@outbound.intercom.loom.com designates 192.174.84.125
+ as permitted sender)
+ smtp.mailfrom=bounces+28305758428610@outbound.intercom.loom.com;      
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=loom.com
+Return-Path: <bounces+28305758428610@outbound.intercom.loom.com>
+Received-SPF: pass (google.com: domain of bounces+28305758428610@outbound.intercom.loom.com
+ designates 192.174.84.125 as permitted sender) client-ip=192.174.84.125;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@loom.com header.s=intercom
+ header.b=a1LMhGph;       spf=pass (google.com: domain of
+ bounces+28305758428610@outbound.intercom.loom.com designates 192.174.84.125
+ as permitted sender)
+ smtp.mailfrom=bounces+28305758428610@outbound.intercom.loom.com;      
+ dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=loom.com
+X-MSFBL: 8Vyi+6Idftsz5K9ulUJf9sLVUWiImuzpMgfC+/8HW94=|eyJyIjoic2hhaHJ1a2g	uc3dhbUBnbWFpbC5jb20iLCJzdWJhY2NvdW50X2lkIjoiOTAyIiwibWVzc2FnZV9	pZCI6IjYxMzg1MTE5M2E2MWNiMzk5Y2ZkIiwidGVuYW50X2lkIjoiaW50ZXJjb20	iLCJjdXN0b21lcl9pZCI6IjEifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=loom.com;	s=intercom; t=1631197521;
+ i=@loom.com;	bh=IHGAJObkTppR2x+dU/ZLReBvwlkFRC21vZ24yKRfmPQ=;	h=To:Content-Type:Date:Subject:Message-ID:From;	b=a1LMhGphCCG/w4bGp9imfWZzA9d1tS7N5Zr4ve7LThqfDIxa82RHzZ6Q9n4vGOjG0	
+ HmQyj/QGxXqpiWOLiMkRKqE9v8b10mBUYavtFYl+kEpni0YT13Uz/R2DIK7GTS4LnY	
+ SyLjhctyap7nAb8GQkJfuJQIkGiRQNWgwBocLluI=
+To: shahrukh.swam@gmail.com
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:unsubscribe_28305758428610_5ace24330fd93957ce7eb672@loom-89a303127719.intercom-mail.com>,
+ <https://loom-89a303127719.intercom-mail.com/subscriptions/unsubscribe?app_id=cgfc6jcc&conversation_id=28305758428610&user_id=5ace24330fd93957ce7eb672&source=header>
+Date: Thu, 09 Sep 2021 14:25:21 +0000
+Reply-To: "The Loom Team" <loom-team@loom.com>
+X-Mailgun-Tag: user-custom
+X-Intercom-App-Id: cgfc6jcc
+X-Intercom-Bin: 210
+Subject: Be anywhere with Loom: Virtual backgrounds, mobile updates, and a deeper
+ integration with Slack
+Message-ID: <bf2db55b-c02dfb29-1631197520-28305758428610@loom-89a303127719.intercom-mail-210.com>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+From: "The Loom Team" <loom-team@loom.com>
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"cgfc6jcc","conversation_id":"28305758428610","user_id":"5ace24330fd93957ce7eb672","intercom_localized_email_content_id":"4091710"}
+Feedback-ID: email:48812199:cgfc6jcc:intercom
+Content-Type: multipart/alternative;
+ boundary="_----jpgvw7wQY4txsvtw0SmQLw===_69/DF-40217-1591A316"
+
+--_----jpgvw7wQY4txsvtw0SmQLw===_69/DF-40217-1591A316
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+NEW FEATURES AVAILABLE NOW=20
+ Keep conversations in one place with our updated Slack app=20
+ Need to add context to a thread without scheduling yet another meeting? Ma=
+ybe you're already dropping Loom links in DMs or Channels to clarify someth=
+ing in a DM or Channel?=20
+ Well, async video in Slack just got a whole lot better=2E Now, you can rec=
+ord and share looms without leaving Slack=2E And, you'll get loom notificat=
+ions in Slack too=2E=20
+ Pretty neat=2E=2E=2Etext and async video conversations all in one place=2E=
+=20
+ - Install the Loom app in Slack=20
+- Record &amp; Loom videos in Slack with the /loom command=20
+- Get notifications when someone watches, reacts, or comments=20
+ [Image "f7266376844a467b81ee50d42dc4c01c-with-play=2Egif"] Link to Video L=
+ink to Video Link to Video Install the Loom app in Slack=20
+=20
+ Watch on the go with Loom for iOS and Android=20
+ We overhauled the video player on our mobile apps for iOS and Android=2E C=
+ontrol video playback speed, leave emoji reactions, reply to comments and m=
+ore =E2=80=93 all on mobile=2E And with the all-new notification center, it=
+'s never been easier to stay on top of the activity that matters most=2E=20
+ [Image "mobile%E2%80%93view%E2%80%934=2Egif"] Download the apps=20
+ NEW FEATURES COMING SOON=20
+ Virtual backgrounds: Keep the focus on you=20
+ Prefer not to show off your bedroom or the cafe behind you? Now you can ad=
+d a virtual or blurred background when you record=2E Coming soon to our des=
+ktop apps, Chrome extension, and the loomSDK=2E=20
+ [Image "mobile%E2%80%93viewing2=2Egif"] Watch the demo=20
+ LOOM 101: TIPS AND ADVICE FROM OUR TEAM=20
+ Accelerate feedback loops with video=20
+ Is your feedback process slowing you down? Stop wasting time marking up PD=
+Fs and scheduling meetings=2E Give feedback with async video instead=2E In =
+this video, George explains best practices for giving feedback with Loom=2E=
+=20
+ [Image "429c2017f0314168b82ca4e9f89c8e45-with-play=2Egif"] Link to Video L=
+ink to Video Link to Video Watch the video With =F0=9F=92=9C from =F0=9F=8C=
+=8D=F0=9F=8C=8E=F0=9F=8C=8F, The Loommates
+--_----jpgvw7wQY4txsvtw0SmQLw===_69/DF-40217-1591A316
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+	<title>Loom</title>
+<style>=2Eintercom-align-right {
+  text-align: right !important;
+}
+=2Eintercom-align-center {
+  text-align: center !important;
+}
+=2Eintercom-align-left {
+  text-align: left !important;
+}
+/* Over-ride for RTL */
+=2Eright-to-left =2Eintercom-align-right{
+  text-align: left !important;
+}
+=2Eright-to-left =2Eintercom-align-left{
+  text-align: right !important;
+}
+=2Eright-to-left =2Eintercom-align-left {
+  text-align:right !important;
+}
+=2Eright-to-left li {
+  text-align:right !important;
+  direction: rtl;
+}
+=2Eright-to-left =2Eintercom-align-left img,
+=2Eright-to-left =2Eintercom-align-left =2Eintercom-h2b-button {
+  margin-left: 0 !important;
+}
+=2Eintercom-attachment,
+=2Eintercom-attachments,
+=2Eintercom-attachments td,
+=2Eintercom-attachments th,
+=2Eintercom-attachments tr,
+=2Eintercom-attachments tbody,
+=2Eintercom-attachments =2Eicon,
+=2Eintercom-attachments =2Eicon img {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+=2Eintercom-attachments {
+  margin: 10px 0 !important;
+}
+=2Eintercom-attachments =2Eicon,
+=2Eintercom-attachments =2Eicon img {
+  width: 16px !important;
+  height: 16px !important;
+}
+=2Eintercom-attachments =2Eicon {
+  padding-right: 5px !important;
+}
+=2Eintercom-attachment {
+  display: inline-block !important;
+  margin-bottom: 5px !important;
+}
+
+=2Eintercom-interblocks-content-card {
+  width: 334px !important;
+  max-height: 136px !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  font-size: 16px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+=2Eintercom-interblocks-link,
+=2Eintercom-interblocks-article-card {
+  text-decoration: none !important;
+}
+
+=2Eintercom-interblocks-article-icon {
+  width: 22=2E5% !important;
+  height: 136px !important;
+  float: left !important;
+  background-color: #fafafa !important;
+  background-image: url('https://loom-89a303127719=2Eintercom-mail=2Ecom/as=
+sets/article_book-1a595be287f73c0d02f548f513bfc831=2Epng') !important;
+  background-repeat: no-repeat !important;
+  background-size: 32px !important;
+  background-position: center !important;
+}
+
+=2Eintercom-interblocks-article-text {
+  width: 77=2E5% !important;
+  float: right !important;
+  background-color: #fff !important;
+}
+
+=2Eintercom-interblocks-link-title,
+=2Eintercom-interblocks-article-title {
+  color: #519dd4 !important;
+  font-size: 15px !important;
+  margin: 16px 18px 12px !important;
+  line-height: 1=2E3em !important;
+  overflow: hidden !important;
+}
+
+=2Eintercom-interblocks-link-description,
+=2Eintercom-interblocks-article-body {
+  margin: 0 18px 12px !important;
+  font-size: 14px !important;
+  color: #65757c !important;
+  line-height: 1=2E3em !important;
+}
+
+=2Eintercom-interblocks-link-author,
+=2Eintercom-interblocks-article-author {
+  margin: 10px 15px !important;
+  height: 24px !important;
+  line-height: normal !important;
+}
+
+=2Eintercom-interblocks-link-author-avatar,
+=2Eintercom-interblocks-article-author-avatar {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  float: left;
+  margin-right: 5px;
+}
+
+=2Eintercom-interblocks-link-author-avatar-image,
+=2Eintercom-interblocks-article-author-avatar-image {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+  vertical-align: top !important;
+  font-size: 12px !important;
+}
+
+=2Eintercom-interblocks-link-author-name,
+=2Eintercom-interblocks-article-author-name {
+  color: #74848b !important;
+  margin: 0 0 0 5px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  overflow: hidden !important;
+}
+
+=2Eintercom-interblocks-article-written-by {
+  color: #8897a4 !important;
+  margin: 1px 0 0 5px !important;
+  font-size: 12px !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  float: left !important;
+}
+</style>
+</head>
+<body style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #F9F9F9; font-family: 'CircularXX', 'Circular Pro', 'Helv=
+etica Neue', Arial, sans-serif; height: 100% !important; margin: 0; padding=
+: 0; width: 100% !important" bgcolor=3D"#F9F9F9">
+<div style=3D"color:transparent;visibility:hidden;opacity:0;font-size:0px;b=
+order:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!im=
+portant;display:none!important;line-height:0px!important;"><img border=3D"0=
+" width=3D"1" height=3D"1" src=3D"https://loom-89a303127719=2Eintercom-mail=
+=2Ecom/q/J6FPIEjYZ-J4gm0b8GpJNw~~/AAAAAQA~/RgRjHJ5RPVcIaW50ZXJjb21CCmE4URk6=
+Ycs5nP1SF3NoYWhydWtoLnN3YW1AZ21haWwuY29tWAQAAAOG" alt=3D""/></div>
+
+<style type=3D"text/css">
+body {
+-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;
+}
+img {
+-ms-interpolation-mode: bicubic;
+}
+img {
+border: 0; height: auto; line-height: 100%; outline: none; text-decoration:=
+ none;
+}
+body {
+height: 100% !important; margin: 0 !important; padding: 0 !important; width=
+: 100% !important;
+}
+</style>=C2=A0=C2=A0=C2=A0 <meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3Dutf-8">
+=C2=A0=C2=A0=C2=A0 <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedg=
+e">
+=C2=A0=C2=A0=C2=A0 <style type=3D"text/css">
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-=
+adjust: 100%; }
+        img { -ms-interpolation-mode: bicubic; }
+        img { border: 0; height: auto; line-height: 100%; outline: none; te=
+xt-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !i=
+mportant; width: 100% !important; }
+
+        /* iOS BLUE LINKS */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* GMAIL BLUE LINKS */
+        u + #body a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        /* SAMSUNG MAIL BLUE LINKS */
+        #MessageViewBody a {
+            color: inherit;
+            text-decoration: none;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+=2Econtent h1 {
+    font-family:'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans=
+-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1=2E3;
+    margin: 15px 0 10px;
+    color: inherit !important;
+  }
+
+=2Econtent h2 {
+    font-family:'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans=
+-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1=2E3;
+    margin: 15px 0 10px;
+    color: inherit !important;
+  }
+       =20
+        h3, h4, h5, h6, p { font-size: 16px; }
+        h1, h2, h3, h4, h5, h6 { font-weight: bold; margin: 0; }
+        p { margin: 0 0 16px 0; }
+
+        =2Econtent a { color: #625DF5; text-decoration: underline; }
+        =2Econtent a:hover { color: #3B37AA !important; }
+        =2Econtent img { max-width: 100%; }
+
+       =2Eintercom-h2b-button {
+            font-size: 18px;
+            color: #FFFFFF !important;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none !important;
+            background-color: #625DF5;
+            border: none !important;
+            background-color: #625DF5;
+            border-radius: 6px;
+        }
+       =20
+        table=2Eintercom-container {
+        	background-color: #ffffff;
+        }
+       =20
+        table=2Eintercom-container td {
+            background-color: #625DF5;
+            padding: 13px 20px;
+            border-radius: 6px;
+            font-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Ar=
+ial, sans-serif;
+            margin: 0;
+        }
+       =20
+        =2Efooter a { color: inherit; }
+        =2Efooter a:hover { color: #7C7C7C !important; }
+    </style>
+
+
+    <!--[if (gte mso 9)|(IE)]>
+    <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"600" a=
+lign=3D"center" role=3D"presentation"><tr><td>
+    <![endif]-->
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-col=
+lapse: collapse !important; color: #000000; font-weight: 400; line-height: =
+26px; margin: 0 auto; max-width: 600px; width: 100%">
+    <tbody>
+        <tr>
+            <td class=3D"content" style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; background-color: #ffffff; border: 1px solid #a=
+09a9a; color: #000000; font-family: 'CircularXX', 'Circular Pro', 'Helvetic=
+a Neue', Arial, sans-serif; font-size: 16px; line-height: 26px; overflow: h=
+idden" bgcolor=3D"#ffffff">
+               =20
+                    <img src=3D"https://p27=2Ef0=2En0=2Ecdn=2Egetcloudapp=
+=2Ecom/items/bLuqKj0p/11a03f84-83bc-49f9-817d-4ac125b443e3=2Epng?source=3Dv=
+iewer&amp;v=3Dba7a2950e7efc1d0748784a92a7d7f6d" alt=3D"Be anywhere with Loo=
+m=2E New product releases to help you work from home, the office, or on the=
+ go=2E" width=3D"100%" style=3D"-ms-interpolation-mode: bicubic; border: 0;=
+ height: auto; line-height: 100%; max-width: 100%; outline: none; text-deco=
+ration: none">
+                <div style=3D"padding: 30px 30px 40px">
+<h2 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 14px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">NEW FEATURES AVAILABLE N=
+OW</h2>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Keep conversations in on=
+e place with our updated Slack app</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Need to add context to a thre=
+ad without scheduling yet another meeting? Maybe you're already dropping Lo=
+om links in DMs or Channels to clarify something in a DM or Channel?</p>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Well, async video in Slack ju=
+st got a whole lot better=2E Now, you can record and share looms without le=
+aving Slack=2E And, you'll get loom notifications in Slack too=2E=C2=A0</p>=
+
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Pretty neat=2E=2E=2Etext and =
+async video conversations all in one place=2E=C2=A0</p>
+<ul>
+<li>Install the <a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Eco=
+m/via/e?ob=3Dcbm06tJUWEJZIaqrXIgCmhrCuyDmwZk%2F9LH00f3tznugeQfosVvq6q1HyL6m=
+151M%2BCVnaSTHHZ39m7yXHck6CQ%3D%3D&h=3D6794e743234865d5bc0260773664ad855e4e=
+d666-cgfc6jcc_28305758428610&l=3D6e5fbd23b50ce3e9e78348d58f64bb37302bcdf6-9=
+869147" target=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text=
+-size-adjust: 100%; color: #625DF5; text-decoration: underline">Loom app in=
+ Slack</a>
+</li>
+<li>Record &amp; =C2=A0Loom videos in Slack with the <b>/loom</b> command</=
+li>
+<li>Get notifications when someone watches, reacts, or comments</li>
+</ul>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3Dnu6=
+rbv6U9pW42U%2Bej6IMu1KY2Es60Da1FSd%2FhYKoYfgGMBoAXeFP%2Flv8ghg27xJeDp%2F343=
+M7ZhSiJg71j4l1Jw%3D%3D&h=3Dd59da7fa0dd1aec7a167f15d0e42fe99c2f905e4-cgfc6jc=
+c_28305758428610&l=3D4bf0c4bce921a0a62e3a8ebfcde9554a81abf1bd-10035280" tar=
+get=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Eloom=2Ecom/sessions/thumbnails/f7266376844a46=
+7b81ee50d42dc4c01c-with-play=2Egif" alt=3D"" style=3D"-ms-interpolation-mod=
+e: bicubic; border: 0; height: auto; line-height: 100%; max-width: 100%; ou=
+tline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3Dcbm06tJUWEJZIaqrXIgCmhrCuyD=
+mwZk%2F9LH00f3tznugeQfosVvq6q1HyL6m151M%2BCVnaSTHHZ39m7yXHck6CQ%3D%3D&h=3D6=
+794e743234865d5bc0260773664ad855e4ed666-cgfc6jcc_28305758428610&l=3D7300ff0=
+fb9c3a4eee45ff38cf869f59ece4479d4-10035335" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border: no=
+ne; border-radius: 6px; color: #FFFFFF !important; display: inline-block; f=
+ont-size: 18px; font-weight: bold; text-decoration: none !important">Instal=
+l the Loom app in Slack</a></td></tr></tbody></table>
+<div></div>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left"></p>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">=C2=A0</p>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Watch on the go with Loo=
+m for iOS and Android=C2=A0</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">We overhauled the video playe=
+r on our mobile apps for iOS and Android=2E Control video playback speed, l=
+eave emoji reactions, reply to comments and more =E2=80=93 all on mobile=2E =
+And with the all-new notification center, it's never been easier to stay on=
+ top of the activity that matters most=2E =C2=A0 =C2=A0 =C2=A0</p>
+<div class=3D"intercom-container intercom-align-left" style=3D"text-align: =
+left !important" align=3D"left"><img src=3D"https://loom-89a303127719=2Eint=
+ercom-mail=2Ecom/i/o/386933068/6567349191c246fcef45aee5/mobile%E2%80%93view=
+%E2%80%934=2Egif" style=3D"-ms-interpolation-mode: bicubic; border: 0; heig=
+ht: auto; line-height: 100%; max-width: 100%; outline: none; text-decoratio=
+n: none"></div>
+<table class=3D"intercom-container intercom-align-center" align=3D"center" =
+style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; backgr=
+ound-color: #ffffff; border-collapse: collapse !important; text-align: cent=
+er !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-size-ad=
+just: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; bord=
+er-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue'=
+, Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF5"><a =
+class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-89a303=
+127719=2Eintercom-clicks=2Ecom/via/e?ob=3DsbMzdSFJXtgu0F8cSmIlpNjbfSFc9qlTd=
+NDQ%2BS0GqNfMtmPqh8qyOZzDY0yBH3Tsnel6PmYxG2LOmM8HwrMNatqkT2G0nGQeUv%2BMDfIJ=
+S9avFLcXzxl8wn50jXISVl%2BmJLSZbvDk%2Bdk085eShNi2Iw%3D%3D&h=3D159d24e48aa535=
+53490013a34f96bfb654ed3b5c-cgfc6jcc_28305758428610&l=3D284f07258d21b34a8b5a=
+1e546e3723c95101f778-10035451" style=3D"-ms-text-size-adjust: 100%; -webkit=
+-text-size-adjust: 100%; background-color: #625DF5; border: none; border-ra=
+dius: 6px; color: #FFFFFF !important; display: inline-block; font-size: 18p=
+x; font-weight: bold; text-decoration: none !important">Download the apps</=
+a></td></tr></tbody></table>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left"><br>=C2=A0</p>
+<h2 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 14px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">NEW FEATURES COMING SOON=
+</h2>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Virtual backgrounds: Kee=
+p the focus on you=C2=A0</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Prefer not to show off your b=
+edroom or the cafe behind you? Now you can add a virtual or blurred backgro=
+und when you record=2E Coming soon to our desktop apps, Chrome extension, a=
+nd the loomSDK=2E</p>
+<div class=3D"intercom-container intercom-align-left" style=3D"text-align: =
+left !important" align=3D"left"><img src=3D"https://loom-89a303127719=2Eint=
+ercom-mail=2Ecom/i/o/384809740/8bf3e3f451a95ac638ec2dc8/mobile%E2%80%93view=
+ing2=2Egif" style=3D"-ms-interpolation-mode: bicubic; border: 0; height: au=
+to; line-height: 100%; max-width: 100%; outline: none; text-decoration: non=
+e"></div>
+<table class=3D"intercom-container intercom-align-center" align=3D"center" =
+style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; backgr=
+ound-color: #ffffff; border-collapse: collapse !important; text-align: cent=
+er !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-size-ad=
+just: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; bord=
+er-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue'=
+, Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF5"><a =
+class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-89a303=
+127719=2Eintercom-clicks=2Ecom/via/e?ob=3DJW2Pb8gcSIZ2qw31v5c4SnKaUTp4h%2Bf=
+%2FRIo5KBFIROJkG4IJ857VQGpajvKfeOvcRqn4RIETVr328d96FEA%2FhA%3D%3D&h=3D18477=
+4d5e37aa230416c6b3b116f4ad01ae5843b-cgfc6jcc_28305758428610&l=3D85909cd3159=
+ea9520c062694253ea4f2117343c6-9880616" style=3D"-ms-text-size-adjust: 100%;=
+ -webkit-text-size-adjust: 100%; background-color: #625DF5; border: none; b=
+order-radius: 6px; color: #FFFFFF !important; display: inline-block; font-s=
+ize: 18px; font-weight: bold; text-decoration: none !important">Watch the d=
+emo</a></td></tr></tbody></table>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">=C2=A0<br>=C2=A0</p>
+<h2 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 14px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">LOOM 101: TIPS AND ADVIC=
+E FROM OUR TEAM</h2>
+<h1 class=3D"intercom-align-center" style=3D"color: inherit !important; fon=
+t-family: 'CircularXX', 'Circular Pro', 'Helvetica Neue', Arial, sans-serif=
+; font-size: 18px; font-weight: 700; line-height: 1=2E3; margin: 15px 0 10p=
+x; text-align: center !important" align=3D"center">Accelerate feedback loop=
+s with video</h1>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left">Is your feedback process slow=
+ing you down? Stop wasting time marking up PDFs and scheduling meetings=2E =
+Give feedback with async video instead=2E In this video, George explains be=
+st practices for giving feedback with Loom=2E=C2=A0</p>
+<div></div>
+<a href=3D"https://loom-89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DIZU=
+gaXaZFSX7H6rdqXMrWERWJ2jBsv%2FFoKwSn2I52T2MR73x4KmGxz4W8MwPhVsQDuSvuOMp8EC%=
+2Blhm1Da%2BxaQ%3D%3D&h=3D52aee389c5073fe0cf6b15df4b9e184a9bb6ed9f-cgfc6jcc_=
+28305758428610&l=3D682559e2177957cdea1a9d4da13cb24bbff8cf1c-9880259" target=
+=3D"_blank" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: =
+100%; color: #625DF5; text-decoration: underline">
+    <p style=3D"font-size: 16px; margin: 0 0 16px"></p>
+    <img src=3D"https://cdn=2Eloom=2Ecom/sessions/thumbnails/429c2017f03141=
+68b82ca4e9f89c8e45-with-play=2Egif" alt=3D"" style=3D"-ms-interpolation-mod=
+e: bicubic; border: 0; height: auto; line-height: 100%; max-width: 100%; ou=
+tline: none; text-decoration: none; width: auto">
+  </a><table class=3D"intercom-container intercom-align-center" align=3D"ce=
+nter" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+background-color: #ffffff; border-collapse: collapse !important; text-align=
+: center !important" bgcolor=3D"#ffffff"><tbody><tr><td style=3D"-ms-text-s=
+ize-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5=
+; border-radius: 6px; font-family: 'CircularXX', 'Circular Pro', 'Helvetica=
+ Neue', Arial, sans-serif; margin: 0; padding: 13px 20px" bgcolor=3D"#625DF=
+5"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://loom-=
+89a303127719=2Eintercom-clicks=2Ecom/via/e?ob=3DIZUgaXaZFSX7H6rdqXMrWERWJ2j=
+Bsv%2FFoKwSn2I52T2MR73x4KmGxz4W8MwPhVsQDuSvuOMp8EC%2Blhm1Da%2BxaQ%3D%3D&h=
+=3D52aee389c5073fe0cf6b15df4b9e184a9bb6ed9f-cgfc6jcc_28305758428610&l=3D50f=
+c56e0ca652cae3c97035eea5fd4ff4ace4e07-9880706" style=3D"-ms-text-size-adjus=
+t: 100%; -webkit-text-size-adjust: 100%; background-color: #625DF5; border:=
+ none; border-radius: 6px; color: #FFFFFF !important; display: inline-block=
+; font-size: 18px; font-weight: bold; text-decoration: none !important">Wat=
+ch the video</a></td></tr></tbody></table>
+<div></div>
+<div></div>
+<p class=3D"intercom-align-left" style=3D"font-size: 16px; margin: 0 0 16px=
+; text-align: left !important" align=3D"left"><br>With =F0=9F=92=9C =C2=A0f=
+rom =F0=9F=8C=8D=F0=9F=8C=8E=F0=9F=8C=8F,<br>The Loommates</p>
+<div></div>
+</div>
+            </td>
+        </tr>
+   </tbody>
+</table>
+    <div style=3D"margin: 0 auto; max-width: 600px; overflow: hidden">
+        <div class=3D"footer" style=3D"color: #7C7C7C; font-size: 14px; lin=
+e-height: 18px; margin: 30px 0; padding: 0 30px">
+            <div>Loom, Inc=2E<address style=3D"font-style: normal">140 2nd =
+Street Floor 3<br>San Francisco, CA 94105</address>
+</div>
+            <p style=3D"font-size: 14px; margin: 16px 0"><a href=3D"https:/=
+/loom-89a303127719=2Eintercom-mail=2Ecom/subscriptions/unsubscribe?app_id=
+=3Dcgfc6jcc&conversation_id=3D28305758428610&user_id=3D5ace24330fd93957ce7e=
+b672&source=3Dbody" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-=
+adjust: 100%; color: inherit">Unsubscribe from our emails</a></p>
+        </div>
+    </div>
+    <!--[if (gte mso 9)|(IE)]>
+    </td></tr></table>
+    <![endif]-->
+
+
+
+<img src=3D"https://loom-89a303127719=2Eintercom-mail=2Ecom/via/o?h=3Dc7c1e=
+8307bc2dab3916291f439460c2dfb8f29b5-cgfc6jcc_28305758428610" width=3D"1" he=
+ight=3D"1" style=3D"display: block;" alt=3D"intercom">
+
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://loom-89a=
+303127719=2Eintercom-mail=2Ecom/q/6GgQSsBIjsbUfldqwa4UCA~~/AAAAAQA~/RgRjHJ5=
+RPlcIaW50ZXJjb21CCmE4URk6Ycs5nP1SF3NoYWhydWtoLnN3YW1AZ21haWwuY29tWAQAAAOG">=
+
+</body>
+</html>
+--_----jpgvw7wQY4txsvtw0SmQLw===_69/DF-40217-1591A316--
+
